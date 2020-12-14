@@ -38,5 +38,5 @@ jobs:
         host: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
         PORT: ${{ secrets.PORT }}
-        password: ${{ secrets.KEY }}
+        KEY: ${{ secrets.KEY }}
         script: ls
