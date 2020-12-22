@@ -1,1 +1,3 @@
-# gametools.network-website
+# Game Tools website
+
+A Community Network project
