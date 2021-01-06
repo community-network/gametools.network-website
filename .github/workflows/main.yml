@@ -1,0 +1,28 @@
+name: Node.js CI
+
+on: [push] # run jobs on push request
+
+jobs:
+  build-and-deploy:
+    name: Build the game within github to gh-pages branch
+    runs-on: ubuntu-latest # use ubuntu docker container
+    steps:
+    - name: Checkout 🛎️ # git clone to docker container
+      uses: actions/checkout@v1
+      with:
+        persist-credentials: false # reset credentials of git clone so it can use token
+    - name: Use Node.js 12.x 🔧 # set node.js to version 12
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - name: build the Image # also build the UML diagram to ./assets/UML.svg
+      run: |
+        npm install
+        npm run build
+    - name: Deploy 🚀 # deploy to the gh-pages branch
+      uses: JamesIves/github-pages-deploy-action@3.7.1
+      with:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        BRANCH: build # The branch the action should deploy to.
+        FOLDER: . # The folder the action should deploy.
+        CLEAN: true # Automatically remove deleted files from the deploy branch
