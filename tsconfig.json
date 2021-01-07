@@ -7,11 +7,14 @@
     "sourceMap": true,
     "module": "es2015",
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
+    "noImplicitAny": false,
     "plugins": [ { "name": "typescript-plugin-css-modules" } ]
   },
+
   "include": [
     "./src/**/*"
   ]

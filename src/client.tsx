@@ -2,8 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import App from "./App";
+import { translateClient } from './i18n';
 
-ReactDOM.render(
+translateClient();
+
+ReactDOM.hydrate(
     <App />,
     document.getElementById("app")
 );

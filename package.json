@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/Community-network/gametools.network-website.git"
   },
-  "author": "", 
+  "author": "",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/Community-network/gametools.network-website/issues"
@@ -23,6 +23,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "i18next": "^19.8.4",
+    "i18next-browser-languagedetector": "^6.0.1",
+    "i18next-http-middleware": "^3.0.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-i18next": "^11.8.5"
