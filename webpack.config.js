@@ -10,7 +10,7 @@ const path = require('path');
 
 module.exports = function (env, argv) {
     const base = {
-        entry: './src/server/index.ts',
+        entry: './src/server/index.tsx',
         output: {
             filename: 'js/server.js', // Place it somewhere else on publish
             path: path.resolve(process.cwd(), 'dist'),

@@ -17,11 +17,11 @@ function html(body: string, lang_lamda: Function) {
                 ${meta(lang_lamda)}
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <link href="css/main.css" rel="stylesheet">
+                <link href="/css/main.css" rel="stylesheet">
             </head>
             <body style="margin:0">
                 <div id="app">${body}</div>
-                <script src="js/bundle.js" defer></script>
+                <script src="/js/bundle.js" defer></script>
             </body>
         </html>
     `;
