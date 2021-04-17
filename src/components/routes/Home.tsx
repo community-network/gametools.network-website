@@ -3,12 +3,17 @@ import { useTranslation } from 'react-i18next';
 import styled from "styled-components";
 import background from '../../assets/img/bfv-thelasttiger-2-extra.jpg';
 
-const Front = styled.div`
+const Image = styled.div`
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-image: url('${background}');
+`
+
+const Blur = styled.div`
+    height: 100vh;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4872) 100%);
 `
 
 const Welcome = styled.div`
@@ -42,12 +47,14 @@ function Home() {
     }
     return (
         <div>
-            <Front>
-                <Welcome>
-                    <h1>{t("siteName")}</h1>
-                    <p>{t("siteDescription")}</p>
-                </Welcome>
-            </Front>
+            <Image>
+                <Blur>
+                    <Welcome>
+                        <h1>{t("siteName")}</h1>
+                        <p>{t("siteDescription")}</p>
+                    </Welcome>
+                </Blur>
+            </Image>
             <Faq>
                 <h1>{t("home.faq.header")}</h1>
                 {faqItems.map((key, index) => {

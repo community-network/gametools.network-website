@@ -1,17 +1,19 @@
 import '../locales/config';
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, useLocation } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
-import styled from "styled-components";
 import Home from "./routes/Home"
-import Stats from "./routes/main"
+import Stats from "./routes/search"
 
 function Views() {
+    const homePage = useLocation().pathname === "/"
     const { t } = useTranslation();
     return (
-        <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route exact path="/stats/:plat/:eaid/:game" component={Stats}/>
-        </Switch>
+        <div style={homePage ? {} : {paddingTop:90}}>
+            <Switch>
+                <Route exact path="/" component={Home}/>
+                <Route exact path="/stats/:plat/:eaid/:game" component={Stats}/>
+            </Switch>
+        </div>
     )
 }
 

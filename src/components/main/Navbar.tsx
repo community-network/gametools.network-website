@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation  } from "react-router-dom";
 import '../../locales/config';
 import { useTranslation } from 'react-i18next';
 import styled from "styled-components";
@@ -11,9 +11,8 @@ const Nav = styled.div`
     right: 0%;
     top: 0%;
     bottom: 0%;
-    background: #151829;
     display: flex;
-`
+`;
 
 const Header = styled.div`
     left: 8.33%;
@@ -54,7 +53,7 @@ const Separator = styled.div`
 `
 
 const HLink = styled(Link)`
-    position: absolute;
+    // position: absolute;
     // left: 64.53%;
     // right: 26.98%;
     top: 0%;
@@ -65,9 +64,12 @@ const HLink = styled(Link)`
     font-weight: bold;
     font-size: 14px;
     line-height: 102.3%;
+    text-decoration: none;
     /* or 14px */
 
     display: flex;
+    overflow: hidden;
+    white-space: nowrap;
     flex: 1;
     align-items: center;
     text-align: center;
@@ -77,15 +79,14 @@ const HLink = styled(Link)`
 
 export function Navbar() {
     const { t } = useTranslation();
-    const windowLocation = window.location.pathname
-    console.log(window.location.pathname)
+    const homePage = useLocation().pathname === "/"
     return (
         <Nav>
-            <Header>{t("siteName")}</Header>
+            {homePage ? null : <Header>{t("siteName")}</Header>}
             <LinkWrapper>
                 <HLink to="/stats/pc/iiTzArcur/bf1">{t("navBar.bfStats")}</HLink>
-                <HLink to="/stats/pc/iiTzArcur/bf1">{t("navBar.bfStats")}</HLink>
-                <HLink to="/stats/pc/iiTzArcur/bf1">{t("navBar.bfStats")}</HLink>
+                <HLink to="/stats/pc/iiTzArcur/bf1">{t("navBar.discord")}</HLink>
+                <HLink to="/stats/pc/iiTzArcur/bf1">{t("navBar.api")}</HLink>
                 <Separator/>
             </LinkWrapper>
         </Nav>

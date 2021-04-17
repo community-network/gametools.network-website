@@ -7,7 +7,6 @@ import {Navbar} from "./main/Navbar"
 import { QueryClient, QueryClientProvider } from 'react-query'
 import Views from "./Views"
 
-
 const queryClient = new QueryClient();
 
 class App extends React.Component<Record<string, unknown>, undefined> {
