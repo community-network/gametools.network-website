@@ -7,13 +7,15 @@ import { useQuery, useQueryClient, useMutation } from 'react-query';
 type TParams = { plat: string, eaid: string, game: string }
 
 function Stats({ match }: RouteComponentProps<TParams>) {
-    const getLanguage = () => window.localStorage.i18nextLng
-    const { t } = useTranslation();
+    const getLanguage = () => window.localStorage.i18nextLng.toLowerCase()
+    const { t, i18n } = useTranslation();
     const request = {game: match.params.game, userName: match.params.eaid, lang: getLanguage()}
     const { isError: error, data: stats } = useQuery("stats" + request, () => GetStats.stats(request))
     console.log(stats)
     return (
     <div>
+        <button onClick={() => {i18n.changeLanguage("nl_NL")}}>DUTCH</button>
+        {getLanguage()}
         {match.params.plat}
         {match.params.eaid}
         {match.params.game}
