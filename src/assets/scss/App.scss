@@ -11,10 +11,7 @@ $special: #14fed4;
 
 @use 'defaults';
 
-@font-face {
-  font-family: Manrope;
-  src: url(https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap);
-}
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap');
 
 body {
   background-color: $blackM88;

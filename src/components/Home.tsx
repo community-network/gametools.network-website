@@ -8,8 +8,10 @@ const Front = styled.div`
     top: 0;
     left: 0;
     height: 100%;
-    width: 100%;
+    min-width: 100%;
+    background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
     background-image: url('${background}');
 `
 
@@ -17,7 +19,9 @@ function Home() {
     const { t } = useTranslation();
     return (
         <div>
-            <Front></Front>
+            <Front>
+                center
+            </Front>
 
             <h1>{t('test')}</h1>
         </div>
