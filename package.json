@@ -72,6 +72,7 @@
     "i18next": "^20.2.1",
     "i18next-browser-languagedetector": "^6.1.0",
     "react-i18next": "^10.0.0",
+    "react-query": "^3.13.10",
     "react-router-dom": "^5.2.0"
   }
 }
