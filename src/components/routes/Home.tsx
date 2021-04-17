@@ -1,7 +1,7 @@
-import '../locales/config';
+import '../../locales/config';
 import { useTranslation } from 'react-i18next';
 import styled from "styled-components";
-import background from '../assets/img/bfv-thelasttiger-2-extra.jpg';
+import background from '../../assets/img/bfv-thelasttiger-2-extra.jpg';
 
 const Front = styled.div`
     position: absolute;

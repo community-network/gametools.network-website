@@ -1,12 +1,11 @@
 import * as React from "react";
-import { HashRouter, Switch, Route, Link } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { hot } from "react-hot-loader";
 import "./../assets/scss/App.scss";
 import {Footer} from "./main/Footer"
 import {Navbar} from "./main/Navbar"
-import Home from "./Home"
-import Stats from "./stats/main"
 import { QueryClient, QueryClientProvider } from 'react-query'
+import Views from "./Views"
 
 
 const queryClient = new QueryClient();
@@ -17,8 +16,7 @@ class App extends React.Component<Record<string, unknown>, undefined> {
       <HashRouter>
         <Navbar />
         <QueryClientProvider client={queryClient}>
-          <Route path="/" component={Home}/>
-          <Route path="/stats/:plat/:eaid/:game" component={Stats}/>
+          <Views />
         </QueryClientProvider>
         <Footer />
       </HashRouter>
