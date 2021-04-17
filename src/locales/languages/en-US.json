@@ -39,7 +39,11 @@
     "search": {
         "back": "Main page",
         "bfStats": "Battlefield Stats",
-        "description": "Search for Origin Nickname to get player stats on PC."
+        "description": "Search for Origin Nickname to get player stats on PC.",
+        "search": "Search",
+        "searchPlaceholder": "Search for Origin name...",
+        "gameStatus": "Amount of players in Battlefield",
+        "statusDescription": "PC stats"
     },
     "footer": {
         "descriptions": {

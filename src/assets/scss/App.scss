@@ -32,7 +32,7 @@ body {
     font-family: Manrope;
     font-weight: bold;
     font-style: normal;
-    line-height: 102.3%;
+    line-height: 150%;
     letter-spacing: 0em;
     text-align: left;
   }
@@ -42,7 +42,7 @@ body {
     font-weight: 800;
     line-height: 150%;
     font-size: 18px;
-    @extend %font-shared
+    @extend %font-shared;
   }
 
   h2 {
@@ -50,7 +50,7 @@ body {
     font-weight: 700;
     line-height: 150%;
     font-size: 16px;
-    @extend %font-shared
+    @extend %font-shared;
   }
 
   h3 {
@@ -58,7 +58,7 @@ body {
     font-weight: 700;
     font-size: 14px;
     line-height: 150%;
-    @extend %font-shared
+    @extend %font-shared;
   }
 
   h4 {
@@ -66,7 +66,7 @@ body {
     font-weight: 700;
     line-height: 150%;
     font-size: 12px;
-    @extend %font-shared
+    @extend %font-shared;
   }
 
   h5 {
@@ -74,7 +74,7 @@ body {
     font-weight: 700;
     line-height: 150%;
     font-size: 12px;
-    @extend %font-shared
+    @extend %font-shared;
   }
 
   h6 {
@@ -82,7 +82,7 @@ body {
     font-weight: 500;
     line-height: 150%;
     font-size: 12px;
-    @extend %font-shared
+    @extend %font-shared;
   }
 
   p, a {
@@ -90,7 +90,7 @@ body {
     font-weight: 500;
     line-height: 150%;
     font-size: 12px;
-    @extend %font-shared
+    @extend %font-shared;
   }
 
   a:hover {

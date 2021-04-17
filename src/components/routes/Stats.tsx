@@ -3,6 +3,7 @@ import '../../locales/config';
 import { useTranslation } from 'react-i18next';
 import { GetStats } from "../../api/GetStats"
 import { useQuery, useQueryClient, useMutation } from 'react-query';
+import { Back, ArrowLeft, Container } from '../Materials';
 
 type TParams = { plat: string, eaid: string, game: string }
 
@@ -13,13 +14,14 @@ function Stats({ match }: RouteComponentProps<TParams>) {
     const { isError: error, data: stats } = useQuery("stats" + request, () => GetStats.stats(request))
     console.log(stats)
     return (
-    <div>
+    <Container>
+        <Back to="/stats"><ArrowLeft/>{t("search.back")}</Back>
         <button onClick={() => {i18n.changeLanguage("nl_NL")}}>DUTCH</button>
         {getLanguage()}
         {match.params.plat}
         {match.params.eaid}
         {match.params.game}
-    </div>
+    </Container>
     )
 }
 
