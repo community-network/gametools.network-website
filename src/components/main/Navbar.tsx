@@ -70,7 +70,7 @@ const HLink = styled(Link)`
     display: flex;
     overflow: hidden;
     white-space: nowrap;
-    flex: 1;
+    flex: 0 0 136px;
     align-items: center;
     text-align: center;
 
