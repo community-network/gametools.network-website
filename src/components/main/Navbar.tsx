@@ -5,22 +5,19 @@ import styled from "styled-components";
 
 const Nav = styled.div`
     height: 90px;
-    width: 100%;
+    //width: 100%;
+    justify-content: space-between;
     position: absolute;
     left: 0%;
     right: 0%;
     top: 0%;
     bottom: 0%;
     display: flex;
+    padding: 0 8.33%;
 `;
 
 const Header = styled.div`
-    left: 8.33%;
-    right: 82.08%;
-    top: 0%;
-    bottom: 0%;
-    // border-radius: nullpx;
-    position: absolute;
+
     font-family: Manrope;
     font-style: normal;
     font-weight: 800;
@@ -32,24 +29,21 @@ const Header = styled.div`
 `
 
 const LinkWrapper = styled.div`
-    position: absolute;
-    left: 64.53%;
-    right: 14.79%;
-    top: 0%;
-    bottom: 0%;
+    display: flex;
+    position: relative;
     display: -webkit-flex;
     display: flex;
 `
 
 const Separator = styled.div`
-    position: absolute;
-    left: 73.28%;
+    //position: absolute;
+    //eft: 73.28%;
     // right: 25.47%;
-    top: 36.67%;
-    bottom: 63.33%;
-
+    //top: 36.67%;
+    //bottom: 63.33%;
+    height: 18px;
     border: 1px solid #282A3A;
-    transform: rotate(90deg);
+    //transform: rotate(90deg);
 `
 
 const HLink = styled(Link)`
@@ -70,7 +64,9 @@ const HLink = styled(Link)`
     display: flex;
     overflow: hidden;
     white-space: nowrap;
-    flex: 0 0 136px;
+    //flex: 0 0 136px;
+    flex-shrink: 0;
+    padding: 0 22px;
     align-items: center;
     text-align: center;
 
@@ -82,7 +78,7 @@ export function Navbar() {
     const homePage = useLocation().pathname === "/"
     return (
         <Nav>
-            {homePage ? null : <Header>{t("siteName")}</Header>}
+            <Header>{homePage ? null : t("siteName")}</Header>
             <LinkWrapper>
                 <HLink to="/stats/pc/iiTzArcur/bf1">{t("navBar.bfStats")}</HLink>
                 <HLink to="/stats/pc/iiTzArcur/bf1">{t("navBar.discord")}</HLink>

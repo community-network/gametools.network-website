@@ -4,7 +4,7 @@ const MODE = "prod";
 
 const endPoints = {
     dev: "https://api.jobse.space",
-    prod: "https://api.gametools.network"
+    prod: "http://localhost:8787"
 }
 
 export default class JsonClient {
