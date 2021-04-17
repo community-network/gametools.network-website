@@ -1,4 +1,4 @@
-import { HashRouter, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import '../../locales/config';
 import { useTranslation } from 'react-i18next';
 import styled from "styled-components";
@@ -11,7 +11,6 @@ const Nav = styled.div`
     right: 0%;
     top: 0%;
     bottom: 0%;
-    border-radius: 0px;
     background: #151829;
 `
 
@@ -34,10 +33,29 @@ const Header = styled.div`
     color: rgba(255, 255, 255, 0.92);
 `
 
-const BStats = styled.div`
+const LinkWrapper = styled.div`
     position: absolute;
     left: 64.53%;
-    right: 26.98%;
+    right: 14.79%;
+    top: 0%;
+    bottom: 0%;
+`
+
+const Separator = styled.div`
+    position: absolute;
+    left: 73.28%;
+    // right: 25.47%;
+    top: 36.67%;
+    bottom: 63.33%;
+
+    border: 1px solid #282A3A;
+    transform: rotate(90deg);
+`
+
+const BStats = styled.div`
+    position: absolute;
+    // left: 64.53%;
+    // right: 26.98%;
     top: 0%;
     bottom: 0%;
 
@@ -60,7 +78,10 @@ export function Navbar() {
     return (
         <Nav>
             <Header>Game Tools</Header>
-            <BStats>Battlefield Stats</BStats>
+            <LinkWrapper>
+                <BStats>Battlefield Stats</BStats>
+                <Separator/>
+            </LinkWrapper>
             <Link to="/stats/pc/iiTzArcur/bf1">test</Link>
         </Nav>
     )
