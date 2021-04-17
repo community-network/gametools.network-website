@@ -7,6 +7,7 @@ const Nav = styled.div`
     height: 90px;
     //width: 100%;
     justify-content: space-between;
+    align-items: center;
     position: absolute;
     left: 0%;
     right: 0%;
@@ -36,14 +37,9 @@ const LinkWrapper = styled.div`
 `
 
 const Separator = styled.div`
-    //position: absolute;
-    //eft: 73.28%;
-    // right: 25.47%;
-    //top: 36.67%;
-    //bottom: 63.33%;
     height: 18px;
-    border: 1px solid #282A3A;
-    //transform: rotate(90deg);
+    border: 0.5px solid rgba(255, 255, 255, 0.22);
+    display: flex;
 `
 
 const HLink = styled(Link)`
@@ -82,8 +78,8 @@ export function Navbar() {
             <LinkWrapper>
                 <HLink to="/stats/pc/iiTzArcur/bf1">{t("navBar.bfStats")}</HLink>
                 <HLink to="/stats/pc/iiTzArcur/bf1">{t("navBar.discord")}</HLink>
-                <HLink to="/stats/pc/iiTzArcur/bf1">{t("navBar.api")}</HLink>
                 <Separator/>
+                <HLink to="/stats/pc/iiTzArcur/bf1">{t("navBar.api")}</HLink>
             </LinkWrapper>
         </Nav>
     )

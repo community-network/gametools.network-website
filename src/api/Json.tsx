@@ -4,7 +4,7 @@ const MODE = "prod";
 
 const endPoints = {
     dev: "https://api.jobse.space",
-    prod: "http://localhost:8787"
+    prod: "https://api.gametools.network"
 }
 
 export default class JsonClient {
@@ -20,7 +20,7 @@ export default class JsonClient {
     }
     async fetchMethod(method: string, params: { [name: string]: string }) {
         return fetch(this.constructApiUrl(method, params), {
-            credentials: "include"
+            mode: 'no-cors'
         });
     }
     getJsonMethod(method: string, params: { [name: string]: string }) {

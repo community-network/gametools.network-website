@@ -37,6 +37,10 @@ const FaqSection = styled.div`
     padding-top: 0.25rem;
 `
 
+const WelcomeHeader = styled.h1`
+    font-size: 48px;
+`
+
 function Home() {
     const { t, i18n } = useTranslation();
     let i = 0;
@@ -50,7 +54,7 @@ function Home() {
             <Image>
                 <Blur>
                     <Welcome>
-                        <h1>{t("siteName")}</h1>
+                        <WelcomeHeader>{t("siteName")}</WelcomeHeader>
                         <p>{t("siteDescription")}</p>
                     </Welcome>
                 </Blur>
