@@ -1,0 +1,88 @@
+$blackM88: #151829;
+$blackM91: #1e2132;
+$blackM96: #282a3a;
+$blackM100: #313443;
+
+$blueM92: #5446f0;
+$blueM96: #5b4df1;
+$blueM100: #6255f1;
+
+$special: #14fed4;
+
+@use 'defaults';
+
+
+@font-face {
+  font-family: Manrope;
+  src: url(https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap);
+}
+
+body {
+  background-color: $blackM88;
+
+  %font-shared {
+    color: #FFFFFF;
+    font-family: Manrope;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 102.3%;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  
+  h1 {
+    opacity: 92%;
+    font-weight: 800;
+    line-height: 18px;
+    font-size: 18px;
+    @extend %font-shared
+  }
+
+  h2 {
+    opacity: 92%;
+    font-weight: 700;
+    line-height: 16px;
+    font-size: 16px;
+    @extend %font-shared
+  }
+
+  h3 {
+    opacity: 92%;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 14px;
+    @extend %font-shared
+  }
+
+  h4 {
+    opacity: 92%;
+    font-weight: 700;
+    line-height: 12px;
+    font-size: 12px;
+    @extend %font-shared
+  }
+
+  h5 {
+    opacity: 72%;
+    font-weight: 700;
+    line-height: 12px;
+    font-size: 12px;
+    @extend %font-shared
+  }
+
+  h6 {
+    opacity: 72%;
+    font-weight: 500;
+    line-height: 12px;
+    font-size: 12px;
+  }
+
+  p {
+    opacity: 92%;
+    font-weight: 500;
+    line-height: 12px;
+    font-size: 12px;
+    @extend %font-shared
+  }
+}
+
