@@ -4,11 +4,16 @@ import {
     Link,
     RouteComponentProps
   } from "react-router-dom";
-type TParams = { id: string }
+type TParams = { plat: string, eaid: string, game: string }
 
 function Stats({ match }: RouteComponentProps<TParams>) {
-    console.log(match)
-    return <div>{match.params.id}</div>
+    return (
+    <div>
+        {match.params.plat}
+        {match.params.eaid}
+        {match.params.game}
+    </div>
+    )
 }
 
 export default Stats;

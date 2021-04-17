@@ -1,5 +1,7 @@
+import { HashRouter, Switch, Route, Link } from "react-router-dom";
+
 export function Navbar() {
     return (
-        <h3>test</h3>
+        <Link to="/stats/pc/iiTzArcur/bf1">test</Link>
     )
 }
