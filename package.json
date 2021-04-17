@@ -41,6 +41,7 @@
     "@types/node": "^14.14.34",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.2",
+    "@types/styled-components": "^5.1.9",
     "@typescript-eslint/eslint-plugin": "^4.17.0",
     "@typescript-eslint/parser": "^4.17.0",
     "babel-loader": "^8.2.2",
@@ -73,6 +74,7 @@
     "i18next-browser-languagedetector": "^6.1.0",
     "react-i18next": "^10.0.0",
     "react-query": "^3.13.10",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "styled-components": "^5.2.3"
   }
 }
