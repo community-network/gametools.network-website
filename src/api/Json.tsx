@@ -19,9 +19,7 @@ export default class JsonClient {
         return apiEP + method + paramStr;
     }
     async fetchMethod(method: string, params: { [name: string]: string }) {
-        return fetch(this.constructApiUrl(method, params), {
-            mode: 'no-cors'
-        });
+        return fetch(this.constructApiUrl(method, params));
     }
     getJsonMethod(method: string, params: { [name: string]: string }) {
         return this.errorHandler(this.fetchMethod(method, params));

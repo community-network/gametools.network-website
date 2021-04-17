@@ -1,11 +1,12 @@
 import { Link, useLocation  } from "react-router-dom";
 import '../../locales/config';
 import { useTranslation } from 'react-i18next';
-import styled from "styled-components";
+import styled, {css} from "styled-components";
+import { M88, AltText } from '../Materials';
 
 const Nav = styled.div`
+    ${M88}
     height: 90px;
-    //width: 100%;
     justify-content: space-between;
     align-items: center;
     position: absolute;
@@ -18,15 +19,8 @@ const Nav = styled.div`
 `;
 
 const Header = styled.div`
-
-    font-family: Manrope;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 18px;
-    line-height: 102.3%;
     display: flex;
     align-items: center;
-    color: rgba(255, 255, 255, 0.92);
 `
 
 const LinkWrapper = styled.div`
@@ -34,6 +28,7 @@ const LinkWrapper = styled.div`
     position: relative;
     display: -webkit-flex;
     display: flex;
+    align-items: center;
 `
 
 const Separator = styled.div`
@@ -42,13 +37,7 @@ const Separator = styled.div`
     display: flex;
 `
 
-const HLink = styled(Link)`
-    // position: absolute;
-    // left: 64.53%;
-    // right: 26.98%;
-    top: 0%;
-    bottom: 0%;
-
+const sharedLink = css`
     font-family: Manrope;
     font-style: normal;
     font-weight: bold;
@@ -56,7 +45,7 @@ const HLink = styled(Link)`
     line-height: 102.3%;
     text-decoration: none;
     /* or 14px */
-
+    
     display: flex;
     overflow: hidden;
     white-space: nowrap;
@@ -65,8 +54,33 @@ const HLink = styled(Link)`
     padding: 0 22px;
     align-items: center;
     text-align: center;
-
+    
     color: rgba(255, 255, 255, 0.72);
+`
+
+const HLink = styled(Link)`
+    ${sharedLink}
+`
+
+const ALink = styled.a`
+    ${sharedLink}
+`
+
+const SLink = styled(Link)`
+    font-weight: 800;
+    font-size: 18px;
+`
+
+const ButtonLink = styled.a`
+    ${sharedLink}
+    padding: 0 20px;
+    height: 40px;
+    background: var(--color-blue);
+    border-radius: 5px;
+    transition: all 0.1s;
+    :hover {
+        background: var(--color-blue-alt);
+    }
 `
 
 export function Navbar() {
@@ -74,12 +88,13 @@ export function Navbar() {
     const homePage = useLocation().pathname === "/"
     return (
         <Nav>
-            <Header>{homePage ? null : t("siteName")}</Header>
+            <Header>{homePage ? null : <SLink to="/">{t("siteName")}</SLink>}</Header>
             <LinkWrapper>
-                <HLink to="/stats/pc/iiTzArcur/bf1">{t("navBar.bfStats")}</HLink>
-                <HLink to="/stats/pc/iiTzArcur/bf1">{t("navBar.discord")}</HLink>
+                <HLink to="/stats" title={t("navBar.bfStats")}>{t("navBar.bfStats")}</HLink>
                 <Separator/>
-                <HLink to="/stats/pc/iiTzArcur/bf1">{t("navBar.api")}</HLink>
+                <ALink target="_blank" href="https://discord.gametools.network/" title={t("navBar.discord")}>{t("navBar.discord")}</ALink>
+                <ALink target="_blank" href="https://api.gametools.network/" title={t("navBar.api")}>{t("navBar.api")}</ALink>
+                <ButtonLink target="_blank" href="https://top.gg/bot/714524944783900794">{t("navBar.bot")}</ButtonLink>
             </LinkWrapper>
         </Nav>
     )

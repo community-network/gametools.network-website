@@ -13,6 +13,15 @@ $special: #14fed4;
 
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap');
 
+:root {
+  --color-text: rgba(255, 255, 255, 1);
+  --root-text-color: #ffffff;
+  --color-alt-text: rgba(255, 255, 255, 0.8);
+  --color-base: #313443;
+  --color-blue: #5446f0;
+  --color-blue-alt: #5b4df1;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -29,57 +38,68 @@ body {
   }
   
   h1 {
-    opacity: 92%;
+    color: var(--color-text);
     font-weight: 800;
-    line-height: 18px;
+    line-height: 150%;
     font-size: 18px;
     @extend %font-shared
   }
 
   h2 {
-    opacity: 92%;
+    color: var(--color-text);
     font-weight: 700;
-    line-height: 16px;
+    line-height: 150%;
     font-size: 16px;
     @extend %font-shared
   }
 
   h3 {
-    opacity: 92%;
+    color: var(--color-text);
     font-weight: 700;
     font-size: 14px;
-    line-height: 14px;
+    line-height: 150%;
     @extend %font-shared
   }
 
   h4 {
-    opacity: 92%;
+    color: var(--color-text);
     font-weight: 700;
-    line-height: 12px;
+    line-height: 150%;
     font-size: 12px;
     @extend %font-shared
   }
 
   h5 {
-    opacity: 72%;
+    color: var(--color-text);
     font-weight: 700;
-    line-height: 12px;
+    line-height: 150%;
     font-size: 12px;
     @extend %font-shared
   }
 
   h6 {
-    opacity: 72%;
-    font-weight: 500;
-    line-height: 12px;
-    font-size: 12px;
-  }
-
-  p {
-    opacity: 92%;
+    color: var(--color-text);
     font-weight: 500;
     line-height: 150%;
     font-size: 12px;
     @extend %font-shared
   }
+
+  p, a {
+    color: var(--color-text);
+    font-weight: 500;
+    line-height: 150%;
+    font-size: 12px;
+    @extend %font-shared
+  }
+
+  a:hover {
+    color: var(--root-text-color);  
+  }
+  a {
+    transition: color 0.1s;
+    text-decoration: none;
+  }
+
+
 }

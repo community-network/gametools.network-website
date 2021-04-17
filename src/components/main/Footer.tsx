@@ -1,11 +1,14 @@
 import '../../locales/config';
 import { useTranslation } from 'react-i18next';
 import styled from "styled-components";
+import { M88, AltText } from '../Materials';
+import LanguageSelector from "../../locales/ChangeLanguage"
 
 const Background = styled.div`
+    ${M88}
     padding-top: 1rem;
     padding-bottom: 1rem;
-    background-color: #00000015;
+    background-color: #00000010;
 `
 
 const Section = styled.div`
@@ -14,6 +17,10 @@ const Section = styled.div`
     display: flex;
     flex-wrap: nowrap;
     max-width: 80%;
+`
+
+const TextGrayP = styled.p`
+    color: rgba(255, 255, 255, 0.68);
 `
 
 const Text = styled.div`
@@ -25,10 +32,16 @@ const Links = styled.div`
 
 `
 
+const TextLink = styled.a`
+    color: rgba(255, 255, 255, 0.68);
+    text-decoration: none;
+    font-weight: bold;
+`
+
 function FLink(props) {
     return (
         <p>
-            <a href={props.href}>{props.name}</a>
+            <TextLink href={props.href}>{props.name}</TextLink>
         </p>
     )
 }
@@ -39,7 +52,7 @@ export function Footer() {
         "https://github.com/Community-network",
         "https://api.gametools.network/",
         "https://discord.gametools.network/",
-        "",
+        "/privacy/",
         "https://top.gg/bot/714524944783900794"
     ]
 
@@ -49,20 +62,21 @@ export function Footer() {
         description.push(t(`footer.descriptions.${i}`))
         i+=1
     }
-
+    
     return (
         <Background>
             <Section>
                 <Text>
-                    <h1>{t("siteName")}</h1>
+                    <h3>{t("siteName")}</h3>
                     {description.map((key, index) => {
                         return (
-                            <p key={index} >{key}</p>
+                            <TextGrayP key={index} >{key}</TextGrayP>
                         )
                     })}
+                    <LanguageSelector />
                 </Text>
                 <Links>
-                    <h1>Links</h1>
+                    <h3>Links</h3>
                     {urls.map((key, index) => {
                         return (
                             <FLink key={index} href={key} name={t(`footer.links.${index}`)}/>

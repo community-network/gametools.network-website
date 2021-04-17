@@ -36,6 +36,11 @@
             }
         }
     },
+    "search": {
+        "back": "Main page",
+        "bfStats": "Battlefield Stats",
+        "description": "Search for Origin Nickname to get player stats on PC."
+    },
     "footer": {
         "descriptions": {
             "0": "Website is part of the Community Network. Product is Open Source. You can post issues and suggest new code in our GitHub repository. API provided by Community Network and open for public usage. We don’t provide any third-party API. Our backend closed and restricted for public view.",

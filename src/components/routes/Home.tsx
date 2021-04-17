@@ -1,7 +1,8 @@
 import '../../locales/config';
 import { useTranslation } from 'react-i18next';
 import styled from "styled-components";
-import background from '../../assets/img/bfv-thelasttiger-2-extra.jpg';
+import background from '../../assets/img/bfv-thelasttiger-2-extra.png';
+import { M88, AltText } from '../Materials';
 
 const Image = styled.div`
     height: 100vh;
@@ -20,7 +21,7 @@ const Welcome = styled.div`
     position: absolute;
     bottom: 20%;
     padding-left: 8.33%;
-    max-width: 25em;
+    max-width: 40em;
 `
 
 const Gamestats = styled.div`
@@ -28,9 +29,10 @@ const Gamestats = styled.div`
 `
 
 const Faq = styled.div`
+    ${M88}
     padding-top: 1rem;
     padding-bottom: 5rem;
-    padding-left: 8.33%;
+    padding: 0 8.33%;
 `
 
 const FaqSection = styled.div`
@@ -39,6 +41,11 @@ const FaqSection = styled.div`
 
 const WelcomeHeader = styled.h1`
     font-size: 48px;
+`
+
+const WelcomeText = styled.p`
+    ${AltText}
+    font-size: 18px;
 `
 
 function Home() {
@@ -55,7 +62,7 @@ function Home() {
                 <Blur>
                     <Welcome>
                         <WelcomeHeader>{t("siteName")}</WelcomeHeader>
-                        <p>{t("siteDescription")}</p>
+                        <WelcomeText>{t("siteDescription")}</WelcomeText>
                     </Welcome>
                 </Blur>
             </Image>
