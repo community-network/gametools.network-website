@@ -25,7 +25,7 @@ const Links = styled.div`
 
 `
 
-function Link(props) {
+function FLink(props) {
     return (
         <p>
             <a href={props.href}>{props.name}</a>
@@ -34,35 +34,40 @@ function Link(props) {
 }
 
 export function Footer() {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+    const urls = [
+        "https://github.com/Community-network",
+        "https://api.gametools.network/",
+        "https://discord.gametools.network/",
+        "",
+        "https://top.gg/bot/714524944783900794"
+    ]
+
+    let i = 0;
+    let description = []
+    while (i18n.exists(`footer.descriptions.${i}`)) {
+        description.push(t(`footer.descriptions.${i}`))
+        i+=1
+    }
+
     return (
         <Background>
             <Section>
                 <Text>
-                    <h1>Game Tools</h1>
-                    <p>Website is part of the Community Network.
-                        Product is Open Source.
-                        You can post issues and suggest new code in our GitHub repository.
-                        API provided by Community Network and open for public usage.
-                        We don’t provide any third-party API.
-                        Our backend closed and restricted for public view.
-                        </p>
-                    <p>Battlefield & Origin are registered trademark of Electronic Arts.
-                        This website uses data provided pursuant to Electronic Arts’ Battlefield 1 Stats Terms.
-                        Trademarks are the property of their respective owners. Game materials copyright Electronic Arts Inc.
-                        Electronic Arts has not endorsed and is not responsible for this site or its content.
-                        </p>
-                    <p>Code is under GPL v2 License.
-                        Some parts are under Community Network copyright.
-                        </p>
+                    <h1>{t("siteName")}</h1>
+                    {description.map((key, index) => {
+                        return (
+                            <p key={index} >{key}</p>
+                        )
+                    })}
                 </Text>
                 <Links>
                     <h1>Links</h1>
-                    <Link href="https://github.com/Community-network" name="GitHub repository"/>
-                    <Link href="https://api.gametools.network/" name="Open API"/>
-                    <Link href="https://discord.gametools.network/" name="Community Network Discord"/>
-                    <Link href="" name="Privacy Policy"/>
-                    <Link href="https://top.gg/bot/714524944783900794" name="Discord bot"/>
+                    {urls.map((key, index) => {
+                        return (
+                            <FLink key={index} href={key} name={t(`footer.links.${index}`)}/>
+                        )
+                    })}
                 </Links>
             </Section>
         </Background>

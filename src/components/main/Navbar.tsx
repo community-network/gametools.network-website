@@ -12,16 +12,15 @@ const Nav = styled.div`
     top: 0%;
     bottom: 0%;
     background: #151829;
+    display: flex;
 `
 
 const Header = styled.div`
-    height: 90px;
-    width: 184px;
     left: 8.33%;
     right: 82.08%;
     top: 0%;
     bottom: 0%;
-    border-radius: nullpx;
+    // border-radius: nullpx;
     position: absolute;
     font-family: Manrope;
     font-style: normal;
@@ -39,6 +38,8 @@ const LinkWrapper = styled.div`
     right: 14.79%;
     top: 0%;
     bottom: 0%;
+    display: -webkit-flex;
+    display: flex;
 `
 
 const Separator = styled.div`
@@ -52,7 +53,7 @@ const Separator = styled.div`
     transform: rotate(90deg);
 `
 
-const BStats = styled.div`
+const HLink = styled(Link)`
     position: absolute;
     // left: 64.53%;
     // right: 26.98%;
@@ -67,6 +68,7 @@ const BStats = styled.div`
     /* or 14px */
 
     display: flex;
+    flex: 1;
     align-items: center;
     text-align: center;
 
@@ -75,14 +77,17 @@ const BStats = styled.div`
 
 export function Navbar() {
     const { t } = useTranslation();
+    const windowLocation = window.location.pathname
+    console.log(window.location.pathname)
     return (
         <Nav>
-            <Header>Game Tools</Header>
+            <Header>{t("siteName")}</Header>
             <LinkWrapper>
-                <BStats>Battlefield Stats</BStats>
+                <HLink to="/stats/pc/iiTzArcur/bf1">{t("navBar.bfStats")}</HLink>
+                <HLink to="/stats/pc/iiTzArcur/bf1">{t("navBar.bfStats")}</HLink>
+                <HLink to="/stats/pc/iiTzArcur/bf1">{t("navBar.bfStats")}</HLink>
                 <Separator/>
             </LinkWrapper>
-            <Link to="/stats/pc/iiTzArcur/bf1">test</Link>
         </Nav>
     )
 }
