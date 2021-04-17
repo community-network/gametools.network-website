@@ -11,14 +11,25 @@ const Front = styled.div`
     background-image: url('${background}');
 `
 
+const Welcome = styled.div`
+    position: absolute;
+    bottom: 20%;
+    padding-left: 8.33%;
+    max-width: 25em;
+`
+
+const Gamestats = styled.div`
+
+`
+
 const Faq = styled.div`
-    position: relative;
-    top: 100%;
-    left: 8.33%;
+    padding-top: 1rem;
+    padding-bottom: 5rem;
+    padding-left: 8.33%;
 `
 
 const FaqSection = styled.div`
-    padding-bottom: 0.5rem;
+    padding-top: 0.25rem;
 `
 
 function Home() {
@@ -26,6 +37,12 @@ function Home() {
     return (
         <div>
             <Front>
+                <Welcome>
+                    <h1>Game Tools</h1>
+                    <p>Community Network project to provide public tools for different games.
+                        Starting with Battlefield, we bringing back BF online playercount stats, as well as personal stats and much more in future.
+                    </p>
+                </Welcome>
             </Front>
             <Faq>
                 <h1>FAQ</h1>
