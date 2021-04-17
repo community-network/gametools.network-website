@@ -12,6 +12,7 @@ const Front = styled.div`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    z-index: -1;
     background-image: url('${background}');
 `
 
@@ -20,10 +21,7 @@ function Home() {
     return (
         <div>
             <Front>
-                center
             </Front>
-
-            <h1>{t('test')}</h1>
         </div>
     )
 }
