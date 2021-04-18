@@ -62,22 +62,57 @@ export const SearchBox = styled.input`
     width: 30rem;
     height: 50px;
     padding-left: 2rem;
+    margin-bottom: 1rem;
     font-family: Manrope;
     font-weight: medium;
     font-style: normal;
+    margin-right: 1rem;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `
 
 export const BigButtonSecondary = styled.button`
     ${M96}
     background: #1E2132;
-    margin-left: 1rem;
     color: var(--color-text);
     border: none;
+    margin-bottom: 1rem;
     border-radius: 5px;
     height: 50px;
     width: 134px;
+    margin-right: 1rem;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    font-family: Manrope;
+    font-weight: medium;
+    font-style: normal;
+`
+
+export const SmallButtonSecondary = styled.button`
+    ${M96}
+    background: #1E2132;
+    color: var(--color-text);
+    border: none;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    height: 35px;
+    width: 122px;
+    margin-right: 1rem;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    font-family: Manrope;
+    font-weight: medium;
+    font-style: normal;
+`
+
+export const BigSelectSecondary = styled.select`
+    ${M96}
+    background: #1E2132;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: none;
+    height: 50px;
+    margin-right: 1rem;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    padding-left: 18px;
     font-family: Manrope;
     font-weight: medium;
     font-style: normal;
@@ -94,9 +129,6 @@ export const SelectSecondary = styled.select`
     font-family: Manrope;
     font-weight: medium;
     font-style: normal;
-    //-moz-appearance: none;
-	//-webkit-appearance: none;
-	//appearance: none;
 `
 
 export function RightArrow() {

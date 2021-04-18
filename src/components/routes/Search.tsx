@@ -1,7 +1,9 @@
+import * as React from "react";
 import '../../locales/config';
 import { useTranslation } from 'react-i18next';
 import styled from "styled-components";
-import { M88, AltText, SearchBox, BigButtonSecondary, RightArrow, Back, ArrowLeft, Container } from '../Materials';
+import "../../assets/scss/App.scss";
+import { M88, AltText, SearchBox, BigButtonSecondary, RightArrow, Back, ArrowLeft, Container, BigSelectSecondary } from '../Materials';
 
 const Align = styled.div`
     display: flex;
@@ -21,9 +23,19 @@ const Title = styled.h2`
     margin-top: 2rem;
 `
 
+function SmallButton(param) {
+    return (
+        <div>{param.id}</div>
+    )
+}
+
 function Search() {
     const getLanguage = () => window.localStorage.i18nextLng.toLowerCase()
     const { t, i18n } = useTranslation();
+
+    const [searchTerm, setSearchTerm] = React.useState<string>("");
+    const [platform, setPlatform] = React.useState<string>("pc");
+    console.log(searchTerm, platform)
     return (
     <Container>
         <Back to="/"><ArrowLeft/>{t("search.back")}</Back>
@@ -32,7 +44,16 @@ function Search() {
             <AltDescription>{t("search.description")}</AltDescription>
         </Align>
         <Align>
-            <SearchBox placeholder={t("search.searchPlaceholder")}/>
+            <SearchBox placeholder={t("search.searchPlaceholder")} value={searchTerm} onChange={(ev: React.ChangeEvent<HTMLInputElement>):
+                void => setSearchTerm(ev.target.value)}/>
+            <BigSelectSecondary value={platform} onChange={(ev: React.ChangeEvent<HTMLSelectElement>):
+                    void => setPlatform(ev.target.value)}>
+                <option value="pc">PC</option>
+                <option value="xboxone">XBOX ONE</option>
+                <option value="xbox360">XBOX 360</option>
+                <option value="ps4">PS4</option>
+                <option value="ps3">PS3</option>
+            </BigSelectSecondary>
             <BigButtonSecondary>{t("search.search")} <RightArrow/></BigButtonSecondary>
         </Align>
         <Title>{t("search.gameStatus")}</Title>
