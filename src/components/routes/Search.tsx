@@ -19,12 +19,6 @@ const Title = styled.h2`
     margin-top: 2rem;
 `
 
-function SmallButton(param) {
-    return (
-        <div>{param.id}</div>
-    )
-}
-
 function Search() {
     const getLanguage = () => window.localStorage.i18nextLng.toLowerCase()
     const { t, i18n } = useTranslation();

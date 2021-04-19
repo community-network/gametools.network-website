@@ -4,6 +4,11 @@ import styled from "styled-components";
 import { M88, AltText } from '../Materials';
 import LanguageSelector from "../../locales/ChangeLanguage"
 
+interface FLinkProp {
+    href: string,
+    name: string
+}
+
 const Background = styled.div`
     ${M88}
     padding-top: 1rem;
@@ -38,7 +43,7 @@ const TextLink = styled.a`
     font-weight: bold;
 `
 
-function FLink(props) {
+function FLink(props: FLinkProp) {
     return (
         <p>
             <TextLink href={props.href}>{props.name}</TextLink>
