@@ -60,7 +60,7 @@ function ViewStats(props: Views) {
                 <Box>
                     <h3>{t("stats.overview")}</h3>
                     <p>{t("stats.overviewDescription")}</p>
-                    <p>{stats["K/D"]}</p>
+                    <p>{stats["K/D"]} K/D</p>
                 </Box>
             </Spacing>
         )
