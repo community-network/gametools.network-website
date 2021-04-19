@@ -7,6 +7,14 @@
         "api": "Open API",
         "bot": "Discord Bot"
     },
+    "games": {
+        "bf2": "Battlefield 2",
+        "bf3": "Battlefield 3",
+        "bf4": "Battlefield 4",
+        "bfh": "Battlefield hardline",
+        "bf1": "Battlefield 1",
+        "bf5": "Battlefield 5"
+    },
     "home": {
         "faq": {
             "header": "FAQ",
@@ -44,6 +52,11 @@
         "searchPlaceholder": "Search for Origin name...",
         "gameStatus": "Amount of players in Battlefield",
         "statusDescription": "PC stats"
+    },
+    "stats": {
+        "originDescription": "Origin profile",
+        "overview": "Overview",
+        "overviewDescription": "See your overview stats in game."
     },
     "footer": {
         "descriptions": {

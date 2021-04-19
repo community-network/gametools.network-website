@@ -131,6 +131,11 @@ export const SelectSecondary = styled.select`
     font-style: normal;
 `
 
+export const Align = styled.div`
+    display: flex;
+    align-items: center;
+`
+
 export function RightArrow() {
     return (
         <svg width="12" height="12" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -138,3 +143,9 @@ export function RightArrow() {
         </svg>
     )
 }
+
+export const Box = styled.div`
+    padding: .2rem 1.4rem;
+    background: #1E2132;
+    border-radius: 10px;
+`
