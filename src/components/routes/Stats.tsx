@@ -4,7 +4,7 @@ import '../../locales/config';
 import { useTranslation } from 'react-i18next';
 import { GetStats } from "../../api/GetStats"
 import { useQuery, useQueryClient, useMutation } from 'react-query';
-import { Back, ArrowLeft, Container, SmallButtonSecondary, Align, Box, SmallSearchBox, AltText, SelectSecondary } from '../Materials';
+import { Back, ArrowLeft, Container, SmallButtonSecondary, Align, Box, SmallSearchBox, AltText, SelectSecondary, Circle } from '../Materials';
 import styled from "styled-components";
 import { platformGames } from "../../api/static"
 
@@ -48,7 +48,17 @@ function ViewOrigin(props: Views) {
             </Spacing>
         )
     } else {
-        return (<div></div>)
+        return (
+            <Spacing>
+                <Align>
+                    <Circle/>
+                    <div>
+                        <OriginName>{t("loading")}</OriginName>
+                        <OriginDescription>{t("loading")}</OriginDescription>
+                    </div>
+                </Align>
+            </Spacing>
+        )
     }
 }
 
@@ -120,23 +130,23 @@ function ViewWeapons(props: Views) {
         });
         weapons = weapons.sort(dynamicSort(sortType))
     }
-    if (weapons !== []) {
-        return (
-            <Spacing>
-                <Align>
-                    <Title>{t("stats.weapons")}</Title>
-                    <SmallSearchBox placeholder="Search for weapon" value={searchTerm} onChange={(ev: React.ChangeEvent<HTMLInputElement>):
-                        void => setSearchTerm(ev.target.value)}/>
-                    <SelectSecondary value={sortType} onChange={(ev: React.ChangeEvent<HTMLSelectElement>):
-                        void => setSortType(ev.target.value)}>
-                            <option value="weaponName">{t("stats.rows.weaponName")}</option>
-                            <option value="type">{t("stats.rows.type")}</option>
-                            <option value="-kills">{t("stats.rows.kills")}</option>
-                            <option value="-killsPerMinute">{t("stats.rows.kpm")}</option>
-                            <option value="-accuracy">{t("stats.rows.accuracy")}</option>
-                            <option value="-headshots">{t("stats.rows.headshots")}</option>
-                    </SelectSecondary>
-                </Align>
+    return (
+        <Spacing>
+            <Align>
+                <Title>{t("stats.weapons")}</Title>
+                <SmallSearchBox placeholder="Search for weapon" value={searchTerm} onChange={(ev: React.ChangeEvent<HTMLInputElement>):
+                    void => setSearchTerm(ev.target.value)}/>
+                <SelectSecondary value={sortType} onChange={(ev: React.ChangeEvent<HTMLSelectElement>):
+                    void => setSortType(ev.target.value)}>
+                        <option value="weaponName">{t("stats.rows.weaponName")}</option>
+                        <option value="type">{t("stats.rows.type")}</option>
+                        <option value="-kills">{t("stats.rows.kills")}</option>
+                        <option value="-killsPerMinute">{t("stats.rows.kpm")}</option>
+                        <option value="-accuracy">{t("stats.rows.accuracy")}</option>
+                        <option value="-headshots">{t("stats.rows.headshots")}</option>
+                </SelectSecondary>
+            </Align>
+            {weapons !== []? (
                 <Box>
                     {weapons.map((key, index) => {
                         return (
@@ -151,11 +161,12 @@ function ViewWeapons(props: Views) {
                         )
                     })}
                 </Box>
-            </Spacing>
-        )
-    } else {
-        return (<div></div>)
-    }
+            )
+            :(<Box>
+                <p>{t("loading")}</p>
+            </Box>)}
+        </Spacing>
+    )
 }
 
 function ViewVehicles(props: Views) {
@@ -169,22 +180,22 @@ function ViewVehicles(props: Views) {
         });
         vehicles = vehicles.sort(dynamicSort(sortType))
     }
-    if (vehicles !== []) {
-        return (
-            <Spacing>
-                <Align>
-                    <Title>{t("stats.vehicles")}</Title>
-                    <SmallSearchBox placeholder="Search for vehicle" value={searchTerm} onChange={(ev: React.ChangeEvent<HTMLInputElement>):
-                        void => setSearchTerm(ev.target.value)}/>
-                        <SelectSecondary value={sortType} onChange={(ev: React.ChangeEvent<HTMLSelectElement>):
-                            void => setSortType(ev.target.value)}>
-                                <option value="vehicleName">{t("stats.rows.vehicleName")}</option>
-                                <option value="type">{t("stats.rows.type")}</option>
-                                <option value="-kills">{t("stats.rows.kills")}</option>
-                                <option value="-killsPerMinute">{t("stats.rows.kpm")}</option>
-                                <option value="-destroyed">{t("stats.rows.destroyed")}</option>
-                        </SelectSecondary>
-                </Align>
+    return (
+        <Spacing>
+            <Align>
+                <Title>{t("stats.vehicles")}</Title>
+                <SmallSearchBox placeholder="Search for vehicle" value={searchTerm} onChange={(ev: React.ChangeEvent<HTMLInputElement>):
+                    void => setSearchTerm(ev.target.value)}/>
+                    <SelectSecondary value={sortType} onChange={(ev: React.ChangeEvent<HTMLSelectElement>):
+                        void => setSortType(ev.target.value)}>
+                            <option value="vehicleName">{t("stats.rows.vehicleName")}</option>
+                            <option value="type">{t("stats.rows.type")}</option>
+                            <option value="-kills">{t("stats.rows.kills")}</option>
+                            <option value="-killsPerMinute">{t("stats.rows.kpm")}</option>
+                            <option value="-destroyed">{t("stats.rows.destroyed")}</option>
+                    </SelectSecondary>
+            </Align>
+            {vehicles !== []? (
                 <Box>
                     {vehicles.map((key, index) => {
                         return (
@@ -198,11 +209,12 @@ function ViewVehicles(props: Views) {
                         )
                     })}
                 </Box>
-            </Spacing>
-        )
-    } else {
-        return (<div></div>)
-    }
+            )
+            :(<Box>
+                <p>{t("loading")}</p>
+            </Box>)}
+    </Spacing>  
+    )
 }
 
 

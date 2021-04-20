@@ -1,6 +1,7 @@
 {
     "siteName": "Game Tools",
     "siteDescription": "Community Network project to provide public tools for different games. Starting with Battlefield, we bringing back BF online playercount stats, as well as personal stats and much more in future.",
+    "loading": "Loading...",
     "navBar": {
         "bfStats": "Battlefield Stats",
         "discord": "Our Discord",

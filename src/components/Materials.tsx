@@ -172,3 +172,12 @@ export const Box = styled.div`
     max-height: 30rem;
     overflow-y: auto;
 `
+
+export const Circle = styled.span`
+    ${M92}
+    height: 60px;
+    width: 60px;
+    margin-right: 1.5rem;
+    background-color: var(--color-base);
+    border-radius: 50%;
+`
