@@ -45,11 +45,12 @@ function Search() {
                     <option value="ps3">PS3</option>
                 </BigSelectSecondary>
                 {searchTerm!==""?
-                <Link to={`/stats/${platform}/${searchTerm}/bf1`}>
-                    <BigButtonSecondary type="submit">{t("search.search")} <RightArrow/></BigButtonSecondary>
-                </Link>
+                    <Link to={`/stats/${platform}/${searchTerm}/bf1`}>
+                        <BigButtonSecondary type="submit">{t("search.search")} <RightArrow/></BigButtonSecondary>
+                    </Link>
                 // if no name is filled in
-                :<BigButtonSecondary type="submit">{t("search.search")} <RightArrow/></BigButtonSecondary>}
+                    :<BigButtonSecondary type="submit">{t("search.search")} <RightArrow/></BigButtonSecondary>
+                }
             </form>
         </Align>
         <Title>{t("search.gameStatus")}</Title>
