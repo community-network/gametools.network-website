@@ -56,7 +56,19 @@
     "stats": {
         "originDescription": "Origin profile",
         "overview": "Overview",
-        "overviewDescription": "See your overview stats in game."
+        "overviewDescription": "See your overview stats in game.",
+        "weapons": "Weapons",
+        "vehicles": "Vehicles",
+        "rows": {
+            "weaponName": "Weapon name",
+            "vehicleName": "Vehicle name",
+            "type": "Type",
+            "kills": "Kills",
+            "kpm": "KPM",
+            "destroyed": "Destroyed",
+            "accuracy": "Accuracy",
+            "headshots": "Headshots"
+        }
     },
     "footer": {
         "descriptions": {

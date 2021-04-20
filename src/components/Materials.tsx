@@ -70,6 +70,27 @@ export const SearchBox = styled.input`
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `
 
+export const SmallSearchBox = styled.input`
+    ${M96}
+    ::placeholder {
+        color: var(--color-alt-text);
+    }
+    box-sizing: border-box;
+    color: var(--color-text);
+    border: none;
+    border-radius: 5px;
+    background: #1E2132;
+    width: 191px;
+    height: 30px;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+    font-family: Manrope;
+    font-weight: medium;
+    font-style: normal;
+    margin-right: 1rem;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+`
+
 export const BigButtonSecondary = styled.button`
     ${M96}
     background: #1E2132;
@@ -147,4 +168,7 @@ export const Box = styled.div`
     padding: .2rem 1.4rem;
     background: #1E2132;
     border-radius: 10px;
+    max-width: 45rem;
+    max-height: 30rem;
+    overflow-y: auto;
 `
