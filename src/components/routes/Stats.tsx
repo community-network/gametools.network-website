@@ -133,8 +133,8 @@ function ViewWeapons(props: Views) {
                             <option value="type">{t("stats.rows.type")}</option>
                             <option value="-kills">{t("stats.rows.kills")}</option>
                             <option value="-killsPerMinute">{t("stats.rows.kpm")}</option>
-                            <option value="-accuracy">{t("stats.rows.kpm")}</option>
-                            <option value="-headshots">{t("stats.rows.kpm")}</option>
+                            <option value="-accuracy">{t("stats.rows.accuracy")}</option>
+                            <option value="-headshots">{t("stats.rows.headshots")}</option>
                     </SelectSecondary>
                 </Align>
                 <Box>
@@ -145,8 +145,8 @@ function ViewWeapons(props: Views) {
                                 <Row><p>{key.type}</p><Description>{t("stats.rows.type")}</Description></Row>
                                 <Row><p>{key.kills}</p><Description>{t("stats.rows.kills")}</Description></Row>
                                 <Row><p>{key.killsPerMinute}</p><Description>{t("stats.rows.kpm")}</Description></Row>
-                                <Row><p>{key.accuracy}</p><Description>{t("stats.rows.kpm")}</Description></Row>
-                                <Row><p>{key.headshots}</p><Description>{t("stats.rows.kpm")}</Description></Row>
+                                <Row><p>{key.accuracy}</p><Description>{t("stats.rows.accuracy")}</Description></Row>
+                                <Row><p>{key.headshots}</p><Description>{t("stats.rows.headshots")}</Description></Row>
                             </Column>
                         )
                     })}
