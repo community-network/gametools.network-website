@@ -4,7 +4,7 @@ import '../../locales/config';
 import { useTranslation } from 'react-i18next';
 import { GetStats } from "../../api/GetStats"
 import { useQuery, useQueryClient, useMutation } from 'react-query';
-import { Back, ArrowLeft, Container, SmallButtonSecondary, Align, Box, SmallSearchBox, AltText, SelectSecondary, Circle } from '../Materials';
+import { Back, ArrowLeft, Container, SmallButtonSecondary, Align, Box, SmallSearchBox, AltText, SelectPrimary, Circle } from '../Materials';
 import styled from "styled-components";
 import { platformGames } from "../../api/static"
 
@@ -86,7 +86,6 @@ const Row = styled.div`
 function ViewStats(props: Views) {
     const { t } = useTranslation();
     const stats = props.stats;
-    console.log(stats)
     if (!props.loading&&!props.error) {
         return (
             <Spacing>
@@ -136,7 +135,7 @@ function ViewWeapons(props: Views) {
                 <Title>{t("stats.weapons")}</Title>
                 <SmallSearchBox placeholder="Search for weapon" value={searchTerm} onChange={(ev: React.ChangeEvent<HTMLInputElement>):
                     void => setSearchTerm(ev.target.value)}/>
-                <SelectSecondary value={sortType} onChange={(ev: React.ChangeEvent<HTMLSelectElement>):
+                <SelectPrimary value={sortType} onChange={(ev: React.ChangeEvent<HTMLSelectElement>):
                     void => setSortType(ev.target.value)}>
                         <option value="weaponName">{t("stats.rows.weaponName")}</option>
                         <option value="type">{t("stats.rows.type")}</option>
@@ -144,7 +143,7 @@ function ViewWeapons(props: Views) {
                         <option value="-killsPerMinute">{t("stats.rows.kpm")}</option>
                         <option value="-accuracy">{t("stats.rows.accuracy")}</option>
                         <option value="-headshots">{t("stats.rows.headshots")}</option>
-                </SelectSecondary>
+                </SelectPrimary>
             </Align>
             {weapons !== []? (
                 <Box>
@@ -186,14 +185,14 @@ function ViewVehicles(props: Views) {
                 <Title>{t("stats.vehicles")}</Title>
                 <SmallSearchBox placeholder="Search for vehicle" value={searchTerm} onChange={(ev: React.ChangeEvent<HTMLInputElement>):
                     void => setSearchTerm(ev.target.value)}/>
-                    <SelectSecondary value={sortType} onChange={(ev: React.ChangeEvent<HTMLSelectElement>):
+                    <SelectPrimary value={sortType} onChange={(ev: React.ChangeEvent<HTMLSelectElement>):
                         void => setSortType(ev.target.value)}>
                             <option value="vehicleName">{t("stats.rows.vehicleName")}</option>
                             <option value="type">{t("stats.rows.type")}</option>
                             <option value="-kills">{t("stats.rows.kills")}</option>
                             <option value="-killsPerMinute">{t("stats.rows.kpm")}</option>
                             <option value="-destroyed">{t("stats.rows.destroyed")}</option>
-                    </SelectSecondary>
+                    </SelectPrimary>
             </Align>
             {vehicles !== []? (
                 <Box>
