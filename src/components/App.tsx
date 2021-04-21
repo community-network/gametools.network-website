@@ -1,5 +1,5 @@
 import * as React from "react";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { hot } from "react-hot-loader";
 import "./../assets/scss/App.scss";
 import {Footer} from "./main/Footer"
@@ -12,13 +12,13 @@ const queryClient = new QueryClient();
 class App extends React.Component<Record<string, unknown>, undefined> {
   public render() {
     return (
-      <HashRouter>
+      <BrowserRouter>
         <Navbar />
         <QueryClientProvider client={queryClient}>
           <Views />
         </QueryClientProvider>
         <Footer />
-      </HashRouter>
+      </BrowserRouter>
     );
   }
 }

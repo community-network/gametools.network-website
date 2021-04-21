@@ -4,13 +4,14 @@ import '../../locales/config';
 import { useTranslation } from 'react-i18next';
 import { GetStats } from "../../api/GetStats"
 import { useQuery, useQueryClient, useMutation } from 'react-query';
-import { Back, ArrowLeft, Container, SmallButtonSecondary, Align, Box, SmallSearchBox, AltText, SelectPrimary, Circle } from '../Materials';
+import { M96, Back, ArrowLeft, Container, Align, Box, SmallSearchBox, AltText, SelectPrimary, Circle } from '../Materials';
 import styled from "styled-components";
 import { platformGames } from "../../api/static"
 
 interface Views {
     loading: boolean,
     error: boolean,
+    game: string,
     stats: { [name: string]: any }
 }
 
@@ -63,7 +64,8 @@ function ViewOrigin(props: Views) {
 }
 
 const WeaponImage = styled.img`
-    width: 8rem;
+    max-width: 8rem;
+    max-height: 3rem;
     margin-right: 1.5rem;
 `
 
@@ -85,6 +87,7 @@ const Row = styled.div`
 
 function ViewStats(props: Views) {
     const { t } = useTranslation();
+    const killDeath = (props.game == "bf1"? "K/D" : "killDeath")
     const stats = props.stats;
     if (!props.loading&&!props.error) {
         return (
@@ -92,7 +95,7 @@ function ViewStats(props: Views) {
                 <Box>
                     <h3>{t("stats.overview")}</h3>
                     <p>{t("stats.overviewDescription")}</p>
-                    <p>{stats["K/D"]} K/D</p>
+                    <p>{stats[killDeath]} K/D</p>
                 </Box>
             </Spacing>
         )
@@ -147,7 +150,7 @@ function ViewWeapons(props: Views) {
             </Align>
             {weapons !== []? (
                 <Box>
-                    {weapons.map((key, index) => {
+                    {weapons.map((key: any, index: number) => {
                         return (
                             <Column key={index}>
                                 <Row><p>{key.weaponName}</p><WeaponImage src={key.image}/></Row>
@@ -196,7 +199,7 @@ function ViewVehicles(props: Views) {
             </Align>
             {vehicles !== []? (
                 <Box>
-                    {vehicles.map((key, index) => {
+                    {vehicles.map((key: any, index: number) => {
                         return (
                             <Column key={index}>
                                 <Row><p>{key.vehicleName}</p><WeaponImage src={key.image}/></Row>
@@ -216,33 +219,81 @@ function ViewVehicles(props: Views) {
     )
 }
 
+const InvisableRadioButton = styled.input.attrs({ type: 'radio' })`
+    opacity: 0;
+    position: fixed;
+    width: 0;
+`
 
-type TParams = { plat: string, eaid: string, game: string }
+export const Radio = styled.div` // for next-row
+    margin-bottom: 1rem;
+    height: 35px;
+`
+
+export const SmallButtonRadio = styled.label`
+    ${M96}
+    background: #1E2132;
+    color: var(--color-text);
+    border: none;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    padding: .5rem 1.5rem;
+    margin-right: 1rem;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    font-family: Manrope;
+    font-weight: medium;
+    font-style: normal;
+`
+
+export const UncheckedSmallButtonRadio = styled.label`
+    ${M96}
+    color: var(--color-text);
+    border: none;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    padding: .5rem 1.5rem;
+    margin-right: 1rem;
+    font-family: Manrope;
+    font-weight: medium;
+    font-style: normal;
+`
+
+type TParams = { plat: string, eaid: string}
 
 function Stats({ match }: RouteComponentProps<TParams>) {
+    const [game, setGame] = React.useState<string>(platformGames[match.params.plat][0]);
     const getLanguage = () => window.localStorage.i18nextLng.toLowerCase()
     const { t } = useTranslation();
-    const statsRequest = {game: match.params.game, type: "stats", userName: match.params.eaid, lang: getLanguage()}
-    const { isLoading: loading, isError: error, data: stats } = useQuery("stats" + statsRequest, () => GetStats.stats(statsRequest))
-    const weaponRequest = {game: match.params.game, type: "weapons", userName: match.params.eaid, lang: getLanguage()}
-    const { isLoading: wloading, isError: werror, data: wstats } = useQuery("weapons" + statsRequest, () => GetStats.stats(weaponRequest))
-    const vehicleRequest = {game: match.params.game, type: "vehicles", userName: match.params.eaid, lang: getLanguage()}
-    const { isLoading: vloading, isError: verror, data: vstats } = useQuery("vehicles" + statsRequest, () => GetStats.stats(vehicleRequest))
+    const { isLoading: loading, isError: error, data: stats } = useQuery("stats", () => GetStats.stats(
+        {game: game, type: "stats", userName: match.params.eaid, lang: getLanguage()}
+    ))
+    const { isLoading: wloading, isError: werror, data: wstats } = useQuery("weapons", () => GetStats.stats(
+        {game: game, type: "weapons", userName: match.params.eaid, lang: getLanguage()}
+    ))
+    const { isLoading: vloading, isError: verror, data: vstats } = useQuery("vehicles", () => GetStats.stats(
+        {game: game, type: "vehicles", userName: match.params.eaid, lang: getLanguage()}
+    ))
     const games = platformGames[match.params.plat];
     return (
     <Container>
         <div>
             <Back to="/stats"><ArrowLeft/>{t("search.back")}</Back>
         </div>
-        <ViewOrigin loading={loading} stats={stats} error={error}/>
-        {games.map((key, index) => {
-            return (
-                <SmallButtonSecondary key={index}>{t(`games.${key}`)}</SmallButtonSecondary>
-            )
-        })}
-        <ViewStats loading={loading} stats={stats} error={error}/>
-        <ViewWeapons loading={wloading} stats={wstats} error={werror}/>
-        <ViewVehicles loading={vloading} stats={vstats} error={verror}/>
+        <ViewOrigin game={game} loading={loading} stats={stats} error={error}/>
+        <Align onChange={(ev: React.ChangeEvent<HTMLInputElement>):
+                    void => setGame(ev.target.value)}>
+            {games.map((key: string, index: number) => {
+                return (
+                    <Radio key={index}><InvisableRadioButton id={key} value={key} name="game" defaultChecked={game === key}/>
+                        {(game===key)?<SmallButtonRadio htmlFor={key}>{t(`games.${key}`)}</SmallButtonRadio>:
+                        <UncheckedSmallButtonRadio htmlFor={key}>{t(`games.${key}`)}</UncheckedSmallButtonRadio>}
+                    </Radio>
+                )
+            })}
+        </Align>
+        <ViewStats game={game} loading={loading} stats={stats} error={error}/>
+        <ViewWeapons game={game} loading={wloading} stats={wstats} error={werror}/>
+        <ViewVehicles game={game} loading={vloading} stats={vstats} error={verror}/>
         
     </Container>
     )

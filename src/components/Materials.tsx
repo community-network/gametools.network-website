@@ -169,6 +169,7 @@ export const SelectSecondary = styled.select`
 export const Align = styled.div`
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 `
 
 export function RightArrow() {

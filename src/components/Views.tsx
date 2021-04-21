@@ -13,7 +13,8 @@ function Views() {
             <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/stats" component={Search}/>
-                <Route exact path="/stats/:plat/:eaid/:game" component={Stats}/>
+                <Route exact path="/stats/:plat/:eaid/" component={Stats}/>
+                <Route>React router 404</Route>
             </Switch>
         </div>
     )
