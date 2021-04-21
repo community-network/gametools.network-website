@@ -10,7 +10,14 @@
         <link rel="alternate" hreflang="x-default" href="https://example.com/" />
         <link rel="shortcut icon" type="image/x-icon" href="<%=htmlWebpackPlugin.files.favicon%>">
         <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
+        
+        <!-- Bundle -->
+        <% if (webpackConfig.mode == 'production') { %>
+        <script defer src="/js/bundle.gametools-prod-edge.min.js"></script>
+        <% } else { %>
         <script defer src="/main.js"></script>
+        <% } %>
+
     </head>
     <body>
         <div id="root"></div>

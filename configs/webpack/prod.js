@@ -8,7 +8,7 @@ module.exports = merge(commonConfig, {
   mode: "production",
   entry: "./index.tsx",
   output: {
-    filename: "js/bundle.[contenthash].min.js",
+    filename: "js/bundle.gametools-prod-edge.min.js",
     path: resolve(__dirname, "../../dist"),
     publicPath: "/",
   },
