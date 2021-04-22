@@ -87,7 +87,6 @@ const Row = styled.div`
 
 function ViewStats(props: Views) {
     const { t } = useTranslation();
-    const killDeath = (props.game == "bf1"? "K/D" : "killDeath")
     const stats = props.stats;
     if (!props.loading&&!props.error) {
         return (
@@ -95,7 +94,13 @@ function ViewStats(props: Views) {
                 <Box>
                     <h3>{t("stats.overview")}</h3>
                     <p>{t("stats.overviewDescription")}</p>
-                    <p>{stats[killDeath]} K/D</p>
+                    <p>{stats["killDeath"]} K/D</p>
+                    <p>{stats["killsPerMinute"]} KPM</p>
+                    <p>{stats["winProcent"]} Win%</p>
+                    <p>{stats["killsPerMinute"]} KPM</p>
+                    <p>{stats["bestClass"]} Best class</p>
+                    <p>{stats["accuracy"]} Accuracy</p>
+                    <p>{stats["timePlayed"]} Time played</p>
                 </Box>
             </Spacing>
         )
@@ -264,14 +269,8 @@ function Stats({ match }: RouteComponentProps<TParams>) {
     const [game, setGame] = React.useState<string>(platformGames[match.params.plat][0]);
     const getLanguage = () => window.localStorage.i18nextLng.toLowerCase()
     const { t } = useTranslation();
-    const { isLoading: loading, isError: error, data: stats } = useQuery("stats", () => GetStats.stats(
-        {game: game, type: "stats", userName: match.params.eaid, lang: getLanguage()}
-    ))
-    const { isLoading: wloading, isError: werror, data: wstats } = useQuery("weapons", () => GetStats.stats(
-        {game: game, type: "weapons", userName: match.params.eaid, lang: getLanguage()}
-    ))
-    const { isLoading: vloading, isError: verror, data: vstats } = useQuery("vehicles", () => GetStats.stats(
-        {game: game, type: "vehicles", userName: match.params.eaid, lang: getLanguage()}
+    const { isLoading: loading, isError: error, data: stats } = useQuery("stats" + game + match.params.eaid, () => GetStats.stats(
+        {game: game, type: "all", userName: match.params.eaid, lang: getLanguage()}
     ))
     const games = platformGames[match.params.plat];
     return (
@@ -292,8 +291,8 @@ function Stats({ match }: RouteComponentProps<TParams>) {
             })}
         </Align>
         <ViewStats game={game} loading={loading} stats={stats} error={error}/>
-        <ViewWeapons game={game} loading={wloading} stats={wstats} error={werror}/>
-        <ViewVehicles game={game} loading={vloading} stats={vstats} error={verror}/>
+        <ViewWeapons game={game} loading={loading} stats={stats} error={error}/>
+        <ViewVehicles game={game} loading={loading} stats={stats} error={error}/>
         
     </Container>
     )

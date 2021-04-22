@@ -91,6 +91,20 @@ export const SmallSearchBox = styled.input`
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `
 
+export const PrimaryButtonLink = styled.a`
+    padding: 10px 20px;
+    background: var(--color-blue);
+    border-radius: 5px;
+    transition: all 0.1s;
+    //box-sizing: borfer-box;
+    display: flex;
+    flex-grow: 1;
+    width: auto;
+    :hover {
+        background: var(--color-blue-alt);
+    }
+`
+
 export const BigButtonSecondary = styled.button`
     ${M96}
     background: #1E2132;
@@ -120,6 +134,7 @@ export const SmallButtonSecondary = styled.button`
     font-family: Manrope;
     font-weight: medium;
     font-style: normal;
+    box-sizing: borfer-box; 
 `
 
 export const BigSelectSecondary = styled.select`
@@ -180,19 +195,43 @@ export function RightArrow() {
     )
 }
 
-export const Box = styled.div`
-    padding: .2rem 1.4rem;
-    background: #1E2132;
+const BoxWrap = styled.div`
+    ${M92}
+    background: var(--color-base);
+    align-self: flex-start;
+    display: flex;
+    box-sizing: borfer-box;
+
     border-radius: 10px;
     max-width: 45rem;
-    max-height: 30rem;
-    overflow-y: auto;
+    margin: 0 12px 18px 0;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `
+
+const BoxInner = styled.div`
+    flex-grow: 2;
+    padding: 12px 24px 24px 24px;
+    box-sizing: borfer-box;
+    display: flex;
+    overflow-y: auto;
+    max-width: 45rem;
+    max-height: 30rem;
+    flex-direction: column;
+    //display: flex;
+    align-items: flex-start;
+`
+
+export function Box(props) {
+    return (
+        <BoxWrap>
+            <BoxInner>{props.children}</BoxInner>
+        </BoxWrap>
+    )
+}
 
 export const Circle = styled.span`
     ${M92}
-    height: 60px;
-    width: 60px;
+
     margin-right: 1.5rem;
     background-color: var(--color-base);
     border-radius: 50%;

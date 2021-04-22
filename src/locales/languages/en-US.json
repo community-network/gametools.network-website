@@ -17,6 +17,46 @@
         "bfv": "Battlefield 5"
     },
     "home": {
+        "hostedAt": {
+            "header": "Hosted at Game tools",
+            "0": {
+                "header": "BFBan",
+                "0": "We are hosting and being part of bfban.com - an amazing community & reverse engineering/security team created against hackers, to provide united ban list and report system.",
+                "1": "Report cheaters in bf1/bfv, so they can be banned in community servers.",
+                "link": "Visit BFBan",
+                "url": "http://bfban.com/"
+            }
+        },
+        "ourSolutions": {
+            "header": "Our solutions",
+            "0": {
+                "header": "Server manager",
+                "0": "We are hosting and being part of bfban.com - an amazing community & reverse engineering/security team created against hackers, to provide united ban list and report system.",
+                "1": "Report cheaters in bf1/bfv, so they can be banned in community servers.",
+                "link": "Visit Server manager",
+                "url": "https://manager.gametools.network/"
+            },
+            "1": {
+                "header": "Game Stats",
+                "0": "We are hosting and being part of bfban.com - an amazing community & reverse engineering/security team created against hackers, to provide united ban list and report system.",
+                "1": "Report cheaters in bf1/bfv, so they can be banned in community servers.",
+                "link": "Add on your server",
+                "url": "https://top.gg/bot/714524944783900794"
+            },
+            "2": {
+                "header": "Battlefield API",
+                "0": "We are hosting and being part of bfban.com - an amazing community & reverse engineering/security team created against hackers, to provide united ban list and report system.",
+                "1": "Report cheaters in bf1/bfv, so they can be banned in community servers.",
+                "link": "Read the Docs",
+                "url": "https://api.gametools.network/"
+            },
+            "3": {
+                "header": "Community Operations",
+                "0": "One of our first projects was an RSP Operation server we made together with BFBan. The goal was to make cheat free server with operations gamemode. You can find more at our Discord.",
+                "link": "Visit our Discord",
+                "url": "https://discord.gametools.network/"
+            }
+        },
         "faq": {
             "header": "FAQ",
             "0": {

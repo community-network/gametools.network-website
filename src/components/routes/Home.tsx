@@ -2,7 +2,7 @@ import '../../locales/config';
 import { useTranslation } from 'react-i18next';
 import styled from "styled-components";
 import background from '../../assets/img/bfv-thelasttiger-2-extra.png';
-import { M88, AltText } from '../Materials';
+import { M88, AltText, Box, Container, Align, PrimaryButtonLink } from '../Materials';
 
 const Image = styled.div`
     height: 100vh;
@@ -32,11 +32,14 @@ const Faq = styled.div`
     ${M88}
     padding-top: 1rem;
     padding-bottom: 5rem;
-    padding: 0 8.33%;
 `
 
 const FaqSection = styled.div`
     padding-top: 0.25rem;
+`
+
+const OurToolsSection = styled.div`
+    margin-top: 2rem;
 `
 
 const WelcomeHeader = styled.h1`
@@ -56,6 +59,40 @@ function Home() {
         faqItems.push({question:t(`home.faq.${i}.question`), answer:t(`home.faq.${i}.answer`)})
         i+=1
     }
+    
+    i = 0;
+    let hostedAtItems = []
+    while (i18n.exists(`home.hostedAt.${i}`)) {
+        let b = 0
+        let bodies = []
+        while (i18n.exists(`home.hostedAt.${i}.${b}`)) {
+            bodies.push(t(`home.hostedAt.${i}.${b}`))
+            b += 1
+        }
+        hostedAtItems.push(
+            {header:t(`home.hostedAt.${i}.header`), 
+            link:t(`home.hostedAt.${i}.link`), 
+            url:t(`home.hostedAt.${i}.url`),
+            bodies: bodies})
+        i+=1
+    }
+
+    i = 0;
+    let ourSolutions = []
+    while (i18n.exists(`home.ourSolutions.${i}`)) {
+        let b = 0
+        let bodies = []
+        while (i18n.exists(`home.ourSolutions.${i}.${b}`)) {
+            bodies.push(t(`home.ourSolutions.${i}.${b}`))
+            b += 1
+        }
+        ourSolutions.push(
+            {header:t(`home.ourSolutions.${i}.header`), 
+            link:t(`home.ourSolutions.${i}.link`), 
+            url:t(`home.ourSolutions.${i}.url`),
+            bodies: bodies})
+        i+=1
+    }
     return (
         <div>
             <Image>
@@ -66,17 +103,49 @@ function Home() {
                     </Welcome>
                 </Blur>
             </Image>
-            <Faq>
-                <h1>{t("home.faq.header")}</h1>
-                {faqItems.map((key, index) => {
-                    return (
-                        <FaqSection key={index}>
-                            <p>{key.question}</p>
-                            <p>{key.answer}</p>
-                        </FaqSection>
-                    )
-                })}
-            </Faq>
+            <Container>
+                <h2 style={{margin: "24px 0 24px 24px"}}>{t("home.hostedAt.header")}</h2>
+                <Align>
+                    {hostedAtItems.map((key, index) => {
+                        return (
+                            <Box key={index}>
+                                <h3>{key.header}</h3>
+                                {key.bodies.map((key, index) => {
+                                    return <p key={index}>{key}</p>
+                                })}
+                                <br></br>
+                                <PrimaryButtonLink target="_blank" href={key.url}>{key.link}</PrimaryButtonLink>
+                            </Box>
+                        )
+                    })}
+                </Align>
+                <h2 style={{margin: "24px 0 24px 24px"}}>{t("home.ourSolutions.header")}</h2>
+                <Align>
+                    {ourSolutions.map((key, index) => {
+                        return (
+                            <Box key={index}>
+                                <h3>{key.header}</h3>
+                                {key.bodies.map((key, index) => {
+                                    return <p key={index}>{key}</p>
+                                })}
+                                <br></br>
+                                <PrimaryButtonLink target="_blank" href={key.url}>{key.link}</PrimaryButtonLink>
+                            </Box>
+                        )
+                    })}
+                </Align>
+                <Faq>
+                    <h1>{t("home.faq.header")}</h1>
+                    {faqItems.map((key, index) => {
+                        return (
+                            <FaqSection key={index}>
+                                <p>{key.question}</p>
+                                <p>{key.answer}</p>
+                            </FaqSection>
+                        )
+                    })}
+                </Faq>
+            </Container>
         </div>
     )
 }
