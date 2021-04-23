@@ -31,7 +31,13 @@ export const AltText = css`
 
 
 export const Container = styled.div`
-    padding-left: 8.33%;
+    @media (min-width: 850px) {
+        padding-left: 8.33%;
+    }
+    @media (max-width: 850px) {
+        padding-left: 2%;
+    }
+    
 `
 
 export const Back = styled(Link)`

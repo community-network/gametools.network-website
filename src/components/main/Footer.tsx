@@ -18,9 +18,14 @@ const Background = styled.div`
 
 const Section = styled.div`
     position: relative;
-    left: 8.33%;
+    @media (min-width: 850px) {
+        padding-left: 8.33%;
+    }
+    @media (max-width: 850px) {
+        padding-left: 3%;
+    }
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     max-width: 80%;
 `
 
@@ -29,8 +34,11 @@ const TextGrayP = styled.p`
 `
 
 const Text = styled.div`
-    max-width: 60%; 
-    margin-right: 10rem;
+    @media (min-width: 920px) {
+        margin-right: 8rem;
+        max-width: 60%; 
+    }
+    margin-bottom: 1.5rem;
 `
 
 const Links = styled.div`

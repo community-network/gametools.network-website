@@ -20,7 +20,12 @@ const Blur = styled.div`
 const Welcome = styled.div`
     position: absolute;
     bottom: 20%;
-    padding-left: 8.33%;
+    @media (min-width: 750px) {
+        padding-left: 8.33%;
+    }
+    @media (max-width: 750px) {
+        padding-left: 2%;
+    }
     max-width: 40em;
 `
 
