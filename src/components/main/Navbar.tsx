@@ -92,25 +92,56 @@ const ButtonLink = styled.a`
 const Ul = styled.ul<{ open: boolean }>`
   list-style: none;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
+  background-color: var(--color-base);
+  position: fixed;
+  transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 220px;
+  padding-top: 3.5rem;
+  transition: transform 0.3s ease-in-out;
+  z-index: 10;
+  margin-top: 0;
 
   li {
-    padding: 18px 10px;
+    color: #fff;
+    padding: 15px 10px;
   }
+`;
 
-  @media (max-width: 768px) {
-    flex-flow: column nowrap;
-    //background-color: #0D2538;
-    position: fixed;
-    transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 300px;
-    padding-top: 3.5rem;
-    transition: transform 0.3s ease-in-out;
-    li {
-      color: #fff;
+const StyledBurger = styled.div<{ open: boolean }>`
+  width: 2rem;
+  height: 2rem;
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  z-index: 20;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: column nowrap;
+
+  div {
+    width: 2rem;
+    height: 0.25rem;
+    background-color: ${({ open }) =>
+      open ? "var(--color-text)" : "var(--color-alt-text)"};
+    border-radius: 10px;
+    transform-origin: 1px;
+    transition: all 0.3s linear;
+
+    &:nth-child(1) {
+      transform: ${({ open }) => (open ? "rotate(45deg)" : "rotate(0)")};
+    }
+
+    &:nth-child(2) {
+      transform: ${({ open }) => (open ? "translateX(100%)" : "translateX(0)")};
+      opacity: ${({ open }) => (open ? 0 : 1)};
+    }
+
+    &:nth-child(3) {
+      transform: ${({ open }) => (open ? "rotate(-45deg)" : "rotate(0)")};
     }
   }
 `;
@@ -154,55 +185,17 @@ const RightNav = ({ open }: { open: boolean }) => {
   );
 };
 
-const StyledBurger = styled.div<{ open: boolean }>`
-  width: 2rem;
-  height: 2rem;
-  position: fixed;
-  top: 15px;
-  right: 20px;
-  z-index: 20;
-  display: none;
-  @media (max-width: 768px) {
-    display: flex;
-    justify-content: space-around;
-    flex-flow: column nowrap;
-  }
-
-  div {
-    width: 2rem;
-    height: 0.25rem;
-    // background-color: ${({ open }) => (open ? "#ccc" : "#333")};
-    background-color: #333;
-    border-radius: 10px;
-    transform-origin: 1px;
-    transition: all 0.3s linear;
-
-    &:nth-child(1) {
-      transform: ${({ open }) => (open ? "rotate(45deg)" : "rotate(0)")};
-    }
-
-    &:nth-child(2) {
-      transform: ${({ open }) => (open ? "translateX(100%)" : "translateX(0)")};
-      opacity: ${({ open }) => (open ? 0 : 1)};
-    }
-
-    &:nth-child(3) {
-      transform: ${({ open }) => (open ? "rotate(-45deg)" : "rotate(0)")};
-    }
-  }
-`;
-
 const Burger = () => {
   const [open, setOpen] = useState(false);
   return (
-    <React.Fragment>
+    <>
       <StyledBurger open={open} onClick={() => setOpen(!open)}>
         <div />
         <div />
         <div />
       </StyledBurger>
       <RightNav open={open} />
-    </React.Fragment>
+    </>
   );
 };
 
@@ -214,42 +207,39 @@ export function Navbar(): JSX.Element {
   useEffect(() => {
     window.addEventListener("resize", () => setWidth(window.innerWidth));
   }, []);
+
   return (
     <Nav>
-      {width < 620 ? (
+      <Header>{homePage ? null : <SLink to="/">{t("siteName")}</SLink>}</Header>
+      {width < 730 ? (
         <Burger />
       ) : (
-        <>
-          <Header>
-            {homePage ? null : <SLink to="/">{t("siteName")}</SLink>}
-          </Header>
-          <LinkWrapper>
-            <HLink to="/stats" title={t("navBar.bfStats")}>
-              {t("navBar.bfStats")}
-            </HLink>
-            <Separator />
-            <ALink
-              target="_blank"
-              href="https://discord.gametools.network/"
-              title={t("navBar.discord")}
-            >
-              {t("navBar.discord")}
-            </ALink>
-            <ALink
-              target="_blank"
-              href="https://api.gametools.network/"
-              title={t("navBar.api")}
-            >
-              {t("navBar.api")}
-            </ALink>
-            <ButtonLink
-              target="_blank"
-              href="https://top.gg/bot/714524944783900794"
-            >
-              {t("navBar.bot")}
-            </ButtonLink>
-          </LinkWrapper>
-        </>
+        <LinkWrapper>
+          <HLink to="/stats" title={t("navBar.bfStats")}>
+            {t("navBar.bfStats")}
+          </HLink>
+          <Separator />
+          <ALink
+            target="_blank"
+            href="https://discord.gametools.network/"
+            title={t("navBar.discord")}
+          >
+            {t("navBar.discord")}
+          </ALink>
+          <ALink
+            target="_blank"
+            href="https://api.gametools.network/"
+            title={t("navBar.api")}
+          >
+            {t("navBar.api")}
+          </ALink>
+          <ButtonLink
+            target="_blank"
+            href="https://top.gg/bot/714524944783900794"
+          >
+            {t("navBar.bot")}
+          </ButtonLink>
+        </LinkWrapper>
       )}
     </Nav>
   );
