@@ -4,7 +4,7 @@ import "../../locales/config";
 import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
 import { M88 } from "../Materials";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 const Nav = styled.div`
   ${M88};
@@ -146,11 +146,17 @@ const StyledBurger = styled.div<{ open: boolean }>`
   }
 `;
 
-const RightNav = ({ open }: { open: boolean }) => {
+const RightNav = ({
+  open,
+  setOpen,
+}: {
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+}) => {
   const { t } = useTranslation();
   return (
     <Ul open={open}>
-      <li>
+      <li onClick={() => setOpen(false)}>
         <HLink to="/stats" title={t("navBar.bfStats")}>
           {t("navBar.bfStats")}
         </HLink>
@@ -194,7 +200,7 @@ const Burger = () => {
         <div />
         <div />
       </StyledBurger>
-      <RightNav open={open} />
+      <RightNav open={open} setOpen={setOpen} />
     </>
   );
 };
