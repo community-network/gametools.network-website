@@ -31,22 +31,21 @@
             "header": "Our solutions",
             "0": {
                 "header": "Server manager",
-                "0": "We are hosting and being part of bfban.com - an amazing community & reverse engineering/security team created against hackers, to provide united ban list and report system.",
-                "1": "Report cheaters in bf1/bfv, so they can be banned in community servers.",
+                "0": "A manager for your Battlefield 1 server, from here you can automaticly kick based on ping or if he's in bfban (our global banlist) and gives a way to have more banslots than 200 for your servers.",
+                "1": "It also has the same admin-panel as in game, so you dont have to open the game its also a good option to have this on your second monitor to manage your servers.",
                 "link": "Visit Server manager",
                 "url": "https://manager.gametools.network/"
             },
             "1": {
                 "header": "Game Stats",
-                "0": "We are hosting and being part of bfban.com - an amazing community & reverse engineering/security team created against hackers, to provide united ban list and report system.",
-                "1": "Report cheaters in bf1/bfv, so they can be banned in community servers.",
+                "0": "The Game Stats bot is a bot to see your stats or from others for games like Battlefield 2, 3, 4, hardline, 1 and 5 as reaction in the chat",
+                "1": "The bot also supports console users, example: '!bf1stat {platform} {name}'",
                 "link": "Add on your server",
                 "url": "https://top.gg/bot/714524944783900794"
             },
             "2": {
                 "header": "Battlefield API",
-                "0": "We are hosting and being part of bfban.com - an amazing community & reverse engineering/security team created against hackers, to provide united ban list and report system.",
-                "1": "Report cheaters in bf1/bfv, so they can be banned in community servers.",
+                "0": "Your allowed to use our api to get ingame stats or serverinfo for your own purposes or your own website. It supports all the same battlefield titles as the Gamestats bot.",
                 "link": "Read the Docs",
                 "url": "https://api.gametools.network/"
             },
