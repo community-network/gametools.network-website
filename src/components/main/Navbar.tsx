@@ -100,7 +100,7 @@ const Ul = styled.ul<{ open: boolean }>`
   right: 0;
   height: 100%;
   width: 220px;
-  padding-top: 3.5rem;
+  padding-top: 4.5rem;
   transition: transform 0.3s ease-in-out;
   z-index: 10;
   margin-top: 0;
@@ -115,7 +115,7 @@ const StyledBurger = styled.div<{ open: boolean }>`
   width: 2rem;
   height: 2rem;
   position: fixed;
-  top: 15px;
+  top: 30px;
   right: 20px;
   z-index: 20;
   display: flex;
@@ -191,8 +191,13 @@ const RightNav = ({
   );
 };
 
-const Burger = () => {
-  const [open, setOpen] = useState(false);
+const Burger = ({
+  open,
+  setOpen,
+}: {
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+}) => {
   return (
     <>
       <StyledBurger open={open} onClick={() => setOpen(!open)}>
@@ -209,6 +214,7 @@ export function Navbar(): JSX.Element {
   const { t } = useTranslation();
   const homePage = useLocation().pathname === "/";
   const [width, setWidth] = useState(window.innerWidth);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     window.addEventListener("resize", () => setWidth(window.innerWidth));
@@ -216,9 +222,11 @@ export function Navbar(): JSX.Element {
 
   return (
     <Nav>
-      <Header>{homePage ? null : <SLink to="/">{t("siteName")}</SLink>}</Header>
+      <Header onClick={() => setOpen(false)}>
+        {homePage ? null : <SLink to="/">{t("siteName")}</SLink>}
+      </Header>
       {width < 730 ? (
-        <Burger />
+        <Burger open={open} setOpen={setOpen} />
       ) : (
         <LinkWrapper>
           <HLink to="/stats" title={t("navBar.bfStats")}>
