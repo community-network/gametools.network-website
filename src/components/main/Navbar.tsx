@@ -100,6 +100,8 @@ const Ul = styled.ul<{ open: boolean }>`
   right: 0;
   height: 100%;
   width: 220px;
+  padding-left: 0.5rem;
+  padding-right: 1.5rem;
   padding-top: 4.5rem;
   transition: transform 0.3s ease-in-out;
   z-index: 10;
