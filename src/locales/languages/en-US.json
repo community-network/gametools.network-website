@@ -4,6 +4,7 @@
     "loading": "Loading...",
     "navBar": {
         "bfStats": "Battlefield Stats",
+        "serverStats": "Battlefield Serverstats",
         "discord": "Our Discord",
         "api": "Open API",
         "bot": "Discord Bot"

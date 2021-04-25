@@ -20,17 +20,14 @@ const Title = styled.h2`
     margin-top: 2rem;
 `
 
-const ServerRow = styled.div`
-    position: absolute;
-    top: 9px;
-    left: 115px;
+const ServerImage = styled.img`
+    margin-top: 12px;
+    max-height: 4rem;
+    margin-right: 1.5rem;
 `
 
-const ServerImage = styled.img`
-    margin-top: 9px;
-    max-width: 8rem;
-    max-height: 3rem;
-    margin-right: 1.5rem;
+const ServerInfo = styled.div`
+    margin-top: 16px;
 `
 
 interface Views {
@@ -44,9 +41,17 @@ function Results(props: Views) {
     const stats = props.stats
     if (!props.loading&&!props.error) {
         return (<div>{stats.servers.map((key: any, index: number) => {
+            let queue: number = undefined
+            queue = key.inQue
             return (
                 <Box key={index}>
-                    <ServerImage src={key.url}/><ServerRow><p>{key.prefix}</p><p>{key.serverInfo} - {key.mode}</p></ServerRow>
+                    {queue===undefined || queue===0?
+                    <Align>
+                        <div><ServerImage src={key.url}/></div><ServerInfo><h3>{key.server}{key.prefix}</h3><p>{key.playerAmount}/{key.maxPlayers}{key.maxPlayerAmount} - {key.mode}{key.mode===undefined?key.map:null}</p></ServerInfo>
+                    </Align>
+                    :<Align>
+                        <div><ServerImage src={key.url}/></div><ServerInfo><h3>{key.server}{key.prefix}</h3><p>{key.playerAmount}/{key.maxPlayers}{key.maxPlayerAmount} [{queue}] - {key.mode}</p></ServerInfo>
+                    </Align>}
                 </Box>
             )
         })}</div>);

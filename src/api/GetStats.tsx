@@ -14,11 +14,12 @@ export class ApiProvider extends JsonClient {
     }
 
     async server({ game, type, serverName, lang}) {
-        
+        let gameStuff = game.split(".")
 
-        return await this.getJsonMethod(`/${game}/${type}/`, {
+        return await this.getJsonMethod(`/${gameStuff[0]}/${type}/`, {
             "name": serverName,
             "lang": lang,
+            "service": gameStuff[1]
         });
     }
 }

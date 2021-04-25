@@ -163,6 +163,11 @@ const RightNav = ({
           {t("navBar.bfStats")}
         </HLink>
       </li>
+      <li onClick={() => setOpen(false)}>
+        <HLink to="/servers" title={t("navBar.serverStats")}>
+          {t("navBar.serverStats")}
+        </HLink>
+      </li>
       <li>
         <ALink
           target="_blank"
@@ -227,10 +232,13 @@ export function Navbar(): JSX.Element {
       <Header onClick={() => setOpen(false)}>
         {homePage ? null : <SLink to="/">{t("siteName")}</SLink>}
       </Header>
-      {width < 730 ? (
+      {width < 850 ? (
         <Burger open={open} setOpen={setOpen} />
       ) : (
         <LinkWrapper>
+          <HLink to="/servers" title={t("navBar.serverStats")}>
+            {t("navBar.serverStats")}
+          </HLink>
           <HLink to="/stats" title={t("navBar.bfStats")}>
             {t("navBar.bfStats")}
           </HLink>
