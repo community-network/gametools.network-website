@@ -29,6 +29,18 @@ export const AltText = css`
 `
 
 
+export const Column = styled.div`
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: .5rem;
+`
+
+export const Row = styled.div`
+    flex:1;
+`
+
 
 export const Container = styled.div`
     @media (min-width: 850px) {

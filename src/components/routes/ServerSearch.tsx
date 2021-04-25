@@ -1,10 +1,11 @@
 import * as React from "react";
-import { Link  } from "react-router-dom";
 import '../../locales/config';
 import { useTranslation } from 'react-i18next';
 import styled from "styled-components";
 import "../../assets/scss/App.scss";
-import { M88, AltText, SearchBox, BigButtonSecondary, RightArrow, Back, ArrowLeft, Container, BigSelectSecondary, Align } from '../Materials';
+import { GetStats } from "../../api/GetStats"
+import { useQuery, useQueryClient, useMutation } from 'react-query';
+import { M88, AltText, SearchBox, BigButtonSecondary, RightArrow, Back, ArrowLeft, Container, BigSelectSecondary, Align, Box, Column, Row } from '../Materials';
 
 const Description = styled.p`
     ${AltText}
@@ -19,12 +20,49 @@ const Title = styled.h2`
     margin-top: 2rem;
 `
 
+const ServerRow = styled.div`
+    position: absolute;
+    top: 9px;
+    left: 115px;
+`
+
+const ServerImage = styled.img`
+    margin-top: 9px;
+    max-width: 8rem;
+    max-height: 3rem;
+    margin-right: 1.5rem;
+`
+
+interface Views {
+    loading: boolean,
+    error: boolean,
+    stats: { [name: string]: any }
+}
+
+function Results(props: Views) {
+    const { t, i18n } = useTranslation();
+    const stats = props.stats
+    if (!props.loading&&!props.error) {
+        return (<div>{stats.servers.map((key: any, index: number) => {
+            return (
+                <Box key={index}>
+                    <ServerImage src={key.url}/><ServerRow><p>{key.prefix}</p><p>{key.serverInfo} - {key.mode}</p></ServerRow>
+                </Box>
+            )
+        })}</div>);
+    } else {
+        return (<Box></Box>);
+    }
+}
+
 function Search() {
+    const [searchTerm, setSearchTerm] = React.useState<string>("");
+    const [gameName, setGameName] = React.useState<string>("bf1");
     const getLanguage = () => window.localStorage.i18nextLng.toLowerCase()
     const { t, i18n } = useTranslation();
-
-    const [searchTerm, setSearchTerm] = React.useState<string>("");
-    const [gameName, setGameName] = React.useState<string>("pc");
+    const { isLoading: loading, isError: error, data: stats } = useQuery("stats" + gameName + searchTerm, () => GetStats.server(
+        {game: gameName, type: "servers", serverName: searchTerm, lang: getLanguage()}
+    ))
     return (
     <Container>
         <Back to="/"><ArrowLeft/>{t("serverSearch.back")}</Back>
@@ -50,16 +88,11 @@ function Search() {
                     <option value="bfh">Battlefield Hardline</option>
                     <option value="bfv">Battlefield 5</option>
                 </BigSelectSecondary>
-                {searchTerm!==""?
-                    <Link to={`/stats/${gameName}/${searchTerm}`}>
-                        <BigButtonSecondary type="submit">{t("serverSearch.search")} <RightArrow/></BigButtonSecondary>
-                    </Link>
-                // if no name is filled in
-                    :<BigButtonSecondary type="submit">{t("serverSearch.search")} <RightArrow/></BigButtonSecondary>
-                }
+                {/* <BigButtonSecondary type="submit">{t("serverSearch.search")} <RightArrow/></BigButtonSecondary> */}
             </form>
         </Align>
-        <Title>{t("serverSearch.gameStatus")}</Title>
+        <Title>{t("serverSearch.results")}</Title>
+        <Results loading={loading} stats={stats} error={error}/>
     </Container>
     )
 }

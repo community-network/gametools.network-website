@@ -99,7 +99,7 @@
         "description": "Search for Battlefield servers to get playeramounts/rotation of the server.",
         "search": "Search",
         "searchPlaceholder": "Search for servername...",
-        "gameStatus": "Search results"
+        "results": "Search results"
     },
     "stats": {
         "originDescription": "Origin profile",

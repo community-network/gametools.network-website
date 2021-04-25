@@ -4,7 +4,7 @@ import '../../locales/config';
 import { useTranslation } from 'react-i18next';
 import { GetStats } from "../../api/GetStats"
 import { useQuery, useQueryClient, useMutation } from 'react-query';
-import { M96, Back, ArrowLeft, Container, Align, Box, SmallSearchBox, AltText, SelectPrimary, Circle } from '../Materials';
+import { M96, Back, ArrowLeft, Container, Align, Box, SmallSearchBox, AltText, SelectPrimary, Circle, Column, Row } from '../Materials';
 import styled from "styled-components";
 import { platformGames } from "../../api/static"
 
@@ -71,18 +71,6 @@ const WeaponImage = styled.img`
 
 const Description = styled.p`
     ${AltText}
-`
-
-const Column = styled.div`
-    display: flex;
-    flex-flow: row wrap;
-    width: 100%;
-    margin: 0 auto;
-    margin-top: .5rem;
-`
-
-const Row = styled.div`
-    flex:1;
 `
 
 function ViewStats(props: Views) {

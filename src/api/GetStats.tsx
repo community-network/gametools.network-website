@@ -12,6 +12,15 @@ export class ApiProvider extends JsonClient {
             "platform": platform,
         });
     }
+
+    async server({ game, type, serverName, lang}) {
+        
+
+        return await this.getJsonMethod(`/${game}/${type}/`, {
+            "name": serverName,
+            "lang": lang,
+        });
+    }
 }
 
 export const GetStats = new ApiProvider();
