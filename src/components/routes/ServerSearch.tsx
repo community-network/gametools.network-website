@@ -24,24 +24,24 @@ function Search() {
     const { t, i18n } = useTranslation();
 
     const [searchTerm, setSearchTerm] = React.useState<string>("");
-    const [platform, setPlatform] = React.useState<string>("pc");
+    const [gameName, setGameName] = React.useState<string>("pc");
     return (
     <Container>
-        <Back to="/"><ArrowLeft/>{t("search.back")}</Back>
+        <Back to="/"><ArrowLeft/>{t("serverSearch.back")}</Back>
         <Align>
-            <h2>{t("search.bfStats")}</h2>
-            <AltDescription>{t("search.description")}</AltDescription>
+            <h2>{t("serverSearch.serverInfo")}</h2>
+            <AltDescription>{t("serverSearch.description")}</AltDescription>
         </Align>
         <Align>
             <form>
-                <SearchBox placeholder={t("search.searchPlaceholder")} value={searchTerm} onChange={(ev: React.ChangeEvent<HTMLInputElement>):
+                <SearchBox placeholder={t("serverSearch.searchPlaceholder")} value={searchTerm} onChange={(ev: React.ChangeEvent<HTMLInputElement>):
                     void => setSearchTerm(ev.target.value)}/>
-                <BigSelectSecondary value={platform} onChange={(ev: React.ChangeEvent<HTMLSelectElement>):
-                        void => setPlatform(ev.target.value)}>
+                <BigSelectSecondary value={gameName} onChange={(ev: React.ChangeEvent<HTMLSelectElement>):
+                        void => setGameName(ev.target.value)}>
                     <option value="bf1">Battlefield 1</option>
-                    <option value="bf2">Battlefield 2 (bf2hub)</option>
-                    <option value="bf2">Battlefield 2 (playbf2)</option>
-                    <option value="bfbc2">Battlefield BC2</option>
+                    <option value="bf2.bf2hub">Battlefield 2 (bf2hub)</option>
+                    <option value="bf2.playbf2">Battlefield 2 (playbf2)</option>
+                    <option value="bfbc2">Battlefield BC 2</option>
                     <option value="bf2142">Battlefield 2142 (.com)</option>
                     <option value="bf1942">Battlefield 1942</option>
                     <option value="bfvietnam">Battlefield Vietnam</option>
@@ -51,16 +51,15 @@ function Search() {
                     <option value="bfv">Battlefield 5</option>
                 </BigSelectSecondary>
                 {searchTerm!==""?
-                    <Link to={`/stats/${platform}/${searchTerm}`}>
-                        <BigButtonSecondary type="submit">{t("search.search")} <RightArrow/></BigButtonSecondary>
+                    <Link to={`/stats/${gameName}/${searchTerm}`}>
+                        <BigButtonSecondary type="submit">{t("serverSearch.search")} <RightArrow/></BigButtonSecondary>
                     </Link>
                 // if no name is filled in
-                    :<BigButtonSecondary type="submit">{t("search.search")} <RightArrow/></BigButtonSecondary>
+                    :<BigButtonSecondary type="submit">{t("serverSearch.search")} <RightArrow/></BigButtonSecondary>
                 }
             </form>
         </Align>
-        <Title>{t("search.gameStatus")}</Title>
-        <Description>{t("search.statusDescription")}</Description>
+        <Title>{t("serverSearch.gameStatus")}</Title>
     </Container>
     )
 }

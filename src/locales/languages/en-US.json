@@ -87,11 +87,19 @@
     "playerSearch": {
         "back": "Main page",
         "bfStats": "Battlefield Stats",
-        "description": "Search for Origin Nickname to get player stats on PC.",
+        "description": "Search for Origin Nickname to get player stats.",
         "search": "Search",
         "searchPlaceholder": "Search for Origin name...",
         "gameStatus": "Amount of players in Battlefield",
         "statusDescription": "PC stats"
+    },
+    "serverSearch": {
+        "back": "Main page",
+        "serverInfo": "Battlefield Servers (PC only)",
+        "description": "Search for Battlefield servers to get playeramounts/rotation of the server.",
+        "search": "Search",
+        "searchPlaceholder": "Search for servername...",
+        "gameStatus": "Search results"
     },
     "stats": {
         "originDescription": "Origin profile",
