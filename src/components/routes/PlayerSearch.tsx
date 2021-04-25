@@ -27,14 +27,14 @@ function Search() {
     const [platform, setPlatform] = React.useState<string>("pc");
     return (
     <Container>
-        <Back to="/"><ArrowLeft/>{t("search.back")}</Back>
+        <Back to="/"><ArrowLeft/>{t("playerSearch.back")}</Back>
         <Align>
-            <h2>{t("search.bfStats")}</h2>
-            <AltDescription>{t("search.description")}</AltDescription>
+            <h2>{t("playerSearch.bfStats")}</h2>
+            <AltDescription>{t("playerSearch.description")}</AltDescription>
         </Align>
         <Align>
             <form>
-                <SearchBox placeholder={t("search.searchPlaceholder")} value={searchTerm} onChange={(ev: React.ChangeEvent<HTMLInputElement>):
+                <SearchBox placeholder={t("playerSearch.searchPlaceholder")} value={searchTerm} onChange={(ev: React.ChangeEvent<HTMLInputElement>):
                     void => setSearchTerm(ev.target.value)}/>
                 <BigSelectSecondary value={platform} onChange={(ev: React.ChangeEvent<HTMLSelectElement>):
                         void => setPlatform(ev.target.value)}>
@@ -46,15 +46,15 @@ function Search() {
                 </BigSelectSecondary>
                 {searchTerm!==""?
                     <Link to={`/stats/${platform}/${searchTerm}`}>
-                        <BigButtonSecondary type="submit">{t("search.search")} <RightArrow/></BigButtonSecondary>
+                        <BigButtonSecondary type="submit">{t("playerSearch.search")} <RightArrow/></BigButtonSecondary>
                     </Link>
                 // if no name is filled in
-                    :<BigButtonSecondary type="submit">{t("search.search")} <RightArrow/></BigButtonSecondary>
+                    :<BigButtonSecondary type="submit">{t("playerSearch.search")} <RightArrow/></BigButtonSecondary>
                 }
             </form>
         </Align>
-        <Title>{t("search.gameStatus")}</Title>
-        <Description>{t("search.statusDescription")}</Description>
+        <Title>{t("playerSearch.gameStatus")}</Title>
+        <Description>{t("playerSearch.statusDescription")}</Description>
     </Container>
     )
 }

@@ -2,7 +2,8 @@ import '../locales/config';
 import { Switch, Route, Link, useLocation } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import Home from "./routes/Home"
-import Search from "./routes/Search"
+import PlayerSearch from "./routes/PlayerSearch"
+import ServerSearch from "./routes/ServerSearch"
 import Stats from "./routes/Stats"
 
 function Views() {
@@ -12,7 +13,8 @@ function Views() {
         <div style={homePage ? {} : {paddingTop:90}}>
             <Switch>
                 <Route exact path="/" component={Home}/>
-                <Route exact path="/stats" component={Search}/>
+                <Route exact path="/stats" component={PlayerSearch}/>
+                <Route exact path="/servers" component={ServerSearch}/>
                 <Route exact path="/stats/:plat/:eaid/" component={Stats}/>
                 <Route>React router 404</Route>
             </Switch>

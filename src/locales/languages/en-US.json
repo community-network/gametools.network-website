@@ -84,7 +84,7 @@
             }
         }
     },
-    "search": {
+    "playerSearch": {
         "back": "Main page",
         "bfStats": "Battlefield Stats",
         "description": "Search for Origin Nickname to get player stats on PC.",
