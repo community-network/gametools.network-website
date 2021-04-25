@@ -43,15 +43,15 @@ function Results(props: Views) {
         return (<div>{stats.servers.map((key: any, index: number) => {
             let queue: number = undefined
             queue = key.inQue
+            let queueString = ""
+            if (queue!==undefined && queue!==0) {
+                queueString = `[${queue}]`
+            }
             return (
                 <Box key={index}>
-                    {queue===undefined || queue===0?
                     <Align>
-                        <div><ServerImage src={key.url}/></div><ServerInfo><h3>{key.server}{key.prefix}</h3><p>{key.playerAmount}/{key.maxPlayers}{key.maxPlayerAmount} - {key.mode}{key.mode===undefined?key.map:null}</p></ServerInfo>
+                        <div><ServerImage src={key.url}/></div><ServerInfo><h3>{key.server}{key.prefix}</h3><p>{key.playerAmount}/{key.maxPlayers}{key.maxPlayerAmount} {queueString} - {key.mode}{key.mode===undefined?key.map:null}</p></ServerInfo>
                     </Align>
-                    :<Align>
-                        <div><ServerImage src={key.url}/></div><ServerInfo><h3>{key.server}{key.prefix}</h3><p>{key.playerAmount}/{key.maxPlayers}{key.maxPlayerAmount} [{queue}] - {key.mode}</p></ServerInfo>
-                    </Align>}
                 </Box>
             )
         })}</div>);
