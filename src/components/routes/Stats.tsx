@@ -264,7 +264,7 @@ function Stats({ match }: RouteComponentProps<TParams>) {
     return (
     <Container>
         <div>
-            <Back to="/stats"><ArrowLeft/>{t("search.back")}</Back>
+            <Back to="/stats"><ArrowLeft/>{t("stats.back")}</Back>
         </div>
         <ViewOrigin game={game} loading={loading} stats={stats} error={error}/>
         <Align onChange={(ev: React.ChangeEvent<HTMLInputElement>):

@@ -1,5 +1,6 @@
 import * as React from "react";
 import '../../locales/config';
+import { Link  } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import styled from "styled-components";
 import "../../assets/scss/App.scss";
@@ -33,12 +34,21 @@ const ServerInfo = styled.div`
 interface Views {
     loading: boolean,
     error: boolean,
+    game: string,
     stats: { [name: string]: any }
+}
+
+function encodeURIfix(str) {
+    return encodeURIComponent(str).replace('!', '%21');
 }
 
 function Results(props: Views) {
     const { t, i18n } = useTranslation();
     const stats = props.stats
+    const ConditionalLink = ({ children, to, condition }) => (!!condition && to)
+      ? <Link to={to}>{children}</Link>
+      : <>{children}</>;
+
     if (!props.loading&&!props.error) {
         return (<div>{stats.servers.map((key: any, index: number) => {
             let queue: number = undefined
@@ -48,11 +58,13 @@ function Results(props: Views) {
                 queueString = `[${queue}]`
             }
             return (
-                <Box key={index}>
-                    <Align>
-                        <div><ServerImage src={key.url}/></div><ServerInfo><h3>{key.server}{key.prefix}</h3><p>{key.playerAmount}/{key.maxPlayers}{key.maxPlayerAmount} {queueString} - {key.mode}{key.mode===undefined?key.map:null}</p></ServerInfo>
-                    </Align>
-                </Box>
+                <ConditionalLink to={`/servers/bf1/${key.server===undefined?encodeURIfix(key.prefix):encodeURIComponent(key.server)}`} condition={props.game === "bf1"} key={index}>
+                    <Box>
+                        <Align>
+                            <div><ServerImage src={key.url}/></div><ServerInfo><h3>{key.server}{key.prefix}</h3><p>{key.playerAmount}/{key.maxPlayers}{key.maxPlayerAmount} {queueString} - {key.mode}{key.mode===undefined?key.map:null}</p></ServerInfo>
+                        </Align>
+                    </Box>
+                </ConditionalLink>
             )
         })}</div>);
     } else {
@@ -65,7 +77,7 @@ function Search() {
     const [gameName, setGameName] = React.useState<string>("bf1");
     const getLanguage = () => window.localStorage.i18nextLng.toLowerCase()
     const { t, i18n } = useTranslation();
-    const { isLoading: loading, isError: error, data: stats } = useQuery("stats" + gameName + searchTerm, () => GetStats.server(
+    const { isLoading: loading, isError: error, data: stats } = useQuery("servers" + gameName + searchTerm, () => GetStats.server(
         {game: gameName, type: "servers", serverName: searchTerm, lang: getLanguage()}
     ))
     return (
@@ -97,7 +109,7 @@ function Search() {
             </form>
         </Align>
         <Title>{t("serverSearch.results")}</Title>
-        <Results loading={loading} stats={stats} error={error}/>
+        <Results game={gameName} loading={loading} stats={stats} error={error}/>
     </Container>
     )
 }

@@ -103,6 +103,7 @@
         "results": "Search results"
     },
     "stats": {
+        "back": "Back to search",
         "originDescription": "Origin profile",
         "overview": "Overview",
         "overviewDescription": "See your overview stats in game.",
@@ -118,6 +119,11 @@
             "accuracy": "Accuracy",
             "headshots": "Headshots"
         }
+    },
+    "servers": {
+        "back": "Back to search",
+        "rotation": "Server map rotation",
+        "settings": "Server settings"
     },
     "footer": {
         "descriptions": {
