@@ -67,6 +67,10 @@ interface Views {
     stats: { [name: string]: any }
 }
 
+function capitalizeFirstLetter(string: string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
+
 function Results(props: Views) {
     const { t, i18n } = useTranslation();
     const stats = props.stats
@@ -102,6 +106,19 @@ function Results(props: Views) {
                                 </Box>
                             )})}
                         <Title>{t("servers.settings")}</Title>
+                        {Object.entries(stats.settings).map((key: any, index: number) => {
+                            console.log(key[0], index)
+                            return (
+                                <div key={index}>
+                                    <Title>{key[0]}</Title>
+                                    {Object.entries(key[1]).map((key: any, index: number) => {
+                                        return (
+                                            <p key={index}>{capitalizeFirstLetter(key[0])}: {key[1]}</p>
+                                        )
+                                    })}
+                                </div>
+                            )
+                        })}
                     </div>
             )
         }
