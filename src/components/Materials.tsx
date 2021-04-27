@@ -205,6 +205,17 @@ export const Align = styled.div`
     flex-wrap: wrap;
 `
 
+export const AlignW = styled.div`
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+`
+
+export const AlignT = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+`
+
 export function RightArrow() {
     return (
         <svg width="12" height="12" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -218,7 +229,7 @@ const BoxWrap = styled.div`
     background: var(--color-base);
     align-self: flex-start;
     display: flex;
-    box-sizing: borfer-box;
+    box-sizing: border-box;
 
     border-radius: 10px;
     max-width: 45rem;

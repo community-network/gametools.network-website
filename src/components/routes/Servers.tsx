@@ -6,16 +6,17 @@ import styled from "styled-components";
 import "../../assets/scss/App.scss";
 import { GetStats } from "../../api/GetStats"
 import { useQuery, useQueryClient, useMutation } from 'react-query';
-import { M88, AltText, SearchBox, BigButtonSecondary, RightArrow, Back, ArrowLeft, Container, BigSelectSecondary, Align, Box, Column, Row } from '../Materials';
+import { M88, AltText, Back, ArrowLeft, Container, Align, AlignW, AlignT, Box} from '../Materials';
 
 const Description = styled.p`
     ${AltText}
-    line-height: 0.5;
+    line-height: 1;
 `
 
 const AltDescription = styled.p`
     ${AltText}
-    margin-left: 24px;
+    margin-right: 1.5rem;
+    line-height: 0.5;
 `
 
 const Title = styled.h2`
@@ -27,8 +28,8 @@ interface IServerImage {
 }
 
 const ServerImage = styled.div<IServerImage>`
-    height: 6rem;
-    width: 9rem;
+    height: 7rem;
+    min-width: 11rem;
     display: flex;
     background-position: center;
     background-repeat: no-repeat;
@@ -46,8 +47,16 @@ const Blur = styled.div`
 
 const ServerText = styled.h1`
     ${AltText}
+    font-size: 3rem;
     text-align: center;
-    padding: 1.2rem 0;
+    padding-top: 1.5rem;
+    line-height: 0;
+`
+
+const ServerFactorites = styled.h1`
+    ${AltText}
+    text-align: center;
+    line-height: 0;
 `
 
 const MapImage = styled.img`
@@ -87,38 +96,44 @@ function Results(props: Views) {
             }
             return (
                     <div>
-                        <Align>
-                            <ServerImage background={stats.currentMapImage}><Blur><ServerText>&#9734; {stats.favorites}</ServerText></Blur></ServerImage>
+                        <AlignW>
+                            <ServerImage background={stats.currentMapImage}><Blur>
+                                <ServerText>{stats.smallmode}</ServerText>
+                                <ServerFactorites>&#9734; {stats.favorites}</ServerFactorites>
+                                </Blur></ServerImage>
                             <div>
                                 <h2>{stats.prefix}</h2>
                                 <Description>{stats.description}</Description>
                                 <Description>{stats.playerAmount}/{stats.maxPlayers}{stats.maxPlayerAmount} {queueString} - {stats.currentMap}</Description>
                                 <Description>{stats.region} / {stats.country} - {stats.mode}</Description>
                             </div>
-                        </Align>
+                        </AlignW>
                         <Title>{t("servers.rotation")}</Title>
+                        <Align>
                         {stats.rotation.map((key: any, index: number) => {
                             return (
                                 <Box key={index}>
-                                    <Align>
+                                    <AlignW>
                                         <div><MapImage src={key.image}/></div><ServerInfo><h3>{key.mapname}</h3><p>{key.mode}</p></ServerInfo>
-                                    </Align>
+                                    </AlignW>
                                 </Box>
                             )})}
-                        <Title>{t("servers.settings")}</Title>
+                        </Align>
+                        <h2>{t("servers.settings")}</h2>
+                        <AlignT>
                         {Object.entries(stats.settings).map((key: any, index: number) => {
-                            console.log(key[0], index)
                             return (
                                 <div key={index}>
-                                    <Title>{key[0]}</Title>
+                                    <h3>{key[0]}</h3>
                                     {Object.entries(key[1]).map((key: any, index: number) => {
                                         return (
-                                            <p key={index}>{capitalizeFirstLetter(key[0])}: {key[1]}</p>
+                                            <AltDescription key={index}>{capitalizeFirstLetter(key[0])}: {key[1]}</AltDescription>
                                         )
                                     })}
                                 </div>
                             )
                         })}
+                        </AlignT>
                     </div>
             )
         }
@@ -139,10 +154,12 @@ function Servers({ match }: RouteComponentProps<TParams>) {
         {game: gameId, type: "detailedserver", serverName: serverName, lang: getLanguage()}
     ))
     return (
-    <Container>
-        <Back to="/servers"><ArrowLeft/>{t("servers.back")}</Back>
-        <Results game={gameId} loading={loading} stats={stats} error={error}/>
-    </Container>
+        <div>
+            <Container>
+                <Back to="/servers"><ArrowLeft/>{t("servers.back")}</Back>
+                <Results game={gameId} loading={loading} stats={stats} error={error}/>
+            </Container>
+        </div>
     )
 }
 
