@@ -49,7 +49,7 @@ const ServerText = styled.h1`
     ${AltText}
     font-size: 3rem;
     text-align: center;
-    padding-top: 1.5rem;
+    padding-top: 1.45rem;
     line-height: 0;
 `
 
