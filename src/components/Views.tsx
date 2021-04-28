@@ -15,7 +15,7 @@ function Views() {
             <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/stats" component={PlayerSearch}/>
-                <Route exact path="/stats/:plat/:eaid/" component={Stats}/>
+                <Route exact path="/stats/:plat/:type/:eaid/" component={Stats}/>
                 <Route exact path="/servers" component={ServerSearch}/>
                 <Route exact path="/servers/:gameid/:sname" component={Servers}/>
                 <Route>React router 404</Route>

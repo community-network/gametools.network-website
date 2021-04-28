@@ -20,7 +20,6 @@ const Title = styled.h2`
 `
 
 function Search() {
-    const getLanguage = () => window.localStorage.i18nextLng.toLowerCase()
     const { t, i18n } = useTranslation();
 
     const [searchTerm, setSearchTerm] = React.useState<string>("");
@@ -45,7 +44,7 @@ function Search() {
                     <option value="ps3">PS3</option>
                 </BigSelectSecondary>
                 {searchTerm!==""?
-                    <Link to={`/stats/${platform}/${searchTerm}`}>
+                    <Link to={`/stats/${platform}/name/${searchTerm}`}>
                         <BigButtonSecondary type="submit">{t("playerSearch.search")} <RightArrow/></BigButtonSecondary>
                     </Link>
                 // if no name is filled in

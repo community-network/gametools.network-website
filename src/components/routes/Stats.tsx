@@ -251,14 +251,14 @@ export const UncheckedSmallButtonRadio = styled.label`
     font-style: normal;
 `
 
-type TParams = { plat: string, eaid: string}
+type TParams = { plat: string, type: string, eaid: string}
 
 function Stats({ match }: RouteComponentProps<TParams>) {
     const [game, setGame] = React.useState<string>(platformGames[match.params.plat][0]);
     const getLanguage = () => window.localStorage.i18nextLng.toLowerCase()
     const { t } = useTranslation();
     const { isLoading: loading, isError: error, data: stats } = useQuery("stats" + game + match.params.eaid, () => GetStats.stats(
-        {game: game, type: "all", userName: match.params.eaid, lang: getLanguage()}
+        {game: game, type: "all", getter: match.params.type, userName: match.params.eaid, lang: getLanguage()}
     ))
     const games = platformGames[match.params.plat];
     return (

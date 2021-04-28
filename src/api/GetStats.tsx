@@ -5,7 +5,15 @@ export class ApiProvider extends JsonClient {
         super();
     }
 
-    async stats({ game, type, userName, lang, platform = "pc" }) {
+    async stats({ game, type, getter, userName, lang, platform = "pc" }) {
+        if (getter == "playerid") {
+            return await this.getJsonMethod(`/${game}/${type}/`, {
+                "playerid": userName,
+                "lang": lang,
+                "platform": platform,
+            });
+            
+        }
         return await this.getJsonMethod(`/${game}/${type}/`, {
             "name": userName,
             "lang": lang,
