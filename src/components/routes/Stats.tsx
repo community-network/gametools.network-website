@@ -1,5 +1,5 @@
 import * as React from "react";
-import { RouteComponentProps } from "react-router-dom";
+import { RouteComponentProps, useLocation } from "react-router-dom";
 import '../../locales/config';
 import { useTranslation } from 'react-i18next';
 import { GetStats } from "../../api/GetStats"
@@ -33,21 +33,54 @@ const OriginDescription = styled.h4`
     line-height: 60%;
 `
 
+function UrlParams() {
+    return new URLSearchParams(useLocation().search);
+  }
+
 function ViewOrigin(props: Views) {
     const { t } = useTranslation();
     const stats = props.stats;
+    const nameGetter = UrlParams().get("name");
     if (!props.loading&&!props.error) {
-        return (
-            <Spacing>
-                <Align>
-                    <OriginProfile src={stats.avatar}/>
-                    <div>
-                        <OriginName>{stats.userName}</OriginName>
-                        <OriginDescription>{t("stats.originDescription")}</OriginDescription>
-                    </div>
-                </Align>
-            </Spacing>
-        )
+        if (stats.userName === null) {
+            if (nameGetter !== null) {
+                return (
+                    <Spacing>
+                        <Align>
+                            <Circle/>
+                            <div>
+                                <OriginName>{nameGetter}</OriginName>
+                                <OriginDescription>{t("stats.originDescription")}</OriginDescription>
+                            </div>
+                        </Align>
+                    </Spacing>
+                )
+            } else {
+                return (
+                    <Spacing>
+                        <Align>
+                            <Circle/>
+                            <div>
+                                <OriginName>{t("notApplicable")}</OriginName>
+                                <OriginDescription>{t("noName")}</OriginDescription>
+                            </div>
+                        </Align>
+                    </Spacing>
+                )
+            }
+        } else {
+            return (
+                <Spacing>
+                    <Align>
+                        <OriginProfile src={stats.avatar}/>
+                        <div>
+                            <OriginName>{stats.userName}</OriginName>
+                            <OriginDescription>{t("stats.originDescription")}</OriginDescription>
+                        </div>
+                    </Align>
+                </Spacing>
+            )
+        }
     } else {
         return (
             <Spacing>

@@ -2,11 +2,13 @@
     "siteName": "Game Tools",
     "siteDescription": "Community Network project to provide public tools for different games. Starting with Battlefield, we bringing back BF online playercount stats, as well as personal stats and much more in future.",
     "loading": "Loading...",
+    "notApplicable": "N/A",
+    "noName": "We cant show playername when you request with playerId",
     "navBar": {
         "bfStats": "Battlefield Stats",
         "serverStats": "Battlefield Serverstats",
         "discord": "Our Discord",
-        "api": "Open API",
+        "api": "Public API",
         "bot": "Discord Bot"
     },
     "games": {
