@@ -4,7 +4,7 @@ import '../../locales/config';
 import { useTranslation } from 'react-i18next';
 import { GetStats } from "../../api/GetStats"
 import { useQuery, useQueryClient, useMutation } from 'react-query';
-import { M96, Back, ArrowLeft, Container, Align, Box, SmallSearchBox, AltText, SelectPrimary, Circle, Column, Row } from '../Materials';
+import { M96, AlignS, Back, ArrowLeft, Container, Align, Box, SmallSearchBox, AltText, SelectPrimary, Circle, Column, Row } from '../Materials';
 import styled from "styled-components";
 import { platformGames } from "../../api/static"
 
@@ -73,6 +73,18 @@ const Description = styled.p`
     ${AltText}
 `
 
+const BottomOfBox = styled.div`
+    display: inline-block;
+    bottom: 0;
+    position: absolute;
+    line-height: 0;
+`
+
+const WhiteText = styled.span`
+    color: white;
+    margin-left: .5rem;
+`
+
 function ViewStats(props: Views) {
     const { t } = useTranslation();
     const stats = props.stats;
@@ -82,13 +94,39 @@ function ViewStats(props: Views) {
                 <Box>
                     <h3>{t("stats.overview")}</h3>
                     <p>{t("stats.overviewDescription")}</p>
-                    <p>{stats["killDeath"]} K/D</p>
-                    <p>{stats["killsPerMinute"]} KPM</p>
-                    <p>{stats["winProcent"]} Win%</p>
-                    <p>{stats["killsPerMinute"]} KPM</p>
-                    <p>{stats["bestClass"]} Best class</p>
-                    <p>{stats["accuracy"]} Accuracy</p>
-                    <p>{stats["timePlayed"]} Time played</p>
+                    <AlignS>
+                        <div>
+                            <h3>{stats["rank"]}</h3>
+                            <p>{t("stats.main.rank")}</p>
+                        </div>
+                    </AlignS>
+                    <p></p>
+                    <AlignS>
+                        <div>
+                            <h3>{stats["killDeath"]}</h3>
+                            <p>{t("stats.main.killDeath")}</p>
+                        </div>
+                        <div>
+                            <h3>{stats["killsPerMinute"]}</h3>
+                            <p>{t("stats.main.killsPerMinute")}</p>
+                        </div>
+                        <div>
+                            <h3>{stats["winPercent"]}</h3>
+                            <p>{t("stats.main.winPercent")}</p>
+                        </div>
+                        <div>
+                            <h3>{stats["bestClass"]}</h3>
+                            <p>{t("stats.main.bestClass")}</p>
+                        </div>
+                        <div>
+                            <h3>{stats["Accuracy"]}</h3>
+                            <p>{t("stats.main.accuracy")}</p>
+                        </div>
+                    </AlignS>
+                    <p></p>
+                    <BottomOfBox>
+                        <p>{t("stats.main.timePlayed")} <WhiteText>{stats["timePlayed"]}</WhiteText></p>
+                    </BottomOfBox>
                 </Box>
             </Spacing>
         )
@@ -146,12 +184,12 @@ function ViewWeapons(props: Views) {
                     {weapons.map((key: any, index: number) => {
                         return (
                             <Column key={index}>
-                                <Row><p>{key.weaponName}</p><WeaponImage src={key.image}/></Row>
-                                <Row><p>{key.type}</p><Description>{t("stats.rows.type")}</Description></Row>
-                                <Row><p>{key.kills}</p><Description>{t("stats.rows.kills")}</Description></Row>
-                                <Row><p>{key.killsPerMinute}</p><Description>{t("stats.rows.kpm")}</Description></Row>
-                                <Row><p>{key.accuracy}</p><Description>{t("stats.rows.accuracy")}</Description></Row>
-                                <Row><p>{key.headshots}</p><Description>{t("stats.rows.headshots")}</Description></Row>
+                                <Row><h4>{key.weaponName}</h4><WeaponImage src={key.image}/></Row>
+                                <Row><h4>{key.type}</h4><Description>{t("stats.rows.type")}</Description></Row>
+                                <Row><h4>{key.kills}</h4><Description>{t("stats.rows.kills")}</Description></Row>
+                                <Row><h4>{key.killsPerMinute}</h4><Description>{t("stats.rows.kpm")}</Description></Row>
+                                <Row><h4>{key.accuracy}</h4><Description>{t("stats.rows.accuracy")}</Description></Row>
+                                <Row><h4>{key.headshots}</h4><Description>{t("stats.rows.headshots")}</Description></Row>
                             </Column>
                         )
                     })}
@@ -195,11 +233,11 @@ function ViewVehicles(props: Views) {
                     {vehicles.map((key: any, index: number) => {
                         return (
                             <Column key={index}>
-                                <Row><p>{key.vehicleName}</p><WeaponImage src={key.image}/></Row>
-                                <Row><p>{key.type}</p><Description>{t("stats.rows.type")}</Description></Row>
-                                <Row><p>{key.kills}</p><Description>{t("stats.rows.kills")}</Description></Row>
-                                <Row><p>{key.killsPerMinute}</p><Description>{t("stats.rows.kpm")}</Description></Row>
-                                <Row><p>{key.destroyed}</p><Description>{t("stats.rows.destroyed")}</Description></Row>
+                                <Row><h4>{key.vehicleName}</h4><WeaponImage src={key.image}/></Row>
+                                <Row><h4>{key.type}</h4><Description>{t("stats.rows.type")}</Description></Row>
+                                <Row><h4>{key.kills}</h4><Description>{t("stats.rows.kills")}</Description></Row>
+                                <Row><h4>{key.killsPerMinute}</h4><Description>{t("stats.rows.kpm")}</Description></Row>
+                                <Row><h4>{key.destroyed}</h4><Description>{t("stats.rows.destroyed")}</Description></Row>
                             </Column>
                         )
                     })}

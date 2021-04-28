@@ -118,6 +118,15 @@
             "destroyed": "Destroyed",
             "accuracy": "Accuracy",
             "headshots": "Headshots"
+        },
+        "main": {
+            "rank": "Rank",
+            "killDeath": "K/D",
+            "killsPerMinute": "KPM",
+            "winPercent": "Win%",
+            "bestClass": "Best class",
+            "accuracy": "Accuracy",
+            "timePlayed": "Time played"
         }
     },
     "servers": {

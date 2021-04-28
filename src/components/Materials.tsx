@@ -205,6 +205,14 @@ export const Align = styled.div`
     flex-wrap: wrap;
 `
 
+export const AlignS = styled.div`
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width:100%;
+`
+
 export const AlignW = styled.div`
     display: flex;
     align-items: center;
