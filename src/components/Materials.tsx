@@ -72,12 +72,18 @@ export const SearchBox = styled.input`
     ::placeholder {
         color: var(--color-alt-text);
     }
+    @media (min-width: 710px) {
+        width: 30rem;
+    }
+    @media (max-width: 710px) {
+        max-width: 30rem;
+        width: 100%;
+    }
     box-sizing: border-box;
     color: var(--color-text);
     border: none;
     border-radius: 5px;
     background: #1E2132;
-    width: 30rem;
     height: 50px;
     padding-left: 2rem;
     margin-bottom: 1rem;

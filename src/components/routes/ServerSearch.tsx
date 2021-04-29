@@ -6,7 +6,7 @@ import styled from "styled-components";
 import "../../assets/scss/App.scss";
 import { GetStats } from "../../api/GetStats"
 import { useQuery } from 'react-query';
-import { AltText, SearchBox, Back, ArrowLeft, Container, BigSelectSecondary, Align, Box } from '../Materials';
+import { AltText, SearchBox, Back, ArrowLeft, Container, BigSelectSecondary, Align,  AlignW, Box } from '../Materials';
 
 const Description = styled.p`
     ${AltText}
@@ -38,10 +38,6 @@ interface Views {
     stats: { [name: string]: any }
 }
 
-function encodeURIfix(str) {
-    return encodeURIComponent(str).replace('!', '%21');
-}
-
 function Results(props: Views) {
     const { t, i18n } = useTranslation();
     const stats = props.stats
@@ -60,9 +56,9 @@ function Results(props: Views) {
             return (
                 <ConditionalLink to={`/servers/${props.game}/gameid/${key.gameId}`} condition={props.game === "bf1" || props.game === "bf4"} key={index}>
                     <Box>
-                        <Align>
+                        <AlignW>
                             <div><ServerImage src={key.url}/></div><ServerInfo><h3>{key.server}{key.prefix}</h3><p>{key.playerAmount}/{key.maxPlayers}{key.maxPlayerAmount} {queueString} - {key.mode}{key.mode===undefined?key.map:null}</p></ServerInfo>
-                        </Align>
+                        </AlignW>
                     </Box>
                 </ConditionalLink>
             )
