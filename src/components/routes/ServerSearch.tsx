@@ -1,12 +1,12 @@
 import * as React from "react";
 import '../../locales/config';
-import { Link  } from "react-router-dom";
+import { Link, useHistory, RouteComponentProps, withRouter, useLocation } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import styled from "styled-components";
 import "../../assets/scss/App.scss";
 import { GetStats } from "../../api/GetStats"
-import { useQuery, useQueryClient, useMutation } from 'react-query';
-import { M88, AltText, SearchBox, BigButtonSecondary, RightArrow, Back, ArrowLeft, Container, BigSelectSecondary, Align, Box, Column, Row } from '../Materials';
+import { useQuery } from 'react-query';
+import { AltText, SearchBox, Back, ArrowLeft, Container, BigSelectSecondary, Align, Box } from '../Materials';
 
 const Description = styled.p`
     ${AltText}
@@ -75,6 +75,36 @@ function Results(props: Views) {
 function Search() {
     const [searchTerm, setSearchTerm] = React.useState<string>("");
     const [gameName, setGameName] = React.useState<string>("bf1");
+    const history = useHistory()
+    // get info from query ?search &game
+    const query = new URLSearchParams(useLocation().search);
+    const nameQuery = query.get("search")
+    const gameQuery = query.get("game")
+    React.useState(() => {
+        if (nameQuery !== null) {
+            setSearchTerm(nameQuery)
+        }
+        if (gameQuery !== null) {
+            setGameName(gameQuery)
+        }
+    })
+
+    // change top to query
+    React.useEffect(() => {
+        const params = new URLSearchParams()
+        if (searchTerm) {
+            params.append("search", searchTerm)
+        } else {
+            params.delete("search")
+        }
+        if (gameName) {
+            params.append("game", gameName)
+        } else {
+            params.delete("game")
+        }
+            history.push({search: params.toString()})
+        }, [searchTerm, gameName, history])
+    
     const getLanguage = () => window.localStorage.i18nextLng.toLowerCase()
     const { t, i18n } = useTranslation();
     const { isLoading: loading, isError: error, data: stats } = useQuery("servers" + gameName + searchTerm, () => GetStats.server(
@@ -114,4 +144,4 @@ function Search() {
     )
 }
 
-export default Search;
+export default withRouter(Search);
