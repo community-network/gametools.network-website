@@ -58,7 +58,7 @@ function Results(props: Views) {
                 queueString = `[${queue}]`
             }
             return (
-                <ConditionalLink to={`/servers/${props.game}/${key.server===undefined?encodeURIfix(key.prefix):encodeURIComponent(key.server)}`} condition={props.game === "bf1" || props.game === "bf4"} key={index}>
+                <ConditionalLink to={`/servers/${props.game}/name/${key.server===undefined?encodeURIfix(key.prefix):encodeURIComponent(key.server)}`} condition={props.game === "bf1" || props.game === "bf4"} key={index}>
                     <Box>
                         <Align>
                             <div><ServerImage src={key.url}/></div><ServerInfo><h3>{key.server}{key.prefix}</h3><p>{key.playerAmount}/{key.maxPlayers}{key.maxPlayerAmount} {queueString} - {key.mode}{key.mode===undefined?key.map:null}</p></ServerInfo>
@@ -78,7 +78,7 @@ function Search() {
     const getLanguage = () => window.localStorage.i18nextLng.toLowerCase()
     const { t, i18n } = useTranslation();
     const { isLoading: loading, isError: error, data: stats } = useQuery("servers" + gameName + searchTerm, () => GetStats.server(
-        {game: gameName, type: "servers", serverName: searchTerm, lang: getLanguage()}
+        {game: gameName, type: "servers", getter: "name", serverName: searchTerm, lang: getLanguage()}
     ))
     return (
     <Container>

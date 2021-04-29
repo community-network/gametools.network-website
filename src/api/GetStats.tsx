@@ -12,7 +12,6 @@ export class ApiProvider extends JsonClient {
                 "lang": lang,
                 "platform": platform,
             });
-            
         }
         return await this.getJsonMethod(`/${game}/${type}/`, {
             "name": userName,
@@ -21,9 +20,15 @@ export class ApiProvider extends JsonClient {
         });
     }
 
-    async server({ game, type, serverName, lang}) {
+    async server({ game, type, getter, serverName, lang}) {
         let gameStuff = game.split(".")
-
+        if (getter == "gameid") {
+            return await this.getJsonMethod(`/${gameStuff[0]}/${type}/`, {
+                "gameid": serverName,
+                "lang": lang,
+                "service": gameStuff[1]
+            });
+        }
         return await this.getJsonMethod(`/${gameStuff[0]}/${type}/`, {
             "name": serverName,
             "lang": lang,
