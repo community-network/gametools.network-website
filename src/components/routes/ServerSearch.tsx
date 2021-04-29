@@ -58,7 +58,7 @@ function Results(props: Views) {
                 queueString = `[${queue}]`
             }
             return (
-                <ConditionalLink to={`/servers/${props.game}/name/${key.server===undefined?encodeURIfix(key.prefix):encodeURIComponent(key.server)}`} condition={props.game === "bf1" || props.game === "bf4"} key={index}>
+                <ConditionalLink to={`/servers/${props.game}/gameid/${key.gameId}`} condition={props.game === "bf1" || props.game === "bf4"} key={index}>
                     <Box>
                         <Align>
                             <div><ServerImage src={key.url}/></div><ServerInfo><h3>{key.server}{key.prefix}</h3><p>{key.playerAmount}/{key.maxPlayers}{key.maxPlayerAmount} {queueString} - {key.mode}{key.mode===undefined?key.map:null}</p></ServerInfo>
