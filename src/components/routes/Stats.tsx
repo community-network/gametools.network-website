@@ -118,6 +118,18 @@ const WhiteText = styled.span`
     margin-left: .5rem;
 `
 
+const BackgroundBar = styled.div`
+    width: 100%;
+    background-color: #313443;
+    border-radius: 2.5px;
+`
+
+const Bar = styled.div`
+    background-color: #14FED4;
+    height: 5px;
+    border-radius: 2.5px;
+`
+
 function ViewStats(props: Views) {
     const { t } = useTranslation();
     const stats = props.stats;
@@ -133,6 +145,11 @@ function ViewStats(props: Views) {
                             <p>{t("stats.main.rank")}</p>
                         </div>
                     </AlignS>
+                    {props.game == "bf1" || props.game == "bfv"?
+                        <BackgroundBar>
+                            <Bar style={{'width': (100 * stats.currentRankProgress) / stats.totalRankProgress}}></Bar>
+                        </BackgroundBar>
+                    :null}
                     <p></p>
                     <AlignS>
                         <div>
