@@ -31,6 +31,10 @@ const ServerInfo = styled.div`
     margin-top: 16px;
 `
 
+const Spacing = styled.div`
+    margin-bottom: 2rem;
+`
+
 interface Views {
     loading: boolean,
     error: boolean,
@@ -46,7 +50,10 @@ function Results(props: Views) {
       : <>{children}</>;
 
     if (!props.loading&&!props.error) {
-        return (<div>{stats.servers.map((key: any, index: number) => {
+        if (stats.servers.length == 0) {
+            return <Spacing><Description>No results found</Description></Spacing>
+        }
+        return (<Spacing>{stats.servers.map((key: any, index: number) => {
             let queue: number = undefined
             queue = key.inQue
             let queueString = ""
@@ -62,7 +69,7 @@ function Results(props: Views) {
                     </Box>
                 </ConditionalLink>
             )
-        })}</div>);
+        })}</Spacing>);
     } else {
         return (<Box></Box>);
     }
