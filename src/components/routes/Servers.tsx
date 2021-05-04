@@ -7,6 +7,7 @@ import "../../assets/scss/App.scss";
 import { GetStats } from "../../api/GetStats"
 import { useQuery, useQueryClient, useMutation } from 'react-query';
 import { M88, AltText, Back, ArrowLeft, Container, Align, AlignW, AlignT, Box} from '../Materials';
+import { getLanguage } from "../../locales/config";
 
 const Description = styled.p`
     ${AltText}
@@ -147,8 +148,7 @@ type TParams = { gameid: string, type: string, sname: string}
 function Servers({ match }: RouteComponentProps<TParams>) {
     const gameId = match.params.gameid
     const serverName = match.params.sname
-
-    const getLanguage = () => window.localStorage.i18nextLng.toLowerCase()
+    
     const { t, i18n } = useTranslation();
     const { isLoading: loading, isError: error, data: stats } = useQuery("detailed" + gameId + serverName, () => GetStats.server(
         {game: gameId, type: "detailedserver", getter: match.params.type, serverName: serverName, lang: getLanguage()}

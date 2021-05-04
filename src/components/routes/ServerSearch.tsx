@@ -7,6 +7,7 @@ import "../../assets/scss/App.scss";
 import { GetStats } from "../../api/GetStats"
 import { useQuery } from 'react-query';
 import { AltText, SearchBox, Back, ArrowLeft, Container, BigSelectSecondary, Align,  AlignW, Box } from '../Materials';
+import { getLanguage } from "../../locales/config";
 
 const Description = styled.p`
     ${AltText}
@@ -108,7 +109,6 @@ function Search() {
             history.push({search: params.toString()})
         }, [searchTerm, gameName, history])
     
-    const getLanguage = () => window.localStorage.i18nextLng.toLowerCase()
     const { t, i18n } = useTranslation();
     const { isLoading: loading, isError: error, data: stats } = useQuery("servers" + gameName + searchTerm, () => GetStats.server(
         {game: gameName, type: "servers", getter: "name", serverName: searchTerm, lang: getLanguage()}

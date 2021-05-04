@@ -21,3 +21,15 @@ i18n.use(initReactI18next).use(LanguageDetector).init({
   resources,
   fallbackLng: "en-US"
 });
+
+export const apiLanguage = {
+  "zh-cn": "zh-tw",
+}
+
+export const getLanguage = () => {
+  let language = window.localStorage.i18nextLng.toLowerCase()
+  if (language in apiLanguage) {
+      language = apiLanguage[language]
+  }
+  return language
+}

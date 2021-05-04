@@ -7,6 +7,7 @@ import { useQuery, useQueryClient, useMutation } from 'react-query';
 import { M96, AlignS, Back, ArrowLeft, Container, Align, Box, SmallSearchBox, AltText, SelectPrimary, Circle, Column, Row } from '../Materials';
 import styled from "styled-components";
 import { platformGames } from "../../api/static"
+import { getLanguage } from "../../locales/config";
 
 interface Views {
     loading: boolean,
@@ -347,7 +348,7 @@ type TParams = { plat: string, type: string, eaid: string}
 
 function Stats({ match }: RouteComponentProps<TParams>) {
     const [game, setGame] = React.useState<string>(platformGames[match.params.plat][0]);
-    const getLanguage = () => window.localStorage.i18nextLng.toLowerCase()
+    
     const { t } = useTranslation();
     const { isLoading: loading, isError: error, data: stats } = useQuery("stats" + game + match.params.eaid, () => GetStats.stats(
         {game: game, type: "all", getter: match.params.type, userName: match.params.eaid, lang: getLanguage()}
