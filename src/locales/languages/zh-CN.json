@@ -12,7 +12,14 @@
         "bot": "Discord机器人"
     },
     "games": {
-        "bf2": "战地2",
+        "bf2": {
+            "bf2hub": "Battlefield 2 (bf2hub)",
+            "playbf2": "Battlefield 2 (playbf2)"
+        },
+        "bfbc2": "Battlefield BC 2",
+        "bf2142": "Battlefield 2142 (.com)",
+        "bf1942": "Battlefield 1942",
+        "bfvietnam": "Battlefield Vietnam",
         "bf3": "战地3",
         "bf4": "战地4",
         "bfh": "战地硬仗",
@@ -111,6 +118,8 @@
         "overviewDescription": "游戏综合数据",
         "weapons": "武器",
         "vehicles": "载具",
+        "searchWeapon": "Search for weapon",
+        "searchVehicle": "Search for vehicle",
         "rows": {
             "weaponName": "武器名称",
             "vehicleName": "载具名称",
@@ -129,6 +138,13 @@
             "bestClass": "最佳兵种",
             "accuracy": "准度",
             "timePlayed": "Time played"
+        },
+        "platforms": {
+            "pc": "PC",
+            "xboxone": "XBOX ONE",
+            "xbox360": "XBOX 360",
+            "ps4": "PS4",
+            "ps3": "PS3"
         }
     },
     "servers": {

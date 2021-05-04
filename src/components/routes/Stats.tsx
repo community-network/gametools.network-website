@@ -217,7 +217,7 @@ function ViewWeapons(props: Views) {
         <Spacing>
             <Align>
                 <Title>{t("stats.weapons")}</Title>
-                <SmallSearchBox placeholder="Search for weapon" value={searchTerm} onChange={(ev: React.ChangeEvent<HTMLInputElement>):
+                <SmallSearchBox placeholder={t("stats.searchWeapon")} value={searchTerm} onChange={(ev: React.ChangeEvent<HTMLInputElement>):
                     void => setSearchTerm(ev.target.value)}/>
                 <SelectPrimary value={sortType} onChange={(ev: React.ChangeEvent<HTMLSelectElement>):
                     void => setSortType(ev.target.value)}>
@@ -267,7 +267,7 @@ function ViewVehicles(props: Views) {
         <Spacing>
             <Align>
                 <Title>{t("stats.vehicles")}</Title>
-                <SmallSearchBox placeholder="Search for vehicle" value={searchTerm} onChange={(ev: React.ChangeEvent<HTMLInputElement>):
+                <SmallSearchBox placeholder={t("stats.searchVehicle")} value={searchTerm} onChange={(ev: React.ChangeEvent<HTMLInputElement>):
                     void => setSearchTerm(ev.target.value)}/>
                     <SelectPrimary value={sortType} onChange={(ev: React.ChangeEvent<HTMLSelectElement>):
                         void => setSortType(ev.target.value)}>

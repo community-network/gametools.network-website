@@ -51,7 +51,7 @@ function Results(props: Views) {
 
     if (!props.loading&&!props.error) {
         if (stats.servers.length == 0) {
-            return <Spacing><Description>No results found</Description></Spacing>
+            return <Spacing><Description>{t("resultNotFound")}</Description></Spacing>
         }
         return (<Spacing>{stats.servers.map((key: any, index: number) => {
             let queue: number = undefined
@@ -125,17 +125,17 @@ function Search() {
                 void => setSearchTerm(ev.target.value)}/>
             <BigSelectSecondary value={gameName} onChange={(ev: React.ChangeEvent<HTMLSelectElement>):
                     void => setGameName(ev.target.value)}>
-                <option value="bf1">Battlefield 1</option>
-                <option value="bf2.bf2hub">Battlefield 2 (bf2hub)</option>
-                <option value="bf2.playbf2">Battlefield 2 (playbf2)</option>
-                <option value="bfbc2">Battlefield BC 2</option>
-                <option value="bf2142">Battlefield 2142 (.com)</option>
-                <option value="bf1942">Battlefield 1942</option>
-                <option value="bfvietnam">Battlefield Vietnam</option>
-                <option value="bf3">Battlefield 3</option>
-                <option value="bf4">Battlefield 4</option>
-                <option value="bfh">Battlefield Hardline</option>
-                <option value="bfv">Battlefield 5</option>
+                <option value="bf1">{t("games.bf1")}</option>
+                <option value="bf2.bf2hub">{t("games.bf2.bf2hub")}</option>
+                <option value="bf2.playbf2">{t("games.bf2.playbf2")}</option>
+                <option value="bfbc2">{t("games.bfbc2")}</option>
+                <option value="bf2142">{t("games.bf2142")}</option>
+                <option value="bf1942">{t("games.bf1942")}</option>
+                <option value="bfvietnam">{t("games.bfvietnam")}</option>
+                <option value="bf3">{t("games.bf3")}</option>
+                <option value="bf4">{t("games.bf4")}</option>
+                <option value="bfh">{t("games.bfh")}</option>
+                <option value="bfv">{t("games.bfv")}</option>
             </BigSelectSecondary>
             {/* <BigButtonSecondary type="submit">{t("serverSearch.search")} <RightArrow/></BigButtonSecondary> */}
         </Align>

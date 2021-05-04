@@ -3,6 +3,7 @@
     "siteDescription": "Community Network project to provide public tools for different games. Starting with Battlefield, we bringing back BF online playercount stats, as well as personal stats and much more in future.",
     "loading": "Loading...",
     "notApplicable": "N/A",
+    "resultNotFound": "No results found",
     "noName": "We cant show playername when you request with playerId",
     "navBar": {
         "bfStats": "Battlefield Stats",
@@ -12,7 +13,14 @@
         "bot": "Discord Bot"
     },
     "games": {
-        "bf2": "Battlefield 2",
+        "bf2": {
+            "bf2hub": "Battlefield 2 (bf2hub)",
+            "playbf2": "Battlefield 2 (playbf2)"
+        },
+        "bfbc2": "Battlefield BC 2",
+        "bf2142": "Battlefield 2142 (.com)",
+        "bf1942": "Battlefield 1942",
+        "bfvietnam": "Battlefield Vietnam",
         "bf3": "Battlefield 3",
         "bf4": "Battlefield 4",
         "bfh": "Battlefield hardline",
@@ -111,6 +119,8 @@
         "overviewDescription": "See your overview stats in game.",
         "weapons": "Weapons",
         "vehicles": "Vehicles",
+        "searchWeapon": "Search for weapon",
+        "searchVehicle": "Search for vehicle",
         "rows": {
             "weaponName": "Weapon name",
             "vehicleName": "Vehicle name",
@@ -129,6 +139,13 @@
             "bestClass": "Best class",
             "accuracy": "Accuracy",
             "timePlayed": "Time played"
+        },
+        "platforms": {
+            "pc": "PC",
+            "xboxone": "XBOX ONE",
+            "xbox360": "XBOX 360",
+            "ps4": "PS4",
+            "ps3": "PS3"
         }
     },
     "servers": {
