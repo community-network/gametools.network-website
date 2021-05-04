@@ -208,7 +208,11 @@ function ViewWeapons(props: Views) {
     const [sortType, setSortType] = React.useState<string>("-kills");
     let weapons = []
     if (!props.loading&&!props.error) {
-        weapons = props.stats.weapons.filter((item: {weaponName: string}) => {
+        weapons = props.stats.weapons.filter((item: {weaponName: string, accuracy: any, headshots: any}) => {
+            if (typeof item.accuracy == "string" && typeof item.headshots == "string") {
+                item.accuracy = parseInt(item.accuracy.replace("%", ""))
+                item.headshots = parseInt(item.headshots.replace("%", ""))
+            }
             return item.weaponName.toLowerCase().includes(searchTerm.toLowerCase());
         });
         weapons = weapons.sort(dynamicSort(sortType))
@@ -238,8 +242,8 @@ function ViewWeapons(props: Views) {
                                 <Row><h4>{key.type}</h4><Description>{t("stats.rows.type")}</Description></Row>
                                 <Row><h4>{key.kills}</h4><Description>{t("stats.rows.kills")}</Description></Row>
                                 <Row><h4>{key.killsPerMinute}</h4><Description>{t("stats.rows.kpm")}</Description></Row>
-                                <Row><h4>{key.accuracy}</h4><Description>{t("stats.rows.accuracy")}</Description></Row>
-                                <Row><h4>{key.headshots}</h4><Description>{t("stats.rows.headshots")}</Description></Row>
+                                <Row><h4>{key.accuracy}%</h4><Description>{t("stats.rows.accuracy")}</Description></Row>
+                                <Row><h4>{key.headshots}%</h4><Description>{t("stats.rows.headshots")}</Description></Row>
                             </Column>
                         )
                     })}
