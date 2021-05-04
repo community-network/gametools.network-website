@@ -37,11 +37,11 @@ function Search() {
                     void => setSearchTerm(ev.target.value)}/>
                 <BigSelectSecondary value={platform} onChange={(ev: React.ChangeEvent<HTMLSelectElement>):
                         void => setPlatform(ev.target.value)}>
-                    <option value="pc">PC</option>
-                    <option value="xboxone">XBOX ONE</option>
-                    <option value="xbox360">XBOX 360</option>
-                    <option value="ps4">PS4</option>
-                    <option value="ps3">PS3</option>
+                    <option value="pc">{t("platforms.pc")}</option>
+                    <option value="xboxone">{t("platforms.xboxone")}</option>
+                    <option value="xbox360">{t("platforms.xbox360")}</option>
+                    <option value="ps4">{t("platforms.ps4")}</option>
+                    <option value="ps3">{t("platforms.ps3")}</option>
                 </BigSelectSecondary>
                 {searchTerm!==""?
                     <Link to={`/stats/${platform}/name/${searchTerm}`}>

@@ -27,6 +27,13 @@
         "bf1": "Battlefield 1",
         "bfv": "Battlefield 5"
     },
+    "platforms": {
+        "pc": "PC",
+        "xboxone": "XBOX ONE",
+        "xbox360": "XBOX 360",
+        "ps4": "PS4",
+        "ps3": "PS3"
+    },
     "home": {
         "hostedAt": {
             "header": "Hosted at Game tools",
@@ -139,13 +146,6 @@
             "bestClass": "Best class",
             "accuracy": "Accuracy",
             "timePlayed": "Time played"
-        },
-        "platforms": {
-            "pc": "PC",
-            "xboxone": "XBOX ONE",
-            "xbox360": "XBOX 360",
-            "ps4": "PS4",
-            "ps3": "PS3"
         }
     },
     "servers": {
