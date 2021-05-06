@@ -153,8 +153,8 @@ function Search() {
                 <option value="all">{t("regions.all")}</option>
                 <option value="eu">{t("regions.eu")}</option>
                 <option value="asia">{t("regions.asia")}</option>
-                <option value="na">{t("regions.na")}</option>
-                <option value="sa">{t("regions.sa")}</option>
+                <option value="nam">{t("regions.na")}</option>
+                <option value="sam">{t("regions.sa")}</option>
                 <option value="au">{t("regions.au")}</option>
                 <option value="oc">{t("regions.oc")}</option>
             </BigSelectSecondary>
