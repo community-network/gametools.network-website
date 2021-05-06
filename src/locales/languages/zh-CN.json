@@ -27,13 +27,13 @@
         "bfv": "战地5"
     },
     "regions": {
-        "all": "All regions",
-        "eu": "Europe",
-        "asia": "Asia",
-        "nam": "North America",
-        "sam": "South America",
-        "au": "Australia",
-        "oc": "Oceania"
+        "all": "所有地区",
+        "eu": "欧洲",
+        "asia": "亚洲",
+        "na": "北美",
+        "sa": "南美",
+        "au": "澳大利亚",
+        "oc": "大洋"
     },
     "platforms": {
         "pc": "PC",
