@@ -6,4 +6,4 @@ export const platformGames = {
     "ps3": ["bf3", "bf4", "bfh"]
 }
 
-export const frostbite3 = ["bf4", "bf1", "bf5"]
+export const frostbite3 = ["bf4", "bf1", "bfv"]
