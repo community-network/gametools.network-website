@@ -106,7 +106,7 @@ function Results(props: Views) {
                                 <h2>{stats.prefix}</h2>
                                 <Description>{stats.description}</Description>
                                 <Description>{stats.playerAmount}/{stats.maxPlayers}{stats.maxPlayerAmount} {queueString} - {stats.currentMap}</Description>
-                                <Description>{stats.region} / {stats.country} - {stats.mode}</Description>
+                                <Description>{t(`regions.${stats.region.toLowerCase()}`)} / {stats.country} - {stats.mode}</Description>
                             </div>
                         </AlignW>
                         <Title>{t("servers.rotation")}</Title>

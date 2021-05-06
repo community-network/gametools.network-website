@@ -8,6 +8,7 @@ import { GetStats } from "../../api/GetStats"
 import { useQuery } from 'react-query';
 import { AltText, SearchBox, Back, ArrowLeft, Container, BigSelectSecondary, Align,  AlignW, Box } from '../Materials';
 import { getLanguage } from "../../locales/config";
+import { frostbite3 } from "../../api/static";
 
 const Description = styled.p`
     ${AltText}
@@ -65,7 +66,7 @@ function Results(props: Views) {
                 <ConditionalLink to={`/servers/${props.game}/gameid/${key.gameId}`} condition={props.game === "bf1" || props.game === "bf3" || props.game === "bf4"} key={index}>
                     <Box>
                         <AlignW>
-                            <div><ServerImage src={key.url}/></div><ServerInfo><h3>{key.server}{key.prefix}</h3><p>{key.playerAmount}/{key.maxPlayers}{key.maxPlayerAmount} {queueString} - {key.mode}{key.mode===undefined?key.map:null}</p></ServerInfo>
+                            <div><ServerImage src={key.url}/></div><ServerInfo><h3>{key.server}{key.prefix}</h3><p>{key.playerAmount}/{key.maxPlayers}{key.maxPlayerAmount} {queueString} - {key.mode}{key.mode===undefined?key.map:null} - {t(`regions.${key.region.toLowerCase()}`)}</p></ServerInfo>
                         </AlignW>
                     </Box>
                 </ConditionalLink>
@@ -79,17 +80,22 @@ function Results(props: Views) {
 function Search() {
     const [searchTerm, setSearchTerm] = React.useState<string>("");
     const [gameName, setGameName] = React.useState<string>("bf1");
+    const [region, setRegion] = React.useState<string>("all");
     const history = useHistory()
     // get info from query ?search &game
     const query = new URLSearchParams(useLocation().search);
     const nameQuery = query.get("search")
     const gameQuery = query.get("game")
+    const regionQuery = query.get("region")
     React.useState(() => {
         if (nameQuery !== null) {
             setSearchTerm(nameQuery)
         }
         if (gameQuery !== null) {
             setGameName(gameQuery)
+        }
+        if (regionQuery !== null) {
+            setRegion(regionQuery)
         }
     })
 
@@ -106,12 +112,17 @@ function Search() {
         } else {
             params.delete("game")
         }
+        if (region) {
+            params.append("region", region)
+        } else {
+            params.delete("region")
+        }
             history.push({search: params.toString()})
-        }, [searchTerm, gameName, history])
+        }, [searchTerm, gameName, region, history])
     
     const { t, i18n } = useTranslation();
-    const { isLoading: loading, isError: error, data: stats } = useQuery("servers" + gameName + searchTerm, () => GetStats.server(
-        {game: gameName, type: "servers", getter: "name", serverName: searchTerm, lang: getLanguage()}
+    const { isLoading: loading, isError: error, data: stats } = useQuery("servers" + gameName + searchTerm + region, () => GetStats.server(
+        {game: gameName, type: "servers", getter: "name", serverName: searchTerm, lang: getLanguage(), region: region}
     ))
     return (
     <Container>
@@ -136,6 +147,16 @@ function Search() {
                 <option value="bf4">{t("games.bf4")}</option>
                 <option value="bfh">{t("games.bfh")}</option>
                 <option value="bfv">{t("games.bfv")}</option>
+            </BigSelectSecondary>
+            <BigSelectSecondary disabled={!frostbite3.includes(gameName)} value={region} onChange={(ev: React.ChangeEvent<HTMLSelectElement>):
+                    void => setRegion(ev.target.value)}>
+                <option value="all">{t("regions.all")}</option>
+                <option value="eu">{t("regions.eu")}</option>
+                <option value="asia">{t("regions.asia")}</option>
+                <option value="na">{t("regions.na")}</option>
+                <option value="sa">{t("regions.sa")}</option>
+                <option value="au">{t("regions.au")}</option>
+                <option value="oc">{t("regions.oc")}</option>
             </BigSelectSecondary>
             {/* <BigButtonSecondary type="submit">{t("serverSearch.search")} <RightArrow/></BigButtonSecondary> */}
         </Align>

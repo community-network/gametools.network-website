@@ -27,6 +27,15 @@
         "bf1": "Battlefield 1",
         "bfv": "Battlefield 5"
     },
+    "regions": {
+        "all": "All regions",
+        "eu": "Europe",
+        "asia": "Asia",
+        "nam": "North America",
+        "sam": "South America",
+        "au": "Australia",
+        "oc": "Oceania"
+    },
     "platforms": {
         "pc": "PC",
         "xboxone": "XBOX ONE",

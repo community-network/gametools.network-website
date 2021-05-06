@@ -26,6 +26,15 @@
         "bf1": "战地1",
         "bfv": "战地5"
     },
+    "regions": {
+        "all": "All regions",
+        "eu": "Europe",
+        "asia": "Asia",
+        "nam": "North America",
+        "sam": "South America",
+        "au": "Australia",
+        "oc": "Oceania"
+    },
     "platforms": {
         "pc": "PC",
         "xboxone": "XBOX ONE",
