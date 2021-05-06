@@ -3,7 +3,7 @@
     "siteDescription": "Community Network Project 的目的是为了给不同的游戏提供查询。从战地系列开始，我们提供战地的在线人数，以及个人数据和未来的更多数据。",
     "loading": "读取中",
     "notApplicable": "N/A",
-    "noName": "We cant show playername when you request with playerId",
+    "noName": "当你用player id搜索时，我们不能显示玩家名称",
     "navBar": {
         "bfStats": "战地数据库",
         "serverStats": "战地服务器数据",
@@ -13,13 +13,13 @@
     },
     "games": {
         "bf2": {
-            "bf2hub": "Battlefield 2 (bf2hub)",
-            "playbf2": "Battlefield 2 (playbf2)"
+            "bf2hub": "战地2hub",
+            "playbf2": "战地2"
         },
-        "bfbc2": "Battlefield BC 2",
-        "bf2142": "Battlefield 2142 (.com)",
-        "bf1942": "Battlefield 1942",
-        "bfvietnam": "Battlefield Vietnam",
+        "bfbc2": "战地 BC 2",
+        "bf2142": "战地 2142 (.com)",
+        "bf1942": "战地 1942",
+        "bfvietnam": "战地 老兵",
         "bf3": "战地3",
         "bf4": "战地4",
         "bfh": "战地硬仗",
