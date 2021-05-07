@@ -14,7 +14,7 @@ export class ApiProvider extends JsonClient {
             });
         }
         return await this.getJsonMethod(`/${game}/${type}/`, {
-            "name": userName,
+            "name": encodeURIComponent(userName),
             "lang": lang,
             "platform": platform,
         });
@@ -31,7 +31,7 @@ export class ApiProvider extends JsonClient {
             });
         }
         return await this.getJsonMethod(`/${gameStuff[0]}/${type}/`, {
-            "name": serverName,
+            "name": encodeURIComponent(serverName),
             "lang": lang,
             "region": region,
             "service": gameStuff[1]
