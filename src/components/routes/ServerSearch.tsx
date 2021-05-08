@@ -62,11 +62,15 @@ function Results(props: Views) {
             if (queue!==undefined && queue!==0) {
                 queueString = `[${queue}]`
             }
+            let region: string = undefined
+            if (key.region!==undefined) {
+                region = `- ${t(`regions.${key.region.toLowerCase()}`)}`
+            }
             return (
                 <ConditionalLink to={`/servers/${props.game}/gameid/${key.gameId}`} condition={props.game === "bf1" || props.game === "bf3" || props.game === "bf4"} key={index}>
                     <Box>
                         <AlignW>
-                            <div><ServerImage src={key.url}/></div><ServerInfo><h3>{key.server}{key.prefix}</h3><p>{key.playerAmount}/{key.maxPlayers}{key.maxPlayerAmount} {queueString} - {key.mode}{key.mode===undefined?key.map:null} - {t(`regions.${key.region.toLowerCase()}`)}</p></ServerInfo>
+                            <div><ServerImage src={key.url}/></div><ServerInfo><h3>{key.server}{key.prefix}</h3><p>{key.playerAmount}/{key.maxPlayers}{key.maxPlayerAmount} {queueString} - {key.mode}{key.mode===undefined?key.map:null}{region}</p></ServerInfo>
                         </AlignW>
                     </Box>
                 </ConditionalLink>
