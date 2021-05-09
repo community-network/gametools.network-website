@@ -2,6 +2,8 @@
     "siteName": "Game Tools",
     "siteDescription": "Community Network project to provide public tools for different games. Starting with Battlefield, we bringing back BF online playercount stats, as well as personal stats and much more in future.",
     "loading": "Loading...",
+    "404": "404",
+    "playerNotFound": "Playername not found, try another name or another game.",
     "notApplicable": "N/A",
     "resultNotFound": "No results found",
     "noName": "We cant show playername when you request with playerId",

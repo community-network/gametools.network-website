@@ -32,13 +32,6 @@ export default class JsonClient {
                         if ("error" in json) {
                             throw json.error;
                         }
-                        if ("data" in json) {
-                            if (json.data.length > 0) {
-                                if ("error" in json.data[0]) {
-                                    throw json.data[0].error;
-                                }
-                            }
-                        }
                         return json;
                     },
                     error => this.spawnError(error, 600)

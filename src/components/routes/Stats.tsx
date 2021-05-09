@@ -1,5 +1,5 @@
 import * as React from "react";
-import { RouteComponentProps, useLocation } from "react-router-dom";
+import { RouteComponentProps, useLocation, useHistory } from "react-router-dom";
 import '../../locales/config';
 import { useTranslation } from 'react-i18next';
 import { GetStats } from "../../api/GetStats"
@@ -42,10 +42,22 @@ function ViewOrigin(props: Views) {
     const { t } = useTranslation();
     const stats = props.stats;
     const nameGetter = UrlParams().get("name");
-    if (!props.loading&&!props.error) {
+    if (props.error) {
+        return ( // if playername isnt found
+            <Spacing>
+                <Align>
+                    <Circle/>
+                    <div>
+                        <OriginName>{t("404")}</OriginName>
+                        <OriginDescription>{t("playerNotFound")}</OriginDescription>
+                    </div>
+                </Align>
+            </Spacing>
+        )
+    } else if (!props.loading&&!props.error) {
         if (stats.userName === null) {
             if (nameGetter !== null) {
-                return (
+                return ( // if playerid but ?name behind it
                     <Spacing>
                         <Align>
                             <Circle/>
@@ -57,7 +69,7 @@ function ViewOrigin(props: Views) {
                     </Spacing>
                 )
             } else {
-                return (
+                return ( // if no ?name behind it
                     <Spacing>
                         <Align>
                             <Circle/>
@@ -70,7 +82,7 @@ function ViewOrigin(props: Views) {
                 )
             }
         } else {
-            return (
+            return ( // normal playerName
                 <Spacing>
                     <Align>
                         <OriginProfile src={stats.avatar}/>
@@ -83,7 +95,7 @@ function ViewOrigin(props: Views) {
             )
         }
     } else {
-        return (
+        return ( // loading page
             <Spacing>
                 <Align>
                     <Circle/>
@@ -353,6 +365,8 @@ function Stats({ match }: RouteComponentProps<TParams>) {
     const { isLoading: loading, isError: error, data: stats } = useQuery("stats" + game + match.params.eaid, () => GetStats.stats(
         {game: game, type: "all", getter: match.params.type, userName: match.params.eaid, lang: getLanguage()}
     ))
+    const history = useHistory()
+    const query = new URLSearchParams(useLocation().search);
     const games = platformGames[match.params.plat];
     return (
     <Container>
@@ -361,7 +375,18 @@ function Stats({ match }: RouteComponentProps<TParams>) {
         </div>
         <ViewOrigin game={game} loading={loading} stats={stats} error={error}/>
         <Align onChange={(ev: React.ChangeEvent<HTMLInputElement>):
-                    void => setGame(ev.target.value)}>
+                    void => {
+                        // if player is found within current game, use playerid to search on another game
+                        if (!loading&&!error && query.get("name") == null && match.params.type !== "playerid") {
+                            const params = new URLSearchParams()
+                            params.append("name", match.params.eaid)
+                            match.params.type = "playerid"
+                            match.params.eaid = stats.id
+                            history.push(`/stats/${match.params.plat}/playerid/${stats.id}`)
+                            history.push({search: params.toString()})
+                        }
+                        setGame(ev.target.value)
+                    }}>
             {games.map((key: string, index: number) => {
                 return (
                     <Radio key={index}><InvisableRadioButton id={key} value={key} name="game" defaultChecked={game === key}/>

@@ -2,6 +2,8 @@
     "siteName": "战地游戏查询工具",
     "siteDescription": "Community Network Project 的目的是为了给不同的游戏提供查询。从战地系列开始，我们提供战地的在线人数，以及个人数据和未来的更多数据。",
     "loading": "读取中",
+    "404": "404",
+    "playerNotFound": "找不到该玩家的id，请确认id的拼写",
     "notApplicable": "N/A",
     "noName": "当你用player id搜索时，我们不能显示玩家名称",
     "navBar": {
