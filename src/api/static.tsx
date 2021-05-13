@@ -9,3 +9,4 @@ export const platformGames = {
 
 export const frostbite3 = ["bf4", "bf1", "bfv"]
 export const dice = ["bf3", "bf4", "bf1", "bfv", "bfh"]
+export const newTitles = ["bf1", "bfv"]

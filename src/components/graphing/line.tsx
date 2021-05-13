@@ -3,7 +3,7 @@ import { Line } from "react-chartjs-2";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "react-query";
 import { GetStats } from "../../api/GetStats";
-import { frostbite3 } from "../../api/static";
+import { newTitles } from "../../api/static";
 import { Box, Align } from '../Materials';
 
 
@@ -21,7 +21,7 @@ function LineGraph(props: GraphData) {
             const time = new Date(e)
             return time.toLocaleDateString()
         }) 
-        const data = (frostbite3.includes(props.gameName)) ? {
+        const data = (newTitles.includes(props.gameName)) ? {
                 labels: time,
                 datasets: [
                     {
