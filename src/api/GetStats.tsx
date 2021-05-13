@@ -37,6 +37,14 @@ export class ApiProvider extends JsonClient {
             "service": gameStuff[1]
         });
     }
+
+    async graphs({ game, days, region = "all"}) {
+        let gameStuff = game.split(".")
+        return await this.getJsonMethod(`/${gameStuff[0]}/statusarray/`, {
+            "days": days,
+            "region": region
+        });
+    }
 }
 
 export const GetStats = new ApiProvider();

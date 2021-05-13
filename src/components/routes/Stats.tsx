@@ -4,7 +4,7 @@ import '../../locales/config';
 import { useTranslation } from 'react-i18next';
 import { GetStats } from "../../api/GetStats"
 import { useQuery, useQueryClient, useMutation } from 'react-query';
-import { M96, AlignS, Back, ArrowLeft, Container, Align, Box, SmallSearchBox, AltText, SelectPrimary, Circle, Column, Row } from '../Materials';
+import { M96, AlignS, Back, ArrowLeft, Container, Align, Box, SmallSearchBox, AltText, SelectPrimary, Circle, Column, Row, InvisableRadioButton, Radio, SmallButtonRadio, UncheckedSmallButtonRadio } from '../Materials';
 import styled from "styled-components";
 import { platformGames } from "../../api/static"
 import { getLanguage } from "../../locales/config";
@@ -317,44 +317,6 @@ function ViewVehicles(props: Views) {
     )
 }
 
-const InvisableRadioButton = styled.input.attrs({ type: 'radio' })`
-    opacity: 0;
-    position: fixed;
-    width: 0;
-`
-
-export const Radio = styled.div` // for next-row
-    margin-bottom: 1rem;
-    height: 35px;
-`
-
-export const SmallButtonRadio = styled.label`
-    ${M96}
-    background: #1E2132;
-    color: var(--color-text);
-    border: none;
-    margin-bottom: 1rem;
-    border-radius: 5px;
-    padding: .5rem 1.5rem;
-    margin-right: 1rem;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    font-family: Manrope;
-    font-weight: medium;
-    font-style: normal;
-`
-
-export const UncheckedSmallButtonRadio = styled.label`
-    ${M96}
-    color: var(--color-text);
-    border: none;
-    margin-bottom: 1rem;
-    border-radius: 5px;
-    padding: .5rem 1.5rem;
-    margin-right: 1rem;
-    font-family: Manrope;
-    font-weight: medium;
-    font-style: normal;
-`
 
 type TParams = { plat: string, type: string, eaid: string}
 

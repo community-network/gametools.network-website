@@ -71,9 +71,12 @@
     "webpack-merge": "^5.7.3"
   },
   "dependencies": {
+    "chart.js": "^3.2.1",
+    "chartjs": "^0.3.24",
     "gifsicle": "^5.2.0",
     "i18next": "^20.2.1",
     "i18next-browser-languagedetector": "^6.1.0",
+    "react-chartjs-2": "^3.0.3",
     "react-i18next": "^10.0.0",
     "react-query": "^3.13.10",
     "react-router-dom": "^5.2.0",

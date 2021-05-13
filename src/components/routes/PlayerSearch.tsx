@@ -4,7 +4,9 @@ import '../../locales/config';
 import { useTranslation } from 'react-i18next';
 import styled from "styled-components";
 import "../../assets/scss/App.scss";
-import { M88, AltText, SearchBox, BigButtonSecondary, RightArrow, Back, ArrowLeft, Container, BigSelectSecondary, Align } from '../Materials';
+import { M88, AltText, SearchBox, BigButtonSecondary, RightArrow, Back, ArrowLeft, Container, BigSelectSecondary, Align, InvisableRadioButton, Radio, SmallButtonRadio, UncheckedSmallButtonRadio } from '../Materials';
+import Graph from "../graphing/line"
+import { dice, platformGames } from "../../api/static"
 
 const Description = styled.p`
     ${AltText}
@@ -21,9 +23,11 @@ const Title = styled.h2`
 
 function Search() {
     const { t, i18n } = useTranslation();
+    const games = platformGames.all;
 
     const [searchTerm, setSearchTerm] = React.useState<string>("");
     const [platform, setPlatform] = React.useState<string>("pc");
+    const [game, setGame] = React.useState<string>("bf1");
     return (
     <Container>
         <Back to="/"><ArrowLeft/>{t("playerSearch.back")}</Back>
@@ -54,6 +58,29 @@ function Search() {
         </Align>
         <Title>{t("playerSearch.gameStatus")}</Title>
         <Description>{t("playerSearch.statusDescription")}</Description>
+        <Align onChange={(ev: React.ChangeEvent<HTMLInputElement>):
+                    void => setGame(ev.target.value)}>
+            {games.map((key: string, index: number) => {
+                return (
+                    <Radio key={index}><InvisableRadioButton id={key} value={key} name="game" defaultChecked={game === key}/>
+                        {(game===key)?<SmallButtonRadio htmlFor={key}>{t(`games.${key}`)}</SmallButtonRadio>:
+                        <UncheckedSmallButtonRadio htmlFor={key}>{t(`games.${key}`)}</UncheckedSmallButtonRadio>}
+                    </Radio>
+                )
+            })}
+        </Align>
+            {dice.includes(game) ? (
+                <Align>
+                    <Graph gameName={game} days="7" region="all" />
+                    <Graph gameName={game} days="7" region="eu" />
+                    <Graph gameName={game} days="7" region="nam" />
+                    <Graph gameName={game} days="7" region="sam" />
+                    <Graph gameName={game} days="7" region="au" />
+                    <Graph gameName={game} days="7" region="oc" />
+                </Align>
+            ):(
+                <Graph gameName={game} days="7" region="all" />
+            )}
     </Container>
     )
 }
