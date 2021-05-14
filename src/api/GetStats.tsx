@@ -42,7 +42,8 @@ export class ApiProvider extends JsonClient {
         let gameStuff = game.split(".")
         return await this.getJsonMethod(`/${gameStuff[0]}/statusarray/`, {
             "days": days,
-            "region": region
+            "region": region,
+            "service": gameStuff[1]
         });
     }
 }
