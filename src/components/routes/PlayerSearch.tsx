@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import styled from "styled-components";
 import "../../assets/scss/App.scss";
 import { M88, AltText, SearchBox, BigButtonSecondary, RightArrow, Back, ArrowLeft, Container, BigSelectSecondary, Align, InvisableRadioButton, Radio, SmallButtonRadio, UncheckedSmallButtonRadio } from '../Materials';
-import Graph from "../graphing/line"
+import { Graph, GlobalGraph } from "../graphing/line"
 import { dice, platformGames } from "../../api/static"
 
 const Description = styled.p`
@@ -78,8 +78,11 @@ function Search() {
                     <Graph gameName={game} days="7" region="au" />
                     <Graph gameName={game} days="7" region="oc" />
                 </Align>
-            ):(
+            ):( (game == "bfglobal") ? (
+                <GlobalGraph days="7" />
+            ) : (
                 <Graph gameName={game} days="7" region="all" />
+            )
             )}
     </Container>
     )

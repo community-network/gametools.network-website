@@ -15,6 +15,7 @@
         "bot": "Discord Bot"
     },
     "games": {
+        "bfglobal": "Global",
         "bf2": {
             "bf2hub": "Battlefield 2 (bf2hub)",
             "playbf2": "Battlefield 2 (playbf2)"
@@ -157,6 +158,11 @@
             "bestClass": "Best class",
             "accuracy": "Accuracy",
             "timePlayed": "Time played"
+        },
+        "graph": {
+            "all": "All players",
+            "dice": "Players on dice servers",
+            "community": "Players on community servers"
         }
     },
     "servers": {

@@ -14,6 +14,7 @@
         "bot": "Discord机器人"
     },
     "games": {
+        "bfglobal": "全球的",
         "bf2": {
             "bf2hub": "战地2hub",
             "playbf2": "战地2"
@@ -156,6 +157,11 @@
             "bestClass": "最佳兵种",
             "accuracy": "准度",
             "timePlayed": "Time played"
+        },
+        "graph": {
+            "all": "All players",
+            "dice": "Players on dice servers",
+            "community": "Players on community servers"
         }
     },
     "servers": {
