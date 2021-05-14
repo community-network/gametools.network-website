@@ -137,8 +137,8 @@
         "overviewDescription": "游戏综合数据",
         "weapons": "武器",
         "vehicles": "载具",
-        "searchWeapon": "Search for weapon",
-        "searchVehicle": "Search for vehicle",
+        "searchWeapon": "搜索他的某一项武器",
+        "searchVehicle": "搜索他的某一项载具",
         "rows": {
             "weaponName": "武器名称",
             "vehicleName": "载具名称",
@@ -156,7 +156,7 @@
             "winPercent": "胜率",
             "bestClass": "最佳兵种",
             "accuracy": "准度",
-            "timePlayed": "Time played"
+            "timePlayed": "游玩时间"
         },
         "graph": {
             "all": "所有玩家",
@@ -173,7 +173,7 @@
         "descriptions": {
             "0": "网站是Community Network的一部分。产品是开源的。你可以在我们的GitHub页面中发布问题和建议。API由Community Network提供并开放给公众使用。我们不提供任何第三方的API。我们的后台是封闭的，限制访客查看。",
             "1": "战地和Origin是Electronic Arts的注册商标。本网站使用根据EA战地1统计条款提供的数据。商标是其各自所有者的财产。游戏材料的版权归Electronic Arts所有。Electronic Arts没有认可也不对本网站或其内容负责。",
-            "2": "Code is under GPL v2 License. Some parts are under Community Network copyright."
+            "2": "代码是GPL V2协议，一些部分是Community Network的版权"
         },
         "links": {
             "0": "GitHub页面",
