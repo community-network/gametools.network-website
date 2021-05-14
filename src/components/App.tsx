@@ -12,15 +12,13 @@ const queryClient = new QueryClient();
 class App extends React.Component<Record<string, unknown>, undefined> {
   public render() {
     return (
-      <React.StrictMode>
-        <BrowserRouter>
-          <Navbar />
-          <QueryClientProvider client={queryClient}>
-            <Views />
-          </QueryClientProvider>
-          <Footer />
-        </BrowserRouter>
-      </React.StrictMode>
+      <BrowserRouter>
+        <Navbar />
+        <QueryClientProvider client={queryClient}>
+          <Views />
+        </QueryClientProvider>
+        <Footer />
+      </BrowserRouter>
     );
   }
 }
