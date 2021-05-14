@@ -69,22 +69,22 @@ function Search() {
                 )
             })}
         </Align>
-            {dice.includes(game) ? (
-                <Align>
-                    <Graph gameName={game} days="7" region="all" />
-                    <Graph gameName={game} days="7" region="eu" />
-                    <Graph gameName={game} days="7" region="asia" />
-                    <Graph gameName={game} days="7" region="nam" />
-                    <Graph gameName={game} days="7" region="sam" />
-                    <Graph gameName={game} days="7" region="oc" />
-                    <Graph gameName={game} days="7" region="au" />
-                </Align>
-            ):( (game == "bfglobal") ? (
+        {dice.includes(game) ? (
+            <Align>
+                <Graph gameName={game} days="7" region="all" />
+                <Graph gameName={game} days="7" region="eu" />
+                <Graph gameName={game} days="7" region="asia" />
+                <Graph gameName={game} days="7" region="nam" />
+                <Graph gameName={game} days="7" region="sam" />
+                <Graph gameName={game} days="7" region="oc" />
+                <Graph gameName={game} days="7" region="au" />
+            </Align>
+        ):( (game == "bfglobal") ? (
                 <GlobalGraph days="7" />
             ) : (
                 <Graph gameName={game} days="7" region="all" />
             )
-            )}
+        )}
     </Container>
     )
 }
