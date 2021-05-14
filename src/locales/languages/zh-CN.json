@@ -159,9 +159,9 @@
             "timePlayed": "Time played"
         },
         "graph": {
-            "all": "All players",
-            "dice": "Players on dice servers",
-            "community": "Players on community servers"
+            "all": "所有玩家",
+            "dice": "官服玩家",
+            "community": "私服玩家"
         }
     },
     "servers": {
