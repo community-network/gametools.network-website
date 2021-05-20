@@ -1,12 +1,12 @@
 {
     "siteName": "Game Tools",
-    "siteDescription": "Community Network project to provide public tools for different games. Starting with Battlefield, we bringing back BF online playercount stats, as well as personal stats and much more in future.",
+    "siteDescription": "Community Network aims to provide public tools for different games. Starting with Battlefield, we are bringing back online concurrent player stats, as well as personal stats and much more in future.",
     "loading": "Loading...",
     "404": "404",
     "playerNotFound": "Playername not found, try another name or another game.",
     "notApplicable": "N/A",
     "resultNotFound": "No results found",
-    "noName": "We cant show playername when you request with playerId",
+    "noName": "Cannot show a playername when accessing stats via playerId",
     "navBar": {
         "bfStats": "Battlefield Stats",
         "serverStats": "Battlefield Serverstats",
@@ -20,13 +20,13 @@
             "bf2hub": "Battlefield 2 (bf2hub)",
             "playbf2": "Battlefield 2 (playbf2)"
         },
-        "bfbc2": "Battlefield BC 2",
+        "bfbc2": "Battlefield: Bad Company 2",
         "bf2142": "Battlefield 2142 (.com)",
         "bf1942": "Battlefield 1942",
         "bfvietnam": "Battlefield Vietnam",
         "bf3": "Battlefield 3",
         "bf4": "Battlefield 4",
-        "bfh": "Battlefield hardline",
+        "bfh": "Battlefield Hardline",
         "bf1": "Battlefield 1",
         "bfv": "Battlefield 5"
     },
@@ -51,8 +51,8 @@
             "header": "Hosted at Game tools",
             "0": {
                 "header": "BFBan",
-                "0": "We are hosting and being part of bfban.com - an amazing community & reverse engineering/security team created against hackers, to provide united ban list and report system.",
-                "1": "Report cheaters in bf1/bfv, so they can be banned in community servers.",
+                "0": "We are hosting and are an active part of bfban.com - an amazing community & reverse engineering/security team created against hackers, to provide united ban list and report system.",
+                "1": "Report cheaters in BF1/BFV, so they can be banned in community servers.",
                 "link": "Visit BFBan",
                 "url": "http://bfban.com/"
             }
@@ -61,27 +61,27 @@
             "header": "Our solutions",
             "0": {
                 "header": "Server manager",
-                "0": "A manager for your Battlefield 1 server, from here you can automaticly kick based on ping or if he's in bfban (our global banlist) and gives a way to have more banslots than 200 for your servers.",
-                "1": "It also has the same admin-panel as in game, so you dont have to open the game its also a good option to have this on your second monitor to manage your servers.",
+                "0": "A manager for your Battlefield 1 server. Allows you to automatically kick players based on ping or based on BFBan (our global banlist). Plus it provides a way to have more than 200 banslots for your servers.",
+                "1": "Also gives you access to the same admin-panel as in game, so you don't have to open the game. Great to have on your second monitor so you can manage your servers.",
                 "link": "Visit Server manager",
                 "url": "https://manager.gametools.network/"
             },
             "1": {
                 "header": "Game Stats",
-                "0": "The Game Stats bot is a bot to see your stats or from others for games like Battlefield 2, 3, 4, hardline, 1 and 5 as reaction in the chat",
+                "0": "The game stats bot is a Discord bot to see any player's stats for games like Battlefield 2, 3, 4, Hardline, 1 and 5",
                 "1": "The bot also supports console users, example: '!bf1stat {platform} {name}'",
-                "link": "Add on your server",
+                "link": "Add to your server",
                 "url": "https://top.gg/bot/714524944783900794"
             },
             "2": {
                 "header": "Battlefield API",
-                "0": "Your allowed to use our api to get ingame stats or serverinfo for your own purposes or your own website. It supports all the same battlefield titles as the Gamestats bot.",
-                "link": "Read the Docs",
+                "0": "Public API to get ingame stats or serverinfo for your own project or website. It supports all the same Battlefield titles as the game stats bot.",
+                "link": "Read the docs",
                 "url": "https://api.gametools.network/"
             },
             "3": {
                 "header": "Community Operations",
-                "0": "One of our first projects was an RSP Operation server we made together with BFBan. The goal was to make cheat free server with operations gamemode. You can find more at our Discord.",
+                "0": "One of our first projects was an RSP Operation server we set up together with BFBan. The goal was to make cheat free server with operations gamemode. You can find more at our Discord.",
                 "link": "Visit our Discord",
                 "url": "https://discord.gametools.network/"
             }
@@ -90,43 +90,43 @@
             "header": "FAQ",
             "0": {
                 "question": "Q: Can I use your API?",
-                "answer": "A: Yes, you can. We provide free API without any limitation."
+                "answer": "A: Yes, you can. We provide the API for free without any limitations."
             },
             "1": {
                 "question": "Q: You have a Discord bot, but can I make my own?",
-                "answer": "A: We provide great bot for Discord, but if you want to write your own - be free to do so with APIs."
+                "answer": "A: We provide great bot for Discord, but if you want to write your own, feel free to do so with our API."
             },
             "2": {
                 "question": "Q: Which games are available?",
-                "answer": "A: Our website and API support most of Battlefield games including V, 1, 4, HL, 3 and 2. The Discord bot exclusively support some other games like Division or Destiny 2."
+                "answer": "A: Our website and API support most of Battlefield games including V, 1, 4, Hardline, 3 and 2. The Discord bot also supports other games like Division or Destiny 2."
             },
             "3": {
-                "question": "Q: Did you use to BF tracker to build it?",
+                "question": "Q: Did you use to Battlefield Tracker to build all this?",
                 "answer": "A: No. We provide independent services."
             },
             "4": {
-                "question": "Q: I found an issue or want to suggest changes on the website, where do I need to post it?",
-                "answer": "A: Use our GitHub to post any issues and suggestions."
+                "question": "Q: I found an issue or want to suggest changes on the website, where can get in touch?",
+                "answer": "A: Head over to our GitHub to post any issues and suggestions."
             },
             "5": {
-                "question": "Q: Where to post issues and feature requests for Bot?",
-                "answer": "A: For Bot & API use our Discord."
+                "question": "Q: Where to post issues and feature requests for the Discord bot?",
+                "answer": "A: For suggestions regarding the bot and our API, come join our Discord."
             }
         }
     },
     "playerSearch": {
         "back": "Main page",
         "bfStats": "Battlefield Stats",
-        "description": "Search for Origin Nickname to get player stats.",
+        "description": "Search for any Origin nickname to get player stats.",
         "search": "Search",
         "searchPlaceholder": "Search for Origin name...",
-        "gameStatus": "Amount of players in Battlefield",
+        "gameStatus": "Amount of players on the Battlefield",
         "statusDescription": "PC stats"
     },
     "serverSearch": {
         "back": "Main page",
         "serverInfo": "Battlefield Servers (PC only)",
-        "description": "Search for Battlefield servers to get playeramounts/rotation of the server.",
+        "description": "Search for Battlefield servers to get playeramounts/map rotation of the server.",
         "search": "Search",
         "searchPlaceholder": "Search for servername...",
         "results": "Search results"
@@ -135,7 +135,7 @@
         "back": "Back to search",
         "originDescription": "Origin profile",
         "overview": "Overview",
-        "overviewDescription": "See your overview stats in game.",
+        "overviewDescription": "A short overview of your stats in game.",
         "weapons": "Weapons",
         "vehicles": "Vehicles",
         "searchWeapon": "Search for weapon",
@@ -172,13 +172,13 @@
     },
     "footer": {
         "descriptions": {
-            "0": "Website is part of the Community Network. Product is Open Source. You can post issues and suggest new code in our GitHub repository. API provided by Community Network and open for public usage. We don’t provide any third-party API. Our backend closed and restricted for public view.",
+            "0": "This website is part of the Community Network. It is Open Source. You can post issues and suggest changes/improvements via GitHub. API provided by Community Network and open for public usage. We don’t provide any third-party API. Our back end is closed source and not available publicly.",
             "1": "Battlefield & Origin are registered trademark of Electronic Arts. This website uses data provided pursuant to Electronic Arts’ Battlefield 1 Stats Terms. Trademarks are the property of their respective owners. Game materials copyright Electronic Arts Inc. Electronic Arts has not endorsed and is not responsible for this site or its content.",
             "2": "Code is under GPL v2 License. Some parts are under Community Network copyright."
         },
         "links": {
-            "0": "GitHub repository",
-            "1": "Open API",
+            "0": "GitHub",
+            "1": "Public API",
             "2": "Community Network Discord",
             "3": "Privacy Policy",
             "4": "Discord bot"
