@@ -67,7 +67,7 @@ function Results(props: Views) {
                 region = `- ${t(`regions.${key.region.toLowerCase()}`)}`
             }
             return (
-                <ConditionalLink to={`/servers/${props.game}/gameid/${key.gameId}`} condition={props.game === "bf1" || props.game === "bf3" || props.game === "bf4"} key={index}>
+                <ConditionalLink to={`/servers/${props.game}/gameid/${key.gameId}/${key.platform}`} condition={props.game === "bf1" || props.game === "bf3" || (props.game === "bf4" && key.platform == "pc")} key={index}>
                     <Box>
                         <AlignW>
                             <div><ServerImage src={key.url}/></div><ServerInfo><h3>{key.server}{key.prefix}</h3><p>{key.playerAmount}/{key.maxPlayers}{key.maxPlayerAmount} {queueString} - {key.mode}{key.mode===undefined?key.map:null}{region}</p></ServerInfo>
@@ -85,12 +85,14 @@ function Search() {
     const [searchTerm, setSearchTerm] = React.useState<string>("");
     const [gameName, setGameName] = React.useState<string>("bf1");
     const [region, setRegion] = React.useState<string>("all");
+    const [platform, setPlatform] = React.useState<string>("pc");
     const history = useHistory()
     // get info from query ?search &game
     const query = new URLSearchParams(useLocation().search);
     const nameQuery = query.get("search")
     const gameQuery = query.get("game")
     const regionQuery = query.get("region")
+    const platformQuery = query.get("platform")
     React.useState(() => {
         if (nameQuery !== null) {
             setSearchTerm(nameQuery)
@@ -100,6 +102,9 @@ function Search() {
         }
         if (regionQuery !== null) {
             setRegion(regionQuery)
+        }
+        if (platformQuery !== null) {
+            setPlatform(platformQuery)
         }
     })
 
@@ -121,12 +126,17 @@ function Search() {
         } else {
             params.delete("region")
         }
+        if (platform) {
+            params.append("platform", platform)
+        } else {
+            params.delete("platform")
+        }
             history.push({search: params.toString()})
-        }, [searchTerm, gameName, region, history])
+        }, [searchTerm, gameName, region, platform, history])
     
     const { t, i18n } = useTranslation();
-    const { isLoading: loading, isError: error, data: stats } = useQuery("servers" + gameName + searchTerm + region, () => GetStats.server(
-        {game: gameName, type: "servers", getter: "name", serverName: searchTerm, lang: getLanguage(), region: region}
+    const { isLoading: loading, isError: error, data: stats } = useQuery("servers" + gameName + searchTerm + region + platform, () => GetStats.server(
+        {game: gameName, type: "servers", getter: "name", serverName: searchTerm, lang: getLanguage(), region: region, platform: platform}
     ))
     return (
     <Container>
@@ -161,6 +171,11 @@ function Search() {
                 <option value="sam">{t("regions.sam")}</option>
                 <option value="au">{t("regions.au")}</option>
                 <option value="oc">{t("regions.oc")}</option>
+            </BigSelectSecondary>
+            <BigSelectSecondary disabled={!frostbite3.includes(gameName)} value={platform} onChange={(ev: React.ChangeEvent<HTMLSelectElement>):
+                    void => setPlatform(ev.target.value)}>
+                <option value="pc">{t("platforms.pc")}</option>
+                <option value="ps4">{t("platforms.ps4")}</option>
             </BigSelectSecondary>
             {/* <BigButtonSecondary type="submit">{t("serverSearch.search")} <RightArrow/></BigButtonSecondary> */}
         </Align>

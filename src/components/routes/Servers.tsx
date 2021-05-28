@@ -143,15 +143,15 @@ function Results(props: Views) {
     }
 }
 
-type TParams = { gameid: string, type: string, sname: string}
+type TParams = { gameid: string, type: string, sname: string, platform: string}
 
 function Servers({ match }: RouteComponentProps<TParams>) {
     const gameId = match.params.gameid
     const serverName = match.params.sname
     
     const { t, i18n } = useTranslation();
-    const { isLoading: loading, isError: error, data: stats } = useQuery("detailed" + gameId + serverName, () => GetStats.server(
-        {game: gameId, type: "detailedserver", getter: match.params.type, serverName: serverName, lang: getLanguage()}
+    const { isLoading: loading, isError: error, data: stats } = useQuery("detailed" + gameId + serverName + match.params.platform, () => GetStats.server(
+        {game: gameId, type: "detailedserver", getter: match.params.type, serverName: serverName, lang: getLanguage(), platform: match.params.platform}
     ))
     return (
         <div>

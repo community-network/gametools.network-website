@@ -14,7 +14,7 @@ const LanguageSelector = () => {
         <SelectSecondary value={getLanguage()} onChange={changeLanguage}>
             <option value="en-US">English</option>
             <option value="ru-RU">Russian</option>
-            <option value="zh-CN">Chinese</option>
+            <option value="zh-CN">简体中文</option>
         </SelectSecondary>
     )
 }

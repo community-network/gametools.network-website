@@ -124,7 +124,7 @@
     },
     "serverSearch": {
         "back": "主页",
-        "serverInfo": "战地服务器（PC）",
+        "serverInfo": "战地服务器",
         "description": "搜索服务器的具体信息",
         "search": "搜索",
         "searchPlaceholder": "服务器名字",

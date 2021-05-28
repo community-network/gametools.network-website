@@ -125,7 +125,7 @@
     },
     "serverSearch": {
         "back": "Main page",
-        "serverInfo": "Battlefield Servers (PC only)",
+        "serverInfo": "Battlefield Servers",
         "description": "Search for Battlefield servers to get playeramounts/map rotation of the server.",
         "search": "Search",
         "searchPlaceholder": "Search for servername...",
