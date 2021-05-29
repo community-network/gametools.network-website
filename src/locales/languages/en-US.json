@@ -120,8 +120,7 @@
         "description": "Search for any Origin nickname to get player stats.",
         "search": "Search",
         "searchPlaceholder": "Search for Origin name...",
-        "gameStatus": "Amount of players on the Battlefield",
-        "statusDescription": "PC stats"
+        "gameStatus": "Amount of players on the Battlefield"
     },
     "serverSearch": {
         "back": "Main page",

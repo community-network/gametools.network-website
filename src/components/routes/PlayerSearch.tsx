@@ -4,13 +4,9 @@ import '../../locales/config';
 import { useTranslation } from 'react-i18next';
 import styled from "styled-components";
 import "../../assets/scss/App.scss";
-import { M88, AltText, SearchBox, BigButtonSecondary, RightArrow, Back, ArrowLeft, Container, BigSelectSecondary, Align, InvisableRadioButton, Radio, SmallButtonRadio, UncheckedSmallButtonRadio } from '../Materials';
+import { AltText, SearchBox, BigButtonSecondary, RightArrow, Back, ArrowLeft, Container, BigSelectSecondary, Align, InvisableRadioButton, Radio, SmallButtonRadio, UncheckedSmallButtonRadio } from '../Materials';
 import { Graph, GlobalGraph } from "../graphing/line"
 import { dice, graphGames } from "../../api/static"
-
-const Description = styled.p`
-    ${AltText}
-`
 
 const AltDescription = styled.p`
     ${AltText}
