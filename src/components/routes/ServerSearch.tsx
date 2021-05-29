@@ -176,6 +176,7 @@ function Search() {
                     void => setPlatform(ev.target.value)}>
                 <option value="pc">{t("platforms.pc")}</option>
                 <option value="ps4">{t("platforms.ps4")}</option>
+                <option value="xboxone">{t("platforms.xboxone")}</option>
             </BigSelectSecondary>
             {/* <BigButtonSecondary type="submit">{t("serverSearch.search")} <RightArrow/></BigButtonSecondary> */}
         </Align>
