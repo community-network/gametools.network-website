@@ -1,9 +1,8 @@
 import { useTranslation } from 'react-i18next'
 import { SelectSecondary } from '../components/Materials';
-import styled from "styled-components";
 
 const LanguageSelector = () => {
-    const { t, i18n } = useTranslation()
+    const { i18n } = useTranslation()
     const getLanguage = () => window.localStorage.i18nextLng
     
     const changeLanguage = (event) => {

@@ -1,6 +1,6 @@
 import * as React from "react";
 import '../../locales/config';
-import { Link, useHistory, RouteComponentProps, withRouter, useLocation } from "react-router-dom";
+import { Link, useHistory, withRouter, useLocation } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import styled from "styled-components";
 import "../../assets/scss/App.scss";
@@ -45,7 +45,7 @@ interface Views {
 }
 
 function Results(props: Views) {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const stats = props.stats
     const ConditionalLink = ({ children, to, condition }) => (!!condition && to)
       ? <Link to={to}>{children}</Link>

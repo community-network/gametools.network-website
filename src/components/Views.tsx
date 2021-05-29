@@ -1,6 +1,5 @@
 import '../locales/config';
 import { Switch, Route, Link, useLocation } from "react-router-dom";
-import { useTranslation } from 'react-i18next';
 import Home from "./routes/Home"
 import PlayerSearch from "./routes/PlayerSearch"
 import ServerSearch from "./routes/ServerSearch"
@@ -9,7 +8,6 @@ import Servers from "./routes/Servers"
 
 function Views() {
     const homePage = useLocation().pathname === "/"
-    const { t } = useTranslation();
     return (
         <div style={homePage ? {} : {paddingTop:90}}>
             <Switch>

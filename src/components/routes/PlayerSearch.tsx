@@ -4,7 +4,7 @@ import '../../locales/config';
 import { useTranslation } from 'react-i18next';
 import styled from "styled-components";
 import "../../assets/scss/App.scss";
-import { AltText, SearchBox, BigButtonSecondary, RightArrow, Back, ArrowLeft, Container, BigSelectSecondary, Align, InvisableRadioButton, Radio, SmallButtonRadio, UncheckedSmallButtonRadio } from '../Materials';
+import { AltText, SearchBox, BigButtonSecondary, RightArrow, Back, ArrowLeft, Container, BigSelectSecondary, Align } from '../Materials';
 import { Graph, GlobalGraph } from "../graphing/line"
 import { dice, graphGames } from "../../api/static"
 
@@ -18,7 +18,7 @@ const Title = styled.h2`
 `
 
 function Search() {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     // const games = platformGames.all;
 
     const [searchTerm, setSearchTerm] = React.useState<string>("");

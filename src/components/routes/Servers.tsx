@@ -5,8 +5,8 @@ import { useTranslation } from 'react-i18next';
 import styled from "styled-components";
 import "../../assets/scss/App.scss";
 import { GetStats } from "../../api/GetStats"
-import { useQuery, useQueryClient, useMutation } from 'react-query';
-import { M88, AltText, Back, ArrowLeft, Container, Align, AlignW, AlignT, Box} from '../Materials';
+import { useQuery } from 'react-query';
+import { AltText, Back, ArrowLeft, Container, Align, AlignW, AlignT, Box} from '../Materials';
 import { getLanguage } from "../../locales/config";
 
 const Description = styled.p`
@@ -82,7 +82,7 @@ function capitalizeFirstLetter(string: string) {
 }
 
 function Results(props: Views) {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const stats = props.stats
     const ConditionalLink = ({ children, to, condition }) => (!!condition && to)
       ? <Link to={to}>{children}</Link>
@@ -149,7 +149,7 @@ function Servers({ match }: RouteComponentProps<TParams>) {
     const gameId = match.params.gameid
     const serverName = match.params.sname
     
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const { isLoading: loading, isError: error, data: stats } = useQuery("detailed" + gameId + serverName + match.params.platform, () => GetStats.server(
         {game: gameId, type: "detailedserver", getter: match.params.type, serverName: serverName, lang: getLanguage(), platform: match.params.platform}
     ))

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useQuery } from "react-query";
 import { GetStats } from "../../api/GetStats";
 import { newTitles, graphGames } from "../../api/static";
-import { Box, Align } from '../Materials';
+import { Box } from '../Materials';
 
 
 interface GraphData {
@@ -17,7 +17,7 @@ interface GraphData {
 function LineGraph(props: GraphData) {
     if (!props.loading&&!props.error) {
         
-        const { t, i18n } = useTranslation();
+        const { t } = useTranslation();
         const time = props.stats.data.timeStamps.map((e: string) => {
             const time = new Date(e)
             return time.toLocaleDateString()
@@ -81,7 +81,7 @@ export function Graph(props: GameInfo) {
     const { isLoading: loading, isError: error, data: stats } = useQuery("regions" + props.days + props.region + props.gameName + props.platform, () => GetStats.graphs(
         {game: props.gameName, days: props.days, region: props.region, platform: props.platform}
     ))
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     
     return (
         <Box>
@@ -94,7 +94,7 @@ export function Graph(props: GameInfo) {
 
 function GlobalLineGraph(props: GraphData) {
     if (!props.loading&&!props.error) {
-        const { t, i18n } = useTranslation();
+        const { t } = useTranslation();
         const time = props.stats.data.timeStamps.map((e: string) => {
             const time = new Date(e)
             return time.toLocaleDateString()
