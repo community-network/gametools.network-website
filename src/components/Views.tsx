@@ -1,5 +1,5 @@
 import '../locales/config';
-import { Switch, Route, Link, useLocation } from "react-router-dom";
+import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 import Home from "./routes/Home"
 import PlayerSearch from "./routes/PlayerSearch"
 import ServerSearch from "./routes/ServerSearch"
@@ -15,6 +15,7 @@ function Views() {
                 <Route exact path="/stats" component={PlayerSearch}/>
                 <Route exact path="/stats/:plat/:type/:eaid/" component={Stats}/>
                 <Route exact path="/servers" component={ServerSearch}/>
+                <Redirect exact from="/servers/:gameid/:type/:sname" to="/servers/:gameid/:type/:sname/pc" />
                 <Route exact path="/servers/:gameid/:type/:sname/:platform" component={Servers}/>
                 <Route>React router 404</Route>
             </Switch>
