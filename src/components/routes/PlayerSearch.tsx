@@ -6,7 +6,7 @@ import styled from "styled-components";
 import "../../assets/scss/App.scss";
 import { M88, AltText, SearchBox, BigButtonSecondary, RightArrow, Back, ArrowLeft, Container, BigSelectSecondary, Align, InvisableRadioButton, Radio, SmallButtonRadio, UncheckedSmallButtonRadio } from '../Materials';
 import { Graph, GlobalGraph } from "../graphing/line"
-import { dice, platformGames } from "../../api/static"
+import { dice, graphGames } from "../../api/static"
 
 const Description = styled.p`
     ${AltText}
@@ -23,11 +23,13 @@ const Title = styled.h2`
 
 function Search() {
     const { t, i18n } = useTranslation();
-    const games = platformGames.all;
+    // const games = platformGames.all;
 
     const [searchTerm, setSearchTerm] = React.useState<string>("");
     const [platform, setPlatform] = React.useState<string>("pc");
-    const [game, setGame] = React.useState<string>("bf1");
+
+    const [platformGraph, setPlatformGraph] = React.useState<string>("pc");
+    const [gameGraph, setGraphGame] = React.useState<string>("bf1");
     return (
     <Container>
         <Back to="/"><ArrowLeft/>{t("playerSearch.back")}</Back>
@@ -57,32 +59,36 @@ function Search() {
             </form>
         </Align>
         <Title>{t("playerSearch.gameStatus")}</Title>
-        <Description>{t("playerSearch.statusDescription")}</Description>
-        <Align onChange={(ev: React.ChangeEvent<HTMLInputElement>):
-                    void => setGame(ev.target.value)}>
-            {games.map((key: string, index: number) => {
-                return (
-                    <Radio key={index}><InvisableRadioButton id={key} value={key} name="game" defaultChecked={game === key}/>
-                        {(game===key)?<SmallButtonRadio htmlFor={key}>{t(`games.${key}`)}</SmallButtonRadio>:
-                        <UncheckedSmallButtonRadio htmlFor={key}>{t(`games.${key}`)}</UncheckedSmallButtonRadio>}
-                    </Radio>
-                )
-            })}
+        
+
+        <Align>
+            <BigSelectSecondary value={platformGraph} onChange={(ev: React.ChangeEvent<HTMLSelectElement>):
+                    void => setPlatformGraph(ev.target.value)}>
+                <option value="pc">{t("platforms.pc")}</option>
+                <option value="xboxone">{t("platforms.xboxone")}</option>
+                <option value="ps4">{t("platforms.ps4")}</option>
+            </BigSelectSecondary>
+            <BigSelectSecondary value={gameGraph} onChange={(ev: React.ChangeEvent<HTMLInputElement>):
+                        void => setGraphGame(ev.target.value)}>
+                {graphGames[platformGraph].map((key: string, index: number) => {
+                    return <option key={index} value={key}>{t(`games.${key}`)}</option>
+                })}
+            </BigSelectSecondary>
         </Align>
-        {dice.includes(game) ? (
+        {dice.includes(gameGraph) ? (
             <Align>
-                <Graph gameName={game} days="7" region="all" />
-                <Graph gameName={game} days="7" region="eu" />
-                <Graph gameName={game} days="7" region="asia" />
-                <Graph gameName={game} days="7" region="nam" />
-                <Graph gameName={game} days="7" region="sam" />
-                <Graph gameName={game} days="7" region="oc" />
-                <Graph gameName={game} days="7" region="au" />
+                <Graph gameName={gameGraph} platform={platformGraph} days="7" region="all" />
+                <Graph gameName={gameGraph} platform={platformGraph} days="7" region="eu" />
+                <Graph gameName={gameGraph} platform={platformGraph} days="7" region="asia" />
+                <Graph gameName={gameGraph} platform={platformGraph} days="7" region="nam" />
+                <Graph gameName={gameGraph} platform={platformGraph} days="7" region="sam" />
+                <Graph gameName={gameGraph} platform={platformGraph} days="7" region="oc" />
+                <Graph gameName={gameGraph} platform={platformGraph} days="7" region="au" />
             </Align>
-        ):( (game == "bfglobal") ? (
-                <GlobalGraph days="7" />
+        ):( (gameGraph == "bfglobal") ? (
+                <GlobalGraph platform={platformGraph} days="7" />
             ) : (
-                <Graph gameName={game} days="7" region="all" />
+                <Graph gameName={gameGraph} platform={platformGraph} days="7" region="all" />
             )
         )}
     </Container>

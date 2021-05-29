@@ -1,9 +1,8 @@
-import { Stats } from "node:fs";
 import { Line } from "react-chartjs-2";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "react-query";
 import { GetStats } from "../../api/GetStats";
-import { newTitles, platformGames } from "../../api/static";
+import { newTitles, graphGames } from "../../api/static";
 import { Box, Align } from '../Materials';
 
 
@@ -11,7 +10,8 @@ interface GraphData {
     loading: boolean,
     error: boolean,
     stats: { [name: string]: any },
-    gameName: string
+    gameName: string,
+    platform: string
 }
 
 function LineGraph(props: GraphData) {
@@ -73,19 +73,20 @@ function LineGraph(props: GraphData) {
 interface GameInfo {
     gameName: string,
     days: string,
-    region: string
+    region: string,
+    platform: string
 }
 
 export function Graph(props: GameInfo) {
-    const { isLoading: loading, isError: error, data: stats } = useQuery("regions" + props.days + props.region + props.gameName, () => GetStats.graphs(
-        {game: props.gameName, days: props.days, region: props.region}
+    const { isLoading: loading, isError: error, data: stats } = useQuery("regions" + props.days + props.region + props.gameName + props.platform, () => GetStats.graphs(
+        {game: props.gameName, days: props.days, region: props.region, platform: props.platform}
     ))
     const { t, i18n } = useTranslation();
     
     return (
         <Box>
             <h3>{t(`regions.${props.region}`)}</h3>
-            <LineGraph loading={loading} error={error} stats={stats} gameName={props.gameName} />
+            <LineGraph loading={loading} error={error} platform={props.platform} stats={stats} gameName={props.gameName} />
         </Box>
     );
 }
@@ -98,7 +99,7 @@ function GlobalLineGraph(props: GraphData) {
             const time = new Date(e)
             return time.toLocaleDateString()
         }) 
-        const games = platformGames.all.filter((e: string) => {
+        const games = graphGames[props.platform].filter((e: string) => {
             if (e !== "bfglobal") {
                 return e
             }
@@ -135,17 +136,18 @@ function GlobalLineGraph(props: GraphData) {
 
 
 interface GlobalInfo {
-    days: string
+    days: string,
+    platform: string
 }
 
 export function GlobalGraph(props: GlobalInfo) {
-    const { isLoading: loading, isError: error, data: stats } = useQuery("globalRegions" + props.days, () => GetStats.graphs(
-        {game: "bfglobal", days: props.days, region: "all"}
+    const { isLoading: loading, isError: error, data: stats } = useQuery("globalRegions" + props.days + props.platform, () => GetStats.graphs(
+        {game: "bfglobal", days: props.days, region: "all", platform: props.platform}
     ))
 
     return (
         <Box>
-            <GlobalLineGraph loading={loading} error={error} stats={stats} gameName="bfglobal" />
+            <GlobalLineGraph loading={loading} error={error} stats={stats} gameName="bfglobal" platform={props.platform} />
         </Box>
     )
 }
