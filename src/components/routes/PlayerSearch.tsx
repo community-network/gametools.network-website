@@ -63,6 +63,7 @@ function Search() {
                 <option value="pc">{t("platforms.pc")}</option>
                 <option value="xboxone">{t("platforms.xboxone")}</option>
                 <option value="ps4">{t("platforms.ps4")}</option>
+                <option value="all">{t("platforms.all")}</option>
             </BigSelectSecondary>
             <BigSelectSecondary value={gameGraph} onChange={(ev: React.ChangeEvent<HTMLInputElement>):
                         void => setGraphGame(ev.target.value)}>

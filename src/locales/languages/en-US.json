@@ -44,7 +44,8 @@
         "xboxone": "XBOX ONE",
         "xbox360": "XBOX 360",
         "ps4": "PS4",
-        "ps3": "PS3"
+        "ps3": "PS3",
+        "all": "All platforms"
     },
     "home": {
         "hostedAt": {

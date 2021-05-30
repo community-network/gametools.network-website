@@ -45,9 +45,6 @@ export class ApiProvider extends JsonClient {
 
     async graphs({ game, days, region = "all", platform = "pc"}) {
         let gameStuff = game.split(".")
-        if (platform == "all") {
-            platform = "pc"
-        }
         return await this.getJsonMethod(`/${gameStuff[0]}/statusarray/`, {
             "days": days,
             "region": region,

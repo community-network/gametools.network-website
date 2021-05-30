@@ -70,6 +70,53 @@ function LineGraph(props: GraphData) {
     }
 }
 
+
+function AllPlatformGraph(props: GraphData) {
+    if (!props.loading&&!props.error) {
+        const { t } = useTranslation();
+        const time = props.stats.data.timeStamps.map((e: string) => {
+            const time = new Date(e)
+            return time.toLocaleDateString()
+        }) 
+        console.log(props.platform)
+        const data = {
+                labels: time,
+                datasets: [
+                    {
+                        label: t('platforms.pc'),
+                        data: props.stats.data.pc.soldierAmount,
+                        fill: false,
+                        borderColor: "rgba(75,192,192,0.2)",
+                        pointRadius: 0
+                    },
+                    {
+                        label: t('platforms.ps4'),
+                        data: props.stats.data.ps4.soldierAmount,
+                        fill: false,
+                        borderColor: "#49297e",
+                        pointRadius: 0
+                    },
+                    {
+                        label: t('platforms.xboxone'),
+                        data: props.stats.data.xboxone.soldierAmount,
+                        fill: false,
+                        borderColor: "#195f08",
+                        pointRadius: 0
+                    }
+                ]
+            };
+
+        return (
+            <div>
+                <Line style={{height: "15rem"}} data={data} type="line" />
+            </div>
+        )
+    } else {
+        return (<div></div>)
+    }
+}
+
+
 interface GameInfo {
     gameName: string,
     days: string,
@@ -86,11 +133,14 @@ export function Graph(props: GameInfo) {
     return (
         <Box>
             <h3>{t(`regions.${props.region}`)}</h3>
-            <LineGraph loading={loading} error={error} platform={props.platform} stats={stats} gameName={props.gameName} />
+            {(props.platform !== "all") ? (
+                <LineGraph loading={loading} error={error} platform={props.platform} stats={stats} gameName={props.gameName} />
+             ) : (
+                <AllPlatformGraph loading={loading} error={error} platform={props.platform} stats={stats} gameName={props.gameName} />
+             )}
         </Box>
     );
 }
-
 
 function GlobalLineGraph(props: GraphData) {
     if (!props.loading&&!props.error) {
