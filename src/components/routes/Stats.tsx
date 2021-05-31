@@ -160,7 +160,7 @@ function ViewStats(props: Views) {
                     </AlignS>
                     {props.game == "bf1" || props.game == "bfv"?
                         <BackgroundBar>
-                            <Bar style={{'width': (100 * stats.currentRankProgress) / stats.totalRankProgress}}></Bar>
+                            <Bar style={{'width': `${(100 * stats.currentRankProgress) / stats.totalRankProgress}%`}}></Bar>
                         </BackgroundBar>
                     :null}
                     <p></p>
