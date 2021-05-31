@@ -4,7 +4,7 @@ import '../../locales/config';
 import { useTranslation } from 'react-i18next';
 import { GetStats } from "../../api/GetStats"
 import { useQuery, useQueryClient, useMutation } from 'react-query';
-import { M96, AlignS, Back, ArrowLeft, Container, Align, Box, SmallSearchBox, AltText, SelectPrimary, Circle, Column, Row, InvisableRadioButton, Radio, SmallButtonRadio, UncheckedSmallButtonRadio } from '../Materials';
+import { M96, AlignS, Back, ArrowLeft, Container, Align, Box, SmallSearchBox, AltText, SelectPrimary, Circle, Column, Row, InvisableRadioButton, Radio, SmallButtonRadio, UncheckedSmallButtonRadio, GridContainer } from '../Materials';
 import styled from "styled-components";
 import { platformGames } from "../../api/static"
 import { getLanguage } from "../../locales/config";
@@ -198,6 +198,124 @@ function ViewStats(props: Views) {
     }
 }
 
+
+function DetailedStats(props: Views) {
+    const { t } = useTranslation();
+    const stats = props.stats;
+    if (!props.loading&&!props.error) {
+        return (
+            <Spacing>
+                <Box>
+                    <h3>{t("stats.detailedName")}</h3>
+                    <p></p>
+                    <GridContainer>
+                        <div>
+                            <h3>{stats["skill"]}</h3>
+                            <p>{t("stats.detailed.skill")}</p>
+                        </div>
+                        <div>
+                            <h3>{stats["scorePerMinute"]}</h3>
+                            <p>{t("stats.detailed.scorePerMinute")}</p>
+                        </div>
+                        <div>
+                            <h3>{stats["kills"]}</h3>
+                            <p>{t("stats.detailed.kills")}</p>
+                        </div>
+                        <div>
+                            <h3>{stats["deaths"]}</h3>
+                            <p>{t("stats.detailed.deaths")}</p>
+                        </div>
+                        <div>
+                            <h3>{stats["headshots"]}</h3>
+                            <p>{t("stats.detailed.headshotPercent")}</p>
+                        </div>
+                        <div>
+                            <h3>{stats["killAssists"]}</h3>
+                            <p>{t("stats.detailed.killAssists")}</p>
+                        </div>
+                    {/* </AlignS>
+                    <p></p>
+                    <AlignS> */}
+                        <div>
+                            <h3>{stats["wins"]}</h3>
+                            <p>{t("stats.detailed.wins")}</p>
+                        </div>
+                        <div>
+                            <h3>{stats["loses"]}</h3>
+                            <p>{t("stats.detailed.losses")}</p>
+                        </div>
+                        <div>
+                            <h3>{stats["revives"]}</h3>
+                            <p>{t("stats.detailed.revives")}</p>
+                        </div>
+                        <div>
+                            <h3>{stats["repairs"]}</h3>
+                            <p>{t("stats.detailed.repairs")}</p>
+                        </div>
+                        <div>
+                            <h3>{stats["infantryKillDeath"]}</h3>
+                            <p>{t("stats.detailed.infantryKillDeath")}</p>
+                        </div>
+                        <div>
+                            <h3>{stats["infantryKillsPerMinute"]}</h3>
+                            <p>{t("stats.detailed.infantryKillsPerMinute")}</p>
+                        </div>
+                    {/* </AlignS>
+                    <p></p>
+                    <AlignS> */}
+                        <div>
+                            <h3>{stats["heals"]}</h3>
+                            <p>{t("stats.detailed.heals")}</p>
+                        </div>
+                        <div>
+                            <h3>{stats["headShots"]}</h3>
+                            <p>{t("stats.detailed.headShots")}</p>
+                        </div>
+                        <div>
+                            <h3>{stats["avengerKills"]}</h3>
+                            <p>{t("stats.detailed.avengerKills")}</p>
+                        </div>
+                        <div>
+                            <h3>{stats["saviorKills"]}</h3>
+                            <p>{t("stats.detailed.saviorKills")}</p>
+                        </div>
+                        <div>
+                            <h3>{stats["roundsPlayed"]}</h3>
+                            <p>{t("stats.detailed.roundsPlayed")}</p>
+                        </div>
+                    {/* </AlignS>
+                    <p></p>
+                    <AlignS> */}
+                        <div>
+                            <h3>{stats["awardScore"]}</h3>
+                            <p>{t("stats.detailed.awardScore")}</p>
+                        </div>
+                        <div>
+                            <h3>{stats["bonusScore"]}</h3>
+                            <p>{t("stats.detailed.bonusScore")}</p>
+                        </div>
+                        <div>
+                            <h3>{stats["squadScore"]}</h3>
+                            <p>{t("stats.detailed.squadScore")}</p>
+                        </div>
+                        <div>
+                            <h3>{stats["longestHeadShot"]}</h3>
+                            <p>{t("stats.detailed.longestHeadShot")}</p>
+                        </div>
+                        <div>
+                            <h3>{stats["highestKillStreak"]}</h3>
+                            <p>{t("stats.detailed.highestKillStreak")}</p>
+                        </div>
+                    </GridContainer>
+                    <p></p>
+                </Box>
+            </Spacing>
+        )
+    } else {
+        return (<div></div>)
+    }
+}
+
 const Title = styled.h3`
     margin: 0 33px;
     padding-bottom: 1rem;
@@ -359,6 +477,7 @@ function Stats({ match }: RouteComponentProps<TParams>) {
             })}
         </Align>
         <ViewStats game={game} loading={loading} stats={stats} error={error}/>
+        <DetailedStats game={game} loading={loading} stats={stats} error={error}/>
         <ViewWeapons game={game} loading={loading} stats={stats} error={error}/>
         <ViewVehicles game={game} loading={loading} stats={stats} error={error}/>
         

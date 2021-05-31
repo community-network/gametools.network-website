@@ -230,6 +230,19 @@ export const AlignT = styled.div`
     flex-wrap: wrap;
 `
 
+export const GridContainer = styled.div`
+    display: grid;
+    @media (min-width: 600px) {
+        grid-template-columns: auto auto auto auto auto;
+    }
+    @media (max-width: 600px) and (min-width: 450px) {
+        grid-template-columns: auto auto auto;
+    }
+    @media (max-width: 450px) {
+        grid-template-columns: auto auto;
+    }
+`
+
 export function RightArrow() {
     return (
         <svg width="12" height="12" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">

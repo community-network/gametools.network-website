@@ -134,6 +134,7 @@
     "stats": {
         "back": "Back to search",
         "originDescription": "Origin profile",
+        "detailedName": "Detailed stats",
         "overview": "Overview",
         "overviewDescription": "A short overview of your stats in game.",
         "weapons": "Weapons",
@@ -158,6 +159,30 @@
             "bestClass": "Best class",
             "accuracy": "Accuracy",
             "timePlayed": "Time played"
+        },
+        "detailed": {
+            "skill": "Skill",
+            "scorePerMinute": "SPM",
+            "headshotPercent": "Headshots",
+            "infantryKillDeath": "infan K/D",
+            "infantryKillsPerMinute": "infan KPM",
+            "kills": "Kills",
+            "deaths": "Deaths",
+            "wins": "Wins",
+            "losses": "Losses",
+            "longestHeadShot": "Longest headshot",
+            "highestKillStreak": "Highest killstreak",
+            "revives": "Revives",
+            "roundsPlayed": "Rounds played",
+            "awardScore": "Award score",
+            "bonusScore": "Bonus score",
+            "squadScore": "Squad score",
+            "avengerKills": "Avenger kills",
+            "saviorKills": "Saviour kills",
+            "headShots": "Headshots",
+            "heals": "Heals",
+            "repairs": "Repairs",
+            "killAssists": "Kill assists"
         },
         "graph": {
             "all": "All players",
