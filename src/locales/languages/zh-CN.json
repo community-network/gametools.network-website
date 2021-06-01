@@ -133,6 +133,7 @@
     "stats": {
         "back": "回到搜索界面",
         "originDescription": "Origin 主页",
+        "detailedName": "战绩详情",
         "overview": "概览",
         "overviewDescription": "游戏综合数据",
         "weapons": "武器",
@@ -157,6 +158,30 @@
             "bestClass": "最佳兵种",
             "accuracy": "准度",
             "timePlayed": "游玩时间"
+        },
+        "detailed": {
+            "skill": "技巧值",
+            "scorePerMinute": "得分/分钟",
+            "headshotPercent": "爆头数",
+            "infantryKillDeath": "步兵击杀死亡比",
+            "infantryKillsPerMinute": "步兵击杀/分钟",
+            "kills": "击杀数",
+            "deaths": "死亡数",
+            "wins": "胜局",
+            "losses": "输局",
+            "longestHeadShot": "最长距离爆头",
+            "highestKillStreak": "最高连续击杀",
+            "revives": "急救数",
+            "roundsPlayed": "总局数",
+            "awardScore": "奖励分数",
+            "bonusScore": "勋带分数",
+            "squadScore": "小队分数",
+            "avengerKills": "复仇击杀",
+            "saviorKills": "掩护击杀",
+            "headShots": "爆头数",
+            "heals": "治疗分",
+            "repairs": "修理分",
+            "killAssists": "协助击杀"
         },
         "graph": {
             "all": "所有玩家",
