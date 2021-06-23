@@ -13,6 +13,7 @@ interface Views {
     loading: boolean,
     error: boolean,
     game: string,
+    name: string,
     stats: { [name: string]: any }
 }
 
@@ -34,14 +35,10 @@ const OriginDescription = styled.h4`
     line-height: 60%;
 `
 
-function UrlParams() {
-    return new URLSearchParams(useLocation().search);
-  }
-
 function ViewOrigin(props: Views) {
     const { t } = useTranslation();
     const stats = props.stats;
-    const nameGetter = UrlParams().get("name");
+    const name = props.name;
     if (props.error) {
         return ( // if playername isnt found
             <Spacing>
@@ -56,13 +53,13 @@ function ViewOrigin(props: Views) {
         )
     } else if (!props.loading&&!props.error) {
         if (stats.userName === null) {
-            if (nameGetter !== null) {
+            if (name !== null) {
                 return ( // if playerid but ?name behind it
                     <Spacing>
                         <Align>
                             <Circle/>
                             <div>
-                                <OriginName>{nameGetter}</OriginName>
+                                <OriginName>{name}</OriginName>
                                 <OriginDescription>{t("stats.originDescription")}</OriginDescription>
                             </div>
                         </Align>
@@ -440,31 +437,49 @@ type TParams = { plat: string, type: string, eaid: string}
 
 function Stats({ match }: RouteComponentProps<TParams>) {
     const [game, setGame] = React.useState<string>(platformGames[match.params.plat][0]);
+    const [name, setName] = React.useState<string>("");
+
+    const query = new URLSearchParams(useLocation().search);
+    const history = useHistory()
+    const gameQuery = query.get("game")
+    const nameQuery = query.get("name")
+    React.useState(() => {
+        if (gameQuery !== null) {
+            setGame(gameQuery)
+        }
+        if (nameQuery !== null) {
+            setName(nameQuery)
+        }
+    })
+
+    React.useEffect(() => {
+        const params = new URLSearchParams()
+        if (game) {
+            params.append("game", game)
+        } else {
+            params.delete("game")
+        }
+        if (name) {
+            params.append("name", name)
+        } else {
+            params.delete("name")
+        }
+            history.push({search: params.toString()})
+        }, [game, history])
     
     const { t } = useTranslation();
     const { isLoading: loading, isError: error, data: stats } = useQuery("stats" + game + match.params.eaid, () => GetStats.stats(
         {game: game, type: "all", getter: match.params.type, userName: match.params.eaid, lang: getLanguage()}
     ))
-    const history = useHistory()
-    const query = new URLSearchParams(useLocation().search);
     const games = platformGames[match.params.plat];
     return (
     <Container>
         <div>
             <Back to="/stats"><ArrowLeft/>{t("stats.back")}</Back>
         </div>
-        <ViewOrigin game={game} loading={loading} stats={stats} error={error}/>
+        <ViewOrigin game={game} loading={loading} stats={stats} error={error} name={name}/>
         <Align onChange={(ev: React.ChangeEvent<HTMLInputElement>):
                     void => {
-                        // if player is found within current game, use playerid to search on another game
-                        if (!loading&&!error && query.get("name") == null && match.params.type !== "playerid") {
-                            const params = new URLSearchParams()
-                            params.append("name", match.params.eaid)
-                            match.params.type = "playerid"
-                            match.params.eaid = stats.id
-                            history.push(`/stats/${match.params.plat}/playerid/${stats.id}`)
-                            history.push({search: params.toString()})
-                        }
                         setGame(ev.target.value)
                     }}>
             {games.map((key: string, index: number) => {
@@ -476,10 +491,10 @@ function Stats({ match }: RouteComponentProps<TParams>) {
                 )
             })}
         </Align>
-        <ViewStats game={game} loading={loading} stats={stats} error={error}/>
-        <DetailedStats game={game} loading={loading} stats={stats} error={error}/>
-        <ViewWeapons game={game} loading={loading} stats={stats} error={error}/>
-        <ViewVehicles game={game} loading={loading} stats={stats} error={error}/>
+        <ViewStats game={game} loading={loading} stats={stats} error={error} name={name}/>
+        <DetailedStats game={game} loading={loading} stats={stats} error={error} name={name}/>
+        <ViewWeapons game={game} loading={loading} stats={stats} error={error} name={name}/>
+        <ViewVehicles game={game} loading={loading} stats={stats} error={error} name={name}/>
         
     </Container>
     )

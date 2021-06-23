@@ -6,7 +6,7 @@ import styled from "styled-components";
 import "../../assets/scss/App.scss";
 import { AltText, SearchBox, BigButtonSecondary, RightArrow, Back, ArrowLeft, Container, BigSelectSecondary, Align } from '../Materials';
 import { Graph, GlobalGraph } from "../graphing/line"
-import { dice, graphGames } from "../../api/static"
+import { dice, graphGames, platformGames } from "../../api/static"
 
 const AltDescription = styled.p`
     ${AltText}
@@ -23,6 +23,7 @@ function Search() {
 
     const [searchTerm, setSearchTerm] = React.useState<string>("");
     const [platform, setPlatform] = React.useState<string>("pc");
+    const [game, setGame] = React.useState<string>("bf1");
 
     const [platformGraph, setPlatformGraph] = React.useState<string>("pc");
     const [gameGraph, setGraphGame] = React.useState<string>("bf1");
@@ -45,8 +46,14 @@ function Search() {
                     <option value="ps4">{t("platforms.ps4")}</option>
                     <option value="ps3">{t("platforms.ps3")}</option>
                 </BigSelectSecondary>
+                <BigSelectSecondary value={game} onChange={(ev: React.ChangeEvent<HTMLInputElement>):
+                            void => setGame(ev.target.value)}>
+                    {platformGames[platform].map((key: string, index: number) => {
+                        return <option key={index} value={key}>{t(`games.${key}`)}</option>
+                    })}
+                </BigSelectSecondary>
                 {searchTerm!==""?
-                    <Link to={`/stats/${platform}/name/${searchTerm}`}>
+                    <Link to={`/stats/${platform}/name/${searchTerm}?game=${game}`}>
                         <BigButtonSecondary type="submit">{t("playerSearch.search")} <RightArrow/></BigButtonSecondary>
                     </Link>
                 // if no name is filled in
