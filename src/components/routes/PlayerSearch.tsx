@@ -26,7 +26,7 @@ function Search() {
     const [game, setGame] = React.useState<string>("bf1");
 
     const [platformGraph, setPlatformGraph] = React.useState<string>("pc");
-    const [gameGraph, setGraphGame] = React.useState<string>("bf1");
+    const [gameGraph, setGraphGame] = React.useState<string>("bfglobal");
     return (
     <Container>
         <Back to="/"><ArrowLeft/>{t("playerSearch.back")}</Back>
@@ -66,7 +66,12 @@ function Search() {
 
         <Align>
             <BigSelectSecondary value={platformGraph} onChange={(ev: React.ChangeEvent<HTMLSelectElement>):
-                    void => setPlatformGraph(ev.target.value)}>
+                    void => {
+                        if (ev.target.value == "all" && gameGraph == "bfglobal") {
+                            setGraphGame("bf1")
+                        }
+                        setPlatformGraph(ev.target.value)
+                    }}>
                 <option value="pc">{t("platforms.pc")}</option>
                 <option value="xboxone">{t("platforms.xboxone")}</option>
                 <option value="ps4">{t("platforms.ps4")}</option>
