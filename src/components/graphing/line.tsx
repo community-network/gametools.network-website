@@ -79,7 +79,6 @@ function AllPlatformGraph(props: GraphData) {
             const time = new Date(e)
             return time.toLocaleDateString()
         }) 
-        console.log(props.platform)
         const data = {
                 labels: time,
                 datasets: [
