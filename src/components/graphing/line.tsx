@@ -140,7 +140,7 @@ export function OldGameGraph(props: GameInfo) {
             </Box>
         );
     } else {
-        return (<div></div>)
+        return (<h3>{t('loading')}</h3>)
     }
 }
 
@@ -171,13 +171,13 @@ export function Graph(props: GameInfo) {
             </>
         );
     } else {
-        return (<div></div>)
+        return (<h3>{t('loading')}</h3>)
     }
 }
 
 function GlobalLineGraph(props: GraphData) {
+    const { t } = useTranslation();
     if (!props.loading&&!props.error) {
-        const { t } = useTranslation();
         const time = props.stats.data.timeStamps.map((e: string) => {
             const time = new Date(e)
             return time.toLocaleDateString()
@@ -213,7 +213,7 @@ function GlobalLineGraph(props: GraphData) {
             </div>
         )
     } else {
-        return (<div></div>)
+        return (<h3>{t('loading')}</h3>)
     }
 }
 
