@@ -123,9 +123,9 @@ interface GameInfo {
 }
 
 export function OldGameGraph(props: GameInfo) {
-    const { isLoading: loading, isError: error, data: stats } = useQuery("regions" + "7" + "all" + props.gameName + props.platform, () => GetStats.graphs(
+    const { isLoading: loading, isError: error, data: stats } = useQuery(["regions", "7", "all", props.gameName, props.platform], () => GetStats.graphs(
         {game: props.gameName, days: "7", region: "all", platform: props.platform}
-    ))
+    ), {staleTime: Infinity, refetchOnWindowFocus: false})
     const { t } = useTranslation();
     if (!loading&&!error) {
         return (
@@ -144,9 +144,9 @@ export function OldGameGraph(props: GameInfo) {
 }
 
 export function Graph(props: GameInfo) {
-    const { isLoading: loading, isError: error, data: stats } = useQuery("regions" + "7" + "multiple" + props.gameName + props.platform, () => GetStats.graphs(
+    const { isLoading: loading, isError: error, data: stats } = useQuery(["regions", "7", "multiple", props.gameName, props.platform], () => GetStats.graphs(
         {game: props.gameName, days: "7", region: "multiple", platform: props.platform}
-    ))
+    ), {staleTime: Infinity, refetchOnWindowFocus: false})
     const { t } = useTranslation();
     if (!loading&&!error) {
         return (
@@ -230,9 +230,9 @@ interface GlobalInfo {
 }
 
 export function GlobalGraph(props: GlobalInfo) {
-    const { isLoading: loading, isError: error, data: stats } = useQuery("globalRegions" + "7" + props.platform, () => GetStats.graphs(
+    const { isLoading: loading, isError: error, data: stats } = useQuery(["globalRegions", "7", props.platform], () => GetStats.graphs(
         {game: "bfglobal", days: "7", region: "all", platform: props.platform}
-    ))
+    ), {staleTime: Infinity, refetchOnWindowFocus: false})
 
     return (
         <Box>
