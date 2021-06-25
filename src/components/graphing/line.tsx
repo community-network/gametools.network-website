@@ -171,7 +171,11 @@ export function Graph(props: GameInfo) {
             </>
         );
     } else {
-        return (<h3>{t('loading')}</h3>)
+        return (
+            <Box>
+                <h3>{t('loading')}</h3>
+            </Box>
+        )
     }
 }
 
@@ -213,7 +217,11 @@ function GlobalLineGraph(props: GraphData) {
             </div>
         )
     } else {
-        return (<h3>{t('loading')}</h3>)
+        return (
+            <Box>
+                <h3>{t('loading')}</h3>
+            </Box>
+        )
     }
 }
 
