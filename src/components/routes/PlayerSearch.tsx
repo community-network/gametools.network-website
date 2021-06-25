@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import styled from "styled-components";
 import "../../assets/scss/App.scss";
 import { AltText, SearchBox, BigButtonSecondary, RightArrow, Back, ArrowLeft, Container, BigSelectSecondary, Align } from '../Materials';
-import { Graph, GlobalGraph } from "../graphing/line"
+import { Graph, GlobalGraph, OldGameGraph } from "../graphing/line"
 import { dice, graphGames, platformGames } from "../../api/static"
 
 const AltDescription = styled.p`
@@ -86,20 +86,12 @@ function Search() {
         </Align>
         {dice.includes(gameGraph) ? (
             <Align>
-                <Graph gameName={gameGraph} platform={platformGraph} days="7" region="all" />
-                <Graph gameName={gameGraph} platform={platformGraph} days="7" region="eu" />
-                <Graph gameName={gameGraph} platform={platformGraph} days="7" region="asia" />
-                <Graph gameName={gameGraph} platform={platformGraph} days="7" region="nam" />
-                <Graph gameName={gameGraph} platform={platformGraph} days="7" region="sam" />
-                <Graph gameName={gameGraph} platform={platformGraph} days="7" region="oc" />
-                <Graph gameName={gameGraph} platform={platformGraph} days="7" region="au" />
-                <Graph gameName={gameGraph} platform={platformGraph} days="7" region="afr" />
-                <Graph gameName={gameGraph} platform={platformGraph} days="7" region="ac" />
+                <Graph gameName={gameGraph} platform={platformGraph} />
             </Align>
         ):( (gameGraph == "bfglobal") ? (
-                <GlobalGraph platform={platformGraph} days="7" />
+                <GlobalGraph platform={platformGraph} />
             ) : (
-                <Graph gameName={gameGraph} platform={platformGraph} days="7" region="all" />
+                <OldGameGraph gameName={gameGraph} platform={platformGraph} />
             )
         )}
     </Container>

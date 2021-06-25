@@ -11,14 +11,15 @@ interface GraphData {
     error: boolean,
     stats: { [name: string]: any },
     gameName: string,
-    platform: string
+    platform: string,
+    timeStamps: [string]
 }
 
 function LineGraph(props: GraphData) {
     if (!props.loading&&!props.error) {
         
         const { t } = useTranslation();
-        const time = props.stats.data.timeStamps.map((e: string) => {
+        const time = props.timeStamps.map((e: string) => {
             const time = new Date(e)
             return time.toLocaleDateString()
         }) 
@@ -27,21 +28,21 @@ function LineGraph(props: GraphData) {
                 datasets: [
                     {
                         label: t('stats.graph.all'),
-                        data: props.stats.data.soldierAmount,
+                        data: props.stats.soldierAmount,
                         fill: false,
                         borderColor: "rgba(75,192,192,0.2)",
                         pointRadius: 0
                     },
                     {
                         label: t('stats.graph.dice'),
-                        data: props.stats.data.diceSoldierAmount,
+                        data: props.stats.diceSoldierAmount,
                         fill: false,
                         borderColor: "#49297e",
                         pointRadius: 0
                     },
                     {
                         label: t('stats.graph.community'),
-                        data: props.stats.data.communitySoldierAmount,
+                        data: props.stats.communitySoldierAmount,
                         fill: false,
                         borderColor: "#195f08",
                         pointRadius: 0
@@ -52,7 +53,7 @@ function LineGraph(props: GraphData) {
                 datasets: [
                     {
                         label: "All players",
-                        data: props.stats.data.soldierAmount,
+                        data: props.stats.soldierAmount,
                         fill: false,
                         borderColor: "rgba(75,192,192,0.2)",
                         pointRadius: 0
@@ -74,7 +75,7 @@ function LineGraph(props: GraphData) {
 function AllPlatformGraph(props: GraphData) {
     if (!props.loading&&!props.error) {
         const { t } = useTranslation();
-        const time = props.stats.data.timeStamps.map((e: string) => {
+        const time = props.timeStamps.map((e: string) => {
             const time = new Date(e)
             return time.toLocaleDateString()
         }) 
@@ -84,21 +85,21 @@ function AllPlatformGraph(props: GraphData) {
                 datasets: [
                     {
                         label: t('platforms.pc'),
-                        data: props.stats.data.pc.soldierAmount,
+                        data: props.stats.pc.soldierAmount,
                         fill: false,
                         borderColor: "rgba(75,192,192,0.2)",
                         pointRadius: 0
                     },
                     {
                         label: t('platforms.ps4'),
-                        data: props.stats.data.ps4.soldierAmount,
+                        data: props.stats.ps4.soldierAmount,
                         fill: false,
                         borderColor: "#49297e",
                         pointRadius: 0
                     },
                     {
                         label: t('platforms.xboxone'),
-                        data: props.stats.data.xboxone.soldierAmount,
+                        data: props.stats.xboxone.soldierAmount,
                         fill: false,
                         borderColor: "#195f08",
                         pointRadius: 0
@@ -119,27 +120,59 @@ function AllPlatformGraph(props: GraphData) {
 
 interface GameInfo {
     gameName: string,
-    days: string,
-    region: string,
     platform: string
 }
 
-export function Graph(props: GameInfo) {
-    const { isLoading: loading, isError: error, data: stats } = useQuery("regions" + props.days + props.region + props.gameName + props.platform, () => GetStats.graphs(
-        {game: props.gameName, days: props.days, region: props.region, platform: props.platform}
+export function OldGameGraph(props: GameInfo) {
+    const { isLoading: loading, isError: error, data: stats } = useQuery("regions" + "7" + "all" + props.gameName + props.platform, () => GetStats.graphs(
+        {game: props.gameName, days: "7", region: "all", platform: props.platform}
     ))
     const { t } = useTranslation();
-    
-    return (
-        <Box>
-            <h3>{t(`regions.${props.region}`)}</h3>
-            {(props.platform !== "all") ? (
-                <LineGraph loading={loading} error={error} platform={props.platform} stats={stats} gameName={props.gameName} />
-             ) : (
-                <AllPlatformGraph loading={loading} error={error} platform={props.platform} stats={stats} gameName={props.gameName} />
-             )}
-        </Box>
-    );
+    if (!loading&&!error) {
+        return (
+            <Box>
+                <h3>{t(`regions.all`)}</h3>
+                {(props.platform !== "all") ? (
+                    <LineGraph timeStamps={stats.data.timeStamps} loading={loading} error={error} platform={props.platform} stats={stats.data} gameName={props.gameName} />
+                 ) : (
+                    <AllPlatformGraph  timeStamps={stats.data.timeStamps} loading={loading} error={error} platform={props.platform} stats={stats.data} gameName={props.gameName} />
+                 )}
+            </Box>
+        );
+    } else {
+        return (<div></div>)
+    }
+}
+
+export function Graph(props: GameInfo) {
+    const { isLoading: loading, isError: error, data: stats } = useQuery("regions" + "7" + "multiple" + props.gameName + props.platform, () => GetStats.graphs(
+        {game: props.gameName, days: "7", region: "multiple", platform: props.platform}
+    ))
+    const { t } = useTranslation();
+    if (!loading&&!error) {
+        return (
+            <>
+                {Object.keys(stats.data).map((key: string, index: number) => {
+                    {if (["timeStamps", "startTime", "endTime"].includes(key)) {
+                        return <></>
+                    } else {
+                        return (
+                            <Box key={index}>
+                                <h3>{t(`regions.${key.toLowerCase()}`)}</h3>
+                                {(props.platform !== "all") ? (
+                                    <LineGraph timeStamps={stats.data.timeStamps} loading={loading} error={error} platform={props.platform} stats={stats.data[key]} gameName={props.gameName} />
+                                 ) : (
+                                    <AllPlatformGraph timeStamps={stats.data.timeStamps} loading={loading} error={error} platform={props.platform} stats={stats.data[key]} gameName={props.gameName} />
+                                 )}
+                            </Box>
+                        )
+                    }}
+                })}
+            </>
+        );
+    } else {
+        return (<div></div>)
+    }
 }
 
 function GlobalLineGraph(props: GraphData) {
@@ -186,18 +219,17 @@ function GlobalLineGraph(props: GraphData) {
 
 
 interface GlobalInfo {
-    days: string,
     platform: string
 }
 
 export function GlobalGraph(props: GlobalInfo) {
-    const { isLoading: loading, isError: error, data: stats } = useQuery("globalRegions" + props.days + props.platform, () => GetStats.graphs(
-        {game: "bfglobal", days: props.days, region: "all", platform: props.platform}
+    const { isLoading: loading, isError: error, data: stats } = useQuery("globalRegions" + "7" + props.platform, () => GetStats.graphs(
+        {game: "bfglobal", days: "7", region: "all", platform: props.platform}
     ))
 
     return (
         <Box>
-            <GlobalLineGraph loading={loading} error={error} stats={stats} gameName="bfglobal" platform={props.platform} />
+            <GlobalLineGraph timeStamps={["none"]} loading={loading} error={error} stats={stats} gameName="bfglobal" platform={props.platform} />
         </Box>
     )
 }
