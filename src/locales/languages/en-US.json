@@ -37,7 +37,9 @@
         "nam": "North America",
         "sam": "South America",
         "au": "Australia",
-        "oc": "Oceania"
+        "oc": "Oceania",
+        "afr": "Africa",
+        "ac": "Antartica"
     },
     "platforms": {
         "pc": "PC",

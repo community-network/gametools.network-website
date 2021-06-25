@@ -93,6 +93,8 @@ function Search() {
                 <Graph gameName={gameGraph} platform={platformGraph} days="7" region="sam" />
                 <Graph gameName={gameGraph} platform={platformGraph} days="7" region="oc" />
                 <Graph gameName={gameGraph} platform={platformGraph} days="7" region="au" />
+                <Graph gameName={gameGraph} platform={platformGraph} days="7" region="afr" />
+                <Graph gameName={gameGraph} platform={platformGraph} days="7" region="ac" />
             </Align>
         ):( (gameGraph == "bfglobal") ? (
                 <GlobalGraph platform={platformGraph} days="7" />
