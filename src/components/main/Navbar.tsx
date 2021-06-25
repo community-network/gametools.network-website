@@ -6,7 +6,7 @@ import styled, { css } from "styled-components";
 import { M88 } from "../Materials";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
-const Nav = styled.div`
+const Nav = styled.header`
   ${M88};
   height: 90px;
   justify-content: space-between;

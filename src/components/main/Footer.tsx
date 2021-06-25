@@ -9,7 +9,7 @@ interface FLinkProp {
     name: string
 }
 
-const Background = styled.div`
+const Background = styled.footer`
     ${M88}
     padding-top: 1rem;
     padding-bottom: 1rem;

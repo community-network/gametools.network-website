@@ -28,12 +28,9 @@ function Main() {
 
 function Search() {
     const { t } = useTranslation();
-    // const games = platformGames.all;
-
     const [searchTerm, setSearchTerm] = React.useState<string>("");
     const [platform, setPlatform] = React.useState<string>("pc");
     const [game, setGame] = React.useState<string>("bf1");
-
     return (
         <>
             <Back to="/"><ArrowLeft/>{t("playerSearch.back")}</Back>
@@ -69,14 +66,11 @@ function Search() {
                 </form>
             </Align>
         </>
-        
-
     )
 }
 
 function Graphs() {
     const { t } = useTranslation();
-    
     const [platformGraph, setPlatformGraph] = React.useState<string>("pc");
     const [gameGraph, setGraphGame] = React.useState<string>("bfglobal");
     return (
