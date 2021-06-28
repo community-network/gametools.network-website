@@ -14,9 +14,7 @@ module.exports = merge(commonConfig, {
   devServer: {
     hot: true, // enable HMR on the server
     historyApiFallback: {
-      rewrites: [
-        { from: /^\/$/, to: '/' },
-      ]
+      rewrites: [{ from: /^\/$/, to: "/" }],
     },
   },
   devtool: "cheap-module-source-map",
