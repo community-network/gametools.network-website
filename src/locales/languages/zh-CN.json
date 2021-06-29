@@ -183,7 +183,9 @@
             "headShots": "爆头数",
             "heals": "治疗分",
             "repairs": "修理分",
-            "killAssists": "协助击杀"
+            "killAssists": "协助击杀",
+            "winPercent": "胜率",
+            "quits": "放弃"
         },
         "graph": {
             "all": "所有玩家",
