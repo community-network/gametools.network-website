@@ -343,6 +343,46 @@ function DetailedStats(props: Views): React.ReactElement {
           </Box>
         </Spacing>
       );
+    } else if (props.game == "bfh") {
+      return (
+        <Spacing>
+          <Box>
+            <h3>{t("stats.detailedName")}</h3>
+            <p></p>
+            <GridContainer>
+              <div>
+                <h3>{stats["scorePerMinute"]}</h3>
+                <p>{t("stats.detailed.scorePerMinute")}</p>
+              </div>
+              <div>
+                <h3>{stats["kills"]}</h3>
+                <p>{t("stats.detailed.kills")}</p>
+              </div>
+              <div>
+                <h3>{stats["deaths"]}</h3>
+                <p>{t("stats.detailed.deaths")}</p>
+              </div>
+              <div>
+                <h3>{stats["wins"]}</h3>
+                <p>{t("stats.detailed.wins")}</p>
+              </div>
+              <div>
+                <h3>{stats["loses"]}</h3>
+                <p>{t("stats.detailed.losses")}</p>
+              </div>
+              <div>
+                <h3>{stats["killAssists"]}</h3>
+                <p>{t("stats.detailed.killAssists")}</p>
+              </div>
+              <div>
+                <h3>{stats["winPercent"]}</h3>
+                <p>{t("stats.detailed.winPercent")}</p>
+              </div>
+            </GridContainer>
+            <p></p>
+          </Box>
+        </Spacing>
+      );
     } else {
       return (
         <Spacing>
