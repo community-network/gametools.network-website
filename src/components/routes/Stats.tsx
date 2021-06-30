@@ -183,17 +183,15 @@ function ViewStats(props: Views): React.ReactElement {
               <p>{t("stats.main.rank")}</p>
             </div>
           </AlignS>
-          {props.game == "bf1" || props.game == "bfv" ? (
-            <BackgroundBar>
-              <Bar
-                style={{
-                  width: `${
-                    (100 * stats.currentRankProgress) / stats.totalRankProgress
-                  }%`,
-                }}
-              ></Bar>
-            </BackgroundBar>
-          ) : null}
+          <BackgroundBar>
+            <Bar
+              style={{
+                width: `${
+                  (100 * stats.currentRankProgress) / stats.totalRankProgress
+                }%`,
+              }}
+            ></Bar>
+          </BackgroundBar>
           <p></p>
           <AlignS>
             <div>
