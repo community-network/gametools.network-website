@@ -56,12 +56,11 @@ const Blur = styled.div`
   background: radial-gradient(
     100% 100% at 50% 50%,
     rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.5) 100%
+    rgba(0, 0, 0, 0.48) 100%
   );
 `;
 
 const ServerText = styled.h1`
-  ${AltText}
   font-size: 1.8rem;
   text-align: center;
   padding-top: 2rem;
