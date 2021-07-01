@@ -33,10 +33,40 @@ const Title = styled.h2`
   margin-top: 2rem;
 `;
 
-const ServerImage = styled.img`
+interface IServerImage {
+  background: string;
+}
+
+const ServerImage = styled.div<IServerImage>`
   margin-top: 12px;
-  max-height: 4rem;
+  height: 4rem;
+  min-width: 7rem;
   margin-right: 1.5rem;
+  border-radius: 2px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("${(props) => props.background}");
+`;
+
+const Blur = styled.div`
+  height: 100%;
+  flex-grow: 3;
+  border-radius: 2px;
+  background: radial-gradient(
+    100% 100% at 50% 50%,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+`;
+
+const ServerText = styled.h1`
+  ${AltText}
+  font-size: 1.8rem;
+  text-align: center;
+  padding-top: 2rem;
+  line-height: 0;
+  margin-top: 0;
 `;
 
 const ServerInfo = styled.div`
@@ -94,7 +124,11 @@ function Results(props: Views): React.ReactElement {
               <Box>
                 <AlignW>
                   <div>
-                    <ServerImage src={key.url} />
+                    <ServerImage background={key.url}>
+                      <Blur>
+                        <ServerText>{key.smallMode}</ServerText>
+                      </Blur>
+                    </ServerImage>
                   </div>
                   <ServerInfo>
                     <h3>

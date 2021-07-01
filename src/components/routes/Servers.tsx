@@ -47,13 +47,15 @@ const ServerImage = styled.div<IServerImage>`
   background-image: url("${(props) => props.background}");
   margin-top: 12px;
   margin-right: 1rem;
+  border-radius: 10px;
 `;
 
 const Blur = styled.div`
   height: 100%;
   flex-grow: 3;
+  border-radius: 10px;
   background: radial-gradient(
-    50% 50% at 50% 50%,
+    100% 100% at 50% 50%,
     rgba(0, 0, 0, 0) 0%,
     rgba(0, 0, 0, 0.4872) 100%
   );
@@ -63,7 +65,7 @@ const ServerText = styled.h1`
   ${AltText}
   font-size: 3rem;
   text-align: center;
-  padding-top: 1.45rem;
+  padding-top: 1.2rem;
   line-height: 0;
 `;
 
@@ -76,11 +78,12 @@ const ServerFactorites = styled.h1`
 const MapImage = styled.img`
   margin-top: 12px;
   max-height: 4rem;
-  margin-right: 1.5rem;
+  margin-right: 0.7rem;
+  border-radius: 2px;
 `;
 
 const ServerInfo = styled.div`
-  margin-top: 16px;
+  margin-top: 15px;
 `;
 
 interface Views {
