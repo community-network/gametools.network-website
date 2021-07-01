@@ -121,7 +121,7 @@ interface GameInfo {
   platform: string;
 }
 
-export function OldGameGraph(props: GameInfo) {
+export function OldGameGraph(props: GameInfo): React.ReactElement {
   const {
     isLoading: loading,
     isError: error,
@@ -168,7 +168,7 @@ export function OldGameGraph(props: GameInfo) {
   }
 }
 
-export function Graph(props: GameInfo) {
+export function Graph(props: GameInfo): React.ReactElement {
   const {
     isLoading: loading,
     isError: error,
@@ -231,7 +231,7 @@ export function Graph(props: GameInfo) {
   }
 }
 
-function GlobalLineGraph(props: GraphData) {
+function GlobalLineGraph(props: GraphData): React.ReactElement {
   const { t } = useTranslation();
   if (!props.loading && !props.error) {
     const time = props.stats.data.timeStamps.map((e: string) => {
@@ -294,7 +294,7 @@ interface GlobalInfo {
   platform: string;
 }
 
-export function GlobalGraph(props: GlobalInfo) {
+export function GlobalGraph(props: GlobalInfo): React.ReactElement {
   const {
     isLoading: loading,
     isError: error,

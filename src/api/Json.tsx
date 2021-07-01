@@ -1,6 +1,6 @@
 import "regenerator-runtime/runtime";
 
-const MODE = "prod";
+const MODE = "dev";
 
 const endPoints = {
   dev: "https://api.jobse.space",
@@ -8,7 +8,7 @@ const endPoints = {
 };
 
 export default class JsonClient {
-  constructApiUrl(method: string, params: { [name: string]: string }) {
+  constructApiUrl(method: string, params: { [name: string]: string }): string {
     params = params || {};
     let paramStr = "";
     for (const s in params) {
@@ -18,13 +18,21 @@ export default class JsonClient {
     const apiEP = endPoints[MODE];
     return apiEP + method + paramStr;
   }
-  async fetchMethod(method: string, params: { [name: string]: string }) {
+  async fetchMethod(
+    method: string,
+    params: { [name: string]: string },
+  ): Promise<Response> {
     return fetch(this.constructApiUrl(method, params));
   }
-  getJsonMethod(method: string, params: { [name: string]: string }) {
+  getJsonMethod(
+    method: string,
+    params: { [name: string]: string },
+  ): Promise<{ [name: string]: string }> {
     return this.errorHandler(this.fetchMethod(method, params));
   }
-  async errorHandler(response: Promise<Response>) {
+  async errorHandler(
+    response: Promise<Response>,
+  ): Promise<{ [name: string]: string }> {
     return response.then(
       (result) => {
         return result.json().then(
@@ -40,7 +48,7 @@ export default class JsonClient {
       (error) => this.spawnError(error, response),
     );
   }
-  spawnError(error, code) {
+  spawnError(error: unknown, code: number | Promise<Response>): void {
     throw {
       error: {
         message: error,
