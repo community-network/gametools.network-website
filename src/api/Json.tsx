@@ -1,6 +1,6 @@
 import "regenerator-runtime/runtime";
 
-const MODE = "dev";
+const MODE = "prod";
 
 const endPoints = {
   dev: "https://api.jobse.space",
