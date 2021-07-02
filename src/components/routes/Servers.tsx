@@ -107,6 +107,10 @@ function Results(props: Views): React.ReactElement {
     if (queue !== undefined && queue !== 0) {
       queueString = `[${queue}]`;
     }
+    let officialString = "";
+    if (stats.official !== undefined) {
+      officialString = stats.official ? " - Official" : " - Custom";
+    }
     return (
       <div>
         <AlignW>
@@ -122,6 +126,7 @@ function Results(props: Views): React.ReactElement {
             <Description>
               {stats.playerAmount}/{stats.maxPlayers}
               {stats.maxPlayerAmount} {queueString} - {stats.currentMap}
+              {officialString}
             </Description>
             <Description>
               {t(`regions.${stats.region.toLowerCase()}`)} / {stats.country} -{" "}
