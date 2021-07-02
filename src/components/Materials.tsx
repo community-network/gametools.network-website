@@ -125,6 +125,19 @@ export const PrimaryButtonLink = styled.a`
   :hover {
     background: var(--color-blue-alt);
   }
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.10));
+`;
+
+export const ButtonLink = styled.a`
+  ${M96}
+  padding: 10px 20px;
+  background: var(--color-base);
+  border-radius: 5px;
+  transition: all 0.1s;
+  display: flex;
+  flex-grow: 1;
+  width: auto;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.10));
 `;
 
 export const BigButtonSecondary = styled.button`
@@ -145,7 +158,7 @@ export const BigButtonSecondary = styled.button`
 
 export const SmallButtonSecondary = styled.button`
   ${M96}
-  background: #1E2132;
+  background: var(--color-base);
   color: var(--color-text);
   border: none;
   margin-bottom: 1rem;
@@ -284,6 +297,7 @@ const BoxInner = styled.div`
 `;
 
 export function Box(props: {
+  align?: string;
   children:
     | boolean
     | React.ReactChild
@@ -292,7 +306,9 @@ export function Box(props: {
 }): React.ReactElement {
   return (
     <BoxWrap>
-      <BoxInner>{props.children}</BoxInner>
+      <BoxInner style={{ alignItems: props.align || "stretch" }}>
+        {props.children}
+      </BoxInner>
     </BoxWrap>
   );
 }

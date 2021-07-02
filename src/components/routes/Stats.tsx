@@ -3,9 +3,8 @@ import { RouteComponentProps, useLocation, useHistory } from "react-router-dom";
 import "../../locales/config";
 import { useTranslation } from "react-i18next";
 import { GetStats } from "../../api/GetStats";
-import { useQuery, useQueryClient, useMutation } from "react-query";
+import { useQuery } from "react-query";
 import {
-  M96,
   AlignS,
   Back,
   ArrowLeft,

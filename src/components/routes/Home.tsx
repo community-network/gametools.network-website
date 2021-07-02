@@ -10,6 +10,7 @@ import {
   Container,
   Align,
   PrimaryButtonLink,
+  ButtonLink,
 } from "../Materials";
 
 const Image = styled.div`
@@ -58,6 +59,20 @@ const WelcomeHeader = styled.h1`
 const WelcomeText = styled.p`
   ${AltText}
   font-size: 18px;
+`;
+
+const Title = styled.h2`
+  @media (min-width: 750px) {
+    padding-left: 8.33%;
+  }
+  @media (max-width: 750px) {
+    padding-left: 4%;
+  }
+  margin: 0;
+  padding-top: 1rem;
+  height: 2.5rem;
+  background-color: #1e2132;
+  margin-bottom: 2.2rem;
 `;
 
 function Home(): React.ReactElement {
@@ -117,14 +132,12 @@ function Home(): React.ReactElement {
           </Welcome>
         </Blur>
       </Image>
+      <Title>{t("home.hostedAt.header")}</Title>
       <Container>
-        <h2 style={{ margin: "24px 0 24px 24px" }}>
-          {t("home.hostedAt.header")}
-        </h2>
         <Align>
           {hostedAtItems.map((key, index) => {
             return (
-              <Box key={index}>
+              <Box key={index} align="flex-start">
                 <h3>{key.header}</h3>
                 {key.bodies.map((key, index) => {
                   return <p key={index}>{key}</p>;
@@ -143,21 +156,25 @@ function Home(): React.ReactElement {
         <Align>
           {ourSolutions.map((key, index) => {
             return (
-              <Box key={index}>
+              <Box key={index} align="flex-start">
                 <h3>{key.header}</h3>
                 {key.bodies.map((key, index) => {
                   return <p key={index}>{key}</p>;
                 })}
                 <br></br>
-                <PrimaryButtonLink target="_blank" href={key.url}>
+                <ButtonLink target="_blank" href={key.url}>
                   {key.link}
-                </PrimaryButtonLink>
+                </ButtonLink>
               </Box>
             );
           })}
         </Align>
+      </Container>
+      <Title style={{ marginTop: "3rem", marginBottom: 0 }}>
+        {t("home.faq.header")}
+      </Title>
+      <Container>
         <Faq>
-          <h1>{t("home.faq.header")}</h1>
           {faqItems.map((key, index) => {
             return (
               <FaqSection key={index}>
