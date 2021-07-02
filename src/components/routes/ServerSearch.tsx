@@ -110,6 +110,10 @@ function Results(props: Views): React.ReactElement {
           if (key.region !== undefined) {
             region = ` - ${t(`regions.${key.region.toLowerCase()}`)}`;
           }
+          let officialString = "";
+          if (key.official !== undefined) {
+            officialString = key.official ? " - Official" : " - Custom";
+          }
           return (
             <ConditionalLink
               to={`/servers/${props.game}/gameid/${key.gameId}/${key.platform}`}
@@ -138,6 +142,7 @@ function Results(props: Views): React.ReactElement {
                       {key.playerAmount}/{key.maxPlayers}
                       {key.maxPlayerAmount} {queueString} - {key.mode}
                       {key.mode === undefined ? key.map : null}
+                      {officialString}
                       {region}
                     </p>
                   </ServerInfo>
