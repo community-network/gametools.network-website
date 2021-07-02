@@ -108,7 +108,7 @@ function Results(props: Views): React.ReactElement {
           }
           let region: string = undefined;
           if (key.region !== undefined) {
-            region = `- ${t(`regions.${key.region.toLowerCase()}`)}`;
+            region = ` - ${t(`regions.${key.region.toLowerCase()}`)}`;
           }
           return (
             <ConditionalLink
