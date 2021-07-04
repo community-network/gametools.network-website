@@ -1,0 +1,216 @@
+{
+    "siteName": "Game Tools",
+    "siteDescription": "Community Network aims to provide public tools for different games. Starting with Battlefield, we are bringing back online concurrent player stats, as well as personal stats and much more in future.",
+    "loading": "Laden...",
+    "404": "404",
+    "playerNotFound": "Spelernaam niet gevonden, probeer een andere naam of spel.",
+    "notApplicable": "N/A",
+    "resultNotFound": "Geen resultaten gevonden",
+    "noName": "Kan geen spelernaam niet laten zien wanneer stats zijn opgehaald via speler ID.",
+    "navBar": {
+        "bfStats": "Battlefield stats",
+        "serverStats": "Battlefield serverstats",
+        "discord": "Onze Discord",
+        "api": "Publieke API",
+        "bot": "Discord-bot"
+    },
+    "games": {
+        "bfglobal": "Globaal",
+        "bf2": {
+            "bf2hub": "Battlefield 2 (bf2hub)",
+            "playbf2": "Battlefield 2 (playbf2)"
+        },
+        "bfbc2": "Battlefield: Bad Company 2",
+        "bf2142": "Battlefield 2142 (.com)",
+        "bf1942": "Battlefield 1942",
+        "bfvietnam": "Battlefield Vietnam",
+        "bf3": "Battlefield 3",
+        "bf4": "Battlefield 4",
+        "bfh": "Battlefield Hardline",
+        "bf1": "Battlefield 1",
+        "bfv": "Battlefield 5"
+    },
+    "regions": {
+        "all": "Alle regio's",
+        "eu": "Europa",
+        "asia": "Azië",
+        "nam": "Noord-America",
+        "sam": "Zuid-Amerika",
+        "au": "Australië",
+        "oc": "Oceanië",
+        "afr": "Afrika",
+        "ac": "Antarctica"
+    },
+    "platforms": {
+        "pc": "PC",
+        "xboxone": "XBOX ONE",
+        "xbox360": "XBOX 360",
+        "ps4": "PS4",
+        "ps3": "PS3",
+        "all": "Alle platformen"
+    },
+    "home": {
+        "hostedAt": {
+            "header": "Gehost in Game tools",
+            "0": {
+                "header": "BFBan",
+                "0": "Wij hosten en zijn een actief onderdeel van bfban.com - een geweldige community & reverse engineering/beveiligingsteam opgericht tegen hackers, we bieden een verenigd banlijst- en rapportsysteem.",
+                "1": "Rapporteer cheaters in BF1/BV5, zodat ze verbannen kunnen worden op communityservers.",
+                "link": "Bezoek BFBan",
+                "url": "http://bfban.com/"
+            }
+        },
+        "ourSolutions": {
+            "header": "Onze oplossingen",
+            "0": {
+                "header": "Server manager",
+                "0": "Een beheersysteem voor uw Battlefield 1 server. Hiermee kun je spelers automatisch kicken bijvoorbeeld op basis van ping of BFBan (onze globale banlijst). Bovendien biedt het een manier om meer dan 200 ban sloten voor uw servers te hebben.",
+                "1": "Geeft u ook toegang tot hetzelfde admin-paneel als in het spel, zodat u het spel niet hoeft te openen. Geweldig om op uw tweede monitor te hebben.",
+                "link": "Server manager openen",
+                "url": "https://manager.gametools.network/"
+            },
+            "1": {
+                "header": "Game Stats",
+                "0": "De Game stats bot is een Discord bot waarmee u van elke speler in het spel de stats kan ophalen, voor Battlefield 2, 3, 4, Hardline, 1 en 5.",
+                "1": "De bot ondersteund ook console spelers, voorbeeld: '!bf1stat {platform} {name}'",
+                "link": "Toevoegen aan uw server",
+                "url": "https://top.gg/bot/714524944783900794"
+            },
+            "2": {
+                "header": "Battlefield API",
+                "0": "Een publieke API waarmee u de statistieken van spelers en servers kan ophalen en kan gebruiken in uw eigen projecten of website. Dit ondersteund dezelfde Battlefield titels als de game stats bot.",
+                "link": "Lees de documentatie",
+                "url": "https://api.gametools.network/"
+            },
+            "3": {
+                "header": "Community Operations",
+                "0": "Een van onze eerste projecten was een RSP operations server, dit hadden we samen met BFBan opgezet. Het goal van het project as om een hackervrije server met operations als gamemode. U kunt meer info hierover vinden in onze Discord.",
+                "link": "Bezoek onze Discord",
+                "url": "https://discord.gametools.network/"
+            }
+        },
+        "faq": {
+            "header": "FAQ",
+            "0": {
+                "question": "Q: Can Ik uw API gebruiken?",
+                "answer": "A: Ja, dat kan. Wij leveren de API zonder enige limitaties."
+            },
+            "1": {
+                "question": "Q: U hebt een Discord bot, maar mag ik mijn eigen maken?",
+                "answer": "A: We bieden een geweldige bot voor Discord, maar als u een eigen wil maken, voelt U vrij om er een te maken met onze API."
+            },
+            "2": {
+                "question": "Q: Welke spellen zijn beschikbaar?",
+                "answer": "A: Onze website ondersteund de meeste Battlefield spellen waaronder V, 1, 4, Hardline, 3 and 2. De Discord bot ondersteund ook spellen zoals Division of Destiny 2."
+            },
+            "3": {
+                "question": "Q: Hebt u Battlefield Tracker gebruikt om dit te bouwen?",
+                "answer": "A: Nee, we leveren een apparte service."
+            },
+            "4": {
+                "question": "Q: Ik heb een probleem gevonden op de website, waar kan ik dit aangeven?",
+                "answer": "A: Ga naar onze GitHub en plaats daar enige problemen of suggesties."
+            },
+            "5": {
+                "question": "Q: Waar breng ik problemen of verbeteringen voor de Discord bot?",
+                "answer": "A: Voor verbeteringen kwa Discord bot of API, kom naar onze Discord."
+            }
+        }
+    },
+    "playerSearch": {
+        "back": "Hoofdpagina",
+        "bfStats": "Battlefield Stats",
+        "description": "Zoek voor een Origin naam om zijn stats te zien",
+        "search": "Zoeken",
+        "searchPlaceholder": "Zoek voor Origin naam...",
+        "gameStatus": "Het aantal spelers in het spel"
+    },
+    "serverSearch": {
+        "back": "Hoofdpagina",
+        "serverInfo": "Battlefield Servers",
+        "description": "Zoek voor Battlefield servers om de aantal spelers/map rotatie van de server te zien.",
+        "search": "Zoeken",
+        "searchPlaceholder": "Search voor servernaam...",
+        "results": "Zoekresultaten"
+    },
+    "stats": {
+        "back": "Terug naar zoeken",
+        "originDescription": "Origin profiel",
+        "detailedName": "Gedetaileerde stats",
+        "overview": "Overzicht",
+        "overviewDescription": "Een klein overzicht van uw statistieken in het spel.",
+        "weapons": "Wapens",
+        "vehicles": "Voertuigen",
+        "searchWeapon": "Zoek voor een wapen",
+        "searchVehicle": "Zoek voor een voertuig",
+        "rows": {
+            "weaponName": "Wapen naam",
+            "vehicleName": "Voertuig naam",
+            "type": "Type",
+            "kills": "Kills",
+            "kpm": "KPM",
+            "destroyed": "Destroyed",
+            "accuracy": "Accuracy",
+            "headshots": "Headshots"
+        },
+        "main": {
+            "rank": "Rank",
+            "killDeath": "K/D",
+            "killsPerMinute": "KPM",
+            "winPercent": "Win%",
+            "bestClass": "Best class",
+            "accuracy": "Accuracy",
+            "timePlayed": "Time played"
+        },
+        "detailed": {
+            "skill": "Skill",
+            "scorePerMinute": "SPM",
+            "headshotPercent": "Headshots",
+            "infantryKillDeath": "infan K/D",
+            "infantryKillsPerMinute": "infan KPM",
+            "kills": "Kills",
+            "deaths": "Deaths",
+            "wins": "Wins",
+            "losses": "Losses",
+            "longestHeadShot": "Longest headshot",
+            "highestKillStreak": "Highest killstreak",
+            "revives": "Revives",
+            "roundsPlayed": "Rounds played",
+            "awardScore": "Award score",
+            "bonusScore": "Bonus score",
+            "squadScore": "Squad score",
+            "avengerKills": "Avenger kills",
+            "saviorKills": "Saviour kills",
+            "headShots": "Headshots",
+            "heals": "Heals",
+            "repairs": "Repairs",
+            "killAssists": "Kill assists",
+            "winPercent": "Win precentage",
+            "quits": "Quits"
+        },
+        "graph": {
+            "all": "Alle spelers",
+            "dice": "Spelers op Dice servers",
+            "community": "Spelers op Community servers"
+        }
+    },
+    "servers": {
+        "back": "Terug naar zoeken",
+        "rotation": "Server maprotatie",
+        "settings": "Server-instellingen"
+    },
+    "footer": {
+        "descriptions": {
+            "0": "This website is part of the Community Network. It is Open Source. You can post issues and suggest changes/improvements via GitHub. API provided by Community Network and open for public usage. We don’t provide any third-party API. Our back end is closed source and not available publicly.",
+            "1": "Battlefield & Origin are registered trademark of Electronic Arts. This website uses data provided pursuant to Electronic Arts’ Battlefield 1 Stats Terms. Trademarks are the property of their respective owners. Game materials copyright Electronic Arts Inc. Electronic Arts has not endorsed and is not responsible for this site or its content.",
+            "2": "Code is under GPL v2 License. Some parts are under Community Network copyright."
+        },
+        "links": {
+            "0": "GitHub",
+            "1": "Publieke API",
+            "2": "Community Network Discord",
+            "3": "Privacy Policy",
+            "4": "Discord bot"
+        }
+    }
+}
