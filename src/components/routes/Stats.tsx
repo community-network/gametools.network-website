@@ -53,6 +53,32 @@ const OriginDescription = styled.h4`
   line-height: 60%;
 `;
 
+const PlatoonLink = styled.a`
+  color: rgba(255, 255, 255);
+  font-weight: 600;
+  line-height: 150%;
+  font-size: 16px;
+  font-weight: bold;
+`;
+
+interface Stats {
+  stats: { [name: string]: any };
+}
+
+function Platoon(props: Stats) {
+  const stats = props.stats;
+  console.log(stats);
+  if (stats.platoon !== undefined && stats.platoon.tag !== null) {
+    return (
+      <PlatoonLink href={stats.platoon.url} target="_blank">
+        [{stats.platoon.tag}]{" "}
+      </PlatoonLink>
+    );
+  } else {
+    return <></>;
+  }
+}
+
 function ViewOrigin(props: Views) {
   const { t } = useTranslation();
   const stats = props.stats;
@@ -108,7 +134,10 @@ function ViewOrigin(props: Views) {
           <Align>
             <OriginProfile src={stats.avatar} />
             <div>
-              <OriginName>{stats.userName}</OriginName>
+              <OriginName>
+                <Platoon stats={stats} />
+                {stats.userName}
+              </OriginName>
               <OriginDescription>
                 {t("stats.originDescription")}
               </OriginDescription>
