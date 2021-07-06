@@ -307,7 +307,14 @@ function ViewStats(props: Views): React.ReactElement {
       </Spacing>
     );
   } else {
-    return <div></div>;
+    return (
+      <Spacing>
+        <Box>
+          <h3>{t("stats.overview")}</h3>
+          <p>{t("loading")}</p>
+        </Box>
+      </Spacing>
+    );
   }
 }
 
@@ -517,7 +524,14 @@ function DetailedStats(props: Views): React.ReactElement {
       );
     }
   } else {
-    return <div></div>;
+    return (
+      <Spacing>
+        <Box>
+          <h3>{t("stats.detailedName")}</h3>
+          <p>{t("loading")}</p>
+        </Box>
+      </Spacing>
+    );
   }
 }
 
