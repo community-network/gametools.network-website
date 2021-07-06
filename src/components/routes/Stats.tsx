@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useState } from "react";
 import { RouteComponentProps, useLocation, useHistory } from "react-router-dom";
 import "../../locales/config";
 import { useTranslation } from "react-i18next";
