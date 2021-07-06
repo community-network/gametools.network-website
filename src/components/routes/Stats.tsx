@@ -79,6 +79,30 @@ function Platoon(props: Stats) {
   }
 }
 
+function PlatoonInfo(props: Views) {
+  const { t } = useTranslation();
+  const stats = props.stats;
+  if (!props.loading && !props.error) {
+    return (
+      <Spacing>
+        <Box>
+          <h3>{t("stats.detailedName")}</h3>
+          <p>{t("loading")}</p>
+        </Box>
+      </Spacing>
+    );
+  } else {
+    return (
+      <Spacing>
+        <Box>
+          <h3>{t("stats.detailedName")}</h3>
+          <p>{t("loading")}</p>
+        </Box>
+      </Spacing>
+    );
+  }
+}
+
 function ViewOrigin(props: Views) {
   const { t } = useTranslation();
   const stats = props.stats;
@@ -174,8 +198,6 @@ const Description = styled.p`
 
 const BottomOfBox = styled.div`
   display: inline-block;
-  bottom: 0;
-  position: absolute;
   line-height: 0;
 `;
 
@@ -252,7 +274,7 @@ function ViewStats(props: Views): React.ReactElement {
           </AlignS>
           <p></p>
           <BottomOfBox>
-            <p>
+            <p style={{ margin: 0 }}>
               {t("stats.main.timePlayed")}{" "}
               <WhiteText>{stats["timePlayed"]}</WhiteText>
             </p>
@@ -770,6 +792,13 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
         name={name}
       />
       <DetailedStats
+        game={game}
+        loading={loading}
+        stats={stats}
+        error={error}
+        name={name}
+      />
+      <PlatoonInfo
         game={game}
         loading={loading}
         stats={stats}
