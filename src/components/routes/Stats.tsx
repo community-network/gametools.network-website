@@ -1,9 +1,11 @@
 import * as React from "react";
+import { useState } from "react";
 import { RouteComponentProps, useLocation, useHistory } from "react-router-dom";
 import "../../locales/config";
 import { useTranslation } from "react-i18next";
 import { GetStats } from "../../api/GetStats";
 import { useQuery } from "react-query";
+import useWindowDimensions from "../functions/useWindowDimensions";
 import {
   AlignS,
   Back,
@@ -67,7 +69,6 @@ interface Stats {
 
 function Platoon(props: Stats) {
   const stats = props.stats;
-  console.log(stats);
   if (stats.platoon !== undefined && stats.platoon.tag !== null) {
     return (
       <PlatoonLink href={stats.platoon.url} target="_blank">
@@ -660,7 +661,7 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
     platformGames[match.params.plat][0],
   );
   const [name, setName] = React.useState<string>("");
-
+  const { width } = useWindowDimensions();
   const query = new URLSearchParams(useLocation().search);
   const history = useHistory();
   const gameQuery = query.get("game");
@@ -688,7 +689,6 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
     }
     history.push({ search: params.toString() });
   }, [game, history]);
-
   const { t } = useTranslation();
   const {
     isLoading: loading,
@@ -719,33 +719,50 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
         error={error}
         name={name}
       />
-      <Align
-        onChange={(ev: React.ChangeEvent<HTMLInputElement>): void => {
-          setGame(ev.target.value);
-        }}
-      >
-        {games.map((key: string, index: number) => {
-          return (
-            <Radio key={index}>
-              <InvisableRadioButton
-                id={key}
-                value={key}
-                name="game"
-                defaultChecked={game === key}
-              />
-              {game === key ? (
-                <SmallButtonRadio htmlFor={key}>
-                  {t(`games.${key}`)}
-                </SmallButtonRadio>
-              ) : (
-                <UncheckedSmallButtonRadio htmlFor={key}>
-                  {t(`games.${key}`)}
-                </UncheckedSmallButtonRadio>
-              )}
-            </Radio>
-          );
-        })}
-      </Align>
+      {width < 930 ? (
+        <SelectPrimary
+          value={game}
+          onChange={(ev: React.ChangeEvent<HTMLInputElement>): void => {
+            setGame(ev.target.value);
+          }}
+        >
+          {games.map((key: string, index: number) => {
+            return (
+              <option key={index} value={key}>
+                {t(`games.${key}`)}
+              </option>
+            );
+          })}
+        </SelectPrimary>
+      ) : (
+        <Align
+          onChange={(ev: React.ChangeEvent<HTMLInputElement>): void => {
+            setGame(ev.target.value);
+          }}
+        >
+          {games.map((key: string, index: number) => {
+            return (
+              <Radio key={index}>
+                <InvisableRadioButton
+                  id={key}
+                  value={key}
+                  name="game"
+                  defaultChecked={game === key}
+                />
+                {game === key ? (
+                  <SmallButtonRadio htmlFor={key}>
+                    {t(`games.${key}`)}
+                  </SmallButtonRadio>
+                ) : (
+                  <UncheckedSmallButtonRadio htmlFor={key}>
+                    {t(`games.${key}`)}
+                  </UncheckedSmallButtonRadio>
+                )}
+              </Radio>
+            );
+          })}
+        </Align>
+      )}
       <ViewStats
         game={game}
         loading={loading}
