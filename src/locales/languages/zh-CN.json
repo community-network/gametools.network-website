@@ -138,6 +138,7 @@
         "detailedName": "战绩详情",
         "overview": "概览",
         "overviewDescription": "游戏综合数据",
+        "platoonName": "正在代表的战队",
         "weapons": "武器",
         "vehicles": "载具",
         "searchWeapon": "搜索他的某一项武器",
@@ -151,6 +152,10 @@
             "destroyed": "摧毁数量",
             "accuracy": "准度",
             "headshots": "爆头数"
+        },
+        "platoon": {
+            "none": "该玩家不属于任何战队",
+            "noDescription": "该战队没有描述"
         },
         "main": {
             "rank": "等级 ",
