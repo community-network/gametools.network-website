@@ -563,26 +563,28 @@ function ViewWeapons(props: Views): React.ReactElement {
     <Spacing>
       <Align>
         <Title>{t("stats.weapons")}</Title>
-        <SmallSearchBox
-          placeholder={t("stats.searchWeapon")}
-          value={searchTerm}
-          onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
-            setSearchTerm(ev.target.value)
-          }
-        />
-        <SelectPrimary
-          value={sortType}
-          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
-            setSortType(ev.target.value)
-          }
-        >
-          <option value="weaponName">{t("stats.rows.weaponName")}</option>
-          <option value="type">{t("stats.rows.type")}</option>
-          <option value="-kills">{t("stats.rows.kills")}</option>
-          <option value="-killsPerMinute">{t("stats.rows.kpm")}</option>
-          <option value="-accuracy">{t("stats.rows.accuracy")}</option>
-          <option value="-headshots">{t("stats.rows.headshots")}</option>
-        </SelectPrimary>
+        <AlignW>
+          <SmallSearchBox
+            placeholder={t("stats.searchWeapon")}
+            value={searchTerm}
+            onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
+              setSearchTerm(ev.target.value)
+            }
+          />
+          <SelectPrimary
+            value={sortType}
+            onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
+              setSortType(ev.target.value)
+            }
+          >
+            <option value="weaponName">{t("stats.rows.weaponName")}</option>
+            <option value="type">{t("stats.rows.type")}</option>
+            <option value="-kills">{t("stats.rows.kills")}</option>
+            <option value="-killsPerMinute">{t("stats.rows.kpm")}</option>
+            <option value="-accuracy">{t("stats.rows.accuracy")}</option>
+            <option value="-headshots">{t("stats.rows.headshots")}</option>
+          </SelectPrimary>
+        </AlignW>
       </Align>
       {weapons !== [] ? (
         <Box>
@@ -641,25 +643,27 @@ function ViewVehicles(props: Views): React.ReactElement {
     <Spacing>
       <Align>
         <Title>{t("stats.vehicles")}</Title>
-        <SmallSearchBox
-          placeholder={t("stats.searchVehicle")}
-          value={searchTerm}
-          onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
-            setSearchTerm(ev.target.value)
-          }
-        />
-        <SelectPrimary
-          value={sortType}
-          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
-            setSortType(ev.target.value)
-          }
-        >
-          <option value="vehicleName">{t("stats.rows.vehicleName")}</option>
-          <option value="type">{t("stats.rows.type")}</option>
-          <option value="-kills">{t("stats.rows.kills")}</option>
-          <option value="-killsPerMinute">{t("stats.rows.kpm")}</option>
-          <option value="-destroyed">{t("stats.rows.destroyed")}</option>
-        </SelectPrimary>
+        <AlignW>
+          <SmallSearchBox
+            placeholder={t("stats.searchVehicle")}
+            value={searchTerm}
+            onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
+              setSearchTerm(ev.target.value)
+            }
+          />
+          <SelectPrimary
+            value={sortType}
+            onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
+              setSortType(ev.target.value)
+            }
+          >
+            <option value="vehicleName">{t("stats.rows.vehicleName")}</option>
+            <option value="type">{t("stats.rows.type")}</option>
+            <option value="-kills">{t("stats.rows.kills")}</option>
+            <option value="-killsPerMinute">{t("stats.rows.kpm")}</option>
+            <option value="-destroyed">{t("stats.rows.destroyed")}</option>
+          </SelectPrimary>
+        </AlignW>
       </Align>
       {vehicles !== [] ? (
         <Box>
