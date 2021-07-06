@@ -139,6 +139,7 @@
         "detailedName": "Detailed stats",
         "overview": "Overview",
         "overviewDescription": "A short overview of your stats in game.",
+        "platoonName": "Current platoon",
         "weapons": "Weapons",
         "vehicles": "Vehicles",
         "searchWeapon": "Search for weapon",
@@ -152,6 +153,10 @@
             "destroyed": "Destroyed",
             "accuracy": "Accuracy",
             "headshots": "Headshots"
+        },
+        "platoon": {
+            "none": "Player isn't in any platoon",
+            "noDescription": "The platoon doesn't have a description"
         },
         "main": {
             "rank": "Rank",

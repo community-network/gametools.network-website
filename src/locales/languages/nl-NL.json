@@ -139,6 +139,7 @@
         "detailedName": "Gedetaileerde stats",
         "overview": "Overzicht",
         "overviewDescription": "Een klein overzicht van uw statistieken in het spel.",
+        "platoonName": "Huidige platoon",
         "weapons": "Wapens",
         "vehicles": "Voertuigen",
         "searchWeapon": "Zoek voor een wapen",
@@ -152,6 +153,10 @@
             "destroyed": "Destroyed",
             "accuracy": "Accuracy",
             "headshots": "Headshots"
+        },
+        "platoon": {
+            "none": "Zit niet in een platoon",
+            "noDescription": "De platoon heeft geen descriptie"
         },
         "main": {
             "rank": "Rank",

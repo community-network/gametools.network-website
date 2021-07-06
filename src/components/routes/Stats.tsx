@@ -23,6 +23,7 @@ import {
   SmallButtonRadio,
   UncheckedSmallButtonRadio,
   GridContainer,
+  AlignW,
 } from "../Materials";
 import styled from "styled-components";
 import { newTitles, platformGames } from "../../api/static";
@@ -62,6 +63,10 @@ const PlatoonLink = styled.a`
   font-weight: bold;
 `;
 
+const PlatoonEmnlem = styled.img`
+  width: 100px;
+`;
+
 interface Stats {
   stats: { [name: string]: any };
 }
@@ -82,12 +87,31 @@ function Platoon(props: Stats) {
 function PlatoonInfo(props: Views) {
   const { t } = useTranslation();
   const stats = props.stats;
-  if (!props.loading && !props.error) {
+  if (!props.loading && !props.error && stats.platoon.name === null) {
     return (
       <Spacing>
         <Box>
-          <h3>{t("stats.detailedName")}</h3>
-          <p>{t("loading")}</p>
+          <h3>{t("stats.platoonName")}</h3>
+          <p>{t("stats.platoon.none")}</p>
+        </Box>
+      </Spacing>
+    );
+  } else if (!props.loading && !props.error) {
+    return (
+      <Spacing>
+        <Box>
+          <h3>{t("stats.platoonName")}</h3>
+          <AlignW style={{ alignItems: "start" }}>
+            <PlatoonEmnlem src={stats.platoon.emblem} />
+            <div style={{ marginTop: "1rem" }}>
+              <h3>{stats.platoon.name}</h3>
+              {stats.platoon.description !== null ? (
+                <p>{stats.platoon.description}</p>
+              ) : (
+                <Description>{t("stats.platoon.noDescription")}</Description>
+              )}
+            </div>
+          </AlignW>
         </Box>
       </Spacing>
     );
@@ -95,7 +119,7 @@ function PlatoonInfo(props: Views) {
     return (
       <Spacing>
         <Box>
-          <h3>{t("stats.detailedName")}</h3>
+          <h3>{t("stats.platoonName")}</h3>
           <p>{t("loading")}</p>
         </Box>
       </Spacing>
@@ -798,13 +822,17 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
         error={error}
         name={name}
       />
-      <PlatoonInfo
-        game={game}
-        loading={loading}
-        stats={stats}
-        error={error}
-        name={name}
-      />
+      {newTitles.includes(game) ? (
+        <PlatoonInfo
+          game={game}
+          loading={loading}
+          stats={stats}
+          error={error}
+          name={name}
+        />
+      ) : (
+        <></>
+      )}
       <ViewWeapons
         game={game}
         loading={loading}
