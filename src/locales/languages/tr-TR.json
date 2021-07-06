@@ -1,0 +1,221 @@
+{
+    "siteName": "Game Tools",
+    "siteDescription": "Topluluk Ağı, farklı oyunlar için genel araçlar sağlamayı amaçlamaktadır. Battlefield'dan başlayarak, çevrimiçi eşzamanlı oyuncu istatistiklerinin yanı sıra kişisel istatistikleri ve çok daha fazlasını gelecekte geri getiriyoruz.",
+    "loading": "Yükleniyor...",
+    "404": "404",
+    "playerNotFound": "Oyuncu Adı bulunamadı, başka bir ad veya başka bir oyun deneyin.",
+    "notApplicable": "Yok",
+    "resultNotFound": "Sonuç bulunamadı",
+    "noName": "Origin adı aracılığıyla istatistiklere erişirken oyuncu adı gösterilemiyor",
+    "navBar": {
+        "bfStats": "Battlefield İstatistikleri",
+        "serverStats": "Battlefield Sunucu İstatistikleri",
+        "discord": "Discord",
+        "api": "Genel API",
+        "bot": "Discord Botu"
+    },
+    "games": {
+        "bfglobal": "Global",
+        "bf2": {
+            "bf2hub": "Battlefield 2 (bf2hub)",
+            "playbf2": "Battlefield 2 (playbf2)"
+        },
+        "bfbc2": "Battlefield: Bad Company 2",
+        "bf2142": "Battlefield 2142 (.com)",
+        "bf1942": "Battlefield 1942",
+        "bfvietnam": "Battlefield Vietnam",
+        "bf3": "Battlefield 3",
+        "bf4": "Battlefield 4",
+        "bfh": "Battlefield Hardline",
+        "bf1": "Battlefield 1",
+        "bfv": "Battlefield 5"
+    },
+    "regions": {
+        "all": "Tüm bölgeler",
+        "eu": "Avrupa",
+        "asia": "Asya",
+        "nam": "Kuzey Amerika",
+        "sam": "Güney Amerika",
+        "au": "Avustralya",
+        "oc": "Okyanusya",
+        "afr": "Afrika",
+        "ac": "Antarktika"
+    },
+    "platforms": {
+        "pc": "PC",
+        "xboxone": "XBOX ONE",
+        "xbox360": "XBOX 360",
+        "ps4": "PS4",
+        "ps3": "PS3",
+        "all": "Tüm platformlar"
+    },
+    "home": {
+        "hostedAt": {
+            "header": "Hosted at Game tools",
+            "0": {
+                "header": "BFBan",
+                "0": "Birleşik yasak listesi ve şikayet sistemi sağlamak için hilecilere karşı oluşturulmuş muhteşem bir topluluk ve tersine mühendislik/güvenlik ekibi olan bfban.com'un aktif bir parçasıyız ve ev sahipliği yapıyoruz.",
+                "1": "Hile yapanları BF1/BFV'de bildirin, böylece topluluk sunucularında yasaklanabilirler.",
+                "link": "BFBan'ı ziyaret edin",
+                "url": "http://bfban.com/"
+            }
+        },
+        "ourSolutions": {
+            "header": "Çözümlerimiz",
+            "0": {
+                "header": "Server Manager",
+                "0": "Battlefield 1 sunucunuz için bir yönetici. Oyuncuları ping veya BFBan'a (küresel yasak listemiz) göre otomatik olarak atmanıza izin verir. Ayrıca sunucularınız için 200'den fazla banslot'a sahip olmanın bir yolunu sunar.",
+                "1": "Ayrıca oyundakiyle aynı yönetici paneline erişmenizi sağlar, böylece oyunu açmanıza gerek kalmaz. Sunucularınızı yönetebilmeniz için ikinci bir panelinizin olması harika.",
+                "link": "Sunucu yöneticisini ziyaret edin",
+                "url": "https://manager.gametools.network/"
+            },
+            "1": {
+                "header": "Game Stats",
+                "0": "Oyun istatistikleri botu, Battlefield 2, 3, 4, Hardline, 1 ve 5 gibi oyunlar için herhangi bir oyuncunun istatistiklerini görmek için bir Discord botudur.",
+                "1": "Bot ayrıca konsol kullanıcılarını da destekler, örneğin: '!bf1stat {platform} {name}'",
+                "link": "sunucunuza ekleyin",
+                "url": "https://top.gg/bot/714524944783900794"
+            },
+            "2": {
+                "header": "Battlefield API",
+                "0": "Kendi projeniz veya web siteniz için oyun içi istatistikleri veya sunucu bilgilerini almak için Genel API. Oyun istatistikleri botu ile aynı Battlefield oyunlarının hepsini destekler.",
+                "link": "belgeleri okuyun",
+                "url": "https://api.gametools.network/"
+            },
+            "3": {
+                "header": "Community Operations",
+                "0": "İlk projelerimizden biri BFBan ile kurduğumuz RSP Operation server'dı. Amaç, operasyonlar gamemodu ile hilesiz sunucu yapmaktı. Daha fazlasını Discord adresimizde bulabilirsiniz.",
+                "link": "Discord'umuzu ziyaret edin",
+                "url": "https://discord.gametools.network/"
+            }
+        },
+        "faq": {
+            "header": "FAQ",
+            "0": {
+                "question": "Q: API'nizi kullanabilir miyim?",
+                "answer": "A: Evet yapabilirsin. API'yi herhangi bir sınırlama olmaksızın ücretsiz olarak sağlıyoruz."
+            },
+            "1": {
+                "question": "Q: Discord botun var ama ben kendim yapabilir miyim?",
+                "answer": "A: Discord için harika bir bot sağlıyoruz, ancak kendinizinkini yazmak istiyorsanız API'mızla bunu yapmaktan çekinmeyin."
+            },
+            "2": {
+                "question": "Q: Hangi oyunlar mevcut?",
+                "answer": "A: Web sitemiz ve API'miz, V, 1, 4, Hardline, 3 ve 2 dahil olmak üzere Battlefield oyunlarının çoğunu destekler. Discord botu, Division veya Destiny 2 gibi diğer oyunları da destekler."
+            },
+            "3": {
+                "question": "Q: Tüm bunları oluşturmak için Battlefield Tracker'ı kullandınız mı?",
+                "answer": "A: Hayır. Bağımsız hizmetler sunuyoruz."
+            },
+            "4": {
+                "question": "Q: Web sitesinde bir sorun buldum veya değişiklik önermek istiyorum, nereden iletişime geçebilirim?",
+                "answer": "A: Herhangi bir sorun ve öneri göndermek için GitHub'ımıza gidin."
+            },
+            "5": {
+                "question": "Q: Discord botu için sorunlar ve özellik istekleri nereye gönderilir?",
+                "answer": "A: Bot ve API'miz ile ilgili öneriler için Discord'umuza katılın."
+            }
+        }
+    },
+    "playerSearch": {
+        "back": "Ana Sayfa",
+        "bfStats": "Battlefield istatistik",
+        "description": "Oyuncu istatistiklerini almak için herhangi bir Origin takma adını arayın.",
+        "search": "Arama",
+        "searchPlaceholder": "Origin adını arayın...",
+        "gameStatus": " Battlefield'daki oyuncu sayısı"
+    },
+    "serverSearch": {
+        "back": "Ana Sayfa",
+        "serverInfo": "Battlefield Sunucuları",
+        "description": "Oyuncu miktarlarını/sunucunun harita rotasyonunu almak için Battlefield sunucularını arayın",
+        "search": "Arama",
+        "searchPlaceholder": "Sunucu adını ara...",
+        "results": "Arama Sonuçları"
+    },
+    "stats": {
+        "back": "Aramaya geri dön",
+        "originDescription": "Origin profili",
+        "detailedName": "Ayrıntılı istatistikler",
+        "overview": "Genel bakış",
+        "overviewDescription": "Oyundaki istatistiklerinize kısa bir genel bakış.",
+        "platoonName": "Mevcut klan",
+        "weapons": "Silah",
+        "vehicles": "Araç",
+        "searchWeapon": "Silah ara",
+        "searchVehicle": "Araç ara",
+        "rows": {
+            "weaponName": "Silah adı",
+            "vehicleName": "Araç adı",
+            "type": "Tür",
+            "kills": "Öldürme",
+            "kpm": "KPM",
+            "destroyed": "Patlatma",
+            "accuracy": "isabet",
+            "headshots": "Kafadan vurma"
+        },
+        "platoon": {
+            "none": "Oyuncu herhangi bir klanda değil",
+            "noDescription": "Klanın açıklaması yok"
+        },
+        "main": {
+            "rank": "rütbe",
+            "killDeath": "K/D",
+            "killsPerMinute": "KPM",
+            "winPercent": "kazanma%",
+            "bestClass": "En iyi sınıf",
+            "accuracy": "İsabet",
+            "timePlayed": "Oynanan süre"
+        },
+        "detailed": {
+            "skill": "Beceri",
+            "scorePerMinute": "SPM",
+            "headshotPercent": ",Kafadan vurma",
+            "infantryKillDeath": "Piyade K/D",
+            "infantryKillsPerMinute": "Piyade KPM",
+            "kills": "Öldürme",
+            "deaths": "Ölüm",
+            "wins": "Kazanma",
+            "losses": "Kaybetme",
+            "longestHeadShot": "En uzun kafadan vuruş",
+            "highestKillStreak": "En yüksek ölüm serisi",
+            "revives": "Canlandırma",
+            "roundsPlayed": "Oynanan turlar",
+            "awardScore": "Ödül puanı",
+            "bonusScore": "Bonus puanı",
+            "squadScore": "Takım puanı",
+            "avengerKills": "intikamcı öldürme",
+            "saviorKills": "kurtarıcı öldürme",
+            "headShots": "Kafanda vuruş",
+            "heals": "iyileştirme",
+            "repairs": "Tamirler",
+            "killAssists": "Öldürme yardımı",
+            "winPercent": "Kazanma yüzdesi",
+            "quits": "Çıkmalar"
+        },
+        "graph": {
+            "all": "Tüm oyuncular",
+            "dice": "Dice sunucularındaki oyuncular",
+            "community": "Topluluk sunucularındaki oyuncular"
+        }
+    },
+    "servers": {
+        "back": "Aramaya geri dön",
+        "rotation": "Sunucu haritası döngüsü",
+        "settings": "Sunucu ayarları"
+    },
+    "footer": {
+        "descriptions": {
+            "0": "Bu web sitesi Topluluk Ağının bir parçasıdır. Açık Kaynaklıdır. GitHub aracılığıyla sorunları yayınlayabilir ve değişiklik/iyileştirme önerebilirsiniz. Topluluk Ağı tarafından sağlanan ve genel kullanıma açık API. Herhangi bir üçüncü taraf API sağlamıyoruz. Arka ucumuz kapalı kaynaktır ve herkese açık değildir.",
+            "1": "Battlefield & Origin, Electronic Arts'ın tescilli ticari markasıdır. Bu web sitesi Electronic Arts'ın Battlefield 1 İstatistik Koşulları uyarınca sağlanan verileri kullanır. Ticari markalar ilgili sahiplerinin mülkiyetindedir. Oyun malzemelerinin telif hakkı Electronic Arts Inc. Electronic Arts, bu siteyi veya içeriğini onaylamamıştır ve bunlardan sorumlu değildir.",
+            "2": "Kod GPL v2 Lisansı altındadır. Bazı bölümler Community Network telif hakkı kapsamındadır."
+        },
+        "links": {
+            "0": "GitHub",
+            "1": "Genel API",
+            "2": "Community Network Discord",
+            "3": "Gizlilik Politikası",
+            "4": "Discord bot"
+        }
+    }
+}
