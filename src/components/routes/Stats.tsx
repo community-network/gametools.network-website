@@ -106,7 +106,7 @@ function PlatoonInfo(props: Views) {
             <div style={{ marginTop: "1rem" }}>
               <h3>
                 <a
-                  href={`https://gametools.network/platoon/${stats.platoon.id}`}
+                  href={`https://gametools.network/platoons/${stats.platoon.id}`}
                 >
                   {stats.platoon.name}
                 </a>
