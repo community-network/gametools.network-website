@@ -86,6 +86,10 @@ const ServerInfo = styled.div`
   margin-top: 15px;
 `;
 
+const ServerLink = styled.a`
+  cursor: pointer;
+`;
+
 interface Views {
   loading: boolean;
   error: boolean;
@@ -98,6 +102,8 @@ function capitalizeFirstLetter(string: string) {
 }
 
 function Results(props: Views): React.ReactElement {
+  const [copyState, setCopyState] = React.useState<string>("copy");
+
   const { t } = useTranslation();
   const stats = props.stats;
   if (!props.loading && !props.error) {
@@ -134,6 +140,25 @@ function Results(props: Views): React.ReactElement {
             </Description>
           </div>
         </AlignW>
+        <Description style={{ marginTop: "6px" }}>
+          {t("servers.permLink")}{" "}
+          <ServerLink
+            onClick={() => {
+              navigator.clipboard.writeText(
+                `https://gametools.network/servers/bf1/name/${encodeURIComponent(
+                  stats.prefix,
+                )}/pc`,
+              );
+              setCopyState("copied");
+              const timer1 = setTimeout(() => setCopyState("copy"), 3 * 1000);
+              return () => {
+                clearTimeout(timer1);
+              };
+            }}
+          >
+            {t(`states.${copyState}`)}
+          </ServerLink>
+        </Description>
         <Title>{t("servers.rotation")}</Title>
         <Align>
           {stats.rotation.map((key: any, index: number) => {
@@ -188,8 +213,9 @@ type TParams = {
 };
 
 function Servers({ match }: RouteComponentProps<TParams>): React.ReactElement {
+  console.log(match.params.sname);
   const gameId = match.params.gameid;
-  const serverName = match.params.sname;
+  const serverName = decodeURIComponent(match.params.sname);
 
   const { t } = useTranslation();
   const {

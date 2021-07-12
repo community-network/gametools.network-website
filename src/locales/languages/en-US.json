@@ -7,6 +7,10 @@
     "notApplicable": "N/A",
     "resultNotFound": "No results found",
     "noName": "Cannot show a playername when accessing stats via playerId",
+    "states": {
+        "copy": "Copy link",
+        "copied": "Copied!"
+    },
     "navBar": {
         "bfStats": "Battlefield Stats",
         "serverStats": "Battlefield Serverstats",
@@ -202,7 +206,8 @@
     "servers": {
         "back": "Back to search",
         "rotation": "Server map rotation",
-        "settings": "Server settings"
+        "settings": "Server settings",
+        "permLink": "Permanent link (based on current name):"
     },
     "footer": {
         "descriptions": {

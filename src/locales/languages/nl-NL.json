@@ -7,6 +7,10 @@
     "notApplicable": "N/A",
     "resultNotFound": "Geen resultaten gevonden",
     "noName": "Kan geen spelernaam niet laten zien wanneer stats zijn opgehaald via speler ID.",
+    "states": {
+        "copy": "Link kopiëren",
+        "copied": "Gekopieerd!"
+    },
     "navBar": {
         "bfStats": "Battlefield stats",
         "serverStats": "Battlefield serverstats",
@@ -202,7 +206,8 @@
     "servers": {
         "back": "Terug naar zoeken",
         "rotation": "Server maprotatie",
-        "settings": "Server-instellingen"
+        "settings": "Server-instellingen",
+        "permLink": "Permanente link (gebaseerd op huidige naam):"
     },
     "footer": {
         "descriptions": {

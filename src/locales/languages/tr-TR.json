@@ -7,6 +7,10 @@
     "notApplicable": "Yok",
     "resultNotFound": "Sonuç bulunamadı",
     "noName": "Origin adı aracılığıyla istatistiklere erişirken oyuncu adı gösterilemiyor",
+    "states": {
+        "copy": "Bağlantıyı kopyala",
+        "copied": "Kopyalandı!"
+    },
     "navBar": {
         "bfStats": "Battlefield İstatistikleri",
         "serverStats": "Battlefield Sunucu İstatistikleri",
@@ -202,7 +206,8 @@
     "servers": {
         "back": "Aramaya geri dön",
         "rotation": "Sunucu haritası döngüsü",
-        "settings": "Sunucu ayarları"
+        "settings": "Sunucu ayarları",
+        "permLink": "Sabit bağlantı (isme dayalı):"
     },
     "footer": {
         "descriptions": {
