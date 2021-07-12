@@ -219,6 +219,7 @@
         "permLink": "Permanent link (based on current name):"
     },
     "platoon": {
+        "back": "Back to search",
         "members": {
             "General": "General",
             "Colonel": "Colonel",
