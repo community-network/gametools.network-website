@@ -220,12 +220,18 @@
     },
     "platoon": {
         "back": "Terug naar zoeken",
+        "searchPlayer": "Zoek een speler",
         "members": {
+            "main": "Platoon leden",
             "General": "Genraal",
             "Colonel": "Kolonel",
             "Lieutenant": "Luitenant",
             "Private": "Soldaat",
             "empty": "Er zijn geen leden met deze rank"
+        },
+        "rows": {
+            "role": "Rol",
+            "name": "Naam"
         }
     },
     "footer": {

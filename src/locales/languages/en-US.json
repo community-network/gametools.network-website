@@ -221,12 +221,18 @@
     },
     "platoon": {
         "back": "Back to search",
+        "searchPlayer": "Search a player",
         "members": {
+            "main": "Platoon members",
             "General": "General",
             "Colonel": "Colonel",
             "Lieutenant": "Lieutenant",
             "Private": "Private",
             "empty": "There are no members with this rank"
+        },
+        "rows": {
+            "role": "Role",
+            "name": "Name"
         }
     },
     "footer": {
