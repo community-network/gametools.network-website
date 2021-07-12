@@ -27,7 +27,7 @@ export default class JsonClient {
   getJsonMethod(
     method: string,
     params: { [name: string]: string },
-  ): Promise<{ [name: string]: string }> {
+  ): Promise<any> {
     return this.errorHandler(this.fetchMethod(method, params));
   }
   async errorHandler(

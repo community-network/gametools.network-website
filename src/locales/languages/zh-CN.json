@@ -6,6 +6,10 @@
     "playerNotFound": "找不到该玩家的id，请确认id的拼写",
     "notApplicable": "N/A",
     "noName": "当你用player id搜索时，我们不能显示玩家名称",
+    "states": {
+        "copy": "复制链接",
+        "copied": "已复制！"
+    },
     "navBar": {
         "bfStats": "战地数据库",
         "serverStats": "战地服务器数据",
@@ -201,7 +205,8 @@
     "servers": {
         "back": "搜索主页",
         "rotation": "服务器地图循环",
-        "settings": "服务器设定"
+        "settings": "服务器设定",
+        "permLink": "该服永久链接(基于最近设置的服务器名字):"
     },
     "footer": {
         "descriptions": {

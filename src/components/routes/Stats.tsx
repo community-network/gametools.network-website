@@ -104,7 +104,13 @@ function PlatoonInfo(props: Views) {
           <AlignW style={{ alignItems: "start" }}>
             <PlatoonEmnlem src={stats.platoon.emblem} />
             <div style={{ marginTop: "1rem" }}>
-              <h3>{stats.platoon.name}</h3>
+              <h3>
+                <a
+                  href={`https://gametools.network/platoon/${stats.platoon.id}`}
+                >
+                  {stats.platoon.name}
+                </a>
+              </h3>
               {stats.platoon.description !== null ? (
                 <p>{stats.platoon.description}</p>
               ) : (

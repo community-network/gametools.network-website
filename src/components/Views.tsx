@@ -4,8 +4,10 @@ import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 import Home from "./routes/Home";
 import PlayerSearch from "./routes/PlayerSearch";
 import ServerSearch from "./routes/ServerSearch";
+import PlatoonSearch from "./routes/PlatoonSearch";
 import Stats from "./routes/Stats";
 import Servers from "./routes/Servers";
+import Platoon from "./routes/Platoon";
 
 function Views(): React.ReactElement {
   const homePage = useLocation().pathname === "/";
@@ -15,6 +17,8 @@ function Views(): React.ReactElement {
         <Route exact path="/" component={Home} />
         <Route exact path="/stats" component={PlayerSearch} />
         <Route exact path="/stats/:plat/:type/:eaid/" component={Stats} />
+        <Route exact path="/platoons/:gid" component={Platoon} />
+        <Route exact path="/platoons" component={PlatoonSearch} />
         <Route exact path="/servers" component={ServerSearch} />
         <Redirect
           exact

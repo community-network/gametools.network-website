@@ -9,6 +9,16 @@ interface PlayerInfo {
   platform?: string;
 }
 
+interface PlatoonSearch {
+  name: string;
+  lang: string;
+}
+
+interface PlatoonInfo {
+  id: string;
+  lang: string;
+}
+
 interface ServerInfo {
   game: string;
   type: string;
@@ -25,6 +35,26 @@ interface GraphInfo {
   region: string;
   platform: string;
 }
+
+export type PlatoonPlayer = {
+  id: string;
+  name: string;
+  role: string;
+  avatar: string;
+};
+
+export type PlatoonStats = {
+  cache: boolean;
+  canApplyToJoin: boolean;
+  canJoinWithoutApply: boolean;
+  currentSize: number;
+  description: string;
+  emblem: string;
+  id: string;
+  members: PlatoonPlayer[];
+  name: string;
+  tag: string;
+};
 
 export class ApiProvider extends JsonClient {
   constructor() {
@@ -50,6 +80,20 @@ export class ApiProvider extends JsonClient {
       name: encodeURIComponent(userName),
       lang: lang,
       platform: platform,
+    });
+  }
+
+  async platoonSearch({ name, lang }: PlatoonSearch): Promise<PlatoonStats> {
+    return await this.getJsonMethod(`/bfglobal/platoons/`, {
+      name: name,
+      lang: lang,
+    });
+  }
+
+  async platoon({ id, lang }: PlatoonInfo): Promise<PlatoonStats> {
+    return await this.getJsonMethod(`/bfglobal/detailedplatoon/`, {
+      id: id,
+      lang: lang,
     });
   }
 

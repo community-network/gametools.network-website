@@ -137,7 +137,16 @@
         "searchPlaceholder": "Search for servername...",
         "results": "Search results"
     },
+    "platoonSearch": {
+        "back": "Main page",
+        "serverInfo": "Battlefield Platoons",
+        "description": "Search for Battlefield platoons to get more info about them, click on a platoon to see their members.",
+        "search": "Search",
+        "searchPlaceholder": "Search for platoon name...",
+        "results": "Search results"
+    },
     "stats": {
+        "view": "View stats",
         "back": "Back to search",
         "originDescription": "Origin profile",
         "detailedName": "Detailed stats",
@@ -208,6 +217,15 @@
         "rotation": "Server map rotation",
         "settings": "Server settings",
         "permLink": "Permanent link (based on current name):"
+    },
+    "platoon": {
+        "members": {
+            "General": "General",
+            "Colonel": "Colonel",
+            "Lieutenant": "Lieutenant",
+            "Private": "Private",
+            "empty": "There are no members with this rank"
+        }
     },
     "footer": {
         "descriptions": {
