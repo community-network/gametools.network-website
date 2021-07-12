@@ -137,6 +137,15 @@
         "searchPlaceholder": "Sunucu adını ara...",
         "results": "Arama Sonuçları"
     },
+    "platoonSearch": {
+        "back": "Ana Sayfa",
+        "serverInfo": "Battlefield Klanları",
+        "description": "Onlar hakkında daha fazla bilgi almak için Battlefield klanlarını arayın, üyelerini görmek için bir Klana tıklayın",
+        "search": "Arama",
+        "searchPlaceholder": "Klan adı ara...",
+        "results": "Arama sonuçları",
+        "resultNotFound": "Sonuç bulunamadı. Klanları aramak için en az 3 karaktere ihtiyacınız var.."
+    },
     "stats": {
         "back": "Aramaya geri dön",
         "originDescription": "Origin profili",
@@ -208,6 +217,16 @@
         "rotation": "Sunucu haritası döngüsü",
         "settings": "Sunucu ayarları",
         "permLink": "Sabit bağlantı (isme dayalı):"
+    },
+    "platoon": {
+        "back": "Aramaya geri dön",
+        "members": {
+            "General": "Orgeneral",
+            "Colonel": "Albay",
+            "Lieutenant": "Teğmen",
+            "Private": "Er",
+            "empty": "Bu rütbeye sahip üye yok"
+        }
     },
     "footer": {
         "descriptions": {
