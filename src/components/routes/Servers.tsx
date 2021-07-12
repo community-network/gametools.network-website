@@ -213,7 +213,6 @@ type TParams = {
 };
 
 function Servers({ match }: RouteComponentProps<TParams>): React.ReactElement {
-  console.log(match.params.sname);
   const gameId = match.params.gameid;
   const serverName = decodeURIComponent(match.params.sname);
 
