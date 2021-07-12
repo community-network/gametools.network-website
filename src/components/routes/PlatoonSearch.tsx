@@ -70,7 +70,7 @@ function Results(props: Views): React.ReactElement {
     if (stats.platoons.length == 0) {
       return (
         <Spacing>
-          <Description>{t("resultNotFound")}</Description>
+          <Description>{t("platoonSearch.resultNotFound")}</Description>
         </Spacing>
       );
     }

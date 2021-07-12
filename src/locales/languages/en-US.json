@@ -143,7 +143,8 @@
         "description": "Search for Battlefield platoons to get more info about them, click on a platoon to see their members.",
         "search": "Search",
         "searchPlaceholder": "Search for platoon name...",
-        "results": "Search results"
+        "results": "Search results",
+        "resultNotFound": "No results found. To search platoons, you need a minimum of 3 characters."
     },
     "stats": {
         "view": "View stats",

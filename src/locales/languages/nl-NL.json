@@ -137,6 +137,15 @@
         "searchPlaceholder": "Search voor servernaam...",
         "results": "Zoekresultaten"
     },
+    "platoonSearch": {
+        "back": "Hoofdpagina",
+        "serverInfo": "Battlefield Platoons",
+        "description": "Zoek voek Battlefield platoons, klik op een platoon om te zien wie er lid van is.",
+        "search": "Search",
+        "searchPlaceholder": "Search for platoon name...",
+        "results": "Search results",
+        "resultNotFound": "Geen resultaten gevonden. Om platoons te zoeken, moet u minimaal 3 karakters invoeren."
+    },
     "stats": {
         "back": "Terug naar zoeken",
         "originDescription": "Origin profiel",
@@ -208,6 +217,16 @@
         "rotation": "Server maprotatie",
         "settings": "Server-instellingen",
         "permLink": "Permanente link (gebaseerd op huidige naam):"
+    },
+    "platoon": {
+        "back": "Terug naar zoeken",
+        "members": {
+            "General": "Genraal",
+            "Colonel": "Kolonel",
+            "Lieutenant": "Luitenant",
+            "Private": "Soldaat",
+            "empty": "Er zijn geen leden met deze rank"
+        }
     },
     "footer": {
         "descriptions": {
