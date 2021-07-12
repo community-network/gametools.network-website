@@ -40,6 +40,9 @@ export default class JsonClient {
             if ("error" in json) {
               throw json.error;
             }
+            if (!result.ok) {
+              throw json.error;
+            }
             return json;
           },
           (error) => this.spawnError(error, 600),
