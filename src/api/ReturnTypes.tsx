@@ -155,3 +155,16 @@ export type ServerSettings = {
   Vehicles: { [name: string]: string };
   Weapons: { [name: string]: string };
 };
+
+export type PlatoonSearchResult = {
+  cache: boolean;
+  platoons: PlatoonResult[];
+};
+
+export type PlatoonResult = {
+  currentSize: number;
+  emblem: string;
+  id: string;
+  name: string;
+  tag: string;
+};

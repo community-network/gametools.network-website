@@ -4,6 +4,7 @@ import {
   MainStats,
   ServerSearch,
   DetailedServerInfo,
+  PlatoonSearchResult,
 } from "./ReturnTypes";
 
 interface PlayerInfo {
@@ -69,7 +70,10 @@ export class ApiProvider extends JsonClient {
     });
   }
 
-  async platoonSearch({ name, lang }: PlatoonSearch): Promise<PlatoonStats> {
+  async platoonSearch({
+    name,
+    lang,
+  }: PlatoonSearch): Promise<PlatoonSearchResult> {
     return await this.getJsonMethod(`/bfglobal/platoons/`, {
       name: name,
       lang: lang,

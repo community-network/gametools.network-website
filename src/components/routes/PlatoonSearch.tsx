@@ -12,13 +12,12 @@ import {
   Back,
   ArrowLeft,
   Container,
-  BigSelectSecondary,
   Align,
   AlignW,
   Box,
 } from "../Materials";
 import { getLanguage } from "../../locales/config";
-import { frostbite3 } from "../../api/static";
+import { PlatoonResult, PlatoonSearchResult } from "../../api/ReturnTypes";
 
 const Description = styled.p`
   ${AltText}
@@ -60,7 +59,7 @@ const Spacing = styled.div`
 interface Views {
   loading: boolean;
   error: boolean;
-  platoons: { [name: string]: any };
+  platoons: PlatoonSearchResult;
 }
 
 function Results(props: Views): React.ReactElement {
@@ -76,7 +75,7 @@ function Results(props: Views): React.ReactElement {
     }
     return (
       <Spacing>
-        {stats.platoons.map((key: any, index: number) => {
+        {stats.platoons.map((key: PlatoonResult, index: number) => {
           return (
             <Link key={index} to={`/platoons/${key.id}`}>
               <Box>
