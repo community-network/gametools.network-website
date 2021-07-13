@@ -1,4 +1,10 @@
 import JsonClient from "./Json";
+import {
+  PlatoonStats,
+  MainStats,
+  ServerSearch,
+  DetailedServerInfo,
+} from "./ReturnTypes";
 
 interface PlayerInfo {
   game: string;
@@ -36,26 +42,6 @@ interface GraphInfo {
   platform: string;
 }
 
-export type PlatoonPlayer = {
-  id: string;
-  name: string;
-  role: string;
-  avatar: string;
-};
-
-export type PlatoonStats = {
-  cache: boolean;
-  canApplyToJoin: boolean;
-  canJoinWithoutApply: boolean;
-  currentSize: number;
-  description: string;
-  emblem: string;
-  id: string;
-  members: PlatoonPlayer[];
-  name: string;
-  tag: string;
-};
-
 export class ApiProvider extends JsonClient {
   constructor() {
     super();
@@ -68,7 +54,7 @@ export class ApiProvider extends JsonClient {
     userName,
     lang,
     platform = "pc",
-  }: PlayerInfo): Promise<{ [name: string]: any }> {
+  }: PlayerInfo): Promise<MainStats> {
     if (getter == "playerid") {
       return await this.getJsonMethod(`/${game}/${type}/`, {
         playerid: userName,
@@ -105,7 +91,7 @@ export class ApiProvider extends JsonClient {
     lang,
     region = "all",
     platform = "pc",
-  }: ServerInfo): Promise<{ [name: string]: any }> {
+  }: ServerInfo): Promise<ServerSearch | DetailedServerInfo> {
     const gameStuff = game.split(".");
     if (platform == "all") {
       platform = "pc";

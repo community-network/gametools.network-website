@@ -4,7 +4,8 @@ import { RouteComponentProps } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../assets/scss/App.scss";
-import { GetStats, PlatoonStats } from "../../api/GetStats";
+import { PlatoonPlayer, PlatoonStats } from "../../api/ReturnTypes";
+import { GetStats } from "../../api/GetStats";
 import { useQuery } from "react-query";
 import {
   AltText,
@@ -83,7 +84,7 @@ function dynamicSort(property: string) {
     sortOrder = -1;
     property = property.substr(1);
   }
-  return function (a: {}, b: {}) {
+  return function (a: string, b: string): number {
     const result =
       a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
     return result * sortOrder;
@@ -99,7 +100,7 @@ function Results(props: Views): React.ReactElement {
   const [sortType, setSortType] = React.useState<string>("-kills");
 
   if (!props.loading && !props.error) {
-    members = platoon.members.filter((item: { name: string; role: any }) => {
+    members = platoon.members.filter((item: { name: string; role: string }) => {
       return item.name.toLowerCase().includes(searchTerm.toLowerCase());
     });
     members = members.sort(dynamicSort(sortType));
@@ -152,7 +153,7 @@ function Results(props: Views): React.ReactElement {
           {platoon.members !== [] ? (
             <Box>
               <div>
-                {members.map((key: any, index: number) => {
+                {members.map((key: PlatoonPlayer, index: number) => {
                   return (
                     <div key={index} style={{ margin: "0.8rem 0.2rem" }}>
                       <Column style={{ marginTop: 0 }}>

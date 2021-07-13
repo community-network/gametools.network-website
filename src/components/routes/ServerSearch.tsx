@@ -19,6 +19,7 @@ import {
 } from "../Materials";
 import { getLanguage } from "../../locales/config";
 import { frostbite3 } from "../../api/static";
+import { ServerList, ServerSearch } from "../../api/ReturnTypes";
 
 const Description = styled.p`
   ${AltText}
@@ -80,7 +81,7 @@ interface Views {
   loading: boolean;
   error: boolean;
   game: string;
-  stats: { [name: string]: any };
+  stats: ServerSearch;
 }
 
 function Results(props: Views): React.ReactElement {
@@ -99,7 +100,7 @@ function Results(props: Views): React.ReactElement {
     }
     return (
       <Spacing>
-        {stats.servers.map((key: any, index: number) => {
+        {stats.servers.map((key: ServerList, index: number) => {
           let queue: number = undefined;
           queue = key.inQue;
           let queueString = "";

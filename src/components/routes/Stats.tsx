@@ -1,5 +1,10 @@
 import * as React from "react";
-import { RouteComponentProps, useLocation, useHistory } from "react-router-dom";
+import {
+  RouteComponentProps,
+  useLocation,
+  useHistory,
+  Link,
+} from "react-router-dom";
 import "../../locales/config";
 import { useTranslation } from "react-i18next";
 import { GetStats } from "../../api/GetStats";
@@ -28,13 +33,18 @@ import {
 import styled from "styled-components";
 import { newTitles, platformGames } from "../../api/static";
 import { getLanguage } from "../../locales/config";
+import {
+  MainStatsVehicle,
+  MainStatsWeapon,
+  MainStats,
+} from "../../api/ReturnTypes";
 
 interface Views {
   loading: boolean;
   error: boolean;
   game: string;
   name: string;
-  stats: { [name: string]: any };
+  stats: MainStats;
 }
 
 export const Spacing = styled.div`
@@ -67,11 +77,11 @@ const PlatoonEmnlem = styled.img`
   width: 100px;
 `;
 
-interface Stats {
-  stats: { [name: string]: any };
+interface PlatoonStats {
+  stats: MainStats;
 }
 
-function Platoon(props: Stats) {
+function Platoon(props: PlatoonStats) {
   const stats = props.stats;
   if (stats.platoon !== undefined && stats.platoon.tag !== null) {
     return (
@@ -105,11 +115,9 @@ function PlatoonInfo(props: Views) {
             <PlatoonEmnlem src={stats.platoon.emblem} />
             <div style={{ marginTop: "1rem" }}>
               <h3>
-                <a
-                  href={`https://gametools.network/platoons/${stats.platoon.id}`}
-                >
+                <Link to={`/platoons/${stats.platoon.id}`}>
                   {stats.platoon.name}
-                </a>
+                </Link>
               </h3>
               {stats.platoon.description !== null ? (
                 <p>{stats.platoon.description}</p>
@@ -552,7 +560,7 @@ function dynamicSort(property: string) {
     sortOrder = -1;
     property = property.substr(1);
   }
-  return function (a: {}, b: {}) {
+  return function (a: string, b: string): number {
     const result =
       a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
     return result * sortOrder;
@@ -566,7 +574,11 @@ function ViewWeapons(props: Views): React.ReactElement {
   let weapons = [];
   if (!props.loading && !props.error) {
     weapons = props.stats.weapons.filter(
-      (item: { weaponName: string; accuracy: any; headshots: any }) => {
+      (item: {
+        weaponName: string;
+        accuracy: string | number;
+        headshots: string | number;
+      }) => {
         if (
           typeof item.accuracy == "string" &&
           typeof item.headshots == "string"
@@ -608,7 +620,7 @@ function ViewWeapons(props: Views): React.ReactElement {
       </Align>
       {weapons !== [] ? (
         <Box>
-          {weapons.map((key: any, index: number) => {
+          {weapons.map((key: MainStatsWeapon, index: number) => {
             return (
               <Column key={index}>
                 <Row>
@@ -687,7 +699,7 @@ function ViewVehicles(props: Views): React.ReactElement {
       </Align>
       {vehicles !== [] ? (
         <Box>
-          {vehicles.map((key: any, index: number) => {
+          {vehicles.map((key: MainStatsVehicle, index: number) => {
             return (
               <Column key={index}>
                 <Row>

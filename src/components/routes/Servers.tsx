@@ -1,6 +1,6 @@
 import * as React from "react";
 import "../../locales/config";
-import { Link, RouteComponentProps } from "react-router-dom";
+import { RouteComponentProps } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../assets/scss/App.scss";
@@ -17,6 +17,7 @@ import {
   Box,
 } from "../Materials";
 import { getLanguage } from "../../locales/config";
+import { DetailedServerInfo, ServerRotation } from "../../api/ReturnTypes";
 
 const Description = styled.p`
   ${AltText}
@@ -94,7 +95,7 @@ interface Views {
   loading: boolean;
   error: boolean;
   game: string;
-  stats: { [name: string]: any };
+  stats: DetailedServerInfo;
 }
 
 function capitalizeFirstLetter(string: string) {
@@ -161,7 +162,7 @@ function Results(props: Views): React.ReactElement {
         </Description>
         <Title>{t("servers.rotation")}</Title>
         <Align>
-          {stats.rotation.map((key: any, index: number) => {
+          {stats.rotation.map((key: ServerRotation, index: number) => {
             return (
               <Box key={index}>
                 <AlignW>
@@ -179,20 +180,24 @@ function Results(props: Views): React.ReactElement {
         </Align>
         <h2>{t("servers.settings")}</h2>
         <AlignT>
-          {Object.entries(stats.settings).map((key: any, index: number) => {
-            return (
-              <div key={index}>
-                <h3>{key[0]}</h3>
-                {Object.entries(key[1]).map((key: any, index: number) => {
-                  return (
-                    <AltDescription key={index}>
-                      {capitalizeFirstLetter(key[0])}: {key[1]}
-                    </AltDescription>
-                  );
-                })}
-              </div>
-            );
-          })}
+          {Object.entries(stats.settings).map(
+            (key: [string, unknown], index: number) => {
+              return (
+                <div key={index}>
+                  <h3>{key[0]}</h3>
+                  {Object.entries(key[1]).map(
+                    (key: [string, unknown], index: number) => {
+                      return (
+                        <AltDescription key={index}>
+                          {capitalizeFirstLetter(key[0])}: {key[1]}
+                        </AltDescription>
+                      );
+                    },
+                  )}
+                </div>
+              );
+            },
+          )}
         </AlignT>
       </div>
     );
