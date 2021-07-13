@@ -165,7 +165,7 @@ function Results(props: Views): React.ReactElement {
                           </Align>
                         </Row>
                         <Row>
-                          <h4>{key.role}</h4>
+                          <h4>{t(`platoon.members.${key.role}`)}</h4>
                         </Row>
                         <Row>
                           <ButtonLink

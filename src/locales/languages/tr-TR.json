@@ -220,12 +220,18 @@
     },
     "platoon": {
         "back": "Aramaya geri dön",
+        "searchPlayer": "Oyuncu ara",
         "members": {
+            "main": "Klan üyeleri",
             "General": "Orgeneral",
             "Colonel": "Albay",
             "Lieutenant": "Teğmen",
             "Private": "Er",
             "empty": "Bu rütbeye sahip üye yok"
+        },
+        "rows": {
+            "role": "Rol",
+            "name": "İsim"
         }
     },
     "footer": {
