@@ -34,7 +34,7 @@ export const apiLanguage = {
   "zh-cn": "zh-tw",
 };
 
-export const getLanguage = () => {
+export const getLanguage = (): string => {
   let language = window.localStorage.i18nextLng.toLowerCase();
   if (language in apiLanguage) {
     language = apiLanguage[language];

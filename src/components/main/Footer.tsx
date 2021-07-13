@@ -58,7 +58,7 @@ function FLink(props: FLinkProp) {
   );
 }
 
-export function Footer() {
+export function Footer(): JSX.Element {
   const { t, i18n } = useTranslation();
   const urls = [
     "https://github.com/Community-network",

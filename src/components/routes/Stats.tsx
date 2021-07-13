@@ -803,7 +803,7 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
       {width < 930 ? (
         <SelectPrimary
           value={game}
-          onChange={(ev: React.ChangeEvent<HTMLInputElement>): void => {
+          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void => {
             setGame(ev.target.value);
           }}
         >

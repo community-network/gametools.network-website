@@ -84,10 +84,16 @@ interface Views {
   stats: ServerSearch;
 }
 
+interface ConLink {
+  children: React.ReactElement<unknown, string>;
+  to: string;
+  condition: boolean;
+}
+
 function Results(props: Views): React.ReactElement {
   const { t } = useTranslation();
   const stats = props.stats;
-  const ConditionalLink = ({ children, to, condition }) =>
+  const ConditionalLink = ({ children, to, condition }: ConLink) =>
     !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
 
   if (!props.loading && !props.error) {
@@ -222,10 +228,8 @@ function Search(): React.ReactElement {
     isError: error,
     data: stats,
   } = useQuery("servers" + gameName + searchTerm + region + platform, () =>
-    GetStats.server({
+    GetStats.serverSearch({
       game: gameName,
-      type: "servers",
-      getter: "name",
       serverName: searchTerm,
       lang: getLanguage(),
       region: region,

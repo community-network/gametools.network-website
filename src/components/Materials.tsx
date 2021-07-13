@@ -125,7 +125,7 @@ export const PrimaryButtonLink = styled.a`
   :hover {
     background: var(--color-blue-alt);
   }
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.10));
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.1));
 `;
 
 export const ButtonLink = styled.a`
@@ -137,7 +137,7 @@ export const ButtonLink = styled.a`
   display: flex;
   flex-grow: 1;
   width: auto;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.10));
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.1));
 `;
 
 export const BigButtonSecondary = styled.button`

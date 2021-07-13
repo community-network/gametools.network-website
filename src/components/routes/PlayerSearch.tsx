@@ -74,7 +74,7 @@ function Search(): React.ReactElement {
           </BigSelectSecondary>
           <BigSelectSecondary
             value={game}
-            onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
+            onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
               setGame(ev.target.value)
             }
           >
@@ -128,7 +128,7 @@ function Graphs(): React.ReactElement {
         </BigSelectSecondary>
         <BigSelectSecondary
           value={gameGraph}
-          onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
+          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
             setGraphGame(ev.target.value)
           }
         >

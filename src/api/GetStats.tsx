@@ -28,8 +28,15 @@ interface PlatoonInfo {
 
 interface ServerInfo {
   game: string;
-  type: string;
   getter: string;
+  serverName: string;
+  lang: string;
+  region?: string;
+  platform?: string;
+}
+
+interface ServerSearchInfo {
+  game: string;
   serverName: string;
   lang: string;
   region?: string;
@@ -89,19 +96,18 @@ export class ApiProvider extends JsonClient {
 
   async server({
     game,
-    type,
     getter,
     serverName,
     lang,
     region = "all",
     platform = "pc",
-  }: ServerInfo): Promise<ServerSearch | DetailedServerInfo> {
+  }: ServerInfo): Promise<DetailedServerInfo> {
     const gameStuff = game.split(".");
     if (platform == "all") {
       platform = "pc";
     }
     if (getter == "gameid") {
-      return await this.getJsonMethod(`/${gameStuff[0]}/${type}/`, {
+      return await this.getJsonMethod(`/${gameStuff[0]}/detailedserver/`, {
         gameid: serverName,
         lang: lang,
         region: region,
@@ -109,7 +115,27 @@ export class ApiProvider extends JsonClient {
         service: gameStuff[1],
       });
     }
-    return await this.getJsonMethod(`/${gameStuff[0]}/${type}/`, {
+    return await this.getJsonMethod(`/${gameStuff[0]}/detailedserver/`, {
+      name: encodeURIComponent(serverName),
+      lang: lang,
+      region: region,
+      platform: platform,
+      service: gameStuff[1],
+    });
+  }
+
+  async serverSearch({
+    game,
+    serverName,
+    lang,
+    region = "all",
+    platform = "pc",
+  }: ServerSearchInfo): Promise<ServerSearch> {
+    const gameStuff = game.split(".");
+    if (platform == "all") {
+      platform = "pc";
+    }
+    return await this.getJsonMethod(`/${gameStuff[0]}/servers/`, {
       name: encodeURIComponent(serverName),
       lang: lang,
       region: region,

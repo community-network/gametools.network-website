@@ -229,7 +229,6 @@ function Servers({ match }: RouteComponentProps<TParams>): React.ReactElement {
   } = useQuery("detailed" + gameId + serverName + match.params.platform, () =>
     GetStats.server({
       game: gameId,
-      type: "detailedserver",
       getter: match.params.type,
       serverName: serverName,
       lang: getLanguage(),
