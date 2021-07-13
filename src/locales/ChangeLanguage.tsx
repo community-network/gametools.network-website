@@ -2,11 +2,11 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { SelectSecondary } from "../components/Materials";
 
-const LanguageSelector = () => {
+const LanguageSelector = (): JSX.Element => {
   const { i18n } = useTranslation();
   const getLanguage = () => window.localStorage.i18nextLng;
 
-  const changeLanguage = (event) => {
+  const changeLanguage = (event: { target: { value: string } }) => {
     i18n.changeLanguage(event.target.value);
   };
 
