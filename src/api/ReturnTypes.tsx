@@ -43,6 +43,7 @@ export type MainStats = {
   longestHeadShot: number;
   loses: number;
   activePlatoon: MainStatsPlatoon;
+  platoons: MainStatsPlatoon[];
   rank: number;
   rankImg: string;
   repairs: number;

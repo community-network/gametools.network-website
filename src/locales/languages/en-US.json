@@ -154,6 +154,7 @@
         "overview": "Overview",
         "overviewDescription": "A short overview of your stats in game.",
         "platoonName": "Current platoon",
+        "otherPlatoons": "Other platoons",
         "weapons": "Weapons",
         "vehicles": "Vehicles",
         "searchWeapon": "Search for weapon",

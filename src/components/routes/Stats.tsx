@@ -37,6 +37,7 @@ import {
   MainStatsVehicle,
   MainStatsWeapon,
   MainStats,
+  MainStatsPlatoon,
 } from "../../api/ReturnTypes";
 
 interface Views {
@@ -73,8 +74,9 @@ const PlatoonLink = styled.a`
   font-weight: bold;
 `;
 
-const PlatoonEmnlem = styled.img`
+const PlatoonEmblem = styled.img`
   width: 100px;
+  margin-right: 0.5rem;
 `;
 
 interface PlatoonStats {
@@ -112,7 +114,7 @@ function PlatoonInfo(props: Views) {
         <Box>
           <h3>{t("stats.platoonName")}</h3>
           <AlignW style={{ alignItems: "start" }}>
-            <PlatoonEmnlem src={stats.activePlatoon.emblem} />
+            <PlatoonEmblem src={stats.activePlatoon.emblem} />
             <div style={{ marginTop: "1rem" }}>
               <h3>
                 <Link to={`/platoons/${stats.activePlatoon.id}`}>
@@ -126,6 +128,35 @@ function PlatoonInfo(props: Views) {
               )}
             </div>
           </AlignW>
+          <br />
+          <br />
+          <h3>{t("stats.otherPlatoons")}</h3>
+          {props.stats.platoons.map((key: MainStatsPlatoon, index: number) => {
+            if (key.id !== stats.activePlatoon.id) {
+              return (
+                <>
+                  <AlignW style={{ alignItems: "start" }}>
+                    <PlatoonEmblem src={key.emblem} />
+                    <div style={{ marginTop: "1rem" }}>
+                      <h3>
+                        <Link to={`/platoons/${key.id}`}>{key.name}</Link>
+                      </h3>
+                      {key.description !== null ? (
+                        <p>{key.description}</p>
+                      ) : (
+                        <Description>
+                          {t("stats.platoon.noDescription")}
+                        </Description>
+                      )}
+                    </div>
+                  </AlignW>
+                  <br />
+                </>
+              );
+            } else {
+              return <></>;
+            }
+          })}
         </Box>
       </Spacing>
     );
