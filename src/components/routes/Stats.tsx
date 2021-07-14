@@ -83,10 +83,10 @@ interface PlatoonStats {
 
 function Platoon(props: PlatoonStats) {
   const stats = props.stats;
-  if (stats.platoon !== undefined && stats.platoon.tag !== null) {
+  if (stats.activePlatoon !== undefined && stats.activePlatoon.tag !== null) {
     return (
-      <PlatoonLink href={stats.platoon.url} target="_blank">
-        [{stats.platoon.tag}]{" "}
+      <PlatoonLink href={stats.activePlatoon.url} target="_blank">
+        [{stats.activePlatoon.tag}]{" "}
       </PlatoonLink>
     );
   } else {
@@ -97,7 +97,7 @@ function Platoon(props: PlatoonStats) {
 function PlatoonInfo(props: Views) {
   const { t } = useTranslation();
   const stats = props.stats;
-  if (!props.loading && !props.error && stats.platoon.name === null) {
+  if (!props.loading && !props.error && stats.activePlatoon.name === null) {
     return (
       <Spacing>
         <Box>
@@ -112,15 +112,15 @@ function PlatoonInfo(props: Views) {
         <Box>
           <h3>{t("stats.platoonName")}</h3>
           <AlignW style={{ alignItems: "start" }}>
-            <PlatoonEmnlem src={stats.platoon.emblem} />
+            <PlatoonEmnlem src={stats.activePlatoon.emblem} />
             <div style={{ marginTop: "1rem" }}>
               <h3>
-                <Link to={`/platoons/${stats.platoon.id}`}>
-                  {stats.platoon.name}
+                <Link to={`/platoons/${stats.activePlatoon.id}`}>
+                  {stats.activePlatoon.name}
                 </Link>
               </h3>
-              {stats.platoon.description !== null ? (
-                <p>{stats.platoon.description}</p>
+              {stats.activePlatoon.description !== null ? (
+                <p>{stats.activePlatoon.description}</p>
               ) : (
                 <Description>{t("stats.platoon.noDescription")}</Description>
               )}

@@ -42,7 +42,7 @@ export type MainStats = {
   killsPerMinute: number;
   longestHeadShot: number;
   loses: number;
-  platoon: MainStatsPlatoon;
+  activePlatoon: MainStatsPlatoon;
   rank: number;
   rankImg: string;
   repairs: number;
