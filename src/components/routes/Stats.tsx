@@ -109,6 +109,9 @@ function PlatoonInfo(props: Views) {
       </Spacing>
     );
   } else if (!props.loading && !props.error) {
+    const otherPlatoons = props.stats.platoons.filter(
+      (platoon) => platoon.id !== stats.activePlatoon.id,
+    );
     return (
       <Spacing>
         <Box>
@@ -128,35 +131,37 @@ function PlatoonInfo(props: Views) {
               )}
             </div>
           </AlignW>
-          <br />
-          <br />
-          <h3>{t("stats.otherPlatoons")}</h3>
-          {props.stats.platoons.map((key: MainStatsPlatoon, index: number) => {
-            if (key.id !== stats.activePlatoon.id) {
-              return (
-                <>
-                  <AlignW style={{ alignItems: "start" }}>
-                    <PlatoonEmblem src={key.emblem} />
-                    <div style={{ marginTop: "1rem" }}>
-                      <h3>
-                        <Link to={`/platoons/${key.id}`}>{key.name}</Link>
-                      </h3>
-                      {key.description !== null ? (
-                        <p>{key.description}</p>
-                      ) : (
-                        <Description>
-                          {t("stats.platoon.noDescription")}
-                        </Description>
-                      )}
-                    </div>
-                  </AlignW>
-                  <br />
-                </>
-              );
-            } else {
-              return <></>;
-            }
-          })}
+          {otherPlatoons.length !== 0 ? (
+            <>
+              <br />
+              <br />
+              <h3>{t("stats.otherPlatoons")}</h3>
+              {otherPlatoons.map((key: MainStatsPlatoon) => {
+                return (
+                  <>
+                    <AlignW style={{ alignItems: "start" }}>
+                      <PlatoonEmblem src={key.emblem} />
+                      <div style={{ marginTop: "1rem" }}>
+                        <h3>
+                          <Link to={`/platoons/${key.id}`}>{key.name}</Link>
+                        </h3>
+                        {key.description !== null ? (
+                          <p>{key.description}</p>
+                        ) : (
+                          <Description>
+                            {t("stats.platoon.noDescription")}
+                          </Description>
+                        )}
+                      </div>
+                    </AlignW>
+                    <br />
+                  </>
+                );
+              })}
+            </>
+          ) : (
+            <></>
+          )}
         </Box>
       </Spacing>
     );
