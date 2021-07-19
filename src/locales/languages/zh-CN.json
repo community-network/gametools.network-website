@@ -137,6 +137,7 @@
         "results": "搜索结果"
     },
     "stats": {
+        "view": "查看战绩",
         "back": "回到搜索界面",
         "originDescription": "Origin 主页",
         "detailedName": "战绩详情",
