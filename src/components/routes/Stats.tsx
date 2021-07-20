@@ -266,7 +266,11 @@ function BfSessionInfo(props: Views) {
                           <div>
                             <h4 style={{ margin: 0 }}>{key.score}</h4>
                             <h4 style={{ margin: 0 }}>{key.kills}</h4>
-                            <h4 style={{ margin: 0 }}>{key.timePlayed}</h4>
+                            <h4 style={{ margin: 0 }}>
+                              {t("change", {
+                                change: addSeconds(new Date(), key.timePlayed),
+                              })}
+                            </h4>
                           </div>
                         </Align>
                       </div>
