@@ -226,7 +226,13 @@ function BfSessionInfo(props: Views) {
                   )
                 </h3>
                 <Description>{key.serverName}</Description>
-                <br />
+                <hr
+                  style={{
+                    marginBottom: "1rem",
+                    width: "90%",
+                    border: "1px solid #282a3a",
+                  }}
+                />
                 <AlignS>
                   <div>
                     <h3>{stats.kills}</h3>
@@ -245,7 +251,13 @@ function BfSessionInfo(props: Views) {
                     <p>{t("stats.playSession.stats.losses")}</p>
                   </div>
                 </AlignS>
-                <br />
+                <hr
+                  style={{
+                    marginBottom: "1rem",
+                    width: "90%",
+                    border: "1px solid #282a3a",
+                  }}
+                />
                 <Align>
                   {kits.map((key: SessionKit, index: number) => {
                     return (
