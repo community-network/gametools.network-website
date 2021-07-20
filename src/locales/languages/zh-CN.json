@@ -163,6 +163,18 @@
             "none": "该玩家不属于任何战队",
             "noDescription": "该战队没有描述"
         },
+        "playSession": {
+            "main": "对局战报",
+            "detailed": "我们将会追踪你游玩的服务器，前提是该服务器使用了我们的服管工具.",
+            "stats": {
+                "kills": "击杀",
+                "deaths": "死亡",
+                "wins": "胜利",
+                "losses": "失败",
+                "timePlayedAs": "游玩时间",
+                "score": "分数"
+            }
+        },
         "main": {
             "rank": "等级 ",
             "killDeath": "K/D比",
