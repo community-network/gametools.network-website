@@ -249,7 +249,10 @@ function BfSessionInfo(props: Views) {
                 <Align>
                   {kits.map((key: SessionKit, index: number) => {
                     return (
-                      <div key={index} style={{ marginRight: "3rem" }}>
+                      <div
+                        key={index}
+                        style={{ marginRight: "3rem", marginBottom: "1rem" }}
+                      >
                         <h3 style={{ marginBottom: 0 }}>{key.name}</h3>
                         <Align>
                           <div style={{ marginRight: "1rem" }}>
@@ -280,7 +283,7 @@ function BfSessionInfo(props: Views) {
                 {typeof props.stats.sessions[index + 1] !== "undefined" ? (
                   <hr
                     style={{
-                      margin: "1rem 0",
+                      marginBottom: "1rem",
                       width: "98%",
                       border: "1px solid #282a3a",
                     }}
