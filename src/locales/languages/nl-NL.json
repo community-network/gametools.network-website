@@ -172,6 +172,18 @@
             "none": "Zit niet in een platoon",
             "noDescription": "De platoon heeft geen descriptie"
         },
+        "playSession": {
+            "main": "Battlefield speelsessies",
+            "detailed": "We houden bij in welke servers u hebt gespeeld, dit werkt alleen wanneer de server onze manager gebruikt.",
+            "stats": {
+                "kills": "Kills",
+                "deaths": "Deaths",
+                "wins": "Wins",
+                "losses": "Losses",
+                "timePlayedAs": "Tijd gespeeld als",
+                "score": "Score"
+            }
+        },
         "main": {
             "rank": "Rank",
             "killDeath": "K/D",
