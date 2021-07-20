@@ -226,7 +226,7 @@ function BfSessionInfo(props: Views) {
                   )
                 </h3>
                 <Description>{key.serverName}</Description>
-                <AlignS style={{ marginTop: "0.6rem" }}>
+                <AlignS style={{ marginTop: "0.8rem" }}>
                   <div>
                     <h3>{stats.kills}</h3>
                     <p>{t("stats.playSession.stats.kills")}</p>
