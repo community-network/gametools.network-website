@@ -1,9 +1,9 @@
 import * as React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import "../../locales/config";
 import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
-import { M88 } from "../Materials";
+import { M88, M92 } from "../Materials";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 const Nav = styled.header`
@@ -29,17 +29,27 @@ const Header = styled.div`
 `;
 
 const LinkWrapper = styled.div`
+  ${M92};
   display: flex;
   position: relative;
   display: -webkit-flex;
   display: flex;
   align-items: center;
+
+  .opened-link {
+    border-radius: 5px;
+    height: 35px;
+    background-color: var(--color-base);
+    color: var(--color-text);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.05));
+  }
 `;
 
 const Separator = styled.div`
   height: 18px;
   border: 0.5px solid rgba(255, 255, 255, 0.22);
   display: flex;
+  margin: 0 10px;
 `;
 
 const sharedLink = css`
@@ -54,16 +64,16 @@ const sharedLink = css`
   display: flex;
   overflow: hidden;
   white-space: nowrap;
-  //flex: 0 0 136px;
   flex-shrink: 0;
-  padding: 0 22px;
+  padding: 0 20px;
   align-items: center;
   text-align: center;
+  height: 35px;
 
   color: rgba(255, 255, 255, 0.72);
 `;
 
-const HLink = styled(Link)`
+const HLink = styled(NavLink)`
   ${sharedLink}
 `;
 
@@ -71,7 +81,7 @@ const ALink = styled.a`
   ${sharedLink}
 `;
 
-const SLink = styled(Link)`
+const SLink = styled(NavLink)`
   font-weight: 800;
   font-size: 18px;
 `;
@@ -79,7 +89,7 @@ const SLink = styled(Link)`
 const ButtonLink = styled.a`
   ${sharedLink};
   padding: 0 20px;
-  height: 40px;
+  height: 35px;
   background: var(--color-blue);
   border-radius: 5px;
   transition: all 0.1s;
@@ -236,10 +246,18 @@ export function Navbar(): JSX.Element {
         <Burger open={open} setOpen={setOpen} />
       ) : (
         <LinkWrapper>
-          <HLink to="/servers" title={t("navBar.serverStats")}>
+          <HLink
+            to="/servers"
+            title={t("navBar.serverStats")}
+            activeClassName="opened-link"
+          >
             {t("navBar.serverStats")}
           </HLink>
-          <HLink to="/stats" title={t("navBar.bfStats")}>
+          <HLink
+            to="/stats"
+            title={t("navBar.bfStats")}
+            activeClassName="opened-link"
+          >
             {t("navBar.bfStats")}
           </HLink>
           <Separator />

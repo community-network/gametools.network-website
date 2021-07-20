@@ -44,6 +44,7 @@ export type MainStats = {
   loses: number;
   activePlatoon: MainStatsPlatoon;
   platoons: MainStatsPlatoon[];
+  sessions: MainStatsSession[];
   rank: number;
   rankImg: string;
   repairs: number;
@@ -60,6 +61,38 @@ export type MainStats = {
   weapons: MainStatsWeapon[];
   winPercent: string;
   wins: number;
+};
+
+export type MainStatsSession = {
+  playerId: number;
+  serverId: string;
+  serverName: string;
+  stats: SessionStats;
+  timeStamp: string;
+};
+
+export type SessionStats = {
+  kills: number;
+  deaths: number;
+  wins: number;
+  losses: number;
+  timePlayed: number;
+  gamemodes: SessionGamemode[];
+  kits: SessionKit[];
+};
+
+export type SessionGamemode = {
+  name: string;
+  score: number;
+  wins: number;
+  losses: number;
+};
+
+export type SessionKit = {
+  name: string;
+  kills: number;
+  score: number;
+  timePlayed: number;
 };
 
 export type MainStatsPlatoon = {

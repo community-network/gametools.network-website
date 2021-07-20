@@ -73,6 +73,7 @@
   "dependencies": {
     "chart.js": "^3.2.1",
     "chartjs": "^0.3.24",
+    "date-fns": "^2.22.1",
     "gifsicle": "^5.2.0",
     "i18next": "^20.2.2",
     "i18next-browser-languagedetector": "^6.1.1",

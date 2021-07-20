@@ -12,7 +12,7 @@ interface FLinkProp {
 
 const Background = styled.footer`
   ${M88}
-  padding-top: 1rem;
+  padding-top: 2rem;
   padding-bottom: 1rem;
   background-color: #00000010;
 `;
@@ -31,13 +31,14 @@ const Section = styled.div`
 `;
 
 const TextGrayP = styled.p`
-  color: rgba(255, 255, 255, 0.68);
+  ${M88}
+  color: var(--color-alt-text);
 `;
 
 const Text = styled.div`
   @media (min-width: 920px) {
     margin-right: 8rem;
-    max-width: 60%;
+    max-width: 55%;
   }
   margin-bottom: 1.5rem;
 `;

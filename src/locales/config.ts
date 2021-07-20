@@ -6,6 +6,15 @@ import translationCH from "./languages/zh-CN.json";
 import translationNL from "./languages/nl-NL.json";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
+import { formatDistanceToNowStrict, format } from "date-fns";
+import { enUS, tr, zhCN, nl } from "date-fns/locale";
+
+const locales = {
+  "en-US": enUS,
+  "tr-TR": tr,
+  "zh-CN": zhCN,
+  "nl-NL": nl,
+};
 
 export const resources = {
   "en-US": {
@@ -14,9 +23,9 @@ export const resources = {
   "tr-TR": {
     translation: translationTR,
   },
-  "ru-RU": {
-    translation: translationRU,
-  },
+  // "ru-RU": {
+  //   translation: translationRU,
+  // },
   "zh-CN": {
     translation: translationCH,
   },
@@ -25,10 +34,31 @@ export const resources = {
   },
 } as const;
 
-i18n.use(initReactI18next).use(LanguageDetector).init({
-  resources,
-  fallbackLng: "en-US",
-});
+i18n
+  .use(initReactI18next)
+  .use(LanguageDetector)
+  .init({
+    resources,
+    fallbackLng: "en-US",
+    interpolation: {
+      escapeValue: false, // not needed for react as it escapes by default,
+      format: function (value, fmt, lng) {
+        if (!value || value === "" || value === undefined || value === null) {
+          return "";
+        }
+
+        // format = date|mask
+        const [type, mask] = fmt.split("|");
+        if (type === "date") {
+          return format(value, mask, { locale: locales[lng] });
+        }
+        if (type === "change") {
+          return formatDistanceToNowStrict(value, { locale: locales[lng] });
+        }
+        return value;
+      },
+    },
+  });
 
 export const apiLanguage = {
   "zh-cn": "zh-tw",

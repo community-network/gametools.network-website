@@ -38,7 +38,11 @@ import {
   MainStatsWeapon,
   MainStats,
   MainStatsPlatoon,
+  MainStatsSession,
+  SessionGamemode,
+  SessionKit,
 } from "../../api/ReturnTypes";
+import { addSeconds } from "date-fns";
 
 interface Views {
   loading: boolean;
@@ -117,7 +121,9 @@ function PlatoonInfo(props: Views) {
         <Box>
           <h3>{t("stats.platoonName")}</h3>
           <AlignW style={{ alignItems: "start" }}>
-            <PlatoonEmblem src={stats.activePlatoon.emblem} />
+            <Link to={`/platoons/${stats.activePlatoon.id}`}>
+              <PlatoonEmblem src={stats.activePlatoon.emblem} />
+            </Link>
             <div style={{ marginTop: "1rem" }}>
               <h3>
                 <Link to={`/platoons/${stats.activePlatoon.id}`}>
@@ -125,9 +131,13 @@ function PlatoonInfo(props: Views) {
                 </Link>
               </h3>
               {stats.activePlatoon.description !== null ? (
-                <p>{stats.activePlatoon.description}</p>
+                <Link to={`/platoons/${stats.activePlatoon.id}`}>
+                  <p>{stats.activePlatoon.description}</p>
+                </Link>
               ) : (
-                <Description>{t("stats.platoon.noDescription")}</Description>
+                <Link to={`/platoons/${stats.activePlatoon.id}`}>
+                  <Description>{t("stats.platoon.noDescription")}</Description>
+                </Link>
               )}
             </div>
           </AlignW>
@@ -140,17 +150,23 @@ function PlatoonInfo(props: Views) {
                 return (
                   <>
                     <AlignW style={{ alignItems: "start" }}>
-                      <PlatoonEmblem src={key.emblem} />
+                      <Link to={`/platoons/${key.id}`}>
+                        <PlatoonEmblem src={key.emblem} />
+                      </Link>
                       <div style={{ marginTop: "1rem" }}>
                         <h3>
                           <Link to={`/platoons/${key.id}`}>{key.name}</Link>
                         </h3>
                         {key.description !== null ? (
-                          <p>{key.description}</p>
+                          <Link to={`/platoons/${key.id}`}>
+                            <p>{key.description}</p>
+                          </Link>
                         ) : (
-                          <Description>
-                            {t("stats.platoon.noDescription")}
-                          </Description>
+                          <Link to={`/platoons/${key.id}`}>
+                            <Description>
+                              {t("stats.platoon.noDescription")}
+                            </Description>
+                          </Link>
                         )}
                       </div>
                     </AlignW>
@@ -170,6 +186,118 @@ function PlatoonInfo(props: Views) {
       <Spacing>
         <Box>
           <h3>{t("stats.platoonName")}</h3>
+          <p>{t("loading")}</p>
+        </Box>
+      </Spacing>
+    );
+  }
+}
+
+function BfSessionInfo(props: Views) {
+  const { t } = useTranslation();
+  const stats = props.stats;
+  if (!props.loading && !props.error && stats.sessions.length === 0) {
+    return <></>;
+  } else if (!props.loading && !props.error) {
+    return (
+      <Spacing>
+        <Align>
+          <Title>{t("stats.playSession.main")}</Title>
+          <p style={{ marginTop: 0 }}>{t("stats.playSession.detailed")}</p>
+        </Align>
+        <Box>
+          {stats.sessions.map((key: MainStatsSession, index: number) => {
+            const gamemodes = [];
+            const stats = key.stats;
+            key.stats.gamemodes.map((key: SessionGamemode) => {
+              if (key.score !== 0) {
+                gamemodes.push(key.name);
+              }
+            });
+            const kits = stats.kits.filter((kit) => kit.timePlayed !== 0);
+            return (
+              <>
+                <h3>
+                  {t("dateTime", { date: new Date(key.timeStamp) })} -{" "}
+                  {gamemodes.join("/")} (
+                  {t("change", {
+                    change: addSeconds(new Date(), key.stats.timePlayed),
+                  })}
+                  )
+                </h3>
+                <Description>{key.serverName}</Description>
+                <br />
+                <AlignS>
+                  <div>
+                    <h3>{stats.kills}</h3>
+                    <p>{t("stats.playSession.stats.kills")}</p>
+                  </div>
+                  <div>
+                    <h3>{stats.deaths}</h3>
+                    <p>{t("stats.playSession.stats.deaths")}</p>
+                  </div>
+                  <div>
+                    <h3>{stats.wins}</h3>
+                    <p>{t("stats.playSession.stats.wins")}</p>
+                  </div>
+                  <div>
+                    <h3>{stats.losses}</h3>
+                    <p>{t("stats.playSession.stats.losses")}</p>
+                  </div>
+                </AlignS>
+                <br />
+                <Align>
+                  {kits.map((key: SessionKit, index: number) => {
+                    return (
+                      <div key={index} style={{ marginRight: "3rem" }}>
+                        <h3 style={{ marginBottom: 0 }}>{key.name}</h3>
+                        <Align>
+                          <div style={{ marginRight: "1rem" }}>
+                            <Description style={{ margin: 0 }}>
+                              {t("stats.playSession.stats.score")}
+                            </Description>
+                            <Description style={{ margin: 0 }}>
+                              {t("stats.playSession.stats.kills")}
+                            </Description>
+                            <Description style={{ margin: 0 }}>
+                              {t("stats.playSession.stats.timePlayedAs")}
+                            </Description>
+                          </div>
+                          <div>
+                            <h4 style={{ margin: 0 }}>{key.score}</h4>
+                            <h4 style={{ margin: 0 }}>{key.kills}</h4>
+                            <h4 style={{ margin: 0 }}>{key.timePlayed}</h4>
+                          </div>
+                        </Align>
+                      </div>
+                    );
+                  })}
+                </Align>
+                {typeof props.stats.sessions[index + 1] !== "undefined" ? (
+                  <hr
+                    style={{
+                      margin: "1rem 0",
+                      width: "98%",
+                      border: "1px solid #282a3a",
+                    }}
+                  />
+                ) : (
+                  <></>
+                )}
+              </>
+            );
+          })}
+        </Box>
+      </Spacing>
+    );
+  } else {
+    return (
+      <Spacing>
+        <Align>
+          <Title>{t("stats.playSession.main")}</Title>
+          <p style={{ marginTop: 0 }}>{t("stats.playSession.detailed")}</p>
+        </Align>
+        <Box>
           <p>{t("loading")}</p>
         </Box>
       </Spacing>
@@ -896,6 +1024,17 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
       />
       {newTitles.includes(game) ? (
         <PlatoonInfo
+          game={game}
+          loading={loading}
+          stats={stats}
+          error={error}
+          name={name}
+        />
+      ) : (
+        <></>
+      )}
+      {game == "bf1" ? (
+        <BfSessionInfo
           game={game}
           loading={loading}
           stats={stats}
