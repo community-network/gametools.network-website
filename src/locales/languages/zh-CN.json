@@ -6,6 +6,11 @@
     "playerNotFound": "找不到该玩家的id，请确认id的拼写",
     "notApplicable": "N/A",
     "noName": "当你用player id搜索时，我们不能显示玩家名称",
+    "date": "{{date, date|eee, dd MMM yyyy}}",
+    "dateTime": "{{date, date|eee, dd MMM yyyy - p}}",
+    "shortDateTime": "{{date, date|PPpp}}",
+    "time": "{{date, date|p}}",
+    "change": "{{change, change}}",
     "states": {
         "copy": "复制链接",
         "copied": "已复制！"
@@ -220,7 +225,11 @@
         "back": "搜索主页",
         "rotation": "服务器地图循环",
         "settings": "服务器设定",
-        "permLink": "该服永久链接(基于最近设置的服务器名字):"
+        "permLink": "该服永久链接(基于最近设置的服务器名字):",
+        "platoon": {
+            "main": "战队服务器",
+            "none": "该服务器还没有关联任何战队"
+        }
     },
     "footer": {
         "descriptions": {
