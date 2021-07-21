@@ -234,6 +234,7 @@
     "platoon": {
         "back": "Terug naar zoeken",
         "searchPlayer": "Zoek een speler",
+        "servers": "Platoon servers",
         "members": {
             "main": "Platoon leden",
             "General": "Genraal",

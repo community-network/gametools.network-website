@@ -16,6 +16,7 @@ export type PlatoonStats = {
   members: PlatoonPlayer[];
   name: string;
   tag: string;
+  servers: ServerList[];
 };
 
 export type MainStats = {

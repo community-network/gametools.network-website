@@ -240,6 +240,7 @@
     "platoon": {
         "back": "Back to search",
         "searchPlayer": "Search a player",
+        "servers": "Platoon servers",
         "members": {
             "main": "Platoon members",
             "General": "General",
