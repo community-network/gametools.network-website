@@ -118,8 +118,7 @@ function ServerPlatoon(props: { platoon: PlatoonResult }) {
   }
   return (
     <Spacing>
-      <h3>{t("servers.platoon.main")}</h3>
-      <br />
+      <h2>{t("servers.platoon.main")}</h2>
       <AlignW style={{ alignItems: "start" }}>
         <Link to={`/platoons/${platoon.id}`}>
           <PlatoonEmblem src={platoon.emblem} />
