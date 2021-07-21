@@ -172,6 +172,18 @@
             "none": "Oyuncu herhangi bir klanda değil",
             "noDescription": "Klanın açıklaması yok"
         },
+        "playSession": {
+            "main": "Battlefield oyun seansları",
+            "detailed": "Hangi sunucuda oynadığınızı takip ediyoruz, sadece sunucu bizim yöneticimizi kullandığında çalışıyor.",
+            "stats": {
+                "kills": "Ölüm",
+                "deaths": "Öldürme",
+                "wins": "Kazanma",
+                "losses": "Kaybetme",
+                "timePlayedAs": "Oynanan süre",
+                "score": "Skor"
+            }
+        },
         "main": {
             "rank": "rütbe",
             "killDeath": "K/D",
@@ -217,11 +229,16 @@
         "back": "Aramaya geri dön",
         "rotation": "Sunucu haritası döngüsü",
         "settings": "Sunucu ayarları",
-        "permLink": "Sabit bağlantı (isme dayalı):"
+        "permLink": "Sabit bağlantı (isme dayalı):",
+        "platoon": {
+            "main": "klan serveri",
+            "none": "Sunucu bir klana bağlı değil"
+        }
     },
     "platoon": {
         "back": "Aramaya geri dön",
         "searchPlayer": "Oyuncu ara",
+        "servers": "Klan sunucuları",
         "members": {
             "main": "Klan üyeleri",
             "General": "Orgeneral",
