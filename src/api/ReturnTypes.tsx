@@ -172,6 +172,7 @@ export type DetailedServerInfo = {
 
   inQueue?: number;
   maxPlayerAmount?: number;
+  platoon?: PlatoonResult;
 
   inQue?: number;
   maxPlayers?: number;
@@ -201,5 +202,6 @@ export type PlatoonResult = {
   emblem: string;
   id: string;
   name: string;
+  description: string;
   tag: string;
 };

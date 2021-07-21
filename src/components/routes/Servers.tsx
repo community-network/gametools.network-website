@@ -1,6 +1,6 @@
 import * as React from "react";
 import "../../locales/config";
-import { RouteComponentProps } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../assets/scss/App.scss";
@@ -17,7 +17,11 @@ import {
   Box,
 } from "../Materials";
 import { getLanguage } from "../../locales/config";
-import { DetailedServerInfo, ServerRotation } from "../../api/ReturnTypes";
+import {
+  DetailedServerInfo,
+  PlatoonResult,
+  ServerRotation,
+} from "../../api/ReturnTypes";
 
 const Description = styled.p`
   ${AltText}
@@ -90,6 +94,54 @@ const ServerInfo = styled.div`
 const ServerLink = styled.a`
   cursor: pointer;
 `;
+
+const PlatoonEmblem = styled.img`
+  width: 100px;
+  margin-right: 0.5rem;
+`;
+
+export const Spacing = styled.div`
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+`;
+
+function ServerPlatoon(props: { platoon: PlatoonResult }) {
+  const { t } = useTranslation();
+  const platoon = props.platoon;
+  if (platoon === null) {
+    return (
+      <Spacing>
+        <h3>{t("servers.platoon.main")}</h3>
+        <p>{t("servers.platoon.none")}</p>
+      </Spacing>
+    );
+  }
+  return (
+    <Spacing>
+      <h3>{t("servers.platoon.main")}</h3>
+      <br />
+      <AlignW style={{ alignItems: "start" }}>
+        <Link to={`/platoons/${platoon.id}`}>
+          <PlatoonEmblem src={platoon.emblem} />
+        </Link>
+        <div style={{ marginTop: "1rem" }}>
+          <h3>
+            <Link to={`/platoons/${platoon.id}`}>{platoon.name}</Link>
+          </h3>
+          {platoon.description !== null ? (
+            <Link to={`/platoons/${platoon.id}`}>
+              <p>{platoon.description}</p>
+            </Link>
+          ) : (
+            <Link to={`/platoons/${platoon.id}`}>
+              <Description>{t("stats.platoon.noDescription")}</Description>
+            </Link>
+          )}
+        </div>
+      </AlignW>
+    </Spacing>
+  );
+}
 
 interface Views {
   loading: boolean;
@@ -178,6 +230,11 @@ function Results(props: Views): React.ReactElement {
             );
           })}
         </Align>
+        {props.game === "bf1" ? (
+          <ServerPlatoon platoon={stats.platoon} />
+        ) : (
+          <></>
+        )}
         <h2>{t("servers.settings")}</h2>
         <AlignT>
           {Object.entries(stats.settings).map(

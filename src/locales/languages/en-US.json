@@ -235,7 +235,11 @@
         "back": "Back to search",
         "rotation": "Server map rotation",
         "settings": "Server settings",
-        "permLink": "Permanent link (based on current name):"
+        "permLink": "Permanent link (based on current name):",
+        "platoon": {
+            "main": "Server platoon",
+            "none": "Server isn't connected to a platoon"
+        }
     },
     "platoon": {
         "back": "Back to search",
