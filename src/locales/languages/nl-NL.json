@@ -229,7 +229,11 @@
         "back": "Terug naar zoeken",
         "rotation": "Server maprotatie",
         "settings": "Server-instellingen",
-        "permLink": "Permanente link (gebaseerd op huidige naam):"
+        "permLink": "Permanente link (gebaseerd op huidige naam):",
+        "platoon": {
+            "main": "Server platoon",
+            "none": "Er is geen platoon gekoppeld aan deze server"
+        }
     },
     "platoon": {
         "back": "Terug naar zoeken",
