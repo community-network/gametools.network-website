@@ -6,7 +6,7 @@ import { Spacing, Views, BackgroundBar, Bar } from "./Main";
 import { MainStatsGamemode } from "../../../api/ReturnTypes";
 
 export function ViewGamemodes(props: Views): React.ReactElement {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   if (!props.loading && !props.error) {
     const gamemodes = props.stats.gamemodes;
     return (
@@ -22,15 +22,17 @@ export function ViewGamemodes(props: Views): React.ReactElement {
                       <br />
                       <Align style={{ justifyContent: "space-between" }}>
                         <h4 style={{ margin: 0 }}>
-                          {t(`stats.gamemodes.${key.gamemodeName}`)}
+                          {i18n.exists(`stats.gamemodes.${key.gamemodeName}`)
+                            ? t(`stats.gamemodes.${key.gamemodeName}`)
+                            : key.gamemodeName}
                         </h4>
                         <p style={{ margin: "0.3rem 0" }}>
-                          {t("stats.gamemodes.Precentage")}{" "}
-                          {(
-                            (key["wins"] / (key["wins"] + key["losses"])) *
-                            100
-                          ).toFixed(1)}
-                          %
+                          {t("stats.gamemodes.percentage", {
+                            percentage: (
+                              (key["wins"] / (key["wins"] + key["losses"])) *
+                              100
+                            ).toFixed(1),
+                          })}
                         </p>
                       </Align>
                       <BackgroundBar>

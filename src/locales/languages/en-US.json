@@ -188,7 +188,7 @@
         },
         "gamemodes": {
             "main": "Gamemode info",
-            "Precentage": "Wins:",
+            "percentage": "Wins: {{percentage}}%",
             "Frontlines": "Frontlines",
             "Domination": "Domination",
             "Shock operations": "Shock operations",

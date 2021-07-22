@@ -3,46 +3,42 @@ import "../../../locales/config";
 import { useTranslation } from "react-i18next";
 import { Box, Align, AlignS } from "../../Materials";
 import { Spacing, Views } from "./Main";
-import { MainStatsGamemode } from "../../../api/ReturnTypes";
+import { MainStatsClasses } from "../../../api/ReturnTypes";
+
+/** kits:
+ * assault: https://eaassets-a.akamaihd.net/battlelog/battlebinary/sparta/assets/tunguska/shortcutkits/shortcut-kit-assault-light-9a9ad58d.png
+ * medic: https://eaassets-a.akamaihd.net/battlelog/battlebinary/sparta/assets/tunguska/shortcutkits/shortcut-kit-medic-light-cb4ac00e.png
+ * support: https://eaassets-a.akamaihd.net/battlelog/battlebinary/sparta/assets/tunguska/shortcutkits/shortcut-kit-support-light-107891af.png
+ * sniper: https://eaassets-a.akamaihd.net/battlelog/battlebinary/sparta/assets/tunguska/shortcutkits/shortcut-kit-scout-light-288bc674.png
+ */
 
 export function ViewClasses(props: Views): React.ReactElement {
   const { t } = useTranslation();
   if (!props.loading && !props.error) {
-    const gamemodes = props.stats.gamemodes;
+    const classes = props.stats.classes;
     return (
       <Spacing>
         <Box>
           <>
             <h3>{t("stats.gamemodes.main")}</h3>
-            {gamemodes.map((key: MainStatsGamemode) => {
+            {classes.map((key: MainStatsClasses) => {
               return (
                 <>
-                  <br />
-                  <Align style={{ justifyContent: "space-between" }}>
-                    <h4 style={{ margin: 0 }}>
-                      {t(`stats.gamemodes.${key.gamemodeName}`)}
-                    </h4>
-                    <p style={{ margin: "0.3rem 0" }}>
-                      {t("stats.gamemodes.Precentage")}{" "}
-                      {(
-                        (key["wins"] / (key["wins"] + key["losses"])) *
-                        100
-                      ).toFixed(1)}
-                      %
-                    </p>
-                  </Align>
-                  <br />
                   <AlignS>
+                    <div>
+                      <h3>{key.className}</h3>
+                      <p>{t("stats.gamemodes.amounts.score")}</p>
+                    </div>
                     <div>
                       <h3>{key.score}</h3>
                       <p>{t("stats.gamemodes.amounts.score")}</p>
                     </div>
                     <div>
-                      <h3>{key.wins}</h3>
+                      <h3>{key.kills}</h3>
                       <p>{t("stats.gamemodes.amounts.wins")}</p>
                     </div>
                     <div>
-                      <h3>{key.losses}</h3>
+                      <h3>{key.timePlayed}</h3>
                       <p>{t("stats.gamemodes.amounts.losses")}</p>
                     </div>
                   </AlignS>
