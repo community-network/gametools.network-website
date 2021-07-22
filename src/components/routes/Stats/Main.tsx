@@ -21,7 +21,13 @@ import {
   UncheckedSmallButtonRadio,
 } from "../../Materials";
 import styled from "styled-components";
-import { newTitles, platformGames } from "../../../api/static";
+import {
+  newTitles,
+  platformGames,
+  progressGames,
+  gamemodeGames,
+  classGames,
+} from "../../../api/static";
 import { getLanguage } from "../../../locales/config";
 import { MainStats } from "../../../api/ReturnTypes";
 import { BfSessionInfo } from "./ManagerExtr";
@@ -29,6 +35,9 @@ import { DetailedStats } from "./DetailedStats";
 import { ViewWeapons } from "./Weapons";
 import { ViewVehicles } from "./Vehicles";
 import { Platoon, PlatoonInfo } from "./Platoon";
+import { ViewProgress } from "./Progress";
+import { ViewGamemodes } from "./Gamemodes";
+import { ViewClasses } from "./Classes";
 
 export interface Views {
   loading: boolean;
@@ -63,13 +72,13 @@ const WhiteText = styled.span`
   margin-left: 0.5rem;
 `;
 
-const BackgroundBar = styled.div`
+export const BackgroundBar = styled.div`
   width: 100%;
   background-color: #313443;
   border-radius: 2.5px;
 `;
 
-const Bar = styled.div`
+export const Bar = styled.div`
   background-color: #14fed4;
   height: 5px;
   border-radius: 2.5px;
@@ -424,6 +433,45 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
         error={error}
         name={name}
       />
+      {progressGames.includes(game) ? (
+        <>
+          <ViewProgress
+            game={game}
+            loading={loading}
+            stats={stats}
+            error={error}
+            name={name}
+          />
+        </>
+      ) : (
+        <></>
+      )}
+      {gamemodeGames.includes(game) ? (
+        <>
+          <ViewGamemodes
+            game={game}
+            loading={loading}
+            stats={stats}
+            error={error}
+            name={name}
+          />
+        </>
+      ) : (
+        <></>
+      )}
+      {/* {classGames.includes(game) ? (
+        <>
+          <ViewClasses
+            game={game}
+            loading={loading}
+            stats={stats}
+            error={error}
+            name={name}
+          />
+        </>
+      ) : (
+        <></>
+      )} */}
     </Container>
   );
 }

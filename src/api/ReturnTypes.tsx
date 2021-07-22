@@ -46,6 +46,9 @@ export type MainStats = {
   activePlatoon: MainStatsPlatoon;
   platoons: MainStatsPlatoon[];
   sessions: MainStatsSession[];
+  progress: MainStatsProgress[];
+  gamemodes: MainStatsGamemode[];
+  classes: MainStatsClasses[];
   rank: number;
   rankImg: string;
   repairs: number;
@@ -62,6 +65,35 @@ export type MainStats = {
   weapons: MainStatsWeapon[];
   winPercent: string;
   wins: number;
+};
+
+export type MainStatsGamemode = {
+  gamemodeName: string;
+  score: number;
+
+  wins?: number;
+  losses?: number;
+  winPercent?: string;
+};
+
+export type MainStatsClasses = {
+  className: string;
+  score: number;
+
+  kills?: number;
+  kpm?: number;
+
+  timePlayed?: string;
+
+  serviceStarAmount?: number;
+  serviceStarProgress?: string;
+  serviceStarProgressAmount?: string;
+};
+
+export type MainStatsProgress = {
+  progressName: string;
+  current: number;
+  total: number;
 };
 
 export type MainStatsSession = {
