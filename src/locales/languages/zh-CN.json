@@ -141,6 +141,15 @@
         "searchPlaceholder": "服务器名字",
         "results": "搜索结果"
     },
+    "platoonSearch": {
+        "back": "首页",
+        "serverInfo": "战地战队",
+        "description": "搜索战队查看更多详情, 点击战队名字查看他们的成员.",
+        "search": "搜索",
+        "searchPlaceholder": "搜索战队名字...",
+        "results": "搜索结果",
+        "resultNotFound": "没找到. 你最少输入3个字符去搜索战队."
+    },
     "stats": {
         "view": "查看战绩",
         "back": "回到搜索界面",
@@ -229,6 +238,23 @@
         "platoon": {
             "main": "战队服务器",
             "none": "该服务器还没有关联任何战队"
+        }
+    },
+    "platoon": {
+        "back": "返回搜索",
+        "searchPlayer": "搜索一个玩家",
+        "servers": "战队服务器",
+        "members": {
+            "main": "战队成员",
+            "General": "将军",
+            "Colonel": "上校",
+            "Lieutenant": "中尉",
+            "Private": "列兵",
+            "empty": "在这个职位没有任何人"
+        },
+        "rows": {
+            "role": "角色",
+            "name": "名字"
         }
     },
     "footer": {
