@@ -5,7 +5,7 @@ import Home from "./routes/Home";
 import PlayerSearch from "./routes/PlayerSearch";
 import ServerSearch from "./routes/ServerSearch";
 import PlatoonSearch from "./routes/PlatoonSearch";
-import Stats from "./routes/Stats";
+import Stats from "./routes/Stats/Main";
 import Servers from "./routes/Servers";
 import Platoon from "./routes/Platoon";
 
