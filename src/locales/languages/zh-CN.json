@@ -173,6 +173,52 @@
             "accuracy": "准度",
             "headshots": "爆头数"
         },
+        "progress": {
+            "main": "游戏进度",
+            "Campaign": "进度",
+            "Assignments": "成就",
+            "Medals": "奖牌",
+            "Ribbons": "勋带",
+            "Weapons": "武器",
+            "Vehicles": "载具",
+            "Kits": "套件",
+            "Codex": "百科",
+            "Dog tags": "狗牌"
+        },
+        "gamemodes": {
+            "main": "游戏模式信息",
+            "Precentage": "胜率: {{percentage}}%",
+            "Frontlines": "前线",
+            "Domination": "控制",
+            "Shock operations": "突破行动",
+            "Rush": "冲突",
+            "Conquest": "小型征服",
+            "War pigeons": "战争信鸽",
+            "Operations": "行动",
+            "Teamdeathmatch": "团队死斗",
+            "Conquestlarge": "大型征服",
+            "Gunmaster": "枪械大师",
+            "Capturetheflag": "夺旗",
+            "Obliteration": "毁灭",
+            "Airsuperiority": "空中优势",
+            "Elimination": "淘汰",
+            "Carrierassault": "航母突击",
+            "Carrierassaultlarge": "大型航母突击",
+            "Carrierassaultsmall": "小型航母突击",
+            "Chainlink": "链环",
+            "Sqdm": "小队死斗",
+            "Conquestladder": "征服阶梯",
+            "Squadobliteration": "小队清除",
+            "table": {
+                "firstRow": "游戏模式",
+                "secondRow": "分数"
+            },
+            "amounts": {
+                "wins": "胜利",
+                "losses": "失败",
+                "score": "分数"
+            }
+        },
         "platoon": {
             "none": "该玩家不属于任何战队",
             "noDescription": "该战队没有描述"
