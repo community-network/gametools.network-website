@@ -1,16 +1,10 @@
 import * as React from "react";
 import "../../../locales/config";
 import { useTranslation } from "react-i18next";
-import { Box, Column, Row, AlignS } from "../../Materials";
+import { Box, Column, Row } from "../../Materials";
 import { Spacing, Views, ListImage } from "./Main";
 import { MainStatsClasses } from "../../../api/ReturnTypes";
-import styled from "styled-components";
 import { addSeconds } from "date-fns";
-
-const OriginProfile = styled.img`
-  width: 60px;
-  margin-right: 1.5rem;
-`;
 
 export function ViewClasses(props: Views): React.ReactElement {
   const { t, i18n } = useTranslation();
