@@ -7,6 +7,11 @@
     "notApplicable": "N/A",
     "resultNotFound": "Geen resultaten gevonden",
     "noName": "Kan geen spelernaam niet laten zien wanneer stats zijn opgehaald via speler ID.",
+    "date": "{{date, date|eee, dd MMM yyyy}}",
+    "dateTime": "{{date, date|eee, dd MMM yyyy - p}}",
+    "shortDateTime": "{{date, date|PPpp}}",
+    "time": "{{date, date|p}}",
+    "change": "{{change, change}}",
     "states": {
         "copy": "Link kopiëren",
         "copied": "Gekopieerd!"
@@ -147,6 +152,7 @@
         "resultNotFound": "Geen resultaten gevonden. Om platoons te zoeken, moet u minimaal 3 karakters invoeren."
     },
     "stats": {
+        "view": "Stats bekijken",
         "back": "Terug naar zoeken",
         "originDescription": "Origin profiel",
         "detailedName": "Gedetaileerde stats",
