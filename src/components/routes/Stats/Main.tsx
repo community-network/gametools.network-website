@@ -38,6 +38,7 @@ import { Platoon, PlatoonInfo } from "./Platoon";
 import { ViewProgress } from "./Progress";
 import { ViewGamemodes } from "./Gamemodes";
 import { ViewClasses } from "./Classes";
+import { addSeconds } from "date-fns";
 
 export interface Views {
   loading: boolean;
@@ -196,7 +197,7 @@ function ViewStats(props: Views): React.ReactElement {
           <p>{t("stats.overviewDescription")}</p>
           <AlignS>
             <div>
-              <h3>{stats["rank"]}</h3>
+              <h3>{stats.rank}</h3>
               <p>{t("stats.main.rank")}</p>
             </div>
           </AlignS>
@@ -212,38 +213,35 @@ function ViewStats(props: Views): React.ReactElement {
           <p></p>
           <AlignS>
             <div>
-              <h3>{stats["killDeath"]}</h3>
+              <h3>{stats.killDeath}</h3>
               <p>{t("stats.main.killDeath")}</p>
             </div>
             <div>
-              <h3>{stats["killsPerMinute"]}</h3>
+              <h3>{stats.killsPerMinute}</h3>
               <p>{t("stats.main.killsPerMinute")}</p>
             </div>
             <div>
-              <h3>{stats["winPercent"]}</h3>
+              <h3>{stats.winPercent}</h3>
               <p>{t("stats.main.winPercent")}</p>
             </div>
             <div>
-              <h3>{stats["bestClass"]}</h3>
+              <h3>{stats.bestClass}</h3>
               <p>{t("stats.main.bestClass")}</p>
             </div>
-            {newTitles.includes(props.game) ? (
-              <div>
-                <h3>{stats["Accuracy"]}</h3>
-                <p>{t("stats.main.accuracy")}</p>
-              </div>
-            ) : (
-              <div>
-                <h3>{stats["accuracy"]}</h3>
-                <p>{t("stats.main.accuracy")}</p>
-              </div>
-            )}
+            <div>
+              <h3>{stats.accuracy}</h3>
+              <p>{t("stats.main.accuracy")}</p>
+            </div>
           </AlignS>
           <p></p>
           <BottomOfBox>
             <p style={{ margin: 0 }}>
               {t("stats.main.timePlayed")}{" "}
-              <WhiteText>{stats["timePlayed"]}</WhiteText>
+              <WhiteText>
+                {t("change", {
+                  change: addSeconds(new Date(), stats.secondsPlayed),
+                })}
+              </WhiteText>
             </p>
           </BottomOfBox>
         </Box>
@@ -459,7 +457,7 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
       ) : (
         <></>
       )}
-      {/* {classGames.includes(game) ? (
+      {classGames.includes(game) ? (
         <>
           <ViewClasses
             game={game}
@@ -471,7 +469,7 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
         </>
       ) : (
         <></>
-      )} */}
+      )}
     </Container>
   );
 }

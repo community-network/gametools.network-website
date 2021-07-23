@@ -20,7 +20,7 @@ export type PlatoonStats = {
 };
 
 export type MainStats = {
-  Accuracy: string;
+  accuracy: string;
   avatar: string;
   avengerKills: number;
   awardScore: number;
@@ -59,12 +59,14 @@ export type MainStats = {
   skill: number;
   squadScore: number;
   timePlayed: string;
+  secondsPlayed?: number;
   totalRankProgress: number;
   userName: string;
   vehicles: MainStatsVehicle[];
   weapons: MainStatsWeapon[];
   winPercent: string;
   wins: number;
+  quits: number;
 };
 
 export type MainStatsGamemode = {
@@ -79,11 +81,14 @@ export type MainStatsGamemode = {
 export type MainStatsClasses = {
   className: string;
   score: number;
+  image: string;
+  altImage: string;
 
   kills?: number;
   kpm?: number;
 
   timePlayed?: string;
+  secondsPlayed?: number;
 
   serviceStarAmount?: number;
   serviceStarProgress?: string;
