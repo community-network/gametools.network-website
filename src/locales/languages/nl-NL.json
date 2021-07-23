@@ -168,6 +168,68 @@
             "accuracy": "Accuracy",
             "headshots": "Headshots"
         },
+        "classes": {
+            "main": "Klasse",
+            "Medic": "Medic",
+            "Support": "Support",
+            "Scout": "Scout",
+            "Assault": "Assault",
+            "Pilot": "Pilot",
+            "Tanker": "Tanker",
+            "Cavalry": "Cavalry",
+            "amounts": {
+                "kpm": "KPM",
+                "score": "Score",
+                "kills": "Kills",
+                "timePlayed": "Tijd gespeeld als"
+            }
+        },
+        "progress": {
+            "main": "Game progressie",
+            "Campaign": "Campagne",
+            "Assignments": "Assignments",
+            "Medals": "medailles",
+            "Ribbons": "Ribbons",
+            "Weapons": "wapens",
+            "Vehicles": "Voertuigen",
+            "Kits": "Kits",
+            "Codex": "Codex",
+            "Dog tags": "Dog tags"
+        },
+        "gamemodes": {
+            "main": "gamemode info",
+            "percentage": "Wins: {{percentage}}%",
+            "Frontlines": "Frontlines",
+            "Domination": "Domination",
+            "Shock operations": "Shock operations",
+            "Rush": "Rush",
+            "Conquest": "Conquest",
+            "War pigeons": "War pigeons",
+            "Operations": "Operations",
+            "Teamdeathmatch": "Team deathmatch",
+            "Conquestlarge": "Conquest large",
+            "Gunmaster": "Gunmaster",
+            "Capturetheflag": "Capture the flag",
+            "Obliteration": "Obliteration",
+            "Airsuperiority": "Air superiority",
+            "Elimination": "Elimination",
+            "Carrierassault": "Carrier assault",
+            "Carrierassaultlarge": "Carrier assault large",
+            "Carrierassaultsmall": "Carrier assault small",
+            "Chainlink": "Chainlink",
+            "Sqdm": "Squad deathmatch",
+            "Conquestladder": "Conquest Ladder",
+            "Squadobliteration": "Squad obliteration",
+            "table": {
+                "firstRow": "gamemode",
+                "secondRow": "Score"
+            },
+            "amounts": {
+                "wins": "Wins",
+                "losses": "Losses",
+                "score": "Score"
+            }
+        },
         "platoon": {
             "none": "Zit niet in een platoon",
             "noDescription": "De platoon heeft geen descriptie"
@@ -191,7 +253,7 @@
             "winPercent": "Win%",
             "bestClass": "Best class",
             "accuracy": "Accuracy",
-            "timePlayed": "Time played"
+            "timePlayed": "Tijd gespeeld"
         },
         "detailed": {
             "skill": "Skill",
