@@ -20,20 +20,20 @@ export function ViewClasses(props: Views): React.ReactElement {
                 <>
                   <Column>
                     <Row>
-                      <h3>
+                      <h4 style={{ margin: 0 }}>
                         {i18n.exists(`stats.classes.${key.className}`)
                           ? t(`stats.classes.${key.className}`)
                           : key.className}
-                      </h3>
+                      </h4>
                       <ListImage src={key.image} />
                     </Row>
                     <Row>
-                      <h3>{key.score}</h3>
+                      <h4 style={{ margin: 0 }}>{key.score}</h4>
                       <p>{t("stats.classes.amounts.score")}</p>
                     </Row>
                     {key.kills !== undefined ? (
                       <Row>
-                        <h3>{key.kills}</h3>
+                        <h4 style={{ margin: 0 }}>{key.kills}</h4>
                         <p>{t("stats.classes.amounts.kills")}</p>
                       </Row>
                     ) : (
@@ -41,7 +41,7 @@ export function ViewClasses(props: Views): React.ReactElement {
                     )}
                     {key.kpm !== undefined ? (
                       <Row>
-                        <h3>{key.kpm}</h3>
+                        <h4 style={{ margin: 0 }}>{key.kpm}</h4>
                         <p>{t("stats.classes.amounts.kpm")}</p>
                       </Row>
                     ) : (
@@ -49,11 +49,11 @@ export function ViewClasses(props: Views): React.ReactElement {
                     )}
                     {key.secondsPlayed !== undefined ? (
                       <Row>
-                        <h3>
+                        <h4 style={{ margin: 0 }}>
                           {t("change", {
                             change: addSeconds(new Date(), key.secondsPlayed),
                           })}
-                        </h3>
+                        </h4>
                         <p>{t("stats.classes.amounts.timePlayed")}</p>
                       </Row>
                     ) : (
