@@ -146,7 +146,9 @@ function Members(props: { members: PlatoonPlayer[] }): React.ReactElement {
                     <Row>
                       <ButtonLink
                         style={{ marginTop: ".3rem" }}
-                        href={`https://gametools.network/stats/pc/playerid/${key.id}?game=bf1`}
+                        href={`https://gametools.network/stats/pc/playerid/${
+                          key.id
+                        }?game=bf1&name=${encodeURIComponent(key.name)}`}
                         target="_blank"
                         rel="noreferrer"
                       >
