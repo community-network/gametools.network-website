@@ -174,6 +174,68 @@
             "accuracy": "isabet",
             "headshots": "Kafadan vurma"
         },
+        "classes": {
+            "main": "Sınıflar",
+            "Medic": "Sıhhiyeci",
+            "Support": "Destek",
+            "Scout": "Gözcü",
+            "Assault": "Taarruz",
+            "Pilot": "Pilot",
+            "Tanker": "Tankçı",
+            "Cavalry": "Atlı",
+            "amounts": {
+                "kpm": "KPM",
+                "score": "Skor",
+                "kills": "Öldürme",
+                "timePlayed": "Oynanan süre"
+            }
+        },
+        "progress": {
+            "main": "Oyun ilerlemesi",
+            "Campaign": "Hikaye modu",
+            "Assignments": "Özel görevler",
+            "Medals": "Madalyalar",
+            "Ribbons": "Ödüller",
+            "Weapons": "Silahlar",
+            "Vehicles": "Vasıtalar",
+            "Kits": "Kitler",
+            "Codex": "Kodeks",
+            "Dog tags": "Künye"
+        },
+        "gamemodes": {
+            "main": "Oyun modu bilgisi",
+            "Precentage": "Kazanma: {{percentage}}%",
+            "Frontlines": "Cephe hattı",
+            "Domination": "Üstünlük",
+            "Shock operations": "Şok operasyon",
+            "Rush": "Akın",
+            "Conquest": "Fetih",
+            "War pigeons": "Savaş güvencini",
+            "Operations": "Operasyon",
+            "Teamdeathmatch": "Ölüm karşılaşması",
+            "Conquestlarge": "Büyük fetih",
+            "Gunmaster": "Silah ustası",
+            "Capturetheflag": "Bayrak kapma",
+            "Obliteration": " Tahrip",
+            "Airsuperiority": "Hava Taaruzu",
+            "Elimination": "Eleme",
+            "Carrierassault": " Savaş Gemisi Taarruzu",
+            "Carrierassaultlarge": "Savaş Gemisi Taarruzu - Büyük",
+            "Carrierassaultsmall": "Savaş Gemisi Taarruzu - Küçük",
+            "Chainlink": "Cephe Hattı",
+            "Sqdm": "Takım ölüm karşılaşması",
+            "Conquestladder": "Fetih ilerleyiş",
+            "Squadobliteration": "  Tahrip Mangası",
+            "table": {
+                "firstRow": "Oyun modları",
+                "secondRow": "Skor"
+            },
+            "amounts": {
+                "wins": "Kazanmalar",
+                "losses": "Kaybetmeler",
+                "score": "Skor"
+            }
+        },
         "platoon": {
             "none": "Oyuncu herhangi bir klanda değil",
             "noDescription": "Klanın açıklaması yok"
