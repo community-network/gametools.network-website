@@ -182,6 +182,7 @@ export type ServerList = {
   smallMode: string;
   url: string;
 
+  teams?: TeamList;
   prefix?: string;
   maxPlayerAmount?: number;
 
@@ -207,12 +208,24 @@ export type DetailedServerInfo = {
   settings: ServerSettings[];
   smallmode: string;
 
+  teams?: TeamList;
   inQueue?: number;
   maxPlayerAmount?: number;
   platoon?: PlatoonResult;
 
   inQue?: number;
   maxPlayers?: number;
+};
+
+export type TeamList = {
+  teamOne: ServerTeams;
+  teamTwo: ServerTeams;
+};
+
+export type ServerTeams = {
+  image: string;
+  key: string;
+  name: string;
 };
 
 export type ServerRotation = {

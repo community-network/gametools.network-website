@@ -126,8 +126,8 @@ function Results(props: Views): React.ReactElement {
               to={`/servers/${props.game}/gameid/${key.gameId}/${key.platform}`}
               condition={
                 props.game === "bf1" ||
-                props.game === "bf3" ||
-                (props.game === "bf4" && key.platform == "pc")
+                props.game === "bf4" ||
+                (props.game === "bf3" && key.platform == "pc")
               }
               key={index}
             >

@@ -222,6 +222,7 @@ function Servers(props: { servers: ServerList[] }): React.ReactElement {
   if (servers.length == 0) {
     return (
       <Spacing>
+        <h2>{t("platoon.servers")}</h2>
         <Description>{t("resultNotFound")}</Description>
       </Spacing>
     );
