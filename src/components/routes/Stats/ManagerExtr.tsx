@@ -28,7 +28,9 @@ export function BfSessionInfo(props: Views): React.ReactElement {
             const stats = key.stats;
             key.stats.gamemodes.map((key: SessionGamemode) => {
               if (key.score !== 0) {
-                gamemodes.push(key.name);
+                gamemodes.push(
+                  t(`stats.playSession.stats.gamemodes.${key.name}`),
+                );
               }
             });
             const kits = stats.kits.filter((kit) => kit.timePlayed !== 0);

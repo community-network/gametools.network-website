@@ -249,7 +249,17 @@
                 "wins": "Wins",
                 "losses": "Losses",
                 "timePlayedAs": "Time played as",
-                "score": "Score"
+                "score": "Score",
+                "gamemodes": {
+                    "TugOfWar": "Frontlines",
+                    "Domination": "Domination",
+                    "Breakthrough": "Shock Operations",
+                    "Rush": "Rush",
+                    "BreakthroughLarge": "Operations",
+                    "Conquest": "Conquest",
+                    "Possession": "War pigeons",
+                    "TeamDeathMatch": "Team Deathmatch"
+                }
             }
         },
         "main": {
