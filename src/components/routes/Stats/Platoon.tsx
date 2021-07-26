@@ -40,7 +40,12 @@ export function Platoon(props: PlatoonStats): React.ReactElement {
 export function PlatoonInfo(props: Views): React.ReactElement {
   const { t } = useTranslation();
   const stats = props.stats;
-  if (!props.loading && !props.error && stats.activePlatoon.name === null) {
+  if (
+    !props.loading &&
+    !props.error &&
+    stats.activePlatoon.name === null &&
+    props.stats.platoons.length === 0
+  ) {
     return (
       <Spacing>
         <Box>
@@ -56,28 +61,39 @@ export function PlatoonInfo(props: Views): React.ReactElement {
     return (
       <Spacing>
         <Box>
-          <h3>{t("stats.platoonName")}</h3>
-          <AlignW style={{ alignItems: "start" }}>
-            <Link to={`/platoons/${stats.activePlatoon.id}`}>
-              <PlatoonEmblem src={stats.activePlatoon.emblem} />
-            </Link>
-            <div style={{ marginTop: "1rem" }}>
-              <h3>
+          {stats.activePlatoon.name !== null ? (
+            <>
+              <h3>{t("stats.platoonName")}</h3>
+              <AlignW style={{ alignItems: "start" }}>
                 <Link to={`/platoons/${stats.activePlatoon.id}`}>
-                  {stats.activePlatoon.name}
+                  <PlatoonEmblem src={stats.activePlatoon.emblem} />
                 </Link>
-              </h3>
-              {stats.activePlatoon.description !== null ? (
-                <Link to={`/platoons/${stats.activePlatoon.id}`}>
-                  <p>{stats.activePlatoon.description}</p>
-                </Link>
-              ) : (
-                <Link to={`/platoons/${stats.activePlatoon.id}`}>
-                  <Description>{t("stats.platoon.noDescription")}</Description>
-                </Link>
-              )}
-            </div>
-          </AlignW>
+                <div style={{ marginTop: "1rem" }}>
+                  <h3>
+                    <Link to={`/platoons/${stats.activePlatoon.id}`}>
+                      {stats.activePlatoon.name}
+                    </Link>
+                  </h3>
+                  {stats.activePlatoon.description !== null ? (
+                    <Link to={`/platoons/${stats.activePlatoon.id}`}>
+                      <p>{stats.activePlatoon.description}</p>
+                    </Link>
+                  ) : (
+                    <Link to={`/platoons/${stats.activePlatoon.id}`}>
+                      <Description>
+                        {t("stats.platoon.noDescription")}
+                      </Description>
+                    </Link>
+                  )}
+                </div>
+              </AlignW>
+            </>
+          ) : (
+            <>
+              <h3>{t("stats.platoonName")}</h3>
+              <p>{t("stats.platoon.none")}</p>
+            </>
+          )}
           {otherPlatoons.length !== 0 ? (
             <>
               <br />
