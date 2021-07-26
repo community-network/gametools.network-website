@@ -91,7 +91,7 @@ export function PlatoonInfo(props: Views): React.ReactElement {
           ) : (
             <>
               <h3>{t("stats.platoonName")}</h3>
-              <p>{t("stats.platoon.none")}</p>
+              <p>{t("stats.platoon.noMain")}</p>
             </>
           )}
           {otherPlatoons.length !== 0 ? (

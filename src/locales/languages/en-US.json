@@ -238,6 +238,7 @@
         },
         "platoon": {
             "none": "Player isn't in any platoon",
+            "noMain": "Player doesn't represent one platoon as his main",
             "noDescription": "The platoon doesn't have a description"
         },
         "playSession": {

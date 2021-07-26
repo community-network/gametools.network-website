@@ -238,6 +238,7 @@
         },
         "platoon": {
             "none": "Zit niet in een platoon",
+            "noMain": "Heeft geen hoofdplatoon",
             "noDescription": "De platoon heeft geen descriptie"
         },
         "playSession": {
