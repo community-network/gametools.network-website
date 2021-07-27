@@ -238,6 +238,7 @@
         },
         "platoon": {
             "none": "Oyuncu herhangi bir klanda değil",
+            "noMain": "Oyuncu bir klanı, ana klanı olarak temsil etmiyor",
             "noDescription": "Klanın açıklaması yok"
         },
         "playSession": {

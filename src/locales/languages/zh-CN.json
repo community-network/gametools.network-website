@@ -221,6 +221,7 @@
         },
         "platoon": {
             "none": "该玩家不属于任何战队",
+            "noMain": "该玩家目前没有代表任何战队",
             "noDescription": "该战队没有描述"
         },
         "playSession": {
