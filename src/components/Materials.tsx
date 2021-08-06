@@ -75,7 +75,7 @@ export const SearchBox = styled.input`
   }
   @media (max-width: 710px) {
     max-width: 30rem;
-    width: 100%;
+    width: 95%;
   }
   box-sizing: border-box;
   color: var(--color-text);
