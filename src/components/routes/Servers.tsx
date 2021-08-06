@@ -142,6 +142,14 @@ function ServerPlatoon(props: { platoon: PlatoonResult }) {
   );
 }
 
+const AlignSeverImg = styled.div`
+  @media (min-width: 430px) {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+`;
+
 interface Views {
   loading: boolean;
   error: boolean;
@@ -171,7 +179,7 @@ function Results(props: Views): React.ReactElement {
     }
     return (
       <div>
-        <AlignW>
+        <AlignSeverImg>
           <ServerImage background={stats.currentMapImage}>
             <Blur>
               <ServerText>{stats.smallmode}</ServerText>
@@ -191,7 +199,7 @@ function Results(props: Views): React.ReactElement {
               {stats.mode}
             </Description>
           </div>
-        </AlignW>
+        </AlignSeverImg>
         <Description style={{ marginTop: "6px" }}>
           {t("servers.permLink")}{" "}
           <ServerLink

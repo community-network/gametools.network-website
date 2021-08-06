@@ -14,7 +14,6 @@ import {
   Container,
   BigSelectSecondary,
   Align,
-  AlignW,
   Box,
 } from "../Materials";
 import { getLanguage } from "../../locales/config";
@@ -42,7 +41,12 @@ const ServerImage = styled.div<IServerImage>`
   margin-top: 12px;
   height: 4rem;
   min-width: 7rem;
-  margin-right: 1.5rem;
+  @media (min-width: 430px) {
+    margin-right: 1.5rem;
+  }
+  @media (max-width: 430px) {
+    border-radius: 5px;
+  }
   border-radius: 2px;
   background-position: center;
   background-repeat: no-repeat;
@@ -54,6 +58,9 @@ const Blur = styled.div`
   height: 100%;
   flex-grow: 3;
   border-radius: 2px;
+  @media (max-width: 430px) {
+    border-radius: 5px;
+  }
   background: radial-gradient(
     100% 100% at 50% 50%,
     rgba(0, 0, 0, 0) 0%,
@@ -75,6 +82,14 @@ const ServerInfo = styled.div`
 
 const Spacing = styled.div`
   margin-bottom: 2rem;
+`;
+
+const AlignSeverImg = styled.div`
+  @media (min-width: 430px) {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
 `;
 
 interface Views {
@@ -132,7 +147,7 @@ function Results(props: Views): React.ReactElement {
               key={index}
             >
               <Box>
-                <AlignW>
+                <AlignSeverImg>
                   <div>
                     <ServerImage background={key.url}>
                       <Blur>
@@ -153,7 +168,7 @@ function Results(props: Views): React.ReactElement {
                       {region}
                     </p>
                   </ServerInfo>
-                </AlignW>
+                </AlignSeverImg>
               </Box>
             </ConditionalLink>
           );
