@@ -6,6 +6,8 @@ import { GetStats } from "../../api/GetStats";
 import { newTitles, graphGames } from "../../api/static";
 import { Box } from "../Materials";
 
+import { useMeasure } from "react-use";
+
 interface GraphData {
   loading: boolean;
   error: boolean;
@@ -232,6 +234,7 @@ export function Graph(props: GameInfo): React.ReactElement {
 }
 
 function GlobalLineGraph(props: GraphData): React.ReactElement {
+  const [graphRef, { width }] = useMeasure();
   const { t } = useTranslation();
   if (!props.loading && !props.error) {
     const time = props.stats.data.timeStamps.map((e: string) => {
@@ -277,8 +280,17 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
     };
 
     return (
-      <div>
-        <Line style={{ height: "15rem" }} data={data} type="line" />
+      <div ref={graphRef}>
+        {width > 500 ? (
+          <Line style={{ height: "15rem" }} data={data} type="line" />
+        ) : (
+          <Line
+            options={{ plugins: { legend: { display: false } } }}
+            style={{ height: "15rem" }}
+            data={data}
+            type="line"
+          />
+        )}
       </div>
     );
   } else {
