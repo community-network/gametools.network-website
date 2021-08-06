@@ -269,8 +269,17 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
         if (gameStuff[0] == "bf2") {
           gameName = gameStuff[1];
         }
+        if (width > 500) {
+          return {
+            label: t(`games.${e}`),
+            data: props.stats.data[gameName],
+            fill: false,
+            borderColor: colors[index],
+            pointRadius: 0,
+          };
+        }
         return {
-          label: t(`games.${e}`),
+          label: e,
           data: props.stats.data[gameName],
           fill: false,
           borderColor: colors[index],
@@ -281,7 +290,7 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
 
     return (
       <div ref={graphRef}>
-        {width > 500 ? (
+        {width > 380 ? (
           <Line style={{ height: "15rem" }} data={data} type="line" />
         ) : (
           <Line
