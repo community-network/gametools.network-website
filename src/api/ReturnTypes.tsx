@@ -207,6 +207,7 @@ export type DetailedServerInfo = {
   rotation: ServerRotation[];
   settings: ServerSettings[];
   smallmode: string;
+  gameId: string;
 
   teams?: TeamList;
   inQueue?: number;

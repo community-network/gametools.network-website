@@ -15,6 +15,7 @@ import {
   AlignW,
   AlignT,
   Box,
+  SmallButtonSecondary,
 } from "../Materials";
 import { getLanguage } from "../../locales/config";
 import {
@@ -205,9 +206,9 @@ function Results(props: Views): React.ReactElement {
           <ServerLink
             onClick={() => {
               navigator.clipboard.writeText(
-                `https://gametools.network/servers/bf1/name/${encodeURIComponent(
-                  stats.prefix,
-                )}/pc`,
+                `https://gametools.network/servers/${
+                  props.game
+                }/name/${encodeURIComponent(stats.prefix)}/pc`,
               );
               setCopyState("copied");
               const timer1 = setTimeout(() => setCopyState("copy"), 3 * 1000);
@@ -219,6 +220,18 @@ function Results(props: Views): React.ReactElement {
             {t(`states.${copyState}`)}
           </ServerLink>
         </Description>
+        {props.game === "bf1" ? (
+          <SmallButtonSecondary
+            style={{ marginBottom: 0 }}
+            onClick={function () {
+              location.href = `origin2://game/launch?offerIds=1026023&authCode=&cmdParams=-webMode%20MP%20-Origin_NoAppFocus%20--activate-webhelper%20-requestState%20State_ClaimReservation%20-gameId%20%22${stats.gameId}%22%20-gameMode%20%22MP%22%20-role%20%22soldier%22%20-asSpectator%20%22false%22%20-joinWithParty%20%22false%22%20%20-Online.BlazeLogLevel%202%20-Online.DirtysockLogLevel%202`;
+            }}
+          >
+            {t("servers.join")}
+          </SmallButtonSecondary>
+        ) : (
+          <></>
+        )}
         <Title>{t("servers.rotation")}</Title>
         <Align>
           {stats.rotation.map((key: ServerRotation, index: number) => {

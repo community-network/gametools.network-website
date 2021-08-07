@@ -312,7 +312,8 @@
         "platoon": {
             "main": "Server platoon",
             "none": "Server isn't connected to a platoon"
-        }
+        },
+        "join": "Join server (Firefox only)"
     },
     "platoon": {
         "back": "Back to search",
