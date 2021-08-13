@@ -302,7 +302,8 @@
         "platoon": {
             "main": "Server platoon",
             "none": "Er is geen platoon gekoppeld aan deze server"
-        }
+        },
+        "join": "Join server (werkt alleen op firefox)"
     },
     "platoon": {
         "back": "Terug naar zoeken",
