@@ -302,7 +302,8 @@
         "platoon": {
             "main": "klan serveri",
             "none": "Sunucu bir klana bağlı değil"
-        }
+        },
+        "join": "Sunucuya katıl (yalnızca Firefox)"
     },
     "platoon": {
         "back": "Aramaya geri dön",
