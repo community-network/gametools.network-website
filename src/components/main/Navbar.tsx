@@ -231,6 +231,8 @@ export function Navbar(): JSX.Element {
   const { t } = useTranslation();
   const homePage = useLocation().pathname === "/";
   const [width, setWidth] = useState(window.innerWidth);
+  const maxWidth = homePage ? 850 : 1000;
+
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -242,7 +244,7 @@ export function Navbar(): JSX.Element {
       <Header onClick={() => setOpen(false)}>
         {homePage ? null : <SLink to="/">{t("siteName")}</SLink>}
       </Header>
-      {width < 850 ? (
+      {width < maxWidth ? (
         <Burger open={open} setOpen={setOpen} />
       ) : (
         <LinkWrapper>
