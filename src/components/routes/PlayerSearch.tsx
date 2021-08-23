@@ -110,7 +110,12 @@ function Graphs(): React.ReactElement {
   const [gameGraph, setGraphGame] = React.useState<string>("bfglobal");
   return (
     <>
-      <Title>{t("playerSearch.gameStatus")}</Title>
+      <Align>
+        <Title>{t("playerSearch.gameStatus")}</Title>
+        <AltDescription style={{ marginTop: "2rem" }}>
+          {t("playerSearch.zoomInfo")}
+        </AltDescription>
+      </Align>
       <Align>
         <BigSelectSecondary
           value={platformGraph}

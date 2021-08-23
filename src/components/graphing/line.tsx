@@ -1,5 +1,7 @@
 import React from "react";
-import { Line } from "react-chartjs-2";
+import { Line, Chart } from "react-chartjs-2";
+import "chartjs-adapter-date-fns";
+import zoomPlugin from "chartjs-plugin-zoom";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "react-query";
 import { GetStats } from "../../api/GetStats";
@@ -7,6 +9,75 @@ import { newTitles, graphGames } from "../../api/static";
 import { Box } from "../Materials";
 
 import { useMeasure } from "react-use";
+
+Chart.register(zoomPlugin);
+
+const borderPlugin = {
+  id: "chartAreaBorder",
+  beforeDraw(chart, args, options) {
+    const {
+      ctx,
+      chartArea: { left, top, width, height },
+    } = chart;
+    if (chart.options.plugins.zoom.zoom.wheel.enabled) {
+      ctx.save();
+      ctx.strokeStyle = "red";
+      ctx.lineWidth = 0.5;
+      ctx.strokeRect(left, top, width, height);
+      ctx.restore();
+    }
+  },
+};
+
+const options = {
+  scales: {
+    x: {
+      type: "time",
+      ticks: {
+        autoSkip: true,
+        autoSkipPadding: 50,
+        maxRotation: 0,
+      },
+      time: {
+        displayFormats: {
+          hour: "HH:mm, eee d LLL",
+        },
+      },
+    },
+  },
+  onClick(e) {
+    const chart = e.chart;
+    chart.options.plugins.zoom.zoom.wheel.enabled =
+      !chart.options.plugins.zoom.zoom.wheel.enabled;
+    chart.options.plugins.zoom.zoom.pinch.enabled =
+      !chart.options.plugins.zoom.zoom.pinch.enabled;
+    chart.update();
+  },
+  plugins: {
+    zoom: {
+      limits: {
+        x: {
+          min: +new Date() - 604800000,
+          max: +new Date(),
+          minRange: 50000000,
+        },
+      },
+      pan: {
+        enabled: true,
+        mode: "x",
+      },
+      zoom: {
+        wheel: {
+          enabled: false,
+        },
+        pinch: {
+          enabled: false,
+        },
+        mode: "x",
+      },
+    },
+  },
+};
 
 interface GraphData {
   loading: boolean;
@@ -22,7 +93,7 @@ function LineGraph(props: GraphData) {
     const { t } = useTranslation();
     const time = props.timeStamps.map((e: string) => {
       const time = new Date(e);
-      return time.toLocaleDateString();
+      return time;
     });
     const data = newTitles.includes(props.gameName)
       ? {
@@ -66,7 +137,13 @@ function LineGraph(props: GraphData) {
 
     return (
       <div>
-        <Line style={{ height: "15rem" }} data={data} type="line" />
+        <Line
+          options={options}
+          style={{ height: "15rem" }}
+          data={data}
+          plugins={[borderPlugin]}
+          type="line"
+        />
       </div>
     );
   } else {
@@ -79,7 +156,7 @@ function AllPlatformGraph(props: GraphData) {
     const { t } = useTranslation();
     const time = props.timeStamps.map((e: string) => {
       const time = new Date(e);
-      return time.toLocaleDateString();
+      return time;
     });
     const data = {
       labels: time,
@@ -110,7 +187,13 @@ function AllPlatformGraph(props: GraphData) {
 
     return (
       <div>
-        <Line style={{ height: "15rem" }} data={data} type="line" />
+        <Line
+          options={options}
+          plugins={[borderPlugin]}
+          style={{ height: "15rem" }}
+          data={data}
+          type="line"
+        />
       </div>
     );
   } else {
@@ -239,7 +322,7 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
   if (!props.loading && !props.error) {
     const time = props.stats.data.timeStamps.map((e: string) => {
       const time = new Date(e);
-      return time.toLocaleDateString();
+      return time;
     });
     const games = graphGames[props.platform].filter((e: string) => {
       if (e !== "bfglobal") {
@@ -291,10 +374,49 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
     return (
       <div ref={graphRef}>
         {width > 380 ? (
-          <Line style={{ height: "15rem" }} data={data} type="line" />
+          <Line
+            options={options}
+            plugins={[borderPlugin]}
+            style={{ height: "15rem" }}
+            data={data}
+            type="line"
+          />
         ) : (
           <Line
-            options={{ plugins: { legend: { display: false } } }}
+            options={{
+              onClick(e) {
+                const chart = e.chart;
+                chart.options.plugins.zoom.zoom.wheel.enabled =
+                  !chart.options.plugins.zoom.zoom.wheel.enabled;
+                chart.options.plugins.zoom.zoom.pinch.enabled =
+                  !chart.options.plugins.zoom.zoom.pinch.enabled;
+                chart.update();
+              },
+              plugins: {
+                legend: { display: false },
+                zoom: {
+                  x: {
+                    min: +new Date() - 604800000,
+                    max: +new Date(),
+                    minRange: 50000000,
+                  },
+                  pan: {
+                    enabled: true,
+                    mode: "x",
+                  },
+                  zoom: {
+                    wheel: {
+                      enabled: false,
+                    },
+                    pinch: {
+                      enabled: false,
+                    },
+                    mode: "x",
+                  },
+                },
+              },
+            }}
+            plugins={[borderPlugin]}
             style={{ height: "15rem" }}
             data={data}
             type="line"

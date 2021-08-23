@@ -132,7 +132,8 @@
         "description": "Zoek voor een Origin naam om zijn stats te zien",
         "search": "Zoeken",
         "searchPlaceholder": "Zoek voor Origin naam...",
-        "gameStatus": "Het aantal spelers in het spel"
+        "gameStatus": "Het aantal spelers in het spel",
+        "zoomInfo": "(Klick op het tabel om scroll-zoom te activeren)"
     },
     "serverSearch": {
         "back": "Hoofdpagina",
