@@ -131,7 +131,8 @@
         "description": "通过搜索玩家的Origin ID来获取玩家的数据",
         "search": "搜索",
         "searchPlaceholder": "Origin ID",
-        "gameStatus": "战地在线人数"
+        "gameStatus": "战地在线人数",
+        "zoomInfo": "(点击表格开启滚轮缩放)"
     },
     "serverSearch": {
         "back": "主页",
