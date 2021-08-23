@@ -30,6 +30,10 @@ const borderPlugin = {
 };
 
 const options = {
+  interaction: {
+    intersect: false,
+    mode: "nearest",
+  },
   scales: {
     x: {
       type: "time",
@@ -377,13 +381,17 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
           <Line
             options={options}
             plugins={[borderPlugin]}
-            style={{ height: "15rem" }}
+            style={{ height: "20rem" }}
             data={data}
             type="line"
           />
         ) : (
           <Line
             options={{
+              interaction: {
+                intersect: false,
+                mode: "nearest",
+              },
               onClick(e) {
                 const chart = e.chart;
                 chart.options.plugins.zoom.zoom.wheel.enabled =
@@ -417,7 +425,7 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
               },
             }}
             plugins={[borderPlugin]}
-            style={{ height: "15rem" }}
+            style={{ height: "0rem" }}
             data={data}
             type="line"
           />
