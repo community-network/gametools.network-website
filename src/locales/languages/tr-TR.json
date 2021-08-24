@@ -252,7 +252,17 @@
                 "wins": "Kazanma",
                 "losses": "Kaybetme",
                 "timePlayedAs": "Oynanan süre",
-                "score": "Skor"
+                "score": "Skor",
+                "gamemodes": {
+                    "TugOfWar": "Cephe hattı",
+                    "Domination": "Üstünlük",
+                    "Breakthrough": "Şok operasyon",
+                    "Rush": "Akın",
+                    "BreakthroughLarge": "=Operasyon",
+                    "Conquest": "Fetih",
+                    "Possession": "Savaş güvencini",
+                    "TeamDeathMatch": "Takım ölüm karşılaşması"
+                }
             }
         },
         "main": {
