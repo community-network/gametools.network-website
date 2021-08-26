@@ -169,7 +169,7 @@
             "vehicleName": "载具名称",
             "type": "种类",
             "kills": "击杀",
-            "kpm": "KPM",
+            "killsPerMinute": "KPM",
             "destroyed": "摧毁数量",
             "accuracy": "准度",
             "headshots": "爆头数"

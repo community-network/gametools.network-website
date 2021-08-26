@@ -164,6 +164,8 @@
         "otherPlatoons": "Andere platoons",
         "weapons": "Wapens",
         "vehicles": "Voertuigen",
+        "weaponGraph": "Wapens grafiek",
+        "vehicleGraph": "Voertuigen grafiek",
         "searchWeapon": "Zoek voor een wapen",
         "searchVehicle": "Zoek voor een voertuig",
         "rows": {
@@ -171,7 +173,7 @@
             "vehicleName": "Voertuig naam",
             "type": "Type",
             "kills": "Kills",
-            "kpm": "KPM",
+            "kpm": "killsPerMinute",
             "destroyed": "Destroyed",
             "accuracy": "Accuracy",
             "headshots": "Headshots"

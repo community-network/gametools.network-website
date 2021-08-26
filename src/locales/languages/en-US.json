@@ -164,6 +164,8 @@
         "otherPlatoons": "Other platoons",
         "weapons": "Weapons",
         "vehicles": "Vehicles",
+        "weaponGraph": "Weapon graph",
+        "vehicleGraph": "Vehicle graph",
         "searchWeapon": "Search for weapon",
         "searchVehicle": "Search for vehicle",
         "rows": {
@@ -171,7 +173,7 @@
             "vehicleName": "Vehicle name",
             "type": "Type",
             "kills": "Kills",
-            "kpm": "KPM",
+            "killsPerMinute": "KPM",
             "destroyed": "Destroyed",
             "accuracy": "Accuracy",
             "headshots": "Headshots"

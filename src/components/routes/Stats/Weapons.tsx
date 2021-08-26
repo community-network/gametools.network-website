@@ -9,6 +9,7 @@ import {
   Column,
   Row,
   AlignW,
+  SmallButtonSecondary,
 } from "../../Materials";
 import { MainStatsWeapon } from "../../../api/ReturnTypes";
 import {
@@ -19,6 +20,7 @@ import {
   Views,
   DynamicSort,
 } from "./Main";
+import { BarGraph } from "../../graphing/bar";
 
 export function ViewWeapons(props: Views): React.ReactElement {
   const { t } = useTranslation();
@@ -65,7 +67,9 @@ export function ViewWeapons(props: Views): React.ReactElement {
             <option value="weaponName">{t("stats.rows.weaponName")}</option>
             <option value="type">{t("stats.rows.type")}</option>
             <option value="-kills">{t("stats.rows.kills")}</option>
-            <option value="-killsPerMinute">{t("stats.rows.kpm")}</option>
+            <option value="-killsPerMinute">
+              {t("stats.rows.killsPerMinute")}
+            </option>
             <option value="-accuracy">{t("stats.rows.accuracy")}</option>
             <option value="-headshots">{t("stats.rows.headshots")}</option>
           </SelectPrimary>
@@ -90,7 +94,7 @@ export function ViewWeapons(props: Views): React.ReactElement {
                 </Row>
                 <Row>
                   <h4>{key.killsPerMinute}</h4>
-                  <Description>{t("stats.rows.kpm")}</Description>
+                  <Description>{t("stats.rows.killsPerMinute")}</Description>
                 </Row>
                 <Row>
                   <h4>{key.accuracy}%</h4>
@@ -103,6 +107,75 @@ export function ViewWeapons(props: Views): React.ReactElement {
               </Column>
             );
           })}
+        </Box>
+      ) : (
+        <Box>
+          <p>{t("loading")}</p>
+        </Box>
+      )}
+    </Spacing>
+  );
+}
+
+export function WeaponGraph(props: Views): React.ReactElement {
+  const { t } = useTranslation();
+  const [graphType, setGraphType] = React.useState<string>("kills");
+  const [begin, setBegin] = React.useState<number>(0);
+  let i = 0;
+  const names = [];
+  const values = [];
+  if (!props.loading && !props.error) {
+    props.stats.weapons
+      .sort(DynamicSort(`-${graphType}`))
+      .map((item: MainStatsWeapon) => {
+        if (i >= begin && i < begin + 25) {
+          names.push(item.weaponName);
+          values.push(item[graphType]);
+        }
+        i += 1;
+      });
+  }
+  const less = () => setBegin(Math.max(0, begin - 25));
+  const more = () =>
+    setBegin(Math.min(props.stats.weapons.length - 1, begin + 25));
+  return (
+    <Spacing>
+      <Align>
+        <Title>{t("stats.weaponGraph")}</Title>
+        <AlignW style={{ marginRight: "1rem" }}>
+          <SelectPrimary
+            value={graphType}
+            onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
+              setGraphType(ev.target.value)
+            }
+          >
+            <option value="kills">{t("stats.rows.kills")}</option>
+            <option value="killsPerMinute">
+              {t("stats.rows.killsPerMinute")}
+            </option>
+            <option value="accuracy">{t("stats.rows.accuracy")}</option>
+            <option value="headshots">{t("stats.rows.headshots")}</option>
+          </SelectPrimary>
+        </AlignW>
+        <p />
+        <SmallButtonSecondary style={{ marginRight: ".5rem" }} onClick={less}>
+          &#60;
+        </SmallButtonSecondary>
+        <SmallButtonSecondary onClick={more}>&#62;</SmallButtonSecondary>
+        <Description>
+          {begin + 1}/{Math.min(props.stats.weapons.length, begin + 25)}{" "}
+          {t("stats.weapons")}
+        </Description>
+      </Align>
+      {names !== [] ? (
+        <Box>
+          <BarGraph
+            names={names}
+            values={values}
+            valueName={graphType}
+            loading={props.loading}
+            error={props.error}
+          />
         </Box>
       ) : (
         <Box>

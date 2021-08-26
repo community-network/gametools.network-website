@@ -12,6 +12,19 @@ import { useMeasure } from "react-use";
 
 Chart.register(zoomPlugin);
 
+interface GraphData {
+  loading: boolean;
+  error: boolean;
+  stats: { [name: string]: any };
+  gameName: string;
+  platform: string;
+  timeStamps: [string];
+}
+
+interface GlobalInfo {
+  platform: string;
+}
+
 const borderPlugin = {
   id: "chartAreaBorder",
   beforeDraw(chart, args, options) {
@@ -82,15 +95,6 @@ const options = {
     },
   },
 };
-
-interface GraphData {
-  loading: boolean;
-  error: boolean;
-  stats: { [name: string]: any };
-  gameName: string;
-  platform: string;
-  timeStamps: [string];
-}
 
 function LineGraph(props: GraphData) {
   if (!props.loading && !props.error) {
@@ -439,10 +443,6 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
       </Box>
     );
   }
-}
-
-interface GlobalInfo {
-  platform: string;
 }
 
 export function GlobalGraph(props: GlobalInfo): React.ReactElement {

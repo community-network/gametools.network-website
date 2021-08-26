@@ -171,7 +171,7 @@
             "vehicleName": "Araç adı",
             "type": "Tür",
             "kills": "Öldürme",
-            "kpm": "KPM",
+            "killsPerMinute": "KPM",
             "destroyed": "Patlatma",
             "accuracy": "isabet",
             "headshots": "Kafadan vurma"

@@ -32,8 +32,8 @@ import { getLanguage } from "../../../locales/config";
 import { MainStats } from "../../../api/ReturnTypes";
 import { BfSessionInfo } from "./ManagerExtr";
 import { DetailedStats } from "./DetailedStats";
-import { ViewWeapons } from "./Weapons";
-import { ViewVehicles } from "./Vehicles";
+import { ViewWeapons, WeaponGraph } from "./Weapons";
+import { ViewVehicles, VehicleGraph } from "./Vehicles";
 import { Platoon, PlatoonInfo } from "./Platoon";
 import { ViewProgress } from "./Progress";
 import { ViewGamemodes } from "./Gamemodes";
@@ -265,7 +265,7 @@ export function DynamicSort(property: string) {
     sortOrder = -1;
     property = property.substr(1);
   }
-  return function (a: string, b: string): number {
+  return function (a: any, b: any): number {
     const result =
       a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
     return result * sortOrder;
@@ -424,7 +424,21 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
         error={error}
         name={name}
       />
+      <WeaponGraph
+        game={game}
+        loading={loading}
+        stats={stats}
+        error={error}
+        name={name}
+      />
       <ViewVehicles
+        game={game}
+        loading={loading}
+        stats={stats}
+        error={error}
+        name={name}
+      />
+      <VehicleGraph
         game={game}
         loading={loading}
         stats={stats}
