@@ -250,7 +250,7 @@ function Servers(props: { servers: ServerList[] }): React.ReactElement {
             to={`/servers/bf1/gameid/${key.gameId}/${key.platform}`}
             key={index}
           >
-            <Box>
+            <Box className="box_hover">
               <AlignW>
                 <div>
                   <ServerImage background={key.url}>

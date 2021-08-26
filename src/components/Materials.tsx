@@ -18,6 +18,7 @@ export const M96 = css`
   --color-text: rgba(255, 255, 255, 0.96);
   --color-alt-text: rgba(255, 255, 255, 0.76);
   --color-base: #282a3a;
+  --color-alt-base: #2e313f;
 `;
 export const M100 = css`
   --color-text: rgba(255, 255, 255, 1);
@@ -152,6 +153,9 @@ export const ButtonLink = styled.a`
   flex-grow: 1;
   width: auto;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.1));
+  :hover {
+    background: var(--color-alt-base);
+  }
 `;
 
 export const BigButtonSecondary = styled.button`
@@ -168,11 +172,15 @@ export const BigButtonSecondary = styled.button`
   font-family: Manrope;
   font-weight: medium;
   font-style: normal;
+  cursor: pointer;
+  :hover {
+    background: var(--color-base);
+  }
 `;
 
 export const SmallButtonSecondary = styled.button`
   ${M96}
-  background: var(--color-base);
+  background: #1E2132;
   color: var(--color-text);
   border: none;
   margin-bottom: 1rem;
@@ -184,6 +192,10 @@ export const SmallButtonSecondary = styled.button`
   font-weight: medium;
   font-style: normal;
   box-sizing: borfer-box;
+  cursor: pointer;
+  :hover {
+    background: var(--color-base);
+  }
 `;
 
 export const BigSelectSecondary = styled.select`
@@ -338,9 +350,10 @@ export function Box(props: {
     | React.ReactChild
     | React.ReactFragment
     | React.ReactPortal;
+  className?: string;
 }): React.ReactElement {
   return (
-    <BoxWrap>
+    <BoxWrap className={props.className}>
       <BoxInner style={{ alignItems: props.align || "stretch" }}>
         {props.children}
       </BoxInner>
@@ -395,4 +408,8 @@ export const UncheckedSmallButtonRadio = styled.label`
   font-family: Manrope;
   font-weight: medium;
   font-style: normal;
+  cursor: pointer;
+  :hover {
+    background: var(--color-base);
+  }
 `;

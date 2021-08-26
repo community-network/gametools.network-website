@@ -136,17 +136,17 @@ function Results(props: Views): React.ReactElement {
           if (key.official !== undefined) {
             officialString = key.official ? " - Official" : " - Custom";
           }
+          const useLink =
+            props.game === "bf1" ||
+            props.game === "bf4" ||
+            (props.game === "bf3" && key.platform == "pc");
           return (
             <ConditionalLink
               to={`/servers/${props.game}/gameid/${key.gameId}/${key.platform}`}
-              condition={
-                props.game === "bf1" ||
-                props.game === "bf4" ||
-                (props.game === "bf3" && key.platform == "pc")
-              }
+              condition={useLink}
               key={index}
             >
-              <Box>
+              <Box className={useLink ? "box_hover" : ""}>
                 <AlignSeverImg>
                   <div>
                     <ServerImage background={key.url}>
