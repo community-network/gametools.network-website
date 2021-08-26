@@ -104,9 +104,11 @@ export function VehicleGraph(props: Views): React.ReactElement {
   const [graphType, setGraphType] = React.useState<string>("kills");
   const [begin, setBegin] = React.useState<number>(0);
   let i = 0;
+  let length = 0;
   const names = [];
   const values = [];
   if (!props.loading && !props.error) {
+    length = props.stats.vehicles.length;
     props.stats.vehicles
       .sort(DynamicSort(`-${graphType}`))
       .map((item: MainStatsVehicle) => {
@@ -118,8 +120,7 @@ export function VehicleGraph(props: Views): React.ReactElement {
       });
   }
   const less = () => setBegin(Math.max(0, begin - 25));
-  const more = () =>
-    setBegin(Math.min(props.stats.vehicles.length - 1, begin + 25));
+  const more = () => setBegin(Math.min(length - 1, begin + 25));
   return (
     <Spacing>
       <Align>

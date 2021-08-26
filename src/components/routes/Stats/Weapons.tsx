@@ -122,9 +122,11 @@ export function WeaponGraph(props: Views): React.ReactElement {
   const [graphType, setGraphType] = React.useState<string>("kills");
   const [begin, setBegin] = React.useState<number>(0);
   let i = 0;
+  let length = 0;
   const names = [];
   const values = [];
   if (!props.loading && !props.error) {
+    length = props.stats.weapons.length;
     props.stats.weapons
       .sort(DynamicSort(`-${graphType}`))
       .map((item: MainStatsWeapon) => {
@@ -136,8 +138,7 @@ export function WeaponGraph(props: Views): React.ReactElement {
       });
   }
   const less = () => setBegin(Math.max(0, begin - 25));
-  const more = () =>
-    setBegin(Math.min(props.stats.weapons.length - 1, begin + 25));
+  const more = () => setBegin(Math.min(length - 1, begin + 25));
   return (
     <Spacing>
       <Align>
