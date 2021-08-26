@@ -19,6 +19,8 @@ import {
   Radio,
   SmallButtonRadio,
   UncheckedSmallButtonRadio,
+  PageColumn,
+  PageRow,
 } from "../../Materials";
 import styled from "styled-components";
 import {
@@ -381,70 +383,89 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
           })}
         </Align>
       )}
-      <ViewStats
-        game={game}
-        loading={loading}
-        stats={stats}
-        error={error}
-        name={name}
-      />
-      <DetailedStats
-        game={game}
-        loading={loading}
-        stats={stats}
-        error={error}
-        name={name}
-      />
-      {newTitles.includes(game) ? (
-        <PlatoonInfo
-          game={game}
-          loading={loading}
-          stats={stats}
-          error={error}
-          name={name}
-        />
-      ) : (
-        <></>
-      )}
-      {game == "bf1" ? (
-        <BfSessionInfo
-          game={game}
-          loading={loading}
-          stats={stats}
-          error={error}
-          name={name}
-        />
-      ) : (
-        <></>
-      )}
-      <ViewWeapons
-        game={game}
-        loading={loading}
-        stats={stats}
-        error={error}
-        name={name}
-      />
-      <WeaponGraph
-        game={game}
-        loading={loading}
-        stats={stats}
-        error={error}
-        name={name}
-      />
-      <ViewVehicles
-        game={game}
-        loading={loading}
-        stats={stats}
-        error={error}
-        name={name}
-      />
-      <VehicleGraph
-        game={game}
-        loading={loading}
-        stats={stats}
-        error={error}
-        name={name}
-      />
+      <PageColumn>
+        <PageRow>
+          <ViewStats
+            game={game}
+            loading={loading}
+            stats={stats}
+            error={error}
+            name={name}
+          />
+          <DetailedStats
+            game={game}
+            loading={loading}
+            stats={stats}
+            error={error}
+            name={name}
+          />
+          {newTitles.includes(game) ? (
+            <PlatoonInfo
+              game={game}
+              loading={loading}
+              stats={stats}
+              error={error}
+              name={name}
+            />
+          ) : (
+            <></>
+          )}
+          {game == "bf1" ? (
+            <BfSessionInfo
+              game={game}
+              loading={loading}
+              stats={stats}
+              error={error}
+              name={name}
+            />
+          ) : (
+            <></>
+          )}
+          <WeaponGraph
+            game={game}
+            loading={loading}
+            stats={stats}
+            error={error}
+            name={name}
+          />
+          <VehicleGraph
+            game={game}
+            loading={loading}
+            stats={stats}
+            error={error}
+            name={name}
+          />
+        </PageRow>
+        <PageRow>
+          {classGames.includes(game) ? (
+            <>
+              <ViewClasses
+                game={game}
+                loading={loading}
+                stats={stats}
+                error={error}
+                name={name}
+              />
+            </>
+          ) : (
+            <></>
+          )}
+          <ViewWeapons
+            game={game}
+            loading={loading}
+            stats={stats}
+            error={error}
+            name={name}
+          />
+          <ViewVehicles
+            game={game}
+            loading={loading}
+            stats={stats}
+            error={error}
+            name={name}
+          />
+        </PageRow>
+      </PageColumn>
       {progressGames.includes(game) ? (
         <>
           <ViewProgress
@@ -461,19 +482,6 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
       {gamemodeGames.includes(game) ? (
         <>
           <ViewGamemodes
-            game={game}
-            loading={loading}
-            stats={stats}
-            error={error}
-            name={name}
-          />
-        </>
-      ) : (
-        <></>
-      )}
-      {classGames.includes(game) ? (
-        <>
-          <ViewClasses
             game={game}
             loading={loading}
             stats={stats}

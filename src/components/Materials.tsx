@@ -41,6 +41,20 @@ export const Row = styled.div`
   flex: 1;
 `;
 
+export const PageColumn = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+`;
+
+export const PageRow = styled.div`
+  flex: 0;
+  min-width: 800px;
+  @media screen and (max-width: 1800px) {
+    flex: 100%;
+  }
+`;
+
 export const Container = styled.div`
   @media (min-width: 850px) {
     padding-left: 8.33%;
