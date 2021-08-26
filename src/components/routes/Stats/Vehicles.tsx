@@ -145,8 +145,7 @@ export function VehicleGraph(props: Views): React.ReactElement {
         </SmallButtonSecondary>
         <SmallButtonSecondary onClick={more}>&#62;</SmallButtonSecondary>
         <Description>
-          {begin + 1}/{Math.min(props.stats.vehicles.length, begin + 25)}{" "}
-          {t("stats.vehicles")}
+          {begin + 1}/{Math.min(length, begin + 25)} {t("stats.vehicles")}
         </Description>
       </Align>
       {names !== [] ? (

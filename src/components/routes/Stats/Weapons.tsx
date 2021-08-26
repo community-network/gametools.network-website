@@ -164,8 +164,7 @@ export function WeaponGraph(props: Views): React.ReactElement {
         </SmallButtonSecondary>
         <SmallButtonSecondary onClick={more}>&#62;</SmallButtonSecondary>
         <Description>
-          {begin + 1}/{Math.min(props.stats.weapons.length, begin + 25)}{" "}
-          {t("stats.weapons")}
+          {begin + 1}/{Math.min(length, begin + 25)} {t("stats.weapons")}
         </Description>
       </Align>
       {names !== [] ? (
