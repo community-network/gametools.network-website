@@ -27,7 +27,7 @@ interface GlobalInfo {
 
 const borderPlugin = {
   id: "chartAreaBorder",
-  beforeDraw(chart, args, options) {
+  beforeDraw(chart) {
     const {
       ctx,
       chartArea: { left, top, width, height },
@@ -96,7 +96,7 @@ const options = {
   },
 };
 
-function LineGraph(props: GraphData) {
+function LineGraph(props: GraphData): React.ReactElement {
   if (!props.loading && !props.error) {
     const { t } = useTranslation();
     const time = props.timeStamps.map((e: string) => {
@@ -159,7 +159,7 @@ function LineGraph(props: GraphData) {
   }
 }
 
-function AllPlatformGraph(props: GraphData) {
+function AllPlatformGraph(props: GraphData): React.ReactElement {
   if (!props.loading && !props.error) {
     const { t } = useTranslation();
     const time = props.timeStamps.map((e: string) => {
