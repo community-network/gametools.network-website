@@ -67,6 +67,7 @@ export function Footer(): JSX.Element {
     "https://discord.gametools.network/",
     "/privacy/",
     "https://top.gg/bot/714524944783900794",
+    "https://www.buymeacoffee.com/Gametools",
   ];
 
   let i = 0;
