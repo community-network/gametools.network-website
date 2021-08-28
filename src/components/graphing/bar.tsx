@@ -19,7 +19,7 @@ export function BarGraph(props: GraphData): React.ReactElement {
         label: t(`stats.rows.${props.valueName}`),
         data: props.values,
         backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
+          "rgba(20, 254, 212, 0.2)",
           // "rgba(54, 162, 235, 0.2)",
           // "rgba(255, 206, 86, 0.2)",
           // "rgba(75, 192, 192, 0.2)",
@@ -27,7 +27,7 @@ export function BarGraph(props: GraphData): React.ReactElement {
           // "rgba(255, 159, 64, 0.2)",
         ],
         borderColor: [
-          "rgba(255, 99, 132, 1)",
+          "rgba(20, 254, 212, 1)",
           // "rgba(54, 162, 235, 1)",
           // "rgba(255, 206, 86, 1)",
           // "rgba(75, 192, 192, 1)",
@@ -46,13 +46,17 @@ export function BarGraph(props: GraphData): React.ReactElement {
       },
     },
     scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-          },
+      x: {
+        ticks: {
+          color: "rgba(255, 255, 255, 0.65)",
         },
-      ],
+      },
+      y: {
+        ticks: {
+          color: "rgba(255, 255, 255, 0.65)",
+          beginAtZero: true,
+        },
+      },
     },
   };
 
