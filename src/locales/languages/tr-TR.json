@@ -164,6 +164,8 @@
         "otherPlatoons": "Diğer Klanlar",
         "weapons": "Silah",
         "vehicles": "Araç",
+        "weaponGraph": "Silah grafiği",
+        "vehicleGraph": "Araç grafiği",
         "searchWeapon": "Silah ara",
         "searchVehicle": "Araç ara",
         "rows": {
