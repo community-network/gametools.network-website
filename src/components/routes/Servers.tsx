@@ -14,6 +14,7 @@ import {
   Align,
   AlignW,
   AlignT,
+  Circle,
   Box,
   SmallButtonSecondary,
 } from "../Materials";
@@ -21,6 +22,7 @@ import { getLanguage } from "../../locales/config";
 import {
   DetailedServerInfo,
   PlatoonResult,
+  ServerOwnerResult,
   ServerRotation,
 } from "../../api/ReturnTypes";
 
@@ -143,6 +145,64 @@ function ServerPlatoon(props: { platoon: PlatoonResult }) {
   );
 }
 
+const OriginProfile = styled.img`
+  width: 60px;
+  margin-right: 1rem;
+`;
+
+const OriginName = styled.h2`
+  line-height: 60%;
+`;
+
+const OriginDescription = styled.h4`
+  line-height: 60%;
+`;
+
+function ServerOwner(props: { owner: ServerOwnerResult }) {
+  const { t } = useTranslation();
+  const owner = props.owner;
+  if (owner === null) {
+    return (
+      <Spacing>
+        <h3>{t("servers.owner.main")}</h3>
+        <Align>
+          <Circle />
+          <div>
+            <OriginName>{t("404")}</OriginName>
+            <OriginDescription>{t("servers.owner.none")}</OriginDescription>
+          </div>
+        </Align>
+      </Spacing>
+    );
+  }
+  return (
+    <Spacing>
+      <h2>{t("servers.owner.main")}</h2>
+      <Align>
+        <Link
+          to={`/stats/pc/playerid/${
+            owner.id
+          }?game=bfv&name=${encodeURIComponent(owner.name)}`}
+        >
+          <OriginProfile src={owner.avatar} />
+        </Link>
+        <Link
+          to={`/stats/pc/playerid/${
+            owner.id
+          }?game=bfv&name=${encodeURIComponent(owner.name)}`}
+        >
+          <div>
+            <OriginName>{owner.name}</OriginName>
+            <OriginDescription>
+              {t("stats.originDescription")}
+            </OriginDescription>
+          </div>
+        </Link>
+      </Align>
+    </Spacing>
+  );
+}
+
 const AlignSeverImg = styled.div`
   @media (min-width: 430px) {
     display: flex;
@@ -255,6 +315,7 @@ function Results(props: Views): React.ReactElement {
         ) : (
           <></>
         )}
+        {props.game === "bfv" ? <ServerOwner owner={stats.owner} /> : <></>}
         <h2>{t("servers.settings")}</h2>
         <AlignT>
           {Object.entries(stats.settings).map(

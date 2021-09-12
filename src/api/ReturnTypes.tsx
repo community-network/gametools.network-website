@@ -213,9 +213,16 @@ export type DetailedServerInfo = {
   inQueue?: number;
   maxPlayerAmount?: number;
   platoon?: PlatoonResult;
+  owner?: ServerOwnerResult;
 
   inQue?: number;
   maxPlayers?: number;
+};
+
+export type ServerOwnerResult = {
+  id: string;
+  name: string;
+  avatar: string;
 };
 
 export type TeamList = {

@@ -317,6 +317,10 @@
             "main": "Server platoon",
             "none": "Server isn't connected to a platoon"
         },
+        "owner": {
+            "main": "Server owner",
+            "none": "Server has no owner (Dice server)"
+        },
         "join": "Join server (Firefox only)"
     },
     "platoon": {

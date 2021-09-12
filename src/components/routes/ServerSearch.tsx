@@ -139,6 +139,7 @@ function Results(props: Views): React.ReactElement {
           const useLink =
             props.game === "bf1" ||
             props.game === "bf4" ||
+            props.game === "bfv" ||
             (props.game === "bf3" && key.platform == "pc");
           return (
             <ConditionalLink
