@@ -317,6 +317,10 @@
             "main": "Server platoon",
             "none": "Er is geen platoon gekoppeld aan deze server"
         },
+        "owner": {
+            "main": "Server eigenaar",
+            "none": "Server heeft geen eigenaar (Dice server)"
+        },
         "join": "Join server (werkt alleen op firefox)"
     },
     "platoon": {

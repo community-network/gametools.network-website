@@ -317,6 +317,10 @@
             "main": "klan serveri",
             "none": "Sunucu bir klana bağlı değil"
         },
+        "owner": {
+            "main": "Sunucu sahibi",
+            "none": "Sunucunun sahibi yok (Dice sunucusu)"
+        },
         "join": "Sunucuya katıl (yalnızca Firefox)"
     },
     "platoon": {
