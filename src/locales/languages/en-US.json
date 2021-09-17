@@ -324,6 +324,7 @@
         "join": "Join server (Firefox only)",
         "iframe": {
             "main": "Add the server to your own website",
+            "info": "If You want your own custom version, ask iiTzArcur in our Discord. (link in footer)",
             "black": "Black version:",
             "white": "White version:",
             "states": {

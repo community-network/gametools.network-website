@@ -343,7 +343,10 @@ function Results(props: Views): React.ReactElement {
             },
           )}
         </AlignT>
-        <h2>{t("servers.iframe.main")}</h2>
+        <h2 style={{ marginBottom: 0 }}>{t("servers.iframe.main")}</h2>
+        <Description style={{ margin: 0, marginTop: "0.2rem" }}>
+          {t("servers.iframe.info")}
+        </Description>
         {serverWidgetTypes.map((element, index) => {
           return (
             <div key={index}>
