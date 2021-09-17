@@ -324,6 +324,7 @@
         "join": "Sunucuya katıl (yalnızca Firefox)",
         "iframe": {
             "main": "Sunucuyu kendi web sitenize ekleyin",
+            "info": "Kendi özel sürümünüzü istiyorsanız, Discord'umuzdan iiTzArcur'a sorun.",
             "black": "Siyah versiyon:",
             "white": "Beyaz versiyon:",
             "states": {
