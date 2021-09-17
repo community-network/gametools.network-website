@@ -6,6 +6,7 @@ import styled from "styled-components";
 import "../../assets/scss/App.scss";
 import { GetStats } from "../../api/GetStats";
 import { useQuery } from "react-query";
+import { serverWidgetTypes } from "../../api/static";
 import {
   AltText,
   Back,
@@ -224,6 +225,11 @@ function capitalizeFirstLetter(string: string) {
 
 function Results(props: Views): React.ReactElement {
   const [copyState, setCopyState] = React.useState<string>("copy");
+  const copyStates = {};
+  serverWidgetTypes.map((element) => {
+    const [tempCopyState, tempSetCopyState] = React.useState<string>("copy");
+    copyStates[element] = { state: tempCopyState, set: tempSetCopyState };
+  });
 
   const { t } = useTranslation();
   const stats = props.stats;
@@ -337,6 +343,46 @@ function Results(props: Views): React.ReactElement {
             },
           )}
         </AlignT>
+        <h2>{t("servers.iframe.main")}</h2>
+        {serverWidgetTypes.map((element, index) => {
+          return (
+            <div key={index}>
+              <Description style={{ marginTop: "15px" }}>
+                {t(`servers.iframe.${element}`)}{" "}
+                <ServerLink
+                  onClick={() => {
+                    navigator.clipboard.writeText(
+                      `<iframe src="https://gametools.network/servers/${element}/${
+                        props.game
+                      }/name/${encodeURIComponent(
+                        stats.prefix,
+                      )}/pc" height="78px" frameborder="0" allowtransparency="true"></iframe>`,
+                    );
+                    copyStates[element].set("copied");
+                    const timer1 = setTimeout(
+                      () => copyStates[element].set("copy"),
+                      3 * 1000,
+                    );
+                    return () => {
+                      clearTimeout(timer1);
+                    };
+                  }}
+                >
+                  {t(`servers.iframe.states.${copyStates[element].state}`)}
+                </ServerLink>
+              </Description>
+              <iframe
+                src={`https://widgets.gametools.network/servers/${element}/${
+                  props.game
+                }/name/${encodeURIComponent(stats.prefix)}/pc`}
+                height="78px"
+                width="600px"
+                frameBorder="0"
+                allowtransparency="true"
+              ></iframe>
+            </div>
+          );
+        })}
       </div>
     );
   } else {

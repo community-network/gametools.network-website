@@ -321,7 +321,16 @@
             "main": "Server owner",
             "none": "Server has no owner (Dice server)"
         },
-        "join": "Join server (Firefox only)"
+        "join": "Join server (Firefox only)",
+        "iframe": {
+            "main": "Add the server to your own website",
+            "black": "Black version:",
+            "white": "White version:",
+            "states": {
+                "copy": "Copy iframe",
+                "copied": "Copied!"
+            }
+        }
     },
     "platoon": {
         "back": "Back to search",

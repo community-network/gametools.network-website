@@ -33,3 +33,5 @@ export const newTitles = ["bf1", "bfv"];
 export const progressGames = ["bf4", "bfh", "bf1"];
 export const gamemodeGames = ["bf4", "bf1"];
 export const classGames = ["bf3", "bf4", "bfh", "bf1"];
+
+export const serverWidgetTypes = ["black", "white"];
