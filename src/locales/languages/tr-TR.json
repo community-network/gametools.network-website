@@ -327,6 +327,7 @@
             "info": "Kendi özel sürümünüzü istiyorsanız, Discord'umuzdan iiTzArcur'a sorun.",
             "black": "Siyah versiyon:",
             "white": "Beyaz versiyon:",
+            "detailed": "Detaylı versiyon:",
             "states": {
                 "copy": "iframe'i kopyala",
                 "copied": "kopyalandı!"
