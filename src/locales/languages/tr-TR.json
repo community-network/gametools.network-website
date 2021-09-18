@@ -306,6 +306,10 @@
             "all": "Tüm oyuncular",
             "dice": "Dice sunucularındaki oyuncular",
             "community": "Topluluk sunucularındaki oyuncular"
+        },
+        "iframe": {
+            "main": "İstatistiklerinizi kendi web sitenize ekleyin",
+            "info": "Ana sürüm:"
         }
     },
     "servers": {
