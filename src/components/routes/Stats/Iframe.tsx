@@ -18,7 +18,6 @@ interface Views {
 export function ViewIframe(props: Views): React.ReactElement {
   const [copyState, setCopyState] = React.useState<string>("copy");
   const { t } = useTranslation();
-  const stats = props.stats;
   if (!props.loading && !props.error) {
     return (
       <Box>
