@@ -306,6 +306,10 @@
             "all": "All players",
             "dice": "Players on dice servers",
             "community": "Players on community servers"
+        },
+        "iframe": {
+            "main": "Add your stats to your own website",
+            "info": "Main version:"
         }
     },
     "servers": {

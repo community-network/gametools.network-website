@@ -40,6 +40,7 @@ import { Platoon, PlatoonInfo } from "./Platoon";
 import { ViewProgress } from "./Progress";
 import { ViewGamemodes } from "./Gamemodes";
 import { ViewClasses } from "./Classes";
+import { ViewIframe } from "./Iframe";
 import { addSeconds } from "date-fns";
 
 export interface Views {
@@ -492,6 +493,15 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
       ) : (
         <></>
       )}
+      <ViewIframe
+        game={game}
+        loading={loading}
+        stats={stats}
+        error={error}
+        getter={match.params.type}
+        name={match.params.eaid}
+        platform={match.params.plat}
+      />
     </Container>
   );
 }
