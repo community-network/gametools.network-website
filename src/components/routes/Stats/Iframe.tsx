@@ -29,7 +29,7 @@ export function ViewIframe(props: Views): React.ReactElement {
             style={{ cursor: "pointer" }}
             onClick={() => {
               navigator.clipboard.writeText(
-                `<iframe src="https://widgets.gametools.network/stats/${props.platform}/${props.getter}/${props.name}/${props.game}/50" height="380px" width="600px" frameborder="0" allowtransparency="true"></iframe>`,
+                `<iframe src="https://widgets.gametools.network/stats/${props.platform}/${props.getter}/${props.name}/${props.game}/en-US/50" height="380px" width="600px" frameborder="0" allowtransparency="true"></iframe>`,
               );
               setCopyState("copied");
               const timer1 = setTimeout(() => setCopyState("copy"), 3 * 1000);
@@ -42,7 +42,7 @@ export function ViewIframe(props: Views): React.ReactElement {
           </a>
         </Description>
         <iframe
-          src={`https://widgets.gametools.network/stats/${props.platform}/${props.getter}/${props.name}/${props.game}/50`}
+          src={`https://widgets.gametools.network/stats/${props.platform}/${props.getter}/${props.name}/${props.game}/en-US/50`}
           height="380px"
           width="600px"
           frameBorder="0"
