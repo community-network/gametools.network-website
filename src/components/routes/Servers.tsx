@@ -355,11 +355,11 @@ function Results(props: Views): React.ReactElement {
                 <ServerLink
                   onClick={() => {
                     navigator.clipboard.writeText(
-                      `<iframe src="https://gametools.network/servers/${element}/${
+                      `<iframe src="https://widgets.gametools.network/servers/${element}/${
                         props.game
                       }/name/${encodeURIComponent(
                         stats.prefix,
-                      )}/pc" height="78px" frameborder="0" allowtransparency="true"></iframe>`,
+                      )}/pc" height="78px" width="650px" frameborder="0" allowtransparency="true"></iframe>`,
                     );
                     copyStates[element].set("copied");
                     const timer1 = setTimeout(
@@ -379,7 +379,7 @@ function Results(props: Views): React.ReactElement {
                   props.game
                 }/name/${encodeURIComponent(stats.prefix)}/pc`}
                 height="78px"
-                width="600px"
+                width="650px"
                 frameBorder="0"
                 allowtransparency="true"
               ></iframe>
