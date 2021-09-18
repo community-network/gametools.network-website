@@ -6,7 +6,7 @@ import styled from "styled-components";
 import "../../assets/scss/App.scss";
 import { GetStats } from "../../api/GetStats";
 import { useQuery } from "react-query";
-import { serverWidgetTypes } from "../../api/static";
+import { serverWidgetTypes, widgetSize } from "../../api/static";
 import {
   AltText,
   Back,
@@ -357,9 +357,9 @@ function Results(props: Views): React.ReactElement {
                     navigator.clipboard.writeText(
                       `<iframe src="https://widgets.gametools.network/servers/${element}/${
                         props.game
-                      }/name/${encodeURIComponent(
-                        stats.prefix,
-                      )}/pc" height="78px" width="650px" frameborder="0" allowtransparency="true"></iframe>`,
+                      }/name/${encodeURIComponent(stats.prefix)}/pc" height="${
+                        widgetSize[index]
+                      }px" width="700px" frameborder="0" allowtransparency="true"></iframe>`,
                     );
                     copyStates[element].set("copied");
                     const timer1 = setTimeout(
@@ -378,8 +378,8 @@ function Results(props: Views): React.ReactElement {
                 src={`https://widgets.gametools.network/servers/${element}/${
                   props.game
                 }/name/${encodeURIComponent(stats.prefix)}/pc`}
-                height="78px"
-                width="650px"
+                height={`${widgetSize[index]}px`}
+                width="700px"
                 frameBorder="0"
                 allowtransparency="true"
               ></iframe>

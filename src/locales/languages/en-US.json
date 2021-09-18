@@ -327,6 +327,7 @@
             "info": "If You want your own custom version, ask iiTzArcur in our Discord. (link in footer)",
             "black": "Black version:",
             "white": "White version:",
+            "detailed": "Detailed version:",
             "states": {
                 "copy": "Copy iframe",
                 "copied": "Copied!"

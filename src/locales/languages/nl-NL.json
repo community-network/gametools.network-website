@@ -326,6 +326,7 @@
             "main": "Voeg de server toe aan uw website",
             "black": "Zwarte variant:",
             "white": "Witte variant:",
+            "detailed": "Gedetaileerde variant:",
             "states": {
                 "copy": "Iframe kopiëren",
                 "copied": "Gekopieerd!"
