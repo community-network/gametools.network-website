@@ -87,7 +87,11 @@ function Search(): React.ReactElement {
             })}
           </BigSelectSecondary>
           {searchTerm !== "" ? (
-            <Link to={`/stats/${platform}/name/${searchTerm}?game=${game}`}>
+            <Link
+              to={`/stats/${platform}/name/${encodeURIComponent(
+                searchTerm,
+              )}?game=${game}`}
+            >
               <BigButtonSecondary type="submit">
                 {t("playerSearch.search")} <RightArrow />
               </BigButtonSecondary>

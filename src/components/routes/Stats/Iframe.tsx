@@ -42,7 +42,9 @@ export function ViewIframe(props: Views): React.ReactElement {
           </a>
         </Description>
         <iframe
-          src={`https://widgets.gametools.network/stats/${props.platform}/${props.getter}/${props.name}/${props.game}/${language}}/50`}
+          src={`https://widgets.gametools.network/stats/${props.platform}/${
+            props.getter
+          }/${encodeURIComponent(props.name)}/${props.game}/${language}/50`}
           height="380px"
           width="600px"
           frameBorder="0"
