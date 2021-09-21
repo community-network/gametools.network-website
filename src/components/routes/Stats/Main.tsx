@@ -322,6 +322,7 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
       getter: match.params.type,
       userName: match.params.eaid,
       lang: getLanguage(),
+      platform: match.params.plat,
     }),
   );
   const games = platformGames[match.params.plat];
