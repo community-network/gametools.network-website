@@ -5,10 +5,12 @@
     "404": "404",
     "playerNotFound": "找不到该玩家的id，请确认id的拼写",
     "notApplicable": "N/A",
+    "resultNotFound": "未找到",
     "noName": "当你用player id搜索时，我们不能显示玩家名称",
     "date": "{{date, date|eee, dd MMM yyyy}}",
     "dateTime": "{{date, date|eee, dd MMM yyyy - p}}",
     "shortDateTime": "{{date, date|PPpp}}",
+    "chartHourFormat": "HH:mm, eee d LLL",
     "time": "{{date, date|p}}",
     "change": "{{change, change}}",
     "states": {
@@ -162,6 +164,8 @@
         "otherPlatoons": "其他战队",
         "weapons": "武器",
         "vehicles": "载具",
+        "weaponGraph": "武器图表",
+        "vehicleGraph": "载具图表",
         "searchWeapon": "搜索他的某一项武器",
         "searchVehicle": "搜索他的某一项载具",
         "rows": {
@@ -173,6 +177,22 @@
             "destroyed": "摧毁数量",
             "accuracy": "准度",
             "headshots": "爆头数"
+        },
+        "classes": {
+            "main": "类别",
+            "Medic": "医疗",
+            "Support": "支援",
+            "Scout": "狙击",
+            "Assault": "突击",
+            "Pilot": "飞行员",
+            "Tanker": "坦克手",
+            "Cavalry": "骑兵",
+            "amounts": {
+                "kpm": "KPM",
+                "score": "分数",
+                "kills": "击杀",
+                "timePlayed": "游玩时间"
+            }
         },
         "progress": {
             "main": "游戏进度",
@@ -234,7 +254,17 @@
                 "wins": "胜利",
                 "losses": "失败",
                 "timePlayedAs": "游玩时间",
-                "score": "分数"
+                "score": "分数",
+                "gamemodes": {
+                    "TugOfWar": "前线",
+                    "Domination": "抢攻",
+                    "Breakthrough": "突破行动",
+                    "Rush": "突袭",
+                    "BreakthroughLarge": "大行动",
+                    "Conquest": "征服",
+                    "Possession": "战争信鸽",
+                    "TeamDeathMatch": "团队死斗"
+                }
             }
         },
         "main": {
