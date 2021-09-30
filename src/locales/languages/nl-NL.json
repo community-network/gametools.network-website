@@ -306,6 +306,10 @@
             "all": "Alle spelers",
             "dice": "Spelers op Dice servers",
             "community": "Spelers op Community servers"
+        },
+        "iframe": {
+            "main": "Voeg uw eigen stats toe aan uw website",
+            "info": "Hoofdversie:"
         }
     },
     "servers": {
@@ -330,6 +334,18 @@
             "states": {
                 "copy": "Iframe kopiëren",
                 "copied": "Gekopieerd!"
+            }
+        },
+        "leaderboard": {
+            "main": "Scoreboard van spelerstats van deze server",
+            "info": "alleen beschikbaar wanneer de server the manager-api gebruikt",
+            "none": "Server is net toegevoegd of gebruikt de manager-api niet",
+            "row": {
+                "kills": "Kills",
+                "deaths": "Deaths",
+                "wins": "Wins",
+                "losses": "Losses",
+                "timePlayed": "Tijd gespeeld"
             }
         }
     },
