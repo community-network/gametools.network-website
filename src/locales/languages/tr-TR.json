@@ -342,9 +342,10 @@
             "info": "yalnızca manager-api'yi kullanan sunucularda Kullanılır",
             "none": "Sunucu yeni eklendi veya manager-api kullanmıyor",
             "row": {
+                "score": "Skor",
                 "killDeath": "K/D",
                 "kills": "Öldürme",
-                "deaths": "Ölüm",
+                "deaths": "Ölüm",   
                 "wins": "Kazanma",
                 "losses": "Kaybetme",
                 "timePlayed": "Oyun süresi"

@@ -252,6 +252,7 @@ function ServerLeaderboard(props: { gameid: string }) {
             <option value="timeplayed">
               {t("servers.leaderboard.row.timePlayed")}
             </option>
+            <option value="score">{t("servers.leaderboard.row.score")}</option>
             <option value="killdeath">
               {t("servers.leaderboard.row.killDeath")}
             </option>
@@ -272,6 +273,12 @@ function ServerLeaderboard(props: { gameid: string }) {
                 <Column key={index}>
                   <Row>
                     <h4 style={{ marginRight: "0.5rem" }}>{key.name}</h4>
+                  </Row>
+                  <Row>
+                    <h4>{key.score}</h4>
+                    <Description style={{ lineHeight: 0 }}>
+                      {t("servers.leaderboard.row.score")}
+                    </Description>
                   </Row>
                   <Row>
                     <h4>{key.killDeath}</h4>
