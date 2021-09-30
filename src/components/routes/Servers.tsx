@@ -359,7 +359,7 @@ function ServerPlayerlist(props: { gameid: string }) {
         <Align>
           <h2>{t("servers.playerlist.main")}</h2>
         </Align>
-        {teams !== undefined ? (
+        {teams !== null ? (
           <>
             {teams.map((teamInfo: ManagerPlayerList, index: number) => {
               return (
