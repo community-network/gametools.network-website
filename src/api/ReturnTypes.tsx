@@ -200,6 +200,7 @@ export type ServerLeaderboardReturn = {
 export type ServerLeaderboardList = {
   name: string;
   playerId: number;
+  killDeath: number;
   kills: number;
   deaths: number;
   wins: number;

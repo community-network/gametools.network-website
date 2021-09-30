@@ -342,6 +342,7 @@
             "info": "yalnızca manager-api'yi kullanan sunucularda Kullanılır",
             "none": "Sunucu yeni eklendi veya manager-api kullanmıyor",
             "row": {
+                "killDeath": "K/D",
                 "kills": "Öldürme",
                 "deaths": "Ölüm",
                 "wins": "Kazanma",

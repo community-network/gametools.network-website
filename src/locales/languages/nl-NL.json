@@ -341,6 +341,7 @@
             "info": "alleen beschikbaar wanneer de server the manager-api gebruikt",
             "none": "Server is net toegevoegd of gebruikt de manager-api niet",
             "row": {
+                "killDeath": "K/D",
                 "kills": "Kills",
                 "deaths": "Deaths",
                 "wins": "Wins",
