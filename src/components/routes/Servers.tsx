@@ -168,7 +168,7 @@ const OriginDescription = styled.h4`
   line-height: 60%;
 `;
 
-function ServerOwner(props: { owner: ServerOwnerResult }) {
+function ServerOwner(props: { owner: ServerOwnerResult; game: string }) {
   const { t } = useTranslation();
   const owner = props.owner;
   if (owner === null) {
@@ -190,16 +190,16 @@ function ServerOwner(props: { owner: ServerOwnerResult }) {
       <h2>{t("servers.owner.main")}</h2>
       <Align>
         <Link
-          to={`/stats/pc/playerid/${
-            owner.id
-          }?game=bfv&name=${encodeURIComponent(owner.name)}`}
+          to={`/stats/pc/playerid/${owner.id}?game=${
+            props.game
+          }&name=${encodeURIComponent(owner.name)}`}
         >
           <OriginProfile src={owner.avatar} />
         </Link>
         <Link
-          to={`/stats/pc/playerid/${
-            owner.id
-          }?game=bfv&name=${encodeURIComponent(owner.name)}`}
+          to={`/stats/pc/playerid/${owner.id}?game=${
+            props.game
+          }&name=${encodeURIComponent(owner.name)}`}
         >
           <div>
             <OriginName>{owner.name}</OriginName>
@@ -582,6 +582,7 @@ function Results(props: Views): React.ReactElement {
         </Align>
         {props.game === "bf1" ? (
           <>
+            <ServerOwner owner={stats.owner} game={props.game} />
             <ServerPlatoon platoon={stats.platoon} />
             <ServerLeaderboard gameid={stats.gameId} />
             <ServerPlayerlist gameid={stats.gameId} />
@@ -589,7 +590,11 @@ function Results(props: Views): React.ReactElement {
         ) : (
           <></>
         )}
-        {props.game === "bfv" ? <ServerOwner owner={stats.owner} /> : <></>}
+        {props.game === "bfv" ? (
+          <ServerOwner owner={stats.owner} game={props.game} />
+        ) : (
+          <></>
+        )}
         <h2>{t("servers.settings")}</h2>
         <AlignT>
           {Object.entries(stats.settings).map(
