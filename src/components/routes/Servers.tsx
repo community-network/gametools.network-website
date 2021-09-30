@@ -271,7 +271,7 @@ function ServerLeaderboard(props: { gameid: string }) {
               return (
                 <Column key={index}>
                   <Row>
-                    <h4>{key.name}</h4>
+                    <h4 style={{ marginRight: "0.5rem" }}>{key.name}</h4>
                   </Row>
                   <Row>
                     <h4>{key.killDeath}</h4>
