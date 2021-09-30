@@ -336,6 +336,18 @@
                 "copy": "iframe'i kopyala",
                 "copied": "kopyalandı!"
             }
+        },
+        "leaderboard": {
+            "main": "Bu sunucunun oyuncu lider tablosu",
+            "info": "yalnızca manager-api'yi kullanan sunucularda Kullanılır",
+            "none": "Sunucu yeni eklendi veya manager-api kullanmıyor",
+            "row": {
+                "kills": "Öldürme",
+                "deaths": "Ölüm",
+                "wins": "Kazanma",
+                "losses": "Kaybetme",
+                "timePlayed": "Oyun süresi"
+            }
         }
     },
     "platoon": {
