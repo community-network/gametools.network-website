@@ -6,6 +6,7 @@ import {
   DetailedServerInfo,
   PlatoonSearchResult,
   ServerLeaderboardReturn,
+  ServerPlayersReturn,
 } from "./ReturnTypes";
 
 interface PlayerInfo {
@@ -40,6 +41,10 @@ interface ServerLeaderboard {
   gameId: string;
   amount: string;
   sort: string;
+}
+
+interface serverPlayerlist {
+  gameId: string;
 }
 
 interface ServerSearchInfo {
@@ -140,6 +145,14 @@ export class ApiProvider extends JsonClient {
       gameId: gameId,
       amount: amount,
       sort: sort,
+    });
+  }
+
+  async serverPlayerlist({
+    gameId,
+  }: serverPlayerlist): Promise<ServerPlayersReturn> {
+    return await this.getJsonMethod(`/manager/players/`, {
+      gameId: gameId,
     });
   }
 

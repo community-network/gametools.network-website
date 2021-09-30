@@ -348,6 +348,29 @@
                 "losses": "Losses",
                 "timePlayed": "Time played"
             }
+        },
+        "playerlist": {
+            "main": "Current players in the server",
+            "none": "Server is just added or doesn't use the manager-api",
+            "row": {
+                "ping": "ping",
+                "timePlayed": "Time played"
+            }
+        },
+        "factions": {
+            "BFFactionId_FactionAHU": "Austro-Hungarian Empire",
+            "BFFactionId_FactionGER": "German Empire",
+            "BFFactionId_FactionOTM": "Ottoman Empire",
+            "BFFactionId_FactionITA": "Kingdom of Italy",
+            "BFFactionId_FactionUK": "United Kingdom",
+            "BFFactionId_FactionUSA": "United States of America",
+            "BFFactionId_FactionFRA": "France",
+            "BFFactionId_FactionRUS": "Russian Empire",
+            "BFFactionId_FactionBOL": "Red Army",
+            "BFFactionId_FactionWA": "White Army",
+            "BFFactionId_FactionUKM": "Royal Marines",
+            "0": "Team 1",
+            "1": "Team 2"
         }
     },
     "platoon": {

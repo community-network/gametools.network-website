@@ -192,7 +192,9 @@ export type ServerList = {
 };
 
 export type ServerLeaderboardReturn = {
+  gameId: string;
   data: ServerLeaderboardList[];
+  cache: boolean;
 };
 
 export type ServerLeaderboardList = {
@@ -206,6 +208,47 @@ export type ServerLeaderboardList = {
   timeStamp: string; // update timestamp / last played
   kits: SessionGamemode[];
   gamemodes: SessionKit[];
+};
+
+export type ServerPlayersReturn = {
+  gameId: string;
+  players: ManagerPlayerList[];
+  info: ServerInfo;
+  cache: boolean;
+};
+
+export type ManagerPlayerList = {
+  teamid: number;
+  players: managerPlayer[];
+  faction: string;
+};
+
+export type managerPlayer = {
+  playerId: number;
+  userId: number;
+  name: string;
+  position: number;
+  rank: number;
+  ping: number;
+  platoon: string;
+  joinTime: number;
+  localization: string;
+};
+
+export type ServerInfo = {
+  prefix: string;
+  inQue: number;
+  serverInfo: string;
+  playerAmount: number;
+  maxPlayerAmount: number;
+  url: string;
+  map: string;
+  smallmode: string;
+  mode: string;
+  rotation: ServerRotation[];
+  rotationId: number;
+  createdDate: number;
+  expirationDate: number;
 };
 
 export type DetailedServerInfo = {
@@ -257,6 +300,7 @@ export type ServerRotation = {
   image: string;
   mapname: string;
   mode: string;
+  index?: number;
 };
 
 export type ServerSettings = {
