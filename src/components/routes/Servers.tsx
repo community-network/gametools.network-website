@@ -272,7 +272,10 @@ function ServerLeaderboard(props: { gameid: string }) {
               return (
                 <Column key={index}>
                   <Row>
-                    <h4 style={{ marginRight: "0.5rem" }}>{key.name}</h4>
+                    <h4 style={{ width: "9rem", whiteSpace: "nowrap" }}>
+                      {key.platoon !== "" ? `[${key.platoon}]` : ""}
+                      {key.name}
+                    </h4>
                   </Row>
                   <Row>
                     <h4>{key.score}</h4>
@@ -383,10 +386,13 @@ function ServerPlayerlist(props: { gameid: string }) {
                                   src={`https://cdn.gametools.network/bf1/${key.rank}.png`}
                                   height="25px"
                                 />
-                                <h4 style={{ margin: "0.5rem" }}>
-                                  {key.platoon !== ""
-                                    ? `[${key.platoon}] `
-                                    : ""}
+                                <h4
+                                  style={{
+                                    margin: "0.5rem",
+                                    whiteSpace: "nowrap",
+                                  }}
+                                >
+                                  {key.platoon !== "" ? `[${key.platoon}]` : ""}
                                   {key.name}
                                 </h4>
                               </AlignW>
