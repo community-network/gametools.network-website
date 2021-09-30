@@ -272,10 +272,21 @@ function ServerLeaderboard(props: { gameid: string }) {
               return (
                 <Column key={index}>
                   <Row>
-                    <h4 style={{ width: "9rem", whiteSpace: "nowrap" }}>
-                      {key.platoon !== "" ? `[${key.platoon}]` : ""}
-                      {key.name}
-                    </h4>
+                    <a
+                      href={`https://gametools.network/stats/pc/playerid/${
+                        key.playerId
+                      }?game=bf1&name=${encodeURIComponent(key.name)}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <h4 style={{ width: "9rem", whiteSpace: "nowrap" }}>
+                        {key.platoon !== "" ? `[${key.platoon}]` : ""}
+                        {key.name}
+                      </h4>
+                      <Description style={{ lineHeight: 0 }}>
+                        {t("stats.view")}
+                      </Description>
+                    </a>
                   </Row>
                   <Row>
                     <h4>{key.score}</h4>
