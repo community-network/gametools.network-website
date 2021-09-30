@@ -356,7 +356,7 @@ function ServerPlayerlist(props: { gameid: string }) {
           <>
             {teams.map((teamInfo: ManagerPlayerList, index: number) => {
               return (
-                <>
+                <div key={index}>
                   <Align>
                     <h3 style={{ margin: ".5rem", marginTop: 0 }}>
                       {teamInfo.faction in factions
@@ -423,7 +423,7 @@ function ServerPlayerlist(props: { gameid: string }) {
                       },
                     )}
                   </Box>
-                </>
+                </div>
               );
             })}
           </>
