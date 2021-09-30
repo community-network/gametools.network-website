@@ -354,6 +354,7 @@
         "playerlist": {
             "main": "Current players in the server",
             "none": "Server is just added or doesn't use the manager-api",
+            "empty": "This team is empty",
             "row": {
                 "ping": "ping",
                 "timePlayed": "Time played"

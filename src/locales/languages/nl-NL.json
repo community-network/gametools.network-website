@@ -353,6 +353,7 @@
         "playerlist": {
             "main": "Spelers die nu in de server zijn",
             "none": "Server is net toegevoegd of gebruikt de manager-api niet",
+            "empty": "Dit team is leeg",
             "row": {
                 "ping": "ping",
                 "timePlayed": "Tijd gespeeld"

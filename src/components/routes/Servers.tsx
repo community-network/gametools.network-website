@@ -386,66 +386,74 @@ function ServerPlayerlist(props: { gameid: string }) {
                     </h3>
                   </Align>
                   <Box>
-                    {teamInfo.players.map(
-                      (key: managerPlayer, index: number) => {
-                        const dateAdded = new Date(key.joinTime / 1000);
-                        return (
-                          <Column key={index}>
-                            <Row>
-                              <AlignW>
-                                <img
-                                  src={`https://cdn.gametools.network/bf1/${key.rank}.png`}
-                                  height="25px"
-                                />
-                                <h4
-                                  style={{
-                                    width: "11rem",
-                                    margin: "0.5rem",
-                                    whiteSpace: "nowrap",
-                                  }}
-                                >
-                                  {key.platoon !== "" ? `[${key.platoon}]` : ""}
-                                  {key.name}
-                                </h4>
-                              </AlignW>
-                            </Row>
-                            <Row>
-                              <h4 style={{ marginTop: "0.5rem" }}>
-                                {key.ping}
-                              </h4>
-                              <Description style={{ lineHeight: 0 }}>
-                                {t("servers.playerlist.row.ping")}
-                              </Description>
-                            </Row>
-                            <Row>
-                              <h4 style={{ marginTop: "0.5rem" }}>
-                                {t("change", {
-                                  change: dateAdded,
-                                })}
-                              </h4>
-                              <Description style={{ lineHeight: 0 }}>
-                                {t("servers.playerlist.row.timePlayed")}
-                              </Description>
-                            </Row>
-                            <Row>
-                              <ButtonLink
-                                style={{
-                                  marginTop: ".5rem",
-                                }}
-                                href={`https://gametools.network/stats/pc/playerid/${
-                                  key.playerId
-                                }?game=bf1&name=${encodeURIComponent(
-                                  key.name,
-                                )}`}
-                                target="_blank"
-                                rel="noreferrer"
-                              >
-                                {t("stats.view")}
-                              </ButtonLink>
-                            </Row>
-                          </Column>
-                        );
-                      },
+                    {teamInfo.players.length !== 0 ? (
+                      <>
+                        {teamInfo.players.map(
+                          (key: managerPlayer, index: number) => {
+                            const dateAdded = new Date(key.joinTime / 1000);
+                            return (
+                              <Column key={index}>
+                                <Row>
+                                  <AlignW>
+                                    <img
+                                      src={`https://cdn.gametools.network/bf1/${key.rank}.png`}
+                                      height="25px"
+                                    />
+                                    <h4
+                                      style={{
+                                        width: "11rem",
+                                        margin: "0.5rem",
+                                        whiteSpace: "nowrap",
+                                      }}
+                                    >
+                                      {key.platoon !== ""
+                                        ? `[${key.platoon}]`
+                                        : ""}
+                                      {key.name}
+                                    </h4>
+                                  </AlignW>
+                                </Row>
+                                <Row>
+                                  <h4 style={{ marginTop: "0.5rem" }}>
+                                    {key.ping}
+                                  </h4>
+                                  <Description style={{ lineHeight: 0 }}>
+                                    {t("servers.playerlist.row.ping")}
+                                  </Description>
+                                </Row>
+                                <Row>
+                                  <h4 style={{ marginTop: "0.5rem" }}>
+                                    {t("change", {
+                                      change: dateAdded,
+                                    })}
+                                  </h4>
+                                  <Description style={{ lineHeight: 0 }}>
+                                    {t("servers.playerlist.row.timePlayed")}
+                                  </Description>
+                                </Row>
+                                <Row>
+                                  <ButtonLink
+                                    style={{
+                                      marginTop: ".5rem",
+                                    }}
+                                    href={`https://gametools.network/stats/pc/playerid/${
+                                      key.playerId
+                                    }?game=bf1&name=${encodeURIComponent(
+                                      key.name,
+                                    )}`}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                  >
+                                    {t("stats.view")}
+                                  </ButtonLink>
+                                </Row>
+                              </Column>
+                            );
+                          },
+                        )}
+                      </>
+                    ) : (
+                      <p>{t("servers.playerlist.empty")}</p>
                     )}
                   </Box>
                 </div>
