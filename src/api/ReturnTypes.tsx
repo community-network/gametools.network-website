@@ -191,6 +191,23 @@ export type ServerList = {
   maxPlayers?: number;
 };
 
+export type ServerLeaderboardReturn = {
+  data: ServerLeaderboardList[];
+};
+
+export type ServerLeaderboardList = {
+  name: string;
+  playerId: number;
+  kills: number;
+  deaths: number;
+  wins: number;
+  losses: number;
+  timePlayed: number;
+  timeStamp: string; // update timestamp / last played
+  kits: SessionGamemode[];
+  gamemodes: SessionKit[];
+};
+
 export type DetailedServerInfo = {
   cache: boolean;
   country: string;

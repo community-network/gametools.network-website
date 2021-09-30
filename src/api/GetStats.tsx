@@ -5,6 +5,7 @@ import {
   ServerSearch,
   DetailedServerInfo,
   PlatoonSearchResult,
+  ServerLeaderboardReturn,
 } from "./ReturnTypes";
 
 interface PlayerInfo {
@@ -33,6 +34,12 @@ interface ServerInfo {
   lang: string;
   region?: string;
   platform?: string;
+}
+
+interface ServerLeaderboard {
+  gameId: string;
+  amount: string;
+  sort: string;
 }
 
 interface ServerSearchInfo {
@@ -121,6 +128,18 @@ export class ApiProvider extends JsonClient {
       region: region,
       platform: platform,
       service: gameStuff[1],
+    });
+  }
+
+  async serverLeaderboard({
+    gameId,
+    amount,
+    sort,
+  }: ServerLeaderboard): Promise<ServerLeaderboardReturn> {
+    return await this.getJsonMethod(`/manager/leaderboard/`, {
+      gameId: gameId,
+      amount: amount,
+      sort: sort,
     });
   }
 
