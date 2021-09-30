@@ -399,6 +399,7 @@ function ServerPlayerlist(props: { gameid: string }) {
                                 />
                                 <h4
                                   style={{
+                                    width: "11rem",
                                     margin: "0.5rem",
                                     whiteSpace: "nowrap",
                                   }}
