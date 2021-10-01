@@ -336,6 +336,44 @@
                 "copy": "复制框架",
                 "copied": "已复制!"
             }
+        },
+        "leaderboard": {
+            "main": "该服务器最近的榜单",
+            "info": "仅在该服务器使用我们的管理api时有用",
+            "none": "该服务器刚刚加入还没有用管理api",
+            "row": {
+                "score": "分数",
+                "killDeath": "K/D",
+                "kills": "击杀",
+                "deaths": "死亡",
+                "wins": "胜利",
+                "losses": "失败",
+                "timePlayed": "游玩时间"
+            }
+        },
+        "playerlist": {
+            "main": "该服务器最近的玩家",
+            "none": "该服务器刚刚加入或还没有使用管理api",
+            "empty": "这个队伍是空的",
+            "row": {
+                "ping": "延迟",
+                "timePlayed": "游玩时间"
+            }
+        },
+        "factions": {
+            "BFFactionId_FactionAHU": "奥匈帝国",
+            "BFFactionId_FactionGER": "德意志帝国",
+            "BFFactionId_FactionOTM": "奥斯曼土鸡",
+            "BFFactionId_FactionITA": "意呆利王国",
+            "BFFactionId_FactionUK": "大嘤帝国",
+            "BFFactionId_FactionUSA": "美国",
+            "BFFactionId_FactionFRA": "法国",
+            "BFFactionId_FactionRUS": "俄罗斯帝国",
+            "BFFactionId_FactionBOL": "红军",
+            "BFFactionId_FactionWA": "白军",
+            "BFFactionId_FactionUKM": "皇家海军",
+            "0": "队伍 1",
+            "1": "队伍 2"
         }
     },
     "platoon": {
