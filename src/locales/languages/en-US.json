@@ -20,6 +20,7 @@
     "navBar": {
         "bfStats": "Battlefield Stats",
         "serverStats": "Battlefield Serverstats",
+        "platoons": "Battlefield Platoons",
         "discord": "Our Discord",
         "api": "Public API",
         "bot": "Discord Bot"

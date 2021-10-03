@@ -20,6 +20,7 @@
     "navBar": {
         "bfStats": "Battlefield İstatistikleri",
         "serverStats": "Battlefield Sunucu İstatistikleri",
+        "platoons": "Battlefield Klanları",
         "discord": "Discord",
         "api": "Genel API",
         "bot": "Discord Botu"

@@ -20,6 +20,7 @@
     "navBar": {
         "bfStats": "战地数据库",
         "serverStats": "战地服务器数据",
+        "platoons": "战地战队",
         "discord": "我们的公共Discord",
         "api": "公共API",
         "bot": "Discord机器人"

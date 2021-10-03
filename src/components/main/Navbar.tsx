@@ -178,6 +178,11 @@ const RightNav = ({
           {t("navBar.serverStats")}
         </HLink>
       </li>
+      <li onClick={() => setOpen(false)}>
+        <HLink to="/platoons" title={t("navBar.platoons")}>
+          {t("navBar.platoons")}
+        </HLink>
+      </li>
       <li>
         <ALink
           target="_blank"
@@ -231,7 +236,7 @@ export function Navbar(): JSX.Element {
   const { t } = useTranslation();
   const homePage = useLocation().pathname === "/";
   const [width, setWidth] = useState(window.innerWidth);
-  const maxWidth = homePage ? 850 : 1000;
+  const maxWidth = homePage ? 850 : 1250;
 
   const [open, setOpen] = useState(false);
 
@@ -248,6 +253,13 @@ export function Navbar(): JSX.Element {
         <Burger open={open} setOpen={setOpen} />
       ) : (
         <LinkWrapper>
+          <HLink
+            to="/platoons"
+            title={t("navBar.platoons")}
+            activeClassName="opened-link"
+          >
+            {t("navBar.platoons")}
+          </HLink>
           <HLink
             to="/servers"
             title={t("navBar.serverStats")}
