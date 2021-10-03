@@ -237,20 +237,20 @@ export function OldGameGraph(props: GameInfo): React.ReactElement {
         <h3>{t(`regions.all`)}</h3>
         {props.platform !== "all" ? (
           <LineGraph
-            timeStamps={stats.data.timeStamps}
+            timeStamps={stats.timeStamps}
             loading={loading}
             error={error}
             platform={props.platform}
-            stats={stats.data}
+            stats={stats}
             gameName={props.gameName}
           />
         ) : (
           <AllPlatformGraph
-            timeStamps={stats.data.timeStamps}
+            timeStamps={stats.timeStamps}
             loading={loading}
             error={error}
             platform={props.platform}
-            stats={stats.data}
+            stats={stats}
             gameName={props.gameName}
           />
         )}
@@ -281,7 +281,7 @@ export function Graph(props: GameInfo): React.ReactElement {
   if (!loading && !error) {
     return (
       <>
-        {Object.keys(stats.data).map((key: string, index: number) => {
+        {Object.keys(stats).map((key: string, index: number) => {
           {
             if (["timeStamps", "startTime", "endTime"].includes(key)) {
               return <></>;
@@ -291,20 +291,20 @@ export function Graph(props: GameInfo): React.ReactElement {
                   <h3>{t(`regions.${key.toLowerCase()}`)}</h3>
                   {props.platform !== "all" ? (
                     <LineGraph
-                      timeStamps={stats.data.timeStamps}
+                      timeStamps={stats.timeStamps}
                       loading={loading}
                       error={error}
                       platform={props.platform}
-                      stats={stats.data[key]}
+                      stats={stats[key]}
                       gameName={props.gameName}
                     />
                   ) : (
                     <AllPlatformGraph
-                      timeStamps={stats.data.timeStamps}
+                      timeStamps={stats.timeStamps}
                       loading={loading}
                       error={error}
                       platform={props.platform}
-                      stats={stats.data[key]}
+                      stats={stats[key]}
                       gameName={props.gameName}
                     />
                   )}
@@ -328,7 +328,7 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
   const [graphRef, { width }] = useMeasure();
   const { t } = useTranslation();
   if (!props.loading && !props.error) {
-    const time = props.stats.data.timeStamps.map((e: string) => {
+    const time = props.stats.timeStamps.map((e: string) => {
       const time = new Date(e);
       return time;
     });
@@ -363,7 +363,7 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
         if (width > 500) {
           return {
             label: t(`games.${e}`),
-            data: props.stats.data[gameName],
+            data: props.stats[gameName],
             fill: false,
             borderColor: colors[index],
             pointRadius: 0,
@@ -371,7 +371,7 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
         }
         return {
           label: e,
-          data: props.stats.data[gameName],
+          data: props.stats[gameName],
           fill: false,
           borderColor: colors[index],
           pointRadius: 0,
