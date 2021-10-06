@@ -351,6 +351,30 @@
                 "losses": "Kaybetme",
                 "timePlayed": "Oyun süresi"
             }
+        },
+        "playerlist": {
+            "main": "Sunucudaki mevcut oyuncular",
+            "none": "Sunucu yeni eklendi veya manager-api kullanmıyor",
+            "empty": "Bu takım boş",
+            "row": {
+                "ping": "ping",
+                "timePlayed": "Oynanan süre"
+            }
+        },
+        "factions": {
+            "BFFactionId_FactionAHU": "Avusturya-Macaristan İmparatorluğu",
+            "BFFactionId_FactionGER": "Alman imparatorluğu",
+            "BFFactionId_FactionOTM": "cOsmanlı imparatorluğu",
+            "BFFactionId_FactionITA": "İtalya Krallığı",
+            "BFFactionId_FactionUK": "Birleşik Krallık",
+            "BFFactionId_FactionUSA": "Amerika Birleşik Devletleri",
+            "BFFactionId_FactionFRA": "Fransa",
+            "BFFactionId_FactionRUS": "Rus imparatorluğu",
+            "BFFactionId_FactionBOL": "Kızıl Ordu",
+            "BFFactionId_FactionWA": "Beyaz Ordu",
+            "BFFactionId_FactionUKM": "Kraliyet Deniz Piyadeleri",
+            "0": "Takım 1",
+            "1": "Takım 2"
         }
     },
     "platoon": {
