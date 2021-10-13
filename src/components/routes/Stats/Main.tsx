@@ -439,19 +439,13 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
           />
         </PageRow>
         <PageRow>
-          {classGames.includes(game) ? (
-            <>
-              <ViewClasses
-                game={game}
-                loading={loading}
-                stats={stats}
-                error={error}
-                name={name}
-              />
-            </>
-          ) : (
-            <></>
-          )}
+          <ViewClasses
+            game={game}
+            loading={loading}
+            stats={stats}
+            error={error}
+            name={name}
+          />
           <ViewWeapons
             game={game}
             loading={loading}
