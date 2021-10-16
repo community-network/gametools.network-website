@@ -214,27 +214,43 @@ export type ServerLeaderboardList = {
 };
 
 export type ServerPlayersReturn = {
-  gameId: string;
-  players: ManagerPlayerList[];
-  info: ServerInfo;
-  cache: boolean;
+  teams: serverTeamList[];
+  loading: serverPlayer[];
+  que: serverPlayer[];
+  serverinfo: serverInfoPlayerList;
 };
 
-export type ManagerPlayerList = {
-  teamid: number;
-  players: managerPlayer[];
-  faction: string;
+export type serverInfoPlayerList = {
+  country: string;
+  description: string;
+  level: string;
+  maps: string[];
+  mode: string;
+  name: string;
+  owner: string;
+  region: string;
+  servertype: string;
+  settings: string[];
 };
 
-export type managerPlayer = {
-  playerId: number;
-  userId: number;
+export type serverTeamList = {
+  players: serverPlayer[];
+  teamid: string;
+  image: string;
+  name: string;
+  faction?: string;
+  key?: string;
+};
+
+export type serverPlayer = {
+  player_id: number;
+  user_id: number;
   name: string;
   position: number;
-  rank: number;
-  ping: number;
+  // rank: number;
+  latency: number;
   platoon: string;
-  joinTime: number;
+  join_time: number;
   localization: string;
 };
 

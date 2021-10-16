@@ -44,6 +44,7 @@ interface ServerLeaderboard {
 }
 
 interface serverPlayerlist {
+  game: string;
   gameId: string;
 }
 
@@ -149,9 +150,11 @@ export class ApiProvider extends JsonClient {
   }
 
   async serverPlayerlist({
+    game,
     gameId,
   }: serverPlayerlist): Promise<ServerPlayersReturn> {
-    return await this.getJsonMethod(`/manager/players/`, {
+    const gameStuff = game.split(".");
+    return await this.getJsonMethod(`/${gameStuff[0]}/players/`, {
       gameId: gameId,
     });
   }

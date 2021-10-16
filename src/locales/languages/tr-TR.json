@@ -373,8 +373,8 @@
             "BFFactionId_FactionBOL": "Kızıl Ordu",
             "BFFactionId_FactionWA": "Beyaz Ordu",
             "BFFactionId_FactionUKM": "Kraliyet Deniz Piyadeleri",
-            "0": "Takım 1",
-            "1": "Takım 2"
+            "teamOne": "Takım 1",
+            "teamTwo": "Takım 2"
         }
     },
     "platoon": {

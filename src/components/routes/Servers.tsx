@@ -6,7 +6,7 @@ import styled from "styled-components";
 import "../../assets/scss/App.scss";
 import { GetStats } from "../../api/GetStats";
 import { useQuery } from "react-query";
-import { serverWidgetTypes, widgetSize } from "../../api/static";
+import { serverWidgetTypes, teamArr, widgetSize } from "../../api/static";
 import {
   AltText,
   Back,
@@ -26,12 +26,13 @@ import {
 import { getLanguage } from "../../locales/config";
 import {
   DetailedServerInfo,
-  managerPlayer,
-  ManagerPlayerList,
   PlatoonResult,
   ServerLeaderboardList,
   ServerOwnerResult,
+  serverPlayer,
   ServerRotation,
+  serverTeamList,
+  TeamList,
 } from "../../api/ReturnTypes";
 import { addSeconds } from "date-fns";
 import { factions } from "../../api/Factions";
@@ -354,7 +355,7 @@ function ServerLeaderboard(props: { gameid: string }) {
   );
 }
 
-function ServerPlayerlist(props: { gameid: string }) {
+function ServerPlayerlist(props: { game: string; gameid: string }) {
   const { t } = useTranslation();
   const gameId = props.gameid;
   const {
@@ -363,11 +364,12 @@ function ServerPlayerlist(props: { gameid: string }) {
     data: stats,
   } = useQuery("serverPlayerlist" + gameId, () =>
     GetStats.serverPlayerlist({
+      game: props.game,
       gameId: gameId,
     }),
   );
   if (!loading && !error) {
-    const teams = stats.players;
+    const teams = stats.teams;
     return (
       <Spacing>
         <Align>
@@ -375,7 +377,7 @@ function ServerPlayerlist(props: { gameid: string }) {
         </Align>
         {teams !== null ? (
           <>
-            {teams.map((teamInfo: ManagerPlayerList, index: number) => {
+            {teams.map((teamInfo: serverTeamList, index: number) => {
               return (
                 <div key={index}>
                   <Align>
@@ -389,16 +391,16 @@ function ServerPlayerlist(props: { gameid: string }) {
                     {teamInfo.players.length !== 0 ? (
                       <>
                         {teamInfo.players.map(
-                          (key: managerPlayer, index: number) => {
-                            const dateAdded = new Date(key.joinTime / 1000);
+                          (key: serverPlayer, index: number) => {
+                            const dateAdded = new Date(key.join_time / 1000);
                             return (
                               <Column key={index}>
                                 <Row>
                                   <AlignW>
-                                    <img
+                                    {/* <img
                                       src={`https://cdn.gametools.network/bf1/${key.rank}.png`}
                                       height="25px"
-                                    />
+                                    /> */}
                                     <h4
                                       style={{
                                         width: "11rem",
@@ -415,7 +417,7 @@ function ServerPlayerlist(props: { gameid: string }) {
                                 </Row>
                                 <Row>
                                   <h4 style={{ marginTop: "0.5rem" }}>
-                                    {key.ping}
+                                    {key.latency}
                                   </h4>
                                   <Description style={{ lineHeight: 0 }}>
                                     {t("servers.playerlist.row.ping")}
@@ -437,7 +439,7 @@ function ServerPlayerlist(props: { gameid: string }) {
                                       marginTop: ".5rem",
                                     }}
                                     href={`https://gametools.network/stats/pc/playerid/${
-                                      key.playerId
+                                      key.player_id
                                     }?game=bf1&name=${encodeURIComponent(
                                       key.name,
                                     )}`}
@@ -462,7 +464,7 @@ function ServerPlayerlist(props: { gameid: string }) {
           </>
         ) : (
           <Box>
-            <p>{t("servers.playerlist.none")}</p>
+            <p>{t("servers.playerlist.empty")}</p>
           </Box>
         )}
       </Spacing>
@@ -585,13 +587,16 @@ function Results(props: Views): React.ReactElement {
             <ServerOwner owner={stats.owner} game={props.game} />
             <ServerPlatoon platoon={stats.platoon} />
             <ServerLeaderboard gameid={stats.gameId} />
-            <ServerPlayerlist gameid={stats.gameId} />
+            <ServerPlayerlist game={props.game} gameid={stats.gameId} />
           </>
         ) : (
           <></>
         )}
         {props.game === "bfv" ? (
-          <ServerOwner owner={stats.owner} game={props.game} />
+          <>
+            <ServerOwner owner={stats.owner} game={props.game} />
+            <ServerPlayerlist game={props.game} gameid={stats.gameId} />
+          </>
         ) : (
           <></>
         )}
@@ -680,7 +685,6 @@ type TParams = {
 function Servers({ match }: RouteComponentProps<TParams>): React.ReactElement {
   const gameId = match.params.gameid;
   const serverName = decodeURIComponent(match.params.sname);
-
   const { t } = useTranslation();
   const {
     isLoading: loading,

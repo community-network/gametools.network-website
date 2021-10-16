@@ -373,8 +373,8 @@
             "BFFactionId_FactionBOL": "红军",
             "BFFactionId_FactionWA": "白军",
             "BFFactionId_FactionUKM": "皇家海军",
-            "0": "队伍 1",
-            "1": "队伍 2"
+            "teamOne": "队伍 1",
+            "teamTwo": "队伍 2"
         }
     },
     "platoon": {
