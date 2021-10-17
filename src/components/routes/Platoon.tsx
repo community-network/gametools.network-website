@@ -20,6 +20,8 @@ import {
   SmallSearchBox,
   SelectPrimary,
   ButtonLink,
+  TabletRow,
+  SmallestPhoneRow,
 } from "../Materials";
 import { getLanguage } from "../../locales/config";
 
@@ -46,7 +48,9 @@ const Title = styled.h2`
 `;
 
 const PlatoonTitle = styled.h2`
-  margin-top: 2.2rem;
+  @media (min-width: 600px) {
+    margin-top: 2.2rem;
+  }
   margin-bottom: 0.4rem;
 `;
 
@@ -55,6 +59,7 @@ interface IPlatoonImage {
 }
 
 const PlatoonImage = styled.div<IPlatoonImage>`
+  max-width: 13rem;
   height: 11rem;
   min-width: 11rem;
   display: flex;
@@ -133,17 +138,23 @@ function Members(props: { members: PlatoonPlayer[] }): React.ReactElement {
                 <div key={index} style={{ margin: "0.8rem 0.2rem" }}>
                   <Column style={{ marginTop: 0 }}>
                     <Row>
-                      <Align>
-                        <MemberImage src={key.avatar} />
-                        <h4 style={{ marginTop: "2px", marginBottom: 0 }}>
-                          {key.name}
-                        </h4>
-                      </Align>
+                      <Link
+                        to={`/stats/pc/playerid/${
+                          key.id
+                        }?game=bf1&name=${encodeURIComponent(key.name)}`}
+                      >
+                        <Align>
+                          <MemberImage src={key.avatar} />
+                          <h4 style={{ marginTop: "2px", marginBottom: 0 }}>
+                            {key.name}
+                          </h4>
+                        </Align>
+                      </Link>
                     </Row>
-                    <Row>
+                    <SmallestPhoneRow>
                       <h4>{t(`platoon.members.${key.role}`)}</h4>
-                    </Row>
-                    <Row>
+                    </SmallestPhoneRow>
+                    <TabletRow>
                       <ButtonLink
                         style={{ marginTop: ".3rem" }}
                         href={`https://gametools.network/stats/pc/playerid/${
@@ -154,7 +165,7 @@ function Members(props: { members: PlatoonPlayer[] }): React.ReactElement {
                       >
                         {t("stats.view")}
                       </ButtonLink>
-                    </Row>
+                    </TabletRow>
                   </Column>
                   <hr
                     style={{
@@ -281,6 +292,14 @@ function Servers(props: { servers: ServerList[] }): React.ReactElement {
   );
 }
 
+const AlignPlatoonImg = styled.div`
+  @media (min-width: 600px) {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+`;
+
 function Results(props: Views): React.ReactElement {
   const { t } = useTranslation();
   const platoon = props.platoon;
@@ -288,7 +307,7 @@ function Results(props: Views): React.ReactElement {
   if (!props.loading && !props.error) {
     return (
       <div>
-        <AlignW>
+        <AlignPlatoonImg>
           <PlatoonImage background={platoon.emblem} />
           <div style={{ marginLeft: "0.5rem" }}>
             <PlatoonTitle>
@@ -309,7 +328,7 @@ function Results(props: Views): React.ReactElement {
               <></>
             )}
           </div>
-        </AlignW>
+        </AlignPlatoonImg>
         <Members members={platoon.members} />
         <Servers servers={platoon.servers} />
       </div>

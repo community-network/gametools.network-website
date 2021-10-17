@@ -351,10 +351,14 @@ export function Box(props: {
     | React.ReactFragment
     | React.ReactPortal;
   className?: string;
+  style?: React.CSSProperties;
+  innerStyle?: React.CSSProperties;
 }): React.ReactElement {
   return (
-    <BoxWrap className={props.className}>
-      <BoxInner style={{ alignItems: props.align || "stretch" }}>
+    <BoxWrap className={props.className} style={props.style}>
+      <BoxInner
+        style={{ alignItems: props.align || "stretch", ...props.innerStyle }}
+      >
         {props.children}
       </BoxInner>
     </BoxWrap>
@@ -411,5 +415,33 @@ export const UncheckedSmallButtonRadio = styled.label`
   cursor: pointer;
   :hover {
     background: var(--color-base);
+  }
+`;
+
+export const SmallestPhoneRow = styled.div`
+  flex: 1;
+  @media (max-width: 440px) {
+    display: none;
+  }
+`;
+
+export const SmallPhoneRow = styled.div`
+  flex: 1;
+  @media (max-width: 570px) {
+    display: none;
+  }
+`;
+
+export const TabletRow = styled.div`
+  flex: 1;
+  @media (max-width: 700px) {
+    display: none;
+  }
+`;
+
+export const PhoneRow = styled.div`
+  flex: 1;
+  @media (max-width: 600px) {
+    display: none;
   }
 `;

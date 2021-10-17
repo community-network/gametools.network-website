@@ -22,6 +22,10 @@ import {
   Column,
   SelectPrimary,
   ButtonLink,
+  TabletRow,
+  SmallestPhoneRow,
+  SmallPhoneRow,
+  PhoneRow,
 } from "../Materials";
 import { getLanguage } from "../../locales/config";
 import {
@@ -289,42 +293,42 @@ function ServerLeaderboard(props: { gameid: string }) {
                       </Description>
                     </a>
                   </Row>
-                  <Row>
+                  <SmallestPhoneRow>
                     <h4>{key.score}</h4>
                     <Description style={{ lineHeight: 0 }}>
                       {t("servers.leaderboard.row.score")}
                     </Description>
-                  </Row>
+                  </SmallestPhoneRow>
                   <Row>
                     <h4>{key.killDeath}</h4>
                     <Description style={{ lineHeight: 0 }}>
                       {t("servers.leaderboard.row.killDeath")}
                     </Description>
                   </Row>
-                  <Row>
+                  <TabletRow>
                     <h4>{key.kills}</h4>
                     <Description style={{ lineHeight: 0 }}>
                       {t("servers.leaderboard.row.kills")}
                     </Description>
-                  </Row>
-                  <Row>
+                  </TabletRow>
+                  <TabletRow>
                     <h4>{key.deaths}</h4>
                     <Description style={{ lineHeight: 0 }}>
                       {t("servers.leaderboard.row.deaths")}
                     </Description>
-                  </Row>
-                  <Row>
+                  </TabletRow>
+                  <SmallPhoneRow>
                     <h4>{key.wins}</h4>
                     <Description style={{ lineHeight: 0 }}>
                       {t("servers.leaderboard.row.wins")}
                     </Description>
-                  </Row>
-                  <Row>
+                  </SmallPhoneRow>
+                  <SmallPhoneRow>
                     <h4>{key.losses}</h4>
                     <Description style={{ lineHeight: 0 }}>
                       {t("servers.leaderboard.row.losses")}
                     </Description>
-                  </Row>
+                  </SmallPhoneRow>
                   <Row>
                     <h4>
                       {t("change", {
@@ -401,18 +405,28 @@ function ServerPlayerlist(props: { game: string; gameid: string }) {
                                       src={`https://cdn.gametools.network/bf1/${key.rank}.png`}
                                       height="25px"
                                     /> */}
-                                    <h4
-                                      style={{
-                                        width: "11rem",
-                                        margin: "0.5rem",
-                                        whiteSpace: "nowrap",
-                                      }}
+                                    <Link
+                                      to={`/stats/pc/playerid/${
+                                        key.player_id
+                                      }?game=bf1&name=${encodeURIComponent(
+                                        key.name,
+                                      )}`}
                                     >
-                                      {key.platoon !== ""
-                                        ? `[${key.platoon}]`
-                                        : ""}
-                                      {key.name}
-                                    </h4>
+                                      <h4
+                                        style={{
+                                          maxWidth: "11rem",
+                                          width: "auto",
+                                          minWidth: "8rem",
+                                          margin: "0.5rem",
+                                          whiteSpace: "nowrap",
+                                        }}
+                                      >
+                                        {key.platoon !== ""
+                                          ? `[${key.platoon}]`
+                                          : ""}
+                                        {key.name}
+                                      </h4>
+                                    </Link>
                                   </AlignW>
                                 </Row>
                                 <Row>
@@ -433,7 +447,7 @@ function ServerPlayerlist(props: { game: string; gameid: string }) {
                                     {t("servers.playerlist.row.timePlayed")}
                                   </Description>
                                 </Row>
-                                <Row>
+                                <PhoneRow>
                                   <ButtonLink
                                     style={{
                                       marginTop: ".5rem",
@@ -448,7 +462,7 @@ function ServerPlayerlist(props: { game: string; gameid: string }) {
                                   >
                                     {t("stats.view")}
                                   </ButtonLink>
-                                </Row>
+                                </PhoneRow>
                               </Column>
                             );
                           },
@@ -488,6 +502,12 @@ interface Views {
 function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
+
+const PhoneVis = styled.div`
+  @media (max-width: 800px) {
+    display: none;
+  }
+`;
 
 function Results(props: Views): React.ReactElement {
   const [copyState, setCopyState] = React.useState<string>("copy");
@@ -568,11 +588,19 @@ function Results(props: Views): React.ReactElement {
         <Align>
           {stats.rotation.map((key: ServerRotation, index: number) => {
             return (
-              <Box key={index}>
+              <Box
+                key={index}
+                style={{ marginRight: ".6rem", marginBottom: ".7rem" }}
+                innerStyle={{
+                  padding: "0rem 1rem",
+                  paddingBottom: "0.6rem",
+                  marginRight: ".5rem",
+                }}
+              >
                 <AlignW>
-                  <div>
+                  <PhoneVis>
                     <MapImage src={key.image} />
-                  </div>
+                  </PhoneVis>
                   <ServerInfo>
                     <h3>{key.mapname}</h3>
                     <p>{key.mode}</p>
@@ -656,8 +684,9 @@ function Results(props: Views): React.ReactElement {
                 src={`https://widgets.gametools.network/servers/${element}/${
                   props.game
                 }/name/${encodeURIComponent(stats.prefix)}/pc`}
+                style={{ maxWidth: "700px" }}
                 height={`${widgetSize[index]}px`}
-                width="700px"
+                width="100%"
                 frameBorder="0"
                 allowtransparency="true"
               ></iframe>
