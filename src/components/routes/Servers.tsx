@@ -401,10 +401,10 @@ function ServerPlayerlist(props: { game: string; gameid: string }) {
                               <Column key={index}>
                                 <Row>
                                   <AlignW>
-                                    {/* <img
+                                    <img
                                       src={`https://cdn.gametools.network/bf1/${key.rank}.png`}
                                       height="25px"
-                                    /> */}
+                                    />
                                     <Link
                                       to={`/stats/pc/playerid/${
                                         key.player_id
