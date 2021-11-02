@@ -80,6 +80,7 @@ const MemberImage = styled.img`
 interface Views {
   loading: boolean;
   error: boolean;
+  platform: string;
   platoon: PlatoonStats;
 }
 
@@ -96,8 +97,12 @@ function dynamicSort(property: string) {
   };
 }
 
-function Members(props: { members: PlatoonPlayer[] }): React.ReactElement {
+function Members(props: {
+  members: PlatoonPlayer[];
+  platform: string;
+}): React.ReactElement {
   const { t } = useTranslation();
+  const platform = props.platform;
 
   let members = [];
   const [searchTerm, setSearchTerm] = React.useState<string>("");
@@ -139,7 +144,7 @@ function Members(props: { members: PlatoonPlayer[] }): React.ReactElement {
                   <Column style={{ marginTop: 0 }}>
                     <Row>
                       <Link
-                        to={`/stats/pc/playerid/${
+                        to={`/stats/${platform}/playerid/${
                           key.id
                         }?game=bf1&name=${encodeURIComponent(key.name)}`}
                       >
@@ -157,7 +162,7 @@ function Members(props: { members: PlatoonPlayer[] }): React.ReactElement {
                     <TabletRow>
                       <ButtonLink
                         style={{ marginTop: ".3rem" }}
-                        href={`https://gametools.network/stats/pc/playerid/${
+                        href={`https://gametools.network/stats/${platform}/playerid/${
                           key.id
                         }?game=bf1&name=${encodeURIComponent(key.name)}`}
                         target="_blank"
@@ -329,7 +334,7 @@ function Results(props: Views): React.ReactElement {
             )}
           </div>
         </AlignPlatoonImg>
-        <Members members={platoon.members} />
+        <Members platform={props.platform} members={platoon.members} />
         <Servers servers={platoon.servers} />
       </div>
     );
@@ -370,7 +375,12 @@ function Platoon({ match }: RouteComponentProps<TParams>): React.ReactElement {
           <ArrowLeft />
           {t("platoon.back")}
         </Back>
-        <Results loading={loading} platoon={platoon} error={error} />
+        <Results
+          loading={loading}
+          platoon={platoon}
+          platform={platform}
+          error={error}
+        />
       </Container>
     </div>
   );
