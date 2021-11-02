@@ -20,11 +20,13 @@ interface PlayerInfo {
 
 interface PlatoonSearch {
   name: string;
+  platform: string;
   lang: string;
 }
 
 interface PlatoonInfo {
   id: string;
+  platform: string;
   lang: string;
 }
 
@@ -92,17 +94,20 @@ export class ApiProvider extends JsonClient {
 
   async platoonSearch({
     name,
+    platform,
     lang,
   }: PlatoonSearch): Promise<PlatoonSearchResult> {
     return await this.getJsonMethod(`/bfglobal/platoons/`, {
       name: name,
+      platform: platform,
       lang: lang,
     });
   }
 
-  async platoon({ id, lang }: PlatoonInfo): Promise<PlatoonStats> {
+  async platoon({ id, platform, lang }: PlatoonInfo): Promise<PlatoonStats> {
     return await this.getJsonMethod(`/bfglobal/detailedplatoon/`, {
       id: id,
+      platform: platform,
       lang: lang,
     });
   }

@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Box, AlignW } from "../../Materials";
 import styled from "styled-components";
 import { MainStats, MainStatsPlatoon } from "../../../api/ReturnTypes";
-import { Description, Spacing, Views } from "./Main";
+import { Description, PlatformViews, Spacing } from "./Main";
 
 const PlatoonLink = styled.a`
   color: rgba(255, 255, 255);
@@ -37,9 +37,10 @@ export function Platoon(props: PlatoonStats): React.ReactElement {
   }
 }
 
-export function PlatoonInfo(props: Views): React.ReactElement {
+export function PlatoonInfo(props: PlatformViews): React.ReactElement {
   const { t } = useTranslation();
   const stats = props.stats;
+  const platform = props.platform;
   if (
     !props.loading &&
     !props.error &&
@@ -65,21 +66,27 @@ export function PlatoonInfo(props: Views): React.ReactElement {
             <>
               <h3>{t("stats.platoonName")}</h3>
               <AlignW style={{ alignItems: "start" }}>
-                <Link to={`/platoons/${stats.activePlatoon.id}`}>
+                <Link to={`/platoons/${platform}/${stats.activePlatoon.id}`}>
                   <PlatoonEmblem src={stats.activePlatoon.emblem} />
                 </Link>
                 <div style={{ marginTop: "1rem" }}>
                   <h3>
-                    <Link to={`/platoons/${stats.activePlatoon.id}`}>
+                    <Link
+                      to={`/platoons/${platform}/${stats.activePlatoon.id}`}
+                    >
                       {stats.activePlatoon.name}
                     </Link>
                   </h3>
                   {stats.activePlatoon.description !== null ? (
-                    <Link to={`/platoons/${stats.activePlatoon.id}`}>
+                    <Link
+                      to={`/platoons/${platform}/${stats.activePlatoon.id}`}
+                    >
                       <p>{stats.activePlatoon.description}</p>
                     </Link>
                   ) : (
-                    <Link to={`/platoons/${stats.activePlatoon.id}`}>
+                    <Link
+                      to={`/platoons/${platform}/${stats.activePlatoon.id}`}
+                    >
                       <Description>
                         {t("stats.platoon.noDescription")}
                       </Description>
@@ -103,19 +110,21 @@ export function PlatoonInfo(props: Views): React.ReactElement {
                 return (
                   <>
                     <AlignW style={{ alignItems: "start" }}>
-                      <Link to={`/platoons/${key.id}`}>
+                      <Link to={`/platoons/${platform}/${key.id}`}>
                         <PlatoonEmblem src={key.emblem} />
                       </Link>
                       <div style={{ marginTop: "1rem" }}>
                         <h3>
-                          <Link to={`/platoons/${key.id}`}>{key.name}</Link>
+                          <Link to={`/platoons/${platform}/${key.id}`}>
+                            {key.name}
+                          </Link>
                         </h3>
                         {key.description !== null ? (
-                          <Link to={`/platoons/${key.id}`}>
+                          <Link to={`/platoons/${platform}/${key.id}`}>
                             <p>{key.description}</p>
                           </Link>
                         ) : (
-                          <Link to={`/platoons/${key.id}`}>
+                          <Link to={`/platoons/${platform}/${key.id}`}>
                             <Description>
                               {t("stats.platoon.noDescription")}
                             </Description>

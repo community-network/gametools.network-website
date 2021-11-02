@@ -123,9 +123,10 @@ export const Spacing = styled.div`
   margin-bottom: 2rem;
 `;
 
-function ServerPlatoon(props: { platoon: PlatoonResult }) {
+function ServerPlatoon(props: { platoon: PlatoonResult; platform: string }) {
   const { t } = useTranslation();
   const platoon = props.platoon;
+  const platform = props.platform;
   if (platoon === null) {
     return (
       <Spacing>
@@ -138,19 +139,21 @@ function ServerPlatoon(props: { platoon: PlatoonResult }) {
     <Spacing>
       <h2>{t("servers.platoon.main")}</h2>
       <AlignW style={{ alignItems: "start" }}>
-        <Link to={`/platoons/${platoon.id}`}>
+        <Link to={`/platoons/${platform}/${platoon.id}`}>
           <PlatoonEmblem src={platoon.emblem} />
         </Link>
         <div style={{ marginTop: "1rem" }}>
           <h3>
-            <Link to={`/platoons/${platoon.id}`}>{platoon.name}</Link>
+            <Link to={`/platoons/${platform}/${platoon.id}`}>
+              {platoon.name}
+            </Link>
           </h3>
           {platoon.description !== null ? (
-            <Link to={`/platoons/${platoon.id}`}>
+            <Link to={`/platoons/${platform}/${platoon.id}`}>
               <p>{platoon.description}</p>
             </Link>
           ) : (
-            <Link to={`/platoons/${platoon.id}`}>
+            <Link to={`/platoons/${platform}/${platoon.id}`}>
               <Description>{t("stats.platoon.noDescription")}</Description>
             </Link>
           )}
@@ -496,6 +499,7 @@ interface Views {
   loading: boolean;
   error: boolean;
   game: string;
+  platform: string;
   stats: DetailedServerInfo;
 }
 
@@ -613,7 +617,7 @@ function Results(props: Views): React.ReactElement {
         {props.game === "bf1" ? (
           <>
             <ServerOwner owner={stats.owner} game={props.game} />
-            <ServerPlatoon platoon={stats.platoon} />
+            <ServerPlatoon platoon={stats.platoon} platform={props.platform} />
             <ServerLeaderboard gameid={stats.gameId} />
             <ServerPlayerlist game={props.game} gameid={stats.gameId} />
           </>
@@ -713,19 +717,20 @@ type TParams = {
 
 function Servers({ match }: RouteComponentProps<TParams>): React.ReactElement {
   const gameId = match.params.gameid;
+  const platform = match.params.platform;
   const serverName = decodeURIComponent(match.params.sname);
   const { t } = useTranslation();
   const {
     isLoading: loading,
     isError: error,
     data: stats,
-  } = useQuery("detailed" + gameId + serverName + match.params.platform, () =>
+  } = useQuery("detailed" + gameId + serverName + platform, () =>
     GetStats.server({
       game: gameId,
       getter: match.params.type,
       serverName: serverName,
       lang: getLanguage(),
-      platform: match.params.platform,
+      platform: platform,
     }),
   );
   return (
@@ -735,7 +740,13 @@ function Servers({ match }: RouteComponentProps<TParams>): React.ReactElement {
           <ArrowLeft />
           {t("servers.back")}
         </Back>
-        <Results game={gameId} loading={loading} stats={stats} error={error} />
+        <Results
+          game={gameId}
+          loading={loading}
+          platform={platform}
+          stats={stats}
+          error={error}
+        />
       </Container>
     </div>
   );

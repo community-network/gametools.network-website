@@ -17,9 +17,10 @@ function Views(): React.ReactElement {
         <Route exact path="/" component={Home} />
         <Route exact path="/stats" component={PlayerSearch} />
         <Route exact path="/stats/:plat/:type/:eaid/" component={Stats} />
-        <Route exact path="/platoons/:gid" component={Platoon} />
+        <Route exact path="/platoons/:plat/:gid" component={Platoon} />
         <Route exact path="/platoons" component={PlatoonSearch} />
         <Route exact path="/servers" component={ServerSearch} />
+        <Redirect exact from="/platoons/:gid" to="/platoons/pc/:gid" />
         <Redirect
           exact
           from="/servers/:gameid/:type/:sname"

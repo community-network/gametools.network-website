@@ -51,6 +51,15 @@ export interface Views {
   stats: MainStats;
 }
 
+export interface PlatformViews {
+  loading: boolean;
+  error: boolean;
+  game: string;
+  name: string;
+  platform: string;
+  stats: MainStats;
+}
+
 export const ListImage = styled.img`
   max-width: 8rem;
   max-height: 3rem;
@@ -278,9 +287,8 @@ export function DynamicSort(property: string) {
 type TParams = { plat: string; type: string; eaid: string };
 
 function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
-  const [game, setGame] = React.useState<string>(
-    platformGames[match.params.plat][0],
-  );
+  const platform = match.params.plat;
+  const [game, setGame] = React.useState<string>(platformGames[platform][0]);
   const [name, setName] = React.useState<string>("");
   const { width } = useWindowDimensions();
   const query = new URLSearchParams(useLocation().search);
@@ -322,10 +330,10 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
       getter: match.params.type,
       userName: match.params.eaid,
       lang: getLanguage(),
-      platform: match.params.plat,
+      platform: platform,
     }),
   );
-  const games = platformGames[match.params.plat];
+  const games = platformGames[platform];
   return (
     <Container>
       <div>
@@ -408,6 +416,7 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
               stats={stats}
               error={error}
               name={name}
+              platform={platform}
             />
           ) : (
             <></>

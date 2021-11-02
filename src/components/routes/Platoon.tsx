@@ -344,10 +344,12 @@ function Results(props: Views): React.ReactElement {
 
 type TParams = {
   gid: string;
+  plat: string;
 };
 
 function Platoon({ match }: RouteComponentProps<TParams>): React.ReactElement {
   const platoonId = match.params.gid;
+  const platform = match.params.plat;
 
   const { t } = useTranslation();
   const {
@@ -357,6 +359,7 @@ function Platoon({ match }: RouteComponentProps<TParams>): React.ReactElement {
   } = useQuery("detailed" + platoonId, () =>
     GetStats.platoon({
       id: platoonId,
+      platform: platform,
       lang: getLanguage(),
     }),
   );

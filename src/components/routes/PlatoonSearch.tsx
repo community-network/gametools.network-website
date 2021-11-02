@@ -15,6 +15,7 @@ import {
   Align,
   AlignW,
   Box,
+  BigSelectSecondary,
 } from "../Materials";
 import { getLanguage } from "../../locales/config";
 import { PlatoonResult, PlatoonSearchResult } from "../../api/ReturnTypes";
@@ -60,6 +61,7 @@ interface Views {
   loading: boolean;
   error: boolean;
   platoons: PlatoonSearchResult;
+  platform: string;
 }
 
 function Results(props: Views): React.ReactElement {
@@ -77,7 +79,7 @@ function Results(props: Views): React.ReactElement {
       <Spacing>
         {stats.platoons.map((key: PlatoonResult, index: number) => {
           return (
-            <Link key={index} to={`/platoons/${key.id}`}>
+            <Link key={index} to={`/platoons/${props.platform}/${key.id}`}>
               <Box>
                 <AlignW>
                   <div>
@@ -105,11 +107,16 @@ function Results(props: Views): React.ReactElement {
 
 function Search(): React.ReactElement {
   const [searchTerm, setSearchTerm] = React.useState<string>("");
+  const [platform, setPlatform] = React.useState<string>("pc");
   const history = useHistory();
   // get info from query ?search &game
   const query = new URLSearchParams(useLocation().search);
+  const platformQuery = query.get("platform");
   const nameQuery = query.get("search");
   React.useState(() => {
+    if (platformQuery !== null) {
+      setPlatform(platformQuery);
+    }
     if (nameQuery !== null) {
       setSearchTerm(nameQuery);
     }
@@ -123,17 +130,23 @@ function Search(): React.ReactElement {
     } else {
       params.delete("search");
     }
+    if (platform) {
+      params.append("platform", platform);
+    } else {
+      params.delete("platform");
+    }
     history.push({ search: params.toString() });
-  }, [searchTerm, history]);
+  }, [searchTerm, platform, history]);
 
   const { t } = useTranslation();
   const {
     isLoading: loading,
     isError: error,
     data: platoons,
-  } = useQuery("platoons" + searchTerm, () =>
+  } = useQuery("platoons" + searchTerm + platform, () =>
     GetStats.platoonSearch({
       name: searchTerm,
+      platform: platform,
       lang: getLanguage(),
     }),
   );
@@ -155,10 +168,25 @@ function Search(): React.ReactElement {
             setSearchTerm(ev.target.value)
           }
         />
+        <BigSelectSecondary
+          value={platform}
+          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
+            setPlatform(ev.target.value)
+          }
+        >
+          <option value="pc">{t("platforms.pc")}</option>
+          <option value="xboxone">{t("platforms.xboxone")}</option>
+          <option value="ps4">{t("platforms.ps4")}</option>
+        </BigSelectSecondary>
         {/* <BigButtonSecondary type="submit">{t("serverSearch.search")} <RightArrow/></BigButtonSecondary> */}
       </Align>
       <Title>{t("platoonSearch.results")}</Title>
-      <Results loading={loading} platoons={platoons} error={error} />
+      <Results
+        loading={loading}
+        platoons={platoons}
+        platform={platform}
+        error={error}
+      />
     </Container>
   );
 }
