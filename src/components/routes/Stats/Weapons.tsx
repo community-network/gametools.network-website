@@ -10,6 +10,8 @@ import {
   Row,
   AlignW,
   SmallButtonSecondary,
+  PhoneRow,
+  TabletRow,
 } from "../../Materials";
 import { MainStatsWeapon } from "../../../api/ReturnTypes";
 import {
@@ -96,14 +98,14 @@ export function ViewWeapons(props: Views): React.ReactElement {
                   <h4>{key.killsPerMinute}</h4>
                   <Description>{t("stats.rows.killsPerMinute")}</Description>
                 </Row>
-                <Row>
+                <TabletRow>
                   <h4>{key.accuracy}%</h4>
                   <Description>{t("stats.rows.accuracy")}</Description>
-                </Row>
-                <Row>
+                </TabletRow>
+                <PhoneRow>
                   <h4>{key.headshots}%</h4>
                   <Description>{t("stats.rows.headshots")}</Description>
-                </Row>
+                </PhoneRow>
               </Column>
             );
           })}

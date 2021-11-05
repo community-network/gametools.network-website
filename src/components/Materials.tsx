@@ -43,14 +43,18 @@ export const Row = styled.div`
 `;
 
 export const PageColumn = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  align-items: flex-start;
+  @media screen and (min-width: 1800px) {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+  }
 `;
 
 export const PageRow = styled.div`
+@media screen and (min-width: 1800px) {
   flex: 0;
   min-width: 800px;
+}
   @media screen and (max-width: 1800px) {
     flex: 100%;
   }
@@ -442,6 +446,12 @@ export const TabletRow = styled.div`
 export const PhoneRow = styled.div`
   flex: 1;
   @media (max-width: 600px) {
+    display: none;
+  }
+`;
+
+export const PhoneVis = styled.div`
+  @media (max-width: 800px) {
     display: none;
   }
 `;

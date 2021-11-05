@@ -26,6 +26,7 @@ import {
   SmallestPhoneRow,
   SmallPhoneRow,
   PhoneRow,
+  PhoneVis,
 } from "../Materials";
 import { getLanguage } from "../../locales/config";
 import {
@@ -506,12 +507,6 @@ interface Views {
 function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
-
-const PhoneVis = styled.div`
-  @media (max-width: 800px) {
-    display: none;
-  }
-`;
 
 function Results(props: Views): React.ReactElement {
   const [copyState, setCopyState] = React.useState<string>("copy");

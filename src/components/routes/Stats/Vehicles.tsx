@@ -10,6 +10,7 @@ import {
   Row,
   AlignW,
   SmallButtonSecondary,
+  PhoneRow,
 } from "../../Materials";
 import { MainStatsVehicle } from "../../../api/ReturnTypes";
 import {
@@ -82,10 +83,10 @@ export function ViewVehicles(props: Views): React.ReactElement {
                   <h4>{key.killsPerMinute}</h4>
                   <Description>{t("stats.rows.killsPerMinute")}</Description>
                 </Row>
-                <Row>
+                <PhoneRow>
                   <h4>{key.destroyed}</h4>
                   <Description>{t("stats.rows.destroyed")}</Description>
-                </Row>
+                </PhoneRow>
               </Column>
             );
           })}
