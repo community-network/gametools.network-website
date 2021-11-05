@@ -236,7 +236,7 @@ export function Navbar(): JSX.Element {
   const { t } = useTranslation();
   const homePage = useLocation().pathname === "/";
   const [width, setWidth] = useState(window.innerWidth);
-  const maxWidth = homePage ? 850 : 1250;
+  const maxWidth = homePage ? 1080 : 1250;
 
   const [open, setOpen] = useState(false);
 
