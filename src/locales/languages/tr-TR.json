@@ -100,6 +100,15 @@
                 "url": "https://discord.gametools.network/"
             }
         },
+        "fromOurDevs": {
+            "header": "Geliştiricilerimizden",
+            "0": {
+                "header": "Statbits",
+                "0": "Statbits, diğer tüm uygulamaların yanı sıra canlı yayın sohbetinize küçük oyun istatistiklerini entegre etmenize olanak tanır. Battlefield 4'te toplam öldürme/ölüm oranınızı gösteren bir !kd komutu ister misiniz? tam istediğin!",
+                "link": "Belgeleri okuyun",
+                "url": "https://statbits.io/"
+            }
+        },
         "faq": {
             "header": "FAQ",
             "0": {
