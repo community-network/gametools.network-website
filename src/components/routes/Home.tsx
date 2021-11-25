@@ -122,6 +122,24 @@ function Home(): React.ReactElement {
     });
     i += 1;
   }
+
+  i = 0;
+  const fromOurDevs = [];
+  while (i18n.exists(`home.fromOurDevs.${i}`)) {
+    let b = 0;
+    const bodies = [];
+    while (i18n.exists(`home.fromOurDevs.${i}.${b}`)) {
+      bodies.push(t(`home.fromOurDevs.${i}.${b}`));
+      b += 1;
+    }
+    fromOurDevs.push({
+      header: t(`home.fromOurDevs.${i}.header`),
+      link: t(`home.fromOurDevs.${i}.link`),
+      url: t(`home.fromOurDevs.${i}.url`),
+      bodies: bodies,
+    });
+    i += 1;
+  }
   return (
     <div>
       <Image>
@@ -155,6 +173,25 @@ function Home(): React.ReactElement {
         </h2>
         <Align>
           {ourSolutions.map((key, index) => {
+            return (
+              <Box key={index} align="flex-start">
+                <h3>{key.header}</h3>
+                {key.bodies.map((key, index) => {
+                  return <p key={index}>{key}</p>;
+                })}
+                <br></br>
+                <ButtonLink target="_blank" href={key.url}>
+                  {key.link}
+                </ButtonLink>
+              </Box>
+            );
+          })}
+        </Align>
+        <h2 style={{ margin: "24px 0 24px 24px" }}>
+          {t("home.fromOurDevs.header")}
+        </h2>
+        <Align>
+          {fromOurDevs.map((key, index) => {
             return (
               <Box key={index} align="flex-start">
                 <h3>{key.header}</h3>

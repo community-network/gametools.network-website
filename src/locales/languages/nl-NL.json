@@ -100,6 +100,15 @@
                 "url": "https://discord.gametools.network/"
             }
         },
+        "fromOurDevs": {
+            "header": "Van onze developers",
+            "0": {
+                "header": "Statbits",
+                "0": "Statbits laat je de spelstatistieken integreren in jouw stream chat en andere applicaties. Wil je een !kd command die je algemene kill/death ratio laat zien voor Battlefield 4? We got you!",
+                "link": "Lees de documentatie",
+                "url": "https://statbits.io/"
+            }
+        },
         "faq": {
             "header": "FAQ",
             "0": {
