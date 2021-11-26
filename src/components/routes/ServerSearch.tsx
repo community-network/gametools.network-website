@@ -129,7 +129,9 @@ function Results(props: Views): React.ReactElement {
             queueString = `[${queue}]`;
           }
           let region: string = undefined;
-          if (key.region !== undefined) {
+          if (props.game === "bf2042") {
+            region = ` - ${key.region}`;
+          } else if (key.region !== undefined) {
             region = ` - ${t(`regions.${key.region.toLowerCase()}`)}`;
           }
           let officialString = "";
@@ -287,6 +289,7 @@ function Search(): React.ReactElement {
           <option value="bf4">{t("games.bf4")}</option>
           <option value="bfh">{t("games.bfh")}</option>
           <option value="bfv">{t("games.bfv")}</option>
+          <option value="bf2042">{t("games.bf2042")}</option>
         </BigSelectSecondary>
         <BigSelectSecondary
           disabled={!frostbite3.includes(gameName)}
