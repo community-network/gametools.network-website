@@ -125,7 +125,7 @@ function Results(props: Views): React.ReactElement {
           let queue: number = undefined;
           queue = key.inQue;
           let queueString = "";
-          if (queue !== undefined && queue !== 0) {
+          if (queue !== undefined && queue !== 0 && queue !== null) {
             queueString = `[${queue}]`;
           }
           let region: string = undefined;
