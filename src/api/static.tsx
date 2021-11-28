@@ -26,7 +26,8 @@ export const graphGames = {
   all: ["bf4", "bf1", "bfv"],
 };
 
-export const frostbite3 = ["bf4", "bf1", "bfv"];
+export const noCrossplayFrostbite3 = ["bf4", "bf1", "bfv"];
+export const frostbite3 = ["bf4", "bf1", "bfv", "bf2042"];
 export const dice = ["bf3", "bf4", "bf1", "bfv", "bfh"];
 export const newTitles = ["bf1", "bfv"];
 

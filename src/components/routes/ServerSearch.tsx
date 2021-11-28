@@ -17,7 +17,7 @@ import {
   Box,
 } from "../Materials";
 import { getLanguage } from "../../locales/config";
-import { frostbite3 } from "../../api/static";
+import { frostbite3, noCrossplayFrostbite3 } from "../../api/static";
 import { ServerList, ServerSearch } from "../../api/ReturnTypes";
 
 const Description = styled.p`
@@ -305,9 +305,10 @@ function Search(): React.ReactElement {
           <option value="sam">{t("regions.sam")}</option>
           <option value="au">{t("regions.au")}</option>
           <option value="oc">{t("regions.oc")}</option>
+          <option value="afr">{t("regions.afr")}</option>
         </BigSelectSecondary>
         <BigSelectSecondary
-          disabled={!frostbite3.includes(gameName)}
+          disabled={!noCrossplayFrostbite3.includes(gameName)}
           value={platform}
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
             setPlatform(ev.target.value)
