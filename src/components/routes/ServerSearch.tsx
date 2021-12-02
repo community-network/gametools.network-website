@@ -142,10 +142,15 @@ function Results(props: Views): React.ReactElement {
             props.game === "bf1" ||
             props.game === "bf4" ||
             props.game === "bfv" ||
+            props.game === "bf2042" ||
             (props.game === "bf3" && key.platform == "pc");
           return (
             <ConditionalLink
-              to={`/servers/${props.game}/gameid/${key.gameId}/${key.platform}`}
+              to={`/servers/${props.game}/${
+                props.game == "bf2042" ? "serverid" : "gameid"
+              }/${props.game == "bf2042" ? key.serverId : key.gameId}/${
+                key.platform
+              }`}
               condition={useLink}
               key={index}
             >

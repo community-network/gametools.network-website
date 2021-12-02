@@ -124,7 +124,15 @@ export class ApiProvider extends JsonClient {
     if (platform == "all") {
       platform = "pc";
     }
-    if (getter == "gameid") {
+    if ((getter == "gameid" || getter == "serverid") && game == "bf2042") {
+      return await this.getJsonMethod(`/${gameStuff[0]}/detailedserver/`, {
+        serverid: serverName,
+        lang: lang,
+        region: region,
+        platform: platform,
+        service: gameStuff[1],
+      });
+    } else if (getter == "gameid") {
       return await this.getJsonMethod(`/${gameStuff[0]}/detailedserver/`, {
         gameid: serverName,
         lang: lang,

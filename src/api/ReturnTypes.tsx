@@ -170,7 +170,6 @@ export type ServerSearch = {
 
 export type ServerList = {
   currentMap: string;
-  gameId: string;
   inQue: number;
   mode: string;
   official: boolean;
@@ -181,6 +180,9 @@ export type ServerList = {
   serverInfo: string;
   smallMode: string;
   url: string;
+
+  gameId?: string;
+  serverId?: string;
 
   teams?: TeamList;
   prefix?: string;
