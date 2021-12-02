@@ -535,7 +535,11 @@ function Results(props: Views): React.ReactElement {
           <ServerImage background={stats.currentMapImage}>
             <Blur>
               <ServerText>{stats.smallmode}</ServerText>
-              <ServerFactorites>&#9734; {stats.favorites}</ServerFactorites>
+              {props.game !== "bf2042" ? (
+                <ServerFactorites>&#9734; {stats.favorites}</ServerFactorites>
+              ) : (
+                <></>
+              )}
             </Blur>
           </ServerImage>
           <div>
