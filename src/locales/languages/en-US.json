@@ -334,7 +334,8 @@
         },
         "owner": {
             "main": "Server owner",
-            "none": "Server has no owner (Dice server)"
+            "none": "Server has no owner (Dice server)",
+            "unknown": "Name not found"
         },
         "join": "Join server (Firefox only)",
         "iframe": {

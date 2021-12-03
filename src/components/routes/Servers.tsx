@@ -177,9 +177,17 @@ const OriginDescription = styled.h4`
   line-height: 60%;
 `;
 
+interface ConLink {
+  children: React.ReactElement<unknown, string>;
+  to: string;
+  condition: boolean;
+}
+
 function ServerOwner(props: { owner: ServerOwnerResult; game: string }) {
   const { t } = useTranslation();
   const owner = props.owner;
+  const ConditionalLink = ({ children, to, condition }: ConLink) =>
+    !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
   if (owner === null) {
     return (
       <Spacing>
@@ -198,25 +206,29 @@ function ServerOwner(props: { owner: ServerOwnerResult; game: string }) {
     <Spacing>
       <h2>{t("servers.owner.main")}</h2>
       <Align>
-        <Link
+        <ConditionalLink
           to={`/stats/pc/playerid/${owner.id}?game=${
             props.game
           }&name=${encodeURIComponent(owner.name)}`}
+          condition={props.game !== "bf2042"}
         >
           <OriginProfile src={owner.avatar} />
-        </Link>
-        <Link
+        </ConditionalLink>
+        <ConditionalLink
           to={`/stats/pc/playerid/${owner.id}?game=${
             props.game
           }&name=${encodeURIComponent(owner.name)}`}
+          condition={props.game !== "bf2042"}
         >
           <div>
-            <OriginName>{owner.name}</OriginName>
+            <OriginName>
+              {owner.name !== "" ? owner.name : t("servers.owner.unknown")}
+            </OriginName>
             <OriginDescription>
               {t("stats.originDescription")}
             </OriginDescription>
           </div>
-        </Link>
+        </ConditionalLink>
       </Align>
     </Spacing>
   );
@@ -619,9 +631,13 @@ function Results(props: Views): React.ReactElement {
             );
           })}
         </Align>
+        {props.game !== "bf4" ? (
+          <ServerOwner owner={stats.owner} game={props.game} />
+        ) : (
+          <></>
+        )}
         {props.game === "bf1" ? (
           <>
-            <ServerOwner owner={stats.owner} game={props.game} />
             <ServerPlatoon platoon={stats.platoon} platform={props.platform} />
             <ServerLeaderboard gameid={stats.gameId} />
             <ServerPlayerlist game={props.game} gameid={stats.gameId} />
@@ -631,7 +647,6 @@ function Results(props: Views): React.ReactElement {
         )}
         {props.game === "bfv" ? (
           <>
-            <ServerOwner owner={stats.owner} game={props.game} />
             <ServerPlayerlist game={props.game} gameid={stats.gameId} />
           </>
         ) : (

@@ -334,7 +334,8 @@
         },
         "owner": {
             "main": "Server eigenaar",
-            "none": "Server heeft geen eigenaar (Dice server)"
+            "none": "Server heeft geen eigenaar (Dice server)",
+            "unknown": "Naam niet gevonden"
         },
         "join": "Join server (werkt alleen op firefox)",
         "iframe": {
