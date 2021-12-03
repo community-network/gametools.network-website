@@ -194,7 +194,7 @@ function Results(props: Views): React.ReactElement {
 
 function Search(): React.ReactElement {
   const [searchTerm, setSearchTerm] = React.useState<string>("");
-  const [gameName, setGameName] = React.useState<string>("bf1");
+  const [gameName, setGameName] = React.useState<string>("bf2042");
   const [region, setRegion] = React.useState<string>("all");
   const [platform, setPlatform] = React.useState<string>("pc");
   const history = useHistory();
@@ -283,7 +283,6 @@ function Search(): React.ReactElement {
             setGameName(ev.target.value)
           }
         >
-          <option value="bf1">{t("games.bf1")}</option>
           <option value="bf2.bf2hub">{t("games.bf2.bf2hub")}</option>
           <option value="bf2.playbf2">{t("games.bf2.playbf2")}</option>
           <option value="bfbc2">{t("games.bfbc2")}</option>
@@ -293,6 +292,7 @@ function Search(): React.ReactElement {
           <option value="bf3">{t("games.bf3")}</option>
           <option value="bf4">{t("games.bf4")}</option>
           <option value="bfh">{t("games.bfh")}</option>
+          <option value="bf1">{t("games.bf1")}</option>
           <option value="bfv">{t("games.bfv")}</option>
           <option value="bf2042">{t("games.bf2042")}</option>
         </BigSelectSecondary>
