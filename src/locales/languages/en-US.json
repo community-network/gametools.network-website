@@ -42,6 +42,14 @@
         "bfv": "Battlefield 5",
         "bf2042": "Battlefield 2042"
     },
+    "limit": {
+        "10": "10 servers",
+        "25": "25 servers",
+        "50": "50 servers",
+        "100": "100 servers",
+        "200": "200 servers",
+        "250": "250 servers"
+    },
     "regions": {
         "all": "All regions",
         "eu": "Europe",

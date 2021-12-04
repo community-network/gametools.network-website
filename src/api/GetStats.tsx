@@ -56,6 +56,7 @@ interface ServerSearchInfo {
   lang: string;
   region?: string;
   platform?: string;
+  limit?: string;
 }
 
 interface GraphInfo {
@@ -178,6 +179,7 @@ export class ApiProvider extends JsonClient {
     lang,
     region = "all",
     platform = "pc",
+    limit = "10",
   }: ServerSearchInfo): Promise<ServerSearch> {
     const gameStuff = game.split(".");
     if (platform == "all") {
@@ -189,6 +191,7 @@ export class ApiProvider extends JsonClient {
       region: region,
       platform: platform,
       service: gameStuff[1],
+      limit: limit,
     });
   }
 

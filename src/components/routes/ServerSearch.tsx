@@ -197,6 +197,7 @@ function Search(): React.ReactElement {
   const [gameName, setGameName] = React.useState<string>("bf2042");
   const [region, setRegion] = React.useState<string>("all");
   const [platform, setPlatform] = React.useState<string>("pc");
+  const [limit, setLimit] = React.useState<string>("10");
   const history = useHistory();
   // get info from query ?search &game
   const query = new URLSearchParams(useLocation().search);
@@ -204,6 +205,7 @@ function Search(): React.ReactElement {
   const gameQuery = query.get("game");
   const regionQuery = query.get("region");
   const platformQuery = query.get("platform");
+  const limitQuery = query.get("limit");
   React.useState(() => {
     if (nameQuery !== null) {
       setSearchTerm(nameQuery);
@@ -216,6 +218,9 @@ function Search(): React.ReactElement {
     }
     if (platformQuery !== null) {
       setPlatform(platformQuery);
+    }
+    if (limitQuery !== null) {
+      setLimit(limitQuery);
     }
   });
 
@@ -242,22 +247,30 @@ function Search(): React.ReactElement {
     } else {
       params.delete("platform");
     }
+    if (limit) {
+      params.append("limit", limit);
+    } else {
+      params.delete("limit");
+    }
     history.push({ search: params.toString() });
-  }, [searchTerm, gameName, region, platform, history]);
+  }, [searchTerm, gameName, region, platform, limit, history]);
 
   const { t } = useTranslation();
   const {
     isLoading: loading,
     isError: error,
     data: stats,
-  } = useQuery("servers" + gameName + searchTerm + region + platform, () =>
-    GetStats.serverSearch({
-      game: gameName,
-      serverName: searchTerm,
-      lang: getLanguage(),
-      region: region,
-      platform: platform,
-    }),
+  } = useQuery(
+    "servers" + gameName + searchTerm + region + platform + limit,
+    () =>
+      GetStats.serverSearch({
+        game: gameName,
+        serverName: searchTerm,
+        lang: getLanguage(),
+        region: region,
+        platform: platform,
+        limit: limit,
+      }),
   );
   return (
     <Container>
@@ -311,6 +324,20 @@ function Search(): React.ReactElement {
           <option value="au">{t("regions.au")}</option>
           <option value="oc">{t("regions.oc")}</option>
           <option value="afr">{t("regions.afr")}</option>
+        </BigSelectSecondary>
+        <BigSelectSecondary
+          disabled={!frostbite3.includes(gameName)}
+          value={limit}
+          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
+            setLimit(ev.target.value)
+          }
+        >
+          <option value="10">{t("limit.10")}</option>
+          <option value="25">{t("limit.25")}</option>
+          <option value="50">{t("limit.50")}</option>
+          <option value="100">{t("limit.100")}</option>
+          <option value="200">{t("limit.200")}</option>
+          <option value="250">{t("limit.250")}</option>
         </BigSelectSecondary>
         <BigSelectSecondary
           disabled={!noCrossplayFrostbite3.includes(gameName)}
