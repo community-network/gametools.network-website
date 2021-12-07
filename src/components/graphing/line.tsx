@@ -166,32 +166,47 @@ function AllPlatformGraph(props: GraphData): React.ReactElement {
       const time = new Date(e);
       return time;
     });
-    const data = {
-      labels: time,
-      datasets: [
-        {
-          label: t("platforms.pc"),
-          data: props.stats.pc.soldierAmount,
-          fill: false,
-          borderColor: "rgba(75,192,192,0.2)",
-          pointRadius: 0,
-        },
-        {
-          label: t("platforms.ps4"),
-          data: props.stats.ps4.soldierAmount,
-          fill: false,
-          borderColor: "#49297e",
-          pointRadius: 0,
-        },
-        {
-          label: t("platforms.xboxone"),
-          data: props.stats.xboxone.soldierAmount,
-          fill: false,
-          borderColor: "#195f08",
-          pointRadius: 0,
-        },
-      ],
-    };
+    console.log(props.stats);
+    const data =
+      props.gameName !== "bf2042"
+        ? {
+            labels: time,
+            datasets: [
+              {
+                label: t("platforms.pc"),
+                data: props.stats.pc.soldierAmount,
+                fill: false,
+                borderColor: "rgba(75,192,192,0.2)",
+                pointRadius: 0,
+              },
+              {
+                label: t("platforms.ps4"),
+                data: props.stats.ps4.soldierAmount,
+                fill: false,
+                borderColor: "#49297e",
+                pointRadius: 0,
+              },
+              {
+                label: t("platforms.xboxone"),
+                data: props.stats.xboxone.soldierAmount,
+                fill: false,
+                borderColor: "#195f08",
+                pointRadius: 0,
+              },
+            ],
+          }
+        : {
+            labels: time,
+            datasets: [
+              {
+                label: t("platforms.global"),
+                data: props.stats.global.soldierAmount,
+                fill: false,
+                borderColor: "rgba(75,192,192,0.2)",
+                pointRadius: 0,
+              },
+            ],
+          };
 
     return (
       <div>
@@ -446,6 +461,7 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
 }
 
 export function GlobalGraph(props: GlobalInfo): React.ReactElement {
+  const platform = props.platform == "all" ? "global" : props.platform;
   const {
     isLoading: loading,
     isError: error,
@@ -457,7 +473,7 @@ export function GlobalGraph(props: GlobalInfo): React.ReactElement {
         game: "bfglobal",
         days: "7",
         region: "all",
-        platform: props.platform,
+        platform: platform,
       }),
     { staleTime: Infinity, refetchOnWindowFocus: false },
   );

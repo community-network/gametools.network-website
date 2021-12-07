@@ -3,7 +3,7 @@ import "regenerator-runtime/runtime";
 const MODE = "prod";
 
 const endPoints = {
-  dev: "https://api.jobse.space",
+  dev: "http://localhost:8787",
   prod: "https://api.gametools.network",
 };
 

@@ -23,12 +23,12 @@ export const graphGames = {
   ],
   xboxone: ["bfglobal", "bf4", "bf1", "bfv"],
   ps4: ["bfglobal", "bf4", "bf1", "bfv"],
-  all: ["bf4", "bf1", "bfv"],
+  all: ["bfglobal", "bf4", "bf1", "bfv", "bf2042"],
 };
 
 export const noCrossplayFrostbite3 = ["bf4", "bf1", "bfv"];
 export const frostbite3 = ["bf4", "bf1", "bfv", "bf2042"];
-export const dice = ["bf3", "bf4", "bf1", "bfv", "bfh"];
+export const dice = ["bf3", "bf4", "bf1", "bfv", "bfh", "bf2042"];
 export const newTitles = ["bf1", "bfv"];
 
 export const progressGames = ["bf4", "bfh", "bf1"];
