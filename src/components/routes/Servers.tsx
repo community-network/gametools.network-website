@@ -1,6 +1,6 @@
 import * as React from "react";
 import "../../locales/config";
-import { Link, RouteComponentProps } from "react-router-dom";
+import { Link, RouteComponentProps, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../assets/scss/App.scss";
@@ -378,6 +378,8 @@ function ServerLeaderboard(props: { gameid: string }) {
 function ServerPlayerlist(props: { game: string; gameid: string }) {
   const { t } = useTranslation();
   const gameId = props.gameid;
+  const ConditionalLink = ({ children, to, condition }: ConLink) =>
+    !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
   const {
     isLoading: loading,
     isError: error,
@@ -417,11 +419,16 @@ function ServerPlayerlist(props: { game: string; gameid: string }) {
                               <Column key={index}>
                                 <Row>
                                   <AlignW>
-                                    <img
-                                      src={`https://cdn.gametools.network/bf1/${key.rank}.png`}
-                                      height="25px"
-                                    />
-                                    <Link
+                                    {props.game !== "bf2042" ? (
+                                      <img
+                                        src={`https://cdn.gametools.network/bf1/${key.rank}.png`}
+                                        height="25px"
+                                      />
+                                    ) : (
+                                      <></>
+                                    )}
+                                    <ConditionalLink
+                                      condition={props.game !== "bf2042"}
                                       to={`/stats/pc/playerid/${
                                         key.player_id
                                       }?game=bf1&name=${encodeURIComponent(
@@ -437,22 +444,27 @@ function ServerPlayerlist(props: { game: string; gameid: string }) {
                                           whiteSpace: "nowrap",
                                         }}
                                       >
-                                        {key.platoon !== ""
+                                        {key.platoon !== "" &&
+                                        key.platoon !== undefined
                                           ? `[${key.platoon}]`
                                           : ""}
                                         {key.name}
                                       </h4>
-                                    </Link>
+                                    </ConditionalLink>
                                   </AlignW>
                                 </Row>
-                                <Row>
-                                  <h4 style={{ marginTop: "0.5rem" }}>
-                                    {key.latency}
-                                  </h4>
-                                  <Description style={{ lineHeight: 0 }}>
-                                    {t("servers.playerlist.row.ping")}
-                                  </Description>
-                                </Row>
+                                {props.game !== "bf2042" ? (
+                                  <Row>
+                                    <h4 style={{ marginTop: "0.5rem" }}>
+                                      {key.latency}
+                                    </h4>
+                                    <Description style={{ lineHeight: 0 }}>
+                                      {t("servers.playerlist.row.ping")}
+                                    </Description>
+                                  </Row>
+                                ) : (
+                                  <></>
+                                )}
                                 <Row>
                                   <h4 style={{ marginTop: "0.5rem" }}>
                                     {t("change", {
@@ -463,22 +475,26 @@ function ServerPlayerlist(props: { game: string; gameid: string }) {
                                     {t("servers.playerlist.row.timePlayed")}
                                   </Description>
                                 </Row>
-                                <PhoneRow>
-                                  <ButtonLink
-                                    style={{
-                                      marginTop: ".5rem",
-                                    }}
-                                    href={`https://gametools.network/stats/pc/playerid/${
-                                      key.player_id
-                                    }?game=bf1&name=${encodeURIComponent(
-                                      key.name,
-                                    )}`}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                  >
-                                    {t("stats.view")}
-                                  </ButtonLink>
-                                </PhoneRow>
+                                {props.game !== "bf2042" ? (
+                                  <PhoneRow>
+                                    <ButtonLink
+                                      style={{
+                                        marginTop: ".5rem",
+                                      }}
+                                      href={`https://gametools.network/stats/pc/playerid/${
+                                        key.player_id
+                                      }?game=bf1&name=${encodeURIComponent(
+                                        key.name,
+                                      )}`}
+                                      target="_blank"
+                                      rel="noreferrer"
+                                    >
+                                      {t("stats.view")}
+                                    </ButtonLink>
+                                  </PhoneRow>
+                                ) : (
+                                  <></>
+                                )}
                               </Column>
                             );
                           },
@@ -521,6 +537,8 @@ function capitalizeFirstLetter(string: string) {
 }
 
 function Results(props: Views): React.ReactElement {
+  const query = new URLSearchParams(useLocation().search);
+  const blazeIdQuery = query.get("blazeid");
   const [copyState, setCopyState] = React.useState<string>("copy");
   const copyStates = {};
   serverWidgetTypes.map((element) => {
@@ -648,6 +666,13 @@ function Results(props: Views): React.ReactElement {
         {props.game === "bfv" ? (
           <>
             <ServerPlayerlist game={props.game} gameid={stats.gameId} />
+          </>
+        ) : (
+          <></>
+        )}
+        {props.game === "bf2042" && blazeIdQuery !== null ? (
+          <>
+            <ServerPlayerlist game={props.game} gameid={blazeIdQuery} />
           </>
         ) : (
           <></>

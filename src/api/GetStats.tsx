@@ -168,6 +168,11 @@ export class ApiProvider extends JsonClient {
     gameId,
   }: serverPlayerlist): Promise<ServerPlayersReturn> {
     const gameStuff = game.split(".");
+    if (game === "bf2042") {
+      return await this.getJsonMethod(`/${gameStuff[0]}/players/`, {
+        blazegameid: gameId,
+      });
+    }
     return await this.getJsonMethod(`/${gameStuff[0]}/players/`, {
       gameId: gameId,
     });

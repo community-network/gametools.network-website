@@ -183,6 +183,7 @@ export type ServerList = {
 
   gameId?: string;
   serverId?: string;
+  blazeGameId?: number;
 
   teams?: TeamList;
   prefix?: string;

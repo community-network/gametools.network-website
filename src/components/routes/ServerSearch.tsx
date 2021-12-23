@@ -150,7 +150,7 @@ function Results(props: Views): React.ReactElement {
                 props.game == "bf2042" ? "serverid" : "gameid"
               }/${props.game == "bf2042" ? key.serverId : key.gameId}/${
                 key.platform
-              }`}
+              }${props.game == "bf2042" ? `?blazeid=${key.blazeGameId}` : ""}`}
               condition={useLink}
               key={index}
             >
