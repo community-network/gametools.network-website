@@ -707,57 +707,55 @@ function Results(props: Views): React.ReactElement {
                 },
               )}
             </AlignT>
-
-            <h2 style={{ marginBottom: 0 }}>{t("servers.iframe.main")}</h2>
-            <Description style={{ margin: 0, marginTop: "0.2rem" }}>
-              {t("servers.iframe.info")}
-            </Description>
-            {serverWidgetTypes.map((element, index) => {
-              return (
-                <div key={index}>
-                  <Description style={{ marginTop: "15px" }}>
-                    {t(`servers.iframe.${element}`)}{" "}
-                    <ServerLink
-                      onClick={() => {
-                        navigator.clipboard.writeText(
-                          `<iframe src="https://widgets.gametools.network/servers/${element}/${
-                            props.game
-                          }/name/${encodeURIComponent(
-                            stats.prefix,
-                          )}/pc" height="${
-                            widgetSize[index]
-                          }px" width="700px" frameborder="0" allowtransparency="true"></iframe>`,
-                        );
-                        copyStates[element].set("copied");
-                        const timer1 = setTimeout(
-                          () => copyStates[element].set("copy"),
-                          3 * 1000,
-                        );
-                        return () => {
-                          clearTimeout(timer1);
-                        };
-                      }}
-                    >
-                      {t(`servers.iframe.states.${copyStates[element].state}`)}
-                    </ServerLink>
-                  </Description>
-                  <iframe
-                    src={`https://widgets.gametools.network/servers/${element}/${
-                      props.game
-                    }/name/${encodeURIComponent(stats.prefix)}/pc`}
-                    style={{ maxWidth: "700px" }}
-                    height={`${widgetSize[index]}px`}
-                    width="100%"
-                    frameBorder="0"
-                    allowtransparency="true"
-                  ></iframe>
-                </div>
-              );
-            })}
           </>
         ) : (
           <></>
         )}
+
+        <h2 style={{ marginBottom: 0 }}>{t("servers.iframe.main")}</h2>
+        <Description style={{ margin: 0, marginTop: "0.2rem" }}>
+          {t("servers.iframe.info")}
+        </Description>
+        {serverWidgetTypes.map((element, index) => {
+          return (
+            <div key={index}>
+              <Description style={{ marginTop: "15px" }}>
+                {t(`servers.iframe.${element}`)}{" "}
+                <ServerLink
+                  onClick={() => {
+                    navigator.clipboard.writeText(
+                      `<iframe src="https://widgets.gametools.network/servers/${element}/${
+                        props.game
+                      }/name/${encodeURIComponent(stats.prefix)}/pc" height="${
+                        widgetSize[index]
+                      }px" width="700px" frameborder="0" allowtransparency="true"></iframe>`,
+                    );
+                    copyStates[element].set("copied");
+                    const timer1 = setTimeout(
+                      () => copyStates[element].set("copy"),
+                      3 * 1000,
+                    );
+                    return () => {
+                      clearTimeout(timer1);
+                    };
+                  }}
+                >
+                  {t(`servers.iframe.states.${copyStates[element].state}`)}
+                </ServerLink>
+              </Description>
+              <iframe
+                src={`https://widgets.gametools.network/servers/${element}/${
+                  props.game
+                }/name/${encodeURIComponent(stats.prefix)}/pc`}
+                style={{ maxWidth: "700px" }}
+                height={`${widgetSize[index]}px`}
+                width="100%"
+                frameBorder="0"
+                allowtransparency="true"
+              ></iframe>
+            </div>
+          );
+        })}
       </div>
     );
   } else {
