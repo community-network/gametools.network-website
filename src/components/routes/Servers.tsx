@@ -670,10 +670,17 @@ function Results(props: Views): React.ReactElement {
         ) : (
           <></>
         )}
-        {props.game === "bf2042" && blazeIdQuery !== null ? (
-          <>
+        {props.game === "bf2042" ? (
+          stats.blazeGameId !== undefined ? (
+            <ServerPlayerlist
+              game={props.game}
+              gameid={stats.blazeGameId.toString()}
+            />
+          ) : blazeIdQuery !== null ? (
             <ServerPlayerlist game={props.game} gameid={blazeIdQuery} />
-          </>
+          ) : (
+            <></>
+          )
         ) : (
           <></>
         )}

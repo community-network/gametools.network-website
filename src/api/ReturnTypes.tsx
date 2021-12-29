@@ -291,6 +291,7 @@ export type DetailedServerInfo = {
   smallmode: string;
   gameId: string;
 
+  blazeGameId?: number;
   teams?: TeamList;
   inQueue?: number;
   maxPlayerAmount?: number;
