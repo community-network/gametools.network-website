@@ -344,7 +344,8 @@ export const AlignT = styled.div`
 
 export const Alignbf2042Search = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  flex-wrap: nowrap;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `;
 
