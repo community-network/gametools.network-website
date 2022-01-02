@@ -15,6 +15,10 @@ import {
   BigSelectSecondary,
   Align,
   Box,
+  Bf2042SearchBox,
+  AlignT,
+  Bf2042BigSelectSecondary,
+  Alignbf2042Search,
 } from "../Materials";
 import { getLanguage } from "../../locales/config";
 import { frostbite3, noCrossplayFrostbite3 } from "../../api/static";
@@ -154,15 +158,13 @@ function Results(props: Views): React.ReactElement {
               condition={useLink}
               key={index}
             >
-              <Box className={useLink ? "box_hover" : ""}>
+              <Box className={useLink ? "box_hover box" : ""}>
                 <AlignSeverImg>
-                  <div>
-                    <ServerImage background={key.url}>
-                      <Blur>
-                        <ServerText>{key.smallMode}</ServerText>
-                      </Blur>
-                    </ServerImage>
-                  </div>
+                  <ServerImage background={key.url}>
+                    <Blur>
+                      <ServerText>{key.smallMode}</ServerText>
+                    </Blur>
+                  </ServerImage>
                   <ServerInfo>
                     <h3>
                       {key.server}
@@ -198,6 +200,7 @@ function Search(): React.ReactElement {
   const [region, setRegion] = React.useState<string>("all");
   const [platform, setPlatform] = React.useState<string>("pc");
   const [limit, setLimit] = React.useState<string>("10");
+  const [searchType, setSearchType] = React.useState<string>("experiencename");
   const history = useHistory();
   // get info from query ?search &game
   const query = new URLSearchParams(useLocation().search);
@@ -206,6 +209,7 @@ function Search(): React.ReactElement {
   const regionQuery = query.get("region");
   const platformQuery = query.get("platform");
   const limitQuery = query.get("limit");
+  const typeQuery = query.get("searchtype");
   React.useState(() => {
     if (nameQuery !== null) {
       setSearchTerm(nameQuery);
@@ -221,6 +225,9 @@ function Search(): React.ReactElement {
     }
     if (limitQuery !== null) {
       setLimit(limitQuery);
+    }
+    if (searchType !== null) {
+      setSearchType(typeQuery);
     }
   });
 
@@ -252,8 +259,13 @@ function Search(): React.ReactElement {
     } else {
       params.delete("limit");
     }
+    if (searchType) {
+      params.append("searchtype", searchType);
+    } else {
+      params.delete("searchtype");
+    }
     history.push({ search: params.toString() });
-  }, [searchTerm, gameName, region, platform, limit, history]);
+  }, [searchTerm, gameName, region, platform, limit, searchType, history]);
 
   const { t } = useTranslation();
   const {
@@ -261,12 +273,13 @@ function Search(): React.ReactElement {
     isError: error,
     data: stats,
   } = useQuery(
-    "servers" + gameName + searchTerm + region + platform + limit,
+    "servers" + gameName + searchTerm + searchType + region + platform + limit,
     () =>
       GetStats.serverSearch({
         game: gameName,
-        serverName: searchTerm,
+        searchTerm: searchTerm,
         lang: getLanguage(),
+        searchType: searchType,
         region: region,
         platform: platform,
         limit: limit,
@@ -283,13 +296,36 @@ function Search(): React.ReactElement {
         <AltDescription>{t("serverSearch.description")}</AltDescription>
       </Align>
       <Align>
-        <SearchBox
-          placeholder={t("serverSearch.searchPlaceholder")}
-          value={searchTerm}
-          onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
-            setSearchTerm(ev.target.value)
-          }
-        />
+        {gameName === "bf2042" ? (
+          <Alignbf2042Search>
+            <Bf2042SearchBox
+              placeholder={t("serverSearch.searchPlaceholder")}
+              value={searchTerm}
+              onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
+                setSearchTerm(ev.target.value)
+              }
+            />
+            <Bf2042BigSelectSecondary
+              value={searchType}
+              onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
+                setSearchType(ev.target.value)
+              }
+            >
+              <option value="servername">{t("serverSearch.type.name")}</option>
+              <option value="experiencename">
+                {t("serverSearch.type.playground")}
+              </option>
+            </Bf2042BigSelectSecondary>
+          </Alignbf2042Search>
+        ) : (
+          <SearchBox
+            placeholder={t("serverSearch.searchPlaceholder")}
+            value={searchTerm}
+            onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
+              setSearchTerm(ev.target.value)
+            }
+          />
+        )}
         <BigSelectSecondary
           value={gameName}
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>

@@ -111,12 +111,10 @@ body {
     padding-right: 1rem;
   }
 
-  .box_hover {
-    :hover {
+  .box_hover:hover {
       border-radius: 10px;
-      background: #282a3a;
+      background-color: #282a3a;
     }
-  }
 }
 
 ::-webkit-scrollbar-track

@@ -154,7 +154,11 @@
         "description": "Zoek voor Battlefield servers om de aantal spelers/map rotatie van de server te zien.",
         "search": "Zoeken",
         "searchPlaceholder": "Search voor servernaam...",
-        "results": "Zoekresultaten"
+        "results": "Zoekresultaten",
+        "type": {
+            "name": "Servernaam",
+            "playground": "Experience-naam"
+        }
     },
     "platoonSearch": {
         "back": "Hoofdpagina",

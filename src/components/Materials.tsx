@@ -51,10 +51,10 @@ export const PageColumn = styled.div`
 `;
 
 export const PageRow = styled.div`
-@media screen and (min-width: 1800px) {
-  flex: 0;
-  min-width: 800px;
-}
+  @media screen and (min-width: 1800px) {
+    flex: 0;
+    min-width: 800px;
+  }
   @media screen and (max-width: 1800px) {
     flex: 100%;
   }
@@ -82,6 +82,56 @@ export const ArrowLeft = styled.i`
   padding: 3px;
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
+`;
+
+export const Bf2042SearchBox = styled.input`
+  ${M96}
+  ::placeholder {
+    color: var(--color-alt-text);
+  }
+  @media (min-width: 710px) {
+    width: 20rem;
+  }
+  @media (max-width: 710px) {
+    max-width: 20rem;
+    width: 95%;
+  }
+  box-sizing: border-box;
+  color: var(--color-text);
+  border: none;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background: #1e2132;
+  height: 50px;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+  font-family: Manrope;
+  font-weight: medium;
+  font-style: normal;
+`;
+
+export const Bf2042BigSelectSecondary = styled.select`
+  ${M96}
+  width: 10rem;
+  background: #1e2132;
+  color: #929292;
+  margin-bottom: 1rem;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: none;
+  height: 50px;
+  margin-right: 1rem;
+  padding-left: 18px;
+  font-family: Manrope;
+  font-weight: medium;
+  font-style: normal;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='rgb(131,131,131)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 13px;
 `;
 
 export const SearchBox = styled.input`
@@ -290,6 +340,12 @@ export const AlignW = styled.div`
 export const AlignT = styled.div`
   display: flex;
   flex-wrap: wrap;
+`;
+
+export const Alignbf2042Search = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `;
 
 export const GridContainer = styled.div`

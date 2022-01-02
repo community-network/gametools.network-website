@@ -52,8 +52,9 @@ interface serverPlayerlist {
 
 interface ServerSearchInfo {
   game: string;
-  serverName: string;
+  searchTerm: string;
   lang: string;
+  searchType?: string;
   region?: string;
   platform?: string;
   limit?: string;
@@ -180,18 +181,27 @@ export class ApiProvider extends JsonClient {
 
   async serverSearch({
     game,
-    serverName,
+    searchTerm,
     lang,
+    searchType = "servername",
     region = "all",
     platform = "pc",
     limit = "10",
   }: ServerSearchInfo): Promise<ServerSearch> {
     const gameStuff = game.split(".");
+    let serverName = "";
+    let experienceName = "";
     if (platform == "all") {
       platform = "pc";
     }
+    if (searchType === "experiencename") {
+      experienceName = searchTerm;
+    } else {
+      serverName = searchTerm;
+    }
     return await this.getJsonMethod(`/${gameStuff[0]}/servers/`, {
       name: encodeURIComponent(serverName),
+      experiencename: encodeURIComponent(experienceName),
       lang: lang,
       region: region,
       platform: platform,
