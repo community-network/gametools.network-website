@@ -152,7 +152,10 @@
         "serverInfo": "Battlefield Sunucuları",
         "description": "Oyuncu miktarlarını/sunucunun harita rotasyonunu almak için Battlefield sunucularını arayın",
         "search": "Arama",
-        "searchPlaceholder": "Sunucu adını ara...",
+        "searchPlaceholder": {
+            "servername": "Sunucu adını ara...",
+            "experiencename": "Search for experience name..."
+        },
         "results": "Arama Sonuçları"
     },
     "platoonSearch": {

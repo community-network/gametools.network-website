@@ -143,7 +143,10 @@
         "serverInfo": "战地服务器",
         "description": "搜索服务器的具体信息",
         "search": "搜索",
-        "searchPlaceholder": "服务器名字",
+        "searchPlaceholder": {
+            "servername": "服务器名字",
+            "experiencename": "Search for experience name..."
+        },
         "results": "搜索结果"
     },
     "platoonSearch": {

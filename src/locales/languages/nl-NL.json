@@ -153,7 +153,10 @@
         "serverInfo": "Battlefield Servers",
         "description": "Zoek voor Battlefield servers om de aantal spelers/map rotatie van de server te zien.",
         "search": "Zoeken",
-        "searchPlaceholder": "Search voor servernaam...",
+        "searchPlaceholder": {
+            "servername": "Zoek voor servernaam...",
+            "experiencename": "Zoek voor experience-naam..."
+        },
         "results": "Zoekresultaten",
         "type": {
             "name": "Servernaam",

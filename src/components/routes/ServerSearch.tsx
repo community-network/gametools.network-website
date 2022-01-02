@@ -299,7 +299,7 @@ function Search(): React.ReactElement {
         {gameName === "bf2042" ? (
           <Alignbf2042Search>
             <Bf2042SearchBox
-              placeholder={t("serverSearch.searchPlaceholder")}
+              placeholder={t(`serverSearch.searchPlaceholder.${searchType}`)}
               value={searchTerm}
               onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
                 setSearchTerm(ev.target.value)

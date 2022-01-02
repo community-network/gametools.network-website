@@ -161,7 +161,10 @@
         "serverInfo": "Battlefield Servers",
         "description": "Search for Battlefield servers to get playeramounts/map rotation of the server.",
         "search": "Search",
-        "searchPlaceholder": "Search for servername...",
+        "searchPlaceholder": {
+            "servername": "Search for server name...",
+            "experiencename": "Search for experience name..."
+        },
         "results": "Search results",
         "type": {
             "name": "Server name",
