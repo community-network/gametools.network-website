@@ -153,6 +153,7 @@
         "description": "Oyuncu miktarlarını/sunucunun harita rotasyonunu almak için Battlefield sunucularını arayın",
         "search": "Arama",
         "searchPlaceholder": {
+            "null": "Sunucu adını ara...",
             "servername": "Sunucu adını ara...",
             "experiencename": "Search for experience name..."
         },

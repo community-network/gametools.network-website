@@ -144,6 +144,7 @@
         "description": "搜索服务器的具体信息",
         "search": "搜索",
         "searchPlaceholder": {
+            "null": "服务器名字",
             "servername": "服务器名字",
             "experiencename": "Search for experience name..."
         },

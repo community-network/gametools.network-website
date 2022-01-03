@@ -319,7 +319,7 @@ function Search(): React.ReactElement {
           </Alignbf2042Search>
         ) : (
           <SearchBox
-            placeholder={t("serverSearch.searchPlaceholder")}
+            placeholder={t(`serverSearch.searchPlaceholder.${searchType}`)}
             value={searchTerm}
             onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
               setSearchTerm(ev.target.value)
