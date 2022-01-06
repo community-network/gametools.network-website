@@ -6,8 +6,8 @@ function PageNotFound(): React.ReactElement {
     <Container>
       <h1>Page not found</h1>
       <p>We cant find the page your looking for.</p>
-      <PrimaryButtonLink style={{ width: "150px" }} href="/">
-        Go back to the main page
+      <PrimaryButtonLink style={{ width: "125px" }} href="/">
+        Back to the main page
       </PrimaryButtonLink>
       <br></br>
       <br></br>
