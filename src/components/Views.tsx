@@ -8,6 +8,7 @@ import PlatoonSearch from "./routes/PlatoonSearch";
 import Stats from "./routes/Stats/Main";
 import Servers from "./routes/Servers";
 import Platoon from "./routes/Platoon";
+import PageNotFound from "./errors/PageNotFound";
 
 function Views(): React.ReactElement {
   const homePage = useLocation().pathname === "/";
@@ -31,7 +32,7 @@ function Views(): React.ReactElement {
           path="/servers/:gameid/:type/:sname/:platform"
           component={Servers}
         />
-        <Route>React router 404</Route>
+        <Route component={PageNotFound} />
       </Switch>
     </div>
   );
