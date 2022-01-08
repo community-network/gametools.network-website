@@ -32,6 +32,7 @@ import { getLanguage } from "../../locales/config";
 import {
   DetailedServerInfo,
   PlatoonResult,
+  ServerInfoResult,
   ServerLeaderboardList,
   ServerOwnerResult,
   serverPlayer,
@@ -532,6 +533,23 @@ interface Views {
   stats: DetailedServerInfo;
 }
 
+function ServerConfig(props: { serverInfo: ServerInfoResult }) {
+  const serverInfo = props.serverInfo;
+  const { t } = useTranslation();
+  return (
+    <Spacing>
+      <h2>{t("servers.portal.main")}</h2>
+      <Align>
+        <OriginProfile src="https://super-static-assets.s3.amazonaws.com/19d9fbc6-6292-4be8-ac70-5a186b556054/uploads/favicon/27a3229f-c25d-4d72-9409-7822c16c54ce.png" />
+        <div>
+          <OriginName>{serverInfo.configName}</OriginName>
+          <OriginDescription>{serverInfo.configDescription}</OriginDescription>
+        </div>
+      </Align>
+    </Spacing>
+  );
+}
+
 function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
@@ -671,16 +689,19 @@ function Results(props: Views): React.ReactElement {
           <></>
         )}
         {props.game === "bf2042" ? (
-          stats.blazeGameId !== undefined ? (
-            <ServerPlayerlist
-              game={props.game}
-              gameid={stats.blazeGameId.toString()}
-            />
-          ) : blazeIdQuery !== null ? (
-            <ServerPlayerlist game={props.game} gameid={blazeIdQuery} />
-          ) : (
-            <></>
-          )
+          <>
+            <ServerConfig serverInfo={stats.serverInfo} />
+            {stats.blazeGameId !== undefined ? (
+              <ServerPlayerlist
+                game={props.game}
+                gameid={stats.blazeGameId.toString()}
+              />
+            ) : blazeIdQuery !== null ? (
+              <ServerPlayerlist game={props.game} gameid={blazeIdQuery} />
+            ) : (
+              <></>
+            )}
+          </>
         ) : (
           <></>
         )}

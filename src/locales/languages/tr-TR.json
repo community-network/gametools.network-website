@@ -155,9 +155,13 @@
         "searchPlaceholder": {
             "null": "Sunucu adını ara...",
             "servername": "Sunucu adını ara...",
-            "experiencename": "Search for experience name..."
+            "experiencename": "Deneyim ismi arama..."
         },
-        "results": "Arama Sonuçları"
+        "results": "Arama Sonuçları",
+        "type": {
+            "name": "Sunucu ismi",
+            "playground": "Deneyim ismi"
+        }
     },
     "platoonSearch": {
         "back": "Ana Sayfa",

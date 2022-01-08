@@ -403,6 +403,9 @@
             "BFFactionId_FactionUKM": "Royal Marines",
             "teamOne": "Team 1",
             "teamTwo": "Team 2"
+        },
+        "portal": {
+            "main": "Portal experience"
         }
     },
     "platoon": {
