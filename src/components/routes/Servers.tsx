@@ -817,7 +817,7 @@ type TParams = {
 function Servers({ match }: RouteComponentProps<TParams>): React.ReactElement {
   const gameId = match.params.gameid;
   const platform = match.params.platform;
-  const serverName = decodeURIComponent(match.params.sname);
+  const serverName = unescape(match.params.sname).replaceAll('"', '\\"');
   const { t } = useTranslation();
   const {
     isLoading: loading,
