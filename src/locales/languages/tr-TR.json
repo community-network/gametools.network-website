@@ -393,6 +393,9 @@
             "BFFactionId_FactionUKM": "Kraliyet Deniz Piyadeleri",
             "teamOne": "Takım 1",
             "teamTwo": "Takım 2"
+        },
+        "portal": {
+            "main": "Portal deneyimi"
         }
     },
     "platoon": {
