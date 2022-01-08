@@ -37,6 +37,7 @@ import {
   ServerOwnerResult,
   serverPlayer,
   ServerRotation,
+  ServerSettings,
   serverTeamList,
   TeamList,
 } from "../../api/ReturnTypes";
@@ -718,7 +719,7 @@ function Results(props: Views): React.ReactElement {
                         (key: [string, unknown], index: number) => {
                           return (
                             <AltDescription key={index}>
-                              {capitalizeFirstLetter(key[0])}: {key[1]}
+                              <b>{capitalizeFirstLetter(key[0])}</b>: {key[1]}
                             </AltDescription>
                           );
                         },
@@ -730,7 +731,25 @@ function Results(props: Views): React.ReactElement {
             </AlignT>
           </>
         ) : (
-          <></>
+          <>
+            <h2>{t("servers.settings")}</h2>
+            {stats.settings.map((value: ServerSettings, index: number) => {
+              return (
+                <div key={index}>
+                  <AltDescription key={index}>
+                    <b>
+                      {capitalizeFirstLetter(
+                        value.values[0].readableSettingName,
+                      )}
+                    </b>
+                    : {}
+                    {value.values[1].readableSettingName}
+                  </AltDescription>
+                </div>
+              );
+            })}
+            <br></br>
+          </>
         )}
 
         <h2 style={{ marginBottom: 0 }}>{t("servers.iframe.main")}</h2>

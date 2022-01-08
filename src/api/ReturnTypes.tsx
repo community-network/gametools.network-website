@@ -335,12 +335,23 @@ export type ServerRotation = {
   index?: number;
 };
 
+export type Bf2042SettingValues = {
+  assignValue: string;
+  readableSettingName: string; // from translation
+  settingName: string;
+};
+
 export type ServerSettings = {
-  kits: { [name: string]: string };
-  Misc: { [name: string]: string };
-  Scales: { [name: string]: string };
-  Vehicles: { [name: string]: string };
-  Weapons: { [name: string]: string };
+  kits?: { [name: string]: string };
+  Misc?: { [name: string]: string };
+  Scales?: { [name: string]: string };
+  Vehicles?: { [name: string]: string };
+  Weapons?: { [name: string]: string };
+
+  //#bf2042
+  name?: string;
+  settingsId?: number;
+  values?: Bf2042SettingValues[];
 };
 
 export type PlatoonSearchResult = {
