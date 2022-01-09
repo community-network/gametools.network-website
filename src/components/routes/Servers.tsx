@@ -541,7 +541,7 @@ function ServerConfig(props: { serverInfo: ServerInfoResult }) {
     <Spacing>
       <h2>{t("servers.portal.main")}</h2>
       <Align>
-        <OriginProfile src="https://super-static-assets.s3.amazonaws.com/19d9fbc6-6292-4be8-ac70-5a186b556054/uploads/favicon/27a3229f-c25d-4d72-9409-7822c16c54ce.png" />
+        <OriginProfile src="https://cdn.gametools.network/bf2042portal/logo.png" />
         <div>
           <OriginName>{serverInfo.configName}</OriginName>
           <OriginDescription>{serverInfo.configDescription}</OriginDescription>
