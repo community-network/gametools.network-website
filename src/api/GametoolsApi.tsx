@@ -72,13 +72,13 @@ interface GraphInfo {
   platform: string;
 }
 
-interface bfbanPlayer {
+export interface bfbanPlayer {
   names: { [name: string]: bfbanPlayers };
   userids: { [name: string]: bfbanPlayers };
   personaids: { [name: string]: bfbanPlayers };
 }
 
-interface bfbanPlayers {
+export interface bfbanPlayers {
   personaId: string;
   url: string;
   status: string;

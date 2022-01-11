@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../assets/scss/App.scss";
 import { PlatoonPlayer, PlatoonStats, ServerList } from "../../api/ReturnTypes";
-import { GametoolsApi } from "../../api/GametoolsApi";
+import { bfbanPlayer, GametoolsApi } from "../../api/GametoolsApi";
 import { useQuery } from "react-query";
 import {
   AltText,
@@ -97,6 +97,34 @@ function dynamicSort(property: string) {
   };
 }
 
+function CheckBan(props: {
+  playerId: string;
+  bfBanList: bfbanPlayer;
+  loading: boolean;
+  error: boolean;
+}) {
+  if (props.loading || props.error) {
+    return <></>;
+  }
+
+  const playerInfo = props.bfBanList.personaids[props.playerId];
+  let color = "#ffffff";
+
+  if (props.playerId in props.bfBanList.personaids) {
+    color = "#DC143C";
+    return (
+      <a
+        style={{ color: color, lineHeight: 0 }}
+        href={playerInfo.url}
+        target="_blank"
+        rel="noreferrer"
+      >
+        {playerInfo.hacker ? " Hacker" : ""}
+      </a>
+    );
+  }
+}
+
 function Members(props: {
   members: PlatoonPlayer[];
   platform: string;
@@ -106,12 +134,27 @@ function Members(props: {
 
   let members = [];
   const [searchTerm, setSearchTerm] = React.useState<string>("");
-  const [sortType, setSortType] = React.useState<string>("-kills");
+  const [sortType, setSortType] = React.useState<string>("default");
 
   members = props.members.filter((item: { name: string; role: string }) => {
     return item.name.toLowerCase().includes(searchTerm.toLowerCase());
   });
   members = members.sort(dynamicSort(sortType));
+
+  const playerIds = members.map((item: { id: string }) => {
+    return item.id;
+  });
+  const {
+    isLoading: loading,
+    isError: error,
+    data: bfBanInfo,
+  } = useQuery("bfbanStatsPlatoon" + props.members, () =>
+    GametoolsApi.bfbanCheckPlayers({
+      getter: "playerid",
+      usernames: playerIds,
+    }),
+  );
+
   return (
     <Spacing>
       <Align>
@@ -152,6 +195,12 @@ function Members(props: {
                           <MemberImage src={key.avatar} />
                           <h4 style={{ marginTop: "2px", marginBottom: 0 }}>
                             {key.name}
+                            <CheckBan
+                              playerId={key.id}
+                              bfBanList={bfBanInfo}
+                              loading={loading}
+                              error={error}
+                            />
                           </h4>
                         </Align>
                       </Link>

@@ -6,7 +6,7 @@ import styled from "styled-components";
 import "../../assets/scss/App.scss";
 import { GametoolsApi } from "../../api/GametoolsApi";
 import { useQuery } from "react-query";
-import { serverWidgetTypes, teamArr, widgetSize } from "../../api/static";
+import { serverWidgetTypes, widgetSize } from "../../api/static";
 import {
   AltText,
   Back,
@@ -39,7 +39,6 @@ import {
   ServerRotation,
   ServerSettings,
   serverTeamList,
-  TeamList,
 } from "../../api/ReturnTypes";
 import { addSeconds } from "date-fns";
 import { factions } from "../../api/Factions";
