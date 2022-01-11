@@ -6,6 +6,12 @@ export const platformGames = {
   ps3: ["bf3", "bf4", "bfh"],
 };
 
+export const bfbanTypeConvert = {
+  name: "names",
+  userid: "userids",
+  playerid: "personaids",
+};
+
 export const graphGames = {
   pc: [
     "bfglobal",

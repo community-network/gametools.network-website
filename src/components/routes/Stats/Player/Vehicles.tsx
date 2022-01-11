@@ -1,5 +1,5 @@
 import * as React from "react";
-import "../../../locales/config";
+import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
 import {
   Align,
@@ -11,8 +11,8 @@ import {
   AlignW,
   SmallButtonSecondary,
   PhoneRow,
-} from "../../Materials";
-import { MainStatsVehicle } from "../../../api/ReturnTypes";
+} from "../../../Materials";
+import { MainStatsVehicle } from "../../../../api/ReturnTypes";
 import {
   Title,
   ListImage,
@@ -21,7 +21,7 @@ import {
   Views,
   DynamicSort,
 } from "./Main";
-import { BarGraph } from "../../graphing/bar";
+import { BarGraph } from "../../../graphing/bar";
 
 export function ViewVehicles(props: Views): React.ReactElement {
   const { t } = useTranslation();

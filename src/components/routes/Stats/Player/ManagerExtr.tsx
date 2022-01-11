@@ -1,13 +1,13 @@
 import * as React from "react";
-import "../../../locales/config";
+import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import { AlignS, Align, Box } from "../../Materials";
+import { AlignS, Align, Box } from "../../../Materials";
 import { Spacing, Title, Description, Views } from "./Main";
 import {
   MainStatsSession,
   SessionGamemode,
   SessionKit,
-} from "../../../api/ReturnTypes";
+} from "../../../../api/ReturnTypes";
 import { addSeconds } from "date-fns";
 
 export function BfSessionInfo(props: Views): React.ReactElement {

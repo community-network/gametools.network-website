@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import "../../../locales/config";
+import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import { Box, AlignW } from "../../Materials";
+import { Box, AlignW } from "../../../Materials";
 import styled from "styled-components";
-import { MainStats, MainStatsPlatoon } from "../../../api/ReturnTypes";
+import { MainStats, MainStatsPlatoon } from "../../../../api/ReturnTypes";
 import { Description, PlatformViews, Spacing } from "./Main";
 
 const PlatoonLink = styled.a`

@@ -1,8 +1,8 @@
 import * as React from "react";
-import "../../../locales/config";
+import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import { Box } from "../../Materials";
-import { MainStats } from "../../../api/ReturnTypes";
+import { Box } from "../../../Materials";
+import { MainStats } from "../../../../api/ReturnTypes";
 import { Description } from "./Main";
 
 interface Views {

@@ -1,8 +1,8 @@
 import * as React from "react";
-import "../../../locales/config";
+import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import { Box, GridContainer } from "../../Materials";
-import { newTitles } from "../../../api/static";
+import { Box, GridContainer } from "../../../Materials";
+import { newTitles } from "../../../../api/static";
 import { Spacing, Views } from "./Main";
 
 export function DetailedStats(props: Views): React.ReactElement {

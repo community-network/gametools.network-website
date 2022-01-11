@@ -1,10 +1,10 @@
-import React from "react";
+import * as React from "react";
 import { Line, Chart } from "react-chartjs-2";
 import "chartjs-adapter-date-fns";
 import zoomPlugin from "chartjs-plugin-zoom";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "react-query";
-import { GetStats } from "../../api/GetStats";
+import { GametoolsApi } from "../../api/GametoolsApi";
 import { newTitles, graphGames } from "../../api/static";
 import { Box } from "../Materials";
 
@@ -237,7 +237,7 @@ export function OldGameGraph(props: GameInfo): React.ReactElement {
   } = useQuery(
     ["regions", "7", "all", props.gameName, props.platform],
     () =>
-      GetStats.graphs({
+      GametoolsApi.graphs({
         game: props.gameName,
         days: "7",
         region: "all",
@@ -284,7 +284,7 @@ export function Graph(props: GameInfo): React.ReactElement {
   } = useQuery(
     ["regions", "7", "multiple", props.gameName, props.platform],
     () =>
-      GetStats.graphs({
+      GametoolsApi.graphs({
         game: props.gameName,
         days: "7",
         region: "multiple",
@@ -469,7 +469,7 @@ export function GlobalGraph(props: GlobalInfo): React.ReactElement {
   } = useQuery(
     ["globalRegions", "7", props.platform],
     () =>
-      GetStats.graphs({
+      GametoolsApi.graphs({
         game: "bfglobal",
         days: "7",
         region: "all",

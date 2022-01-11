@@ -4,7 +4,7 @@ import { Link, RouteComponentProps, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../assets/scss/App.scss";
-import { GetStats } from "../../api/GetStats";
+import { GametoolsApi } from "../../api/GametoolsApi";
 import { useQuery } from "react-query";
 import { serverWidgetTypes, teamArr, widgetSize } from "../../api/static";
 import {
@@ -253,7 +253,7 @@ function ServerLeaderboard(props: { gameid: string }) {
     isError: error,
     data: stats,
   } = useQuery("serverLeaderboard" + gameId + sortType, () =>
-    GetStats.serverLeaderboard({
+    GametoolsApi.serverLeaderboard({
       gameId: gameId,
       amount: "50",
       sort: sortType,
@@ -387,7 +387,7 @@ function ServerPlayerlist(props: { game: string; gameid: string }) {
     isError: error,
     data: stats,
   } = useQuery("serverPlayerlist" + gameId, () =>
-    GetStats.serverPlayerlist({
+    GametoolsApi.serverPlayerlist({
       game: props.game,
       gameId: gameId,
     }),
@@ -824,7 +824,7 @@ function Servers({ match }: RouteComponentProps<TParams>): React.ReactElement {
     isError: error,
     data: stats,
   } = useQuery("detailed" + gameId + serverName + platform, () =>
-    GetStats.server({
+    GametoolsApi.server({
       game: gameId,
       getter: match.params.type,
       serverName: serverName,

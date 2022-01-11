@@ -1,9 +1,9 @@
 import * as React from "react";
-import "../../../locales/config";
+import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import { Box, Align, AlignS, Column, Row } from "../../Materials";
+import { Box, Align, AlignS, Column, Row } from "../../../Materials";
 import { Spacing, Views, BackgroundBar, Bar } from "./Main";
-import { MainStatsGamemode } from "../../../api/ReturnTypes";
+import { MainStatsGamemode } from "../../../../api/ReturnTypes";
 
 export function ViewGamemodes(props: Views): React.ReactElement {
   const { t, i18n } = useTranslation();

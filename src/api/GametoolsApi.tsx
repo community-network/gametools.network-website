@@ -9,6 +9,11 @@ import {
   ServerPlayersReturn,
 } from "./ReturnTypes";
 
+interface BfBanInfo {
+  getter: string;
+  usernames: string[] | number[];
+}
+
 interface PlayerInfo {
   game: string;
   type: string;
@@ -65,6 +70,23 @@ interface GraphInfo {
   days: string;
   region: string;
   platform: string;
+}
+
+interface bfbanPlayer {
+  names: { [name: string]: bfbanPlayers };
+  userids: { [name: string]: bfbanPlayers };
+  personaids: { [name: string]: bfbanPlayers };
+}
+
+interface bfbanPlayers {
+  personaId: string;
+  url: string;
+  status: string;
+  hacker: boolean;
+  originId: string;
+  originPersonaId: string;
+  originUserId: string;
+  cheatMethods: string;
 }
 
 export class ApiProvider extends JsonClient {
@@ -224,6 +246,31 @@ export class ApiProvider extends JsonClient {
       service: gameStuff[1],
     });
   }
+
+  async bfbanCheckPlayers({
+    getter,
+    usernames,
+  }: BfBanInfo): Promise<bfbanPlayer> {
+    if (getter == "playerid") {
+      return await this.getJsonMethod("/bfban/checkban", {
+        names: "",
+        userids: "",
+        personaids: usernames.toString(),
+      });
+    }
+    if (getter == "userid") {
+      return await this.getJsonMethod("/bfban/checkban", {
+        names: "",
+        userids: usernames.toString(),
+        personaids: "",
+      });
+    }
+    return await this.getJsonMethod("/bfban/checkban", {
+      names: usernames.toString(),
+      userids: "",
+      personaids: "",
+    });
+  }
 }
 
-export const GetStats = new ApiProvider();
+export const GametoolsApi = new ApiProvider();

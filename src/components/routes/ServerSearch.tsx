@@ -4,7 +4,7 @@ import { Link, useHistory, withRouter, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../assets/scss/App.scss";
-import { GetStats } from "../../api/GetStats";
+import { GametoolsApi } from "../../api/GametoolsApi";
 import { useQuery } from "react-query";
 import {
   AltText,
@@ -275,7 +275,7 @@ function Search(): React.ReactElement {
   } = useQuery(
     "servers" + gameName + searchTerm + searchType + region + platform + limit,
     () =>
-      GetStats.serverSearch({
+      GametoolsApi.serverSearch({
         game: gameName,
         searchTerm: searchTerm,
         lang: getLanguage(),

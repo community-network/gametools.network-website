@@ -1,9 +1,9 @@
 import * as React from "react";
-import "../../../locales/config";
+import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import { Box, Align } from "../../Materials";
+import { Box, Align } from "../../../Materials";
 import { Spacing, Views, BackgroundBar, Bar } from "./Main";
-import { MainStatsProgress } from "../../../api/ReturnTypes";
+import { MainStatsProgress } from "../../../../api/ReturnTypes";
 
 export function ViewProgress(props: Views): React.ReactElement {
   const { t } = useTranslation();

@@ -1,9 +1,9 @@
 import * as React from "react";
-import "../../../locales/config";
+import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import { Box, Column, Row } from "../../Materials";
+import { Box, Column, Row } from "../../../Materials";
 import { Spacing, Views, ListImage } from "./Main";
-import { MainStatsClasses } from "../../../api/ReturnTypes";
+import { MainStatsClasses } from "../../../../api/ReturnTypes";
 import { addSeconds } from "date-fns";
 
 export function ViewClasses(props: Views): React.ReactElement {

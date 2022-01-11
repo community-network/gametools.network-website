@@ -1,5 +1,5 @@
 import * as React from "react";
-import "../../../locales/config";
+import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
 import {
   Align,
@@ -12,8 +12,8 @@ import {
   SmallButtonSecondary,
   PhoneRow,
   TabletRow,
-} from "../../Materials";
-import { MainStatsWeapon } from "../../../api/ReturnTypes";
+} from "../../../Materials";
+import { MainStatsWeapon } from "../../../../api/ReturnTypes";
 import {
   Title,
   ListImage,
@@ -22,7 +22,7 @@ import {
   Views,
   DynamicSort,
 } from "./Main";
-import { BarGraph } from "../../graphing/bar";
+import { BarGraph } from "../../../graphing/bar";
 
 export function ViewWeapons(props: Views): React.ReactElement {
   const { t } = useTranslation();

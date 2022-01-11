@@ -1,11 +1,11 @@
-import React from "react";
+import * as React from "react";
 import "../locales/config";
 import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 import Home from "./routes/Home";
-import PlayerSearch from "./routes/PlayerSearch";
+import PlayerSearch from "./routes/Stats/Search/PlayerSearch";
 import ServerSearch from "./routes/ServerSearch";
 import PlatoonSearch from "./routes/PlatoonSearch";
-import Stats from "./routes/Stats/Main";
+import Stats from "./routes/Stats/Player/Main";
 import Servers from "./routes/Servers";
 import Platoon from "./routes/Platoon";
 import PageNotFound from "./errors/PageNotFound";

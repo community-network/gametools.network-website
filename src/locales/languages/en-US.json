@@ -13,6 +13,9 @@
     "chartHourFormat": "HH:mm, eee d LLL",
     "time": "{{date, date|p}}",
     "change": "{{change, change}}",
+    "bfban": {
+        "stats": "Player is marked as hacker in bfban!"
+    },
     "states": {
         "copy": "Copy link",
         "copied": "Copied!"

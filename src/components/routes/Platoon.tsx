@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../assets/scss/App.scss";
 import { PlatoonPlayer, PlatoonStats, ServerList } from "../../api/ReturnTypes";
-import { GetStats } from "../../api/GetStats";
+import { GametoolsApi } from "../../api/GametoolsApi";
 import { useQuery } from "react-query";
 import {
   AltText,
@@ -362,7 +362,7 @@ function Platoon({ match }: RouteComponentProps<TParams>): React.ReactElement {
     isError: error,
     data: platoon,
   } = useQuery("detailed" + platoonId, () =>
-    GetStats.platoon({
+    GametoolsApi.platoon({
       id: platoonId,
       platform: platform,
       lang: getLanguage(),

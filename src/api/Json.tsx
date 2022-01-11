@@ -24,11 +24,28 @@ export default class JsonClient {
   ): Promise<Response> {
     return fetch(this.constructApiUrl(method, params));
   }
+  async postMethod(
+    method: string,
+    params: { [name: string]: any },
+  ): Promise<Response> {
+    return fetch(this.constructApiUrl(method, {}), params);
+  }
   getJsonMethod(
     method: string,
     params: { [name: string]: string },
   ): Promise<any> {
     return this.errorHandler(this.fetchMethod(method, params));
+  }
+  postJsonMethod(method: string, params: any): Promise<any> {
+    const options = {
+      method: "POST",
+      body: JSON.stringify(params),
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    return this.errorHandler(this.postMethod(method, options));
   }
   async errorHandler(
     response: Promise<Response>,
