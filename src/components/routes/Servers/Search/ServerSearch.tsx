@@ -1,10 +1,10 @@
 import * as React from "react";
-import "../../locales/config";
+import "../../../../locales/config";
 import { Link, useHistory, withRouter, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import "../../assets/scss/App.scss";
-import { GametoolsApi } from "../../api/GametoolsApi";
+import "../../../../assets/scss/App.scss";
+import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { useQuery } from "react-query";
 import {
   AltText,
@@ -16,13 +16,12 @@ import {
   Align,
   Box,
   Bf2042SearchBox,
-  AlignT,
   Bf2042BigSelectSecondary,
   Alignbf2042Search,
-} from "../Materials";
-import { getLanguage } from "../../locales/config";
-import { frostbite3, noCrossplayFrostbite3 } from "../../api/static";
-import { ServerList, ServerSearch } from "../../api/ReturnTypes";
+} from "../../../Materials";
+import { getLanguage } from "../../../../locales/config";
+import { frostbite3, noCrossplayFrostbite3 } from "../../../../api/static";
+import { ServerList, ServerSearch } from "../../../../api/ReturnTypes";
 
 const Description = styled.p`
   ${AltText}

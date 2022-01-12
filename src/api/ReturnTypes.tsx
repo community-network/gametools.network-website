@@ -250,11 +250,12 @@ export type serverPlayer = {
   user_id: number;
   name: string;
   position: number;
-  // rank: number;
   latency: number;
   platoon: string;
   join_time: number;
   localization: string;
+
+  rank?: number;
 };
 
 export type ServerInfo = {
