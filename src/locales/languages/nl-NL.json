@@ -13,6 +13,10 @@
     "chartHourFormat": "HH:mm, eee d LLL",
     "time": "{{date, date|p}}",
     "change": "{{change, change}}",
+    "bfban": {
+        "stats": "Deze speler is gemarkeerd als hacker in bfban!",
+        "platoon": " Hacker"
+    },
     "states": {
         "copy": "Link kopiëren",
         "copied": "Gekopieerd!"

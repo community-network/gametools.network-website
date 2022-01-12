@@ -14,7 +14,8 @@
     "time": "{{date, date|p}}",
     "change": "{{change, change}}",
     "bfban": {
-        "stats": "Player is marked as hacker in bfban!"
+        "stats": "Player is marked as hacker in bfban!",
+        "platoon": " Hacker"
     },
     "states": {
         "copy": "Copy link",

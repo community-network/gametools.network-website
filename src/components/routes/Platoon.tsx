@@ -103,6 +103,7 @@ function CheckBan(props: {
   loading: boolean;
   error: boolean;
 }) {
+  const { t } = useTranslation();
   if (props.loading || props.error) {
     return <></>;
   }
@@ -119,7 +120,7 @@ function CheckBan(props: {
         target="_blank"
         rel="noreferrer"
       >
-        {playerInfo.hacker ? " Hacker" : ""}
+        {playerInfo.hacker ? t("bfban.platoon") : ""}
       </a>
     );
   }
