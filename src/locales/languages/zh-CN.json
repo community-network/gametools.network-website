@@ -13,6 +13,10 @@
     "chartHourFormat": "HH:mm, eee d LLL",
     "time": "{{date, date|p}}",
     "change": "{{change, change}}",
+    "bfban": {
+        "stats": "该玩家已被BFBAN标记外挂!",
+        "platoon": " 挂壁"
+    },
     "states": {
         "copy": "复制链接",
         "copied": "已复制！"
@@ -146,9 +150,13 @@
         "searchPlaceholder": {
             "null": "服务器名字",
             "servername": "服务器名字",
-            "experiencename": "Search for experience name..."
+            "experiencename": "搜索某体验的名字..."
         },
-        "results": "搜索结果"
+        "results": "搜索结果",
+        "type": {
+            "name": "服务器名称",
+            "playground": "体验名称"
+        }
     },
     "platoonSearch": {
         "back": "首页",
