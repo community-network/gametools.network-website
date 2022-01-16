@@ -43,6 +43,8 @@ function GetBfBan(props: Views): React.ReactElement {
       isHacker = list[props.stats.id].hacker;
       bfBanUrl = list[props.stats.id].url;
       color = "#DC143C";
+    } else {
+      color = "#ffffff";
     }
   }
 
