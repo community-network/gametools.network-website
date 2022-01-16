@@ -1,4 +1,5 @@
 import * as React from "react";
+import background from "../../../../assets/icon/portal.svg";
 import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
 import "../../../../assets/scss/App.scss";
@@ -20,7 +21,7 @@ export function ServerConfig(props: {
     <Spacing>
       <h2>{t("servers.portal.main")}</h2>
       <Align>
-        <OriginProfile src="https://cdn.gametools.network/bf2042portal/logo.png" />
+        <OriginProfile src={background} />
         <div>
           <OriginName>{serverInfo.configName}</OriginName>
           <OriginDescription>{serverInfo.configDescription}</OriginDescription>
