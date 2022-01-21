@@ -1,8 +1,8 @@
-import React from "react";
+import * as React from "react";
 import "../../locales/config";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { M88 } from "../Materials";
+import { AlignT, M88 } from "../Materials";
 import LanguageSelector from "../../locales/ChangeLanguage";
 
 interface FLinkProp {
@@ -67,7 +67,6 @@ export function Footer(): JSX.Element {
     "https://discord.gametools.network/",
     "/privacy/",
     "https://top.gg/bot/714524944783900794",
-    "https://www.buymeacoffee.com/Gametools",
   ];
 
   let i = 0;
@@ -85,7 +84,16 @@ export function Footer(): JSX.Element {
           {description.map((key, index) => {
             return <TextGrayP key={index}>{key}</TextGrayP>;
           })}
-          <LanguageSelector />
+          <AlignT>
+            <LanguageSelector />
+            <iframe
+              src="https://github.com/sponsors/community-network/button"
+              title="Sponsor community-network"
+              height="35"
+              width="116"
+              style={{ border: 0, marginLeft: ".5rem" }}
+            />
+          </AlignT>
         </Text>
         <Links>
           <h3>Links</h3>
