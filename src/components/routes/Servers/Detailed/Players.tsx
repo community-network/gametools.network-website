@@ -40,12 +40,12 @@ function CheckBan(props: {
     color = "#DC143C";
     return (
       <a
-        style={{ color: color, lineHeight: 0, marginLeft: "8px" }}
+        style={{ color: color, lineHeight: 0 }}
         href={playerInfo.url}
         target="_blank"
         rel="noreferrer"
       >
-        {playerInfo.hacker ? t("bfban.stats") : ""}
+        {playerInfo.hacker ? t("bfban.platoon") : ""}
       </a>
     );
   }
@@ -55,6 +55,7 @@ function CheckBan(props: {
 function Players(props: {
   stats: ServerPlayersReturn;
   game: string;
+  platform: string;
   gameid: string;
 }): React.ReactElement {
   const { t } = useTranslation();
@@ -119,11 +120,11 @@ function Players(props: {
                                   )}
                                   <ConditionalLink
                                     condition={props.game !== "bf2042"}
-                                    to={`/stats/pc/playerid/${
+                                    to={`/stats/${props.platform}/playerid/${
                                       key.player_id
-                                    }?game=bf1&name=${encodeURIComponent(
-                                      key.name,
-                                    )}`}
+                                    }?game=${
+                                      props.game
+                                    }&name=${encodeURIComponent(key.name)}`}
                                   >
                                     <>
                                       <h4
@@ -179,11 +180,11 @@ function Players(props: {
                                     style={{
                                       marginTop: ".5rem",
                                     }}
-                                    href={`https://gametools.network/stats/pc/playerid/${
-                                      key.player_id
-                                    }?game=bf1&name=${encodeURIComponent(
-                                      key.name,
-                                    )}`}
+                                    href={`https://gametools.network/stats/${
+                                      props.platform
+                                    }/playerid/${key.player_id}?game=${
+                                      props.game
+                                    }&name=${encodeURIComponent(key.name)}`}
                                     target="_blank"
                                     rel="noreferrer"
                                   >
@@ -216,6 +217,7 @@ function Players(props: {
 }
 export function ServerPlayerlist(props: {
   game: string;
+  platform: string;
   gameid: string;
 }): React.ReactElement {
   const { t } = useTranslation();
@@ -232,7 +234,14 @@ export function ServerPlayerlist(props: {
     }),
   );
   if (!loading && !error) {
-    return <Players stats={stats} game={props.game} gameid={props.gameid} />;
+    return (
+      <Players
+        stats={stats}
+        game={props.game}
+        gameid={props.gameid}
+        platform={props.platform}
+      />
+    );
   }
   return (
     <Spacing>

@@ -231,14 +231,22 @@ export function Results(props: Views): React.ReactElement {
           <>
             <ServerPlatoon platoon={stats.platoon} platform={props.platform} />
             <ServerLeaderboard gameid={stats.gameId} />
-            <ServerPlayerlist game={props.game} gameid={stats.gameId} />
+            <ServerPlayerlist
+              game={props.game}
+              gameid={stats.gameId}
+              platform={props.platform}
+            />
           </>
         ) : (
           <></>
         )}
         {props.game === "bfv" ? (
           <>
-            <ServerPlayerlist game={props.game} gameid={stats.gameId} />
+            <ServerPlayerlist
+              game={props.game}
+              gameid={stats.gameId}
+              platform={props.platform}
+            />
           </>
         ) : (
           <></>
@@ -250,9 +258,14 @@ export function Results(props: Views): React.ReactElement {
               <ServerPlayerlist
                 game={props.game}
                 gameid={stats.blazeGameId.toString()}
+                platform={props.platform}
               />
             ) : blazeIdQuery !== null ? (
-              <ServerPlayerlist game={props.game} gameid={blazeIdQuery} />
+              <ServerPlayerlist
+                game={props.game}
+                gameid={blazeIdQuery}
+                platform={props.platform}
+              />
             ) : (
               <></>
             )}
