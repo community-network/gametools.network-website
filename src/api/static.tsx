@@ -1,3 +1,18 @@
+export const supportedGames = [
+  "bf2.bf2hub",
+  "bf2.playbf2",
+  "bfbc2",
+  "bf2142",
+  "bf1942",
+  "bfvietnam",
+  "bf3",
+  "bf4",
+  "bfh",
+  "bf1",
+  "bfv",
+  "bf2042",
+];
+
 export const platformGames = {
   pc: ["bf1", "bf3", "bf4", "bfh", "bfv"],
   xboxone: ["bf4", "bfh", "bf1", "bfv"],

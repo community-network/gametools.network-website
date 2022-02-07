@@ -20,7 +20,11 @@ import {
   Alignbf2042Search,
 } from "../../../Materials";
 import { getLanguage } from "../../../../locales/config";
-import { frostbite3, noCrossplayFrostbite3 } from "../../../../api/static";
+import {
+  frostbite3,
+  noCrossplayFrostbite3,
+  supportedGames,
+} from "../../../../api/static";
 import { ServerList, ServerSearch } from "../../../../api/ReturnTypes";
 
 const Description = styled.p`
@@ -331,18 +335,13 @@ function Search(): React.ReactElement {
             setGameName(ev.target.value)
           }
         >
-          <option value="bf2.bf2hub">{t("games.bf2.bf2hub")}</option>
-          <option value="bf2.playbf2">{t("games.bf2.playbf2")}</option>
-          <option value="bfbc2">{t("games.bfbc2")}</option>
-          <option value="bf2142">{t("games.bf2142")}</option>
-          <option value="bf1942">{t("games.bf1942")}</option>
-          <option value="bfvietnam">{t("games.bfvietnam")}</option>
-          <option value="bf3">{t("games.bf3")}</option>
-          <option value="bf4">{t("games.bf4")}</option>
-          <option value="bfh">{t("games.bfh")}</option>
-          <option value="bf1">{t("games.bf1")}</option>
-          <option value="bfv">{t("games.bfv")}</option>
-          <option value="bf2042">{t("games.bf2042")}</option>
+          {supportedGames.map((value, index) => {
+            return (
+              <option key={index} value={value}>
+                {t(`games.${value}`)}
+              </option>
+            );
+          })}
         </BigSelectSecondary>
         <BigSelectSecondary
           disabled={!frostbite3.includes(gameName)}
