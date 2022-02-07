@@ -62,11 +62,17 @@ function Search(): React.ReactElement {
               setPlatform(ev.target.value)
             }
           >
-            <option value="pc">{t("platforms.pc")}</option>
-            <option value="xboxone">{t("platforms.xboxone")}</option>
-            <option value="xbox360">{t("platforms.xbox360")}</option>
-            <option value="ps4">{t("platforms.ps4")}</option>
-            <option value="ps3">{t("platforms.ps3")}</option>
+            {Object.keys(t("platforms", { returnObjects: true })).map(
+              (key, index) => {
+                return key !== "all" ? (
+                  <option key={index} value={key}>
+                    {t(`platforms.${key}`)}
+                  </option>
+                ) : (
+                  <></>
+                );
+              },
+            )}
           </BigSelectSecondary>
           <BigSelectSecondary
             value={game}

@@ -351,14 +351,15 @@ function Search(): React.ReactElement {
             setRegion(ev.target.value)
           }
         >
-          <option value="all">{t("regions.all")}</option>
-          <option value="eu">{t("regions.eu")}</option>
-          <option value="asia">{t("regions.asia")}</option>
-          <option value="nam">{t("regions.nam")}</option>
-          <option value="sam">{t("regions.sam")}</option>
-          <option value="au">{t("regions.au")}</option>
-          <option value="oc">{t("regions.oc")}</option>
-          <option value="afr">{t("regions.afr")}</option>
+          {Object.keys(t("regions", { returnObjects: true })).map(
+            (key, index) => {
+              return (
+                <option key={index} value={key}>
+                  {t(`regions.${key}`)}
+                </option>
+              );
+            },
+          )}
         </BigSelectSecondary>
         <BigSelectSecondary
           disabled={!frostbite3.includes(gameName)}
@@ -367,12 +368,15 @@ function Search(): React.ReactElement {
             setLimit(ev.target.value)
           }
         >
-          <option value="10">{t("limit.10")}</option>
-          <option value="25">{t("limit.25")}</option>
-          <option value="50">{t("limit.50")}</option>
-          <option value="100">{t("limit.100")}</option>
-          <option value="200">{t("limit.200")}</option>
-          <option value="250">{t("limit.250")}</option>
+          {Object.keys(t("limit", { returnObjects: true })).map(
+            (key, index) => {
+              return (
+                <option key={index} value={key}>
+                  {t(`limit.${key}`)}
+                </option>
+              );
+            },
+          )}
         </BigSelectSecondary>
         <BigSelectSecondary
           disabled={!noCrossplayFrostbite3.includes(gameName)}
