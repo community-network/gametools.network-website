@@ -3,7 +3,11 @@ import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
-import { frostbite3, serverWidgetTypes, widgetSize } from "../../../../api/static";
+import {
+  frostbite3,
+  serverWidgetTypes,
+  widgetSize,
+} from "../../../../api/static";
 import {
   AltText,
   Align,
