@@ -3,7 +3,7 @@ import "../locales/config";
 import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 import Home from "./routes/Home";
 import PlayerSearch from "./routes/Stats/Search/PlayerSearch";
-import ServerSearch from "./routes/Servers/Search/ServerSearch";
+import ServerSearch from "./routes/Servers/Search/Main";
 import PlatoonSearch from "./routes/PlatoonSearch";
 import Stats from "./routes/Stats/Player/Main";
 import Servers from "./routes/Servers/Detailed/Servers";
