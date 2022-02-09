@@ -3,7 +3,7 @@ import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
-import { serverWidgetTypes, widgetSize } from "../../../../api/static";
+import { frostbite3, serverWidgetTypes, widgetSize } from "../../../../api/static";
 import {
   AltText,
   Align,
@@ -222,7 +222,7 @@ export function Results(props: Views): React.ReactElement {
             );
           })}
         </Align>
-        {props.game !== "bf4" ? (
+        {props.game !== "bf4" && frostbite3.includes(props.game) ? (
           <ServerOwner owner={stats.owner} game={props.game} />
         ) : (
           <></>

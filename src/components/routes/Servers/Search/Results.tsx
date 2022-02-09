@@ -6,6 +6,7 @@ import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
 import { AltText, Box } from "../../../Materials";
 import { ServerList, ServerSearch } from "../../../../api/ReturnTypes";
+import { dice } from "../../../../api/static";
 
 const Description = styled.p`
   ${AltText}
@@ -116,12 +117,7 @@ export function Results(props: Views): React.ReactElement {
           if (key.official !== undefined) {
             officialString = key.official ? " - Official" : " - Custom";
           }
-          const useLink =
-            props.game === "bf1" ||
-            props.game === "bf4" ||
-            props.game === "bfv" ||
-            props.game === "bf2042" ||
-            (props.game === "bf3" && key.platform == "pc");
+          const useLink = dice.includes(props.game);
           return (
             <ConditionalLink
               to={`/servers/${props.game}/${
