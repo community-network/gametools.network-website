@@ -1,9 +1,9 @@
 import i18n from "i18next";
-import translationEN from "./languages/en-US.json";
-import translationTR from "./languages/tr-TR.json";
-import translationRU from "./languages/ru-RU.json";
-import translationCH from "./languages/zh-CN.json";
-import translationNL from "./languages/nl-NL.json";
+import * as translationEN from "./languages/en-US.json";
+import * as translationTR from "./languages/tr-TR.json";
+import * as translationRU from "./languages/ru-RU.json";
+import * as translationCH from "./languages/zh-CN.json";
+import * as translationNL from "./languages/nl-NL.json";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { formatDistanceToNowStrict, format } from "date-fns";

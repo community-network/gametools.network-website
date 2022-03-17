@@ -4,5 +4,6 @@
         "lib": [
             "es2021", "dom"
       ],
+      "resolveJsonModule": true
     }
 }

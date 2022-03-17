@@ -58,3 +58,5 @@ export const gamemodeGames = ["bf4", "bf1"];
 export const serverWidgetTypes = ["black", "white", "detailed"];
 export const widgetSize = [78, 78, 90];
 export const teamArr = ["teamOne", "teamTwo"];
+
+export const gameIds = { bf1: "1026023", bf4: "76889" };

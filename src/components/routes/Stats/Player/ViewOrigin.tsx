@@ -39,6 +39,11 @@ function GetBfBan(props: Views): React.ReactElement {
   let color = "#ffffff";
   if (!loading && !error) {
     const list = stats.personaids;
+    for (const [key, value] of Object.entries(list)) {
+      if (!value.hacker) {
+        delete list[key];
+      }
+    }
     if (props.stats.id in list) {
       isHacker = list[props.stats.id].hacker;
       bfBanUrl = list[props.stats.id].url;

@@ -7,6 +7,7 @@ import {
   PlatoonSearchResult,
   ServerLeaderboardReturn,
   ServerPlayersReturn,
+  seederPlayersReturn,
 } from "./ReturnTypes";
 
 interface BfBanInfo {
@@ -197,6 +198,16 @@ export class ApiProvider extends JsonClient {
       });
     }
     return await this.getJsonMethod(`/${gameStuff[0]}/players/`, {
+      gameId: gameId,
+    });
+  }
+
+  async seederPlayerList({
+    game,
+    gameId,
+  }: serverPlayerlist): Promise<seederPlayersReturn> {
+    const gameStuff = game.split(".");
+    return await this.getJsonMethod(`/${gameStuff[0]}/seederplayers/`, {
       gameId: gameId,
     });
   }

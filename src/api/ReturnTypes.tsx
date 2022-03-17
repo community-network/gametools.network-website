@@ -223,6 +223,11 @@ export type ServerPlayersReturn = {
   serverinfo: serverInfoPlayerList;
 };
 
+export type seederPlayersReturn = {
+  teams: serverTeamList[];
+  serverinfo: serverInfoPlayerList;
+};
+
 export type serverInfoPlayerList = {
   country: string;
   description: string;
