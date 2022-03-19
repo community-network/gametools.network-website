@@ -67,6 +67,13 @@ export type MainStats = {
   winPercent: string;
   wins: number;
   quits: number;
+  cashPerMinute?: number;
+  hacker?: number;
+  professional?: number;
+  operator?: number;
+  mechanic?: number;
+  enforcer?: number;
+  resupplies?: number;
 };
 
 export type MainStatsGamemode = {
@@ -224,8 +231,29 @@ export type ServerPlayersReturn = {
 };
 
 export type seederPlayersReturn = {
-  teams: serverTeamList[];
+  teams: seederTeamList[];
   serverinfo: serverInfoPlayerList;
+};
+
+export type seederTeamList = {
+  players: seederPlayer[];
+  teamid: string;
+  image: string;
+  name: string;
+  score: number;
+  faction?: string;
+  key?: string;
+};
+
+export type seederPlayer = {
+  player_id: number;
+  teamId: number;
+  mark: number;
+  rank: number;
+  name: string;
+  kills: number;
+  deaths: number;
+  score: number;
 };
 
 export type serverInfoPlayerList = {
