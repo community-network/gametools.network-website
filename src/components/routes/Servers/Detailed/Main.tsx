@@ -229,8 +229,12 @@ export function Results(props: Views): React.ReactElement {
         </Align>
         {props.game !== "bf4" && frostbite3.includes(props.game) ? (
           <ServerOwner owner={stats.owner} game={props.game} />
-        ) : stats.players != undefined ? (
-          <ServerScoreboard game={props.game} stats={stats.teams} platform={props.platform} />
+        ) : stats.players != undefined && stats.teams != undefined ? (
+          <ServerScoreboard
+            game={props.game}
+            stats={stats.teams}
+            platform={props.platform}
+          />
         ) : (
           <></>
         )}
