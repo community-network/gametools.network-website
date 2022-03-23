@@ -29,6 +29,7 @@ import { ServerPlatoon } from "./Platoon";
 import { ServerConfig } from "./Portal";
 import { Description, Title } from "./Servers";
 import { useLocation } from "react-router-dom";
+import { ServerScoreboard } from "./Scoreboard";
 
 const AltDescription = styled.p`
   ${AltText}
@@ -228,6 +229,8 @@ export function Results(props: Views): React.ReactElement {
         </Align>
         {props.game !== "bf4" && frostbite3.includes(props.game) ? (
           <ServerOwner owner={stats.owner} game={props.game} />
+        ) : stats.players != undefined ? (
+          <ServerScoreboard game={props.game} stats={stats.teams} platform={props.platform} />
         ) : (
           <></>
         )}

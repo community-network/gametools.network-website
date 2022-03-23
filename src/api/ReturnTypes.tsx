@@ -1,3 +1,5 @@
+import { NumberLiteralTypeAnnotation } from "@babel/types";
+
 export type PlatoonPlayer = {
   id: string;
   name: string;
@@ -326,7 +328,9 @@ export type DetailedServerInfo = {
   gameId: string;
 
   blazeGameId?: number;
-  teams?: TeamList;
+  teams?: ScoreTeamList[];
+  players?: ScoreServerPlayer[];
+
   inQueue?: number;
   maxPlayerAmount?: number;
   platoon?: PlatoonResult;
@@ -335,6 +339,16 @@ export type DetailedServerInfo = {
 
   inQue?: number;
   maxPlayers?: number;
+};
+
+export type ScoreTeamList = {
+  players: ScoreServerPlayer[];
+  teamid: string;
+  // image: string;
+  // name: string;
+  // score: number;
+  // faction?: string;
+  // key?: string;
 };
 
 export type ServerOwnerResult = {
@@ -360,6 +374,18 @@ export type ServerTeams = {
   image: string;
   key: string;
   name: string;
+};
+
+export type ScoreServerPlayer = {
+  kills: number;
+  deaths: number;
+  name: string;
+  player_id: string;
+  rank: number;
+  role: number;
+  score: number;
+  squad: number;
+  tag: string;
 };
 
 export type ServerRotation = {
