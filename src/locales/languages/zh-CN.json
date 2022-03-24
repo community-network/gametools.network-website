@@ -371,6 +371,7 @@
             "empty": "这个队伍是空的",
             "row": {
                 "ping": "延迟",
+                "platform": "平台",
                 "timePlayed": "游玩时间"
             }
         },
