@@ -285,11 +285,12 @@ export type serverPlayer = {
   user_id: number;
   name: string;
   position: number;
-  latency: number;
+  latency?: number;
   platoon: string;
   join_time: number;
   localization: string;
 
+  platform?: string;
   rank?: number;
 };
 

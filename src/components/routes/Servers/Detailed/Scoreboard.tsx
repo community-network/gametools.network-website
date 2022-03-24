@@ -21,8 +21,6 @@ export function ServerScoreboard(props: {
   stats: ScoreTeamList[];
 }): React.ReactElement {
   const teams = props.stats;
-  const ConditionalLink = ({ children, to, condition }: ConLink) =>
-    !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
   const { t } = useTranslation();
   return (
     <Spacing>
@@ -48,14 +46,13 @@ export function ServerScoreboard(props: {
                                 <AlignW>
                                   {props.game !== "bf2042" ? (
                                     <img
-                                      src={`https://cdn.gametools.network/bf4/${key.rank}.png`}
+                                      src={`https://cdn.gametools.network/${props.game}/${key.rank}.png`}
                                       height="25px"
                                     />
                                   ) : (
                                     <></>
                                   )}
-                                  <ConditionalLink
-                                    condition={props.game !== "bf2042"}
+                                  <Link
                                     to={`/stats/${props.platform}/playerid/${
                                       key.player_id
                                     }?game=${
@@ -78,7 +75,7 @@ export function ServerScoreboard(props: {
                                         {key.name}
                                       </h4>
                                     </>
-                                  </ConditionalLink>
+                                  </Link>
                                 </AlignW>
                               </Row>
                               <Row style={{ flex: 0.4 }}>

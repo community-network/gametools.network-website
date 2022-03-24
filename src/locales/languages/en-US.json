@@ -389,7 +389,8 @@
             "none": "Server is just added or doesn't use the manager-api",
             "empty": "This team is empty",
             "row": {
-                "ping": "ping",
+                "ping": "Ping",
+                "platform": "Platform",
                 "timePlayed": "Time played"
             }
         },

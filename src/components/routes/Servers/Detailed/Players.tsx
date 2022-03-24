@@ -162,7 +162,14 @@ function Players(props: {
                                   </Description>
                                 </Row>
                               ) : (
-                                <></>
+                                <Row>
+                                  <h4 style={{ marginTop: "0.5rem" }}>
+                                    {key.platform.toUpperCase()}
+                                  </h4>
+                                  <Description style={{ lineHeight: 0 }}>
+                                    {t("servers.playerlist.row.platform")}
+                                  </Description>
+                                </Row>
                               )}
                               <Row>
                                 <h4 style={{ marginTop: "0.5rem" }}>
