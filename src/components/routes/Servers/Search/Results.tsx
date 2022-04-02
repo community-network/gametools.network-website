@@ -131,7 +131,7 @@ export function Results(props: Views): React.ReactElement {
                 <AlignSeverImg>
                   <ServerImage background={key.url ?? key.mapImage}>
                     <Blur>
-                      <ServerText>{key.smallMode ?? key.modeShort}</ServerText>
+                      <ServerText>{key.smallMode}</ServerText>
                     </Blur>
                   </ServerImage>
                   <ServerInfo>

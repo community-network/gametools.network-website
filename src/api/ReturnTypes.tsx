@@ -188,8 +188,7 @@ export type ServerList = {
   playerAmount: number;
   region: string;
   serverInfo: string;
-  smallMode?: string;
-  modeShort?: string;
+  smallMode: string;
 
   url?: string;
   mapImage?: string;
