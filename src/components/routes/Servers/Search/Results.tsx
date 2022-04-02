@@ -101,8 +101,7 @@ export function Results(props: Views): React.ReactElement {
     return (
       <Spacing>
         {stats.servers.map((key: ServerList, index: number) => {
-          let queue: number = undefined;
-          queue = key.inQue;
+          const queue = key.inQue ?? key.inQueue;
           let queueString = "";
           if (queue !== undefined && queue !== 0 && queue !== null) {
             queueString = `[${queue}]`;
@@ -130,11 +129,9 @@ export function Results(props: Views): React.ReactElement {
             >
               <Box className={useLink ? "box_hover box" : ""}>
                 <AlignSeverImg>
-                  <ServerImage
-                    background={key.url != undefined ? key.url : key.mapImage}
-                  >
+                  <ServerImage background={key.url ?? key.mapImage}>
                     <Blur>
-                      <ServerText>{key.smallMode}</ServerText>
+                      <ServerText>{key.smallMode ?? key.modeShort}</ServerText>
                     </Blur>
                   </ServerImage>
                   <ServerInfo>

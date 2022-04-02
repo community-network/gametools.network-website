@@ -180,6 +180,7 @@ export type ServerSearch = {
 export type ServerList = {
   currentMap: string;
   inQue: number;
+  inQueue?: number;
   mode: string;
   official: boolean;
   ownerId: number;
@@ -187,7 +188,8 @@ export type ServerList = {
   playerAmount: number;
   region: string;
   serverInfo: string;
-  smallMode: string;
+  smallMode?: string;
+  modeShort?: string;
 
   url?: string;
   mapImage?: string;
@@ -203,6 +205,7 @@ export type ServerList = {
   map?: string;
   server?: string;
   maxPlayers?: number;
+  mapName?: string;
 };
 
 export type ServerLeaderboardReturn = {
