@@ -130,7 +130,9 @@ export function Results(props: Views): React.ReactElement {
             >
               <Box className={useLink ? "box_hover box" : ""}>
                 <AlignSeverImg>
-                  <ServerImage background={key.url}>
+                  <ServerImage
+                    background={key.url != undefined ? key.url : key.mapImage}
+                  >
                     <Blur>
                       <ServerText>{key.smallMode}</ServerText>
                     </Blur>

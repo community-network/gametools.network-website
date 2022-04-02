@@ -188,7 +188,9 @@ export type ServerList = {
   region: string;
   serverInfo: string;
   smallMode: string;
-  url: string;
+
+  url?: string;
+  mapImage?: string;
 
   gameId?: string;
   serverId?: string;
