@@ -23,6 +23,8 @@ export function ServerLeaderboard(props: {
 }): React.ReactElement {
   const { t } = useTranslation();
   const [sortType, setSortType] = React.useState<string>("timeplayed");
+  const getLanguage = () => window.localStorage.i18nextLng;
+  const numberFormat = new Intl.NumberFormat(getLanguage());
   const gameId = props.gameid;
   const {
     isLoading: loading,
@@ -88,37 +90,37 @@ export function ServerLeaderboard(props: {
                     </a>
                   </Row>
                   <SmallestPhoneRow>
-                    <h4>{key.score}</h4>
+                    <h4>{numberFormat.format(key.score)}</h4>
                     <Description style={{ lineHeight: 0 }}>
                       {t("servers.leaderboard.row.score")}
                     </Description>
                   </SmallestPhoneRow>
                   <Row>
-                    <h4>{key.killDeath}</h4>
+                    <h4>{numberFormat.format(key.killDeath)}</h4>
                     <Description style={{ lineHeight: 0 }}>
                       {t("servers.leaderboard.row.killDeath")}
                     </Description>
                   </Row>
                   <TabletRow>
-                    <h4>{key.kills}</h4>
+                    <h4>{numberFormat.format(key.kills)}</h4>
                     <Description style={{ lineHeight: 0 }}>
                       {t("servers.leaderboard.row.kills")}
                     </Description>
                   </TabletRow>
                   <TabletRow>
-                    <h4>{key.deaths}</h4>
+                    <h4>{numberFormat.format(key.deaths)}</h4>
                     <Description style={{ lineHeight: 0 }}>
                       {t("servers.leaderboard.row.deaths")}
                     </Description>
                   </TabletRow>
                   <SmallPhoneRow>
-                    <h4>{key.wins}</h4>
+                    <h4>{numberFormat.format(key.wins)}</h4>
                     <Description style={{ lineHeight: 0 }}>
                       {t("servers.leaderboard.row.wins")}
                     </Description>
                   </SmallPhoneRow>
                   <SmallPhoneRow>
-                    <h4>{key.losses}</h4>
+                    <h4>{numberFormat.format(key.losses)}</h4>
                     <Description style={{ lineHeight: 0 }}>
                       {t("servers.leaderboard.row.losses")}
                     </Description>

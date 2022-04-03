@@ -118,6 +118,8 @@ export function Results(props: Views): React.ReactElement {
   const query = new URLSearchParams(useLocation().search);
   const blazeIdQuery = query.get("blazeid");
   const [copyState, setCopyState] = React.useState<string>("copy");
+  const getLanguage = () => window.localStorage.i18nextLng;
+  const numberFormat = new Intl.NumberFormat(getLanguage());
   const copyStates = {};
   serverWidgetTypes.map((element) => {
     const [tempCopyState, tempSetCopyState] = React.useState<string>("copy");
@@ -144,7 +146,9 @@ export function Results(props: Views): React.ReactElement {
             <Blur>
               <ServerText>{stats.smallmode}</ServerText>
               {props.game !== "bf2042" ? (
-                <ServerFactorites>&#9734; {stats.favorites}</ServerFactorites>
+                <ServerFactorites>
+                  &#9734; {numberFormat.format(stats.favorites)}
+                </ServerFactorites>
               ) : (
                 <></>
               )}

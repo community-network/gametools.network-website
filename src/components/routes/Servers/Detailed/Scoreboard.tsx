@@ -22,6 +22,8 @@ export function ServerScoreboard(props: {
 }): React.ReactElement {
   const teams = props.stats;
   const { t } = useTranslation();
+  const getLanguage = () => window.localStorage.i18nextLng;
+  const numberFormat = new Intl.NumberFormat(getLanguage());
   return (
     <Spacing>
       <Title>{t("servers.playerlist.main")}</Title>
@@ -80,7 +82,7 @@ export function ServerScoreboard(props: {
                               </Row>
                               <Row style={{ flex: 0.4 }}>
                                 <h4 style={{ marginTop: "0.5rem" }}>
-                                  {key.score}
+                                  {numberFormat.format(key.score)}
                                 </h4>
                                 <Description style={{ lineHeight: 0 }}>
                                   {t("servers.leaderboard.row.score")}
@@ -88,7 +90,7 @@ export function ServerScoreboard(props: {
                               </Row>
                               <Row style={{ flex: 0.4 }}>
                                 <h4 style={{ marginTop: "0.5rem" }}>
-                                  {key.kills}
+                                  {numberFormat.format(key.kills)}
                                 </h4>
                                 <Description style={{ lineHeight: 0 }}>
                                   {t("servers.leaderboard.row.kills")}
@@ -96,7 +98,7 @@ export function ServerScoreboard(props: {
                               </Row>
                               <Row style={{ flex: 0.4 }}>
                                 <h4 style={{ marginTop: "0.5rem" }}>
-                                  {key.deaths}
+                                  {numberFormat.format(key.deaths)}
                                 </h4>
                                 <Description style={{ lineHeight: 0 }}>
                                   {t("servers.leaderboard.row.deaths")}

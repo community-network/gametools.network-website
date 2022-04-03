@@ -320,7 +320,7 @@ export type DetailedServerInfo = {
   currentMap: string;
   currentMapImage: string;
   description: string;
-  favorites: string;
+  favorites: number;
   mode: string;
   official: boolean;
   platform: string;
