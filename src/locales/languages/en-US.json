@@ -353,6 +353,11 @@
             "main": "Server platoon",
             "none": "Server isn't connected to a platoon"
         },
+        "sort": {
+            "serverName": "Server name",
+            "playerAmount": "Player amount",
+            "maxPlayers": "Max player amount"
+        },
         "owner": {
             "main": "Server owner",
             "none": "Server has no owner (Dice server)",

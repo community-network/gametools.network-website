@@ -13,6 +13,8 @@ import {
   ArrowLeft,
   Container,
   BigSelectSecondary,
+  SelectPrimary,
+  AlignW,
   Align,
   Bf2042SearchBox,
   Bf2042BigSelectSecondary,
@@ -42,6 +44,7 @@ function Search(): React.ReactElement {
   const [platform, setPlatform] = React.useState<string>("pc");
   const [limit, setLimit] = React.useState<string>("10");
   const [searchType, setSearchType] = React.useState<string>("experiencename");
+  const [sortType, setSortType] = React.useState<string>("-prefix");
   const history = useHistory();
   // get info from query ?search &game
   const query = new URLSearchParams(useLocation().search);
@@ -228,8 +231,29 @@ function Search(): React.ReactElement {
         </BigSelectSecondary>
         {/* <BigButtonSecondary type="submit">{t("serverSearch.search")} <RightArrow/></BigButtonSecondary> */}
       </Align>
-      <Title>{t("serverSearch.results")}</Title>
-      <Results game={gameName} loading={loading} stats={stats} error={error} />
+      <Align>
+        <Title>{t("serverSearch.results")}</Title>
+        <SelectPrimary
+          style={{ marginLeft: "1rem", marginTop: "2.2rem" }}
+          value={sortType}
+          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
+            setSortType(ev.target.value)
+          }
+        >
+          <option value="prefix">{t("servers.sort.serverName")}</option>
+          <option value="-playerAmount">
+            {t("servers.sort.playerAmount")}
+          </option>
+          <option value="-maxPlayers">{t("servers.sort.maxPlayers")}</option>
+        </SelectPrimary>
+      </Align>
+      <Results
+        game={gameName}
+        loading={loading}
+        stats={stats}
+        error={error}
+        sortType={sortType}
+      />
     </Container>
   );
 }

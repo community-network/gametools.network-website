@@ -8,6 +8,8 @@ import { addSeconds } from "date-fns";
 
 export function ViewClasses(props: Views): React.ReactElement {
   const { t, i18n } = useTranslation();
+  const getLanguage = () => window.localStorage.i18nextLng;
+  const numberFormat = new Intl.NumberFormat(getLanguage());
   if (!props.loading && !props.error) {
     const classes = props.stats.classes;
     return (
@@ -28,12 +30,16 @@ export function ViewClasses(props: Views): React.ReactElement {
                       <ListImage src={key.image} />
                     </Row>
                     <Row>
-                      <h4 style={{ margin: 0 }}>{key.score}</h4>
+                      <h4 style={{ margin: 0 }}>
+                        {numberFormat.format(key.score)}
+                      </h4>
                       <p>{t("stats.classes.amounts.score")}</p>
                     </Row>
                     {key.kills !== undefined ? (
                       <Row>
-                        <h4 style={{ margin: 0 }}>{key.kills}</h4>
+                        <h4 style={{ margin: 0 }}>
+                          {numberFormat.format(key.kills)}
+                        </h4>
                         <p>{t("stats.classes.amounts.kills")}</p>
                       </Row>
                     ) : (
@@ -41,7 +47,9 @@ export function ViewClasses(props: Views): React.ReactElement {
                     )}
                     {key.kpm !== undefined ? (
                       <Row>
-                        <h4 style={{ margin: 0 }}>{key.kpm}</h4>
+                        <h4 style={{ margin: 0 }}>
+                          {numberFormat.format(key.kpm)}
+                        </h4>
                         <p>{t("stats.classes.amounts.kpm")}</p>
                       </Row>
                     ) : (

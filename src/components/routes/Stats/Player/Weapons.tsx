@@ -28,6 +28,8 @@ export function ViewWeapons(props: Views): React.ReactElement {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = React.useState<string>("");
   const [sortType, setSortType] = React.useState<string>("-kills");
+  const getLanguage = () => window.localStorage.i18nextLng;
+  const numberFormat = new Intl.NumberFormat(getLanguage());
   let weapons = [];
   if (!props.loading && !props.error) {
     weapons = props.stats.weapons.filter(
@@ -91,19 +93,19 @@ export function ViewWeapons(props: Views): React.ReactElement {
                   <Description>{t("stats.rows.type")}</Description>
                 </Row>
                 <Row>
-                  <h4>{key.kills}</h4>
+                  <h4>{numberFormat.format(key.kills)}</h4>
                   <Description>{t("stats.rows.kills")}</Description>
                 </Row>
                 <Row>
-                  <h4>{key.killsPerMinute}</h4>
+                  <h4>{numberFormat.format(key.killsPerMinute)}</h4>
                   <Description>{t("stats.rows.killsPerMinute")}</Description>
                 </Row>
                 <TabletRow>
-                  <h4>{key.accuracy}%</h4>
+                  <h4>{numberFormat.format(key.accuracy)}%</h4>
                   <Description>{t("stats.rows.accuracy")}</Description>
                 </TabletRow>
                 <PhoneRow>
-                  <h4>{key.headshots}%</h4>
+                  <h4>{numberFormat.format(key.headshots)}%</h4>
                   <Description>{t("stats.rows.headshots")}</Description>
                 </PhoneRow>
               </Column>

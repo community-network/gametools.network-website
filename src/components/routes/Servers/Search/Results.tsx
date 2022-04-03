@@ -7,6 +7,7 @@ import "../../../../assets/scss/App.scss";
 import { AltText, Box } from "../../../Materials";
 import { ServerList, ServerSearch } from "../../../../api/ReturnTypes";
 import { dice } from "../../../../api/static";
+import { DynamicSort } from "../../Stats/Player/Main";
 
 const Description = styled.p`
   ${AltText}
@@ -76,6 +77,7 @@ interface Views {
   error: boolean;
   game: string;
   stats: ServerSearch;
+  sortType: string;
 }
 
 interface ConLink {
@@ -98,9 +100,11 @@ export function Results(props: Views): React.ReactElement {
         </Spacing>
       );
     }
+
+    const servers = stats.servers.sort(DynamicSort(props.sortType));
     return (
       <Spacing>
-        {stats.servers.map((key: ServerList, index: number) => {
+        {servers.map((key: ServerList, index: number) => {
           const queue = key.inQue ?? key.inQueue;
           let queueString = "";
           if (queue !== undefined && queue !== 0 && queue !== null) {

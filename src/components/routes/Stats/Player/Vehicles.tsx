@@ -27,6 +27,8 @@ export function ViewVehicles(props: Views): React.ReactElement {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = React.useState<string>("");
   const [sortType, setSortType] = React.useState<string>("-kills");
+  const getLanguage = () => window.localStorage.i18nextLng;
+  const numberFormat = new Intl.NumberFormat(getLanguage());
   let vehicles = [];
   if (!props.loading && !props.error) {
     vehicles = props.stats.vehicles.filter((item: { vehicleName: string }) => {
@@ -76,15 +78,15 @@ export function ViewVehicles(props: Views): React.ReactElement {
                   <Description>{t("stats.rows.type")}</Description>
                 </Row>
                 <Row>
-                  <h4>{key.kills}</h4>
+                  <h4>{numberFormat.format(key.kills)}</h4>
                   <Description>{t("stats.rows.kills")}</Description>
                 </Row>
                 <Row>
-                  <h4>{key.killsPerMinute}</h4>
+                  <h4>{numberFormat.format(key.killsPerMinute)}</h4>
                   <Description>{t("stats.rows.killsPerMinute")}</Description>
                 </Row>
                 <PhoneRow>
-                  <h4>{key.destroyed}</h4>
+                  <h4>{numberFormat.format(key.destroyed)}</h4>
                   <Description>{t("stats.rows.destroyed")}</Description>
                 </PhoneRow>
               </Column>

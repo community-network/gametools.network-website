@@ -350,6 +350,11 @@
             "none": "Server heeft geen eigenaar (Dice server)",
             "unknown": "Naam niet gevonden"
         },
+        "sort": {
+            "serverName": "Servernaam",
+            "playerAmount": "Aantal spelers",
+            "maxPlayers": "Max aantal spelers"
+        },
         "join": "Join server (werkt alleen op firefox)",
         "iframe": {
             "main": "Voeg de server toe aan uw website",

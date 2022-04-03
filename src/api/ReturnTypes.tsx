@@ -22,18 +22,18 @@ export type PlatoonStats = {
 };
 
 export type MainStats = {
-  accuracy: string;
+  accuracy: number;
   avatar: string;
   avengerKills: number;
   awardScore: number;
-  bestClass: string;
+  bestClass: number;
   bonusScore: number;
   cache: false;
   currentRankProgress: number;
   deaths: number;
   dogtagsTaken: number;
   headShots: number;
-  headshots: string;
+  headshots: number;
   heals: number;
   highestKillStreak: number;
   id: number;
@@ -66,7 +66,7 @@ export type MainStats = {
   userName: string;
   vehicles: MainStatsVehicle[];
   weapons: MainStatsWeapon[];
-  winPercent: string;
+  winPercent: number;
   wins: number;
   quits: number;
   cashPerMinute?: number;
@@ -162,8 +162,8 @@ export type MainStatsVehicle = {
 };
 
 export type MainStatsWeapon = {
-  accuracy: string;
-  headshots: string;
+  accuracy: number;
+  headshots: number;
   hitVKills: number;
   image: string;
   kills: number;

@@ -19,6 +19,8 @@ const WhiteText = styled.span`
 export function ViewStats(props: Views): React.ReactElement {
   const { t } = useTranslation();
   const stats = props.stats;
+  const getLanguage = () => window.localStorage.i18nextLng;
+  const numberFormat = new Intl.NumberFormat(getLanguage());
   if (!props.loading && !props.error) {
     return (
       <Spacing>
@@ -43,15 +45,15 @@ export function ViewStats(props: Views): React.ReactElement {
           <p></p>
           <AlignS>
             <div>
-              <h3>{stats.killDeath}</h3>
+              <h3>{numberFormat.format(stats.killDeath)}</h3>
               <p>{t("stats.main.killDeath")}</p>
             </div>
             <div>
-              <h3>{stats.killsPerMinute}</h3>
+              <h3>{numberFormat.format(stats.killsPerMinute)}</h3>
               <p>{t("stats.main.killsPerMinute")}</p>
             </div>
             <div>
-              <h3>{stats.winPercent}</h3>
+              <h3>{numberFormat.format(stats.winPercent)}%</h3>
               <p>{t("stats.main.winPercent")}</p>
             </div>
             <div>
@@ -59,7 +61,7 @@ export function ViewStats(props: Views): React.ReactElement {
               <p>{t("stats.main.bestClass")}</p>
             </div>
             <div>
-              <h3>{stats.accuracy}</h3>
+              <h3>{numberFormat.format(stats.accuracy)}%</h3>
               <p>{t("stats.main.accuracy")}</p>
             </div>
           </AlignS>

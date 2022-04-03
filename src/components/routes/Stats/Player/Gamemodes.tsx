@@ -9,6 +9,8 @@ export function ViewGamemodes(props: Views): React.ReactElement {
   const { t, i18n } = useTranslation();
   if (!props.loading && !props.error) {
     const gamemodes = props.stats.gamemodes;
+    const getLanguage = () => window.localStorage.i18nextLng;
+    const numberFormat = new Intl.NumberFormat(getLanguage());
     return (
       <Spacing>
         <Box>
@@ -48,15 +50,15 @@ export function ViewGamemodes(props: Views): React.ReactElement {
                       <br />
                       <AlignS>
                         <div>
-                          <h3>{key.score}</h3>
+                          <h3>{numberFormat.format(key.score)}</h3>
                           <p>{t("stats.gamemodes.amounts.score")}</p>
                         </div>
                         <div>
-                          <h3>{key.wins}</h3>
+                          <h3>{numberFormat.format(key.wins)}</h3>
                           <p>{t("stats.gamemodes.amounts.wins")}</p>
                         </div>
                         <div>
-                          <h3>{key.losses}</h3>
+                          <h3>{numberFormat.format(key.losses)}</h3>
                           <p>{t("stats.gamemodes.amounts.losses")}</p>
                         </div>
                       </AlignS>

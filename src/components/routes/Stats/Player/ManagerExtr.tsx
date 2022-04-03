@@ -13,6 +13,8 @@ import { addSeconds } from "date-fns";
 export function BfSessionInfo(props: Views): React.ReactElement {
   const { t } = useTranslation();
   const stats = props.stats;
+  const getLanguage = () => window.localStorage.i18nextLng;
+  const numberFormat = new Intl.NumberFormat(getLanguage());
   if (!props.loading && !props.error && stats.sessions.length === 0) {
     return <></>;
   } else if (!props.loading && !props.error) {
@@ -47,19 +49,19 @@ export function BfSessionInfo(props: Views): React.ReactElement {
                 <Description>{key.serverName}</Description>
                 <AlignS style={{ marginTop: "0.8rem" }}>
                   <div>
-                    <h3>{stats.kills}</h3>
+                    <h3>{numberFormat.format(stats.kills)}</h3>
                     <p>{t("stats.playSession.stats.kills")}</p>
                   </div>
                   <div>
-                    <h3>{stats.deaths}</h3>
+                    <h3>{numberFormat.format(stats.deaths)}</h3>
                     <p>{t("stats.playSession.stats.deaths")}</p>
                   </div>
                   <div>
-                    <h3>{stats.wins}</h3>
+                    <h3>{numberFormat.format(stats.wins)}</h3>
                     <p>{t("stats.playSession.stats.wins")}</p>
                   </div>
                   <div>
-                    <h3>{stats.losses}</h3>
+                    <h3>{numberFormat.format(stats.losses)}</h3>
                     <p>{t("stats.playSession.stats.losses")}</p>
                   </div>
                 </AlignS>
@@ -91,8 +93,12 @@ export function BfSessionInfo(props: Views): React.ReactElement {
                             </Description>
                           </div>
                           <div>
-                            <h4 style={{ margin: 0 }}>{key.score}</h4>
-                            <h4 style={{ margin: 0 }}>{key.kills}</h4>
+                            <h4 style={{ margin: 0 }}>
+                              {numberFormat.format(key.score)}
+                            </h4>
+                            <h4 style={{ margin: 0 }}>
+                              {numberFormat.format(key.kills)}
+                            </h4>
                             <h4 style={{ margin: 0 }}>
                               {t("change", {
                                 change: addSeconds(new Date(), key.timePlayed),

@@ -105,12 +105,14 @@ export class ApiProvider extends JsonClient {
   }: PlayerInfo): Promise<MainStats> {
     if (getter == "playerid") {
       return await this.getJsonMethod(`/${game}/${type}/`, {
+        format_values: "false",
         playerid: userName,
         lang: lang,
         platform: platform,
       });
     }
     return await this.getJsonMethod(`/${game}/${type}/`, {
+      format_values: "false",
       name: encodeURIComponent(userName),
       lang: lang,
       platform: platform,
