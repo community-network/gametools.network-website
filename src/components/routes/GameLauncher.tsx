@@ -23,7 +23,7 @@ function Launch({ match }: RouteComponentProps<TParams>): React.ReactElement {
         <ArrowLeft />
         {t("serverSearch.back")}
       </Back>
-      <h2>Game launched!</h2>
+      <h2>{t("servers.joinme.launch")}</h2>
       <p>{t("servers.joinme.discord")}</p>
       <ButtonLink
         style={{ width: "8rem" }}
