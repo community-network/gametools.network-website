@@ -234,6 +234,7 @@ export type ServerPlayersReturn = {
   loading: serverPlayer[];
   que: serverPlayer[];
   serverinfo: serverInfoPlayerList;
+  update_timestamp: number;
 };
 
 export type seederPlayersReturn = {

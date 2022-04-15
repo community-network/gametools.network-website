@@ -13,6 +13,7 @@ import {
   Column,
   ButtonLink,
   PhoneRow,
+  SelectPrimary,
 } from "../../../Materials";
 import {
   serverPlayer,
@@ -21,6 +22,7 @@ import {
 } from "../../../../api/ReturnTypes";
 import { factions } from "../../../../api/Factions";
 import { ConLink, Description, Spacing, Title } from "./Servers";
+import { DynamicSort } from "../../Stats/Player/Main";
 
 function CheckBan(props: {
   playerId: string;
@@ -60,6 +62,7 @@ function Players(props: {
 }): React.ReactElement {
   const { t } = useTranslation();
   const teams = props.stats.teams;
+  const [sortType, setSortType] = React.useState<string>("slot");
   const ConditionalLink = ({ children, to, condition }: ConLink) =>
     !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
 
@@ -82,15 +85,42 @@ function Players(props: {
       usernames: playerIds,
     }),
   );
+  let update_timestamp = new Date();
+  if (props.stats.update_timestamp) {
+    update_timestamp = new Date(props.stats.update_timestamp * 1000);
+  }
 
   return (
     <Spacing>
       <Align>
         <h2>{t("servers.playerlist.main")}</h2>
+        <SelectPrimary
+          style={{ margin: 0, marginLeft: "24px" }}
+          value={sortType}
+          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
+            setSortType(ev.target.value)
+          }
+        >
+          <option value="slot">{t("servers.playerlist.row.playerSlot")}</option>
+          <option value="join_time">
+            {t("servers.playerlist.row.timePlayed")}
+          </option>
+          <option value="name">{t("servers.playerlist.row.playerName")}</option>
+          <option value="-latency">{t("servers.playerlist.row.ping")}</option>
+          <option value="-platoon">
+            {t("servers.playerlist.row.platoon")}
+          </option>
+          <option value="-rank">{t("servers.playerlist.row.rank")}</option>
+        </SelectPrimary>
+        <p style={{ marginTop: "1rem", marginLeft: "1rem" }}>
+          {t("servers.playerlist.lastUpdate")}{" "}
+          {t("change", { change: update_timestamp })} {t("ago")}
+        </p>
       </Align>
       {teams !== null ? (
         <>
           {teams.map((teamInfo: serverTeamList, index: number) => {
+            teamInfo.players = teamInfo.players.sort(DynamicSort(sortType));
             return (
               <div key={index}>
                 <Align>

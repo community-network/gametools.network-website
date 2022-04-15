@@ -13,6 +13,7 @@
     "chartHourFormat": "HH:mm, eee d LLL",
     "time": "{{date, date|p}}",
     "change": "{{change, change}}",
+    "ago": "geleden",
     "bfban": {
         "stats": "Deze speler is gemarkeerd als hacker in bfban!",
         "platoon": " Hacker"
@@ -384,10 +385,15 @@
             "main": "Spelers die nu in de server zijn",
             "none": "Server is net toegevoegd of gebruikt de manager-api niet",
             "empty": "Dit team is leeg",
+            "lastUpdate": "Laaste update",
             "row": {
                 "ping": "Ping",
                 "platform": "Platform",
-                "timePlayed": "Tijd gespeeld"
+                "timePlayed": "Tijd gespeeld",
+                "playerSlot": "Spelerslot",
+                "playerName": "Spelernaam",
+                "platoon": "Platoon",
+                "rank": "Rank"
             }
         },
         "factions": {

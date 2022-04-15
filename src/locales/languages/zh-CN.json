@@ -13,6 +13,7 @@
     "chartHourFormat": "HH:mm, eee d LLL",
     "time": "{{date, date|p}}",
     "change": "{{change, change}}",
+    "ago": "前",
     "bfban": {
         "stats": "该玩家已被BFBAN标记外挂!",
         "platoon": " 挂壁"
@@ -369,6 +370,7 @@
             "main": "该服务器最近的玩家",
             "none": "该服务器刚刚加入或还没有使用管理api",
             "empty": "这个队伍是空的",
+            "lastUpdate": "线程最后更新",
             "row": {
                 "ping": "延迟",
                 "platform": "平台",

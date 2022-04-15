@@ -13,6 +13,7 @@
     "chartHourFormat": "HH:mm, eee d LLL",
     "time": "{{date, date|p}}",
     "change": "{{change, change}}",
+    "ago": "önce",
     "bfban": {
         "stats": "Oyuncu bfban'da onaylanmış hileci",
         "platoon": " Hileci"
@@ -378,6 +379,7 @@
             "main": "Sunucudaki mevcut oyuncular",
             "none": "Sunucu yeni eklendi veya manager-api kullanmıyor",
             "empty": "Bu takım boş",
+            "lastUpdate": "Son aktif güncellemesi",
             "row": {
                 "ping": "ping",
                 "timePlayed": "Oynanan süre"

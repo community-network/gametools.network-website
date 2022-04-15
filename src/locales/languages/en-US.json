@@ -13,6 +13,7 @@
     "chartHourFormat": "HH:mm, eee d LLL",
     "time": "{{date, date|p}}",
     "change": "{{change, change}}",
+    "ago": "ago",
     "bfban": {
         "stats": "Player is marked as hacker in bfban!",
         "platoon": " Hacker"
@@ -393,10 +394,15 @@
             "main": "Current players in the server",
             "none": "Server is just added or doesn't use the manager-api",
             "empty": "This team is empty",
+            "lastUpdate": "Last update",
             "row": {
                 "ping": "Ping",
                 "platform": "Platform",
-                "timePlayed": "Time played"
+                "timePlayed": "Time played",
+                "playerSlot": "Player slot",
+                "playerName": "Player name",
+                "platoon": "Platoon",
+                "rank": "Rank"
             }
         },
         "factions": {
