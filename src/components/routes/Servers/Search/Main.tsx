@@ -234,7 +234,7 @@ function Search(): React.ReactElement {
       </Align>
       {oldJoinGames.includes(gameName) ? (
         <p>
-          The server join buttons use{" "}
+          The server join buttons uses{" "}
           <a href="https://joinme.click/">https://joinme.click/</a> to join the
           game, install the <a href="https://joinme.click/">joinme launcher</a>{" "}
           first before trying to use those buttons!
