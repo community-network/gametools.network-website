@@ -1,6 +1,6 @@
 import * as React from "react";
 import "../../locales/config";
-import { Link, useHistory, withRouter, useLocation } from "react-router-dom";
+import { useHistory, withRouter, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../assets/scss/App.scss";
@@ -79,19 +79,22 @@ function Results(props: Views): React.ReactElement {
       <Spacing>
         {stats.platoons.map((key: PlatoonResult, index: number) => {
           return (
-            <Link key={index} to={`/platoons/${props.platform}/${key.id}`}>
-              <Box>
-                <AlignW>
-                  <div>
-                    <PlatoonImage background={key.emblem}></PlatoonImage>
-                  </div>
-                  <PlatoonInfo>
-                    <h3>{key.name}</h3>
-                    <p>{key.currentSize} / 100</p>
-                  </PlatoonInfo>
-                </AlignW>
-              </Box>
-            </Link>
+            <Box
+              className="box_hover box"
+              link={`/platoons/${props.platform}/${key.id}`}
+              condition={true}
+              key={index}
+            >
+              <AlignW>
+                <div>
+                  <PlatoonImage background={key.emblem}></PlatoonImage>
+                </div>
+                <PlatoonInfo>
+                  <h3>{key.name}</h3>
+                  <p>{key.currentSize} / 100</p>
+                </PlatoonInfo>
+              </AlignW>
+            </Box>
           );
         })}
       </Spacing>

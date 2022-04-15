@@ -1,6 +1,5 @@
 import * as React from "react";
 import "../../../../locales/config";
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
@@ -80,17 +79,9 @@ interface Views {
   sortType: string;
 }
 
-interface ConLink {
-  children: React.ReactElement<unknown, string>;
-  to: string;
-  condition: boolean;
-}
-
 export function Results(props: Views): React.ReactElement {
   const { t } = useTranslation();
   const stats = props.stats;
-  const ConditionalLink = ({ children, to, condition }: ConLink) =>
-    !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
 
   if (!props.loading && !props.error) {
     if (stats.servers.length == 0) {
@@ -122,38 +113,36 @@ export function Results(props: Views): React.ReactElement {
           }
           const useLink = dice.includes(props.game);
           return (
-            <Box className={useLink ? "box_hover box" : ""} key={index}>
-              <ConditionalLink
-                to={`/servers/${props.game}/${
-                  props.game == "bf2042" ? "serverid" : "gameid"
-                }/${props.game == "bf2042" ? key.serverId : key.gameId}/${
-                  key.platform
-                }${
-                  props.game == "bf2042" ? `?blazeid=${key.blazeGameId}` : ""
-                }`}
-                condition={useLink}
-              >
-                <AlignSeverImg>
-                  <ServerImage background={key.url ?? key.mapImage}>
-                    <Blur>
-                      <ServerText>{key.smallMode}</ServerText>
-                    </Blur>
-                  </ServerImage>
-                  <ServerInfo>
-                    <h3>
-                      {key.server}
-                      {key.prefix}
-                    </h3>
-                    <p>
-                      {key.playerAmount}/{key.maxPlayers}
-                      {key.maxPlayerAmount} {queueString} - {key.mode}
-                      {key.mode === undefined ? key.map : null}
-                      {officialString}
-                      {region}
-                    </p>
-                  </ServerInfo>
-                </AlignSeverImg>
-              </ConditionalLink>
+            <Box
+              className={useLink ? "box_hover box" : ""}
+              link={`/servers/${props.game}/${
+                props.game == "bf2042" ? "serverid" : "gameid"
+              }/${props.game == "bf2042" ? key.serverId : key.gameId}/${
+                key.platform
+              }${props.game == "bf2042" ? `?blazeid=${key.blazeGameId}` : ""}`}
+              condition={useLink}
+              key={index}
+            >
+              <AlignSeverImg>
+                <ServerImage background={key.url ?? key.mapImage}>
+                  <Blur>
+                    <ServerText>{key.smallMode}</ServerText>
+                  </Blur>
+                </ServerImage>
+                <ServerInfo>
+                  <h3>
+                    {key.server}
+                    {key.prefix}
+                  </h3>
+                  <p>
+                    {key.playerAmount}/{key.maxPlayers}
+                    {key.maxPlayerAmount} {queueString} - {key.mode}
+                    {key.mode === undefined ? key.map : null}
+                    {officialString}
+                    {region}
+                  </p>
+                </ServerInfo>
+              </AlignSeverImg>
             </Box>
           );
         })}

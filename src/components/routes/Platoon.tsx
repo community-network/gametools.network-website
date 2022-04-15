@@ -312,35 +312,35 @@ function Servers(props: { servers: ServerList[] }): React.ReactElement {
           officialString = key.official ? " - Official" : " - Custom";
         }
         return (
-          <Link
-            to={`/servers/bf1/gameid/${key.gameId}/${key.platform}`}
+          <Box
+            className="box_hover"
+            link={`/servers/bf1/gameid/${key.gameId}/${key.platform}`}
+            condition={true}
             key={index}
           >
-            <Box className="box_hover">
-              <AlignW>
-                <div>
-                  <ServerImage background={key.url}>
-                    <Blur>
-                      <ServerText>{key.smallMode}</ServerText>
-                    </Blur>
-                  </ServerImage>
-                </div>
-                <ServerInfo>
-                  <h3>
-                    {key.server}
-                    {key.prefix}
-                  </h3>
-                  <p>
-                    {key.playerAmount}/{key.maxPlayers}
-                    {key.maxPlayerAmount} {queueString} - {key.mode}
-                    {key.mode === undefined ? key.map : null}
-                    {officialString}
-                    {region}
-                  </p>
-                </ServerInfo>
-              </AlignW>
-            </Box>
-          </Link>
+            <AlignW>
+              <div>
+                <ServerImage background={key.url}>
+                  <Blur>
+                    <ServerText>{key.smallMode}</ServerText>
+                  </Blur>
+                </ServerImage>
+              </div>
+              <ServerInfo>
+                <h3>
+                  {key.server}
+                  {key.prefix}
+                </h3>
+                <p>
+                  {key.playerAmount}/{key.maxPlayers}
+                  {key.maxPlayerAmount} {queueString} - {key.mode}
+                  {key.mode === undefined ? key.map : null}
+                  {officialString}
+                  {region}
+                </p>
+              </ServerInfo>
+            </AlignW>
+          </Box>
         );
       })}
     </Spacing>

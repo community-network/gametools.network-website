@@ -379,6 +379,11 @@ export function RightArrow(): React.ReactElement {
   );
 }
 
+const BoxSpacing = styled.div`
+  max-width: 45rem;
+  margin: 0 12px 18px 0;
+`;
+
 const BoxWrap = styled.div`
   ${M92}
   background: var(--color-base);
@@ -387,8 +392,6 @@ const BoxWrap = styled.div`
   box-sizing: border-box;
 
   border-radius: 10px;
-  max-width: 45rem;
-  margin: 0 12px 18px 0;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `;
 
@@ -404,6 +407,12 @@ const BoxInner = styled.div`
   //display: flex;
 `;
 
+interface ConLink {
+  children: React.ReactElement<unknown, string>;
+  to: string;
+  condition: boolean;
+}
+
 export function Box(props: {
   align?: string;
   children:
@@ -414,15 +423,44 @@ export function Box(props: {
   className?: string;
   style?: React.CSSProperties;
   innerStyle?: React.CSSProperties;
+  link?: string;
+  condition?: boolean;
 }): React.ReactElement {
+  const ConditionalLink = ({ children, to, condition }: ConLink) =>
+    !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
+
+  if (props.condition === undefined) {
+    return (
+      <BoxSpacing>
+        <BoxWrap className={props.className} style={props.style}>
+          <BoxInner
+            style={{
+              alignItems: props.align || "stretch",
+              ...props.innerStyle,
+            }}
+          >
+            {props.children}
+          </BoxInner>
+        </BoxWrap>
+      </BoxSpacing>
+    );
+  }
+
   return (
-    <BoxWrap className={props.className} style={props.style}>
-      <BoxInner
-        style={{ alignItems: props.align || "stretch", ...props.innerStyle }}
-      >
-        {props.children}
-      </BoxInner>
-    </BoxWrap>
+    <BoxSpacing>
+      <ConditionalLink to={props.link} condition={props.condition}>
+        <BoxWrap className={props.className} style={props.style}>
+          <BoxInner
+            style={{
+              alignItems: props.align || "stretch",
+              ...props.innerStyle,
+            }}
+          >
+            {props.children}
+          </BoxInner>
+        </BoxWrap>
+      </ConditionalLink>
+    </BoxSpacing>
   );
 }
 
