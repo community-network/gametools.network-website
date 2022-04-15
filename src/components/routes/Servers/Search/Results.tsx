@@ -122,16 +122,17 @@ export function Results(props: Views): React.ReactElement {
           }
           const useLink = dice.includes(props.game);
           return (
-            <ConditionalLink
-              to={`/servers/${props.game}/${
-                props.game == "bf2042" ? "serverid" : "gameid"
-              }/${props.game == "bf2042" ? key.serverId : key.gameId}/${
-                key.platform
-              }${props.game == "bf2042" ? `?blazeid=${key.blazeGameId}` : ""}`}
-              condition={useLink}
-              key={index}
-            >
-              <Box className={useLink ? "box_hover box" : ""}>
+            <Box className={useLink ? "box_hover box" : ""} key={index}>
+              <ConditionalLink
+                to={`/servers/${props.game}/${
+                  props.game == "bf2042" ? "serverid" : "gameid"
+                }/${props.game == "bf2042" ? key.serverId : key.gameId}/${
+                  key.platform
+                }${
+                  props.game == "bf2042" ? `?blazeid=${key.blazeGameId}` : ""
+                }`}
+                condition={useLink}
+              >
                 <AlignSeverImg>
                   <ServerImage background={key.url ?? key.mapImage}>
                     <Blur>
@@ -152,8 +153,8 @@ export function Results(props: Views): React.ReactElement {
                     </p>
                   </ServerInfo>
                 </AlignSeverImg>
-              </Box>
-            </ConditionalLink>
+              </ConditionalLink>
+            </Box>
           );
         })}
       </Spacing>
