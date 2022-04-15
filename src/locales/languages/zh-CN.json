@@ -98,12 +98,6 @@
                 "0": "通过这个api你可以访问到战地游戏数据和服务器数据。如果你想制作自己的网站或者机器人，这会是一个很好的选择。",
                 "link": "文档链接",
                 "url": "https://api.gametools.network/"
-            },
-            "3": {
-                "header": "私服行动",
-                "0": "由我们社区提供的行动私服，目的是为了提供一个没有外挂的行动服务器。",
-                "link": "访问我们的Discord ",
-                "url": "https://discord.gametools.network/"
             }
         },
         "faq": {

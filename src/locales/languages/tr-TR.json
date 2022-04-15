@@ -98,12 +98,6 @@
                 "0": "Kendi projeniz veya web siteniz için oyun içi istatistikleri veya sunucu bilgilerini almak için Genel API. Oyun istatistikleri botu ile aynı Battlefield oyunlarının hepsini destekler.",
                 "link": "belgeleri okuyun",
                 "url": "https://api.gametools.network/"
-            },
-            "3": {
-                "header": "Community Operations",
-                "0": "İlk projelerimizden biri BFBan ile kurduğumuz RSP Operation server'dı. Amaç, operasyonlar gamemodu ile hilesiz sunucu yapmaktı. Daha fazlasını Discord adresimizde bulabilirsiniz.",
-                "link": "Discord'umuzu ziyaret edin",
-                "url": "https://discord.gametools.network/"
             }
         },
         "fromOurDevs": {

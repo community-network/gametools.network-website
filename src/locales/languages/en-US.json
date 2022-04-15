@@ -107,12 +107,6 @@
                 "0": "Public API to get ingame stats or serverinfo for your own project or website. It supports all the same Battlefield titles as the game stats bot.",
                 "link": "Read the docs",
                 "url": "https://api.gametools.network/"
-            },
-            "3": {
-                "header": "Community Operations",
-                "0": "One of our first projects was an RSP Operation server we set up together with BFBan. The goal was to make cheat free server with operations gamemode. You can find more at our Discord.",
-                "link": "Visit our Discord",
-                "url": "https://discord.gametools.network/"
             }
         },
         "fromOurDevs": {
@@ -122,6 +116,12 @@
                 "0": "Statbits let's you integrate little bits of game statistics into your live stream chat, as well as any other application. Want a !kd command showing your overall kill/death ratio in Battlefield 4? We got you!",
                 "link": "Read the docs",
                 "url": "https://statbits.io/"
+            },
+            "1": {
+                "header": "BFList",
+                "0": "bflist provides live data about what is happening on the Battlefield in Battlefield-series games. We provide data on servers as well as players. From a server's name or current map to any player's current score and kd.",
+                "link": "Read the docs",
+                "url": "https://bflist.io/"
             }
         },
         "faq": {

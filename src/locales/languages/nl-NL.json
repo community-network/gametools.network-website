@@ -99,12 +99,6 @@
                 "0": "Een publieke API waarmee u de statistieken van spelers en servers kan ophalen en kan gebruiken in uw eigen projecten of website. Dit ondersteund dezelfde Battlefield titels als de game stats bot.",
                 "link": "Lees de documentatie",
                 "url": "https://api.gametools.network/"
-            },
-            "3": {
-                "header": "Community Operations",
-                "0": "Een van onze eerste projecten was een RSP operations server, dit hadden we samen met BFBan opgezet. Het goal van het project as om een hackervrije server met operations als gamemode. U kunt meer info hierover vinden in onze Discord.",
-                "link": "Bezoek onze Discord",
-                "url": "https://discord.gametools.network/"
             }
         },
         "fromOurDevs": {
@@ -114,6 +108,12 @@
                 "0": "Statbits laat je de spelstatistieken integreren in jouw stream chat en andere applicaties. Wil je een !kd command die je algemene kill/death ratio laat zien voor Battlefield 4? We got you!",
                 "link": "Lees de documentatie",
                 "url": "https://statbits.io/"
+            },
+            "1": {
+                "header": "BFList",
+                "0": "bflist biedt live gegevens over wat er op het slagveld gebeurt in spellen uit de Battlefield-serie. Wij geven gegevens over zowel servers als spelers. Van een server zijn naam of huidige map tot de huidige kd en score van elke speler.",
+                "link": "Lees de documentatie",
+                "url": "https://bflist.io/"
             }
         },
         "faq": {
