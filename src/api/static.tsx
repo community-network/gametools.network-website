@@ -51,7 +51,6 @@ export const oldJoinGames = [
   "bf2.bf2hub",
   "bf2.playbf2",
   "bf1942",
-  "bf2142",
   "bfvietnam",
 ];
 export const noCrossplayFrostbite3 = ["bf4", "bf1", "bfv"];
