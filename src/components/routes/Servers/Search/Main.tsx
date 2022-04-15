@@ -14,7 +14,6 @@ import {
   Container,
   BigSelectSecondary,
   SelectPrimary,
-  AlignW,
   Align,
   Bf2042SearchBox,
   Bf2042BigSelectSecondary,
@@ -234,7 +233,7 @@ function Search(): React.ReactElement {
       </Align>
       {oldJoinGames.includes(gameName) ? (
         <p style={{ margin: 0 }}>
-          <Trans i18nKey="servers.joinmeInfo">
+          <Trans i18nKey="servers.joinme.info">
             <a href="https://joinme.click/download">
               https://joinme.click/download
             </a>

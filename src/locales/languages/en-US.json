@@ -366,7 +366,11 @@
         },
         "join": "Join server",
         "joinFirefox": "Join server (Firefox only)",
-        "joinmeInfo": "The join server buttons uses <0>https://joinme.click/</0> to join the game, install the <0>joinme launcher</0> first before trying to use those buttons!",
+        "joinme": {
+            "main": "Joinme launcher",
+            "info": "The join server buttons uses <0>https://joinme.click/</0> to join the game, install the <0>joinme launcher</0> first before trying to use those buttons!",
+            "discord": "The joinme launcher has to be installed to make this work!"
+        },
         "iframe": {
             "main": "Add the server to your own website",
             "info": "If You want your own custom version, ask iiTzArcur in our Discord. (link in footer)",

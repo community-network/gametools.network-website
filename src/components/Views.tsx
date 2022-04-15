@@ -8,6 +8,7 @@ import PlatoonSearch from "./routes/PlatoonSearch";
 import Stats from "./routes/Stats/Player/Main";
 import Servers from "./routes/Servers/Detailed/Servers";
 import Platoon from "./routes/Platoon";
+import Launch from "./routes/GameLauncher";
 import PageNotFound from "./errors/PageNotFound";
 
 function Views(): React.ReactElement {
@@ -32,6 +33,7 @@ function Views(): React.ReactElement {
           path="/servers/:gameid/:type/:sname/:platform"
           component={Servers}
         />
+        <Route exact path="/join-game/:gameid/:ip/:port" component={Launch} />
         <Route component={PageNotFound} />
       </Switch>
     </div>

@@ -358,7 +358,11 @@
         },
         "join": "Join server",
         "joinFirefox": "Join server (werkt alleen op firefox)",
-        "joinmeInfo": "De join server knoppen gebruiken <0>https://joinme.click/</0> om de het spel te starten, installeer de <0>joinme launcher</0> eerst voordat u de knoppen probeert te gebruiken!",
+        "joinme": {
+            "main": "Joinme launcher",
+            "info": "De join server knoppen gebruiken <0>https://joinme.click/</0> om de het spel te starten, installeer de <0>joinme launcher</0> eerst voordat u de knoppen probeert te gebruiken!",
+            "discord": "De joinme launcher moet geïnstalleerd zijn om dit te laten werken!"
+        },
         "iframe": {
             "main": "Voeg de server toe aan uw website",
             "black": "Zwarte variant:",
