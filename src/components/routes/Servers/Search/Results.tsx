@@ -3,9 +3,14 @@ import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
-import { AltText, Box } from "../../../Materials";
+import {
+  AltText,
+  BigButtonSecondary,
+  BigButtonSecondaryBox,
+  Box,
+} from "../../../Materials";
 import { ServerList, ServerSearch } from "../../../../api/ReturnTypes";
-import { dice } from "../../../../api/static";
+import { dice, oldJoinGames } from "../../../../api/static";
 import { DynamicSort } from "../../Stats/Player/Main";
 
 const Description = styled.p`
@@ -57,6 +62,7 @@ const ServerText = styled.h1`
 
 const ServerInfo = styled.div`
   margin-top: 16px;
+  flex-grow: 2;
 `;
 
 const Spacing = styled.div`
@@ -142,6 +148,21 @@ export function Results(props: Views): React.ReactElement {
                     {region}
                   </p>
                 </ServerInfo>
+                {oldJoinGames.includes(props.game) ? (
+                  <a
+                    href={`${props.game.split(".")[0]}://${key.ip}:${key.port}`}
+                    style={{ alignSelf: "end" }}
+                  >
+                    <BigButtonSecondaryBox
+                      style={{ marginBottom: ".6rem" }}
+                      type="submit"
+                    >
+                      {t("Join server")}
+                    </BigButtonSecondaryBox>
+                  </a>
+                ) : (
+                  <></>
+                )}
               </AlignSeverImg>
             </Box>
           );

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -229,6 +229,26 @@ export const BigButtonSecondary = styled.button`
   cursor: pointer;
   :hover {
     background: var(--color-base);
+  }
+`;
+
+export const BigButtonSecondaryBox = styled.button`
+  ${M96}
+  background: var(--color-base);
+  color: var(--color-text);
+  border: none;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  height: 50px;
+  width: 134px;
+  margin-right: 1rem;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  font-family: Manrope;
+  font-weight: medium;
+  font-style: normal;
+  cursor: pointer;
+  :hover {
+    background: #313443;
   }
 `;
 

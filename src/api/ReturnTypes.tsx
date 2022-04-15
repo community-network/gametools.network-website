@@ -205,6 +205,9 @@ export type ServerList = {
   server?: string;
   maxPlayers?: number;
   mapName?: string;
+
+  ip?: string;
+  port?: string;
 };
 
 export type ServerLeaderboardReturn = {

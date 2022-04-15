@@ -24,6 +24,7 @@ import { getLanguage } from "../../../../locales/config";
 import {
   frostbite3,
   noCrossplayFrostbite3,
+  oldJoinGames,
   supportedGames,
 } from "../../../../api/static";
 import { Results } from "./Results";
@@ -231,6 +232,16 @@ function Search(): React.ReactElement {
         </BigSelectSecondary>
         {/* <BigButtonSecondary type="submit">{t("serverSearch.search")} <RightArrow/></BigButtonSecondary> */}
       </Align>
+      {oldJoinGames.includes(gameName) ? (
+        <p>
+          The server join buttons use{" "}
+          <a href="https://joinme.click/">https://joinme.click/</a> to join the
+          game, install the <a href="https://joinme.click/">joinme launcher</a>{" "}
+          first before trying to use those buttons!
+        </p>
+      ) : (
+        <></>
+      )}
       <Align>
         <Title>{t("serverSearch.results")}</Title>
         <SelectPrimary
