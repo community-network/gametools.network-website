@@ -27,7 +27,7 @@
     "clean-dist": "rimraf dist/*",
     "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet",
     "start": "yarn run start-dev",
-    "start-dev": "webpack serve --config=configs/webpack/dev.js --port 3001",
+    "start-dev": "webpack serve --config=configs/webpack/dev.js --host 0.0.0.0 --port 3001",
     "start-prod": "yarn run build && node express.js",
     "test": "jest --coverage --watchAll --config=configs/jest.json"
   },
