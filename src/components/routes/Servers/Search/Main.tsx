@@ -233,7 +233,7 @@ function Search(): React.ReactElement {
         {/* <BigButtonSecondary type="submit">{t("serverSearch.search")} <RightArrow/></BigButtonSecondary> */}
       </Align>
       {oldJoinGames.includes(gameName) ? (
-        <p>
+        <p style={{ margin: 0 }}>
           <Trans i18nKey="servers.joinmeInfo">
             <a href="https://joinme.click/download">
               https://joinme.click/download
