@@ -349,7 +349,8 @@
             "main": "Sunucu sahibi",
             "none": "Sunucunun sahibi yok (Dice sunucusu)"
         },
-        "join": "Sunucuya katıl (yalnızca Firefox)",
+        "join": "Sunucuya katıl",
+        "joinFirefox": "Sunucuya katıl (yalnızca Firefox)",
         "iframe": {
             "main": "Sunucuyu kendi web sitenize ekleyin",
             "info": "Kendi özel sürümünüzü istiyorsanız, Discord'umuzdan iiTzArcur'a sorun.",

@@ -1,7 +1,7 @@
 import * as React from "react";
 import "../../../../locales/config";
 import { useHistory, withRouter, useLocation } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
@@ -234,10 +234,9 @@ function Search(): React.ReactElement {
       </Align>
       {oldJoinGames.includes(gameName) ? (
         <p>
-          The server join buttons uses{" "}
-          <a href="https://joinme.click/">https://joinme.click/</a> to join the
-          game, install the <a href="https://joinme.click/">joinme launcher</a>{" "}
-          first before trying to use those buttons!
+          <Trans i18nKey="servers.joinmeInfo">
+            <a href="https://joinme.click/">https://joinme.click/</a>
+          </Trans>
         </p>
       ) : (
         <></>

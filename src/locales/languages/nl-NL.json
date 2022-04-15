@@ -356,7 +356,9 @@
             "playerAmount": "Aantal spelers",
             "maxPlayers": "Max aantal spelers"
         },
-        "join": "Join server (werkt alleen op firefox)",
+        "join": "Join server",
+        "joinFirefox": "Join server (werkt alleen op firefox)",
+        "joinmeInfo": "De join server knoppen gebruiken <0>https://joinme.click/</0> om de het spel te starten, installeer de <0>joinme launcher</0> eerst voordat u de knoppen probeert te gebruiken!",
         "iframe": {
             "main": "Voeg de server toe aan uw website",
             "black": "Zwarte variant:",

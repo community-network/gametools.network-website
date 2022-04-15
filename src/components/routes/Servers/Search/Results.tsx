@@ -157,7 +157,7 @@ export function Results(props: Views): React.ReactElement {
                       style={{ marginBottom: ".6rem" }}
                       type="submit"
                     >
-                      {t("Join server")}
+                      {t("servers.join")}
                     </BigButtonSecondaryBox>
                   </a>
                 ) : (

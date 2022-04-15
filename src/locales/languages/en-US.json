@@ -364,7 +364,9 @@
             "none": "Server has no owner (Dice server)",
             "unknown": "Name not found"
         },
-        "join": "Join server (Firefox only)",
+        "join": "Join server",
+        "joinFirefox": "Join server (Firefox only)",
+        "joinmeInfo": "The join server buttons uses <0>https://joinme.click/</0> to join the game, install the <0>joinme launcher</0> first before trying to use those buttons!",
         "iframe": {
             "main": "Add the server to your own website",
             "info": "If You want your own custom version, ask iiTzArcur in our Discord. (link in footer)",

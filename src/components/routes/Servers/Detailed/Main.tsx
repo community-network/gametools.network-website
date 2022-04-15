@@ -200,7 +200,7 @@ export function Results(props: Views): React.ReactElement {
               location.href = `origin2://game/launch?offerIds=1026023&authCode=&cmdParams=-webMode%20MP%20-Origin_NoAppFocus%20--activate-webhelper%20-requestState%20State_ClaimReservation%20-gameId%20%22${stats.gameId}%22%20-gameMode%20%22MP%22%20-role%20%22soldier%22%20-asSpectator%20%22false%22%20-joinWithParty%20%22false%22%20%20-Online.BlazeLogLevel%202%20-Online.DirtysockLogLevel%202`;
             }}
           >
-            {t("servers.join")}
+            {t("servers.joinFirefox")}
           </SmallButtonSecondary>
         ) : (
           <></>
@@ -212,7 +212,7 @@ export function Results(props: Views): React.ReactElement {
               location.href = `origin2://game/launch/?offerIds=1007968,1011575,1011576,1011577,1010268,1010269,1010270,1010271,1010958,1010959,1010960,1010961,1007077,1016751,1016757,1016754,1015365,1015364,1015363,1015362&title=Battlefield%u00204%u2122%u0020Premium%u0020Edition&authCode=&cmdParams=-gameId%20${stats.gameId}%20-gameMode%20MP%20-role%20soldier%20-asSpectator%20false%20-joinWithParty%20false`;
             }}
           >
-            {t("servers.join")}
+            {t("servers.joinFirefox")}
           </SmallButtonSecondary>
         ) : (
           <></>
