@@ -53,7 +53,21 @@ export const oldJoinGames = [
   "bf2.playbf2",
   "bf1942",
   "bfvietnam",
+  // other:
+  "bf2sf",
+  "cod",
+  "coduo",
+  "cod2",
+  "cod4",
+  "codwaw",
+  "et",
+  "fearsec2",
+  "paraworld",
+  "swat4",
+  "swat4x",
+  "vietcong",
 ];
+
 export const noCrossplayFrostbite3 = ["bf4", "bf1", "bfv"];
 export const frostbite3 = ["bf4", "bf1", "bfv", "bf2042"];
 export const dice = ["bf3", "bf4", "bfh", "bf1", "bfv", "bf2042"];

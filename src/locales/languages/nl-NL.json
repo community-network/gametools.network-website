@@ -362,7 +362,8 @@
             "main": "Joinme.click launcher",
             "launch": "Spel gestart!",
             "info": "De join server knoppen gebruiken <0>https://joinme.click/</0> om de het spel te starten, installeer de <0>joinme.click launcher</0> eerst voordat u de knoppen probeert te gebruiken!",
-            "discord": "De joinme launcher moet geïnstalleerd zijn om dit te laten werken!"
+            "discord": "De joinme launcher moet geïnstalleerd zijn om dit te laten werken!",
+            "invite": "Joinme.click invite URL"
         },
         "iframe": {
             "main": "Voeg de server toe aan uw website",

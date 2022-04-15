@@ -370,7 +370,8 @@
             "main": "Joinme.click launcher",
             "launch": "Game launched!",
             "info": "The join server buttons uses <0>https://joinme.click/</0> to join the game, install the <0>joinme.click launcher</0> first before trying to use those buttons!",
-            "discord": "The joinme launcher has to be installed to make this work!"
+            "discord": "The joinme launcher has to be installed to make this work!",
+            "invite": "Joinme.click invite URL"
         },
         "iframe": {
             "main": "Add the server to your own website",
