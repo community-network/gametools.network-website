@@ -367,8 +367,8 @@
         "join": "Join server",
         "joinFirefox": "Join server (Firefox only)",
         "joinme": {
-            "main": "Joinme launcher",
-            "info": "The join server buttons uses <0>https://joinme.click/</0> to join the game, install the <0>joinme launcher</0> first before trying to use those buttons!",
+            "main": "Joinme.click launcher",
+            "info": "The join server buttons uses <0>https://joinme.click/</0> to join the game, install the <0>joinme.click launcher</0> first before trying to use those buttons!",
             "discord": "The joinme launcher has to be installed to make this work!"
         },
         "iframe": {

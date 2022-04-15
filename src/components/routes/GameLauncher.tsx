@@ -26,7 +26,7 @@ function Launch({ match }: RouteComponentProps<TParams>): React.ReactElement {
       <h2>Game launched!</h2>
       <p>{t("servers.joinme.discord")}</p>
       <ButtonLink
-        style={{ width: "6rem" }}
+        style={{ width: "8rem" }}
         href="https://joinme.click/download"
       >
         {t("servers.joinme.main")}
