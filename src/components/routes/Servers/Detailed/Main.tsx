@@ -205,6 +205,18 @@ export function Results(props: Views): React.ReactElement {
         ) : (
           <></>
         )}
+        {props.game === "bf4" ? (
+          <SmallButtonSecondary
+            style={{ marginBottom: 0 }}
+            onClick={function () {
+              location.href = `origin2://game/launch/?offerIds=1007968,1011575,1011576,1011577,1010268,1010269,1010270,1010271,1010958,1010959,1010960,1010961,1007077,1016751,1016757,1016754,1015365,1015364,1015363,1015362&title=Battlefield%u00204%u2122%u0020Premium%u0020Edition&authCode=&cmdParams=-gameId%20${stats.gameId}%20-gameMode%20MP%20-role%20soldier%20-asSpectator%20false%20-joinWithParty%20false`;
+            }}
+          >
+            {t("servers.join")}
+          </SmallButtonSecondary>
+        ) : (
+          <></>
+        )}
         <Title>{t("servers.rotation")}</Title>
         <Align>
           {stats.rotation.map((key: ServerRotation, index: number) => {
