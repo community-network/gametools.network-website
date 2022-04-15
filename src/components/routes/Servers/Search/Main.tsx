@@ -235,7 +235,9 @@ function Search(): React.ReactElement {
       {oldJoinGames.includes(gameName) ? (
         <p>
           <Trans i18nKey="servers.joinmeInfo">
-            <a href="https://joinme.click/">https://joinme.click/</a>
+            <a href="https://joinme.click/download">
+              https://joinme.click/download
+            </a>
           </Trans>
         </p>
       ) : (
