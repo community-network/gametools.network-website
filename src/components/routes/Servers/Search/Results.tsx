@@ -10,7 +10,7 @@ import {
   Box,
 } from "../../../Materials";
 import { ServerList, ServerSearch } from "../../../../api/ReturnTypes";
-import { dice, oldJoinGames } from "../../../../api/static";
+import { dice, frostbiteJoinGames, oldJoinGames } from "../../../../api/static";
 import { DynamicSort } from "../../Stats/Player/Main";
 
 const Description = styled.p`
@@ -76,6 +76,11 @@ const AlignSeverImg = styled.div`
     flex-wrap: nowrap;
   }
 `;
+
+const handleChildElementClick = (e: { stopPropagation: () => void }) => {
+  e.stopPropagation();
+  // Do other stuff here
+};
 
 interface Views {
   loading: boolean;
@@ -150,7 +155,24 @@ export function Results(props: Views): React.ReactElement {
                 </ServerInfo>
                 {oldJoinGames.includes(props.game) ? (
                   <a
+                    onClick={(e) => handleChildElementClick(e)}
                     href={`${props.game.split(".")[0]}://${key.ip}:${key.port}`}
+                    style={{ alignSelf: "end" }}
+                  >
+                    <BigButtonSecondaryBox
+                      style={{ marginBottom: ".6rem" }}
+                      type="submit"
+                    >
+                      {t("servers.join")}
+                    </BigButtonSecondaryBox>
+                  </a>
+                ) : (
+                  <></>
+                )}
+                {frostbiteJoinGames.includes(props.game) ? (
+                  <a
+                    onClick={(e) => handleChildElementClick(e)}
+                    href={`${props.game}://${key.gameId}`}
                     style={{ alignSelf: "end" }}
                   >
                     <BigButtonSecondaryBox

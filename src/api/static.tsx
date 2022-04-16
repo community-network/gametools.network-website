@@ -67,6 +67,7 @@ export const oldJoinGames = [
   "swat4x",
   "vietcong",
 ];
+export const frostbiteJoinGames = ["bf4", "bf1"];
 
 export const noCrossplayFrostbite3 = ["bf4", "bf1", "bfv"];
 export const frostbite3 = ["bf4", "bf1", "bfv", "bf2042"];

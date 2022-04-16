@@ -22,6 +22,7 @@ import {
 import { getLanguage } from "../../../../locales/config";
 import {
   frostbite3,
+  frostbiteJoinGames,
   noCrossplayFrostbite3,
   oldJoinGames,
   supportedGames,
@@ -231,7 +232,8 @@ function Search(): React.ReactElement {
         </BigSelectSecondary>
         {/* <BigButtonSecondary type="submit">{t("serverSearch.search")} <RightArrow/></BigButtonSecondary> */}
       </Align>
-      {oldJoinGames.includes(gameName) ? (
+      {oldJoinGames.includes(gameName) ||
+      frostbiteJoinGames.includes(gameName) ? (
         <p style={{ margin: 0 }}>
           <Trans i18nKey="servers.joinme.info">
             <a href="https://joinme.click/download">
