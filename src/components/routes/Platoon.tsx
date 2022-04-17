@@ -1,7 +1,7 @@
 import * as React from "react";
 import "../../locales/config";
 import { Link, RouteComponentProps } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../assets/scss/App.scss";
 import { PlatoonPlayer, PlatoonStats, ServerList } from "../../api/ReturnTypes";
@@ -22,6 +22,8 @@ import {
   ButtonLink,
   TabletRow,
   SmallestPhoneRow,
+  BigButtonSecondaryBox,
+  AlignSeverImg,
 } from "../Materials";
 import { getLanguage } from "../../locales/config";
 
@@ -282,6 +284,11 @@ const ServerInfo = styled.div`
   margin-top: 16px;
 `;
 
+const handleChildElementClick = (e: { stopPropagation: () => void }) => {
+  e.stopPropagation();
+  // Do other stuff here
+};
+
 function Servers(props: { servers: ServerList[] }): React.ReactElement {
   const { t } = useTranslation();
   const servers = props.servers;
@@ -295,7 +302,16 @@ function Servers(props: { servers: ServerList[] }): React.ReactElement {
   }
   return (
     <Spacing>
-      <Title>{t("platoon.servers")}</Title>
+      <Align>
+        <Title style={{ marginRight: "1rem" }}>{t("platoon.servers")}</Title>
+        <p style={{ margin: 0, marginBottom: "1rem" }}>
+          <Trans i18nKey="servers.joinme.info">
+            <a href="https://joinme.click/download">
+              https://joinme.click/download
+            </a>
+          </Trans>
+        </p>
+      </Align>
       {servers.map((key: ServerList, index: number) => {
         let queue: number = undefined;
         queue = key.inQue;
@@ -318,7 +334,7 @@ function Servers(props: { servers: ServerList[] }): React.ReactElement {
             condition={true}
             key={index}
           >
-            <AlignW>
+            <AlignSeverImg>
               <div>
                 <ServerImage background={key.url}>
                   <Blur>
@@ -339,7 +355,19 @@ function Servers(props: { servers: ServerList[] }): React.ReactElement {
                   {region}
                 </p>
               </ServerInfo>
-            </AlignW>
+              <a
+                onClick={(e) => handleChildElementClick(e)}
+                href={`bf1://${key.gameId}`}
+                style={{ alignSelf: "end" }}
+              >
+                <BigButtonSecondaryBox
+                  style={{ marginBottom: ".6rem" }}
+                  type="submit"
+                >
+                  {t("servers.join")}
+                </BigButtonSecondaryBox>
+              </a>
+            </AlignSeverImg>
           </Box>
         );
       })}

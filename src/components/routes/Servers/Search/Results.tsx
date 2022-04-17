@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
 import {
+  AlignSeverImg,
   AltText,
   BigButtonSecondary,
   BigButtonSecondaryBox,
@@ -67,14 +68,6 @@ const ServerInfo = styled.div`
 
 const Spacing = styled.div`
   margin-bottom: 2rem;
-`;
-
-const AlignSeverImg = styled.div`
-  @media (min-width: 430px) {
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-  }
 `;
 
 const handleChildElementClick = (e: { stopPropagation: () => void }) => {

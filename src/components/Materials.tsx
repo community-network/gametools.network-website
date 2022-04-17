@@ -362,6 +362,14 @@ export const AlignT = styled.div`
   flex-wrap: wrap;
 `;
 
+export const AlignSeverImg = styled.div`
+  @media (min-width: 540px) {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+`;
+
 export const Alignbf2042Search = styled.div`
   display: flex;
   align-items: center;
