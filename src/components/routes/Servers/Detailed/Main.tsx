@@ -233,7 +233,7 @@ export function Results(props: Views): React.ReactElement {
                   <ServerInfo>
                     <h3
                       style={{
-                        marginTop: ".3rem",
+                        marginTop: ".2rem",
                         lineHeight: 0.8,
                         textAlign: "center",
                       }}
