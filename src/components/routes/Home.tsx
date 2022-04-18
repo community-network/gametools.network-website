@@ -8,7 +8,7 @@ import {
   AltText,
   Box,
   Container,
-  Align,
+  AlignT,
   PrimaryButtonLink,
   ButtonLink,
 } from "../Materials";
@@ -152,7 +152,7 @@ function Home(): React.ReactElement {
       </Image>
       <Title>{t("home.hostedAt.header")}</Title>
       <Container>
-        <Align>
+        <AlignT>
           {hostedAtItems.map((key, index) => {
             return (
               <Box key={index} align="flex-start">
@@ -167,11 +167,11 @@ function Home(): React.ReactElement {
               </Box>
             );
           })}
-        </Align>
+        </AlignT>
         <h2 style={{ margin: "24px 0 24px 24px" }}>
           {t("home.ourSolutions.header")}
         </h2>
-        <Align>
+        <AlignT>
           {ourSolutions.map((key, index) => {
             return (
               <Box key={index} align="flex-start">
@@ -186,11 +186,11 @@ function Home(): React.ReactElement {
               </Box>
             );
           })}
-        </Align>
+        </AlignT>
         <h2 style={{ margin: "24px 0 24px 24px" }}>
           {t("home.fromOurDevs.header")}
         </h2>
-        <Align>
+        <AlignT>
           {fromOurDevs.map((key, index) => {
             return (
               <Box key={index} align="flex-start">
@@ -205,7 +205,7 @@ function Home(): React.ReactElement {
               </Box>
             );
           })}
-        </Align>
+        </AlignT>
       </Container>
       <Title style={{ marginTop: "3rem", marginBottom: 0 }}>
         {t("home.faq.header")}
