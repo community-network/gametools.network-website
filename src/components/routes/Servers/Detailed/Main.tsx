@@ -89,15 +89,22 @@ const ServerFactorites = styled.h1`
   line-height: 0;
 `;
 
-const MapImage = styled.img`
-  margin-top: 12px;
+const MapImage = styled.div<IServerImage>`
+  height: 7rem;
+  display: flex;
+  min-width: 9rem;
+  margin-top: 9px;
   max-height: 4rem;
-  margin-right: 0.7rem;
-  border-radius: 2px;
+  border-radius: 4px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("${(props) => props.background}");
 `;
 
 const ServerInfo = styled.div`
-  margin-top: 15px;
+  width: 100%;
+  align-self: center;
 `;
 
 const ServerLink = styled.a`
@@ -216,29 +223,27 @@ export function Results(props: Views): React.ReactElement {
         ) : (
           <></>
         )}
-        <Title>{t("servers.rotation")}</Title>
+        <Title style={{ marginBottom: 0 }}>{t("servers.rotation")}</Title>
         <Align>
           {stats.rotation.map((key: ServerRotation, index: number) => {
             return (
-              <Box
-                key={index}
-                style={{ marginRight: ".6rem", marginBottom: ".7rem" }}
-                innerStyle={{
-                  padding: "0rem 1rem",
-                  paddingBottom: "0.6rem",
-                  marginRight: ".5rem",
-                }}
-              >
-                <AlignW>
-                  <PhoneVis>
-                    <MapImage src={key.image} />
-                  </PhoneVis>
+              <AlignW key={index}>
+                <div style={{ marginRight: ".7rem" }}>
+                  <MapImage background={key.image}></MapImage>
                   <ServerInfo>
-                    <h3>{key.mapname}</h3>
-                    <p>{key.mode}</p>
+                    <h3
+                      style={{
+                        marginTop: ".3rem",
+                        lineHeight: 0.8,
+                        textAlign: "center",
+                      }}
+                    >
+                      {key.mapname}
+                    </h3>
+                    <p style={{ margin: 0, textAlign: "center" }}>{key.mode}</p>
                   </ServerInfo>
-                </AlignW>
-              </Box>
+                </div>
+              </AlignW>
             );
           })}
         </Align>
