@@ -5,7 +5,7 @@ import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { useQuery } from "react-query";
-import { AltText, Back, ArrowLeft, Container } from "../../../Materials";
+import { AltText, Container, BackButton } from "../../../Materials";
 import { getLanguage } from "../../../../locales/config";
 import { Results } from "./Main";
 import { RouteComponentProps } from "react-router-dom";
@@ -55,6 +55,7 @@ function Servers({ match }: RouteComponentProps<TParams>): React.ReactElement {
   const platform = match.params.platform;
   const serverName = unescape(match.params.sname).replaceAll('"', '\\"');
   const { t } = useTranslation();
+
   const {
     isLoading: loading,
     isError: error,
@@ -71,10 +72,7 @@ function Servers({ match }: RouteComponentProps<TParams>): React.ReactElement {
   return (
     <div>
       <Container>
-        <Back to="/servers">
-          <ArrowLeft />
-          {t("servers.back")}
-        </Back>
+        <BackButton text={t("servers.back")} location="/servers" />
         <Results
           game={gameId}
           loading={loading}

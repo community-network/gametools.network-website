@@ -6,8 +6,6 @@ import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { useQuery } from "react-query";
 import useWindowDimensions from "../../../functions/useWindowDimensions";
 import {
-  Back,
-  ArrowLeft,
   Container,
   Align,
   AltText,
@@ -18,6 +16,7 @@ import {
   UncheckedSmallButtonRadio,
   PageColumn,
   PageRow,
+  BackButton,
 } from "../../../Materials";
 import styled from "styled-components";
 import {
@@ -124,6 +123,7 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
 
   React.useEffect(() => {
     const params = new URLSearchParams();
+    const old_params = query.toString();
     if (game) {
       params.append("game", game);
     } else {
@@ -134,7 +134,9 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
     } else {
       params.delete("name");
     }
-    history.push({ search: params.toString() });
+    if (params.toString() != old_params) {
+      history.push({ search: params.toString() });
+    }
   }, [game, history]);
   const { t } = useTranslation();
   const {
@@ -155,12 +157,7 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
   const games = platformGames[platform];
   return (
     <Container>
-      <div>
-        <Back to="/stats">
-          <ArrowLeft />
-          {t("stats.back")}
-        </Back>
-      </div>
+      <BackButton text={t("stats.back")} location="/stats" />
       <ViewOrigin
         game={game}
         loading={loading}

@@ -9,13 +9,12 @@ import { useQuery } from "react-query";
 import {
   AltText,
   SearchBox,
-  Back,
-  ArrowLeft,
   Container,
   Align,
   AlignW,
   Box,
   BigSelectSecondary,
+  BackButton,
 } from "../Materials";
 import { getLanguage } from "../../locales/config";
 import { PlatoonResult, PlatoonSearchResult } from "../../api/ReturnTypes";
@@ -155,10 +154,7 @@ function Search(): React.ReactElement {
   );
   return (
     <Container>
-      <Back to="/">
-        <ArrowLeft />
-        {t("platoonSearch.back")}
-      </Back>
+      <BackButton text={t("platoonSearch.back")} location="/" />
       <Align>
         <h2>{t("platoonSearch.serverInfo")}</h2>
         <AltDescription>{t("platoonSearch.description")}</AltDescription>

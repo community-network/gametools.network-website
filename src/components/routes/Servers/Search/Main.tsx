@@ -9,8 +9,6 @@ import { useQuery } from "react-query";
 import {
   AltText,
   SearchBox,
-  Back,
-  ArrowLeft,
   Container,
   BigSelectSecondary,
   SelectPrimary,
@@ -18,6 +16,7 @@ import {
   Bf2042SearchBox,
   Bf2042BigSelectSecondary,
   Alignbf2042Search,
+  BackButton,
 } from "../../../Materials";
 import { getLanguage } from "../../../../locales/config";
 import {
@@ -132,10 +131,7 @@ function Search(): React.ReactElement {
   );
   return (
     <Container>
-      <Back to="/">
-        <ArrowLeft />
-        {t("serverSearch.back")}
-      </Back>
+      <BackButton text={t("serverSearch.back")} location="/" />
       <Align>
         <h2>{t("serverSearch.serverInfo")}</h2>
         <AltDescription>{t("serverSearch.description")}</AltDescription>

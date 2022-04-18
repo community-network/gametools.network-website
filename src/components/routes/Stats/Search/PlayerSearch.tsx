@@ -9,11 +9,10 @@ import {
   SearchBox,
   BigButtonSecondary,
   RightArrow,
-  Back,
-  ArrowLeft,
   Container,
   BigSelectSecondary,
   Align,
+  BackButton,
 } from "../../../Materials";
 import { platformGames } from "../../../../api/static";
 import { Graphs } from "./Graphs";
@@ -39,10 +38,7 @@ function Search(): React.ReactElement {
   const [game, setGame] = React.useState<string>("bf1");
   return (
     <>
-      <Back to="/">
-        <ArrowLeft />
-        {t("playerSearch.back")}
-      </Back>
+      <BackButton text={t("playerSearch.back")} location="/" />
       <Align>
         <h2>{t("playerSearch.bfStats")}</h2>
         <AltDescription>{t("playerSearch.description")}</AltDescription>

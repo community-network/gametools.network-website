@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 export const M88 = css`
   --color-text: rgba(255, 255, 255, 0.88);
@@ -69,10 +69,45 @@ export const Container = styled.div`
   }
 `;
 
-export const Back = styled(Link)`
+export const Back = styled.button`
   ${M88}
+  color: var(--color-text);
+  font-weight: 500;
+  line-height: 150%;
+  font-size: 12px;
+  background: none;
+  font-family: Manrope;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: inherit;
   align-items: center;
 `;
+
+export function BackButton(props: {
+  text: string;
+  location: string;
+}): React.ReactElement {
+  const history = useHistory();
+
+  return (
+    <Back
+      onClick={() => {
+        if (
+          document.referrer.indexOf(window.location.host) === -1 ||
+          ["/", "/stats"].includes(props.location)
+        ) {
+          window.location.href = props.location;
+        } else {
+          history.goBack();
+        }
+      }}
+    >
+      <ArrowLeft />
+      {props.text}
+    </Back>
+  );
+}
 
 export const ArrowLeft = styled.i`
   border: solid white;

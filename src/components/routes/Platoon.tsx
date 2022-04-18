@@ -9,8 +9,6 @@ import { bfbanPlayer, GametoolsApi } from "../../api/GametoolsApi";
 import { useQuery } from "react-query";
 import {
   AltText,
-  Back,
-  ArrowLeft,
   Container,
   Align,
   AlignW,
@@ -26,6 +24,7 @@ import {
   AlignSeverImg,
   PageRow,
   PageColumn,
+  BackButton,
 } from "../Materials";
 import { getLanguage } from "../../locales/config";
 
@@ -457,10 +456,7 @@ function Platoon({ match }: RouteComponentProps<TParams>): React.ReactElement {
   return (
     <div>
       <Container>
-        <Back to="/platoons">
-          <ArrowLeft />
-          {t("platoon.back")}
-        </Back>
+        <BackButton text={t("platoon.back")} location="/platoons" />
         <Results
           loading={loading}
           platoon={platoon}
