@@ -265,6 +265,19 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
             error={error}
             name={name}
           />
+          {progressGames.includes(game) ? (
+            <>
+              <ViewProgress
+                game={game}
+                loading={loading}
+                stats={stats}
+                error={error}
+                name={name}
+              />
+            </>
+          ) : (
+            <></>
+          )}
         </PageRow>
         <PageRow>
           <ViewClasses
@@ -288,34 +301,21 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
             error={error}
             name={name}
           />
+          {gamemodeGames.includes(game) ? (
+            <>
+              <ViewGamemodes
+                game={game}
+                loading={loading}
+                stats={stats}
+                error={error}
+                name={name}
+              />
+            </>
+          ) : (
+            <></>
+          )}
         </PageRow>
       </PageColumn>
-      {progressGames.includes(game) ? (
-        <>
-          <ViewProgress
-            game={game}
-            loading={loading}
-            stats={stats}
-            error={error}
-            name={name}
-          />
-        </>
-      ) : (
-        <></>
-      )}
-      {gamemodeGames.includes(game) ? (
-        <>
-          <ViewGamemodes
-            game={game}
-            loading={loading}
-            stats={stats}
-            error={error}
-            name={name}
-          />
-        </>
-      ) : (
-        <></>
-      )}
       <ViewIframe
         game={game}
         loading={loading}
