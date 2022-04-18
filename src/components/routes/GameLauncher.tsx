@@ -2,7 +2,7 @@ import * as React from "react";
 import "../../locales/config";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { oldJoinGames } from "../../api/static";
-import { Align, ArrowLeft, Back, ButtonLink, Container } from "../Materials";
+import { Align, BackButton, ButtonLink, Container } from "../Materials";
 import { useTranslation } from "react-i18next";
 
 type TParams = {
@@ -19,10 +19,7 @@ function Launch({ match }: RouteComponentProps<TParams>): React.ReactElement {
 
   return (
     <Container>
-      <Back to="/platoons">
-        <ArrowLeft />
-        {t("serverSearch.back")}
-      </Back>
+      <BackButton text={t("serverSearch.back")} location="/" />
       <h2>{t("servers.joinme.launch")}</h2>
       <p>{t("servers.joinme.discord")}</p>
       <Align style={{ width: "23rem" }}>
