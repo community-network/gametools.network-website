@@ -13,7 +13,7 @@ import {
   PhoneRow,
 } from "../../../Materials";
 import { ScoreServerPlayer, ScoreTeamList } from "../../../../api/ReturnTypes";
-import { ConLink, Description, Spacing, Title } from "./Servers";
+import { Description, Spacing, Title } from "./Servers";
 
 export function ServerScoreboard(props: {
   game: string;

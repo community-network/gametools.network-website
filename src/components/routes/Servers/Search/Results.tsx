@@ -6,7 +6,6 @@ import "../../../../assets/scss/App.scss";
 import {
   AlignSeverImg,
   AltText,
-  BigButtonSecondary,
   BigButtonSecondaryBox,
   Box,
 } from "../../../Materials";

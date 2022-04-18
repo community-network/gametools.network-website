@@ -6,7 +6,6 @@ import "../../../../assets/scss/App.scss";
 import {
   frostbite3,
   frostbiteJoinGames,
-  oldJoinGames,
   serverWidgetTypes,
   widgetSize,
 } from "../../../../api/static";
@@ -17,7 +16,6 @@ import {
   AlignT,
   Box,
   SmallButtonSecondary,
-  PhoneVis,
 } from "../../../Materials";
 import {
   DetailedServerInfo,
