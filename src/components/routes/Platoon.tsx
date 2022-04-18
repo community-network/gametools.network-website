@@ -24,6 +24,8 @@ import {
   SmallestPhoneRow,
   BigButtonSecondaryBox,
   AlignSeverImg,
+  PageRow,
+  PageColumn,
 } from "../Materials";
 import { getLanguage } from "../../locales/config";
 
@@ -412,8 +414,14 @@ function Results(props: Views): React.ReactElement {
             )}
           </div>
         </AlignPlatoonImg>
-        <Members platform={props.platform} members={platoon.members} />
-        <Servers servers={platoon.servers} />
+        <PageColumn>
+          <PageRow>
+            <Members platform={props.platform} members={platoon.members} />
+          </PageRow>
+          <PageRow>
+            <Servers servers={platoon.servers} />
+          </PageRow>
+        </PageColumn>
       </div>
     );
   } else {
