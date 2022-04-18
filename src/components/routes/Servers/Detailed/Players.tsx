@@ -16,6 +16,7 @@ import {
   SelectPrimary,
 } from "../../../Materials";
 import {
+  ScoreServerPlayer,
   serverPlayer,
   ServerPlayersReturn,
   serverTeamList,
@@ -252,6 +253,7 @@ function Players(props: {
     </Spacing>
   );
 }
+
 export function ServerPlayerlist(props: {
   game: string;
   platform: string;
@@ -284,6 +286,81 @@ export function ServerPlayerlist(props: {
     <Spacing>
       <Title>{t("servers.playerlist.main")}</Title>
       <Description>{t("loading")}</Description>
+    </Spacing>
+  );
+}
+
+export function Bf3ServerPlayerlist(props: {
+  players: ScoreServerPlayer[];
+}): React.ReactElement {
+  const { t } = useTranslation();
+
+  const players = props.players;
+
+  return (
+    <Spacing>
+      <h2>{t("servers.playerlist.main")}</h2>
+      {players !== null ? (
+        <>
+          <Box>
+            {players.length !== 0 ? (
+              <>
+                {players.map((key: ScoreServerPlayer, index: number) => {
+                  return (
+                    <Column key={index}>
+                      <Row>
+                        <AlignW>
+                          <img src={key.avatar} height="35px" />
+
+                          <Link
+                            to={`/stats/pc/playerid/${
+                              key.player_id
+                            }?game=bf3&name=${encodeURIComponent(key.name)}`}
+                          >
+                            <>
+                              <h4
+                                style={{
+                                  maxWidth: "11rem",
+                                  width: "auto",
+                                  minWidth: "8rem",
+                                  margin: "0.5rem",
+                                  whiteSpace: "nowrap",
+                                }}
+                              >
+                                {key.name}
+                              </h4>
+                            </>
+                          </Link>
+                        </AlignW>
+                      </Row>
+                      <PhoneRow>
+                        <ButtonLink
+                          style={{
+                            marginTop: ".5rem",
+                          }}
+                          href={`https://gametools.network/stats/pc/name/${encodeURIComponent(
+                            key.name,
+                          )}?game=bf3`}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {t("stats.view")}
+                        </ButtonLink>
+                      </PhoneRow>
+                    </Column>
+                  );
+                })}
+              </>
+            ) : (
+              <p>{t("servers.playerlist.empty")}</p>
+            )}
+          </Box>
+        </>
+      ) : (
+        <Box>
+          <p>{t("servers.playerlist.empty")}</p>
+        </Box>
+      )}
     </Spacing>
   );
 }

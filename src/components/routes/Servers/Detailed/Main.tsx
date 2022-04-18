@@ -26,7 +26,7 @@ import {
   ServerSettings,
 } from "../../../../api/ReturnTypes";
 import { ServerOwner } from "./Owner";
-import { ServerPlayerlist } from "./Players";
+import { Bf3ServerPlayerlist, ServerPlayerlist } from "./Players";
 import { ServerLeaderboard } from "./Leaderboard";
 import { ServerPlatoon } from "./Platoon";
 import { ServerConfig } from "./Portal";
@@ -292,7 +292,13 @@ export function Results(props: Views): React.ReactElement {
                 )}
               </>
             ) : (
-              <></>
+              <>
+                {props.game === "bf3" ? (
+                  <Bf3ServerPlayerlist players={stats.players} />
+                ) : (
+                  <></>
+                )}
+              </>
             )}
             {stats.players != undefined && stats.teams != undefined ? (
               <ServerScoreboard

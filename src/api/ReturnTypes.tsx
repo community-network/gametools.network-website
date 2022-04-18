@@ -395,6 +395,8 @@ export type ScoreServerPlayer = {
   score: number;
   squad: number;
   tag: string;
+
+  avatar?: string;
 };
 
 export type ServerRotation = {
