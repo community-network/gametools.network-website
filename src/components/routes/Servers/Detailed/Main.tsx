@@ -385,12 +385,11 @@ export function Results(props: Views): React.ReactElement {
                 src={`https://widgets.gametools.network/servers/${element}/${
                   props.game
                 }/name/${encodeURIComponent(stats.prefix)}/pc`}
-                style={{ maxWidth: "700px" }}
+                style={{ maxWidth: "700px", backgroundColor: "transparent" }}
                 height={`${widgetSize[index]}px`}
                 width="100%"
                 frameBorder="0"
-                allowtransparency="true"
-              ></iframe>
+              />
             </div>
           );
         })}
