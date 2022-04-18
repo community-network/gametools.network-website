@@ -82,3 +82,27 @@ export const widgetSize = [78, 78, 90];
 export const teamArr = ["teamOne", "teamTwo"];
 
 export const gameIds = { bf1: "1026023", bf4: "76889" };
+
+export const bf4Settings = {
+  osls: "Only squad leader spawn",
+  v3ca: "3p vehicle cam",
+  v3sp: "Use 3d spotting",
+  vaba: "Team balance",
+  vffi: "Friendly fire",
+  vhud: "Show hud",
+  vkca: "Kill cam",
+  vmin: "Show minimap",
+  vmsp: "Use minimap spotting",
+  vnta: "Show enemy name tags",
+  vrhe: "Regenerative health",
+  vvsa: "Vehicles",
+  vnit: "Kick idle player after seconds",
+  vtkc: "# of tk before player is kicked",
+  vtkk: "Ban player after  of kicks",
+  vbdm: "Bullet damage modifier in %",
+  vgmc: "Team ticket count %",
+  vpmd: "Player man down time in %",
+  vprt: "Player respawn time in %",
+  vshe: "Player health in %",
+  vvsd: "Vehicle respawn delay %",
+};

@@ -4,6 +4,7 @@ import { Trans, useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
 import {
+  bf4Settings,
   frostbite3,
   frostbiteJoinGames,
   serverWidgetTypes,
@@ -16,6 +17,8 @@ import {
   AlignT,
   Box,
   SmallButtonSecondary,
+  PageColumn,
+  PageRow,
 } from "../../../Materials";
 import {
   DetailedServerInfo,
@@ -209,14 +212,24 @@ export function Results(props: Views): React.ReactElement {
                 </a>
               </Trans>
             </p>
-            <SmallButtonSecondary
-              style={{ marginBottom: 0 }}
-              onClick={function () {
-                location.href = `${props.game}://${stats.gameId}`;
-              }}
-            >
-              {t("servers.join")}
-            </SmallButtonSecondary>
+            <Align>
+              <SmallButtonSecondary
+                style={{ marginBottom: 0 }}
+                onClick={function () {
+                  location.href = `${props.game}://${stats.gameId}`;
+                }}
+              >
+                {t("servers.join")}
+              </SmallButtonSecondary>
+              <SmallButtonSecondary
+                style={{ marginBottom: 0 }}
+                onClick={function () {
+                  location.href = `https://joinme.click/g/${props.game}/${stats.gameId}`;
+                }}
+              >
+                {t("servers.joinme.view")}
+              </SmallButtonSecondary>
+            </Align>
           </>
         ) : (
           <></>
@@ -245,152 +258,166 @@ export function Results(props: Views): React.ReactElement {
             );
           })}
         </Align>
-        {props.game !== "bf4" && frostbite3.includes(props.game) ? (
-          <ServerOwner owner={stats.owner} game={props.game} />
-        ) : stats.players != undefined && stats.teams != undefined ? (
-          <ServerScoreboard
-            game={props.game}
-            stats={stats.teams}
-            platform={props.platform}
-          />
-        ) : (
-          <></>
-        )}
-        {props.game === "bf1" ? (
-          <>
-            <ServerPlatoon platoon={stats.platoon} platform={props.platform} />
-            <ServerLeaderboard gameid={stats.gameId} />
-            <ServerPlayerlist
-              game={props.game}
-              gameid={stats.gameId}
-              platform={props.platform}
-            />
-          </>
-        ) : (
-          <></>
-        )}
-        {props.game === "bfv" ? (
-          <>
-            <ServerPlayerlist
-              game={props.game}
-              gameid={stats.gameId}
-              platform={props.platform}
-            />
-          </>
-        ) : (
-          <></>
-        )}
-        {props.game === "bf2042" ? (
-          <>
-            <ServerConfig serverInfo={stats.serverInfo} />
-            {stats.blazeGameId !== undefined ? (
-              <ServerPlayerlist
+
+        <PageColumn>
+          <PageRow>
+            {props.game !== "bf4" && frostbite3.includes(props.game) ? (
+              <>
+                <ServerOwner owner={stats.owner} game={props.game} />
+                {props.game === "bf2042" ? (
+                  <>
+                    <ServerConfig serverInfo={stats.serverInfo} />
+                    {stats.blazeGameId !== undefined ? (
+                      <ServerPlayerlist
+                        game={props.game}
+                        gameid={stats.blazeGameId.toString()}
+                        platform={props.platform}
+                      />
+                    ) : blazeIdQuery !== null ? (
+                      <ServerPlayerlist
+                        game={props.game}
+                        gameid={blazeIdQuery}
+                        platform={props.platform}
+                      />
+                    ) : (
+                      <></>
+                    )}
+                  </>
+                ) : (
+                  <ServerPlayerlist
+                    game={props.game}
+                    gameid={stats.gameId}
+                    platform={props.platform}
+                  />
+                )}
+              </>
+            ) : (
+              <></>
+            )}
+            {stats.players != undefined && stats.teams != undefined ? (
+              <ServerScoreboard
                 game={props.game}
-                gameid={stats.blazeGameId.toString()}
-                platform={props.platform}
-              />
-            ) : blazeIdQuery !== null ? (
-              <ServerPlayerlist
-                game={props.game}
-                gameid={blazeIdQuery}
+                stats={stats.teams}
                 platform={props.platform}
               />
             ) : (
               <></>
             )}
-          </>
-        ) : (
-          <></>
-        )}
-        {props.game !== "bf2042" ? (
-          <>
-            <h2>{t("servers.settings")}</h2>
-            <AlignT>
-              {Object.entries(stats.settings).map(
-                (key: [string, unknown], index: number) => {
+          </PageRow>
+
+          <PageRow>
+            {props.game === "bf1" ? (
+              <>
+                <ServerPlatoon
+                  platoon={stats.platoon}
+                  platform={props.platform}
+                />
+                <ServerLeaderboard gameid={stats.gameId} />
+              </>
+            ) : (
+              <></>
+            )}
+            {props.game === "bfv" ? <></> : <></>}
+            {props.game !== "bf2042" ? (
+              <>
+                <h2>{t("servers.settings")}</h2>
+                <AlignT>
+                  {Object.entries(stats.settings).map(
+                    (key: [string, unknown], index: number) => {
+                      return (
+                        <div key={index}>
+                          <h3>{key[0]}</h3>
+                          {Object.entries(key[1]).map(
+                            (key: [string, string], index: number) => {
+                              return (
+                                <AltDescription key={index}>
+                                  <b>
+                                    {key[0] in bf4Settings
+                                      ? bf4Settings[key[0]]
+                                      : capitalizeFirstLetter(key[0])}
+                                  </b>
+                                  : {key[1]}
+                                </AltDescription>
+                              );
+                            },
+                          )}
+                        </div>
+                      );
+                    },
+                  )}
+                </AlignT>
+              </>
+            ) : (
+              <>
+                <h2>{t("servers.settings")}</h2>
+                {stats.settings.map((value: ServerSettings, index: number) => {
                   return (
                     <div key={index}>
-                      <h3>{key[0]}</h3>
-                      {Object.entries(key[1]).map(
-                        (key: [string, unknown], index: number) => {
-                          return (
-                            <AltDescription key={index}>
-                              <b>{capitalizeFirstLetter(key[0])}</b>: {key[1]}
-                            </AltDescription>
-                          );
-                        },
-                      )}
+                      <AltDescription key={index}>
+                        <b>
+                          {capitalizeFirstLetter(
+                            value.values[0].readableSettingName,
+                          )}
+                        </b>
+                        : {}
+                        {value.values[1].readableSettingName}
+                      </AltDescription>
                     </div>
                   );
-                },
-              )}
-            </AlignT>
-          </>
-        ) : (
-          <>
-            <h2>{t("servers.settings")}</h2>
-            {stats.settings.map((value: ServerSettings, index: number) => {
-              return (
-                <div key={index}>
-                  <AltDescription key={index}>
-                    <b>
-                      {capitalizeFirstLetter(
-                        value.values[0].readableSettingName,
-                      )}
-                    </b>
-                    : {}
-                    {value.values[1].readableSettingName}
-                  </AltDescription>
-                </div>
-              );
-            })}
-            <br></br>
-          </>
-        )}
+                })}
+                <br></br>
+              </>
+            )}
+          </PageRow>
+        </PageColumn>
 
         <h2 style={{ marginBottom: 0 }}>{t("servers.iframe.main")}</h2>
         <Description style={{ margin: 0, marginTop: "0.2rem" }}>
           {t("servers.iframe.info")}
         </Description>
-        {serverWidgetTypes.map((element, index) => {
-          return (
-            <div key={index}>
-              <Description style={{ marginTop: "15px" }}>
-                {t(`servers.iframe.${element}`)}{" "}
-                <ServerLink
-                  onClick={() => {
-                    navigator.clipboard.writeText(
-                      `<iframe src="https://widgets.gametools.network/servers/${element}/${
-                        props.game
-                      }/name/${encodeURIComponent(stats.prefix)}/pc" height="${
-                        widgetSize[index]
-                      }px" width="700px" frameborder="0" allowtransparency="true"></iframe>`,
-                    );
-                    copyStates[element].set("copied");
-                    const timer1 = setTimeout(
-                      () => copyStates[element].set("copy"),
-                      3 * 1000,
-                    );
-                    return () => {
-                      clearTimeout(timer1);
-                    };
-                  }}
-                >
-                  {t(`servers.iframe.states.${copyStates[element].state}`)}
-                </ServerLink>
-              </Description>
-              <iframe
-                src={`https://widgets.gametools.network/servers/${element}/${
-                  props.game
-                }/name/${encodeURIComponent(stats.prefix)}/pc`}
-                style={{ maxWidth: "700px", backgroundColor: "transparent" }}
-                height={`${widgetSize[index]}px`}
-                width="100%"
-                frameBorder="0"
-              />
-            </div>
-          );
-        })}
+        <PageColumn>
+          {serverWidgetTypes.map((element, index) => {
+            return (
+              <PageRow key={index}>
+                <Description style={{ marginTop: "15px" }}>
+                  {t(`servers.iframe.${element}`)}{" "}
+                  <ServerLink
+                    onClick={() => {
+                      navigator.clipboard.writeText(
+                        `<iframe src="https://widgets.gametools.network/servers/${element}/${
+                          props.game
+                        }/name/${encodeURIComponent(
+                          stats.prefix,
+                        )}/pc" height="${
+                          widgetSize[index]
+                        }px" width="700px" frameborder="0" allowtransparency="true"></iframe>`,
+                      );
+                      copyStates[element].set("copied");
+                      const timer1 = setTimeout(
+                        () => copyStates[element].set("copy"),
+                        3 * 1000,
+                      );
+                      return () => {
+                        clearTimeout(timer1);
+                      };
+                    }}
+                  >
+                    {t(`servers.iframe.states.${copyStates[element].state}`)}
+                  </ServerLink>
+                </Description>
+                <iframe
+                  src={`https://widgets.gametools.network/servers/${element}/${
+                    props.game
+                  }/name/${encodeURIComponent(stats.prefix)}/pc`}
+                  style={{ maxWidth: "700px", backgroundColor: "transparent" }}
+                  height={`${widgetSize[index]}px`}
+                  width="100%"
+                  frameBorder="0"
+                />
+              </PageRow>
+            );
+          })}
+        </PageColumn>
       </div>
     );
   } else {

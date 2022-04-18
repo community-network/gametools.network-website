@@ -368,6 +368,7 @@
         "joinFirefox": "Join server (Firefox only)",
         "joinme": {
             "main": "Joinme.click launcher",
+            "view": "View on joinme.click",
             "launch": "Game launched!",
             "info": "The join server buttons uses <0>https://joinme.click/</0> to join the game, install the <0>joinme.click launcher</0> first before trying to use those buttons!",
             "discord": "The joinme launcher has to be installed to make this work!",
