@@ -18,9 +18,9 @@ export function ViewGamemodes(props: Views): React.ReactElement {
             {gamemodes[0].wins !== undefined ? (
               <>
                 <h3>{t("stats.gamemodes.main")}</h3>
-                {gamemodes.map((key: MainStatsGamemode) => {
+                {gamemodes.map((key: MainStatsGamemode, index: number) => {
                   return (
-                    <>
+                    <div key={index}>
                       <br />
                       <Align style={{ justifyContent: "space-between" }}>
                         <h4 style={{ margin: 0 }}>
@@ -62,7 +62,7 @@ export function ViewGamemodes(props: Views): React.ReactElement {
                           <p>{t("stats.gamemodes.amounts.losses")}</p>
                         </div>
                       </AlignS>
-                    </>
+                    </div>
                   );
                 })}
               </>

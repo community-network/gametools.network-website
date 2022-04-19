@@ -17,9 +17,9 @@ export function ViewClasses(props: Views): React.ReactElement {
         <Box>
           <>
             <h3>{t("stats.classes.main")}</h3>
-            {classes.map((key: MainStatsClasses) => {
+            {classes.map((key: MainStatsClasses, index: number) => {
               return (
-                <>
+                <div key={index}>
                   <Column>
                     <Row>
                       <h4 style={{ margin: 0 }}>
@@ -68,7 +68,7 @@ export function ViewClasses(props: Views): React.ReactElement {
                       <></>
                     )}
                   </Column>
-                </>
+                </div>
               );
             })}
           </>

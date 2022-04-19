@@ -13,9 +13,9 @@ export function ViewProgress(props: Views): React.ReactElement {
       <Spacing>
         <Box>
           <h3>{t("stats.progress.main")}</h3>
-          {progress.map((key: MainStatsProgress) => {
+          {progress.map((key: MainStatsProgress, index: number) => {
             return (
-              <>
+              <div key={index}>
                 <br />
                 <Align style={{ justifyContent: "space-between" }}>
                   <h4 style={{ width: "4rem", margin: 0 }}>
@@ -41,7 +41,7 @@ export function ViewProgress(props: Views): React.ReactElement {
                     }}
                   ></Bar>
                 </BackgroundBar>
-              </>
+              </div>
             );
           })}
         </Box>

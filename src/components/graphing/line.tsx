@@ -1,5 +1,13 @@
 import * as React from "react";
-import { Line, Chart } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  TimeScale,
+  PointElement,
+  LineElement,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
 import "chartjs-adapter-date-fns";
 import zoomPlugin from "chartjs-plugin-zoom";
 import { useTranslation } from "react-i18next";
@@ -10,7 +18,12 @@ import { Box } from "../Materials";
 
 import { useMeasure } from "react-use";
 
-Chart.register(zoomPlugin);
+ChartJS.register(zoomPlugin);
+ChartJS.register(CategoryScale);
+ChartJS.register(LinearScale);
+ChartJS.register(PointElement);
+ChartJS.register(LineElement);
+ChartJS.register(TimeScale);
 
 interface GraphData {
   loading: boolean;
@@ -42,63 +55,10 @@ const borderPlugin = {
   },
 };
 
-const options = {
-  interaction: {
-    intersect: false,
-    mode: "nearest",
-  },
-  scales: {
-    x: {
-      type: "time",
-      ticks: {
-        autoSkip: true,
-        autoSkipPadding: 50,
-        maxRotation: 0,
-      },
-      time: {
-        displayFormats: {
-          hour: "HH:mm, eee d LLL",
-        },
-      },
-    },
-  },
-  onClick(e) {
-    const chart = e.chart;
-    chart.options.plugins.zoom.zoom.wheel.enabled =
-      !chart.options.plugins.zoom.zoom.wheel.enabled;
-    chart.options.plugins.zoom.zoom.pinch.enabled =
-      !chart.options.plugins.zoom.zoom.pinch.enabled;
-    chart.update();
-  },
-  plugins: {
-    zoom: {
-      limits: {
-        x: {
-          min: +new Date() - 604800000,
-          max: +new Date(),
-          minRange: 50000000,
-        },
-      },
-      pan: {
-        enabled: true,
-        mode: "x",
-      },
-      zoom: {
-        wheel: {
-          enabled: false,
-        },
-        pinch: {
-          enabled: false,
-        },
-        mode: "x",
-      },
-    },
-  },
-};
-
 function LineGraph(props: GraphData): React.ReactElement {
   if (!props.loading && !props.error) {
     const { t } = useTranslation();
+    const chartRef = React.useRef(null);
     const time = props.timeStamps.map((e: string) => {
       const time = new Date(e);
       return time;
@@ -146,11 +106,63 @@ function LineGraph(props: GraphData): React.ReactElement {
     return (
       <div>
         <Line
-          options={options}
+          ref={chartRef}
+          options={{
+            interaction: {
+              intersect: false,
+              mode: "nearest",
+            },
+            scales: {
+              x: {
+                type: "time",
+                ticks: {
+                  autoSkip: true,
+                  autoSkipPadding: 50,
+                  maxRotation: 0,
+                },
+                time: {
+                  displayFormats: {
+                    hour: "HH:mm, eee d LLL",
+                  },
+                },
+              },
+            },
+            onClick() {
+              const chart = chartRef.current;
+              chart.options.plugins.zoom.zoom.wheel.enabled =
+                !chart.options.plugins.zoom.zoom.wheel.enabled;
+              chart.options.plugins.zoom.zoom.pinch.enabled =
+                !chart.options.plugins.zoom.zoom.pinch.enabled;
+              chart.update();
+            },
+            plugins: {
+              zoom: {
+                limits: {
+                  x: {
+                    min: +new Date() - 604800000,
+                    max: +new Date(),
+                    minRange: 50000000,
+                  },
+                },
+                pan: {
+                  enabled: true,
+                  mode: "x",
+                },
+                zoom: {
+                  wheel: {
+                    enabled: false,
+                  },
+                  pinch: {
+                    enabled: false,
+                  },
+                  mode: "x",
+                },
+              },
+            },
+          }}
           style={{ height: "15rem" }}
           data={data}
           plugins={[borderPlugin]}
-          type="line"
         />
       </div>
     );
@@ -162,11 +174,11 @@ function LineGraph(props: GraphData): React.ReactElement {
 function AllPlatformGraph(props: GraphData): React.ReactElement {
   if (!props.loading && !props.error) {
     const { t } = useTranslation();
+    const chartRef = React.useRef(null);
     const time = props.timeStamps.map((e: string) => {
       const time = new Date(e);
       return time;
     });
-    console.log(props.stats);
     const data =
       props.gameName !== "bf2042"
         ? {
@@ -211,11 +223,63 @@ function AllPlatformGraph(props: GraphData): React.ReactElement {
     return (
       <div>
         <Line
-          options={options}
+          ref={chartRef}
+          options={{
+            interaction: {
+              intersect: false,
+              mode: "nearest",
+            },
+            scales: {
+              x: {
+                type: "time",
+                ticks: {
+                  autoSkip: true,
+                  autoSkipPadding: 50,
+                  maxRotation: 0,
+                },
+                time: {
+                  displayFormats: {
+                    hour: "HH:mm, eee d LLL",
+                  },
+                },
+              },
+            },
+            onClick() {
+              const chart = chartRef.current;
+              chart.options.plugins.zoom.zoom.wheel.enabled =
+                !chart.options.plugins.zoom.zoom.wheel.enabled;
+              chart.options.plugins.zoom.zoom.pinch.enabled =
+                !chart.options.plugins.zoom.zoom.pinch.enabled;
+              chart.update();
+            },
+            plugins: {
+              zoom: {
+                limits: {
+                  x: {
+                    min: +new Date() - 604800000,
+                    max: +new Date(),
+                    minRange: 50000000,
+                  },
+                },
+                pan: {
+                  enabled: true,
+                  mode: "x",
+                },
+                zoom: {
+                  wheel: {
+                    enabled: false,
+                  },
+                  pinch: {
+                    enabled: false,
+                  },
+                  mode: "x",
+                },
+              },
+            },
+          }}
           plugins={[borderPlugin]}
           style={{ height: "15rem" }}
           data={data}
-          type="line"
         />
       </div>
     );
@@ -341,6 +405,7 @@ export function Graph(props: GameInfo): React.ReactElement {
 
 function GlobalLineGraph(props: GraphData): React.ReactElement {
   const [graphRef, { width }] = useMeasure();
+  const chartRef = React.useRef(null);
   const { t } = useTranslation();
   if (!props.loading && !props.error) {
     const time = props.stats.timeStamps.map((e: string) => {
@@ -398,21 +463,74 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
       <div ref={graphRef}>
         {width > 380 ? (
           <Line
-            options={options}
-            plugins={[borderPlugin]}
-            style={{ height: "20rem" }}
-            data={data}
-            type="line"
-          />
-        ) : (
-          <Line
+            ref={chartRef}
             options={{
               interaction: {
                 intersect: false,
                 mode: "nearest",
               },
-              onClick(e) {
-                const chart = e.chart;
+              scales: {
+                x: {
+                  type: "time",
+                  ticks: {
+                    autoSkip: true,
+                    autoSkipPadding: 50,
+                    maxRotation: 0,
+                  },
+                  time: {
+                    displayFormats: {
+                      hour: "HH:mm, eee d LLL",
+                    },
+                  },
+                },
+              },
+              onClick() {
+                const chart = chartRef.current;
+                chart.options.plugins.zoom.zoom.wheel.enabled =
+                  !chart.options.plugins.zoom.zoom.wheel.enabled;
+                chart.options.plugins.zoom.zoom.pinch.enabled =
+                  !chart.options.plugins.zoom.zoom.pinch.enabled;
+                chart.update();
+              },
+              plugins: {
+                zoom: {
+                  limits: {
+                    x: {
+                      min: +new Date() - 604800000,
+                      max: +new Date(),
+                      minRange: 50000000,
+                    },
+                  },
+                  pan: {
+                    enabled: true,
+                    mode: "x",
+                  },
+                  zoom: {
+                    wheel: {
+                      enabled: false,
+                    },
+                    pinch: {
+                      enabled: false,
+                    },
+                    mode: "x",
+                  },
+                },
+              },
+            }}
+            plugins={[borderPlugin]}
+            style={{ height: "20rem" }}
+            data={data}
+          />
+        ) : (
+          <Line
+            ref={chartRef}
+            options={{
+              interaction: {
+                intersect: false,
+                mode: "nearest",
+              },
+              onClick() {
+                const chart = chartRef.current;
                 chart.options.plugins.zoom.zoom.wheel.enabled =
                   !chart.options.plugins.zoom.zoom.wheel.enabled;
                 chart.options.plugins.zoom.zoom.pinch.enabled =
@@ -422,10 +540,12 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
               plugins: {
                 legend: { display: false },
                 zoom: {
-                  x: {
-                    min: +new Date() - 604800000,
-                    max: +new Date(),
-                    minRange: 50000000,
+                  limits: {
+                    x: {
+                      min: +new Date() - 604800000,
+                      max: +new Date(),
+                      minRange: 50000000,
+                    },
                   },
                   pan: {
                     enabled: true,
@@ -446,7 +566,6 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
             plugins={[borderPlugin]}
             style={{ height: "0rem" }}
             data={data}
-            type="line"
           />
         )}
       </div>

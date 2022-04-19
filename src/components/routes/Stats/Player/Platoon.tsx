@@ -106,9 +106,9 @@ export function PlatoonInfo(props: PlatformViews): React.ReactElement {
               <br />
               <br />
               <h3>{t("stats.otherPlatoons")}</h3>
-              {otherPlatoons.map((key: MainStatsPlatoon) => {
+              {otherPlatoons.map((key: MainStatsPlatoon, index: number) => {
                 return (
-                  <>
+                  <div key={index}>
                     <AlignW style={{ alignItems: "start" }}>
                       <Link to={`/platoons/${platform}/${key.id}`}>
                         <PlatoonEmblem src={key.emblem} />
@@ -133,7 +133,7 @@ export function PlatoonInfo(props: PlatformViews): React.ReactElement {
                       </div>
                     </AlignW>
                     <br />
-                  </>
+                  </div>
                 );
               })}
             </>

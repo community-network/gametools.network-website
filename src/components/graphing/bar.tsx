@@ -1,6 +1,9 @@
-import React from "react";
+import * as React from "react";
 import { Bar } from "react-chartjs-2";
+import { Chart as ChartJS, BarElement } from "chart.js";
 import { useTranslation } from "react-i18next";
+
+ChartJS.register(BarElement);
 
 interface GraphData {
   loading: boolean;
@@ -62,7 +65,7 @@ export function BarGraph(props: GraphData): React.ReactElement {
 
   return (
     <>
-      <Bar data={data} options={options} type="bar" />
+      <Bar data={data} options={options} />
     </>
   );
 }
