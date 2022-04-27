@@ -3,7 +3,7 @@ import background from "../../../../assets/icon/portal.svg";
 import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
 import "../../../../assets/scss/App.scss";
-import { Align } from "../../../Materials";
+import { AlignW } from "../../../Materials";
 import { ServerInfoResult } from "../../../../api/ReturnTypes";
 import {
   OriginDescription,
@@ -20,13 +20,13 @@ export function ServerConfig(props: {
   return (
     <Spacing>
       <h2>{t("servers.portal.main")}</h2>
-      <Align>
+      <AlignW>
         <OriginProfile src={background} />
         <div>
           <OriginName>{serverInfo.configName}</OriginName>
           <OriginDescription>{serverInfo.configDescription}</OriginDescription>
         </div>
-      </Align>
+      </AlignW>
     </Spacing>
   );
 }

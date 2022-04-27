@@ -31,10 +31,11 @@ export const OriginProfile = styled.img`
 
 export const OriginName = styled.h2`
   line-height: 60%;
+  margin-top: 0.4rem;
 `;
 
 export const OriginDescription = styled.h4`
-  line-height: 60%;
+  margin: 0;
 `;
 
 export interface ConLink {

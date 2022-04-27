@@ -108,7 +108,7 @@ function LineGraph(props: GraphData): React.ReactElement {
         <Line
           ref={chartRef}
           options={{
-            interaction: {
+            hover: {
               intersect: false,
               mode: "nearest",
             },
@@ -136,6 +136,10 @@ function LineGraph(props: GraphData): React.ReactElement {
               chart.update();
             },
             plugins: {
+              tooltip: {
+                mode: "nearest",
+                intersect: false,
+              },
               zoom: {
                 limits: {
                   x: {
@@ -225,7 +229,7 @@ function AllPlatformGraph(props: GraphData): React.ReactElement {
         <Line
           ref={chartRef}
           options={{
-            interaction: {
+            hover: {
               intersect: false,
               mode: "nearest",
             },
@@ -253,6 +257,10 @@ function AllPlatformGraph(props: GraphData): React.ReactElement {
               chart.update();
             },
             plugins: {
+              tooltip: {
+                mode: "nearest",
+                intersect: false,
+              },
               zoom: {
                 limits: {
                   x: {
@@ -465,7 +473,7 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
           <Line
             ref={chartRef}
             options={{
-              interaction: {
+              hover: {
                 intersect: false,
                 mode: "nearest",
               },
@@ -493,6 +501,10 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
                 chart.update();
               },
               plugins: {
+                tooltip: {
+                  mode: "nearest",
+                  intersect: false,
+                },
                 zoom: {
                   limits: {
                     x: {
@@ -525,7 +537,7 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
           <Line
             ref={chartRef}
             options={{
-              interaction: {
+              hover: {
                 intersect: false,
                 mode: "nearest",
               },
@@ -539,6 +551,10 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
               },
               plugins: {
                 legend: { display: false },
+                tooltip: {
+                  mode: "nearest",
+                  intersect: false,
+                },
                 zoom: {
                   limits: {
                     x: {
