@@ -107,6 +107,12 @@
                 "0": "Statbits, diğer tüm uygulamaların yanı sıra canlı yayın sohbetinize küçük oyun istatistiklerini entegre etmenize olanak tanır. Battlefield 4'te toplam öldürme/ölüm oranınızı gösteren bir !kd komutu ister misiniz? tam istediğin!",
                 "link": "Belgeleri okuyun",
                 "url": "https://statbits.io/"
+            },
+            "1": {
+                "header": "BFList",
+                "0": "Battlefield serisi oyunlarda Battlefield'da neler olduğu hakkında canlı veriler sağlar. Oyuncuların yanı sıra sunucular hakkında da veri sağlıyoruz. Bir sunucunun adından veya mevcut haritasından herhangi bir oyuncunun mevcut puanına ve kd'sine kadar.",
+                "link": "belgeleri okuyun",
+                "url": "https://bflist.io/"
             }
         },
         "faq": {
@@ -345,6 +351,14 @@
         },
         "join": "Sunucuya katıl",
         "joinFirefox": "Sunucuya katıl (yalnızca Firefox)",
+        "joinme": {
+            "main": "Bana katıl, başlatıcıyı tıkla",
+            "launch": "Oyun başlatıldı!",
+            "view": "Bana katıl'a tıklayın",
+            "info": "Sunucuya katılma düğmeleri oyuna katılmak için <0>https://joinme.click/</0> kullanılır, bu düğmeleri kullanmaya çalışmadan önce <0>joinme.click launcher</0> yükleyin!",
+            "discord": "Bunun çalışması için bana katıl başlatıcısının yüklenmesi gerekiyor!",
+            "invite": "Bana katıl. Davet URL'sini tıklayın"
+        },
         "iframe": {
             "main": "Sunucuyu kendi web sitenize ekleyin",
             "info": "Kendi özel sürümünüzü istiyorsanız, Discord'umuzdan iiTzArcur'a sorun.",
@@ -377,7 +391,11 @@
             "lastUpdate": "Son aktif güncellemesi",
             "row": {
                 "ping": "ping",
-                "timePlayed": "Oynanan süre"
+                "timePlayed": "Oynanan süre",
+                "playerSlot": "Oyuncu yuvası",
+                "playerName": "Oyuncu adı",
+                "platoon": "Birlik",
+                "rank": "Sıralama"
             }
         },
         "factions": {
