@@ -75,14 +75,14 @@
     "chartjs-adapter-date-fns": "^2.0.0",
     "chartjs-plugin-zoom": "^1.2.1",
     "date-fns": "^2.28.0",
-    "gifsicle": "^6.1.0",
+    "gifsicle": "^7.0.1",
     "i18next": "^21.6.16",
     "i18next-browser-languagedetector": "^6.1.4",
     "react-chartjs-2": "^4.1.0",
     "react-i18next": "^11.16.6",
     "react-query": "^3.35.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^5.0.0",
+    "react-scripts": "^5.0.1",
     "react-use": "^17.3.2",
     "styled-components": "^5.3.5"
   }
