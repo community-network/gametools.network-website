@@ -216,7 +216,7 @@ function AllPlatformGraph(props: GraphData): React.ReactElement {
             datasets: [
               {
                 label: t("platforms.global"),
-                data: props.stats.global.soldierAmount,
+                data: props.stats.soldierAmount,
                 fill: false,
                 borderColor: "rgba(75,192,192,0.2)",
                 pointRadius: 0,
