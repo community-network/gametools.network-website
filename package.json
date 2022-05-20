@@ -71,7 +71,6 @@
   },
   "dependencies": {
     "chart.js": "^3.7.1",
-    "chartjs": "^0.3.24",
     "chartjs-adapter-date-fns": "^2.0.0",
     "chartjs-plugin-zoom": "^1.2.1",
     "date-fns": "^2.28.0",

@@ -6,6 +6,7 @@ import {
   TimeScale,
   PointElement,
   LineElement,
+  Tooltip,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import "chartjs-adapter-date-fns";
@@ -18,12 +19,15 @@ import { Box } from "../Materials";
 
 import { useMeasure } from "react-use";
 
-ChartJS.register(zoomPlugin);
-ChartJS.register(CategoryScale);
-ChartJS.register(LinearScale);
-ChartJS.register(PointElement);
-ChartJS.register(LineElement);
-ChartJS.register(TimeScale);
+ChartJS.register(
+  zoomPlugin,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  TimeScale,
+  Tooltip,
+);
 
 interface GraphData {
   loading: boolean;

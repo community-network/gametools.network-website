@@ -3501,11 +3501,6 @@
   dependencies:
     "hammerjs" "^2.0.8"
 
-"chartjs@^0.3.24":
-  "integrity" "sha512-h6G9qcDqmFYnSWqjWCzQMeOLiypS+pM6Fq2Rj7LPty8Kjx5yHonwwJ7oEHImZpQ2u9Pu36XGYfardvvBiQVrhg=="
-  "resolved" "https://registry.npmjs.org/chartjs/-/chartjs-0.3.24.tgz"
-  "version" "0.3.24"
-
 "check-types@^11.1.1":
   "integrity" "sha512-tzWzvgePgLORb9/3a0YenggReLKAIb2owL03H2Xdoe5pKcUyWRSEQ8xfCar8t2SIAuEDwtmx2da1YB52YuHQMQ=="
   "resolved" "https://registry.npmjs.org/check-types/-/check-types-11.1.2.tgz"
