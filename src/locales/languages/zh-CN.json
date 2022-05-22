@@ -33,13 +33,19 @@
     "games": {
         "bfglobal": "全部游戏",
         "bf2": {
-            "bf2hub": "战地2hub",
-            "playbf2": "战地2"
+            "bf2hub": "战地2 (bf2hub)",
+            "playbf2": "战地2 (playbf2)"
+        },
+        "bf2142": {
+            "openspy": "战地2142 (openspy)",
+            "play2142": "战地2142 (.co)"
+        },
+        "bfvietnam": {
+            "openspy" :"战地越南 (openspy)",
+            "qtracker" :"战地越南 (qtracker)"
         },
         "bfbc2": "战地 BC 2",
-        "bf2142": "战地 2142 (.co)",
         "bf1942": "战地 1942",
-        "bfvietnam": "战地 老兵",
         "bf3": "战地3",
         "bf4": "战地4",
         "bfh": "战地硬仗",
