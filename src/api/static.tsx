@@ -56,7 +56,8 @@ export const oldJoinGames = [
   "bf2.bf2hub",
   "bf2.playbf2",
   "bf1942",
-  "bfvietnam",
+  "bfvietnam.openspy",
+  "bfvietnam.qtracker",
   // other:
   "bf2sf",
   "cod",
