@@ -32,14 +32,20 @@
     },
     "games": {
         "bfglobal": "Global",
+        "bf1942": "Battlefield 1942",
         "bf2": {
             "bf2hub": "Battlefield 2 (bf2hub)",
             "playbf2": "Battlefield 2 (playbf2)"
         },
+        "bf2142": {
+            "openspy": "Battlefield 2142 (openspy)",
+            "play2142": "Battlefield 2142 (.co)"
+        },
+        "bfvietnam": {
+            "openspy" :"Battlefield Vietnam (openspy)",
+            "qtracker" :"Battlefield Vietnam (qtracker)"
+        },
         "bfbc2": "Battlefield: Bad Company 2",
-        "bf2142": "Battlefield 2142 (.co)",
-        "bf1942": "Battlefield 1942",
-        "bfvietnam": "Battlefield Vietnam",
         "bf3": "Battlefield 3",
         "bf4": "Battlefield 4",
         "bfh": "Battlefield Hardline",
