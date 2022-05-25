@@ -28,9 +28,6 @@ export function Graphs(): React.ReactElement {
         <BigSelectSecondary
           value={platformGraph}
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void => {
-            if (ev.target.value == "all" && gameGraph == "bfglobal") {
-              setGraphGame("bf1");
-            }
             setPlatformGraph(ev.target.value);
           }}
         >
