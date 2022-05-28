@@ -48,7 +48,7 @@ export const graphGames = {
   ],
   xboxone: ["bfglobal", "bf4", "bf1", "bfv"],
   ps4: ["bfglobal", "bf4", "bf1", "bfv"],
-  all: ["bfglobal", "bf4", "bf1", "bfv", "bf2042"],
+  all: ["bfglobal", "bf4", "bf1", "bfv", "bf2042portal"],
 };
 
 export const oldJoinGames = [
