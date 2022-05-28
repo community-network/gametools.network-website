@@ -14,7 +14,7 @@ import zoomPlugin from "chartjs-plugin-zoom";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "react-query";
 import { GametoolsApi } from "../../api/GametoolsApi";
-import { newTitles, graphGames, gameGraphConvert } from "../../api/static";
+import { graphGames, gameGraphConvert, graphColors } from "../../api/static";
 import { Box } from "../Materials";
 
 import { useMeasure } from "react-use";
@@ -61,51 +61,28 @@ const borderPlugin = {
 
 function LineGraph(props: GraphData): React.ReactElement {
   if (!props.loading && !props.error) {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const chartRef = React.useRef(null);
     const time = props.timeStamps.map((e: string) => {
       const time = new Date(e);
       return time;
     });
-    const data = newTitles.includes(props.gameName)
-      ? {
-          labels: time,
-          datasets: [
-            {
-              label: t("stats.graph.all"),
-              data: props.stats.soldierAmount,
-              fill: false,
-              borderColor: "rgba(75,192,192,0.2)",
-              pointRadius: 0,
-            },
-            {
-              label: t("stats.graph.dice"),
-              data: props.stats.diceSoldierAmount,
-              fill: false,
-              borderColor: "#49297e",
-              pointRadius: 0,
-            },
-            {
-              label: t("stats.graph.community"),
-              data: props.stats.communitySoldierAmount,
-              fill: false,
-              borderColor: "#195f08",
-              pointRadius: 0,
-            },
-          ],
-        }
-      : {
-          labels: time,
-          datasets: [
-            {
-              label: "All players",
-              data: props.stats.soldierAmount,
-              fill: false,
-              borderColor: "rgba(75,192,192,0.2)",
-              pointRadius: 0,
-            },
-          ],
-        };
+
+    const data = [];
+
+    let color = 0;
+    for (const [key, value] of Object.entries(props.stats)) {
+      data.push({
+        label: i18n.exists(`stats.graph.${key}`)
+          ? t(`stats.graph.${key}`)
+          : key,
+        data: value,
+        fill: false,
+        borderColor: graphColors[color],
+        pointRadius: 0,
+      });
+      color += 1;
+    }
 
     return (
       <div>
@@ -169,7 +146,10 @@ function LineGraph(props: GraphData): React.ReactElement {
             },
           }}
           style={{ height: "15rem" }}
-          data={data}
+          data={{
+            labels: time,
+            datasets: data,
+          }}
           plugins={[borderPlugin]}
         />
       </div>
@@ -187,46 +167,30 @@ function AllPlatformGraph(props: GraphData): React.ReactElement {
       const time = new Date(e);
       return time;
     });
-    const data =
-      props.gameName !== "bf2042portal"
-        ? {
-            labels: time,
-            datasets: [
-              {
-                label: t("platforms.pc"),
-                data: props.stats.pc.soldierAmount,
-                fill: false,
-                borderColor: "rgba(75,192,192,0.2)",
-                pointRadius: 0,
-              },
-              {
-                label: t("platforms.ps4"),
-                data: props.stats.ps4.soldierAmount,
-                fill: false,
-                borderColor: "#49297e",
-                pointRadius: 0,
-              },
-              {
-                label: t("platforms.xboxone"),
-                data: props.stats.xboxone.soldierAmount,
-                fill: false,
-                borderColor: "#195f08",
-                pointRadius: 0,
-              },
-            ],
-          }
-        : {
-            labels: time,
-            datasets: [
-              {
-                label: t("platforms.global"),
-                data: props.stats.soldierAmount,
-                fill: false,
-                borderColor: "rgba(75,192,192,0.2)",
-                pointRadius: 0,
-              },
-            ],
-          };
+
+    const data = [];
+
+    let color = 0;
+    if (props.gameName !== "bf2042portal") {
+      for (const [key, value] of Object.entries(props.stats)) {
+        data.push({
+          label: t(`platforms.${key}`),
+          data: value.soldierAmount,
+          fill: false,
+          borderColor: graphColors[color],
+          pointRadius: 0,
+        });
+        color += 1;
+      }
+    } else {
+      data.push({
+        label: t("platforms.global"),
+        data: props.stats.soldierAmount,
+        fill: false,
+        borderColor: graphColors[0],
+        pointRadius: 0,
+      });
+    }
 
     return (
       <div>
@@ -291,7 +255,10 @@ function AllPlatformGraph(props: GraphData): React.ReactElement {
           }}
           plugins={[borderPlugin]}
           style={{ height: "15rem" }}
-          data={data}
+          data={{
+            labels: time,
+            datasets: data,
+          }}
         />
       </div>
     );
@@ -303,6 +270,12 @@ function AllPlatformGraph(props: GraphData): React.ReactElement {
 interface GameInfo {
   gameName: string;
   platform: string;
+}
+
+interface NewGameInfo {
+  gameName: string;
+  platform: string;
+  graphOptions: string;
 }
 
 export function OldGameGraph(props: GameInfo): React.ReactElement {
@@ -352,13 +325,20 @@ export function OldGameGraph(props: GameInfo): React.ReactElement {
   }
 }
 
-export function Graph(props: GameInfo): React.ReactElement {
+export function Graph(props: NewGameInfo): React.ReactElement {
   const {
     isLoading: loading,
     isError: error,
     data: stats,
   } = useQuery(
-    ["regions", "7", "multiple", props.gameName, props.platform],
+    [
+      "regions",
+      "7",
+      "multiple",
+      props.gameName,
+      props.platform,
+      props.graphOptions,
+    ],
     () =>
       GametoolsApi.graphs({
         game:
@@ -368,6 +348,7 @@ export function Graph(props: GameInfo): React.ReactElement {
         days: "7",
         region: "multiple",
         platform: props.platform,
+        type: props.graphOptions,
       }),
     { staleTime: Infinity, refetchOnWindowFocus: false },
   );
@@ -432,21 +413,6 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
         return e;
       }
     });
-    const colors = [
-      "#4bc0c0",
-      "#49297e",
-      "#195f08",
-      "#003fc5",
-      "#ae08a7",
-      "#ae0842",
-      "#829a00",
-      "#9a5d00",
-      "#009a96",
-      "#00609a",
-      "#4b009a",
-      "#439a00",
-      "#004b9f",
-    ];
     const data = {
       labels: time,
       datasets: games.map((e: string, index: number) => {
@@ -460,7 +426,7 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
             label: t(`games.${e}`),
             data: props.stats[gameName],
             fill: false,
-            borderColor: colors[index],
+            borderColor: graphColors[index],
             pointRadius: 0,
           };
         }
@@ -468,7 +434,7 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
           label: e,
           data: props.stats[gameName],
           fill: false,
-          borderColor: colors[index],
+          borderColor: graphColors[index],
           pointRadius: 0,
         };
       }),

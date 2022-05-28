@@ -5,7 +5,7 @@ import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
 import { BigSelectSecondary, Align } from "../../../Materials";
 import { Graph, GlobalGraph, OldGameGraph } from "../../../graphing/line";
-import { diceGraph, graphGames } from "../../../../api/static";
+import { diceGraph, graphGames, graphOptions } from "../../../../api/static";
 import { AltDescription } from "./PlayerSearch";
 
 const Title = styled.h2`
@@ -16,6 +16,7 @@ export function Graphs(): React.ReactElement {
   const { t } = useTranslation();
   const [platformGraph, setPlatformGraph] = React.useState<string>("pc");
   const [gameGraph, setGraphGame] = React.useState<string>("bfglobal");
+  const [optionGraph, setOptionGraph] = React.useState<string>("amounts");
   return (
     <>
       <Align>
@@ -50,10 +51,32 @@ export function Graphs(): React.ReactElement {
             );
           })}
         </BigSelectSecondary>
+        <BigSelectSecondary
+          disabled={!(gameGraph in graphOptions && platformGraph !== "all")}
+          value={optionGraph}
+          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
+            setOptionGraph(ev.target.value)
+          }
+        >
+          {(gameGraph in graphOptions && platformGraph !== "all"
+            ? graphOptions[gameGraph]
+            : ["amounts"]
+          ).map((key: string, index: number) => {
+            return (
+              <option key={index} value={key}>
+                {t(`stats.graph.graphOptions.${key}`)}
+              </option>
+            );
+          })}
+        </BigSelectSecondary>
       </Align>
       {diceGraph.includes(gameGraph) ? (
         <Align>
-          <Graph gameName={gameGraph} platform={platformGraph} />
+          <Graph
+            gameName={gameGraph}
+            platform={platformGraph}
+            graphOptions={platformGraph !== "all" ? optionGraph : "amounts"}
+          />
         </Align>
       ) : gameGraph == "bfglobal" ? (
         <GlobalGraph platform={platformGraph} />

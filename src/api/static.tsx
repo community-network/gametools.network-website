@@ -51,6 +51,16 @@ export const graphGames = {
   all: ["bfglobal", "bf4", "bf1", "bfv", "bf2042portal"],
 };
 
+export const defaultOptions = ["amounts", "maps", "modes"];
+export const portalOptions = ["settings", "ownerPlatform"];
+defaultOptions.push.apply(portalOptions, defaultOptions);
+export const graphOptions = {
+  bf4: defaultOptions,
+  bf1: defaultOptions,
+  bfv: defaultOptions,
+  bf2042portal: portalOptions,
+};
+
 export const oldJoinGames = [
   "bf2",
   "bf2.bf2hub",
@@ -81,6 +91,41 @@ export const dice = ["bf3", "bf4", "bfh", "bf1", "bfv", "bf2042"];
 export const diceGraph = ["bf3", "bf4", "bfh", "bf1", "bfv", "bf2042portal"];
 export const newTitles = ["bf1", "bfv"];
 export const gameGraphConvert = { bf2042portal: "bf2042" };
+
+export const graphColors = [
+  "#4bc0c033",
+  "#49297e",
+  "#195f08",
+  "#003fc5",
+  "#ae08a7",
+  "#ae0842",
+  "#829a00",
+  "#9a5d00",
+  "#009a96",
+  "#00609a",
+  "#4b009a",
+  "#439a00",
+  "#004b9f",
+  "#440534",
+  "#365600",
+  "#586035",
+  "#730555",
+  "#994325",
+  "#582495",
+  "#752934",
+  "#684535",
+  "#524265",
+  "#114342",
+  "#543536",
+  "#653475",
+  "#543",
+  "#123876",
+  "#543682",
+  "#478236",
+  "#128376",
+  "#463752",
+  "#165",
+];
 
 export const progressGames = ["bf4", "bfh", "bf1"];
 export const gamemodeGames = ["bf4", "bf1"];

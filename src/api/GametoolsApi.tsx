@@ -69,8 +69,9 @@ interface ServerSearchInfo {
 interface GraphInfo {
   game: string;
   days: string;
-  region: string;
-  platform: string;
+  region?: string;
+  platform?: string;
+  type?: string;
 }
 
 export interface bfbanPlayer {
@@ -250,6 +251,7 @@ export class ApiProvider extends JsonClient {
     days,
     region = "all",
     platform = "pc",
+    type = "amounts",
   }: GraphInfo): Promise<{ [name: string]: any }> {
     const gameStuff = game.split(".");
     return await this.getJsonMethod(`/${gameStuff[0]}/statusarray/`, {
@@ -257,6 +259,7 @@ export class ApiProvider extends JsonClient {
       region: region,
       platform: platform,
       service: gameStuff[1],
+      type: type,
     });
   }
 

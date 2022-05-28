@@ -342,9 +342,16 @@
             "quits": "Quits"
         },
         "graph": {
-            "all": "All players",
-            "dice": "Players on dice servers",
-            "community": "Players on community servers"
+            "graphOptions": {
+                "amounts": "Amounts",
+                "maps": "Active maps",
+                "settings": "Active settings",
+                "modes": "Active modes",
+                "ownerPlatform": "Active owners' platform"
+            },
+            "soldierAmount": "All players",
+            "diceSoldierAmount": "Players on dice servers",
+            "communitySoldierAmount": "Players on community servers"
         },
         "iframe": {
             "main": "Add your stats to your own website",
