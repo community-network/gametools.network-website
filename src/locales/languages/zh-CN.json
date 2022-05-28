@@ -333,9 +333,9 @@
             "quits": "放弃"
         },
         "graph": {
-            "all": "所有玩家",
-            "dice": "官服玩家",
-            "community": "私服玩家"
+            "soldierAmount": "所有玩家",
+            "diceSoldierAmount": "官服玩家",
+            "communitySoldierAmount": "私服玩家"
         },
         "iframe": {
             "main": "把你的战报加入你的服务器",

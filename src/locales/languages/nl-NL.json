@@ -334,9 +334,16 @@
             "quits": "Quits"
         },
         "graph": {
-            "all": "Alle spelers",
-            "dice": "Spelers op Dice servers",
-            "community": "Spelers op Community servers"
+            "graphOptions": {
+                "amounts": "Hoeveelheid",
+                "maps": "Actieve maps",
+                "settings": "Actieve instellingen",
+                "modes": "Actieve modes",
+                "ownerPlatform": "Actieve eigenaar's platform"
+            },
+            "soldierAmount": "Alle spelers",
+            "diceSoldierAmount": "Spelers op Dice servers",
+            "communitySoldierAmount": "Spelers op Community servers"
         },
         "iframe": {
             "main": "Voeg uw eigen stats toe aan uw website",

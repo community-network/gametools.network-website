@@ -333,9 +333,9 @@
             "quits": "Çıkmalar"
         },
         "graph": {
-            "all": "Tüm oyuncular",
-            "dice": "Dice sunucularındaki oyuncular",
-            "community": "Topluluk sunucularındaki oyuncular"
+            "soldierAmount": "Tüm oyuncular",
+            "diceSoldierAmount": "Dice sunucularındaki oyuncular",
+            "communitySoldierAmount": "Topluluk sunucularındaki oyuncular"
         },
         "iframe": {
             "main": "İstatistiklerinizi kendi web sitenize ekleyin",
