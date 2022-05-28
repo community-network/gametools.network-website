@@ -5,7 +5,7 @@ import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
 import { BigSelectSecondary, Align } from "../../../Materials";
 import { Graph, GlobalGraph, OldGameGraph } from "../../../graphing/line";
-import { dice, graphGames } from "../../../../api/static";
+import { diceGraph, graphGames } from "../../../../api/static";
 import { AltDescription } from "./PlayerSearch";
 
 const Title = styled.h2`
@@ -51,7 +51,7 @@ export function Graphs(): React.ReactElement {
           })}
         </BigSelectSecondary>
       </Align>
-      {dice.includes(gameGraph) ? (
+      {diceGraph.includes(gameGraph) ? (
         <Align>
           <Graph gameName={gameGraph} platform={platformGraph} />
         </Align>

@@ -14,7 +14,7 @@ import zoomPlugin from "chartjs-plugin-zoom";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "react-query";
 import { GametoolsApi } from "../../api/GametoolsApi";
-import { newTitles, graphGames } from "../../api/static";
+import { newTitles, graphGames, gameGraphConvert } from "../../api/static";
 import { Box } from "../Materials";
 
 import { useMeasure } from "react-use";
@@ -188,7 +188,7 @@ function AllPlatformGraph(props: GraphData): React.ReactElement {
       return time;
     });
     const data =
-      props.gameName !== "bf2042"
+      props.gameName !== "bf2042portal"
         ? {
             labels: time,
             datasets: [
@@ -361,7 +361,10 @@ export function Graph(props: GameInfo): React.ReactElement {
     ["regions", "7", "multiple", props.gameName, props.platform],
     () =>
       GametoolsApi.graphs({
-        game: props.gameName,
+        game:
+          props.gameName in gameGraphConvert
+            ? gameGraphConvert[props.gameName]
+            : props.gameName,
         days: "7",
         region: "multiple",
         platform: props.platform,
