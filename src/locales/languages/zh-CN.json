@@ -333,6 +333,13 @@
             "quits": "放弃"
         },
         "graph": {
+            "graphOptions": {
+                "amounts": "总数",
+                "maps": "活跃地图",
+                "settings": "活跃设置",
+                "modes": "活跃模式",
+                "ownerPlatform": "活跃拥有者平台"
+            },
             "soldierAmount": "所有玩家",
             "diceSoldierAmount": "官服玩家",
             "communitySoldierAmount": "私服玩家"
