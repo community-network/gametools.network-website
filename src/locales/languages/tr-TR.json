@@ -333,6 +333,13 @@
             "quits": "Çıkmalar"
         },
         "graph": {
+            "graphOptions": {
+                "amounts": "Miktar",
+                "maps": "Aktif haritalar",
+                "settings": "Aktif ayarlar",
+                "modes": "Aktif modlar",
+                "ownerPlatform": "Aktif platform sahipleri"
+            },
             "soldierAmount": "Tüm oyuncular",
             "diceSoldierAmount": "Dice sunucularındaki oyuncular",
             "communitySoldierAmount": "Topluluk sunucularındaki oyuncular"
