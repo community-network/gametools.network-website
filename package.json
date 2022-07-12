@@ -79,7 +79,6 @@
     "react-i18next": "^11.18.0",
     "react-query": "^3.39.1",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "^5.0.1",
     "react-use": "^17.4.0",
     "styled-components": "^5.3.5"
   }
