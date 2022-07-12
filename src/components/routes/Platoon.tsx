@@ -1,6 +1,6 @@
 import * as React from "react";
 import "../../locales/config";
-import { Link, RouteComponentProps } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../assets/scss/App.scss";
@@ -432,14 +432,10 @@ function Results(props: Views): React.ReactElement {
   }
 }
 
-type TParams = {
-  gid: string;
-  plat: string;
-};
-
-function Platoon({ match }: RouteComponentProps<TParams>): React.ReactElement {
-  const platoonId = match.params.gid;
-  const platform = match.params.plat;
+function Platoon(): React.ReactElement {
+  const params = useParams();
+  const platoonId = params.gid;
+  const platform = params.plat;
 
   const { t } = useTranslation();
   const {

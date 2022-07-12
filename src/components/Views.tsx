@@ -1,6 +1,6 @@
 import * as React from "react";
 import "../locales/config";
-import { Switch, Route, Redirect, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Home from "./routes/Home";
 import PlayerSearch from "./routes/Stats/Search/PlayerSearch";
 import ServerSearch from "./routes/Servers/Search/Main";
@@ -15,27 +15,28 @@ function Views(): React.ReactElement {
   const homePage = useLocation().pathname === "/";
   return (
     <div style={homePage ? {} : { paddingTop: 90 }}>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/stats" component={PlayerSearch} />
-        <Route exact path="/stats/:plat/:type/:eaid/" component={Stats} />
-        <Route exact path="/platoons/:plat/:gid" component={Platoon} />
-        <Route exact path="/platoons" component={PlatoonSearch} />
-        <Route exact path="/servers" component={ServerSearch} />
-        <Redirect exact from="/platoons/:gid" to="/platoons/pc/:gid" />
-        <Redirect
-          exact
-          from="/servers/:gameid/:type/:sname"
-          to="/servers/:gameid/:type/:sname/pc"
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/stats" element={<PlayerSearch />} />
+        <Route path="/stats/:plat/:type/:eaid/" element={<Stats />} />
+        <Route path="/platoons/:plat/:gid" element={<Platoon />} />
+        <Route path="/platoons" element={<PlatoonSearch />} />
+        <Route path="/servers" element={<ServerSearch />} />
+        <Route
+          path="/platoons/:gid"
+          element={<Navigate to="/platoons/pc/:gid" replace />}
         />
         <Route
-          exact
-          path="/servers/:gameid/:type/:sname/:platform"
-          component={Servers}
+          path="/servers/:gameid/:type/:sname"
+          element={<Navigate to="/servers/:gameid/:type/:sname/pc" replace />}
         />
-        <Route exact path="/join-game/:gameid/:ip/:port" component={Launch} />
-        <Route component={PageNotFound} />
-      </Switch>
+        <Route
+          path="/servers/:gameid/:type/:sname/:platform"
+          element={<Servers />}
+        />
+        <Route path="/join-game/:gameid/:ip/:port" element={<Launch />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
     </div>
   );
 }

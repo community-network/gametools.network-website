@@ -1,20 +1,15 @@
 import * as React from "react";
 import "../../locales/config";
-import { withRouter, RouteComponentProps } from "react-router-dom";
 import { oldJoinGames } from "../../api/static";
 import { Align, BackButton, ButtonLink, Container } from "../Materials";
 import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
 
-type TParams = {
-  gameid: string;
-  ip: string;
-  port: string;
-};
-
-function Launch({ match }: RouteComponentProps<TParams>): React.ReactElement {
+function Launch(): React.ReactElement {
+  const params = useParams();
   const { t } = useTranslation();
-  if (oldJoinGames.includes(match.params.gameid)) {
-    window.location.href = `${match.params.gameid}://${match.params.ip}:${match.params.port}`;
+  if (oldJoinGames.includes(params.gameid)) {
+    window.location.href = `${params.gameid}://${params.ip}:${params.port}`;
   }
 
   return (
@@ -30,7 +25,7 @@ function Launch({ match }: RouteComponentProps<TParams>): React.ReactElement {
           {t("servers.joinme.main")}
         </ButtonLink>
         <ButtonLink
-          href={`https://joinme.click/g/${match.params.gameid}/${match.params.ip}:${match.params.port}`}
+          href={`https://joinme.click/g/${params.gameid}/${params.ip}:${params.port}`}
         >
           {t("servers.joinme.invite")}
         </ButtonLink>
@@ -39,4 +34,4 @@ function Launch({ match }: RouteComponentProps<TParams>): React.ReactElement {
   );
 }
 
-export default withRouter(Launch);
+export default Launch;

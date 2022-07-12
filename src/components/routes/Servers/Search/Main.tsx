@@ -1,6 +1,6 @@
 import * as React from "react";
 import "../../../../locales/config";
-import { useHistory, withRouter, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
@@ -45,7 +45,7 @@ function Search(): React.ReactElement {
   const [limit, setLimit] = React.useState<string>("10");
   const [searchType, setSearchType] = React.useState<string>("experiencename");
   const [sortType, setSortType] = React.useState<string>("-prefix");
-  const history = useHistory();
+  const history = useNavigate();
   // get info from query ?search &game
   const query = new URLSearchParams(useLocation().search);
   const nameQuery = query.get("search");
@@ -108,7 +108,7 @@ function Search(): React.ReactElement {
     } else {
       params.delete("searchtype");
     }
-    history.push({ search: params.toString() });
+    history({ search: params.toString() });
   }, [searchTerm, gameName, region, platform, limit, searchType, history]);
 
   const { t } = useTranslation();
@@ -267,4 +267,4 @@ function Search(): React.ReactElement {
   );
 }
 
-export default withRouter(Search);
+export default Search;

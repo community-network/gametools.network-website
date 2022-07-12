@@ -8,7 +8,7 @@ import { useQuery } from "react-query";
 import { AltText, Container, BackButton } from "../../../Materials";
 import { getLanguage } from "../../../../locales/config";
 import { Results } from "./Main";
-import { RouteComponentProps } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export const Description = styled.p`
   ${AltText}
@@ -51,10 +51,11 @@ type TParams = {
   platform: string;
 };
 
-function Servers({ match }: RouteComponentProps<TParams>): React.ReactElement {
-  const gameId = match.params.gameid;
-  const platform = match.params.platform;
-  const serverName = unescape(match.params.sname).replaceAll('"', '\\"');
+function Servers(): React.ReactElement {
+  const params = useParams();
+  const gameId = params.gameid;
+  const platform = params.platform;
+  const serverName = unescape(params.sname).replaceAll('"', '\\"');
   const { t } = useTranslation();
 
   const {
@@ -64,7 +65,7 @@ function Servers({ match }: RouteComponentProps<TParams>): React.ReactElement {
   } = useQuery("detailed" + gameId + serverName + platform, () =>
     GametoolsApi.server({
       game: gameId,
-      getter: match.params.type,
+      getter: params.type,
       serverName: serverName,
       lang: getLanguage(),
       platform: platform,

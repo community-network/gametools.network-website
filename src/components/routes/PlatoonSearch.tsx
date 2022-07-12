@@ -1,6 +1,6 @@
 import * as React from "react";
 import "../../locales/config";
-import { useHistory, withRouter, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../assets/scss/App.scss";
@@ -110,7 +110,7 @@ function Results(props: Views): React.ReactElement {
 function Search(): React.ReactElement {
   const [searchTerm, setSearchTerm] = React.useState<string>("");
   const [platform, setPlatform] = React.useState<string>("pc");
-  const history = useHistory();
+  const history = useNavigate();
   // get info from query ?search &game
   const query = new URLSearchParams(useLocation().search);
   const platformQuery = query.get("platform");
@@ -137,7 +137,7 @@ function Search(): React.ReactElement {
     } else {
       params.delete("platform");
     }
-    history.push({ search: params.toString() });
+    history({ search: params.toString() });
   }, [searchTerm, platform, history]);
 
   const { t } = useTranslation();
@@ -190,4 +190,4 @@ function Search(): React.ReactElement {
   );
 }
 
-export default withRouter(Search);
+export default Search;

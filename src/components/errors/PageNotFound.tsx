@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Container, PrimaryButtonLink } from "../Materials";
 
 function PageNotFound(): React.ReactElement {

@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const M88 = css`
   --color-text: rgba(255, 255, 255, 0.88);
@@ -88,7 +88,7 @@ export function BackButton(props: {
   text: string;
   location: string;
 }): React.ReactElement {
-  const history = useHistory();
+  const history = useNavigate();
 
   return (
     <Back
@@ -99,7 +99,7 @@ export function BackButton(props: {
         ) {
           window.location.href = props.location;
         } else {
-          history.goBack();
+          history(-1);
         }
       }}
     >

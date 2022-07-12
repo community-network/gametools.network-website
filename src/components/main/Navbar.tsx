@@ -256,21 +256,21 @@ export function Navbar(): JSX.Element {
           <HLink
             to="/platoons"
             title={t("navBar.platoons")}
-            activeClassName="opened-link"
+            className={({ isActive }) => (isActive ? "opened-link" : undefined)}
           >
             {t("navBar.platoons")}
           </HLink>
           <HLink
             to="/servers"
             title={t("navBar.serverStats")}
-            activeClassName="opened-link"
+            className={({ isActive }) => (isActive ? "opened-link" : undefined)}
           >
             {t("navBar.serverStats")}
           </HLink>
           <HLink
             to="/stats"
             title={t("navBar.bfStats")}
-            activeClassName="opened-link"
+            className={({ isActive }) => (isActive ? "opened-link" : undefined)}
           >
             {t("navBar.bfStats")}
           </HLink>

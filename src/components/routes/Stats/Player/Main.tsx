@@ -1,5 +1,5 @@
 import * as React from "react";
-import { RouteComponentProps, useLocation, useHistory } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
@@ -101,15 +101,14 @@ export function DynamicSort(property: string): any {
   };
 }
 
-type TParams = { plat: string; type: string; eaid: string };
-
-function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
-  const platform = match.params.plat;
+function Stats(): React.ReactElement {
+  const params = useParams();
+  const platform = params.plat;
   const [game, setGame] = React.useState<string>(platformGames[platform][0]);
   const [name, setName] = React.useState<string>("");
   const { width } = useWindowDimensions();
   const query = new URLSearchParams(useLocation().search);
-  const history = useHistory();
+  const history = useNavigate();
   const gameQuery = query.get("game");
   const nameQuery = query.get("name");
   React.useState(() => {
@@ -135,7 +134,7 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
       params.delete("name");
     }
     if (params.toString() != old_params) {
-      history.push({ search: params.toString() });
+      history({ search: params.toString() });
     }
   }, [game, history]);
   const { t } = useTranslation();
@@ -143,12 +142,12 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
     isLoading: loading,
     isError: error,
     data: stats,
-  } = useQuery("stats" + game + match.params.type + match.params.eaid, () =>
+  } = useQuery("stats" + game + params.type + params.eaid, () =>
     GametoolsApi.stats({
       game: game,
       type: "all",
-      getter: match.params.type,
-      userName: match.params.eaid,
+      getter: params.type,
+      userName: params.eaid,
       lang: getLanguage(),
       platform: platform,
     }),
@@ -318,9 +317,9 @@ function Stats({ match }: RouteComponentProps<TParams>): React.ReactElement {
         loading={loading}
         stats={stats}
         error={error}
-        getter={match.params.type}
-        name={match.params.eaid}
-        platform={match.params.plat}
+        getter={params.type}
+        name={params.eaid}
+        platform={params.plat}
       />
     </Container>
   );
