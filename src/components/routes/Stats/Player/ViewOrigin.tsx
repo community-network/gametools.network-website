@@ -6,7 +6,7 @@ import { Spacing, Views } from "./Main";
 import styled from "styled-components";
 import { Platoon } from "./Platoon";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 const OriginProfile = styled.img`
   width: 60px;
@@ -27,7 +27,7 @@ function GetBfBan(props: Views): React.ReactElement {
     isLoading: loading,
     isError: error,
     data: stats,
-  } = useQuery("bfbanStats" + props.game + props.stats.id, () =>
+  } = useQuery(["bfbanStats" + props.game + props.stats.id], () =>
     GametoolsApi.bfbanCheckPlayers({
       getter: "playerid",
       usernames: [props.stats.id],

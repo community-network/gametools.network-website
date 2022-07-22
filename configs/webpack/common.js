@@ -19,8 +19,18 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(scss|sass)$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        test: /\.s[ac]ss$/i,
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              // Prefer `dart-sass`
+              implementation: require.resolve("sass"),
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpe?g|svg)$/,

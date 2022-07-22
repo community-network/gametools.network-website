@@ -5,7 +5,7 @@ import { Trans, useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import {
   AltText,
   SearchBox,
@@ -117,7 +117,15 @@ function Search(): React.ReactElement {
     isError: error,
     data: stats,
   } = useQuery(
-    "servers" + gameName + searchTerm + searchType + region + platform + limit,
+    [
+      "servers" +
+        gameName +
+        searchTerm +
+        searchType +
+        region +
+        platform +
+        limit,
+    ],
     () =>
       GametoolsApi.serverSearch({
         game: gameName,

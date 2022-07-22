@@ -12,7 +12,7 @@ import { Line } from "react-chartjs-2";
 import "chartjs-adapter-date-fns";
 import zoomPlugin from "chartjs-plugin-zoom";
 import { useTranslation } from "react-i18next";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { GametoolsApi } from "../../api/GametoolsApi";
 import { graphGames, gameGraphConvert, graphColors } from "../../api/static";
 import { Box } from "../Materials";

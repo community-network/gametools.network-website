@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import "./../assets/scss/App.scss";
 import { Footer } from "./main/Footer";
 import { Navbar } from "./main/Navbar";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Views from "./Views";
 
 const queryClient = new QueryClient();

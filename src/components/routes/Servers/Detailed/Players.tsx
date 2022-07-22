@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "../../../../assets/scss/App.scss";
 import { bfbanPlayer, GametoolsApi } from "../../../../api/GametoolsApi";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import {
   Align,
   AlignW,
@@ -80,7 +80,7 @@ function Players(props: {
     isLoading: loading,
     isError: error,
     data: bfBanInfo,
-  } = useQuery("bfbanStatsServerPlayers" + props.gameid + props.game, () =>
+  } = useQuery(["bfbanStatsServerPlayers" + props.gameid + props.game], () =>
     GametoolsApi.bfbanCheckPlayers({
       getter: "playerid",
       usernames: playerIds,
@@ -266,7 +266,7 @@ export function ServerPlayerlist(props: {
     isLoading: loading,
     isError: error,
     data: stats,
-  } = useQuery("serverPlayerlist" + gameId, () =>
+  } = useQuery(["serverPlayerlist" + gameId], () =>
     GametoolsApi.serverPlayerlist({
       game: props.game,
       gameId: gameId,

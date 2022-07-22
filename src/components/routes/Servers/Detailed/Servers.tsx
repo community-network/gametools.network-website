@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { AltText, Container, BackButton } from "../../../Materials";
 import { getLanguage } from "../../../../locales/config";
 import { Results } from "./Main";
@@ -62,7 +62,7 @@ function Servers(): React.ReactElement {
     isLoading: loading,
     isError: error,
     data: stats,
-  } = useQuery("detailed" + gameId + serverName + platform, () =>
+  } = useQuery(["detailed" + gameId + serverName + platform], () =>
     GametoolsApi.server({
       game: gameId,
       getter: params.type,

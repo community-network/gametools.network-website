@@ -6,7 +6,7 @@ import styled from "styled-components";
 import "../../assets/scss/App.scss";
 import { PlatoonPlayer, PlatoonStats, ServerList } from "../../api/ReturnTypes";
 import { bfbanPlayer, GametoolsApi } from "../../api/GametoolsApi";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import {
   AltText,
   Container,
@@ -152,7 +152,7 @@ function Members(props: {
     isLoading: loading,
     isError: error,
     data: bfBanInfo,
-  } = useQuery("bfbanStatsPlatoon" + props.members, () =>
+  } = useQuery(["bfbanStatsPlatoon" + props.members], () =>
     GametoolsApi.bfbanCheckPlayers({
       getter: "playerid",
       usernames: playerIds,
@@ -442,7 +442,7 @@ function Platoon(): React.ReactElement {
     isLoading: loading,
     isError: error,
     data: platoon,
-  } = useQuery("detailed" + platoonId, () =>
+  } = useQuery(["detailed" + platoonId], () =>
     GametoolsApi.platoon({
       id: platoonId,
       platform: platform,

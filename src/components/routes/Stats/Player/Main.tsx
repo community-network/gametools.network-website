@@ -3,7 +3,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import useWindowDimensions from "../../../functions/useWindowDimensions";
 import {
   Container,
@@ -142,7 +142,7 @@ function Stats(): React.ReactElement {
     isLoading: loading,
     isError: error,
     data: stats,
-  } = useQuery("stats" + game + params.type + params.eaid, () =>
+  } = useQuery(["stats" + game + params.type + params.eaid], () =>
     GametoolsApi.stats({
       game: game,
       type: "all",

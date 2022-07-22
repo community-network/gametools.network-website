@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../assets/scss/App.scss";
 import { GametoolsApi } from "../../api/GametoolsApi";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import {
   AltText,
   SearchBox,
@@ -145,7 +145,7 @@ function Search(): React.ReactElement {
     isLoading: loading,
     isError: error,
     data: platoons,
-  } = useQuery("platoons" + searchTerm + platform, () =>
+  } = useQuery(["platoons" + searchTerm + platform], () =>
     GametoolsApi.platoonSearch({
       name: searchTerm,
       platform: platform,

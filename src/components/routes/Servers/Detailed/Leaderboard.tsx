@@ -3,7 +3,7 @@ import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
 import "../../../../assets/scss/App.scss";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import {
   Align,
   Box,
@@ -30,7 +30,7 @@ export function ServerLeaderboard(props: {
     isLoading: loading,
     isError: error,
     data: stats,
-  } = useQuery("serverLeaderboard" + gameId + sortType, () =>
+  } = useQuery(["serverLeaderboard" + gameId + sortType], () =>
     GametoolsApi.serverLeaderboard({
       gameId: gameId,
       amount: "50",
