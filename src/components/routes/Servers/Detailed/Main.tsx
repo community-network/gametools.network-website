@@ -36,8 +36,8 @@ import { ServerScoreboard } from "./Scoreboard";
 
 const AltDescription = styled.p`
   ${AltText}
-  margin-right: 1.5rem;
-  line-height: 0.5;
+  line-height: 1.2;
+  margin: 0.5rem 0.5rem 0.5rem 0
 `;
 
 interface IServerImage {
