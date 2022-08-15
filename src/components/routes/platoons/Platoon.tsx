@@ -32,8 +32,7 @@ import {
   SmallButton,
 } from "../../Materials";
 import { getLanguage } from "../../../locales/config";
-import * as XLSX from "xlsx";
-import { saveAs } from "file-saver";
+import exportExcel from "../../functions/exportExcel";
 
 const Spacing = styled.div`
   margin-top: 2rem;
@@ -152,29 +151,6 @@ function Members(props: {
   });
   members = members.sort(dynamicSort(sortType));
 
-  const exportMembers = () => {
-    const ws = XLSX.utils.json_to_sheet(members);
-
-    // add worksheet to file with bookmark members
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, "members");
-
-    const wbout = XLSX.write(wb, { bookType: "xlsx", type: "binary" });
-
-    function s2ab(s) {
-      const buf = new ArrayBuffer(s.length);
-      const view = new Uint8Array(buf);
-      for (let i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xff;
-      return buf;
-    }
-
-    // The preference for application/octet-stream probably has to do with IE6 compatibility.
-    saveAs(
-      new Blob([s2ab(wbout)], { type: "application/octet-stream" }),
-      "platoon members.xlsx",
-    );
-  };
-
   const playerIds = members.map((item: { id: string }) => {
     return item.id;
   });
@@ -210,7 +186,10 @@ function Members(props: {
             <option value="default">{t("platoon.rows.role")}</option>
             <option value="name">{t("platoon.rows.name")}</option>
           </SelectPrimary>
-          <SmallButton style={{ marginLeft: "1rem" }} onClick={exportMembers}>
+          <SmallButton
+            style={{ marginLeft: "1rem" }}
+            onClick={() => exportExcel({ members: members }, "platoon members")}
+          >
             {t("export")}
           </SmallButton>
         </AlignW>
