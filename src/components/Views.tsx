@@ -4,10 +4,10 @@ import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Home from "./routes/Home";
 import PlayerSearch from "./routes/Stats/Search/PlayerSearch";
 import ServerSearch from "./routes/Servers/Search/Main";
-import PlatoonSearch from "./routes/PlatoonSearch";
+import PlatoonSearch from "./routes/platoons/PlatoonSearch";
 import Stats from "./routes/Stats/Player/Main";
 import Servers from "./routes/Servers/Detailed/Servers";
-import Platoon from "./routes/Platoon";
+import Platoon from "./routes/platoons/Platoon";
 import Launch from "./routes/GameLauncher";
 import PageNotFound from "./errors/PageNotFound";
 

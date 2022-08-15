@@ -14,6 +14,7 @@
     "time": "{{date, date|p}}",
     "change": "{{change, change}}",
     "ago": "önce",
+    "export": "Dosyaya aktar",
     "bfban": {
         "stats": "Oyuncu bfban'da onaylanmış hileci",
         "platoon": " Hileci"

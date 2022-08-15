@@ -1,10 +1,10 @@
 import * as React from "react";
-import "../../locales/config";
+import "../../../locales/config";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import "../../assets/scss/App.scss";
-import { GametoolsApi } from "../../api/GametoolsApi";
+import "../../../assets/scss/App.scss";
+import { GametoolsApi } from "../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
 import {
   AltText,
@@ -15,9 +15,9 @@ import {
   Box,
   BigSelectSecondary,
   BackButton,
-} from "../Materials";
-import { getLanguage } from "../../locales/config";
-import { PlatoonResult, PlatoonSearchResult } from "../../api/ReturnTypes";
+} from "../../Materials";
+import { getLanguage } from "../../../locales/config";
+import { PlatoonResult, PlatoonSearchResult } from "../../../api/ReturnTypes";
 
 const Description = styled.p`
   ${AltText}

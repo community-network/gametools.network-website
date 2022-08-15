@@ -73,12 +73,14 @@
     "chartjs-adapter-date-fns": "^2.0.0",
     "chartjs-plugin-zoom": "^1.2.1",
     "date-fns": "^2.29.0",
+    "file-saver": "^2.0.5",
     "i18next": "^21.8.14",
     "i18next-browser-languagedetector": "^6.1.4",
     "react-chartjs-2": "^4.3.1",
     "react-i18next": "^11.18.1",
     "react-router-dom": "^6.3.0",
     "react-use": "^17.4.0",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "xlsx": "^0.18.5"
   }
 }
