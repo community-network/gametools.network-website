@@ -309,6 +309,28 @@ export const SmallButton = styled.button`
   }
 `;
 
+export const SmallButtonPrimary = styled.button`
+  ${M96}
+  background: var(--color-base);
+  color: var(--color-text);
+  border-radius: 5px;
+  border: none;
+  height: 30px;
+  padding: 0 24px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  margin-bottom: 1rem;
+  font-family: Manrope;
+  font-weight: medium;
+  font-style: normal;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  :hover {
+    background: #313443;
+  }
+`;
+
 export const SmallButtonSecondary = styled.button`
   ${M96}
   background: #1E2132;

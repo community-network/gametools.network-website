@@ -1,10 +1,11 @@
 import * as React from "react";
 import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import { Box, AlignS } from "../../../Materials";
+import { Box, AlignS, SmallButtonPrimary } from "../../../Materials";
 import { BackgroundBar, Bar, Spacing, Views } from "./Main";
 import styled from "styled-components";
 import { addSeconds } from "date-fns";
+import exportExcel from "../../../functions/exportExcel";
 
 const BottomOfBox = styled.div`
   display: inline-block;
@@ -21,7 +22,19 @@ export function ViewStats(props: Views): React.ReactElement {
   const stats = props.stats;
   const getLanguage = () => window.localStorage.i18nextLng;
   const numberFormat = new Intl.NumberFormat(getLanguage());
+  const mainStats = [];
+  const otherStats = {};
+
   if (!props.loading && !props.error) {
+    for (const [key, value] of Object.entries(stats)) {
+      if (value instanceof Array) {
+        otherStats[key] = value;
+        // skip current platoon for example
+      } else if (!(value instanceof Object)) {
+        mainStats.push({ item: key, value: value });
+      }
+    }
+
     return (
       <Spacing>
         <Box>
@@ -76,6 +89,21 @@ export function ViewStats(props: Views): React.ReactElement {
               </WhiteText>
             </p>
           </BottomOfBox>
+          {/* export stats */}
+          <SmallButtonPrimary
+            style={{ margin: 0, marginTop: "1rem" }}
+            onClick={() =>
+              exportExcel(
+                {
+                  main: mainStats,
+                  ...otherStats,
+                },
+                `${stats.userName} ${props.game} stats`,
+              )
+            }
+          >
+            {t("export")}
+          </SmallButtonPrimary>
         </Box>
       </Spacing>
     );
