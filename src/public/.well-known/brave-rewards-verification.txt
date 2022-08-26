@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: gametools.network
+Token: b7e47834322b45c8385f96814d164fb7b311d76ed4010e38a151d5d67fd36cf1

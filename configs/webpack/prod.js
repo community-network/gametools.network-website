@@ -1,4 +1,5 @@
 // production config
+const CopyPlugin = require("copy-webpack-plugin");
 const { merge } = require("webpack-merge");
 const { resolve } = require("path");
 
@@ -13,5 +14,9 @@ module.exports = merge(commonConfig, {
     publicPath: "/",
   },
   devtool: "source-map",
-  plugins: [],
+  plugins: [
+    new CopyPlugin({
+      patterns: [{ from: "public", to: resolve(__dirname, "../../dist") }],
+    }),
+  ],
 });
