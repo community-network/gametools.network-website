@@ -166,7 +166,8 @@
         "search": "Search",
         "searchPlaceholder": "Search for Origin name...",
         "gameStatus": "Amount of players on the Battlefield",
-        "zoomInfo": "(Click on the table to enable scroll-zoom)"
+        "zoomInfo": "(Click on the table to enable scroll-zoom)",
+        "moreGraphs": "Other graphs"
     },
     "serverSearch": {
         "back": "Main page",

@@ -3,7 +3,12 @@ import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
-import { BigSelectSecondary, Align } from "../../../Materials";
+import {
+  BigSelectSecondary,
+  Align,
+  BigButtonSecondary,
+  OpenExternal,
+} from "../../../Materials";
 import { Graph, GlobalGraph, OldGameGraph } from "../../../graphing/line";
 import { diceGraph, graphGames, graphOptions } from "../../../../api/static";
 import { AltDescription } from "./PlayerSearch";
@@ -69,6 +74,15 @@ export function Graphs(): React.ReactElement {
             );
           })}
         </BigSelectSecondary>
+        <a
+          target="_blank"
+          href="https://graphs.gametools.network/"
+          rel="noreferrer"
+        >
+          <BigButtonSecondary type="submit">
+            <OpenExternal /> {t("playerSearch.moreGraphs")}
+          </BigButtonSecondary>
+        </a>
       </Align>
       {diceGraph.includes(gameGraph) ? (
         <Align>
