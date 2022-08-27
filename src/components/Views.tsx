@@ -7,6 +7,8 @@ import ServerSearch from "./routes/Servers/Search/Main";
 import PlatoonSearch from "./routes/platoons/PlatoonSearch";
 import Stats from "./routes/Stats/Player/Main";
 import Servers from "./routes/Servers/Detailed/Servers";
+import Playgrounds from "./routes/Playgrounds/Detailed/Playgrounds";
+import PlaygroundSelect from "./routes/Playgrounds/Select/Main";
 import Platoon from "./routes/platoons/Platoon";
 import Launch from "./routes/GameLauncher";
 import PageNotFound from "./errors/PageNotFound";
@@ -35,6 +37,11 @@ function Views(): React.ReactElement {
           element={<Servers />}
         />
         <Route path="/join-game/:gameid/:ip/:port" element={<Launch />} />
+        <Route path="/playgrounds" element={<PlaygroundSelect />} />
+        <Route
+          path="/playgrounds/:gameid/:type/:playground"
+          element={<Playgrounds />}
+        />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>

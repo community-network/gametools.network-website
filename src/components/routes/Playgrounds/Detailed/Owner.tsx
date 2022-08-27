@@ -11,9 +11,9 @@ import {
   OriginName,
   OriginProfile,
   Spacing,
-} from "./Servers";
+} from "./Playgrounds";
 
-export function ServerOwner(props: {
+export function PlaygroundOwner(props: {
   owner: ServerOwnerResult;
   game: string;
 }): React.ReactElement {
@@ -24,12 +24,12 @@ export function ServerOwner(props: {
   if (owner === null) {
     return (
       <Spacing>
-        <h3>{t("servers.owner.main")}</h3>
+        <h3>{t("playgrounds.owner.main")}</h3>
         <Align>
           <Circle style={{ marginTop: ".5rem" }} />
           <div>
             <OriginName>{t("404")}</OriginName>
-            <OriginDescription>{t("servers.owner.none")}</OriginDescription>
+            <OriginDescription>{t("playgrounds.owner.none")}</OriginDescription>
           </div>
         </Align>
       </Spacing>
@@ -37,7 +37,7 @@ export function ServerOwner(props: {
   }
   return (
     <Spacing>
-      <h2>{t("servers.owner.main")}</h2>
+      <h2>{t("playgrounds.owner.main")}</h2>
       <Align>
         <ConditionalLink
           to={`/stats/pc/playerid/${owner.id}?game=${
@@ -55,7 +55,7 @@ export function ServerOwner(props: {
         >
           <div>
             <OriginName>
-              {owner.name !== "" ? owner.name : t("servers.owner.unknown")}
+              {owner.name !== "" ? owner.name : t("playgrounds.owner.unknown")}
             </OriginName>
             <OriginDescription>
               {t("stats.originDescription")}

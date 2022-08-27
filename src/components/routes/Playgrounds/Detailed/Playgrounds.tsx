@@ -44,30 +44,30 @@ export interface ConLink {
   condition: boolean;
 }
 
-function Servers(): React.ReactElement {
+function Playgrounds(): React.ReactElement {
   const params = useParams();
   const gameId = params.gameid;
+  const playground = params.playground;
   const platform = params.platform;
-  const serverName = unescape(params.sname).replaceAll('"', '\\"');
   const { t } = useTranslation();
 
   const {
     isLoading: loading,
     isError: error,
     data: stats,
-  } = useQuery(["detailed" + gameId + serverName + platform], () =>
-    GametoolsApi.server({
+  } = useQuery(["playground" + playground + platform], () =>
+    GametoolsApi.playground({
       game: gameId,
       getter: params.type,
-      serverName: serverName,
+      playground: playground,
       lang: getLanguage(),
-      platform: platform,
     }),
   );
+
   return (
     <div>
       <Container>
-        <BackButton text={t("servers.back")} location="/servers" />
+        <BackButton text={t("playgrounds.back")} location="/playgrounds" />
         <Results
           game={gameId}
           loading={loading}
@@ -80,4 +80,4 @@ function Servers(): React.ReactElement {
   );
 }
 
-export default Servers;
+export default Playgrounds;

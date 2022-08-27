@@ -45,6 +45,13 @@ interface ServerInfo {
   platform?: string;
 }
 
+interface PlaygroundInfo {
+  game: string;
+  getter: string;
+  playground: string;
+  lang: string;
+}
+
 interface ServerLeaderboard {
   gameId: string;
   amount: string;
@@ -175,6 +182,24 @@ export class ApiProvider extends JsonClient {
       region: region,
       platform: platform,
       service: gameStuff[1],
+    });
+  }
+
+  async playground({
+    game,
+    getter,
+    playground,
+    lang,
+  }: PlaygroundInfo): Promise<PlaygroundInfo> {
+    if (getter == "experiencecode") {
+      return await this.getJsonMethod(`/${game}/playground/`, {
+        experiencecode: playground,
+        lang: lang,
+      });
+    }
+    return await this.getJsonMethod(`/${game}/playground/`, {
+      playgroundid: playground,
+      lang: lang,
     });
   }
 

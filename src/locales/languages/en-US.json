@@ -464,6 +464,24 @@
             "name": "Name"
         }
     },
+    "getPlaygrounds": {
+        "back": "Main page",
+        "main": "Get Battlefield Portal Experience info",
+        "description": "Get information about a Battlefield Portal experience",
+        "getInfo": "Fill in a valid experience url, playground id or experience code",
+        "show": "Show"
+    },
+    "playgrounds": {
+        "back": "Back to search",
+        "rotation": "Experience map rotation",
+        "tags": "Experience tags",
+        "maxPlayers": "Max {{ amount }} players",
+        "owner": {
+            "main": "Experience creator",
+            "none": "The creator can only be garthered if playground id is used",
+            "unknown": "Name not found"
+        }
+    },
     "footer": {
         "descriptions": {
             "0": "This website is part of the Community Network. It is Open Source. You can post issues and suggest changes/improvements via GitHub. API provided by Community Network and open for public usage. We don’t provide any third-party API. Our back end is closed source and not available publicly.",

@@ -1,4 +1,5 @@
 import { NumberLiteralTypeAnnotation } from "@babel/types";
+import { Mutator, PlaygroundMutator } from "./MutatorType";
 
 export type PlatoonPlayer = {
   id: string;
@@ -437,4 +438,154 @@ export type PlatoonResult = {
   name: string;
   description: string;
   tag: string;
+};
+
+export type StringValue = {
+  value: string;
+};
+
+export type ServerMessage = {
+  sendAs: string;
+  message: string;
+};
+
+export type PlaygroundSettings = {
+  name: string;
+  description: string;
+  gameServerMessage: ServerMessage[];
+  configName: StringValue;
+  ConfigDescription: StringValue;
+};
+
+export type Creation = {
+  seconds: number;
+  nanos: number;
+};
+
+export type PlatformRestrictions = {
+  platforms: number[];
+};
+
+export type InputMethodResrictions = {
+  inputMethods: number[];
+};
+
+export type Restrictions = {
+  platformRestrictions: PlatformRestrictions;
+  inputMethodResctrictions: InputMethodResrictions;
+};
+
+export type InCompatibleModRules = {
+  rules: number;
+  compiledOld: number;
+  rulesVersion: number;
+};
+
+export type CompatibleModRules = {
+  rules: number;
+  rulesVersion: number;
+  blueprintRulesVersion: number;
+};
+
+export type OriginalModRules = {
+  compatibleRules: CompatibleModRules[];
+  incompatibleRules: InCompatibleModRules[];
+};
+
+export type AssetCategoryTagBooleanOverride = {
+  assetCategoryTags: string[];
+  value: boolean;
+};
+
+export type AssetCategoryTagBooleanTeamOverride = {
+  assetCategoryTags: string[];
+  value: boolean;
+  teamId: number;
+};
+
+export type AssetCategoryBoolean = {
+  defaultValue: boolean;
+  overrides: AssetCategoryTagBooleanOverride;
+  teamOverrides: AssetCategoryTagBooleanTeamOverride;
+};
+
+export type AssetCategory = {
+  tagId: string;
+  boolean: AssetCategoryBoolean;
+};
+
+export type WebData = {
+  mainWorkspace: string;
+  variables: string;
+};
+
+export type MapInfo = {
+  mapname: string;
+  image: string;
+  mode: string;
+  gameSize: number;
+  rounds: number;
+  mutators: Mutator[];
+  location: string;
+  preRoundSize: number;
+  warmUpSize: number;
+  allowedSpectators: number;
+};
+
+export type MapRotation = {
+  maps: MapInfo[];
+};
+
+export type Translation = {
+  translationId: string;
+  localizedText: string;
+  localizedTextDesc: string;
+  kind: string;
+};
+
+export type ResourceLocation = {
+  ref: string;
+  url: string;
+};
+
+export type Resource = {
+  location: ResourceLocation;
+  kind: string;
+};
+
+export type Metadata = {
+  resources: Resource[];
+  translations: Translation[];
+};
+
+export type Tags = {
+  metadata: Metadata;
+  id: string;
+  sortOrder: number;
+};
+
+export type Playground = {
+  blocklyData?: WebData[];
+  playgroundId: string;
+  blueprintType: string;
+  playgroundName: string;
+  playgroundDescription: string;
+  mutators: PlaygroundMutator[];
+  mapRotation: MapRotation;
+  state: number;
+  checksum: string;
+  secret: string;
+  createdAt: Creation;
+  updatedAt: Creation;
+  settings: PlaygroundSettings;
+  owner: ServerOwnerResult;
+  restrictions: Restrictions;
+  modRules: OriginalModRules;
+  assetCategories: AssetCategory[];
+};
+
+export type PlaygroundInfoReturn = {
+  originalPlayground: Playground;
+  validatedPlayground: Playground;
+  tag: Tags[];
 };
