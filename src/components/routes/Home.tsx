@@ -2,7 +2,7 @@ import * as React from "react";
 import "../../locales/config";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import background from "../../assets/img/bfv-thelasttiger-2-extra.png";
+import background from "../../assets/img/RevealScreenshot_10_VistaHourglass_3840x2160_NoLogo-25798260c0054ec56441 1.png";
 import {
   M88,
   AltText,
@@ -12,9 +12,11 @@ import {
   PrimaryButtonLink,
   ButtonLink,
 } from "../Materials";
+import { TotalGraphQuery } from "../graphing/line";
+import { ServerSearch } from "./Servers/Search/Main";
 
 const Image = styled.div`
-  height: 100vh;
+  height: 356px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -22,7 +24,7 @@ const Image = styled.div`
 `;
 
 const Blur = styled.div`
-  height: 100vh;
+  height: 356px;
   background: radial-gradient(
     50% 50% at 50% 50%,
     rgba(0, 0, 0, 0) 0%,
@@ -32,7 +34,7 @@ const Blur = styled.div`
 
 const Welcome = styled.div`
   position: absolute;
-  bottom: 20%;
+  top: 6rem;
   @media (min-width: 750px) {
     padding-left: 8.33%;
   }
@@ -42,22 +44,9 @@ const Welcome = styled.div`
   max-width: 40em;
 `;
 
-const Faq = styled.div`
-  ${M88}
-  padding-top: 1rem;
-  padding-bottom: 5rem;
-`;
-
-const FaqSection = styled.div`
-  padding-top: 0.25rem;
-`;
-
-const WelcomeHeader = styled.h1`
-  font-size: 48px;
-`;
-
 const WelcomeText = styled.p`
   ${AltText}
+  white-space: pre-line;
   font-size: 18px;
 `;
 
@@ -75,99 +64,52 @@ const Title = styled.h2`
   margin-bottom: 2.2rem;
 `;
 
+const Description = styled.p`
+  white-space: pre-line;
+`;
+
 function Home(): React.ReactElement {
   const { t, i18n } = useTranslation();
   let i = 0;
-  const faqItems = [];
-  while (i18n.exists(`home.faq.${i}`)) {
-    faqItems.push({
-      question: t(`home.faq.${i}.question`),
-      answer: t(`home.faq.${i}.answer`),
-    });
-    i += 1;
-  }
 
-  i = 0;
-  const hostedAtItems = [];
-  while (i18n.exists(`home.hostedAt.${i}`)) {
-    let b = 0;
-    const bodies = [];
-    while (i18n.exists(`home.hostedAt.${i}.${b}`)) {
-      bodies.push(t(`home.hostedAt.${i}.${b}`));
-      b += 1;
-    }
-    hostedAtItems.push({
-      header: t(`home.hostedAt.${i}.header`),
-      link: t(`home.hostedAt.${i}.link`),
-      url: t(`home.hostedAt.${i}.url`),
-      bodies: bodies,
-    });
-    i += 1;
-  }
-
-  i = 0;
   const ourSolutions = [];
   while (i18n.exists(`home.ourSolutions.${i}`)) {
-    let b = 0;
-    const bodies = [];
-    while (i18n.exists(`home.ourSolutions.${i}.${b}`)) {
-      bodies.push(t(`home.ourSolutions.${i}.${b}`));
-      b += 1;
-    }
     ourSolutions.push({
       header: t(`home.ourSolutions.${i}.header`),
       link: t(`home.ourSolutions.${i}.link`),
       url: t(`home.ourSolutions.${i}.url`),
-      bodies: bodies,
+      description: t(`home.ourSolutions.${i}.description`),
     });
     i += 1;
   }
 
   i = 0;
-  const fromOurDevs = [];
-  while (i18n.exists(`home.fromOurDevs.${i}`)) {
-    let b = 0;
-    const bodies = [];
-    while (i18n.exists(`home.fromOurDevs.${i}.${b}`)) {
-      bodies.push(t(`home.fromOurDevs.${i}.${b}`));
-      b += 1;
-    }
-    fromOurDevs.push({
-      header: t(`home.fromOurDevs.${i}.header`),
-      link: t(`home.fromOurDevs.${i}.link`),
-      url: t(`home.fromOurDevs.${i}.url`),
-      bodies: bodies,
+  const ourFriends = [];
+  while (i18n.exists(`home.ourFriends.${i}`)) {
+    ourFriends.push({
+      header: t(`home.ourFriends.${i}.header`),
+      link: t(`home.ourFriends.${i}.link`),
+      url: t(`home.ourFriends.${i}.url`),
+      description: t(`home.ourFriends.${i}.description`),
     });
     i += 1;
   }
+
   return (
     <div>
       <Image>
         <Blur>
           <Welcome>
-            <WelcomeHeader>{t("siteName")}</WelcomeHeader>
-            <WelcomeText>{t("siteDescription")}</WelcomeText>
+            <WelcomeText>{t("playerSearch.description")}</WelcomeText>
           </Welcome>
         </Blur>
       </Image>
-      <Title>{t("home.hostedAt.header")}</Title>
       <Container>
-        <AlignT>
-          {hostedAtItems.map((key, index) => {
-            return (
-              <Box key={index} align="flex-start">
-                <h3>{key.header}</h3>
-                {key.bodies.map((key, index) => {
-                  return <p key={index}>{key}</p>;
-                })}
-                <br></br>
-                <PrimaryButtonLink target="_blank" href={key.url}>
-                  {key.link}
-                </PrimaryButtonLink>
-              </Box>
-            );
-          })}
-        </AlignT>
+        <ServerSearch />
+        <h2 style={{ margin: "24px 0 24px 24px" }}>
+          {t("home.graphs.header")}
+        </h2>
+        <TotalGraphQuery />
         <h2 style={{ margin: "24px 0 24px 24px" }}>
           {t("home.ourSolutions.header")}
         </h2>
@@ -176,9 +118,7 @@ function Home(): React.ReactElement {
             return (
               <Box key={index} align="flex-start">
                 <h3>{key.header}</h3>
-                {key.bodies.map((key, index) => {
-                  return <p key={index}>{key}</p>;
-                })}
+                <Description>{key.description}</Description>
                 <br></br>
                 <ButtonLink target="_blank" href={key.url}>
                   {key.link}
@@ -188,16 +128,14 @@ function Home(): React.ReactElement {
           })}
         </AlignT>
         <h2 style={{ margin: "24px 0 24px 24px" }}>
-          {t("home.fromOurDevs.header")}
+          {t("home.ourFriends.header")}
         </h2>
         <AlignT>
-          {fromOurDevs.map((key, index) => {
+          {ourFriends.map((key, index) => {
             return (
               <Box key={index} align="flex-start">
                 <h3>{key.header}</h3>
-                {key.bodies.map((key, index) => {
-                  return <p key={index}>{key}</p>;
-                })}
+                <Description>{key.description}</Description>
                 <br></br>
                 <ButtonLink target="_blank" href={key.url}>
                   {key.link}
@@ -206,21 +144,6 @@ function Home(): React.ReactElement {
             );
           })}
         </AlignT>
-      </Container>
-      <Title style={{ marginTop: "3rem", marginBottom: 0 }}>
-        {t("home.faq.header")}
-      </Title>
-      <Container>
-        <Faq>
-          {faqItems.map((key, index) => {
-            return (
-              <FaqSection key={index}>
-                <p>{key.question}</p>
-                <p>{key.answer}</p>
-              </FaqSection>
-            );
-          })}
-        </Faq>
       </Container>
     </div>
   );

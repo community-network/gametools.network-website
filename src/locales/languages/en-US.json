@@ -1,6 +1,6 @@
 {
-    "siteName": "Game Tools",
-    "siteDescription": "Community Network aims to provide public tools for different games. Starting with Battlefield, we are bringing back online concurrent player stats, as well as personal stats and much more in future.",
+    "siteName": "GAMETOOLS",    
+    "siteFullName": "Game tools",  
     "loading": "Loading...",
     "404": "404",
     "playerNotFound": "Playername not found, try another name or another game.",
@@ -13,6 +13,7 @@
     "chartHourFormat": "HH:mm, eee d LLL",
     "time": "{{date, date|p}}",
     "change": "{{change, change}}",
+    "intlNumber": "{{val, number}}",
     "ago": "ago",
     "export": "Export",
     "bfban": {
@@ -24,12 +25,9 @@
         "copied": "Copied!"
     },
     "navBar": {
-        "bfStats": "Battlefield Stats",
-        "serverStats": "Battlefield Serverstats",
-        "platoons": "Battlefield Platoons",
-        "discord": "Our Discord",
-        "api": "Public API",
-        "bot": "Discord Bot"
+        "help": "Need help?",
+        "serverManager": "Server Manager",
+        "api": "Battlefield API"
     },
     "games": {
         "bfglobal": "Global",
@@ -83,86 +81,59 @@
         "all": "All platforms"
     },
     "home": {
-        "hostedAt": {
-            "header": "Hosted at Game tools",
-            "0": {
-                "header": "BFBan",
-                "0": "We are hosting and are an active part of bfban.com - an amazing community & reverse engineering/security team created against hackers, to provide united ban list and report system.",
-                "1": "Report cheaters in BF1/BFV, so they can be banned in community servers.",
-                "link": "Visit BFBan",
-                "url": "https://bfban.gametools.network/"
-            }
+        "graphs": {
+            "header": "Online stats and graphs"
         },
         "ourSolutions": {
             "header": "Our solutions",
             "0": {
                 "header": "Server manager",
-                "0": "A manager for your Battlefield 1 server. Allows you to automatically kick players based on ping or based on BFBan (our global banlist). Plus it provides a way to have more than 200 banslots for your servers.",
-                "1": "Also gives you access to the same admin-panel as in game, so you don't have to open the game. Great to have on your second monitor so you can manage your servers.",
+                "description": "A manager for your Battlefield 1 server. Allows you to automatically kick players based on ping or based on BFBan (our global banlist). Plus it provides a way to have more than 200 banslots for your servers.\nAlso gives you access to the same admin-panel as in game, so you don't have to open the game. Great to have on your second monitor so you can manage your servers.",
                 "link": "Visit Server manager",
                 "url": "https://manager.gametools.network/"
             },
             "1": {
                 "header": "Game Stats",
-                "0": "The game stats bot is a Discord bot to see any player's stats for games like Battlefield 2, 3, 4, Hardline, 1 and 5",
-                "1": "The bot also supports console users, example: '!bf1stat {platform} {name}'",
+                "description": "The game stats bot is a Discord bot to see any player's stats for games like Battlefield 2, 3, 4, Hardline, 1 and 5\nThe bot also supports console users, example: '!bf1stat {platform} {name}'",
                 "link": "Add to your server",
                 "url": "https://top.gg/bot/714524944783900794"
             },
             "2": {
                 "header": "Battlefield API",
-                "0": "Public API to get ingame stats or serverinfo for your own project or website. It supports all the same Battlefield titles as the game stats bot.",
+                "description": "Public API to get ingame stats or serverinfo for your own project or website. It supports all the same Battlefield titles as the game stats bot.",
                 "link": "Read the docs",
                 "url": "https://api.gametools.network/"
             }
         },
-        "fromOurDevs": {
-            "header": "From our devs",
+        "ourFriends": {
+            "header": "Our friends",
             "0": {
+                "icon": "",
                 "header": "Statbits",
-                "0": "Statbits let's you integrate little bits of game statistics into your live stream chat, as well as any other application. Want a !kd command showing your overall kill/death ratio in Battlefield 4? We got you!",
+                "description": "Statbits let's you integrate little bits of game statistics into your live stream chat, as well as any other application. Want a !kd command showing your overall kill/death ratio in Battlefield 4? We got you!",
                 "link": "Read the docs",
                 "url": "https://statbits.io/"
             },
             "1": {
+                "icon": "",
                 "header": "BFList",
-                "0": "bflist provides live data about what is happening on the Battlefield in Battlefield-series games. We provide data on servers as well as players. From a server's name or current map to any player's current score and kd.",
+                "description": "bflist provides live data about what is happening on the Battlefield in Battlefield-series games. We provide data on servers as well as players. From a server's name or current map to any player's current score and kd.",
                 "link": "Read the docs",
                 "url": "https://bflist.io/"
-            }
-        },
-        "faq": {
-            "header": "FAQ",
-            "0": {
-                "question": "Q: Can I use your API?",
-                "answer": "A: Yes, you can. We provide the API for free without any limitations."
-            },
-            "1": {
-                "question": "Q: You have a Discord bot, but can I make my own?",
-                "answer": "A: We provide great bot for Discord, but if you want to write your own, feel free to do so with our API."
             },
             "2": {
-                "question": "Q: Which games are available?",
-                "answer": "A: Our website and API support most of Battlefield games including V, 1, 4, Hardline, 3 and 2. The Discord bot also supports other games like Division or Destiny 2."
-            },
-            "3": {
-                "question": "Q: Did you use to Battlefield Tracker to build all this?",
-                "answer": "A: No. We provide independent services."
-            },
-            "4": {
-                "question": "Q: I found an issue or want to suggest changes on the website, where can get in touch?",
-                "answer": "A: Head over to our GitHub to post any issues and suggestions."
-            },
-            "5": {
-                "question": "Q: Where to post issues and feature requests for the Discord bot?",
-                "answer": "A: For suggestions regarding the bot and our API, come join our Discord."
+                "icon": "",
+                "header": "BFBan",
+                "description": "We are hosting and are an active part of bfban.com - an amazing community & reverse engineering/security team created against hackers, to provide united ban list and report system.\nReport cheaters in BF1/BFV, so they can be banned in community servers.",
+                "link": "Visit BFBan",
+                "url": "https://bfban.gametools.network/"
             }
         }
     },
     "playerSearch": {
         "back": "Main page",
         "bfStats": "Battlefield Stats",
-        "description": "Search for any Origin nickname to get player stats.",
+        "description": "View your Online Stats! PC, Xbox, and PSN\n Support for most of Battlefield games",
         "search": "Search",
         "searchPlaceholder": "Search for Origin name...",
         "gameStatus": "Amount of players on the Battlefield",

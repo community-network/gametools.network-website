@@ -37,7 +37,7 @@ const Title = styled.h2`
   margin-top: 2rem;
 `;
 
-function Search(): React.ReactElement {
+function Main(): React.ReactElement {
   const [searchTerm, setSearchTerm] = React.useState<string>("");
   const [gameName, setGameName] = React.useState<string>("bf2042");
   const [region, setRegion] = React.useState<string>("all");
@@ -275,4 +275,130 @@ function Search(): React.ReactElement {
   );
 }
 
-export default Search;
+export function ServerSearch(): React.ReactElement {
+  const [searchTerm, setSearchTerm] = React.useState<string>("");
+  const [gameName, setGameName] = React.useState<string>("bf2042");
+  const [region, setRegion] = React.useState<string>("all");
+  const [platform, setPlatform] = React.useState<string>("pc");
+  const [limit, setLimit] = React.useState<string>("10");
+
+  const { t } = useTranslation();
+  const {
+    isLoading: loading,
+    isError: error,
+    data: stats,
+  } = useQuery(
+    [
+      "servers" +
+        gameName +
+        searchTerm +
+        "servername" +
+        region +
+        platform +
+        limit,
+    ],
+    () =>
+      GametoolsApi.serverSearch({
+        game: gameName,
+        searchTerm: searchTerm,
+        lang: getLanguage(),
+        searchType: "servername",
+        region: region,
+        platform: platform,
+        limit: "4",
+      }),
+  );
+  return (
+    <>
+      <Align>
+        <SearchBox
+          placeholder={t(`serverSearch.searchPlaceholder.servername`)}
+          value={searchTerm}
+          onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
+            setSearchTerm(ev.target.value)
+          }
+        />
+        <BigSelectSecondary
+          value={gameName}
+          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
+            setGameName(ev.target.value)
+          }
+        >
+          {supportedGames.map((value, index) => {
+            return (
+              <option key={index} value={value}>
+                {t(`games.${value}`)}
+              </option>
+            );
+          })}
+        </BigSelectSecondary>
+        <BigSelectSecondary
+          disabled={!frostbite3.includes(gameName)}
+          value={region}
+          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
+            setRegion(ev.target.value)
+          }
+        >
+          {Object.keys(t("regions", { returnObjects: true })).map(
+            (key, index) => {
+              return (
+                <option key={index} value={key}>
+                  {t(`regions.${key}`)}
+                </option>
+              );
+            },
+          )}
+        </BigSelectSecondary>
+        <BigSelectSecondary
+          disabled={!noCrossplayFrostbite3.includes(gameName)}
+          value={platform}
+          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
+            setPlatform(ev.target.value)
+          }
+        >
+          <option value="pc">{t("platforms.pc")}</option>
+          <option value="ps4">{t("platforms.ps4")}</option>
+          <option value="xboxone">{t("platforms.xboxone")}</option>
+        </BigSelectSecondary>
+        {/* <BigButtonSecondary type="submit">{t("serverSearch.search")} <RightArrow/></BigButtonSecondary> */}
+      </Align>
+      {oldJoinGames.includes(gameName) ||
+      frostbiteJoinGames.includes(gameName) ? (
+        <p style={{ margin: 0 }}>
+          <Trans i18nKey="servers.joinme.info">
+            <a href="https://joinme.click/download">
+              https://joinme.click/download
+            </a>
+          </Trans>
+        </p>
+      ) : (
+        <></>
+      )}
+      <Align>
+        <Title>{t("serverSearch.servers")}</Title>
+        {/* <SelectPrimary
+          style={{ marginLeft: "1rem", marginTop: "2.2rem" }}
+          value={sortType}
+          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
+            setSortType(ev.target.value)
+          }
+        >
+          <option value="prefix">{t("servers.sort.serverName")}</option>
+          <option value="-playerAmount">
+            {t("servers.sort.playerAmount")}
+          </option>
+          <option value="-maxPlayers">{t("servers.sort.maxPlayers")}</option>
+        </SelectPrimary> */}
+      </Align>
+      <Results
+        game={gameName}
+        loading={loading}
+        stats={stats}
+        error={error}
+        sortType={"-prefix"}
+      />
+    </>
+  );
+}
+
+export default Main;

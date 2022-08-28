@@ -81,7 +81,7 @@ export function Footer(): JSX.Element {
     <Background>
       <Section>
         <Text>
-          <h3>{t("siteName")}</h3>
+          <h3>{t("siteFullName")}</h3>
           {description.map((key, index) => {
             return <TextGrayP key={index}>{key}</TextGrayP>;
           })}

@@ -11,13 +11,13 @@ export const M88 = css`
 export const M92 = css`
   --color-text: rgba(255, 255, 255, 0.92);
   --color-alt-text: rgba(255, 255, 255, 0.72);
-  --color-base: #1e2132;
+  --color-base: #16181f;
 `;
 
 export const M96 = css`
   --color-text: rgba(255, 255, 255, 0.96);
   --color-alt-text: rgba(255, 255, 255, 0.76);
-  --color-base: #282a3a;
+  --color-base: #1e2028;
   --color-alt-base: #2e313f;
 `;
 export const M100 = css`
@@ -136,7 +136,7 @@ export const Bf2042SearchBox = styled.input`
   border: none;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  background: #1e2132;
+  background: #1e2028;
   height: 50px;
   padding-left: 2rem;
   margin-bottom: 1rem;
@@ -148,7 +148,7 @@ export const Bf2042SearchBox = styled.input`
 export const Bf2042BigSelectSecondary = styled.select`
   ${M96}
   width: 10rem;
-  background: #1e2132;
+  background: #1e2028;
   color: #929292;
   margin-bottom: 1rem;
   border-top-right-radius: 5px;
@@ -185,7 +185,7 @@ export const SearchBox = styled.input`
   color: var(--color-text);
   border: none;
   border-radius: 5px;
-  background: #1e2132;
+  background: #1e2028;
   height: 50px;
   padding-left: 2rem;
   margin-bottom: 1rem;
@@ -205,7 +205,7 @@ export const SmallSearchBox = styled.input`
   color: var(--color-text);
   border: none;
   border-radius: 5px;
-  background: #1e2132;
+  background: #1e2028;
   width: 191px;
   height: 30px;
   padding-left: 1rem;
@@ -249,7 +249,7 @@ export const ButtonLink = styled.a`
 
 export const BigButtonSecondary = styled.button`
   ${M96}
-  background: #1E2132;
+  background: #1E2028;
   color: var(--color-text);
   border: none;
   margin-bottom: 1rem;
@@ -289,7 +289,7 @@ export const BigButtonSecondaryBox = styled.button`
 
 export const SmallButton = styled.button`
   ${M96}
-  background: #1E2132;
+  background: #1E2028;
   color: var(--color-text);
   border-radius: 5px;
   border: none;
@@ -333,7 +333,7 @@ export const SmallButtonPrimary = styled.button`
 
 export const SmallButtonSecondary = styled.button`
   ${M96}
-  background: #1E2132;
+  background: #1E2028;
   color: var(--color-text);
   border: none;
   margin-bottom: 1rem;
@@ -353,7 +353,7 @@ export const SmallButtonSecondary = styled.button`
 
 export const BigSelectSecondary = styled.select`
   ${M96}
-  background: #1E2132;
+  background: #1E2028;
   color: var(--color-text);
   margin-bottom: 1rem;
   border-radius: 5px;
@@ -376,7 +376,7 @@ export const BigSelectSecondary = styled.select`
 
 export const SelectPrimary = styled.select`
   ${M96}
-  background: #1E2132;
+  background: #1E2028;
   color: var(--color-text);
   border-radius: 5px;
   border: none;
@@ -398,7 +398,7 @@ export const SelectPrimary = styled.select`
 
 export const SelectSecondary = styled.select`
   ${M96}
-  background: #1E2132;
+  background: #1E2028;
   color: var(--color-text);
   border-radius: 5px;
   border: none;
@@ -504,12 +504,12 @@ export function OpenExternal(): React.ReactElement {
   );
 }
 
-const BoxSpacing = styled.div`
+export const BoxSpacing = styled.div`
   max-width: 45rem;
   margin: 0 12px 18px 0;
 `;
 
-const BoxWrap = styled.div`
+export const BoxWrap = styled.div`
   ${M92}
   background: var(--color-base);
   align-self: flex-start;
@@ -612,7 +612,7 @@ export const Radio = styled.div`
 
 export const SmallButtonRadio = styled.label`
   ${M96}
-  background: #1E2132;
+  background: #1E2028;
   color: var(--color-text);
   border: none;
   margin-bottom: 1rem;

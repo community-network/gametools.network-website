@@ -288,6 +288,10 @@ export class ApiProvider extends JsonClient {
     });
   }
 
+  async globalGraph(): Promise<{ [name: string]: any }> {
+    return await this.getJsonMethod(`/bfglobal/totalstatusarray/`, {});
+  }
+
   async bfbanCheckPlayers({
     getter,
     usernames,
