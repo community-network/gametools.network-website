@@ -17,6 +17,7 @@ import {
   Bf2042BigSelectSecondary,
   Alignbf2042Search,
   BackButton,
+  SmallSearchBox,
 } from "../../../Materials";
 import { getLanguage } from "../../../../locales/config";
 import {
@@ -311,13 +312,6 @@ export function ServerSearch(): React.ReactElement {
   return (
     <>
       <Align>
-        <SearchBox
-          placeholder={t(`serverSearch.searchPlaceholder.servername`)}
-          value={searchTerm}
-          onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
-            setSearchTerm(ev.target.value)
-          }
-        />
         <BigSelectSecondary
           value={gameName}
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
@@ -376,6 +370,13 @@ export function ServerSearch(): React.ReactElement {
       )}
       <Align>
         <Title>{t("serverSearch.servers")}</Title>
+        <SmallSearchBox
+          placeholder={t(`serverSearch.searchPlaceholder.servername`)}
+          value={searchTerm}
+          onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
+            setSearchTerm(ev.target.value)
+          }
+        />
         {/* <SelectPrimary
           style={{ marginLeft: "1rem", marginTop: "2.2rem" }}
           value={sortType}
