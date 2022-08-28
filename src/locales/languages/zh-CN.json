@@ -456,8 +456,9 @@
             "0": "GitHub页面",
             "1": "公开API",
             "2": "Community Network Discord",
-            "3": "隐私政策",
-            "4": "Discord机器人"
+            
+            "4": "隐私政策",
+            "5": "Discord机器人"
         }
     }
 }

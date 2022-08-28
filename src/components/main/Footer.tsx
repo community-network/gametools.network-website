@@ -65,6 +65,7 @@ export function Footer(): JSX.Element {
     "https://github.com/Community-network",
     "https://api.gametools.network/",
     "https://discord.gametools.network/",
+    "/playgrounds/",
     "/privacy/",
     "https://top.gg/bot/714524944783900794",
   ];
