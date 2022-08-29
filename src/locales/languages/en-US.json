@@ -81,48 +81,45 @@
         "all": "All platforms"
     },
     "home": {
-        "graphs": {
-            "header": "Online stats and graphs"
+        "manager": {
+            "header": "GAMETOOLS | CLOUD",
+            "description": "We created a web-based Anti-cheat and Management platfrom to protect your Battlefield Servers.\nBuilt with help of many communities.\n\nLogin now and start your integration for free!",
+            "open": "Launch App",
+            "disclaimer": "Server hosting is not provided. Supported only these Games"
         },
-        "ourSolutions": {
-            "header": "Our solutions",
+        "graphs": {
+            "header": "Online stats and graphs",
+            "detailed": "View detailed stats"
+        },
+        "otherServices": {
+            "header": "Other services",
             "0": {
-                "header": "Server manager",
-                "description": "A manager for your Battlefield 1 server. Allows you to automatically kick players based on ping or based on BFBan (our global banlist). Plus it provides a way to have more than 200 banslots for your servers.\nAlso gives you access to the same admin-panel as in game, so you don't have to open the game. Great to have on your second monitor so you can manage your servers.",
-                "link": "Visit Server manager",
-                "url": "https://manager.gametools.network/"
+                "header": "Battlefield platoons",
+                "url": "/platoons/"
             },
             "1": {
-                "header": "Game Stats",
-                "description": "The game stats bot is a Discord bot to see any player's stats for games like Battlefield 2, 3, 4, Hardline, 1 and 5\nThe bot also supports console users, example: '!bf1stat {platform} {name}'",
-                "link": "Add to your server",
-                "url": "https://top.gg/bot/714524944783900794"
-            },
-            "2": {
-                "header": "Battlefield API",
-                "description": "Public API to get ingame stats or serverinfo for your own project or website. It supports all the same Battlefield titles as the game stats bot.",
-                "link": "Read the docs",
-                "url": "https://api.gametools.network/"
+                "header": "Portal Experience info",
+                "url": "/playgrounds/"
             }
         },
         "ourFriends": {
             "header": "Our friends",
             "0": {
-                "icon": "",
+                "icon": "../../assets/img/statbits-icon.png",
                 "header": "Statbits",
                 "description": "Statbits let's you integrate little bits of game statistics into your live stream chat, as well as any other application. Want a !kd command showing your overall kill/death ratio in Battlefield 4? We got you!",
-                "link": "Read the docs",
+                "link": "Learn more",
                 "url": "https://statbits.io/"
             },
             "1": {
-                "icon": "",
+                "icon": "../../assets/img/bflist-icon.png",
                 "header": "BFList",
                 "description": "bflist provides live data about what is happening on the Battlefield in Battlefield-series games. We provide data on servers as well as players. From a server's name or current map to any player's current score and kd.",
-                "link": "Read the docs",
+                "link": "Learn more",
                 "url": "https://bflist.io/"
             },
             "2": {
-                "icon": "",
+                "icon": "../../assets/img/bfban-icon.png",
                 "header": "BFBan",
                 "description": "We are hosting and are an active part of bfban.com - an amazing community & reverse engineering/security team created against hackers, to provide united ban list and report system.\nReport cheaters in BF1/BFV, so they can be banned in community servers.",
                 "link": "Visit BFBan",
@@ -135,12 +132,13 @@
         "bfStats": "Battlefield Stats",
         "description": "View your Online Stats! PC, Xbox, and PSN\n Support for most of Battlefield games",
         "search": "Search",
-        "searchPlaceholder": "Search for Origin name...",
+        "searchPlaceholder": "Find by Nickname",
         "gameStatus": "Amount of players on the Battlefield",
         "zoomInfo": "(Click on the table to enable scroll-zoom)",
         "moreGraphs": "Other graphs"
     },
     "serverSearch": {
+        "servers": "Servers",
         "back": "Main page",
         "serverInfo": "Battlefield Servers",
         "description": "Search for Battlefield servers to get playeramounts/map rotation of the server.",
@@ -154,7 +152,8 @@
         "type": {
             "name": "Server name",
             "playground": "Experience name"
-        }
+        },
+        "showMore": "Show more"
     },
     "platoonSearch": {
         "back": "Main page",

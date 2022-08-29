@@ -145,6 +145,61 @@ export const Bf2042SearchBox = styled.input`
   font-style: normal;
 `;
 
+export const HomePlayerSearchBox = styled.input`
+  ${M96}
+  ::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  @media (min-width: 750px) {
+    width: 20rem;
+    margin-left: -2rem;
+  }
+  @media (max-width: 750px) {
+    max-width: 20rem;
+    width: 95%;
+  }
+  @media (min-width: 1000px) {
+    width: 621px;
+  }
+  box-sizing: border-box;
+  color: var(--color-text);
+  border: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  height: 50px;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+  margin-right: 0.2rem;
+  font-family: Manrope;
+  font-weight: medium;
+  font-style: normal;
+`;
+
+export const HomePlayerBigSelectSecondary = styled.select`
+  ${M96}
+  width: 128px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  margin-bottom: 1rem;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: none;
+  height: 50px;
+  margin-right: 1rem;
+  padding-left: 25px;
+  font-family: Manrope;
+  font-weight: medium;
+  font-style: normal;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='rgb(255,255,255)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 13px;
+`;
+
 export const Bf2042BigSelectSecondary = styled.select`
   ${M96}
   width: 10rem;
@@ -232,6 +287,25 @@ export const PrimaryButtonLink = styled.a`
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.1));
 `;
 
+export const HomeBigButtonPrimary = styled.button`
+  ${M96}
+  background: var(--color-blue);
+  color: var(--color-text);
+  border: none;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  height: 50px;
+  min-width: 158px;
+  margin-right: 1rem;
+  font-family: Manrope;
+  font-weight: medium;
+  font-style: normal;
+  cursor: pointer;
+  :hover {
+    background: var(--color-blue-alt);
+  }
+`;
+
 export const ButtonLink = styled.a`
   ${M96}
   padding: 10px 20px;
@@ -242,6 +316,22 @@ export const ButtonLink = styled.a`
   flex-grow: 1;
   width: auto;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.1));
+  :hover {
+    background: var(--color-alt-base);
+  }
+`;
+
+export const BigButtonLink = styled.a`
+  ${M96}
+  padding: 10px 20px;
+  background: var(--color-base);
+  border-radius: 5px;
+  transition: all 0.1s;
+  display: flex;
+  flex-grow: 1;
+  width: 134px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  font-size: 0.9rem;
   :hover {
     background: var(--color-alt-base);
   }
@@ -469,6 +559,34 @@ export const GridContainer = styled.div`
   }
 `;
 
+export function InputItem(props: {
+  item: string;
+  currrentItem: string;
+  callback: any;
+  name: string;
+  disabled?: boolean;
+}): React.ReactElement {
+  const { item, currrentItem, callback, name, disabled } = props;
+
+  return (
+    <div style={{ marginBottom: "5px" }}>
+      <input
+        type="radio"
+        id={item}
+        name={item}
+        value={item}
+        onChange={callback}
+        checked={currrentItem === item}
+        disabled={disabled}
+        style={{ marginRight: "0.5rem", marginLeft: "0" }}
+      />
+      <label htmlFor={item} style={{ color: disabled ? "#ffffff40" : "#fff" }}>
+        {name}
+      </label>
+    </div>
+  );
+}
+
 export function RightArrow(): React.ReactElement {
   return (
     <svg
@@ -548,6 +666,7 @@ export function Box(props: {
   className?: string;
   style?: React.CSSProperties;
   innerStyle?: React.CSSProperties;
+  spacingStyle?: React.CSSProperties;
   link?: string;
   condition?: boolean;
 }): React.ReactElement {
@@ -556,7 +675,7 @@ export function Box(props: {
 
   if (props.condition === undefined) {
     return (
-      <BoxSpacing>
+      <BoxSpacing style={props.spacingStyle}>
         <BoxWrap className={props.className} style={props.style}>
           <BoxInner
             style={{
@@ -572,7 +691,7 @@ export function Box(props: {
   }
 
   return (
-    <BoxSpacing>
+    <BoxSpacing style={props.spacingStyle}>
       <ConditionalLink to={props.link} condition={props.condition}>
         <BoxWrap className={props.className} style={props.style}>
           <BoxInner

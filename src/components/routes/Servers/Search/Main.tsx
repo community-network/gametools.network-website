@@ -18,6 +18,12 @@ import {
   Alignbf2042Search,
   BackButton,
   SmallSearchBox,
+  PageRow,
+  PageColumn,
+  Box,
+  BigButtonSecondary,
+  InputItem,
+  BigButtonSecondaryBox,
 } from "../../../Materials";
 import { getLanguage } from "../../../../locales/config";
 import {
@@ -281,7 +287,7 @@ export function ServerSearch(): React.ReactElement {
   const [gameName, setGameName] = React.useState<string>("bf2042");
   const [region, setRegion] = React.useState<string>("all");
   const [platform, setPlatform] = React.useState<string>("pc");
-  const [limit, setLimit] = React.useState<string>("10");
+  const [limit, setLimit] = React.useState<number>(4);
 
   const { t } = useTranslation();
   const {
@@ -306,17 +312,21 @@ export function ServerSearch(): React.ReactElement {
         searchType: "servername",
         region: region,
         platform: platform,
-        limit: "4",
+        limit: limit.toString(),
       }),
   );
   return (
     <>
-      <Align>
-        <BigSelectSecondary
+      <Align style={{ marginTop: "-1.2rem" }}>
+        <Title>{t("serverSearch.servers")}</Title>
+        <SelectPrimary
+          style={{ marginLeft: "1rem", marginTop: "2.2rem" }}
           value={gameName}
-          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
-            setGameName(ev.target.value)
-          }
+          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void => {
+            setGameName(ev.target.value);
+            setPlatform("pc");
+            setRegion("all");
+          }}
         >
           {supportedGames.map((value, index) => {
             return (
@@ -325,79 +335,81 @@ export function ServerSearch(): React.ReactElement {
               </option>
             );
           })}
-        </BigSelectSecondary>
-        <BigSelectSecondary
-          disabled={!frostbite3.includes(gameName)}
-          value={region}
-          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
-            setRegion(ev.target.value)
-          }
-        >
-          {Object.keys(t("regions", { returnObjects: true })).map(
-            (key, index) => {
-              return (
-                <option key={index} value={key}>
-                  {t(`regions.${key}`)}
-                </option>
-              );
-            },
-          )}
-        </BigSelectSecondary>
-        <BigSelectSecondary
-          disabled={!noCrossplayFrostbite3.includes(gameName)}
-          value={platform}
-          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
-            setPlatform(ev.target.value)
-          }
-        >
-          <option value="pc">{t("platforms.pc")}</option>
-          <option value="ps4">{t("platforms.ps4")}</option>
-          <option value="xboxone">{t("platforms.xboxone")}</option>
-        </BigSelectSecondary>
-        {/* <BigButtonSecondary type="submit">{t("serverSearch.search")} <RightArrow/></BigButtonSecondary> */}
-      </Align>
-      {oldJoinGames.includes(gameName) ||
-      frostbiteJoinGames.includes(gameName) ? (
-        <p style={{ margin: 0 }}>
-          <Trans i18nKey="servers.joinme.info">
-            <a href="https://joinme.click/download">
-              https://joinme.click/download
-            </a>
-          </Trans>
-        </p>
-      ) : (
-        <></>
-      )}
-      <Align>
-        <Title>{t("serverSearch.servers")}</Title>
+        </SelectPrimary>
         <SmallSearchBox
+          style={{ marginLeft: "1rem", marginTop: "2.2rem" }}
           placeholder={t(`serverSearch.searchPlaceholder.servername`)}
           value={searchTerm}
           onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
             setSearchTerm(ev.target.value)
           }
         />
-        {/* <SelectPrimary
-          style={{ marginLeft: "1rem", marginTop: "2.2rem" }}
-          value={sortType}
-          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
-            setSortType(ev.target.value)
-          }
-        >
-          <option value="prefix">{t("servers.sort.serverName")}</option>
-          <option value="-playerAmount">
-            {t("servers.sort.playerAmount")}
-          </option>
-          <option value="-maxPlayers">{t("servers.sort.maxPlayers")}</option>
-        </SelectPrimary> */}
       </Align>
-      <Results
-        game={gameName}
-        loading={loading}
-        stats={stats}
-        error={error}
-        sortType={"-prefix"}
-      />
+      <PageColumn>
+        <PageRow>
+          <Results
+            game={gameName}
+            loading={loading}
+            stats={stats}
+            error={error}
+            sortType={"-prefix"}
+            spacingStyle={{ maxWidth: "99rem" }}
+          />
+          <BigButtonSecondaryBox onClick={() => setLimit(limit + 5)}>
+            {t("serverSearch.showMore")}
+          </BigButtonSecondaryBox>
+        </PageRow>
+        <PageRow>
+          <Box style={{ width: "240px" }}>
+            <h2 style={{ marginBottom: "0.4rem" }}>Platform</h2>
+            <InputItem
+              item={"pc"}
+              currrentItem={platform}
+              callback={(e: {
+                target: { value: React.SetStateAction<string> };
+              }) => setPlatform(e.target.value)}
+              name={t("platforms.pc")}
+            />
+            <InputItem
+              item={"ps4"}
+              currrentItem={platform}
+              callback={(e: {
+                target: { value: React.SetStateAction<string> };
+              }) => setPlatform(e.target.value)}
+              name={t("platforms.ps4")}
+              disabled={!noCrossplayFrostbite3.includes(gameName)}
+            />
+            <InputItem
+              item={"xboxone"}
+              currrentItem={platform}
+              callback={(e: {
+                target: { value: React.SetStateAction<string> };
+              }) => setPlatform(e.target.value)}
+              name={t("platforms.xboxone")}
+              disabled={!noCrossplayFrostbite3.includes(gameName)}
+            />
+            <h2 style={{ marginBottom: "0.4rem" }}>Region</h2>
+            <>
+              {Object.keys(t("regions", { returnObjects: true })).map(
+                (key, index) => {
+                  return (
+                    <InputItem
+                      key={index}
+                      item={key}
+                      currrentItem={region}
+                      callback={(e: {
+                        target: { value: React.SetStateAction<string> };
+                      }) => setRegion(e.target.value)}
+                      name={t(`regions.${key}`)}
+                      disabled={!frostbite3.includes(gameName)}
+                    />
+                  );
+                },
+              )}
+            </>
+          </Box>
+        </PageRow>
+      </PageColumn>
     </>
   );
 }

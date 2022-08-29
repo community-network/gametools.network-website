@@ -80,6 +80,7 @@ interface Views {
   game: string;
   stats: ServerSearch;
   sortType: string;
+  spacingStyle?: React.CSSProperties;
 }
 
 export function Results(props: Views): React.ReactElement {
@@ -117,6 +118,7 @@ export function Results(props: Views): React.ReactElement {
           const useLink = dice.includes(props.game);
           return (
             <Box
+              spacingStyle={props.spacingStyle}
               className={useLink ? "box_hover box" : ""}
               link={`/servers/${props.game}/${
                 props.game == "bf2042" ? "serverid" : "gameid"
@@ -185,7 +187,7 @@ export function Results(props: Views): React.ReactElement {
     );
   } else {
     return (
-      <Box>
+      <Box spacingStyle={props.spacingStyle}>
         <h3>{t("loading")}</h3>
       </Box>
     );
