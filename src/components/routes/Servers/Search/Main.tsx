@@ -18,10 +18,7 @@ import {
   Alignbf2042Search,
   BackButton,
   SmallSearchBox,
-  PageRow,
-  PageColumn,
   Box,
-  BigButtonSecondary,
   InputItem,
   BigButtonSecondaryBox,
 } from "../../../Materials";
@@ -42,6 +39,24 @@ const AltDescription = styled.p`
 
 const Title = styled.h2`
   margin-top: 2rem;
+`;
+
+const ServerPageColumn = styled.div`
+  @media screen and (min-width: 1000px) {
+    display: flex;
+    flex-flow: no-wrap;
+    align-items: flex-start;
+  }
+`;
+
+const ServerPageRow = styled.div`
+  @media screen and (min-width: 1300px) {
+    flex: 0;
+    min-width: 922px;
+  }
+  @media screen and (max-width: 1300px) {
+    flex: 100%;
+  }
 `;
 
 function Main(): React.ReactElement {
@@ -345,8 +360,8 @@ export function ServerSearch(): React.ReactElement {
           }
         />
       </Align>
-      <PageColumn>
-        <PageRow>
+      <ServerPageColumn>
+        <ServerPageRow>
           <Results
             game={gameName}
             loading={loading}
@@ -358,8 +373,8 @@ export function ServerSearch(): React.ReactElement {
           <BigButtonSecondaryBox onClick={() => setLimit(limit + 5)}>
             {t("serverSearch.showMore")}
           </BigButtonSecondaryBox>
-        </PageRow>
-        <PageRow>
+        </ServerPageRow>
+        <div>
           <Box style={{ width: "240px" }}>
             <h2 style={{ marginBottom: "0.4rem" }}>Platform</h2>
             <InputItem
@@ -408,8 +423,8 @@ export function ServerSearch(): React.ReactElement {
               )}
             </>
           </Box>
-        </PageRow>
-      </PageColumn>
+        </div>
+      </ServerPageColumn>
     </>
   );
 }

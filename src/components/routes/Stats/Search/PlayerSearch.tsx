@@ -16,7 +16,7 @@ import {
   HomePlayerSearchBox,
   HomePlayerBigSelectSecondary,
   AlignW,
-  HomeBigButtonPrimary,
+  BigButtonPrimary,
 } from "../../../Materials";
 import { platformGames } from "../../../../api/static";
 import { Graphs } from "./Graphs";
@@ -64,15 +64,15 @@ export function StatSearch(): React.ReactElement {
           <Link
             to={`/stats/${platform}/name/${encodeURIComponent(searchTerm)}`}
           >
-            <HomeBigButtonPrimary type="submit">
+            <BigButtonPrimary type="submit">
               {t("playerSearch.search")} <RightArrow />
-            </HomeBigButtonPrimary>
+            </BigButtonPrimary>
           </Link>
         ) : (
           // if no name is filled in
-          <HomeBigButtonPrimary type="submit">
+          <BigButtonPrimary type="submit">
             {t("playerSearch.search")} <RightArrow />
-          </HomeBigButtonPrimary>
+          </BigButtonPrimary>
         )}
       </AlignW>
     </form>

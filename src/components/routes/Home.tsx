@@ -12,9 +12,8 @@ import {
   Align,
   AlignW,
   PageColumn,
-  PageRow,
-  BigButtonSecondary,
   BigButtonSecondaryBox,
+  PageRow,
 } from "../Materials";
 import { TotalGraphQuery } from "../graphing/line";
 import { ServerSearch } from "./Servers/Search/Main";
@@ -158,13 +157,17 @@ function Home(): React.ReactElement {
       </CloudImage>
       <Container>
         <PageColumn>
-          <PageRow>
+          <PageRow title="970px">
             <h2 style={{ margin: "24px 0 24px 24px" }}>
               {t("home.ourFriends.header")}
             </h2>
             {ourFriends.map((key, index) => {
               return (
-                <Box key={index} align="flex-start">
+                <Box
+                  key={index}
+                  align="flex-start"
+                  spacingStyle={{ maxWidth: "922px" }}
+                >
                   <AlignW style={{ marginTop: "0.5rem" }}>
                     <img
                       src={ourFriendLogos[index]}
@@ -181,7 +184,7 @@ function Home(): React.ReactElement {
               );
             })}
           </PageRow>
-          <PageRow>
+          <div>
             <h2 style={{ margin: "24px 0 24px 24px" }}>
               {t("home.otherServices.header")}
             </h2>
@@ -202,7 +205,7 @@ function Home(): React.ReactElement {
                 </div>
               );
             })}
-          </PageRow>
+          </div>
         </PageColumn>
       </Container>
     </div>
