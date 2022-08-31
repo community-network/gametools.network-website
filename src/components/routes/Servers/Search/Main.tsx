@@ -316,7 +316,7 @@ export function ServerSearch(): React.ReactElement {
         "servername" +
         region +
         platform +
-        "10",
+        "4",
     ],
     () =>
       GametoolsApi.serverSearch({
@@ -326,7 +326,7 @@ export function ServerSearch(): React.ReactElement {
         searchType: "servername",
         region: region,
         platform: platform,
-        limit: "10",
+        limit: "4",
       }),
   );
   return (
