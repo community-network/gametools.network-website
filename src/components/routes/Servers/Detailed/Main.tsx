@@ -239,7 +239,21 @@ export function Results(props: Views): React.ReactElement {
           {stats.rotation.map((key: ServerRotation, index: number) => {
             return (
               <AlignW key={index}>
-                <div style={{ marginRight: ".7rem" }}>
+                <div style={{ marginRight: ".7rem", marginTop: "10px" }}>
+                  <div
+                    style={{
+                      backgroundColor: "#fff",
+                      width: "20px",
+                      height: "20px",
+                      borderRadius: "100%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      position: "absolute",
+                    }}
+                  >
+                    <span>{index + 1}</span>
+                  </div>
                   <MapImage background={key.image}></MapImage>
                   <ServerInfo>
                     <h3
