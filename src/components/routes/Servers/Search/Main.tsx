@@ -1,6 +1,6 @@
 import * as React from "react";
 import "../../../../locales/config";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
@@ -302,7 +302,6 @@ export function ServerSearch(): React.ReactElement {
   const [gameName, setGameName] = React.useState<string>("bf2042");
   const [region, setRegion] = React.useState<string>("all");
   const [platform, setPlatform] = React.useState<string>("pc");
-  const [limit, setLimit] = React.useState<number>(4);
 
   const { t } = useTranslation();
   const {
@@ -317,7 +316,7 @@ export function ServerSearch(): React.ReactElement {
         "servername" +
         region +
         platform +
-        limit,
+        "10",
     ],
     () =>
       GametoolsApi.serverSearch({
@@ -327,7 +326,7 @@ export function ServerSearch(): React.ReactElement {
         searchType: "servername",
         region: region,
         platform: platform,
-        limit: limit.toString(),
+        limit: "10",
       }),
   );
   return (
@@ -370,9 +369,19 @@ export function ServerSearch(): React.ReactElement {
             sortType={"-prefix"}
             spacingStyle={{ maxWidth: "99rem" }}
           />
-          <BigButtonSecondaryBox onClick={() => setLimit(limit + 5)}>
-            {t("serverSearch.showMore")}
-          </BigButtonSecondaryBox>
+          <Link
+            to={`/servers?${new URLSearchParams({
+              search: searchTerm,
+              game: gameName,
+              region: region,
+              platform: platform,
+              limit: 10,
+            }).toString()}`}
+          >
+            <BigButtonSecondaryBox>
+              {t("serverSearch.showMore")}
+            </BigButtonSecondaryBox>
+          </Link>
         </ServerPageRow>
         <div>
           <Box style={{ width: "240px" }}>

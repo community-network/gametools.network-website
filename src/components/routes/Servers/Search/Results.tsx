@@ -98,7 +98,7 @@ export function Results(props: Views): React.ReactElement {
 
     const servers = stats.servers.sort(DynamicSort(props.sortType));
     return (
-      <Spacing>
+      <>
         {servers.map((key: ServerList, index: number) => {
           const queue = key.inQue ?? key.inQueue;
           let queueString = "";
@@ -183,7 +183,7 @@ export function Results(props: Views): React.ReactElement {
             </Box>
           );
         })}
-      </Spacing>
+      </>
     );
   } else {
     return (
