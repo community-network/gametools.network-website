@@ -147,7 +147,7 @@ function Stats(): React.ReactElement {
 
   React.useEffect(() => {
     if (playerGamesArr.includes(gameQuery)) {
-      setGame(otherGamesArr[0]);
+      setGame(otherGamesArr[otherGamesArr.length - 1]);
     }
   });
 
