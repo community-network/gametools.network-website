@@ -69,9 +69,7 @@ export function StatSearch(): React.ReactElement {
         </AlignW>
         {searchTerm !== "" ? (
           <Link
-            to={`/stats/${platform}/name/${encodeURIComponent(
-              searchTerm,
-            )}?game=unknown`}
+            to={`/stats/${platform}/name/${encodeURIComponent(searchTerm)}`}
           >
             <BigButtonPrimary type="submit">
               {t("playerSearch.search")} <RightArrow />
