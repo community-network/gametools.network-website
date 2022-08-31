@@ -86,7 +86,7 @@ body {
     @extend %font-shared;
   }
 
-  p, a, label {
+  p, a {
     color: var(--color-text);
     font-weight: 500;
     line-height: 150%;

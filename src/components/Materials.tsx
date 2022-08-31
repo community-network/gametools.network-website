@@ -395,6 +395,17 @@ export const GridContainer = styled.div`
   }
 `;
 
+const SelectorLabel = styled.label`
+  font-family: Manrope;
+  font-style: normal;
+  letter-spacing: 0em;
+  text-align: left;
+  color: var(--color-text);
+  font-weight: 500;
+  line-height: 150%;
+  font-size: 13px;
+`;
+
 export function InputItem(props: {
   item: string;
   currrentItem: string;
@@ -416,9 +427,12 @@ export function InputItem(props: {
         disabled={disabled}
         style={{ marginRight: "0.5rem", marginLeft: "0" }}
       />
-      <label htmlFor={item} style={{ color: disabled ? "#ffffff40" : "#fff" }}>
+      <SelectorLabel
+        htmlFor={item}
+        style={{ color: disabled ? "#ffffff40" : "#fff" }}
+      >
         {name}
-      </label>
+      </SelectorLabel>
     </div>
   );
 }
