@@ -603,6 +603,12 @@ export const UncheckedSmallButtonRadio = styled(SmallButtonRadio)`
   }
 `;
 
+export const DisabledSmallButtonRadio = styled(SmallButtonRadio)`
+  background: none;
+  filter: none;
+  color: var(--color-alt-text);
+`;
+
 export const SmallestPhoneRow = styled.div`
   flex: 1;
   @media (max-width: 440px) {

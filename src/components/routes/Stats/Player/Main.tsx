@@ -14,6 +14,7 @@ import {
   Radio,
   SmallButtonRadio,
   UncheckedSmallButtonRadio,
+  DisabledSmallButtonRadio,
   PageColumn,
   PageRow,
   BackButton,
@@ -24,6 +25,7 @@ import {
   platformGames,
   progressGames,
   gamemodeGames,
+  supportedGames,
 } from "../../../../api/static";
 import { getLanguage } from "../../../../locales/config";
 import { MainStats } from "../../../../api/ReturnTypes";
@@ -105,18 +107,47 @@ function Stats(): React.ReactElement {
   const params = useParams();
   const platform = params.plat;
   const [game, setGame] = React.useState<string>(platformGames[platform][0]);
-  const [name, setName] = React.useState<string>("");
   const { width } = useWindowDimensions();
   const query = new URLSearchParams(useLocation().search);
   const history = useNavigate();
   const gameQuery = query.get("game");
   const nameQuery = query.get("name");
+
+  const {
+    isLoading: gameLoading,
+    isError: gameError,
+    data: playerGames,
+  } = useQuery(["games" + params.type + params.eaid, platform], () =>
+    GametoolsApi.games({
+      getter: params.type,
+      userName: params.eaid,
+      platform: platform,
+    }),
+  );
+  const games = platformGames[platform];
+
+  let playerGamesArr = [];
+  let otherGamesArr = [];
+  if (!gameLoading && !gameError) {
+    playerGamesArr = Object.keys(
+      Object.fromEntries(
+        Object.entries(playerGames)
+          .filter(([key]) => supportedGames.includes(key))
+          .filter(([_, value]) => value != true),
+      ),
+    );
+    otherGamesArr = games.filter((item) => !playerGamesArr.includes(item));
+  }
+
   React.useState(() => {
     if (gameQuery !== null) {
       setGame(gameQuery);
     }
-    if (nameQuery !== null) {
-      setName(nameQuery);
+  });
+
+  React.useEffect(() => {
+    if (playerGamesArr.includes(gameQuery)) {
+      setGame(otherGamesArr[0]);
     }
   });
 
@@ -128,8 +159,8 @@ function Stats(): React.ReactElement {
     } else {
       params.delete("game");
     }
-    if (name) {
-      params.append("name", name);
+    if (nameQuery) {
+      params.append("name", nameQuery);
     } else {
       params.delete("name");
     }
@@ -138,31 +169,15 @@ function Stats(): React.ReactElement {
     }
   }, [game, history]);
   const { t } = useTranslation();
-  const {
-    isLoading: loading,
-    isError: error,
-    data: stats,
-  } = useQuery(["stats" + game + params.type + params.eaid], () =>
-    GametoolsApi.stats({
-      game: game,
-      type: "all",
-      getter: params.type,
-      userName: params.eaid,
-      lang: getLanguage(),
-      platform: platform,
-    }),
-  );
-
-  const games = platformGames[platform];
   return (
     <Container>
       <BackButton text={t("stats.back")} location="/stats" />
       <ViewOrigin
         game={game}
-        loading={loading}
-        stats={stats}
-        error={error}
-        name={name}
+        loading={gameLoading}
+        stats={playerGames}
+        error={gameError}
+        name={nameQuery}
       />
       {width < 930 ? (
         <SelectPrimary
@@ -173,7 +188,11 @@ function Stats(): React.ReactElement {
         >
           {games.map((key: string, index: number) => {
             return (
-              <option key={index} value={key}>
+              <option
+                key={index}
+                value={key}
+                disabled={playerGamesArr.includes(key)}
+              >
                 {t(`games.${key}`)}
               </option>
             );
@@ -192,22 +211,68 @@ function Stats(): React.ReactElement {
                   id={key}
                   value={key}
                   name="game"
+                  disabled={playerGamesArr.includes(key)}
                   defaultChecked={game === key}
                 />
-                {game === key ? (
-                  <SmallButtonRadio htmlFor={key}>
+                {playerGamesArr.includes(key) ? (
+                  <DisabledSmallButtonRadio htmlFor={key}>
                     {t(`games.${key}`)}
-                  </SmallButtonRadio>
+                  </DisabledSmallButtonRadio>
                 ) : (
-                  <UncheckedSmallButtonRadio htmlFor={key}>
-                    {t(`games.${key}`)}
-                  </UncheckedSmallButtonRadio>
+                  <>
+                    {game === key ? (
+                      <SmallButtonRadio htmlFor={key}>
+                        {t(`games.${key}`)}
+                      </SmallButtonRadio>
+                    ) : (
+                      <UncheckedSmallButtonRadio htmlFor={key}>
+                        {t(`games.${key}`)}
+                      </UncheckedSmallButtonRadio>
+                    )}
+                  </>
                 )}
               </Radio>
             );
           })}
         </Align>
       )}
+      <GameStats
+        game={game}
+        name={params.eaid}
+        type={params.type}
+        platform={platform}
+      />
+    </Container>
+  );
+}
+
+interface GameStatsItems {
+  game: string;
+  name: string;
+  type: string;
+  platform: string;
+}
+
+function GameStats(props: GameStatsItems): React.ReactElement {
+  const { game, name, type, platform } = props;
+
+  const {
+    isLoading: loading,
+    isError: error,
+    data: stats,
+  } = useQuery(["stats" + game + type + name], () =>
+    GametoolsApi.stats({
+      game: game,
+      type: "all",
+      getter: type,
+      userName: name,
+      lang: getLanguage(),
+      platform: platform,
+    }),
+  );
+
+  return (
+    <>
       <PageColumn>
         <PageRow>
           <ViewStats
@@ -317,11 +382,11 @@ function Stats(): React.ReactElement {
         loading={loading}
         stats={stats}
         error={error}
-        getter={params.type}
-        name={params.eaid}
-        platform={params.plat}
+        getter={type}
+        name={name}
+        platform={platform}
       />
-    </Container>
+    </>
   );
 }
 
