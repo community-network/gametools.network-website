@@ -16,6 +16,7 @@ import {
   HomePlayerSearchBox,
   HomePlayerBigSelectSecondary,
   AlignW,
+  AlignT,
   BigButtonPrimary,
 } from "../../../Materials";
 import { platformGames } from "../../../../api/static";
@@ -26,13 +27,19 @@ export const AltDescription = styled.p`
   margin-left: 24px;
 `;
 
+const AlignMain = styled(AlignT)`
+  @media screen and (min-width: 1000px) {
+    flex-wrap: nowrap;
+  }
+`;
+
 export function StatSearch(): React.ReactElement {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = React.useState<string>("");
   const [platform, setPlatform] = React.useState<string>("pc");
   return (
     <form>
-      <AlignW>
+      <AlignMain>
         <AlignW>
           <HomePlayerSearchBox
             placeholder={t("playerSearch.searchPlaceholder")}
@@ -74,7 +81,7 @@ export function StatSearch(): React.ReactElement {
             {t("playerSearch.search")} <RightArrow />
           </BigButtonPrimary>
         )}
-      </AlignW>
+      </AlignMain>
     </form>
   );
 }

@@ -194,7 +194,8 @@ function Home(): React.ReactElement {
                   <Link to={key.url}>
                     <BigButtonSecondaryBox
                       style={{
-                        width: "470px",
+                        width: "97%",
+                        maxWidth: "470px",
                         textAlign: "left",
                         paddingLeft: "2rem",
                       }}
