@@ -302,6 +302,9 @@ export const SelectSecondary = styled.select`
   background-repeat: no-repeat;
   background-position-x: 100%;
   background-position-y: 3px;
+  option {
+    background: rgba(0, 0, 0, 0.8);
+  }
 `;
 
 export const BigSelectSecondary = styled(SelectSecondary)`
