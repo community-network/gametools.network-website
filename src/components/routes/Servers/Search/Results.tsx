@@ -52,14 +52,6 @@ const Blur = styled.div`
   );
 `;
 
-const ServerText = styled.h1`
-  font-size: 1.8rem;
-  text-align: center;
-  padding-top: 2rem;
-  line-height: 0;
-  margin-top: 0;
-`;
-
 const ServerInfo = styled.div`
   margin-top: 16px;
   flex-grow: 2;
@@ -131,9 +123,7 @@ export function Results(props: Views): React.ReactElement {
             >
               <AlignSeverImg>
                 <ServerImage background={key.url ?? key.mapImage}>
-                  <Blur>
-                    <ServerText>{key.smallMode}</ServerText>
-                  </Blur>
+                  <Blur />
                 </ServerImage>
                 <ServerInfo>
                   <h3>
