@@ -95,11 +95,15 @@
             "header": "Other services",
             "0": {
                 "header": "Battlefield platoons",
-                "url": "/platoons/"
+                "localUrl": "/platoons/"
             },
             "1": {
                 "header": "Portal Experience info",
-                "url": "/playgrounds/"
+                "localUrl": "/playgrounds/"
+            },
+            "2": {
+                "header": "FESL API (Battlefield bad company 2 APIs)",
+                "url": "https://fesl.gametools.network/docs"
             }
         },
         "ourFriends": {

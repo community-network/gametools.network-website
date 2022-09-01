@@ -102,7 +102,12 @@ function Home(): React.ReactElement {
   while (i18n.exists(`home.otherServices.${i}`)) {
     otherServices.push({
       header: t(`home.otherServices.${i}.header`),
-      url: t(`home.otherServices.${i}.url`),
+      localUrl: i18n.exists(`home.otherServices.${i}.localUrl`)
+        ? t(`home.otherServices.${i}.localUrl`)
+        : null,
+      url: i18n.exists(`home.otherServices.${i}.url`)
+        ? t(`home.otherServices.${i}.url`)
+        : null,
     });
     i += 1;
   }
@@ -191,18 +196,33 @@ function Home(): React.ReactElement {
             {otherServices.map((key, index) => {
               return (
                 <div key={index}>
-                  <Link to={key.url}>
-                    <BigButtonSecondaryBox
-                      style={{
-                        width: "97%",
-                        maxWidth: "470px",
-                        textAlign: "left",
-                        paddingLeft: "2rem",
-                      }}
-                    >
-                      {key.header}
-                    </BigButtonSecondaryBox>
-                  </Link>
+                  {key.localUrl ? (
+                    <Link to={key.localUrl}>
+                      <BigButtonSecondaryBox
+                        style={{
+                          width: "97%",
+                          maxWidth: "470px",
+                          textAlign: "left",
+                          padding: "0 2rem",
+                        }}
+                      >
+                        {key.header}
+                      </BigButtonSecondaryBox>
+                    </Link>
+                  ) : (
+                    <a target="_blank" href={key.url} rel="noreferrer">
+                      <BigButtonSecondaryBox
+                        style={{
+                          width: "97%",
+                          maxWidth: "470px",
+                          textAlign: "left",
+                          padding: "0 2rem",
+                        }}
+                      >
+                        {key.header}
+                      </BigButtonSecondaryBox>
+                    </a>
+                  )}
                 </div>
               );
             })}
