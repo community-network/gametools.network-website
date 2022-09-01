@@ -252,7 +252,9 @@ function Main(): React.ReactElement {
             setPlatform(ev.target.value)
           }
         >
-          <option value="pc">{t("platforms.pc")}</option>
+          <option value="pc">
+            {gameName == "bf2042" ? t("platforms.all") : t("platforms.pc")}
+          </option>
           <option value="ps4">{t("platforms.ps4")}</option>
           <option value="xboxone">{t("platforms.xboxone")}</option>
         </BigSelectSecondary>
