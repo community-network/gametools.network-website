@@ -409,6 +409,11 @@ const SelectorLabel = styled.label`
   font-size: 13px;
 `;
 
+const InputStyle = styled.input`
+  margin-right: 0.5rem;
+  margin-left: 0;
+`;
+
 export function InputItem(props: {
   item: string;
   currrentItem: string;
@@ -420,7 +425,7 @@ export function InputItem(props: {
 
   return (
     <div style={{ marginBottom: "5px" }}>
-      <input
+      <InputStyle
         type="radio"
         id={item}
         name={item}
@@ -428,11 +433,12 @@ export function InputItem(props: {
         onChange={callback}
         checked={currrentItem === item}
         disabled={disabled}
-        style={{ marginRight: "0.5rem", marginLeft: "0" }}
       />
       <SelectorLabel
         htmlFor={item}
-        style={{ color: disabled ? "#ffffff40" : "#fff" }}
+        style={{
+          color: disabled ? "#ffffff40" : "#fff",
+        }}
       >
         {name}
       </SelectorLabel>
