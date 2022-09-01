@@ -168,28 +168,13 @@ const RightNav = ({
   const { t } = useTranslation();
   return (
     <Ul open={open}>
-      <li onClick={() => setOpen(false)}>
-        <HLink to="/stats" title={t("navBar.bfStats")}>
-          {t("navBar.bfStats")}
-        </HLink>
-      </li>
-      <li onClick={() => setOpen(false)}>
-        <HLink to="/servers" title={t("navBar.serverStats")}>
-          {t("navBar.serverStats")}
-        </HLink>
-      </li>
-      <li onClick={() => setOpen(false)}>
-        <HLink to="/platoons" title={t("navBar.platoons")}>
-          {t("navBar.platoons")}
-        </HLink>
-      </li>
       <li>
         <ALink
           target="_blank"
-          href="https://discord.gametools.network/"
-          title={t("navBar.discord")}
+          href="https://manager.gametools.network/"
+          title={t("navBar.serverManager")}
         >
-          {t("navBar.discord")}
+          {t("navBar.serverManager")}
         </ALink>
       </li>
       <li>
@@ -202,12 +187,13 @@ const RightNav = ({
         </ALink>
       </li>
       <li>
-        <ButtonLink
+        <ALink
           target="_blank"
-          href="https://top.gg/bot/714524944783900794"
+          href="https://discord.gametools.network/"
+          title={t("navBar.help")}
         >
-          {t("navBar.bot")}
-        </ButtonLink>
+          {t("navBar.help")}
+        </ALink>
       </li>
     </Ul>
   );
