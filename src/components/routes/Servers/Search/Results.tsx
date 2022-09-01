@@ -127,6 +127,7 @@ export function Results(props: Views): React.ReactElement {
               }${props.game == "bf2042" ? `?blazeid=${key.blazeGameId}` : ""}`}
               condition={useLink}
               key={index}
+              innerStyle={props.spacingStyle}
             >
               <AlignSeverImg>
                 <ServerImage background={key.url ?? key.mapImage}>
