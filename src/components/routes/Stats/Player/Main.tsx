@@ -171,7 +171,7 @@ function Stats(): React.ReactElement {
   const { t } = useTranslation();
   return (
     <Container>
-      <BackButton text={t("stats.back")} location="/stats" />
+      <BackButton text={t("stats.back")} location="/" />
       <ViewOrigin
         game={game}
         loading={gameLoading}

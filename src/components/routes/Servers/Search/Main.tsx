@@ -332,7 +332,9 @@ export function ServerSearch(): React.ReactElement {
   return (
     <>
       <Align style={{ marginTop: "1.1rem" }}>
-        <h2 style={{ marginTop: 0, marginBottom: "1.2rem" }}>{t("serverSearch.servers")}</h2>
+        <h2 style={{ marginTop: 0, marginBottom: "1.2rem" }}>
+          {t("serverSearch.servers")}
+        </h2>
         <SelectPrimary
           style={{ marginLeft: "1rem" }}
           value={gameName}

@@ -454,10 +454,12 @@ export function RightArrow(): React.ReactElement {
   );
 }
 
-export function OpenExternal(): React.ReactElement {
+export function OpenExternal(props: {
+  style?: React.CSSProperties;
+}): React.ReactElement {
   return (
     <svg
-      style={{ verticalAlign: "bottom" }}
+      style={{ verticalAlign: "bottom", ...props.style }}
       xmlns="http://www.w3.org/2000/svg"
       width="18"
       height="18"

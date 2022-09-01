@@ -13,6 +13,7 @@ import {
   PageColumn,
   BigButtonSecondaryBox,
   PageRow,
+  OpenExternal,
 } from "../Materials";
 import { TotalGraphQuery } from "../graphing/line";
 import { ServerSearch } from "./Servers/Search/Main";
@@ -151,8 +152,9 @@ function Home(): React.ReactElement {
           <PrimaryButtonLink
             target="_blank"
             href="https://manager.gametools.network/"
-            style={{ width: "77px", borderRadius: "10px", marginTop: "3rem" }}
+            style={{ width: "90px", borderRadius: "10px", marginTop: "3rem" }}
           >
+            <OpenExternal style={{ paddingTop: "1px" }} />{" "}
             {t("home.manager.open")}
           </PrimaryButtonLink>
           <Description style={{ marginTop: "3rem" }}>
@@ -191,7 +193,7 @@ function Home(): React.ReactElement {
                   <Description>{key.description}</Description>
                   <br></br>
                   <ButtonLink target="_blank" href={key.url}>
-                    {key.link}
+                    <OpenExternal style={{ paddingTop: "1px" }} /> {key.link}
                   </ButtonLink>
                 </Box>
               );
@@ -227,6 +229,7 @@ function Home(): React.ReactElement {
                           padding: "0 2rem",
                         }}
                       >
+                        <OpenExternal style={{ paddingBottom: "1px" }} />{" "}
                         {key.header}
                       </BigButtonSecondaryBox>
                     </a>
