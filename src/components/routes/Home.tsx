@@ -5,7 +5,6 @@ import styled from "styled-components";
 import {
   AltText,
   Box,
-  Container,
   ButtonLink,
   BigButtonLink,
   PrimaryButtonLink,
@@ -29,6 +28,15 @@ import statbitsLogo from "../../assets/img/statbits-icon.svg";
 import bflistLogo from "../../assets/img/bflist-icon.svg";
 import bfbanLogo from "../../assets/img/bfban-icon.png";
 import { Link } from "react-router-dom";
+
+export const Container = styled.div`
+  @media (min-width: 1300px) {
+    padding-left: 8.33%;
+  }
+  @media (max-width: 1300px) {
+    padding-left: 2%;
+  }
+`;
 
 const Image = styled.div`
   height: 356px;
