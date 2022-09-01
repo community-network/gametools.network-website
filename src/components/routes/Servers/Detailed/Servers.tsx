@@ -30,7 +30,7 @@ export const OriginProfile = styled.img`
 `;
 
 export const OriginName = styled.h2`
-  line-height: 60%;
+  line-height: 100%;
   margin-top: 0.4rem;
 `;
 

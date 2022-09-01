@@ -3,7 +3,7 @@
     "siteFullName": "Game tools",  
     "loading": "Loading...",
     "404": "404",
-    "playerNotFound": "Playername not found, try another name or another game.",
+    "playerNotFound": "Playername not found, try another name or game.",
     "notApplicable": "N/A",
     "resultNotFound": "No results found",
     "noName": "Cannot show a playername when accessing stats via playerId",
@@ -85,7 +85,7 @@
             "header": "GAMETOOLS | CLOUD",
             "description": "We created a web-based Anti-cheat and Management platform to protect your Battlefield Servers.\nBuilt with help of many communities.\n\nLogin now and start your integration for free!",
             "open": "Launch App",
-            "disclaimer": "Server hosting is not provided. Supported only these Games"
+            "disclaimer": "Server hosting is not provided. We currently support the following Battlefield titles:"
         },
         "graphs": {
             "header": "Online stats and graphs",
@@ -144,9 +144,9 @@
         "description": "Search for Battlefield servers to get playeramounts/map rotation of the server.",
         "search": "Search",
         "searchPlaceholder": {
-            "null": "Search for server name...",
-            "servername": "Search for server name...",
-            "experiencename": "Search for experience name..."
+            "null": "Search for server by name...",
+            "servername": "Search for server by name...",
+            "experiencename": "Search for an experience by name..."
         },
         "results": "Search results",
         "type": {
@@ -160,9 +160,9 @@
         "serverInfo": "Battlefield Platoons",
         "description": "Search for Battlefield platoons to get more info about them, click on a platoon to see their members.",
         "search": "Search",
-        "searchPlaceholder": "Search for platoon name...",
+        "searchPlaceholder": "Search for platoon by name...",
         "results": "Search results",
-        "resultNotFound": "No results found. To search platoons, you need a minimum of 3 characters."
+        "resultNotFound": "No results found. To search for platoons, you need a minimum of 3 characters."
     },
     "stats": {
         "view": "View stats",
@@ -253,12 +253,12 @@
         },
         "platoon": {
             "none": "Player isn't in any platoon",
-            "noMain": "Player doesn't represent one platoon as his main",
+            "noMain": "Player doesn't represent one platoon as their main",
             "noDescription": "The platoon doesn't have a description"
         },
         "playSession": {
             "main": "Battlefield playsessions",
-            "detailed": "We track in which server you played, only works when the server uses our manager.",
+            "detailed": "We track in which servers you've played on, only works when the server uses our manager.",
             "stats": {
                 "kills": "Kills",
                 "deaths": "Deaths",
@@ -355,7 +355,7 @@
             "main": "Joinme.click launcher",
             "view": "View on joinme.click",
             "launch": "Game launched!",
-            "info": "The join server buttons uses <0>https://joinme.click/</0> to join the game, install the <0>joinme.click launcher</0> first before trying to use those buttons!",
+            "info": "The join server buttons use <0>https://joinme.click/</0> to join the game, install the <0>joinme.click launcher</0> first before trying to use those buttons!",
             "discord": "The joinme launcher has to be installed to make this work!",
             "invite": "Joinme.click invite URL"
         },
@@ -373,7 +373,7 @@
         "leaderboard": {
             "main": "Player leaderboard of this server",
             "info": "only available on servers that use the manager-api",
-            "none": "Server is just added or doesn't use the manager-api",
+            "none": "Server was just added or doesn't use the manager-api",
             "row": {
                 "score": "Score",
                 "killDeath": "K/D",
@@ -386,7 +386,7 @@
         },
         "playerlist": {
             "main": "Current players in the server",
-            "none": "Server is just added or doesn't use the manager-api",
+            "none": "Server was just added or doesn't use the manager-api",
             "empty": "This team is empty",
             "lastUpdate": "Last update",
             "row": {
@@ -420,7 +420,7 @@
     },
     "platoon": {
         "back": "Back to search",
-        "searchPlayer": "Search a player",
+        "searchPlayer": "Search for a player",
         "servers": "Platoon servers",
         "members": {
             "main": "Platoon members",
@@ -449,7 +449,7 @@
         "maxPlayers": "Max {{ amount }} players",
         "owner": {
             "main": "Experience creator",
-            "none": "The creator can only be garthered if playground id is used",
+            "none": "The creator can only be retrieved if playground id is used",
             "unknown": "Name not found"
         }
     },
