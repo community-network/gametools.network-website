@@ -394,7 +394,9 @@ export function ServerSearch(): React.ReactElement {
               callback={(e: {
                 target: { value: React.SetStateAction<string> };
               }) => setPlatform(e.target.value)}
-              name={t("platforms.pc")}
+              name={
+                gameName == "bf2042" ? t("platforms.all") : t("platforms.pc")
+              }
             />
             <InputItem
               item={"ps4"}
