@@ -1,6 +1,6 @@
 {
     "siteName": "GAMETOOLS",
-    "siteDescription": "Topluluk Ağı, farklı oyunlar için genel araçlar sağlamayı amaçlamaktadır. Battlefield'dan başlayarak, çevrimiçi eşzamanlı oyuncu istatistiklerinin yanı sıra kişisel istatistikleri ve çok daha fazlasını gelecekte geri getiriyoruz.",
+    "siteFullName": "Game tools",  
     "loading": "Yükleniyor...",
     "404": "404",
     "playerNotFound": "Oyuncu Adı bulunamadı, başka bir ad veya başka bir oyun deneyin.",
@@ -13,6 +13,7 @@
     "chartHourFormat": "HH:mm, eee d LLL",
     "time": "{{date, date|p}}",
     "change": "{{change, change}}",
+    "intlNumber": "{{val, number}}",
     "ago": "önce",
     "export": "Dosyaya aktar",
     "bfban": {
@@ -74,52 +75,25 @@
         "all": "Tüm platformlar"
     },
     "home": {
-        "hostedAt": {
-            "header": "Hosted at Game tools",
-            "0": {
-                "header": "BFBan",
-                "0": "Birleşik yasak listesi ve şikayet sistemi sağlamak için hilecilere karşı oluşturulmuş muhteşem bir topluluk ve tersine mühendislik/güvenlik ekibi olan bfban.com'un aktif bir parçasıyız ve ev sahipliği yapıyoruz.",
-                "1": "Hile yapanları BF1/BFV'de bildirin, böylece topluluk sunucularında yasaklanabilirler.",
-                "link": "BFBan'ı ziyaret edin",
-                "url": "https://bfban.gametools.network/"
-            }
-        },
-        "ourSolutions": {
-            "header": "Çözümlerimiz",
-            "0": {
-                "header": "Server Manager",
-                "0": "Battlefield 1 sunucunuz için bir yönetici. Oyuncuları ping veya BFBan'a (küresel yasak listemiz) göre otomatik olarak atmanıza izin verir. Ayrıca sunucularınız için 200'den fazla banslot'a sahip olmanın bir yolunu sunar.",
-                "1": "Ayrıca oyundakiyle aynı yönetici paneline erişmenizi sağlar, böylece oyunu açmanıza gerek kalmaz. Sunucularınızı yönetebilmeniz için ikinci bir panelinizin olması harika.",
-                "link": "Sunucu yöneticisini ziyaret edin",
-                "url": "https://manager.gametools.network/"
-            },
-            "1": {
-                "header": "Game Stats",
-                "0": "Oyun istatistikleri botu, Battlefield 2, 3, 4, Hardline, 1 ve 5 gibi oyunlar için herhangi bir oyuncunun istatistiklerini görmek için bir Discord botudur.",
-                "1": "Bot ayrıca konsol kullanıcılarını da destekler, örneğin: '!bf1stat {platform} {name}'",
-                "link": "sunucunuza ekleyin",
-                "url": "https://top.gg/bot/714524944783900794"
-            },
-            "2": {
-                "header": "Battlefield API",
-                "0": "Kendi projeniz veya web siteniz için oyun içi istatistikleri veya sunucu bilgilerini almak için Genel API. Oyun istatistikleri botu ile aynı Battlefield oyunlarının hepsini destekler.",
-                "link": "belgeleri okuyun",
-                "url": "https://api.gametools.network/"
-            }
-        },
-        "fromOurDevs": {
+        "ourFriends": {
             "header": "Geliştiricilerimizden",
             "0": {
                 "header": "Statbits",
-                "0": "Statbits, diğer tüm uygulamaların yanı sıra canlı yayın sohbetinize küçük oyun istatistiklerini entegre etmenize olanak tanır. Battlefield 4'te toplam öldürme/ölüm oranınızı gösteren bir !kd komutu ister misiniz? tam istediğin!",
+                "description": "Statbits, diğer tüm uygulamaların yanı sıra canlı yayın sohbetinize küçük oyun istatistiklerini entegre etmenize olanak tanır. Battlefield 4'te toplam öldürme/ölüm oranınızı gösteren bir !kd komutu ister misiniz? tam istediğin!",
                 "link": "Belgeleri okuyun",
                 "url": "https://statbits.io/"
             },
             "1": {
                 "header": "BFList",
-                "0": "Battlefield serisi oyunlarda Battlefield'da neler olduğu hakkında canlı veriler sağlar. Oyuncuların yanı sıra sunucular hakkında da veri sağlıyoruz. Bir sunucunun adından veya mevcut haritasından herhangi bir oyuncunun mevcut puanına ve kd'sine kadar.",
+                "description": "Battlefield serisi oyunlarda Battlefield'da neler olduğu hakkında canlı veriler sağlar. Oyuncuların yanı sıra sunucular hakkında da veri sağlıyoruz. Bir sunucunun adından veya mevcut haritasından herhangi bir oyuncunun mevcut puanına ve kd'sine kadar.",
                 "link": "belgeleri okuyun",
                 "url": "https://bflist.io/"
+            },
+            "2": {
+                "header": "BFBan",
+                "description": "Birleşik yasak listesi ve şikayet sistemi sağlamak için hilecilere karşı oluşturulmuş muhteşem bir topluluk ve tersine mühendislik/güvenlik ekibi olan bfban.com'un aktif bir parçasıyız ve ev sahipliği yapıyoruz.\nHile yapanları BF1/BFV'de bildirin, böylece topluluk sunucularında yasaklanabilirler.",
+                "link": "BFBan'ı ziyaret edin",
+                "url": "https://bfban.gametools.network/"
             }
         },
         "faq": {
@@ -186,7 +160,7 @@
     },
     "stats": {
         "view": "İstatistikleri görüntüle",
-        "back": "Aramaya geri dön",
+        "back": "Ana Sayfa",
         "originDescription": "Origin profili",
         "detailedName": "Ayrıntılı istatistikler",
         "overview": "Genel bakış",
@@ -449,17 +423,13 @@
         }
     },
     "footer": {
-        "descriptions": {
-            "0": "Bu web sitesi Topluluk Ağının bir parçasıdır. Açık Kaynaklıdır. GitHub aracılığıyla sorunları yayınlayabilir ve değişiklik/iyileştirme önerebilirsiniz. Topluluk Ağı tarafından sağlanan ve genel kullanıma açık API. Herhangi bir üçüncü taraf API sağlamıyoruz. Arka ucumuz kapalı kaynaktır ve herkese açık değildir.",
-            "1": "Battlefield & Origin, Electronic Arts'ın tescilli ticari markasıdır. Bu web sitesi Electronic Arts'ın Battlefield 1 İstatistik Koşulları uyarınca sağlanan verileri kullanır. Ticari markalar ilgili sahiplerinin mülkiyetindedir. Oyun malzemelerinin telif hakkı Electronic Arts Inc. Electronic Arts, bu siteyi veya içeriğini onaylamamıştır ve bunlardan sorumlu değildir.",
-            "2": "Kod GPL v2 Lisansı altındadır. Bazı bölümler Community Network telif hakkı kapsamındadır."
-        },
+        "description": "Bu web sitesi Topluluk Ağının bir parçasıdır. Açık Kaynaklıdır. GitHub aracılığıyla sorunları yayınlayabilir ve değişiklik/iyileştirme önerebilirsiniz. Topluluk Ağı tarafından sağlanan ve genel kullanıma açık API. Herhangi bir üçüncü taraf API sağlamıyoruz. Arka ucumuz kapalı kaynaktır ve herkese açık değildir.\nBattlefield & Origin, Electronic Arts'ın tescilli ticari markasıdır. Bu web sitesi Electronic Arts'ın Battlefield 1 İstatistik Koşulları uyarınca sağlanan verileri kullanır. Ticari markalar ilgili sahiplerinin mülkiyetindedir. Oyun malzemelerinin telif hakkı Electronic Arts Inc. Electronic Arts, bu siteyi veya içeriğini onaylamamıştır ve bunlardan sorumlu değildir.\nKod GPL v2 Lisansı altındadır. Bazı bölümler Community Network telif hakkı kapsamındadır.",
         "links": {
-            "0": "GitHub",
-            "1": "Genel API",
-            "2": "Community Network Discord",
-            "3": "Gizlilik Politikası",
-            "4": "Discord bot"
+            "0": {"header": "GitHub", "url": "https://github.com/Community-network"},
+            "1": {"header": "Genel API", "url": "https://api.gametools.network/"},
+            "2": {"header": "Community Network Discord", "url": "https://discord.gametools.network/"},
+            "3": {"header": "Gizlilik Politikası", "url": "/privacy/"},
+            "4": {"header": "Discord bot", "url": "https://top.gg/bot/714524944783900794"}
         }
     }
 }

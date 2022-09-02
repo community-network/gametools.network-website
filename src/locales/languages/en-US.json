@@ -157,7 +157,9 @@
             "name": "Server name",
             "playground": "Experience name"
         },
-        "showMore": "Show more"
+        "showMore": "Show more",
+        "region": "Region",
+        "platform": "platform"
     },
     "platoonSearch": {
         "back": "Main page",

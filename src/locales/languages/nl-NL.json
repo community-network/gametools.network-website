@@ -1,6 +1,6 @@
 {
     "siteName": "GAMETOOLS",
-    "siteDescription": "Community Network aims to provide public tools for different games. Starting with Battlefield, we are bringing back online concurrent player stats, as well as personal stats and much more in future.",
+    "siteFullName": "Game tools",  
     "loading": "Laden...",
     "404": "404",
     "playerNotFound": "Spelernaam niet gevonden, probeer een andere naam of spel.",
@@ -13,6 +13,7 @@
     "chartHourFormat": "HH:mm, eee d LLL",
     "time": "{{date, date|p}}",
     "change": "{{change, change}}",
+    "intlNumber": "{{val, number}}",
     "ago": "geleden",
     "export": "Exporteren",
     "bfban": {
@@ -24,12 +25,9 @@
         "copied": "Gekopieerd!"
     },
     "navBar": {
-        "bfStats": "Battlefield stats",
-        "serverStats": "Battlefield serverstats",
-        "platoons": "Battlefield Platoons",
-        "discord": "Onze Discord",
-        "api": "Publieke API",
-        "bot": "Discord-bot"
+        "help": "Hulp nodig?",
+        "serverManager": "Servermanager",
+        "api": "Battlefield API"
     },
     "games": {
         "bfglobal": "Globaal",
@@ -75,88 +73,59 @@
         "all": "Alle platformen"
     },
     "home": {
-        "hostedAt": {
-            "header": "Gehost in Game tools",
-            "0": {
-                "header": "BFBan",
-                "0": "Wij hosten en zijn een actief onderdeel van bfban.com - een geweldige community & reverse engineering/beveiligingsteam opgericht tegen hackers, we bieden een verenigd banlijst- en rapportsysteem.",
-                "1": "Rapporteer cheaters in BF1/BV5, zodat ze verbannen kunnen worden op communityservers.",
-                "link": "Bezoek BFBan",
-                "url": "https://bfban.gametools.network/"
-            }
+        "manager": {
+            "header": "GAMETOOLS | CLOUD",
+            "description": "We created a web-based Anti-cheat and Management platform to protect your Battlefield Servers.\nBuilt with help of many communities.\n\nLogin now and start your integration for free!",
+            "open": "Open app",
+            "disclaimer": "Server hosting is not provided. We currently support the following Battlefield titles:"
         },
-        "ourSolutions": {
-            "header": "Onze oplossingen",
+        "graphs": {
+            "header": "Online statistieken en grafieken",
+            "detailed": "Gedetaileerde stats inzien"
+        },
+        "otherServices": {
+            "header": "Andere services",
             "0": {
-                "header": "Server manager",
-                "0": "Een beheersysteem voor uw Battlefield 1 server. Hiermee kun je spelers automatisch kicken bijvoorbeeld op basis van ping of BFBan (onze globale banlijst). Bovendien biedt het een manier om meer dan 200 ban sloten voor uw servers te hebben.",
-                "1": "Geeft u ook toegang tot hetzelfde admin-paneel als in het spel, zodat u het spel niet hoeft te openen. Geweldig om op uw tweede monitor te hebben.",
-                "link": "Server manager openen",
-                "url": "https://manager.gametools.network/"
+                "header": "Battlefield platoons",
+                "localUrl": "/platoons/"
             },
             "1": {
-                "header": "Game Stats",
-                "0": "De Game stats bot is een Discord bot waarmee u van elke speler in het spel de stats kan ophalen, voor Battlefield 2, 3, 4, Hardline, 1 en 5.",
-                "1": "De bot ondersteund ook console spelers, voorbeeld: '!bf1stat {platform} {name}'",
-                "link": "Toevoegen aan uw server",
-                "url": "https://top.gg/bot/714524944783900794"
+                "header": "Portal Experience info",
+                "localUrl": "/playgrounds/"
             },
             "2": {
-                "header": "Battlefield API",
-                "0": "Een publieke API waarmee u de statistieken van spelers en servers kan ophalen en kan gebruiken in uw eigen projecten of website. Dit ondersteund dezelfde Battlefield titels als de game stats bot.",
-                "link": "Lees de documentatie",
-                "url": "https://api.gametools.network/"
+                "header": "FESL API (Battlefield bad company 2 APIs)",
+                "url": "https://fesl.gametools.network/docs"
             }
         },
-        "fromOurDevs": {
-            "header": "Van onze developers",
+        "ourFriends": {
+            "header": "Van onze vrienden",
             "0": {
                 "header": "Statbits",
-                "0": "Statbits laat je de spelstatistieken integreren in jouw stream chat en andere applicaties. Wil je een !kd command die je algemene kill/death ratio laat zien voor Battlefield 4? We got you!",
+                "description": "Statbits laat je de spelstatistieken integreren in jouw stream chat en andere applicaties. Wil je een !kd command die je algemene kill/death ratio laat zien voor Battlefield 4? We got you!",
                 "link": "Lees de documentatie",
                 "url": "https://statbits.io/"
             },
             "1": {
                 "header": "BFList",
-                "0": "bflist biedt live gegevens over wat er op het slagveld gebeurt in spellen uit de Battlefield-serie. Wij geven gegevens over zowel servers als spelers. Van een server zijn naam of huidige map tot de huidige kd en score van elke speler.",
+                "description": "bflist biedt live gegevens over wat er op het slagveld gebeurt in spellen uit de Battlefield-serie. Wij geven gegevens over zowel servers als spelers. Van een server zijn naam of huidige map tot de huidige kd en score van elke speler.",
                 "link": "Lees de documentatie",
                 "url": "https://bflist.io/"
-            }
-        },
-        "faq": {
-            "header": "FAQ",
-            "0": {
-                "question": "Q: Can Ik uw API gebruiken?",
-                "answer": "A: Ja, dat kan. Wij leveren de API zonder enige limitaties."
-            },
-            "1": {
-                "question": "Q: U hebt een Discord bot, maar mag ik mijn eigen maken?",
-                "answer": "A: We bieden een geweldige bot voor Discord, maar als u een eigen wil maken, voelt U vrij om er een te maken met onze API."
             },
             "2": {
-                "question": "Q: Welke spellen zijn beschikbaar?",
-                "answer": "A: Onze website ondersteund de meeste Battlefield spellen waaronder V, 1, 4, Hardline, 3 and 2. De Discord bot ondersteund ook spellen zoals Division of Destiny 2."
-            },
-            "3": {
-                "question": "Q: Hebt u Battlefield Tracker gebruikt om dit te bouwen?",
-                "answer": "A: Nee, we leveren een apparte service."
-            },
-            "4": {
-                "question": "Q: Ik heb een probleem gevonden op de website, waar kan ik dit aangeven?",
-                "answer": "A: Ga naar onze GitHub en plaats daar enige problemen of suggesties."
-            },
-            "5": {
-                "question": "Q: Waar breng ik problemen of verbeteringen voor de Discord bot?",
-                "answer": "A: Voor verbeteringen kwa Discord bot of API, kom naar onze Discord."
+                "header": "BFBan",
+                "description": "Wij hosten en zijn een actief onderdeel van bfban.com - een geweldige community & reverse engineering/beveiligingsteam opgericht tegen hackers, we bieden een verenigd banlijst- en rapportsysteem.\nRapporteer cheaters in BF1/BV5, zodat ze verbannen kunnen worden op communityservers.",
+                "link": "Bezoek BFBan",
+                "url": "https://bfban.gametools.network/"
             }
         }
     },
     "playerSearch": {
         "back": "Hoofdpagina",
         "bfStats": "Battlefield Stats",
-        "description": "Zoek voor een Origin naam om zijn stats te zien",
+        "description": "Zie uw online stats! PC, Xbox, and PSN\n Ondersteuning voor meeste battlefield spellen",
         "search": "Zoeken",
-        "searchPlaceholder": "Zoek voor Origin naam...",
+        "searchPlaceholder": "Vind bij bijnaam",
         "gameStatus": "Het aantal spelers in het spel",
         "zoomInfo": "(Klick op het tabel om scroll-zoom te activeren)"
     },
@@ -174,7 +143,10 @@
         "type": {
             "name": "Servernaam",
             "playground": "Experience-naam"
-        }
+        },
+        "showMore": "Meer resultaten",
+        "region": "Regio",
+        "platform": "platform"
     },
     "platoonSearch": {
         "back": "Hoofdpagina",
@@ -187,8 +159,8 @@
     },
     "stats": {
         "view": "Stats bekijken",
-        "back": "Terug naar zoeken",
-        "originDescription": "Origin profiel",
+        "back": "Hoofdpagina",
+        "originDescription": "gebruikers profiel",
         "detailedName": "Gedetaileerde stats",
         "overview": "Overzicht",
         "overviewDescription": "Een klein overzicht van uw statistieken in het spel.",
@@ -455,18 +427,32 @@
             "name": "Naam"
         }
     },
+    "getPlaygrounds": {
+        "back": "Hoofdpagina",
+        "main": "Krijg Battlefield Portal Experience informatie",
+        "description": "Krijg informatie over een Battlefield Portal experience",
+        "getInfo": "Vul een geldige experience url, playground id of experience code in",
+        "show": "Laat zien"
+    },
+    "playgrounds": {
+        "back": "Terug naar zoeken",
+        "rotation": "Experience map rotatie",
+        "tags": "Experience tags",
+        "maxPlayers": "Max {{ amount }} spelers",
+        "owner": {
+            "main": "Experience eigenaar",
+            "none": "De naam van eigenaar kan alleen opgehaald worden wanneer een playground id gebruikt it",
+            "unknown": "Naam niet gevonden"
+        }
+    },
     "footer": {
-        "descriptions": {
-            "0": "This website is part of the Community Network. It is Open Source. You can post issues and suggest changes/improvements via GitHub. API provided by Community Network and open for public usage. We don’t provide any third-party API. Our back end is closed source and not available publicly.",
-            "1": "Battlefield & Origin are registered trademark of Electronic Arts. This website uses data provided pursuant to Electronic Arts’ Battlefield 1 Stats Terms. Trademarks are the property of their respective owners. Game materials copyright Electronic Arts Inc. Electronic Arts has not endorsed and is not responsible for this site or its content.",
-            "2": "Code is under GPL v2 License. Some parts are under Community Network copyright."
-        },
+        "description": "This website is part of the Community Network. It is Open Source. You can post issues and suggest changes/improvements via GitHub. API provided by Community Network and open for public usage. We don’t provide any third-party API. Our back end is closed source and not available publicly.\nBattlefield & Origin are registered trademark of Electronic Arts. This website uses data provided pursuant to Electronic Arts’ Battlefield 1 Stats Terms. Trademarks are the property of their respective owners. Game materials copyright Electronic Arts Inc. Electronic Arts has not endorsed and is not responsible for this site or its content.\nCode is under GPL v2 License. Some parts are under Community Network copyright.",
         "links": {
-            "0": "GitHub",
-            "1": "Publieke API",
-            "2": "Community Network Discord",
-            "3": "Privacy Policy",
-            "4": "Discord bot"
+            "0": {"header": "GitHub", "url": "https://github.com/Community-network"},
+            "1": {"header": "Publieke API", "url": "https://api.gametools.network/"},
+            "2": {"header": "Community Network Discord", "url": "https://discord.gametools.network/"},
+            "3": {"header": "Privacy Policy", "url": "/privacy/"},
+            "4": {"header": "Discord bot", "url": "https://top.gg/bot/714524944783900794"}
         }
     }
 }

@@ -1,6 +1,6 @@
 {
     "siteName": "战地游戏查询工具",
-    "siteDescription": "Community Network Project 的目的是为了给不同的游戏提供查询。从战地系列开始，我们提供战地的在线人数，以及个人数据和未来的更多数据。",
+    "siteFullName": "战地游戏查询工具",
     "loading": "读取中",
     "404": "404",
     "playerNotFound": "找不到该玩家的id，请确认id的拼写",
@@ -13,6 +13,7 @@
     "chartHourFormat": "HH:mm, eee d LLL",
     "time": "{{date, date|p}}",
     "change": "{{change, change}}",
+    "intlNumber": "{{val, number}}",
     "ago": "前",
     "export": "导出EXCEL",
     "bfban": {
@@ -74,79 +75,25 @@
         "all": "所有平台"
     },
     "home": {
-        "hostedAt": {
-            "header": "由Game tools提供",
-            "0": {
-                "header": "战地联ban",
-                "0": "我们在主持联ban的同时也是战地联ban的一部分 - 联ban是一个杰出的社区包含了游戏逆向工程与编程安全团队，建立的初衷是为了对抗外挂，我们提供了联合封禁名单以及一个举报系统，目的是为了给战地玩家提供一个干净的游戏环境。",
-                "1": "举报战地1和战地5的外挂，这样他们就可被社区服务器封禁。",
-                "link": "访问Bfban网站",
-                "url": "https://bfban.gametools.network/"
-            }
-        },
-        "ourSolutions": {
-            "header": "我们的产品",
-            "0": {
-                "header": "服务器管理工具",
-                "0": "这个管理工具可以帮助战地1私服自动踢出高ping和处在联ban黑名单上的玩家，并且可以扩容服务器的ban位。",
-                "1": "它有着与游戏内管理面板相似的界面，这也允许了管理员远程管理或者在不开启游戏的情况下管理服务器。",
-                "link": "访问服务器管理工具网站",
-                "url": "https://manager.gametools.network/"
-            },
-            "1": {
-                "header": "游戏战绩查询工具",
-                "0": "游戏战绩查询工具是discord机器人，它可以帮助用户查询战地1，2，3，4，5 以及硬仗的游戏战绩。",
-                "1": "机器人指令例子：'!bf1stat {platform} {name}'",
-                "link": "Add on your server",
-                "url": "https://top.gg/bot/714524944783900794"
-            },
-            "2": {
-                "header": "战地公开API",
-                "0": "通过这个api你可以访问到战地游戏数据和服务器数据。如果你想制作自己的网站或者机器人，这会是一个很好的选择。",
-                "link": "文档链接",
-                "url": "https://api.gametools.network/"
-            }
-        },
-        "fromOurDevs": {
+        "ourFriends": {
             "header": "来自我们的开发者",
             "0": {
                 "header": "Statbits",
-                "0": "Statbits 可以让你在包括直播聊天中或其他应用中结合游戏统计数据，想仅打个!kd获取你的战地4击杀死亡比？找我们的就对了",
+                "description": "Statbits 可以让你在包括直播聊天中或其他应用中结合游戏统计数据，想仅打个!kd获取你的战地4击杀死亡比？找我们的就对了",
                 "link": "阅读文档",
                 "url": "https://statbits.io/"
             },
             "1": {
                 "header": "战地列表",
-                "0": "战地列表为您提供实时战地系列游戏内数据,我们提供包括服务器信息在内的游戏玩家战绩.从服务器名称到最近的玩的地图再到玩家K/D以及分数等.",
+                "description": "战地列表为您提供实时战地系列游戏内数据,我们提供包括服务器信息在内的游戏玩家战绩.从服务器名称到最近的玩的地图再到玩家K/D以及分数等.",
                 "link": "阅读说明文档",
                 "url": "https://bflist.io/"
-            }
-        },
-        "faq": {
-            "header": "FAQ",
-            "0": {
-                "question": "问：我可以使用你们的API么？",
-                "answer": "答：是的，我们的API永久免费，同时我们不会对正常的外部访问做任何限制。"
-            },
-            "1": {
-                "question": "问：我们可以制作自己的机器人么？",
-                "answer": "答：我们提供的机器人功能以及非常完善，但是如果有需求的话，我们的API可以为您的机器人提供免费支持。"
             },
             "2": {
-                "question": "问：你们支持那些游戏？",
-                "answer": "答：我们的网站支持几乎全部的战地游戏，包括战地1，2，3，4，5，和硬仗。 机器人同时也支持全境封锁和命运2。"
-            },
-            "3": {
-                "question": "问：你们的API是否基于battlefieldtracker.com？",
-                "answer": "答：我们的API是独立于battlefieldtracker的。"
-            },
-            "4": {
-                "question": "问：如何提出建议或者bug？",
-                "answer": "答：可以通过我们的Github项目来提建议。"
-            },
-            "5": {
-                "question": "问：如何能联系到你们？",
-                "answer": "答：通过我们的Discord。"
+                "header": "战地联ban",
+                "description": "我们在主持联ban的同时也是战地联ban的一部分 - 联ban是一个杰出的社区包含了游戏逆向工程与编程安全团队，建立的初衷是为了对抗外挂，我们提供了联合封禁名单以及一个举报系统，目的是为了给战地玩家提供一个干净的游戏环境。\n举报战地1和战地5的外挂，这样他们就可被社区服务器封禁。",
+                "link": "访问Bfban网站",
+                "url": "https://bfban.gametools.network/"
             }
         }
     },
@@ -447,17 +394,13 @@
         }
     },
     "footer": {
-        "descriptions": {
-            "0": "网站是Community Network的一部分。产品是开源的。你可以在我们的GitHub页面中发布问题和建议。API由Community Network提供并开放给公众使用。我们不提供任何第三方的API。我们的后台是封闭的，限制访客查看。",
-            "1": "战地和Origin是Electronic Arts的注册商标。本网站使用根据EA战地1统计条款提供的数据。商标是其各自所有者的财产。游戏材料的版权归Electronic Arts所有。Electronic Arts没有认可也不对本网站或其内容负责。",
-            "2": "代码是GPL V2协议，一些部分是Community Network的版权"
-        },
+        "description": "网站是Community Network的一部分。产品是开源的。你可以在我们的GitHub页面中发布问题和建议。API由Community Network提供并开放给公众使用。我们不提供任何第三方的API。我们的后台是封闭的，限制访客查看。\n战地和Origin是Electronic Arts的注册商标。本网站使用根据EA战地1统计条款提供的数据。商标是其各自所有者的财产。游戏材料的版权归Electronic Arts所有。Electronic Arts没有认可也不对本网站或其内容负责。\n代码是GPL V2协议，一些部分是Community Network的版权",
         "links": {
-            "0": "GitHub页面",
-            "1": "公开API",
-            "2": "Community Network Discord",
-            "3": "隐私政策",
-            "4": "Discord机器人"
+            "0": {"header": "GitHub页面", "url": "https://github.com/Community-network"},
+            "1": {"header": "公开API", "url": "https://api.gametools.network/"},
+            "2": {"header": "Community Network Discord", "url": "https://discord.gametools.network/"},
+            "3": {"header": "隐私政策", "url": "/privacy/"},
+            "4": {"header": "Discord机器人", "url": "https://top.gg/bot/714524944783900794"}
         }
     }
 }

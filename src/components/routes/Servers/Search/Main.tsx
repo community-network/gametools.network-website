@@ -389,7 +389,9 @@ export function ServerSearch(): React.ReactElement {
         </ServerPageRow>
         <div>
           <Box style={{ width: "240px" }}>
-            <h2 style={{ marginBottom: "0.4rem" }}>Platform</h2>
+            <h2 style={{ marginBottom: "0.4rem" }}>
+              {t("serverSearch.platform")}
+            </h2>
             <InputItem
               item={"pc"}
               currrentItem={platform}
@@ -418,7 +420,9 @@ export function ServerSearch(): React.ReactElement {
               name={t("platforms.xboxone")}
               disabled={!noCrossplayFrostbite3.includes(gameName)}
             />
-            <h2 style={{ marginBottom: "0.4rem" }}>Region</h2>
+            <h2 style={{ marginBottom: "0.4rem" }}>
+              {t("serverSearch.region")}
+            </h2>
             <>
               {Object.keys(t("regions", { returnObjects: true })).map(
                 (key, index) => {
