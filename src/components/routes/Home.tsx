@@ -25,9 +25,10 @@ import bf1Logo from "../../assets/img/bf1-logo.png";
 import bf5Logo from "../../assets/img/bf5-logo.png";
 import bf2042Logo from "../../assets/img/bf2042-logo.png";
 
-import statbitsLogo from "../../assets/img/statbits-icon.svg";
-import bflistLogo from "../../assets/img/bflist-icon.svg";
-import bfbanLogo from "../../assets/img/bfban-icon.png";
+import statbitsLogo from "../../assets/icon/statbits-icon.svg";
+import bflistLogo from "../../assets/icon/bflist-icon.svg";
+import bfbanLogo from "../../assets/icon/bfban-icon.png";
+import bfportalLogo from "../../assets/icon/bfportal-icon.png";
 import { Link } from "react-router-dom";
 
 export const Container = styled.div`
@@ -94,7 +95,7 @@ const GameLogo = styled.img`
 function Home(): React.ReactElement {
   const { t, i18n } = useTranslation();
   let i = 0;
-  const ourFriendLogos = [statbitsLogo, bflistLogo, bfbanLogo];
+  const ourFriendLogos = [bfbanLogo, bfportalLogo, statbitsLogo, bflistLogo];
   const ourFriends = [];
   while (i18n.exists(`home.ourFriends.${i}`)) {
     ourFriends.push({

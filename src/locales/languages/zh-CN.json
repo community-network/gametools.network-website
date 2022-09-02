@@ -78,25 +78,22 @@
         "ourFriends": {
             "header": "来自我们的开发者",
             "0": {
-                "icon": "../../assets/img/statbits-icon.png",
+                "header": "战地联ban",
+                "description": "我们在主持联ban的同时也是战地联ban的一部分 - 联ban是一个杰出的社区包含了游戏逆向工程与编程安全团队，建立的初衷是为了对抗外挂，我们提供了联合封禁名单以及一个举报系统，目的是为了给战地玩家提供一个干净的游戏环境。\n举报战地1和战地5的外挂，这样他们就可被社区服务器封禁。",
+                "link": "访问Bfban网站",
+                "url": "https://bfban.gametools.network/"
+            },
+            "2": {
                 "header": "Statbits",
                 "description": "Statbits 可以让你在包括直播聊天中或其他应用中结合游戏统计数据，想仅打个!kd获取你的战地4击杀死亡比？找我们的就对了",
                 "link": "阅读文档",
                 "url": "https://statbits.io/"
             },
-            "1": {
-                "icon": "../../assets/img/bflist-icon.png",
+            "3": {
                 "header": "战地列表",
                 "description": "战地列表为您提供实时战地系列游戏内数据,我们提供包括服务器信息在内的游戏玩家战绩.从服务器名称到最近的玩的地图再到玩家K/D以及分数等.",
                 "link": "阅读说明文档",
                 "url": "https://bflist.io/"
-            },
-            "2": {
-                "icon": "../../assets/img/bfban-icon.png",
-                "header": "战地联ban",
-                "description": "我们在主持联ban的同时也是战地联ban的一部分 - 联ban是一个杰出的社区包含了游戏逆向工程与编程安全团队，建立的初衷是为了对抗外挂，我们提供了联合封禁名单以及一个举报系统，目的是为了给战地玩家提供一个干净的游戏环境。\n举报战地1和战地5的外挂，这样他们就可被社区服务器封禁。",
-                "link": "访问Bfban网站",
-                "url": "https://bfban.gametools.network/"
             }
         }
     },

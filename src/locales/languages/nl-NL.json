@@ -109,25 +109,22 @@
         "ourFriends": {
             "header": "Van onze vrienden",
             "0": {
-                "icon": "../../assets/img/statbits-icon.png",
+                "header": "BFBan",
+                "description": "Wij hosten en zijn een actief onderdeel van bfban.com - een geweldige community & reverse engineering/beveiligingsteam opgericht tegen hackers, we bieden een verenigd banlijst- en rapportsysteem.\nRapporteer cheaters in BF1/BV5, zodat ze verbannen kunnen worden op communityservers.",
+                "link": "Bezoek BFBan",
+                "url": "https://bfban.gametools.network/"
+            },
+            "2": {
                 "header": "Statbits",
                 "description": "Statbits laat je de spelstatistieken integreren in jouw stream chat en andere applicaties. Wil je een !kd command die je algemene kill/death ratio laat zien voor Battlefield 4? We got you!",
                 "link": "Lees de documentatie",
                 "url": "https://statbits.io/"
             },
-            "1": {
-                "icon": "../../assets/img/bflist-icon.png",
+            "3": {
                 "header": "BFList",
                 "description": "bflist biedt live gegevens over wat er op het slagveld gebeurt in spellen uit de Battlefield-serie. Wij geven gegevens over zowel servers als spelers. Van een server zijn naam of huidige map tot de huidige kd en score van elke speler.",
                 "link": "Lees de documentatie",
                 "url": "https://bflist.io/"
-            },
-            "2": {
-                "icon": "../../assets/img/bfban-icon.png",
-                "header": "BFBan",
-                "description": "Wij hosten en zijn een actief onderdeel van bfban.com - een geweldige community & reverse engineering/beveiligingsteam opgericht tegen hackers, we bieden een verenigd banlijst- en rapportsysteem.\nRapporteer cheaters in BF1/BV5, zodat ze verbannen kunnen worden op communityservers.",
-                "link": "Bezoek BFBan",
-                "url": "https://bfban.gametools.network/"
             }
         }
     },

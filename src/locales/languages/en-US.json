@@ -109,25 +109,28 @@
         "ourFriends": {
             "header": "Our friends",
             "0": {
-                "icon": "../../assets/img/statbits-icon.png",
+                "header": "BFBan",
+                "description": "We are hosting and are an active part of bfban.com - an amazing community & reverse engineering/security team created against hackers, to provide united ban list and report system.\nReport cheaters in BF1/BFV, so they can be banned in community servers.",
+                "link": "Visit BFBan",
+                "url": "https://bfban.gametools.network/"
+            },
+            "1": {
+                "header": "BFPortal",
+                "description": "Find and share Battlefield 2042 portal experiences.",
+                "link": "Learn more",
+                "url": "https://bfportal.gg/"
+            },
+            "2": {
                 "header": "Statbits",
                 "description": "Statbits let's you integrate little bits of game statistics into your live stream chat, as well as any other application. Want a !kd command showing your overall kill/death ratio in Battlefield 4? We got you!",
                 "link": "Learn more",
                 "url": "https://statbits.io/"
             },
-            "1": {
-                "icon": "../../assets/img/bflist-icon.png",
+            "3": {
                 "header": "BFList",
                 "description": "bflist provides live data about what is happening on the Battlefield in Battlefield-series games. We provide data on servers as well as players. From a server's name or current map to any player's current score and kd.",
                 "link": "Learn more",
                 "url": "https://bflist.io/"
-            },
-            "2": {
-                "icon": "../../assets/img/bfban-icon.png",
-                "header": "BFBan",
-                "description": "We are hosting and are an active part of bfban.com - an amazing community & reverse engineering/security team created against hackers, to provide united ban list and report system.\nReport cheaters in BF1/BFV, so they can be banned in community servers.",
-                "link": "Visit BFBan",
-                "url": "https://bfban.gametools.network/"
             }
         }
     },
