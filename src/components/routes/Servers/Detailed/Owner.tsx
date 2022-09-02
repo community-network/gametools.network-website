@@ -31,9 +31,7 @@ export function ServerOwner(props: {
           <Circle style={{ marginTop: ".5rem" }} />
           <div>
             <OriginName>{t("404")}</OriginName>
-            <OriginDescription>
-              {t("stats.originDescription")}
-            </OriginDescription>
+            <OriginDescription>{t("playgrounds.owner.none")}</OriginDescription>
           </div>
         </Align>
       </Spacing>
