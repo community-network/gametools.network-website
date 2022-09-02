@@ -9,11 +9,18 @@ import {
   ServerPlayersReturn,
   seederPlayersReturn,
   UserGames,
+  PlaygroundInfoReturn,
+  ServerOwnerResult,
 } from "./ReturnTypes";
 
 interface BfBanInfo {
   getter: string;
   usernames: string[] | number[];
+}
+
+interface OwnerInfo {
+  game: string;
+  ownerInfo: ServerOwnerResult;
 }
 
 interface SmallPlayerInfo {
@@ -50,6 +57,7 @@ interface ServerInfo {
   lang: string;
   region?: string;
   platform?: string;
+  with_ownername?: boolean;
 }
 
 interface PlaygroundInfo {
@@ -57,6 +65,7 @@ interface PlaygroundInfo {
   getter: string;
   playground: string;
   lang: string;
+  with_ownername?: boolean;
 }
 
 interface ServerLeaderboard {
@@ -178,6 +187,7 @@ export class ApiProvider extends JsonClient {
     lang,
     region = "all",
     platform = "pc",
+    with_ownername = true,
   }: ServerInfo): Promise<DetailedServerInfo> {
     const gameStuff = game.split(".");
     if (platform == "all") {
@@ -190,6 +200,7 @@ export class ApiProvider extends JsonClient {
         region: region,
         platform: platform,
         service: gameStuff[1],
+        return_ownername: with_ownername.toString(),
       });
     } else if (getter == "gameid") {
       return await this.getJsonMethod(`/${gameStuff[0]}/detailedserver/`, {
@@ -214,16 +225,27 @@ export class ApiProvider extends JsonClient {
     getter,
     playground,
     lang,
-  }: PlaygroundInfo): Promise<PlaygroundInfo> {
+    with_ownername = true,
+  }: PlaygroundInfo): Promise<PlaygroundInfoReturn> {
     if (getter == "experiencecode") {
       return await this.getJsonMethod(`/${game}/playground/`, {
         experiencecode: playground,
         lang: lang,
+        return_ownername: with_ownername.toString(),
       });
     }
     return await this.getJsonMethod(`/${game}/playground/`, {
       playgroundid: playground,
       lang: lang,
+      return_ownername: with_ownername.toString(),
+    });
+  }
+
+  async feslid({ game, ownerInfo }: OwnerInfo): Promise<ServerOwnerResult> {
+    return await this.getJsonMethod(`/${game}/feslid/`, {
+      platformid: ownerInfo.platformId.toString(),
+      personaid: ownerInfo.personaId.toString(),
+      nucleusid: ownerInfo.nucleusId.toString(),
     });
   }
 

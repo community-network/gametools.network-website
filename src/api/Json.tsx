@@ -3,6 +3,7 @@ import "regenerator-runtime/runtime";
 const MODE = "prod";
 
 const endPoints = {
+  cors: "http://127.0.0.1:8787",
   dev: "http://localhost:8787",
   prod: "https://api.gametools.network",
 };

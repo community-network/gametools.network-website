@@ -12,13 +12,15 @@ import {
   OriginProfile,
   Spacing,
 } from "./Servers";
+import { GametoolsApi } from "../../../../api/GametoolsApi";
+import { useQuery } from "@tanstack/react-query";
 
 export function ServerOwner(props: {
   owner: ServerOwnerResult;
   game: string;
 }): React.ReactElement {
   const { t } = useTranslation();
-  const owner = props.owner;
+  let owner = props.owner;
   const ConditionalLink = ({ children, to, condition }: ConLink) =>
     !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
   if (owner === null) {
@@ -35,6 +37,51 @@ export function ServerOwner(props: {
       </Spacing>
     );
   }
+
+  if (props.game === "bf2042") {
+    const {
+      isLoading: loading,
+      isError: error,
+      data: data,
+    } = useQuery(
+      ["feslid" + props.game + props.owner.id + props.owner.platformId],
+      () =>
+        GametoolsApi.feslid({
+          game: props.game,
+          ownerInfo: props.owner,
+        }),
+    );
+    if (loading) {
+      return (
+        <Spacing>
+          <h3>{t("servers.owner.main")}</h3>
+          <Align>
+            <Circle style={{ marginTop: ".5rem" }} />
+            <div>
+              <OriginName>{t("loading")}</OriginName>
+              <OriginDescription>{t("servers.owner.none")}</OriginDescription>
+            </div>
+          </Align>
+        </Spacing>
+      );
+    } else if (error) {
+      return (
+        <Spacing>
+          <h3>{t("servers.owner.main")}</h3>
+          <Align>
+            <Circle style={{ marginTop: ".5rem" }} />
+            <div>
+              <OriginName>{t("404")}</OriginName>
+              <OriginDescription>{t("servers.owner.none")}</OriginDescription>
+            </div>
+          </Align>
+        </Spacing>
+      );
+    } else {
+      owner = data;
+    }
+  }
+
   return (
     <Spacing>
       <h2>{t("servers.owner.main")}</h2>

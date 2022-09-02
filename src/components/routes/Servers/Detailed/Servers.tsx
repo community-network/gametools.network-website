@@ -62,6 +62,7 @@ function Servers(): React.ReactElement {
       serverName: serverName,
       lang: getLanguage(),
       platform: platform,
+      with_ownername: false,
     }),
   );
   return (

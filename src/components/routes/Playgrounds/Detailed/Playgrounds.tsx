@@ -61,6 +61,7 @@ function Playgrounds(): React.ReactElement {
       getter: params.type,
       playground: playground,
       lang: getLanguage(),
+      with_ownername: false,
     }),
   );
 

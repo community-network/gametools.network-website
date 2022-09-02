@@ -373,8 +373,12 @@ export type ScoreTeamList = {
 
 export type ServerOwnerResult = {
   id: string;
-  name: string;
+  name?: string;
   avatar: string;
+  platform?: string;
+  nucleusId?: number;
+  platformId?: number;
+  personaId?: number;
 };
 
 export type ServerInfoResult = {
