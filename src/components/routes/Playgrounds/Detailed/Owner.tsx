@@ -59,7 +59,9 @@ export function PlaygroundOwner(props: {
             <Circle style={{ marginTop: ".5rem" }} />
             <div>
               <OriginName>{t("loading")}</OriginName>
-              <OriginDescription>{t("servers.owner.none")}</OriginDescription>
+              <OriginDescription>
+                {t("stats.originDescription")}
+              </OriginDescription>
             </div>
           </Align>
         </Spacing>
@@ -72,7 +74,9 @@ export function PlaygroundOwner(props: {
             <Circle style={{ marginTop: ".5rem" }} />
             <div>
               <OriginName>{t("404")}</OriginName>
-              <OriginDescription>{t("servers.owner.none")}</OriginDescription>
+              <OriginDescription>
+                {t("stats.originDescription")}
+              </OriginDescription>
             </div>
           </Align>
         </Spacing>
