@@ -53,6 +53,14 @@
         "bf2042": "Battlefield 2042",
         "bf2042portal": "Battlefield 2042 Portal"
     },
+    "limit": {
+        "10": "10 servers",
+        "25": "25 servers",
+        "50": "50 servers",
+        "100": "100 servers",
+        "200": "200 servers",
+        "250": "250 servers"
+    },
     "regions": {
         "all": "Alle regio's",
         "eu": "Europa",
@@ -101,18 +109,21 @@
         "ourFriends": {
             "header": "Van onze vrienden",
             "0": {
+                "icon": "../../assets/img/statbits-icon.png",
                 "header": "Statbits",
                 "description": "Statbits laat je de spelstatistieken integreren in jouw stream chat en andere applicaties. Wil je een !kd command die je algemene kill/death ratio laat zien voor Battlefield 4? We got you!",
                 "link": "Lees de documentatie",
                 "url": "https://statbits.io/"
             },
             "1": {
+                "icon": "../../assets/img/bflist-icon.png",
                 "header": "BFList",
                 "description": "bflist biedt live gegevens over wat er op het slagveld gebeurt in spellen uit de Battlefield-serie. Wij geven gegevens over zowel servers als spelers. Van een server zijn naam of huidige map tot de huidige kd en score van elke speler.",
                 "link": "Lees de documentatie",
                 "url": "https://bflist.io/"
             },
             "2": {
+                "icon": "../../assets/img/bfban-icon.png",
                 "header": "BFBan",
                 "description": "Wij hosten en zijn een actief onderdeel van bfban.com - een geweldige community & reverse engineering/beveiligingsteam opgericht tegen hackers, we bieden een verenigd banlijst- en rapportsysteem.\nRapporteer cheaters in BF1/BV5, zodat ze verbannen kunnen worden op communityservers.",
                 "link": "Bezoek BFBan",
@@ -127,9 +138,11 @@
         "search": "Zoeken",
         "searchPlaceholder": "Vind bij bijnaam",
         "gameStatus": "Het aantal spelers in het spel",
-        "zoomInfo": "(Klick op het tabel om scroll-zoom te activeren)"
+        "zoomInfo": "(Klick op het tabel om scroll-zoom te activeren)",
+        "moreGraphs": "Andere grafieken"
     },
     "serverSearch": {
+        "servers": "Servers",
         "back": "Hoofdpagina",
         "serverInfo": "Battlefield Servers",
         "description": "Zoek voor Battlefield servers om de aantal spelers/map rotatie van de server te zien.",
@@ -332,15 +345,15 @@
             "main": "Server platoon",
             "none": "Er is geen platoon gekoppeld aan deze server"
         },
-        "owner": {
-            "main": "Server eigenaar",
-            "none": "Server heeft geen eigenaar (Dice server)",
-            "unknown": "Naam niet gevonden"
-        },
         "sort": {
             "serverName": "Servernaam",
             "playerAmount": "Aantal spelers",
             "maxPlayers": "Max aantal spelers"
+        },
+        "owner": {
+            "main": "Server eigenaar",
+            "none": "Server heeft geen eigenaar (Dice server)",
+            "unknown": "Naam niet gevonden"
         },
         "join": "Join server",
         "joinFirefox": "Join server (werkt alleen op firefox)",
@@ -354,6 +367,7 @@
         },
         "iframe": {
             "main": "Voeg de server toe aan uw website",
+            "info": "Als u uw eigen versie wilt, vraag dan iiTzArcur op onze discord. (link in footer)",
             "black": "Zwarte variant:",
             "white": "Witte variant:",
             "detailed": "Gedetaileerde variant:",

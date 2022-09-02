@@ -78,18 +78,21 @@
         "ourFriends": {
             "header": "Geliştiricilerimizden",
             "0": {
+                "icon": "../../assets/img/statbits-icon.png",
                 "header": "Statbits",
                 "description": "Statbits, diğer tüm uygulamaların yanı sıra canlı yayın sohbetinize küçük oyun istatistiklerini entegre etmenize olanak tanır. Battlefield 4'te toplam öldürme/ölüm oranınızı gösteren bir !kd komutu ister misiniz? tam istediğin!",
                 "link": "Belgeleri okuyun",
                 "url": "https://statbits.io/"
             },
             "1": {
+                "icon": "../../assets/img/bflist-icon.png",
                 "header": "BFList",
                 "description": "Battlefield serisi oyunlarda Battlefield'da neler olduğu hakkında canlı veriler sağlar. Oyuncuların yanı sıra sunucular hakkında da veri sağlıyoruz. Bir sunucunun adından veya mevcut haritasından herhangi bir oyuncunun mevcut puanına ve kd'sine kadar.",
                 "link": "belgeleri okuyun",
                 "url": "https://bflist.io/"
             },
             "2": {
+                "icon": "../../assets/img/bfban-icon.png",
                 "header": "BFBan",
                 "description": "Birleşik yasak listesi ve şikayet sistemi sağlamak için hilecilere karşı oluşturulmuş muhteşem bir topluluk ve tersine mühendislik/güvenlik ekibi olan bfban.com'un aktif bir parçasıyız ve ev sahipliği yapıyoruz.\nHile yapanları BF1/BFV'de bildirin, böylece topluluk sunucularında yasaklanabilirler.",
                 "link": "BFBan'ı ziyaret edin",
