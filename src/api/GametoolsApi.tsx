@@ -209,6 +209,7 @@ export class ApiProvider extends JsonClient {
         region: region,
         platform: platform,
         service: gameStuff[1],
+        return_ownername: with_ownername.toString(),
       });
     }
     return await this.getJsonMethod(`/${gameStuff[0]}/detailedserver/`, {
@@ -217,6 +218,7 @@ export class ApiProvider extends JsonClient {
       region: region,
       platform: platform,
       service: gameStuff[1],
+      return_ownername: with_ownername.toString(),
     });
   }
 
