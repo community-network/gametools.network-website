@@ -362,6 +362,18 @@ export function ServerSearch(): React.ReactElement {
             setSearchTerm(ev.target.value)
           }
         />
+        {oldJoinGames.includes(gameName) ||
+        frostbiteJoinGames.includes(gameName) ? (
+          <p style={{ marginTop: 0, marginBottom: "1.1rem" }}>
+            <Trans i18nKey="servers.joinme.smallinfo">
+              <a href="https://joinme.click/download">
+                https://joinme.click/download
+              </a>
+            </Trans>
+          </p>
+        ) : (
+          <></>
+        )}
       </Align>
       <ServerPageColumn>
         <ServerPageRow>

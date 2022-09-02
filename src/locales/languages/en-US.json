@@ -365,6 +365,7 @@
             "view": "View on joinme.click",
             "launch": "Game launched!",
             "info": "The join server buttons use <0>https://joinme.click/</0> to join the game, install the <0>joinme.click launcher</0> first before trying to use those buttons!",
+            "smallinfo": "The join server buttons use <0>https://joinme.click/</0> to join the game.",
             "discord": "The joinme launcher has to be installed to make this work!",
             "invite": "Joinme.click invite URL"
         },

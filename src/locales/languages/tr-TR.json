@@ -344,6 +344,7 @@
             "launch": "Oyun başlatıldı!",
             "view": "Bana katıl'a tıklayın",
             "info": "Sunucuya katılma düğmeleri oyuna katılmak için <0>https://joinme.click/</0> kullanılır, bu düğmeleri kullanmaya çalışmadan önce <0>joinme.click launcher</0> yükleyin!",
+            "smallinfo": "Sunucuya katılma düğmeleri oyuna katılmak için <0>https://joinme.click/</0> kullanılır.",
             "discord": "Bunun çalışması için bana katıl başlatıcısının yüklenmesi gerekiyor!",
             "invite": "Bana katıl. Davet URL'sini tıklayın"
         },
