@@ -137,7 +137,7 @@
     "playerSearch": {
         "back": "Main page",
         "bfStats": "Battlefield Stats",
-        "description": "View your Online Stats! PC, Xbox, and PSN\n Support for most Battlefield games (except 2042)",
+        "description": "View your Online Stats! PC, Xbox, and PSN\n Support for most Battlefield games (except 2042 playerstats)",
         "search": "Search",
         "searchPlaceholder": "Find by Nickname",
         "gameStatus": "Amount of players on the Battlefield",
