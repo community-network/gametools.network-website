@@ -11,13 +11,13 @@ export const M88 = css`
 export const M92 = css`
   --color-text: rgba(255, 255, 255, 0.92);
   --color-alt-text: rgba(255, 255, 255, 0.72);
-  --color-base: #1e2132;
+  --color-base: #16181f;
 `;
 
 export const M96 = css`
   --color-text: rgba(255, 255, 255, 0.96);
   --color-alt-text: rgba(255, 255, 255, 0.76);
-  --color-base: #282a3a;
+  --color-base: #1e2028;
   --color-alt-base: #2e313f;
 `;
 export const M100 = css`
@@ -53,7 +53,7 @@ export const PageColumn = styled.div`
 export const PageRow = styled.div`
   @media screen and (min-width: 1800px) {
     flex: 0;
-    min-width: 800px;
+    min-width: ${(props) => props.title || "800px"};
   }
   @media screen and (max-width: 1800px) {
     flex: 100%;
@@ -119,83 +119,6 @@ export const ArrowLeft = styled.i`
   -webkit-transform: rotate(135deg);
 `;
 
-export const Bf2042SearchBox = styled.input`
-  ${M96}
-  ::placeholder {
-    color: var(--color-alt-text);
-  }
-  @media (min-width: 710px) {
-    width: 20rem;
-  }
-  @media (max-width: 710px) {
-    max-width: 20rem;
-    width: 95%;
-  }
-  box-sizing: border-box;
-  color: var(--color-text);
-  border: none;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-  background: #1e2132;
-  height: 50px;
-  padding-left: 2rem;
-  margin-bottom: 1rem;
-  font-family: Manrope;
-  font-weight: medium;
-  font-style: normal;
-`;
-
-export const Bf2042BigSelectSecondary = styled.select`
-  ${M96}
-  width: 10rem;
-  background: #1e2132;
-  color: #929292;
-  margin-bottom: 1rem;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  border: none;
-  height: 50px;
-  margin-right: 1rem;
-  padding-left: 18px;
-  font-family: Manrope;
-  font-weight: medium;
-  font-style: normal;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url("data:image/svg+xml;utf8,<svg fill='rgb(131,131,131)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
-  background-repeat: no-repeat;
-  background-position-x: 100%;
-  background-position-y: 13px;
-`;
-
-export const SearchBox = styled.input`
-  ${M96}
-  ::placeholder {
-    color: var(--color-alt-text);
-  }
-  @media (min-width: 710px) {
-    width: 30rem;
-  }
-  @media (max-width: 710px) {
-    max-width: 30rem;
-    width: 95%;
-  }
-  box-sizing: border-box;
-  color: var(--color-text);
-  border: none;
-  border-radius: 5px;
-  background: #1e2132;
-  height: 50px;
-  padding-left: 2rem;
-  margin-bottom: 1rem;
-  font-family: Manrope;
-  font-weight: medium;
-  font-style: normal;
-  margin-right: 1rem;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-`;
-
 export const SmallSearchBox = styled.input`
   ${M96}
   ::placeholder {
@@ -204,8 +127,8 @@ export const SmallSearchBox = styled.input`
   box-sizing: border-box;
   color: var(--color-text);
   border: none;
-  border-radius: 5px;
-  background: #1e2132;
+  border-radius: 10px;
+  background: #1e2028;
   width: 191px;
   height: 30px;
   padding-left: 1rem;
@@ -217,26 +140,63 @@ export const SmallSearchBox = styled.input`
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `;
 
-export const PrimaryButtonLink = styled.a`
-  padding: 10px 20px;
-  background: var(--color-blue);
-  border-radius: 5px;
-  transition: all 0.1s;
-  //box-sizing: borfer-box;
-  display: flex;
-  flex-grow: 1;
-  width: auto;
-  :hover {
-    background: var(--color-blue-alt);
+export const HomePlayerSearchBox = styled(SmallSearchBox)`
+  color: rgba(255, 255, 255, 0.7);
   }
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.1));
+  @media (min-width: 750px) {
+    width: 20rem;
+    margin-left: -2rem;
+  }
+  @media (max-width: 750px) {
+    max-width: 20rem;
+    width: 95%;
+  }
+  @media (min-width: 1000px) {
+    width: 621px;
+  }
+  border-radius: 0;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  width: auto;
+  height: 50px;
+  padding-left: 2rem;
+  margin-right: 0.2rem;
+  filter: none;
+`;
+
+export const SearchBox = styled(SmallSearchBox)`
+  @media (min-width: 710px) {
+    width: 30rem;
+  }
+  @media (max-width: 710px) {
+    max-width: 30rem;
+    width: 95%;
+  }
+  width: auto;
+  height: 50px;
+  padding-left: 2rem;
+`;
+
+export const Bf2042SearchBox = styled(SearchBox)`
+  @media (min-width: 710px) {
+    width: 20rem;
+  }
+  @media (max-width: 710px) {
+    max-width: 20rem;
+  }
+  border-radius: 0;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  margin-right: 0;
+  filter: none;
 `;
 
 export const ButtonLink = styled.a`
   ${M96}
   padding: 10px 20px;
   background: var(--color-base);
-  border-radius: 5px;
+  border-radius: 10px;
   transition: all 0.1s;
   display: flex;
   flex-grow: 1;
@@ -247,13 +207,26 @@ export const ButtonLink = styled.a`
   }
 `;
 
+export const PrimaryButtonLink = styled(ButtonLink)`
+  background: var(--color-blue);
+  :hover {
+    background: var(--color-blue-alt);
+  }
+`;
+
+export const BigButtonLink = styled(ButtonLink)`
+  width: 134px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  font-size: 0.9rem;
+`;
+
 export const BigButtonSecondary = styled.button`
   ${M96}
-  background: #1E2132;
+  background: #1E2028;
   color: var(--color-text);
   border: none;
   margin-bottom: 1rem;
-  border-radius: 5px;
+  border-radius: 10px;
   height: 50px;
   width: 134px;
   margin-right: 1rem;
@@ -267,178 +240,134 @@ export const BigButtonSecondary = styled.button`
   }
 `;
 
-export const BigButtonSecondaryBox = styled.button`
-  ${M96}
+export const BigButtonPrimary = styled(BigButtonSecondary)`
+  background: var(--color-blue);
+  width: auto;
+  min-width: 158px;
+  filter: none;
+  :hover {
+    background: var(--color-blue-alt);
+  }
+`;
+
+export const BigButtonSecondaryBox = styled(BigButtonSecondary)`
   background: var(--color-base);
-  color: var(--color-text);
-  border: none;
-  margin-bottom: 1rem;
-  border-radius: 5px;
-  height: 50px;
-  width: 134px;
-  margin-right: 1rem;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  font-family: Manrope;
-  font-weight: medium;
-  font-style: normal;
-  cursor: pointer;
   :hover {
     background: #313443;
   }
 `;
 
-export const SmallButton = styled.button`
-  ${M96}
-  background: #1E2132;
-  color: var(--color-text);
-  border-radius: 5px;
-  border: none;
+export const SmallButton = styled(BigButtonSecondary)`
   height: 30px;
   padding: 0 24px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  margin-bottom: 1rem;
-  font-family: Manrope;
-  font-weight: medium;
-  font-style: normal;
+  width: auto;
+  margin-right: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  cursor: pointer;
-  :hover {
-    background: var(--color-base);
-  }
 `;
 
-export const SmallButtonPrimary = styled.button`
-  ${M96}
+export const SmallButtonPrimary = styled(SmallButton)`
   background: var(--color-base);
-  color: var(--color-text);
-  border-radius: 5px;
-  border: none;
-  height: 30px;
-  padding: 0 24px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  margin-bottom: 1rem;
-  font-family: Manrope;
-  font-weight: medium;
-  font-style: normal;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  cursor: pointer;
   :hover {
     background: #313443;
   }
 `;
 
-export const SmallButtonSecondary = styled.button`
-  ${M96}
-  background: #1E2132;
-  color: var(--color-text);
+export const SmallButtonSecondary = styled(SmallButton)`
   border: none;
-  margin-bottom: 1rem;
-  border-radius: 5px;
+  height: auto;
+  border-radius: 10px;
   padding: 0.5rem 1.5rem;
   margin-right: 1rem;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  font-family: Manrope;
-  font-weight: medium;
-  font-style: normal;
   box-sizing: borfer-box;
-  cursor: pointer;
-  :hover {
-    background: var(--color-base);
-  }
 `;
 
-export const BigSelectSecondary = styled.select`
+export const SelectSecondary = styled.select`
   ${M96}
-  background: #1E2132;
+  background: #1E2028;
   color: var(--color-text);
-  margin-bottom: 1rem;
-  border-radius: 5px;
+  border-radius: 10px;
   border: none;
-  height: 50px;
-  margin-right: 1rem;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  padding-left: 18px;
+  height: 30px;
+  padding: 0 24px;
   font-family: Manrope;
   font-weight: medium;
   font-style: normal;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 3px;
+  option {
+    background: rgba(0, 0, 0, 0.8);
+  }
+`;
+
+export const BigSelectSecondary = styled(SelectSecondary)`
+  height: 50px;
+  margin-right: 1rem;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  padding: none;
+  margin-bottom: 1rem;
+  padding-left: 18px;
+  background-position-y: 13px;
   background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
   background-repeat: no-repeat;
   background-position-x: 100%;
   background-position-y: 13px;
 `;
 
-export const SelectPrimary = styled.select`
-  ${M96}
-  background: #1E2132;
-  color: var(--color-text);
-  border-radius: 5px;
-  border: none;
-  height: 30px;
-  padding: 0 24px;
+export const HomePlayerBigSelectSecondary = styled(BigSelectSecondary)`
+  width: 128px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-radius: 0;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding-left: 25px;
+  filter: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='rgb(255,255,255)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 13px;
+`;
+
+export const Bf2042BigSelectSecondary = styled(HomePlayerBigSelectSecondary)`
+  width: 10rem;
+  background: #1e2028;
+  color: #929292;
+  padding-left: 18px;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='rgb(131,131,131)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 13px;
+`;
+
+export const SelectPrimary = styled(SelectSecondary)`
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   margin-bottom: 1rem;
-  font-family: Manrope;
-  font-weight: medium;
-  font-style: normal;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
-  background-repeat: no-repeat;
-  background-position-x: 100%;
-  background-position-y: 3px;
-`;
-
-export const SelectSecondary = styled.select`
-  ${M96}
-  background: #1E2132;
-  color: var(--color-text);
-  border-radius: 5px;
-  border: none;
-  height: 30px;
-  padding: 0 24px;
-  font-family: Manrope;
-  font-weight: medium;
-  font-style: normal;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
-  background-repeat: no-repeat;
-  background-position-x: 100%;
-  background-position-y: 3px;
-`;
-
-export const Align = styled.div`
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-`;
-
-export const AlignS = styled.div`
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  width: 100%;
-`;
-
-export const AlignW = styled.div`
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
 `;
 
 export const AlignT = styled.div`
   display: flex;
   flex-wrap: wrap;
+`;
+
+export const Align = styled(AlignT)`
+  align-items: center;
+`;
+
+export const AlignS = styled(Align)`
+  justify-content: space-around;
+  width: 100%;
+`;
+
+export const AlignW = styled(Align)`
+  flex-wrap: nowrap;
 `;
 
 export const AlignSeverImg = styled.div`
@@ -469,6 +398,54 @@ export const GridContainer = styled.div`
   }
 `;
 
+const SelectorLabel = styled.label`
+  font-family: Manrope;
+  font-style: normal;
+  letter-spacing: 0em;
+  text-align: left;
+  color: var(--color-text);
+  font-weight: 500;
+  line-height: 150%;
+  font-size: 13px;
+`;
+
+const InputStyle = styled.input`
+  margin-right: 0.5rem;
+  margin-left: 0;
+`;
+
+export function InputItem(props: {
+  item: string;
+  currrentItem: string;
+  callback: any;
+  name: string;
+  disabled?: boolean;
+}): React.ReactElement {
+  const { item, currrentItem, callback, name, disabled } = props;
+
+  return (
+    <div style={{ marginBottom: "5px" }}>
+      <InputStyle
+        type="radio"
+        id={item}
+        name={item}
+        value={item}
+        onChange={callback}
+        checked={currrentItem === item}
+        disabled={disabled}
+      />
+      <SelectorLabel
+        htmlFor={item}
+        style={{
+          color: disabled ? "#ffffff40" : "#fff",
+        }}
+      >
+        {name}
+      </SelectorLabel>
+    </div>
+  );
+}
+
 export function RightArrow(): React.ReactElement {
   return (
     <svg
@@ -486,10 +463,12 @@ export function RightArrow(): React.ReactElement {
   );
 }
 
-export function OpenExternal(): React.ReactElement {
+export function OpenExternal(props: {
+  style?: React.CSSProperties;
+}): React.ReactElement {
   return (
     <svg
-      style={{ verticalAlign: "bottom" }}
+      style={{ verticalAlign: "bottom", ...props.style }}
       xmlns="http://www.w3.org/2000/svg"
       width="18"
       height="18"
@@ -504,12 +483,12 @@ export function OpenExternal(): React.ReactElement {
   );
 }
 
-const BoxSpacing = styled.div`
+export const BoxSpacing = styled.div`
   max-width: 45rem;
   margin: 0 12px 18px 0;
 `;
 
-const BoxWrap = styled.div`
+export const BoxWrap = styled.div`
   ${M92}
   background: var(--color-base);
   align-self: flex-start;
@@ -548,6 +527,7 @@ export function Box(props: {
   className?: string;
   style?: React.CSSProperties;
   innerStyle?: React.CSSProperties;
+  spacingStyle?: React.CSSProperties;
   link?: string;
   condition?: boolean;
 }): React.ReactElement {
@@ -556,7 +536,7 @@ export function Box(props: {
 
   if (props.condition === undefined) {
     return (
-      <BoxSpacing>
+      <BoxSpacing style={props.spacingStyle}>
         <BoxWrap className={props.className} style={props.style}>
           <BoxInner
             style={{
@@ -572,7 +552,7 @@ export function Box(props: {
   }
 
   return (
-    <BoxSpacing>
+    <BoxSpacing style={props.spacingStyle}>
       <ConditionalLink to={props.link} condition={props.condition}>
         <BoxWrap className={props.className} style={props.style}>
           <BoxInner
@@ -612,7 +592,7 @@ export const Radio = styled.div`
 
 export const SmallButtonRadio = styled.label`
   ${M96}
-  background: #1E2132;
+  background: #1E2028;
   color: var(--color-text);
   border: none;
   margin-bottom: 1rem;
@@ -625,21 +605,19 @@ export const SmallButtonRadio = styled.label`
   font-style: normal;
 `;
 
-export const UncheckedSmallButtonRadio = styled.label`
-  ${M96}
-  color: var(--color-text);
-  border: none;
-  margin-bottom: 1rem;
-  border-radius: 5px;
-  padding: 0.5rem 1.5rem;
-  margin-right: 1rem;
-  font-family: Manrope;
-  font-weight: medium;
-  font-style: normal;
+export const UncheckedSmallButtonRadio = styled(SmallButtonRadio)`
+  background: none;
+  filter: none;
   cursor: pointer;
   :hover {
     background: var(--color-base);
   }
+`;
+
+export const DisabledSmallButtonRadio = styled(SmallButtonRadio)`
+  background: none;
+  filter: none;
+  color: var(--color-alt-text);
 `;
 
 export const SmallestPhoneRow = styled.div`

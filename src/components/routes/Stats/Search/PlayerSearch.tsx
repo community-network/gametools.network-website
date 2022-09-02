@@ -13,6 +13,11 @@ import {
   BigSelectSecondary,
   Align,
   BackButton,
+  HomePlayerSearchBox,
+  HomePlayerBigSelectSecondary,
+  AlignW,
+  AlignT,
+  BigButtonPrimary,
 } from "../../../Materials";
 import { platformGames } from "../../../../api/static";
 import { Graphs } from "./Graphs";
@@ -21,6 +26,65 @@ export const AltDescription = styled.p`
   ${AltText}
   margin-left: 24px;
 `;
+
+const AlignMain = styled(AlignT)`
+  @media screen and (min-width: 1000px) {
+    flex-wrap: nowrap;
+  }
+`;
+
+export function StatSearch(): React.ReactElement {
+  const { t } = useTranslation();
+  const [searchTerm, setSearchTerm] = React.useState<string>("");
+  const [platform, setPlatform] = React.useState<string>("pc");
+  return (
+    <form>
+      <AlignMain>
+        <AlignW>
+          <HomePlayerSearchBox
+            placeholder={t("playerSearch.searchPlaceholder")}
+            value={searchTerm}
+            onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
+              setSearchTerm(ev.target.value)
+            }
+          />
+          <HomePlayerBigSelectSecondary
+            value={platform}
+            onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
+              setPlatform(ev.target.value)
+            }
+          >
+            {Object.keys(t("platforms", { returnObjects: true })).map(
+              (key, index) => {
+                return key !== "all" ? (
+                  <option key={index} value={key}>
+                    {t(`platforms.${key}`)}
+                  </option>
+                ) : (
+                  <></>
+                );
+              },
+            )}
+          </HomePlayerBigSelectSecondary>
+        </AlignW>
+        {searchTerm !== "" ? (
+          <Link
+            to={`/stats/${platform}/name/${encodeURIComponent(searchTerm)}`}
+          >
+            <BigButtonPrimary type="submit">
+              {t("playerSearch.search")} <RightArrow />
+            </BigButtonPrimary>
+          </Link>
+        ) : (
+          // if no name is filled in
+          <BigButtonPrimary type="submit">
+            {t("playerSearch.search")} <RightArrow />
+          </BigButtonPrimary>
+        )}
+      </AlignMain>
+    </form>
+  );
+}
 
 function Main(): React.ReactElement {
   return (

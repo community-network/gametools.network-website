@@ -1,4 +1,3 @@
-import { NumberLiteralTypeAnnotation } from "@babel/types";
 import { Mutator, PlaygroundMutator } from "./MutatorType";
 
 export type PlatoonPlayer = {
@@ -6,6 +5,17 @@ export type PlatoonPlayer = {
   name: string;
   role: string;
   avatar: string;
+};
+
+export type UserGames = {
+  avatar: string;
+  userName: string;
+  id: number;
+  bf1: boolean;
+  bf4: boolean;
+  bfv: boolean;
+  bf3: boolean;
+  bfh: boolean;
 };
 
 export type PlatoonStats = {

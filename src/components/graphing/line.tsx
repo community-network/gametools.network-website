@@ -7,6 +7,8 @@ import {
   PointElement,
   LineElement,
   Tooltip,
+  Filler,
+  ScriptableContext,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import "chartjs-adapter-date-fns";
@@ -15,9 +17,10 @@ import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
 import { GametoolsApi } from "../../api/GametoolsApi";
 import { graphGames, gameGraphConvert, graphColors } from "../../api/static";
-import { Box } from "../Materials";
+import { Align, AlignS, Box, BoxSpacing, BoxWrap } from "../Materials";
 
 import { useMeasure } from "react-use";
+import styled from "styled-components";
 
 ChartJS.register(
   zoomPlugin,
@@ -27,6 +30,7 @@ ChartJS.register(
   LineElement,
   TimeScale,
   Tooltip,
+  Filler,
 );
 
 interface GraphData {
@@ -598,4 +602,156 @@ export function GlobalGraph(props: GlobalInfo): React.ReactElement {
       />
     </Box>
   );
+}
+
+const Title = styled.h1`
+  margin-top: 0;
+  margin-bottom: 5px;
+`;
+
+const AmountBox = styled.div`
+  padding-left: 24px;
+  margin-right: 60px;
+`;
+
+function TotalStatistic(props: {
+  amounts: number[];
+  text: string;
+}): React.ReactElement {
+  const amounts = props.amounts;
+  const secondToLastAmount = amounts[amounts.length - 2];
+  const lastAmount = amounts[amounts.length - 1];
+  const difference =
+    ((lastAmount - secondToLastAmount) * 100) / secondToLastAmount;
+
+  return (
+    <AmountBox>
+      <Align>
+        <Title>
+          {lastAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
+        </Title>
+        <div
+          style={{
+            color: difference < 0 ? "#FE143E" : "#14FE72",
+            marginLeft: "10px",
+          }}
+        >
+          {difference < 0 ? "▼" : "▲"} {Math.abs(difference).toFixed(2)}%
+        </div>
+      </Align>
+      <div>{props.text}</div>
+    </AmountBox>
+  );
+}
+
+export function TotalGraphQuery(): React.ReactElement {
+  const {
+    isLoading: loading,
+    isError: error,
+    data: stats,
+  } = useQuery(["globalStats"], () => GametoolsApi.globalGraph(), {
+    staleTime: Infinity,
+    refetchOnWindowFocus: false,
+  });
+
+  return <TotalGraph loading={loading} error={error} stats={stats} />;
+}
+
+interface NewGraphData {
+  loading: boolean;
+  error: boolean;
+  stats: { [name: string]: any };
+}
+
+function TotalGraph(props: NewGraphData): React.ReactElement {
+  if (!props.loading && !props.error) {
+    const { t, i18n } = useTranslation();
+    const chartRef = React.useRef(null);
+    const time = props.stats.timeStamps.map((e: string) => {
+      const time = new Date(e);
+      return time;
+    });
+
+    return (
+      <BoxSpacing style={{ maxWidth: "922px" }}>
+        <BoxWrap>
+          <p style={{ position: "absolute", marginTop: "25px" }}>
+            <Align>
+              <TotalStatistic
+                amounts={props.stats.soldierAmount}
+                text="Playing Battlefield right now"
+              />
+              <TotalStatistic
+                amounts={props.stats.serverAmount}
+                text="Active servers"
+              />
+            </Align>
+          </p>
+          <Line
+            ref={chartRef}
+            options={{
+              maintainAspectRatio: false,
+              hover: {
+                intersect: false,
+                mode: "nearest",
+              },
+              scales: {
+                x: {
+                  grid: {
+                    display: false,
+                  },
+                  display: false,
+                  type: "time",
+                },
+                y: {
+                  display: false,
+                  grid: {
+                    display: false,
+                  },
+                },
+              },
+              plugins: {
+                tooltip: {
+                  mode: "nearest",
+                  intersect: false,
+                },
+                zoom: {
+                  limits: {
+                    x: {
+                      min: +new Date() - 604800000,
+                      max: +new Date(),
+                      minRange: 50000000,
+                    },
+                  },
+                },
+              },
+            }}
+            style={{ marginTop: "100px", height: "227px" }}
+            data={{
+              labels: time,
+              datasets: [
+                {
+                  label: t("stats.graph.soldierAmount"),
+                  data: props.stats.soldierAmount,
+                  fill: "origin",
+                  borderColor: "#ffffff81",
+                  pointRadius: 0,
+                  borderWidth: 1.5,
+                  backgroundColor: (context: ScriptableContext<"line">) => {
+                    const ctx = context.chart.ctx;
+                    const gradient = ctx.createLinearGradient(0, 0, 0, 220);
+                    gradient.addColorStop(0, "rgba(255, 255, 255, 0.1)");
+                    gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+                    return gradient;
+                  },
+                },
+              ],
+            }}
+          />
+        </BoxWrap>
+      </BoxSpacing>
+    );
+  } else {
+    return <div></div>;
+  }
 }

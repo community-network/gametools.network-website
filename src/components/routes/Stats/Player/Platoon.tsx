@@ -4,38 +4,13 @@ import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
 import { Box, AlignW } from "../../../Materials";
 import styled from "styled-components";
-import { MainStats, MainStatsPlatoon } from "../../../../api/ReturnTypes";
+import { MainStatsPlatoon } from "../../../../api/ReturnTypes";
 import { Description, PlatformViews, Spacing } from "./Main";
-
-const PlatoonLink = styled.a`
-  color: rgba(255, 255, 255);
-  font-weight: 600;
-  line-height: 150%;
-  font-size: 16px;
-  font-weight: bold;
-`;
 
 const PlatoonEmblem = styled.img`
   width: 100px;
   margin-right: 0.5rem;
 `;
-
-interface PlatoonStats {
-  stats: MainStats;
-}
-
-export function Platoon(props: PlatoonStats): React.ReactElement {
-  const stats = props.stats;
-  if (stats.activePlatoon !== undefined && stats.activePlatoon.tag !== null) {
-    return (
-      <PlatoonLink href={stats.activePlatoon.url} target="_blank">
-        [{stats.activePlatoon.tag}]{" "}
-      </PlatoonLink>
-    );
-  } else {
-    return <></>;
-  }
-}
 
 export function PlatoonInfo(props: PlatformViews): React.ReactElement {
   const { t } = useTranslation();

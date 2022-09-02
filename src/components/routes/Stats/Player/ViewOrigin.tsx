@@ -2,9 +2,9 @@ import * as React from "react";
 import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
 import { Circle, Align } from "../../../Materials";
-import { Spacing, Views } from "./Main";
+import { Spacing } from "./Main";
 import styled from "styled-components";
-import { Platoon } from "./Platoon";
+import { UserGames } from "../../../../api/ReturnTypes";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
 
@@ -20,6 +20,14 @@ const OriginName = styled.h2`
 const OriginDescription = styled.h4`
   line-height: 60%;
 `;
+
+export interface Views {
+  loading: boolean;
+  error: boolean;
+  game: string;
+  name: string;
+  stats: UserGames;
+}
 
 function GetBfBan(props: Views): React.ReactElement {
   const { t } = useTranslation();
@@ -53,16 +61,19 @@ function GetBfBan(props: Views): React.ReactElement {
     }
   }
 
-  return (
-    <a
-      style={{ color: color, lineHeight: 0 }}
-      href={bfBanUrl}
-      target="_blank"
-      rel="noreferrer"
-    >
-      {isHacker ? t("bfban.stats") : t("stats.originDescription")}
-    </a>
-  );
+  if (isHacker) {
+    return (
+      <a
+        style={{ color: color, lineHeight: 0 }}
+        href={bfBanUrl}
+        target="_blank"
+        rel="noreferrer"
+      >
+        {t("bfban.stats")}
+      </a>
+    );
+  }
+  return <>{t("stats.originDescription")}</>;
 }
 
 export function ViewOrigin(props: Views): React.ReactElement {
@@ -135,10 +146,7 @@ export function ViewOrigin(props: Views): React.ReactElement {
           <Align>
             <OriginProfile src={stats.avatar} />
             <div>
-              <OriginName>
-                <Platoon stats={stats} />
-                {stats.userName}
-              </OriginName>
+              <OriginName>{stats.userName}</OriginName>
               <OriginDescription>
                 <GetBfBan
                   loading={false}

@@ -8,11 +8,18 @@ import {
   ServerLeaderboardReturn,
   ServerPlayersReturn,
   seederPlayersReturn,
+  UserGames,
 } from "./ReturnTypes";
 
 interface BfBanInfo {
   getter: string;
   usernames: string[] | number[];
+}
+
+interface SmallPlayerInfo {
+  getter: string;
+  userName: string;
+  platform?: string;
 }
 
 interface PlayerInfo {
@@ -123,6 +130,23 @@ export class ApiProvider extends JsonClient {
       format_values: "false",
       name: encodeURIComponent(userName),
       lang: lang,
+      platform: platform,
+    });
+  }
+
+  async games({
+    getter,
+    userName,
+    platform = "pc",
+  }: SmallPlayerInfo): Promise<UserGames> {
+    if (getter == "playerid") {
+      return await this.getJsonMethod(`/bfglobal/games`, {
+        playerid: userName,
+        platform: platform,
+      });
+    }
+    return await this.getJsonMethod(`/bfglobal/games`, {
+      name: encodeURIComponent(userName),
       platform: platform,
     });
   }
@@ -286,6 +310,10 @@ export class ApiProvider extends JsonClient {
       service: gameStuff[1],
       type: type,
     });
+  }
+
+  async globalGraph(): Promise<{ [name: string]: any }> {
+    return await this.getJsonMethod(`/bfglobal/totalstatusarray/`, {});
   }
 
   async bfbanCheckPlayers({

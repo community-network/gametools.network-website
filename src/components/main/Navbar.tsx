@@ -17,7 +17,7 @@ const Nav = styled.header`
   top: 0;
   bottom: 0;
   display: flex;
-  padding: 0 8.33%;
+  padding: 0 3% 0 8.33%;
   @media (max-width: 600px) {
     padding: 0 5%;
   }
@@ -65,7 +65,7 @@ const sharedLink = css`
   overflow: hidden;
   white-space: nowrap;
   flex-shrink: 0;
-  padding: 0 20px;
+  padding: 0 50px;
   align-items: center;
   text-align: center;
   height: 35px;
@@ -168,28 +168,13 @@ const RightNav = ({
   const { t } = useTranslation();
   return (
     <Ul open={open}>
-      <li onClick={() => setOpen(false)}>
-        <HLink to="/stats" title={t("navBar.bfStats")}>
-          {t("navBar.bfStats")}
-        </HLink>
-      </li>
-      <li onClick={() => setOpen(false)}>
-        <HLink to="/servers" title={t("navBar.serverStats")}>
-          {t("navBar.serverStats")}
-        </HLink>
-      </li>
-      <li onClick={() => setOpen(false)}>
-        <HLink to="/platoons" title={t("navBar.platoons")}>
-          {t("navBar.platoons")}
-        </HLink>
-      </li>
       <li>
         <ALink
           target="_blank"
-          href="https://discord.gametools.network/"
-          title={t("navBar.discord")}
+          href="https://manager.gametools.network/"
+          title={t("navBar.serverManager")}
         >
-          {t("navBar.discord")}
+          {t("navBar.serverManager")}
         </ALink>
       </li>
       <li>
@@ -202,12 +187,13 @@ const RightNav = ({
         </ALink>
       </li>
       <li>
-        <ButtonLink
+        <ALink
           target="_blank"
-          href="https://top.gg/bot/714524944783900794"
+          href="https://discord.gametools.network/"
+          title={t("navBar.help")}
         >
-          {t("navBar.bot")}
-        </ButtonLink>
+          {t("navBar.help")}
+        </ALink>
       </li>
     </Ul>
   );
@@ -236,7 +222,7 @@ export function Navbar(): JSX.Element {
   const { t } = useTranslation();
   const homePage = useLocation().pathname === "/";
   const [width, setWidth] = useState(window.innerWidth);
-  const maxWidth = homePage ? 1080 : 1250;
+  const maxWidth = homePage ? 850 : 1250;
 
   const [open, setOpen] = useState(false);
 
@@ -247,40 +233,18 @@ export function Navbar(): JSX.Element {
   return (
     <Nav>
       <Header onClick={() => setOpen(false)}>
-        {homePage ? null : <SLink to="/">{t("siteName")}</SLink>}
+        <SLink to="/">{t("siteName")}</SLink>
       </Header>
       {width < maxWidth ? (
         <Burger open={open} setOpen={setOpen} />
       ) : (
         <LinkWrapper>
-          <HLink
-            to="/platoons"
-            title={t("navBar.platoons")}
-            className={({ isActive }) => (isActive ? "opened-link" : undefined)}
-          >
-            {t("navBar.platoons")}
-          </HLink>
-          <HLink
-            to="/servers"
-            title={t("navBar.serverStats")}
-            className={({ isActive }) => (isActive ? "opened-link" : undefined)}
-          >
-            {t("navBar.serverStats")}
-          </HLink>
-          <HLink
-            to="/stats"
-            title={t("navBar.bfStats")}
-            className={({ isActive }) => (isActive ? "opened-link" : undefined)}
-          >
-            {t("navBar.bfStats")}
-          </HLink>
-          <Separator />
           <ALink
             target="_blank"
-            href="https://discord.gametools.network/"
-            title={t("navBar.discord")}
+            href="https://manager.gametools.network/"
+            title={t("navBar.serverManager")}
           >
-            {t("navBar.discord")}
+            {t("navBar.serverManager")}
           </ALink>
           <ALink
             target="_blank"
@@ -289,12 +253,13 @@ export function Navbar(): JSX.Element {
           >
             {t("navBar.api")}
           </ALink>
-          <ButtonLink
+          <ALink
             target="_blank"
-            href="https://top.gg/bot/714524944783900794"
+            href="https://discord.gametools.network/"
+            title={t("navBar.help")}
           >
-            {t("navBar.bot")}
-          </ButtonLink>
+            {t("navBar.help")}
+          </ALink>
         </LinkWrapper>
       )}
     </Nav>

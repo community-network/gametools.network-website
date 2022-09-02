@@ -52,14 +52,6 @@ const Blur = styled.div`
   );
 `;
 
-const ServerText = styled.h1`
-  font-size: 1.8rem;
-  text-align: center;
-  padding-top: 2rem;
-  line-height: 0;
-  margin-top: 0;
-`;
-
 const ServerInfo = styled.div`
   margin-top: 16px;
   flex-grow: 2;
@@ -80,6 +72,7 @@ interface Views {
   game: string;
   stats: ServerSearch;
   sortType: string;
+  spacingStyle?: React.CSSProperties;
 }
 
 export function Results(props: Views): React.ReactElement {
@@ -97,7 +90,7 @@ export function Results(props: Views): React.ReactElement {
 
     const servers = stats.servers.sort(DynamicSort(props.sortType));
     return (
-      <Spacing>
+      <>
         {servers.map((key: ServerList, index: number) => {
           const queue = key.inQue ?? key.inQueue;
           let queueString = "";
@@ -117,6 +110,7 @@ export function Results(props: Views): React.ReactElement {
           const useLink = dice.includes(props.game);
           return (
             <Box
+              spacingStyle={props.spacingStyle}
               className={useLink ? "box_hover box" : ""}
               link={`/servers/${props.game}/${
                 props.game == "bf2042" ? "serverid" : "gameid"
@@ -125,12 +119,11 @@ export function Results(props: Views): React.ReactElement {
               }${props.game == "bf2042" ? `?blazeid=${key.blazeGameId}` : ""}`}
               condition={useLink}
               key={index}
+              innerStyle={props.spacingStyle}
             >
               <AlignSeverImg>
                 <ServerImage background={key.url ?? key.mapImage}>
-                  <Blur>
-                    <ServerText>{key.smallMode}</ServerText>
-                  </Blur>
+                  <Blur />
                 </ServerImage>
                 <ServerInfo>
                   <h3>
@@ -181,11 +174,11 @@ export function Results(props: Views): React.ReactElement {
             </Box>
           );
         })}
-      </Spacing>
+      </>
     );
   } else {
     return (
-      <Box>
+      <Box spacingStyle={props.spacingStyle}>
         <h3>{t("loading")}</h3>
       </Box>
     );

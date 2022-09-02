@@ -32,6 +32,7 @@ const Section = styled.div`
 
 const TextGrayP = styled.p`
   ${M88}
+  white-space: pre-line;
   color: var(--color-alt-text);
 `;
 
@@ -61,19 +62,13 @@ function FLink(props: FLinkProp) {
 
 export function Footer(): JSX.Element {
   const { t, i18n } = useTranslation();
-  const urls = [
-    "https://github.com/Community-network",
-    "https://api.gametools.network/",
-    "https://discord.gametools.network/",
-    "/playgrounds/",
-    "/privacy/",
-    "https://top.gg/bot/714524944783900794",
-  ];
-
   let i = 0;
-  const description = [];
-  while (i18n.exists(`footer.descriptions.${i}`)) {
-    description.push(t(`footer.descriptions.${i}`));
+  const footerLinks = [];
+  while (i18n.exists(`footer.links.${i}`)) {
+    footerLinks.push({
+      header: t(`footer.links.${i}.header`),
+      url: t(`footer.links.${i}.url`),
+    });
     i += 1;
   }
 
@@ -81,10 +76,8 @@ export function Footer(): JSX.Element {
     <Background>
       <Section>
         <Text>
-          <h3>{t("siteName")}</h3>
-          {description.map((key, index) => {
-            return <TextGrayP key={index}>{key}</TextGrayP>;
-          })}
+          <h3>{t("siteFullName")}</h3>
+          <TextGrayP>{t("footer.description")}</TextGrayP>;
           <AlignT>
             <LanguageSelector />
             <iframe
@@ -98,10 +91,8 @@ export function Footer(): JSX.Element {
         </Text>
         <Links>
           <h3>Links</h3>
-          {urls.map((key, index) => {
-            return (
-              <FLink key={index} href={key} name={t(`footer.links.${index}`)} />
-            );
+          {footerLinks.map((key, index) => {
+            return <FLink key={index} href={key.url} name={key.header} />;
           })}
         </Links>
       </Section>

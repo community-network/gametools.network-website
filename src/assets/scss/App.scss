@@ -1,4 +1,4 @@
-$blackM88: #151829;
+$blackM88: #0E0F14;
 $blackM91: #1e2132;
 $blackM96: #282a3a;
 $blackM100: #313443;
@@ -18,7 +18,7 @@ $special: #14fed4;
   --root-text-color: #ffffff;
   --color-alt-text: rgba(255, 255, 255, 0.8);
   --color-base: #313443;
-  --color-blue: #5446f0;
+  --color-blue: #174FDE;
   --color-blue-alt: #5b4df1;
 }
 
@@ -90,8 +90,12 @@ body {
     color: var(--color-text);
     font-weight: 500;
     line-height: 150%;
-    font-size: 12px;
+    font-size: 13px;
     @extend %font-shared;
+  }
+
+  label {
+    margin-bottom: 10px;
   }
 
   a:hover {

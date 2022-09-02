@@ -1,9 +1,9 @@
 {
-    "siteName": "Game Tools",
-    "siteDescription": "Community Network aims to provide public tools for different games. Starting with Battlefield, we are bringing back online concurrent player stats, as well as personal stats and much more in future.",
+    "siteName": "GAMETOOLS",    
+    "siteFullName": "Game tools",  
     "loading": "Loading...",
     "404": "404",
-    "playerNotFound": "Playername not found, try another name or another game.",
+    "playerNotFound": "Playername not found, try another name or game.",
     "notApplicable": "N/A",
     "resultNotFound": "No results found",
     "noName": "Cannot show a playername when accessing stats via playerId",
@@ -13,6 +13,7 @@
     "chartHourFormat": "HH:mm, eee d LLL",
     "time": "{{date, date|p}}",
     "change": "{{change, change}}",
+    "intlNumber": "{{val, number}}",
     "ago": "ago",
     "export": "Export",
     "bfban": {
@@ -24,12 +25,9 @@
         "copied": "Copied!"
     },
     "navBar": {
-        "bfStats": "Battlefield Stats",
-        "serverStats": "Battlefield Serverstats",
-        "platoons": "Battlefield Platoons",
-        "discord": "Our Discord",
-        "api": "Public API",
-        "bot": "Discord Bot"
+        "help": "Need help?",
+        "serverManager": "Server Manager",
+        "api": "Battlefield API"
     },
     "games": {
         "bfglobal": "Global",
@@ -83,121 +81,102 @@
         "all": "All platforms"
     },
     "home": {
-        "hostedAt": {
-            "header": "Hosted at Game tools",
+        "manager": {
+            "header": "GAMETOOLS | CLOUD",
+            "description": "We created a web-based Anti-cheat and Management platform to protect your Battlefield Servers.\nBuilt with help of many communities.\n\nLogin now and start your integration for free!",
+            "open": "Launch App",
+            "disclaimer": "Server hosting is not provided. We currently support the following Battlefield titles:"
+        },
+        "graphs": {
+            "header": "Online stats and graphs",
+            "detailed": "View detailed stats"
+        },
+        "otherServices": {
+            "header": "Other services",
+            "0": {
+                "header": "Battlefield platoons",
+                "localUrl": "/platoons/"
+            },
+            "1": {
+                "header": "Portal Experience info",
+                "localUrl": "/playgrounds/"
+            },
+            "2": {
+                "header": "FESL API (Battlefield bad company 2 APIs)",
+                "url": "https://fesl.gametools.network/docs"
+            }
+        },
+        "ourFriends": {
+            "header": "Our friends",
             "0": {
                 "header": "BFBan",
-                "0": "We are hosting and are an active part of bfban.com - an amazing community & reverse engineering/security team created against hackers, to provide united ban list and report system.",
-                "1": "Report cheaters in BF1/BFV, so they can be banned in community servers.",
+                "description": "We are hosting and are an active part of bfban.com - an amazing community & reverse engineering/security team created against hackers, to provide united ban list and report system.\nReport cheaters in BF1/BFV, so they can be banned in community servers.",
                 "link": "Visit BFBan",
                 "url": "https://bfban.gametools.network/"
-            }
-        },
-        "ourSolutions": {
-            "header": "Our solutions",
-            "0": {
-                "header": "Server manager",
-                "0": "A manager for your Battlefield 1 server. Allows you to automatically kick players based on ping or based on BFBan (our global banlist). Plus it provides a way to have more than 200 banslots for your servers.",
-                "1": "Also gives you access to the same admin-panel as in game, so you don't have to open the game. Great to have on your second monitor so you can manage your servers.",
-                "link": "Visit Server manager",
-                "url": "https://manager.gametools.network/"
             },
             "1": {
-                "header": "Game Stats",
-                "0": "The game stats bot is a Discord bot to see any player's stats for games like Battlefield 2, 3, 4, Hardline, 1 and 5",
-                "1": "The bot also supports console users, example: '!bf1stat {platform} {name}'",
-                "link": "Add to your server",
-                "url": "https://top.gg/bot/714524944783900794"
+                "header": "BFPortal",
+                "description": "Find and share Battlefield 2042 portal experiences.",
+                "link": "Visit BFPortal",
+                "url": "https://bfportal.gg/"
             },
             "2": {
-                "header": "Battlefield API",
-                "0": "Public API to get ingame stats or serverinfo for your own project or website. It supports all the same Battlefield titles as the game stats bot.",
-                "link": "Read the docs",
-                "url": "https://api.gametools.network/"
-            }
-        },
-        "fromOurDevs": {
-            "header": "From our devs",
-            "0": {
                 "header": "Statbits",
-                "0": "Statbits let's you integrate little bits of game statistics into your live stream chat, as well as any other application. Want a !kd command showing your overall kill/death ratio in Battlefield 4? We got you!",
-                "link": "Read the docs",
+                "description": "Statbits let's you integrate little bits of game statistics into your live stream chat, as well as any other application. Want a !kd command showing your overall kill/death ratio in Battlefield 4? We got you!",
+                "link": "Learn more",
                 "url": "https://statbits.io/"
             },
-            "1": {
-                "header": "BFList",
-                "0": "bflist provides live data about what is happening on the Battlefield in Battlefield-series games. We provide data on servers as well as players. From a server's name or current map to any player's current score and kd.",
-                "link": "Read the docs",
-                "url": "https://bflist.io/"
-            }
-        },
-        "faq": {
-            "header": "FAQ",
-            "0": {
-                "question": "Q: Can I use your API?",
-                "answer": "A: Yes, you can. We provide the API for free without any limitations."
-            },
-            "1": {
-                "question": "Q: You have a Discord bot, but can I make my own?",
-                "answer": "A: We provide great bot for Discord, but if you want to write your own, feel free to do so with our API."
-            },
-            "2": {
-                "question": "Q: Which games are available?",
-                "answer": "A: Our website and API support most of Battlefield games including V, 1, 4, Hardline, 3 and 2. The Discord bot also supports other games like Division or Destiny 2."
-            },
             "3": {
-                "question": "Q: Did you use to Battlefield Tracker to build all this?",
-                "answer": "A: No. We provide independent services."
-            },
-            "4": {
-                "question": "Q: I found an issue or want to suggest changes on the website, where can get in touch?",
-                "answer": "A: Head over to our GitHub to post any issues and suggestions."
-            },
-            "5": {
-                "question": "Q: Where to post issues and feature requests for the Discord bot?",
-                "answer": "A: For suggestions regarding the bot and our API, come join our Discord."
+                "header": "BFList",
+                "description": "bflist provides live data about what is happening on the Battlefield in Battlefield-series games. We provide data on servers as well as players. From a server's name or current map to any player's current score and kd.",
+                "link": "Learn more",
+                "url": "https://bflist.io/"
             }
         }
     },
     "playerSearch": {
         "back": "Main page",
         "bfStats": "Battlefield Stats",
-        "description": "Search for any Origin nickname to get player stats.",
+        "description": "View your Online Stats! PC, Xbox, and PSN\n Support for most of Battlefield games",
         "search": "Search",
-        "searchPlaceholder": "Search for Origin name...",
+        "searchPlaceholder": "Find by Nickname",
         "gameStatus": "Amount of players on the Battlefield",
         "zoomInfo": "(Click on the table to enable scroll-zoom)",
         "moreGraphs": "Other graphs"
     },
     "serverSearch": {
+        "servers": "Servers",
         "back": "Main page",
         "serverInfo": "Battlefield Servers",
         "description": "Search for Battlefield servers to get playeramounts/map rotation of the server.",
         "search": "Search",
         "searchPlaceholder": {
-            "null": "Search for server name...",
-            "servername": "Search for server name...",
-            "experiencename": "Search for experience name..."
+            "null": "Search for server by name...",
+            "servername": "Search for server by name...",
+            "experiencename": "Search for an experience by name..."
         },
         "results": "Search results",
         "type": {
             "name": "Server name",
             "playground": "Experience name"
-        }
+        },
+        "showMore": "Show more",
+        "region": "Region",
+        "platform": "platform"
     },
     "platoonSearch": {
         "back": "Main page",
         "serverInfo": "Battlefield Platoons",
         "description": "Search for Battlefield platoons to get more info about them, click on a platoon to see their members.",
         "search": "Search",
-        "searchPlaceholder": "Search for platoon name...",
+        "searchPlaceholder": "Search for platoon by name...",
         "results": "Search results",
-        "resultNotFound": "No results found. To search platoons, you need a minimum of 3 characters."
+        "resultNotFound": "No results found. To search for platoons, you need a minimum of 3 characters."
     },
     "stats": {
         "view": "View stats",
-        "back": "Back to search",
-        "originDescription": "Origin profile",
+        "back": "Main page",
+        "originDescription": "User profile",
         "detailedName": "Detailed stats",
         "overview": "Overview",
         "overviewDescription": "A short overview of your stats in game.",
@@ -283,12 +262,12 @@
         },
         "platoon": {
             "none": "Player isn't in any platoon",
-            "noMain": "Player doesn't represent one platoon as his main",
+            "noMain": "Player doesn't represent one platoon as their main",
             "noDescription": "The platoon doesn't have a description"
         },
         "playSession": {
             "main": "Battlefield playsessions",
-            "detailed": "We track in which server you played, only works when the server uses our manager.",
+            "detailed": "We track in which servers you've played on, only works when the server uses our manager.",
             "stats": {
                 "kills": "Kills",
                 "deaths": "Deaths",
@@ -385,7 +364,7 @@
             "main": "Joinme.click launcher",
             "view": "View on joinme.click",
             "launch": "Game launched!",
-            "info": "The join server buttons uses <0>https://joinme.click/</0> to join the game, install the <0>joinme.click launcher</0> first before trying to use those buttons!",
+            "info": "The join server buttons use <0>https://joinme.click/</0> to join the game, install the <0>joinme.click launcher</0> first before trying to use those buttons!",
             "discord": "The joinme launcher has to be installed to make this work!",
             "invite": "Joinme.click invite URL"
         },
@@ -403,7 +382,7 @@
         "leaderboard": {
             "main": "Player leaderboard of this server",
             "info": "only available on servers that use the manager-api",
-            "none": "Server is just added or doesn't use the manager-api",
+            "none": "Server was just added or doesn't use the manager-api",
             "row": {
                 "score": "Score",
                 "killDeath": "K/D",
@@ -416,7 +395,7 @@
         },
         "playerlist": {
             "main": "Current players in the server",
-            "none": "Server is just added or doesn't use the manager-api",
+            "none": "Server was just added or doesn't use the manager-api",
             "empty": "This team is empty",
             "lastUpdate": "Last update",
             "row": {
@@ -450,7 +429,7 @@
     },
     "platoon": {
         "back": "Back to search",
-        "searchPlayer": "Search a player",
+        "searchPlayer": "Search for a player",
         "servers": "Platoon servers",
         "members": {
             "main": "Platoon members",
@@ -479,23 +458,18 @@
         "maxPlayers": "Max {{ amount }} players",
         "owner": {
             "main": "Experience creator",
-            "none": "The creator can only be garthered if playground id is used",
+            "none": "The creator can only be retrieved if playground id is used",
             "unknown": "Name not found"
         }
     },
     "footer": {
-        "descriptions": {
-            "0": "This website is part of the Community Network. It is Open Source. You can post issues and suggest changes/improvements via GitHub. API provided by Community Network and open for public usage. We don’t provide any third-party API. Our back end is closed source and not available publicly.",
-            "1": "Battlefield & Origin are registered trademark of Electronic Arts. This website uses data provided pursuant to Electronic Arts’ Battlefield 1 Stats Terms. Trademarks are the property of their respective owners. Game materials copyright Electronic Arts Inc. Electronic Arts has not endorsed and is not responsible for this site or its content.",
-            "2": "Code is under GPL v2 License. Some parts are under Community Network copyright."
-        },
+        "description":  "This website is part of the Community Network. It is Open Source. You can post issues and suggest changes/improvements via GitHub. API provided by Community Network and open for public usage. We don’t provide any third-party API. Our back end is closed source and not available publicly.\nBattlefield & Origin are registered trademark of Electronic Arts. This website uses data provided pursuant to Electronic Arts’ Battlefield 1 Stats Terms. Trademarks are the property of their respective owners. Game materials copyright Electronic Arts Inc. Electronic Arts has not endorsed and is not responsible for this site or its content.\nCode is under GPL v2 License. Some parts are under Community Network copyright.",
         "links": {
-            "0": "GitHub",
-            "1": "Public API",
-            "2": "Community Network Discord",
-            "3": "Portal Experience info",
-            "4": "Privacy Policy",
-            "5": "Discord bot"
+            "0": {"header": "GitHub", "url": "https://github.com/Community-network"},
+            "1": {"header": "Public API", "url": "https://api.gametools.network/"},
+            "2": {"header": "Community Network Discord", "url": "https://discord.gametools.network/"},
+            "3": {"header": "Privacy Policy", "url": "/privacy/"},
+            "4": {"header": "Discord bot", "url": "https://top.gg/bot/714524944783900794"}
         }
     }
 }
