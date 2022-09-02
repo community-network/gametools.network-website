@@ -114,6 +114,12 @@
                 "link": "Bezoek BFBan",
                 "url": "https://bfban.gametools.network/"
             },
+            "1": {
+                "header": "BFPortal",
+                "description": "Vind en deel Battlefield 2042 portal ervaringen.",
+                "link": "Bezoek BFPortal",
+                "url": "https://bfportal.gg/"
+            },
             "2": {
                 "header": "Statbits",
                 "description": "Statbits laat je de spelstatistieken integreren in jouw stream chat en andere applicaties. Wil je een !kd command die je algemene kill/death ratio laat zien voor Battlefield 4? We got you!",
