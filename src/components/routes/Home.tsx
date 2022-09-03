@@ -73,6 +73,12 @@ const WelcomeText = styled.p`
   ${AltText}
   white-space: pre-line;
   font-size: 18px;
+  @media (min-width: 548px) {
+    margin-bottom: 2.5rem;
+  }
+  @media (max-width: 358px) {
+    margin-top: 0;
+  }
 `;
 
 const Description = styled.p`
@@ -127,9 +133,7 @@ function Home(): React.ReactElement {
       <Image>
         <Blur>
           <Welcome>
-            <WelcomeText style={{ marginBottom: "2.5rem" }}>
-              {t("playerSearch.description")}
-            </WelcomeText>
+            <WelcomeText>{t("playerSearch.description")}</WelcomeText>
             <StatSearch />
           </Welcome>
         </Blur>
