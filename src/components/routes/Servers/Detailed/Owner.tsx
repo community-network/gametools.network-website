@@ -23,22 +23,6 @@ export function ServerOwner(props: {
   let owner = props.owner;
   const ConditionalLink = ({ children, to, condition }: ConLink) =>
     !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
-  if (owner === null) {
-    return (
-      <Spacing>
-        <h3>{t("servers.owner.main")}</h3>
-        <Align>
-          <Circle style={{ marginTop: ".5rem" }} />
-          <div>
-            <OriginName>{t("404")}</OriginName>
-            <OriginDescription>
-              {t("stats.originDescription")}
-            </OriginDescription>
-          </div>
-        </Align>
-      </Spacing>
-    );
-  }
 
   if (props.game === "bf2042") {
     const {
@@ -86,6 +70,21 @@ export function ServerOwner(props: {
     } else {
       owner = data;
     }
+  }
+
+  if (owner === null) {
+    return (
+      <Spacing>
+        <h3>{t("servers.owner.main")}</h3>
+        <Align>
+          <Circle style={{ marginTop: ".5rem" }} />
+          <div>
+            <OriginName>{t("404")}</OriginName>
+            <OriginDescription>{t("servers.owner.none")}</OriginDescription>
+          </div>
+        </Align>
+      </Spacing>
+    );
   }
 
   return (

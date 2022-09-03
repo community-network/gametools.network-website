@@ -22,8 +22,17 @@ import {
   serverTeamList,
 } from "../../../../api/ReturnTypes";
 import { factions } from "../../../../api/Factions";
-import { ConLink, Description, Spacing, Title } from "./Servers";
+import { Description, Spacing, Title } from "./Servers";
 import { DynamicSort } from "../../Stats/Player/Main";
+import styled from "styled-components";
+
+const ServerPlayerName = styled.h4`
+  max-width: 11rem;
+  width: auto;
+  min-width: 8rem;
+  margin: 0.5rem;
+  white-space: nowrap;
+`;
 
 function CheckBan(props: {
   playerId: string;
@@ -64,8 +73,7 @@ function Players(props: {
   const { t } = useTranslation();
   const teams = props.stats.teams;
   const [sortType, setSortType] = React.useState<string>("slot");
-  const ConditionalLink = ({ children, to, condition }: ConLink) =>
-    !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
+  const [copyState, setCopyState] = React.useState<string>("");
 
   let playerIds = [];
   teams.forEach((teamInfo: serverTeamList) => {
@@ -149,32 +157,34 @@ function Players(props: {
                                   ) : (
                                     <></>
                                   )}
-                                  <ConditionalLink
-                                    condition={props.game !== "bf2042"}
-                                    to={`/stats/${props.platform}/playerid/${
-                                      key.player_id
-                                    }?game=${
-                                      props.game
-                                    }&name=${encodeURIComponent(key.name)}`}
+                                  <a
+                                    style={{ cursor: "pointer" }}
+                                    onClick={() => {
+                                      navigator.clipboard.writeText(key.name);
+                                      setCopyState(key.name);
+                                      const timer1 = setTimeout(
+                                        () => setCopyState(""),
+                                        1 * 1000,
+                                      );
+                                      return () => {
+                                        clearTimeout(timer1);
+                                      };
+                                    }}
                                   >
-                                    <>
-                                      <h4
-                                        style={{
-                                          maxWidth: "11rem",
-                                          width: "auto",
-                                          minWidth: "8rem",
-                                          margin: "0.5rem",
-                                          whiteSpace: "nowrap",
-                                        }}
-                                      >
+                                    {copyState == key.name ? (
+                                      <ServerPlayerName>
+                                        {t("states.copied")}
+                                      </ServerPlayerName>
+                                    ) : (
+                                      <ServerPlayerName>
                                         {key.platoon !== "" &&
                                         key.platoon !== undefined
                                           ? `[${key.platoon}]`
                                           : ""}
                                         {key.name}
-                                      </h4>
-                                    </>
-                                  </ConditionalLink>
+                                      </ServerPlayerName>
+                                    )}
+                                  </a>
                                 </AlignW>
                                 <CheckBan
                                   playerId={key.player_id.toString()}
