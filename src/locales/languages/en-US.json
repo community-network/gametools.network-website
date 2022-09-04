@@ -421,6 +421,8 @@
             "BFFactionId_FactionBOL": "Red Army",
             "BFFactionId_FactionWA": "White Army",
             "BFFactionId_FactionUKM": "Royal Marines",
+            "FactionUS": "Russian Federation",
+            "FactionRUS": "United States of America",
             "teamOne": "Team 1",
             "teamTwo": "Team 2"
         },

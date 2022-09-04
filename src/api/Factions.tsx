@@ -66,4 +66,15 @@ export const factions = {
     key: "UK",
     name: "Royal Marines",
   },
+
+  FactionUS: {
+    image: "https://cdn.gametools.network/factions/bf2042/FactionUS.png",
+    key: "US",
+    name: "United States of America",
+  },
+  FactionRUS: {
+    image: "https://cdn.gametools.network/factions/bf2042/FactionRUS.png",
+    key: "RU",
+    name: "Russian Federation",
+  },
 };
