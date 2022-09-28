@@ -355,6 +355,7 @@ export type DetailedServerInfo = {
   maxPlayerAmount?: number;
   platoon?: PlatoonResult;
   owner?: ServerOwnerResult;
+  configCreator?: ServerOwnerResult;
   serverInfo?: ServerInfoResult;
 
   inQue?: number;

@@ -25,12 +25,9 @@
         "copied": "Kopyalandı!"
     },
     "navBar": {
-        "bfStats": "Battlefield İstatistikleri",
-        "serverStats": "Battlefield Sunucu İstatistikleri",
-        "platoons": "Battlefield Klanları",
-        "discord": "Discord",
-        "api": "Genel API",
-        "bot": "Discord Botu"
+        "help": "Yardım lazım mı?",
+        "serverManager": "Sunucu Yöneticisi",
+        "api": "Battlefield API"
     },
     "games": {
         "bfglobal": "Global",
@@ -53,7 +50,16 @@
         "bfh": "Battlefield Hardline",
         "bf1": "Battlefield 1",
         "bfv": "Battlefield 5",
-        "bf2042": "Battlefield 2042"
+        "bf2042": "Battlefield 2042",
+        "bf2042portal": "Battlefield 2042 Portal"
+    },
+    "limit": {
+        "10": "10 sunucular",
+        "25": "25 sunucular",
+        "50": "50 sunucular",
+        "100": "100 sunucular",
+        "200": "200 sunucular",
+        "250": "250 sunucular"
     },
     "regions": {
         "all": "Tüm bölgeler",
@@ -75,13 +81,44 @@
         "all": "Tüm platformlar"
     },
     "home": {
+        "manager": {
+            "header": "GAMETOOLS | CLOUD",
+            "description": "Battlefield Sunucularınızı korumak için web tabanlı bir Hile Önleme ve Yönetim platformu oluşturduk.\nBirçok topluluğun yardımıyla oluşturuldu.\n\nŞimdi giriş yapın ve entegrasyonunuzu ücretsiz olarak başlatın!",
+            "open": "Launch App",
+            "disclaimer": "Sunucu barındırma sağlanmaz. Şu anda aşağıdaki Battlefield oyunlarını destekliyoruz:"
+        },
+        "graphs": {
+            "header": "Çevrimiçi istatistikler ve grafikler",
+            "detailed": "Ayrıntılı istatistikleri görüntüleyin"
+        },
+        "otherServices": {
+            "header": "Diğer servisler",
+            "0": {
+                "header": "Battlefield toplulukları",
+                "localUrl": "/platoons/"
+            },
+            "1": {
+                "header": "Portal Deneyimi bilgisi",
+                "localUrl": "/playgrounds/"
+            },
+            "2": {
+                "header": "FESL API (Battlefield bad company 2 APIs)",
+                "url": "https://fesl.gametools.network/docs"
+            }
+        },
         "ourFriends": {
-            "header": "Geliştiricilerimizden",
+            "header": "Arkadaşlarımız",
             "0": {
                 "header": "BFBan",
                 "description": "Birleşik yasak listesi ve şikayet sistemi sağlamak için hilecilere karşı oluşturulmuş muhteşem bir topluluk ve tersine mühendislik/güvenlik ekibi olan bfban.com'un aktif bir parçasıyız ve ev sahipliği yapıyoruz.\nHile yapanları BF1/BFV'de bildirin, böylece topluluk sunucularında yasaklanabilirler.",
                 "link": "BFBan'ı ziyaret edin",
                 "url": "https://bfban.gametools.network/"
+            },
+            "1": {
+                "header": "BFPortal",
+                "description": "Battlefield 2042 portal deneyimlerini bulun ve paylaşın.",
+                "link": "BFPortal ziyaret et",
+                "url": "https://bfportal.gg/"
             },
             "2": {
                 "header": "Statbits",
@@ -95,33 +132,6 @@
                 "link": "belgeleri okuyun",
                 "url": "https://bflist.io/"
             }
-        },
-        "faq": {
-            "header": "FAQ",
-            "0": {
-                "question": "Q: API'nizi kullanabilir miyim?",
-                "answer": "A: Evet yapabilirsin. API'yi herhangi bir sınırlama olmaksızın ücretsiz olarak sağlıyoruz."
-            },
-            "1": {
-                "question": "Q: Discord botun var ama ben kendim yapabilir miyim?",
-                "answer": "A: Discord için harika bir bot sağlıyoruz, ancak kendinizinkini yazmak istiyorsanız API'mızla bunu yapmaktan çekinmeyin."
-            },
-            "2": {
-                "question": "Q: Hangi oyunlar mevcut?",
-                "answer": "A: Web sitemiz ve API'miz, V, 1, 4, Hardline, 3 ve 2 dahil olmak üzere Battlefield oyunlarının çoğunu destekler. Discord botu, Division veya Destiny 2 gibi diğer oyunları da destekler."
-            },
-            "3": {
-                "question": "Q: Tüm bunları oluşturmak için Battlefield Tracker'ı kullandınız mı?",
-                "answer": "A: Hayır. Bağımsız hizmetler sunuyoruz."
-            },
-            "4": {
-                "question": "Q: Web sitesinde bir sorun buldum veya değişiklik önermek istiyorum, nereden iletişime geçebilirim?",
-                "answer": "A: Herhangi bir sorun ve öneri göndermek için GitHub'ımıza gidin."
-            },
-            "5": {
-                "question": "Q: Discord botu için sorunlar ve özellik istekleri nereye gönderilir?",
-                "answer": "A: Bot ve API'miz ile ilgili öneriler için Discord'umuza katılın."
-            }
         }
     },
     "playerSearch": {
@@ -131,7 +141,8 @@
         "search": "Arama",
         "searchPlaceholder": "Origin adını arayın...",
         "gameStatus": " Battlefield'daki oyuncu sayısı",
-        "zoomInfo": "(Kaydırma-yakınlaştırmayı etkinleştirmek için tabloya tıklayın)"
+        "zoomInfo": "(Kaydırma-yakınlaştırmayı etkinleştirmek için tabloya tıklayın)",
+        "moreGraphs": "Diğer grafikler"
     },
     "serverSearch": {
         "back": "Ana Sayfa",
@@ -147,7 +158,10 @@
         "type": {
             "name": "Sunucu ismi",
             "playground": "Deneyim ismi"
-        }
+        },
+        "showMore": "Daha fazla göster",
+        "region": "Bölge",
+        "platform": "platform"
     },
     "platoonSearch": {
         "back": "Ana Sayfa",
@@ -161,7 +175,7 @@
     "stats": {
         "view": "İstatistikleri görüntüle",
         "back": "Ana Sayfa",
-        "originDescription": "Origin profili",
+        "originDescription": "Kullanızı hesabı",
         "detailedName": "Ayrıntılı istatistikler",
         "overview": "Genel bakış",
         "overviewDescription": "Oyundaki istatistiklerinize kısa bir genel bakış.",
@@ -380,6 +394,7 @@
             "lastUpdate": "Son aktif güncellemesi",
             "row": {
                 "ping": "ping",
+                "platform": "platform",
                 "timePlayed": "Oynanan süre",
                 "playerSlot": "Oyuncu yuvası",
                 "playerName": "Oyuncu adı",
@@ -399,6 +414,8 @@
             "BFFactionId_FactionBOL": "Kızıl Ordu",
             "BFFactionId_FactionWA": "Beyaz Ordu",
             "BFFactionId_FactionUKM": "Kraliyet Deniz Piyadeleri",
+            "FactionUS": "Rusya Federasyonu",
+            "FactionRUS": "Amerika Birleşik Devletleri",
             "teamOne": "Takım 1",
             "teamTwo": "Takım 2"
         },

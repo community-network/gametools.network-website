@@ -355,6 +355,7 @@
         },
         "owner": {
             "main": "Server eigenaar",
+            "experience": "Experience eigenaar",
             "none": "Server heeft geen eigenaar (Dice server)",
             "unknown": "Naam niet gevonden"
         },

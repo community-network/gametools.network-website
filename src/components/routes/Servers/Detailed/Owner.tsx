@@ -15,32 +15,32 @@ import {
 import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
 
-export function ServerOwner(props: {
+export function OwnerInfo(props: {
   owner: ServerOwnerResult;
   game: string;
+  title: string;
 }): React.ReactElement {
   const { t } = useTranslation();
-  let owner = props.owner;
+  // eslint-disable-next-line prefer-const
+  let { owner, game, title } = props;
   const ConditionalLink = ({ children, to, condition }: ConLink) =>
     !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
 
-  if (props.game === "bf2042") {
+  if (game === "bf2042") {
     const {
       isLoading: loading,
       isError: error,
       data: data,
-    } = useQuery(
-      ["feslid" + props.game + props.owner.id + props.owner.platformId],
-      () =>
-        GametoolsApi.feslid({
-          game: props.game,
-          ownerInfo: props.owner,
-        }),
+    } = useQuery(["feslid" + game + owner.id + owner.platformId], () =>
+      GametoolsApi.feslid({
+        game: game,
+        ownerInfo: owner,
+      }),
     );
     if (loading) {
       return (
         <Spacing>
-          <h3>{t("servers.owner.main")}</h3>
+          <h3>{title}</h3>
           <Align>
             <Circle style={{ marginTop: ".5rem" }} />
             <div>
@@ -55,7 +55,7 @@ export function ServerOwner(props: {
     } else if (error) {
       return (
         <Spacing>
-          <h3>{t("servers.owner.main")}</h3>
+          <h3>{title}</h3>
           <Align>
             <Circle style={{ marginTop: ".5rem" }} />
             <div>
@@ -75,7 +75,7 @@ export function ServerOwner(props: {
   if (owner === null) {
     return (
       <Spacing>
-        <h3>{t("servers.owner.main")}</h3>
+        <h3>{title}</h3>
         <Align>
           <Circle style={{ marginTop: ".5rem" }} />
           <div>
@@ -89,13 +89,13 @@ export function ServerOwner(props: {
 
   return (
     <Spacing>
-      <h2>{t("servers.owner.main")}</h2>
+      <h2>{title}</h2>
       <Align>
         <ConditionalLink
           to={`/stats/pc/playerid/${owner.id}?game=${
             props.game
           }&name=${encodeURIComponent(owner.name)}`}
-          condition={props.game !== "bf2042"}
+          condition={game !== "bf2042"}
         >
           <OriginProfile src={owner.avatar} />
         </ConditionalLink>
@@ -103,7 +103,7 @@ export function ServerOwner(props: {
           to={`/stats/pc/playerid/${owner.id}?game=${
             props.game
           }&name=${encodeURIComponent(owner.name)}`}
-          condition={props.game !== "bf2042"}
+          condition={game !== "bf2042"}
         >
           <div>
             <OriginName>
