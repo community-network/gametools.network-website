@@ -145,6 +145,7 @@
         "moreGraphs": "Diğer grafikler"
     },
     "serverSearch": {
+        "servers": "Sunucular",
         "back": "Ana Sayfa",
         "serverInfo": "Battlefield Sunucuları",
         "description": "Oyuncu miktarlarını/sunucunun harita rotasyonunu almak için Battlefield sunucularını arayın",
@@ -347,9 +348,16 @@
             "main": "klan serveri",
             "none": "Sunucu bir klana bağlı değil"
         },
+        "sort": {
+            "serverName": "Sunucu adı",
+            "playerAmount": "Oyuncu sayısı",
+            "maxPlayers": "En fazla oyuncu sayısı"
+        },
         "owner": {
             "main": "Sunucu sahibi",
-            "none": "Sunucunun sahibi yok (Dice sunucusu)"
+            "none": "Sunucunun sahibi yok (Dice sunucusu)",
+            "experience": "Deneyim yaratıcısı",
+            "unknown": "takma ad bulunamadı"
         },
         "join": "Sunucuya katıl",
         "joinFirefox": "Sunucuya katıl (yalnızca Firefox)",
@@ -438,6 +446,24 @@
         "rows": {
             "role": "Rol",
             "name": "İsim"
+        }
+    },
+    "getPlaygrounds": {
+        "back": "Ana sayfa",
+        "main": "Battlefield Portal Deneyim bilgileri",
+        "description": "Battlefield Portal deneyimi hakkında bilgi alın",
+        "getInfo": "Geçerli bir deneyim URL'si, oyun alanı kimliği veya deneyim kodu girin",
+        "show": "Göster"
+    },
+    "playgrounds": {
+        "back": "Aramaya geri dön",
+        "rotation": "Harita rotasyonunu",
+        "tags": "Deneyim etiketleri",
+        "maxPlayers": "en fazla {{ amount }} oyuncu",
+        "owner": {
+            "main": "Deneyim yaratıcısı",
+            "none": "İçerik oluşturucu yalnızca oyun alanı kimliği kullanılırsa alınabilir",
+            "unknown": "takma ad bulunamadı"
         }
     },
     "footer": {
