@@ -219,6 +219,7 @@ export type ServerList = {
 
   ip?: string;
   port?: string;
+  hasPassword?: boolean;
 };
 
 export type ServerLeaderboardReturn = {

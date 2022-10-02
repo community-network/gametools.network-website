@@ -361,6 +361,7 @@
             "none": "Server has no owner (Dice server)",
             "unknown": "Name not found"
         },
+        "password": "Password protected",
         "join": "Join server",
         "joinFirefox": "Join server (Firefox only)",
         "joinme": {
