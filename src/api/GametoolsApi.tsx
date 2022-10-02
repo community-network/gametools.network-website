@@ -12,6 +12,7 @@ import {
   PlaygroundInfoReturn,
   ServerOwnerResult,
 } from "./ReturnTypes";
+import { newGen } from "./static";
 
 interface BfBanInfo {
   getter: string;
@@ -300,8 +301,12 @@ export class ApiProvider extends JsonClient {
     const gameStuff = game.split(".");
     let serverName = "";
     let experienceName = "";
-    if (platform == "all") {
+    if (platform == "allPlatforms" && !newGen.includes(game)) {
       platform = "pc";
+    } else if (platform == "ps5" && !newGen.includes(game)) {
+      platform = "ps4";
+    } else if (platform == "xboxseries" && !newGen.includes(game)) {
+      platform = "xboxone";
     }
     if (searchType === "experiencename") {
       experienceName = searchTerm;

@@ -26,7 +26,7 @@ import { getLanguage } from "../../../../locales/config";
 import {
   frostbite3,
   frostbiteJoinGames,
-  noCrossplayFrostbite3,
+  newGen,
   oldJoinGames,
   supportedGames,
 } from "../../../../api/static";
@@ -63,7 +63,7 @@ function Main(): React.ReactElement {
   const [searchTerm, setSearchTerm] = React.useState<string>("");
   const [gameName, setGameName] = React.useState<string>("bf2042");
   const [region, setRegion] = React.useState<string>("all");
-  const [platform, setPlatform] = React.useState<string>("pc");
+  const [platform, setPlatform] = React.useState<string>("allPlatforms");
   const [limit, setLimit] = React.useState<string>("10");
   const [searchType, setSearchType] = React.useState<string>("experiencename");
   const [sortType, setSortType] = React.useState<string>("-prefix");
@@ -246,17 +246,28 @@ function Main(): React.ReactElement {
           )}
         </BigSelectSecondary>
         <BigSelectSecondary
-          disabled={!noCrossplayFrostbite3.includes(gameName)}
+          disabled={!frostbite3.includes(gameName)}
           value={platform}
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
             setPlatform(ev.target.value)
           }
         >
-          <option value="pc">
-            {gameName == "bf2042" ? t("platforms.all") : t("platforms.pc")}
-          </option>
+          {gameName == "bf2042" ? (
+            <option value="allPlatforms">{t("platforms.all")}</option>
+          ) : (
+            <></>
+          )}
+          <option value="pc">{t("platforms.pc")}</option>
           <option value="ps4">{t("platforms.ps4")}</option>
           <option value="xboxone">{t("platforms.xboxone")}</option>
+          {gameName == "bf2042" ? (
+            <>
+              <option value="ps5">{t("platforms.ps5")}</option>
+              <option value="xboxseries">{t("platforms.xboxseries")}</option>
+            </>
+          ) : (
+            <></>
+          )}
         </BigSelectSecondary>
         {/* <BigButtonSecondary type="submit">{t("serverSearch.search")} <RightArrow/></BigButtonSecondary> */}
       </Align>
@@ -303,7 +314,7 @@ export function ServerSearch(): React.ReactElement {
   const [searchTerm, setSearchTerm] = React.useState<string>("");
   const [gameName, setGameName] = React.useState<string>("bf2042");
   const [region, setRegion] = React.useState<string>("all");
-  const [platform, setPlatform] = React.useState<string>("pc");
+  const [platform, setPlatform] = React.useState<string>("allPlatforms");
 
   const { t } = useTranslation();
   const {
@@ -400,19 +411,26 @@ export function ServerSearch(): React.ReactElement {
           </Link>
         </ServerPageRow>
         <div>
-          <Box style={{ width: "240px" }}>
+          <Box style={{ width: "240px" }} innerStyle={{ maxHeight: "500px" }}>
             <h2 style={{ marginBottom: "0.4rem" }}>
               {t("serverSearch.platform")}
             </h2>
+            <InputItem
+              item={"allPlatforms"}
+              currrentItem={platform}
+              callback={(e: {
+                target: { value: React.SetStateAction<string> };
+              }) => setPlatform(e.target.value)}
+              name={t("platforms.all")}
+              disabled={!newGen.includes(gameName)}
+            />
             <InputItem
               item={"pc"}
               currrentItem={platform}
               callback={(e: {
                 target: { value: React.SetStateAction<string> };
               }) => setPlatform(e.target.value)}
-              name={
-                gameName == "bf2042" ? t("platforms.all") : t("platforms.pc")
-              }
+              name={t("platforms.pc")}
             />
             <InputItem
               item={"ps4"}
@@ -421,7 +439,7 @@ export function ServerSearch(): React.ReactElement {
                 target: { value: React.SetStateAction<string> };
               }) => setPlatform(e.target.value)}
               name={t("platforms.ps4")}
-              disabled={!noCrossplayFrostbite3.includes(gameName)}
+              disabled={!frostbite3.includes(gameName)}
             />
             <InputItem
               item={"xboxone"}
@@ -430,7 +448,25 @@ export function ServerSearch(): React.ReactElement {
                 target: { value: React.SetStateAction<string> };
               }) => setPlatform(e.target.value)}
               name={t("platforms.xboxone")}
-              disabled={!noCrossplayFrostbite3.includes(gameName)}
+              disabled={!frostbite3.includes(gameName)}
+            />
+            <InputItem
+              item={"ps5"}
+              currrentItem={platform}
+              callback={(e: {
+                target: { value: React.SetStateAction<string> };
+              }) => setPlatform(e.target.value)}
+              name={t("platforms.ps5")}
+              disabled={!newGen.includes(gameName)}
+            />
+            <InputItem
+              item={"xboxseries"}
+              currrentItem={platform}
+              callback={(e: {
+                target: { value: React.SetStateAction<string> };
+              }) => setPlatform(e.target.value)}
+              name={t("platforms.xboxseries")}
+              disabled={!newGen.includes(gameName)}
             />
             <h2 style={{ marginBottom: "0.4rem" }}>
               {t("serverSearch.region")}
