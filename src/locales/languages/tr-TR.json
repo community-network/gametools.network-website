@@ -361,6 +361,7 @@
             "experience": "Deneyim yaratıcısı",
             "unknown": "takma ad bulunamadı"
         },
+        "password": "Parola korumalı",
         "join": "Sunucuya katıl",
         "joinFirefox": "Sunucuya katıl (yalnızca Firefox)",
         "joinme": {
