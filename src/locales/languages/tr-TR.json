@@ -74,8 +74,10 @@
     },
     "platforms": {
         "pc": "PC",
+        "xboxseries": "XBOX SERIES",
         "xboxone": "XBOX ONE",
         "xbox360": "XBOX 360",
+        "ps5": "PS5",
         "ps4": "PS4",
         "ps3": "PS3",
         "all": "Tüm platformlar"
