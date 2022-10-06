@@ -55,12 +55,10 @@ export function StatSearch(): React.ReactElement {
             }
           >
             {statsPlatforms.map((key, index) => {
-              return key !== "all" ? (
+              return (
                 <option key={index} value={key}>
                   {t(`platforms.${key}`)}
                 </option>
-              ) : (
-                <></>
               );
             })}
           </HomePlayerBigSelectSecondary>
@@ -121,12 +119,10 @@ function Search(): React.ReactElement {
             }
           >
             {statsPlatforms.map((key, index) => {
-              return key !== "all" ? (
+              return (
                 <option key={index} value={key}>
                   {t(`platforms.${key}`)}
                 </option>
-              ) : (
-                <></>
               );
             })}
           </BigSelectSecondary>
