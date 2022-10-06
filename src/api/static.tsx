@@ -51,6 +51,7 @@ export const graphGames = {
   all: ["bfglobal", "bf4", "bf1", "bfv", "bf2042portal"],
 };
 
+export const statsPlatforms = ["pc", "xboxone", "xbox360", "ps4", "ps3"];
 export const defaultOptions = ["amounts", "maps", "modes"];
 export const portalOptions = ["settings", "ownerPlatform"];
 defaultOptions.push.apply(portalOptions, defaultOptions);

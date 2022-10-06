@@ -19,7 +19,7 @@ import {
   AlignT,
   BigButtonPrimary,
 } from "../../../Materials";
-import { platformGames } from "../../../../api/static";
+import { platformGames, statsPlatforms } from "../../../../api/static";
 import { Graphs } from "./Graphs";
 
 export const AltDescription = styled.p`
@@ -54,17 +54,15 @@ export function StatSearch(): React.ReactElement {
               setPlatform(ev.target.value)
             }
           >
-            {Object.keys(t("platforms", { returnObjects: true })).map(
-              (key, index) => {
-                return key !== "all" ? (
-                  <option key={index} value={key}>
-                    {t(`platforms.${key}`)}
-                  </option>
-                ) : (
-                  <></>
-                );
-              },
-            )}
+            {statsPlatforms.map((key, index) => {
+              return key !== "all" ? (
+                <option key={index} value={key}>
+                  {t(`platforms.${key}`)}
+                </option>
+              ) : (
+                <></>
+              );
+            })}
           </HomePlayerBigSelectSecondary>
         </AlignW>
         {searchTerm !== "" ? (
@@ -122,17 +120,15 @@ function Search(): React.ReactElement {
               setPlatform(ev.target.value)
             }
           >
-            {Object.keys(t("platforms", { returnObjects: true })).map(
-              (key, index) => {
-                return key !== "all" ? (
-                  <option key={index} value={key}>
-                    {t(`platforms.${key}`)}
-                  </option>
-                ) : (
-                  <></>
-                );
-              },
-            )}
+            {statsPlatforms.map((key, index) => {
+              return key !== "all" ? (
+                <option key={index} value={key}>
+                  {t(`platforms.${key}`)}
+                </option>
+              ) : (
+                <></>
+              );
+            })}
           </BigSelectSecondary>
           <BigSelectSecondary
             value={game}
