@@ -277,11 +277,15 @@ export function Results(props: Views): React.ReactElement {
           <PageRow>
             {props.game !== "bf4" && frostbite3.includes(props.game) ? (
               <>
-                <OwnerInfo
-                  owner={stats.owner}
-                  game={props.game}
-                  title={t("servers.owner.main")}
-                />
+                {stats.owner != null ? (
+                  <OwnerInfo
+                    owner={stats.owner}
+                    game={props.game}
+                    title={t("servers.owner.main")}
+                  />
+                ) : (
+                  <></>
+                )}
                 {props.game === "bf2042" ? (
                   <>
                     <ServerConfig serverInfo={stats.serverInfo} />
@@ -373,11 +377,15 @@ export function Results(props: Views): React.ReactElement {
               </>
             ) : (
               <>
-                <OwnerInfo
-                  owner={stats.configCreator}
-                  game={props.game}
-                  title={t("servers.owner.experience")}
-                />
+                {stats.configCreator !== null ? (
+                  <OwnerInfo
+                    owner={stats.configCreator}
+                    game={props.game}
+                    title={t("servers.owner.experience")}
+                  />
+                ) : (
+                  <></>
+                )}
                 <h2>{t("servers.settings")}</h2>
                 {stats.settings.map((value: ServerSettings, index: number) => {
                   return (
