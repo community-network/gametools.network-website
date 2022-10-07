@@ -385,7 +385,9 @@ export type ServerOwnerResult = {
 
 export type ServerInfoResult = {
   configDescription: string;
+  configDescriptionTranslation?: string;
   configName: string;
+  configNameTranslation?: string;
   messages: string[];
   serverDescription: string;
   serverName: string;

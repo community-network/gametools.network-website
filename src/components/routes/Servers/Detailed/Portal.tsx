@@ -17,6 +17,23 @@ export function ServerConfig(props: {
 }): React.ReactElement {
   const serverInfo = props.serverInfo;
   const { t } = useTranslation();
+
+  if (serverInfo.configNameTranslation !== "") {
+    return (
+      <Spacing>
+        <h2>{t("servers.portal.main")}</h2>
+        <AlignW>
+          <OriginProfile src={background} />
+          <div>
+            <OriginName>{serverInfo.configNameTranslation}</OriginName>
+            <OriginDescription>
+              {serverInfo.configDescriptionTranslation}
+            </OriginDescription>
+          </div>
+        </AlignW>
+      </Spacing>
+    );
+  }
   return (
     <Spacing>
       <h2>{t("servers.portal.main")}</h2>
