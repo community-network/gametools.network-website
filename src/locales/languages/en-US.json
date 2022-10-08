@@ -482,6 +482,14 @@
         "notFound": {
             "main": "Experience not found",
             "description": "We cant find the experience your looking for."
+        },
+        "types": {
+            "main": "Type",
+            "portal-standard": "Standard experience",
+            "portal-featured": "Featured experience",
+            "portal-default": "Standard experience",
+            "portal-unranked": "Unranked",
+            "portal-spotlight": "In the spotlight"
         }
     },
     "footer": {

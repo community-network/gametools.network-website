@@ -603,6 +603,7 @@ export type Playground = {
 };
 
 export type PlaygroundInfoReturn = {
+  progressionMode: StringValue;
   originalPlayground: Playground;
   validatedPlayground: Playground;
   tag: Tags[];

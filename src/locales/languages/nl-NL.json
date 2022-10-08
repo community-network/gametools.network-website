@@ -483,6 +483,14 @@
         "notFound": {
             "main": "Experience niet gevonden",
             "description": "We konden de experience die u zocht niet vinden."
+        },
+        "types": {
+            "main": "Type",
+            "portal-standard": "Standard experience",
+            "portal-featured": "Featured experience",
+            "portal-default": "Standard experience",
+            "portal-unranked": "Unranked",
+            "portal-spotlight": "In the spotlight"
         }
     },
     "footer": {

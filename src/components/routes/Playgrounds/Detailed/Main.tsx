@@ -99,9 +99,6 @@ function capitalizeFirstLetter(string: string) {
 }
 
 export function Results(props: Views): React.ReactElement {
-  const getLanguage = () => window.localStorage.i18nextLng;
-  const numberFormat = new Intl.NumberFormat(getLanguage());
-
   const { t } = useTranslation();
   const stats = props.stats;
   if (props.error) {
@@ -159,6 +156,10 @@ export function Results(props: Views): React.ReactElement {
               {t("playgrounds.maxPlayers", {
                 amount: playground.mapRotation.maps[0].gameSize,
               })}
+            </Description>
+            <Description>
+              {t("playgrounds.types.main")}:{" "}
+              {t(`playgrounds.types.${stats.progressionMode.value}`)}
             </Description>
           </div>
         </AlignSeverImg>
