@@ -33,6 +33,7 @@ import { ServerConfig } from "./Portal";
 import { Description, Title } from "./Servers";
 import { useLocation } from "react-router-dom";
 import { ServerScoreboard } from "./Scoreboard";
+import { BfPortalInfo } from "./BfPortal";
 
 const AltDescription = styled.p`
   ${AltText}
@@ -386,6 +387,7 @@ export function Results(props: Views): React.ReactElement {
                 ) : (
                   <></>
                 )}
+                <BfPortalInfo experienceName={stats.serverInfo.configName} />
                 <h2>{t("servers.settings")}</h2>
                 {stats.settings.map((value: ServerSettings, index: number) => {
                   return (

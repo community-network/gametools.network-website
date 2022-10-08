@@ -15,7 +15,7 @@ import {
 export function ServerConfig(props: {
   serverInfo: ServerInfoResult;
 }): React.ReactElement {
-  const serverInfo = props.serverInfo;
+  const { serverInfo } = props;
   const { t } = useTranslation();
 
   if (serverInfo.configNameTranslation !== "") {

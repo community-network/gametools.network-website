@@ -373,6 +373,10 @@
             "discord": "De joinme launcher moet geïnstalleerd zijn om dit te laten werken!",
             "invite": "Joinme.click invite URL"
         },
+        "bfportal": {
+            "found": "Portal experience gevonden op BfPortal.gg",
+            "error": "Api fout voor BfPortal.gg"
+        },
         "iframe": {
             "main": "Voeg de server toe aan uw website",
             "info": "Als u uw eigen versie wilt, vraag dan iiTzArcur op onze discord. (link in footer)",

@@ -373,6 +373,10 @@
             "discord": "The joinme launcher has to be installed to make this work!",
             "invite": "Joinme.click invite URL"
         },
+        "bfportal": {
+            "found": "Portal experience found on BfPortal.gg",
+            "error": "Api failure for BfPortal.gg"
+        },
         "iframe": {
             "main": "Add the server to your own website",
             "info": "If You want your own custom version, ask iiTzArcur in our Discord. (link in footer)",
