@@ -15,6 +15,10 @@
     "intlNumber": "{{val, number}}",
     "ago": "ago",
     "export": "Export",
+    "dateType": {
+        "createdAt": "Created at",
+        "updatedAt": "Updated at"
+    },
     "bfban": {
         "stats": "Player is marked as hacker in bfban!",
         "platoon": " Hacker"

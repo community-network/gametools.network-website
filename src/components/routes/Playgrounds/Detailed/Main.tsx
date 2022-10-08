@@ -16,14 +16,18 @@ import {
   PlaygroundInfoReturn,
   Tags,
 } from "../../../../api/ReturnTypes";
-import { Description, Title } from "./Playgrounds";
+import { Title } from "./Playgrounds";
 import { PlaygroundOwner } from "./Owner";
-import { addSeconds } from "date-fns";
 
 const AltDescription = styled.p`
   ${AltText}
   line-height: 1.2;
   margin: 0.5rem 0.5rem 0.5rem 0;
+`;
+
+export const Description = styled.p`
+  ${AltText}
+  line-height: 0.6;
 `;
 
 interface IPlaygroundImage {
@@ -116,6 +120,13 @@ export function Results(props: Views): React.ReactElement {
     );
   } else {
     const playground = stats.originalPlayground;
+
+    const createdDate = new Date(0);
+    createdDate.setUTCSeconds(playground.createdAt.seconds || 0);
+
+    const updatedDate = new Date(0);
+    updatedDate.setUTCSeconds(playground.updatedAt.seconds || 0);
+
     const tags = stats.tag;
     return (
       <div>
@@ -148,18 +159,23 @@ export function Results(props: Views): React.ReactElement {
             </Blur>
           </PlaygroundImage>
           <div>
-            <h2>{playground.settings.configName.value}</h2>
+            <h2 style={{ lineHeight: 0.5, marginTop: "1.5rem" }}>
+              {playground.settings.configName.value}
+            </h2>
             <Description>
               {playground.settings.ConfigDescription.value}
             </Description>
             <Description>
               {t("playgrounds.maxPlayers", {
                 amount: playground.mapRotation.maps[0].gameSize,
-              })}
+              })}{" "}
+              - {t(`playgrounds.types.${stats.progressionMode.value}`)}
             </Description>
             <Description>
-              {t("playgrounds.types.main")}:{" "}
-              {t(`playgrounds.types.${stats.progressionMode.value}`)}
+              {t("dateType.createdAt")}: {t("date", { date: createdDate })}
+            </Description>
+            <Description>
+              {t("dateType.updatedAt")}: {t("date", { date: updatedDate })}
             </Description>
           </div>
         </AlignSeverImg>
