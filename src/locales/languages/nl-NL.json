@@ -3,7 +3,7 @@
     "siteFullName": "Game tools",  
     "loading": "Laden...",
     "404": "404",
-    "playerNotFound": "Spelernaam niet gevonden, probeer een andere naam of spel.",
+    "playerNotFound": "Spelernaam niet gevonden, probeer eens een andere.",
     "notApplicable": "N/A",
     "resultNotFound": "Geen resultaten gevonden",
     "noName": "Kan geen spelernaam niet laten zien wanneer stats zijn opgehaald via speler ID.",
@@ -436,6 +436,10 @@
         },
         "portal": {
             "main": "Portal experience"
+        },
+        "notFound": {
+            "main": "Server niet gevonden",
+            "description": "We konden de server die u zocht niet vinden."
         }
     },
     "platoon": {
@@ -453,6 +457,10 @@
         "rows": {
             "role": "Rol",
             "name": "Naam"
+        },
+        "notFound": {
+            "main": "Platoon niet gevonden",
+            "description": "We konden de platoon die u zocht niet vinden."
         }
     },
     "getPlaygrounds": {
@@ -471,6 +479,10 @@
             "main": "Experience eigenaar",
             "none": "De naam van eigenaar kan alleen opgehaald worden wanneer een playground id gebruikt it",
             "unknown": "Naam niet gevonden"
+        },
+        "notFound": {
+            "main": "Experience niet gevonden",
+            "description": "We konden de experience die u zocht niet vinden."
         }
     },
     "footer": {
@@ -482,5 +494,10 @@
             "3": {"header": "Privacy Policy", "url": "/privacy/"},
             "4": {"header": "Discord bot", "url": "https://top.gg/bot/714524944783900794"}
         }
+    },
+    "pageNotFound": {
+        "main": "404 - Pagina niet gevonden",
+        "description": "We konden de pagina die u zocht niet vinden.",
+        "home": "Terug naar de hoofdpagina"
     }
 }

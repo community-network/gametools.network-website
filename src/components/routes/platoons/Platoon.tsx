@@ -194,66 +194,60 @@ function Members(props: {
           </SmallButton>
         </AlignW>
       </Align>
-      {members !== [] ? (
-        <Box>
-          <div>
-            {members.map((key: PlatoonPlayer, index: number) => {
-              return (
-                <div key={index} style={{ margin: "0.8rem 0.2rem" }}>
-                  <Column style={{ marginTop: 0 }}>
-                    <Row>
-                      <Link
-                        to={`/stats/${platform}/playerid/${
-                          key.id
-                        }?game=bf1&name=${encodeURIComponent(key.name)}`}
-                      >
-                        <Align>
-                          <MemberImage src={key.avatar} />
-                          <h4 style={{ marginTop: "2px", marginBottom: 0 }}>
-                            {key.name}
-                            <CheckBan
-                              playerId={key.id}
-                              bfBanList={bfBanInfo}
-                              loading={loading}
-                              error={error}
-                            />
-                          </h4>
-                        </Align>
-                      </Link>
-                    </Row>
-                    <SmallestPhoneRow>
-                      <h4>{t(`platoon.members.${key.role}`)}</h4>
-                    </SmallestPhoneRow>
-                    <TabletRow>
-                      <ButtonLink
-                        style={{ marginTop: ".3rem" }}
-                        href={`https://gametools.network/stats/${platform}/playerid/${
-                          key.id
-                        }?game=bf1&name=${encodeURIComponent(key.name)}`}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {t("stats.view")}
-                      </ButtonLink>
-                    </TabletRow>
-                  </Column>
-                  <hr
-                    style={{
-                      marginTop: "0.6rem",
-                      width: "98%",
-                      border: "1px solid #282a3a",
-                    }}
-                  />
-                </div>
-              );
-            })}
-          </div>
-        </Box>
-      ) : (
-        <Box>
-          <p>{t("loading")}</p>
-        </Box>
-      )}
+      <Box>
+        <div>
+          {members.map((key: PlatoonPlayer, index: number) => {
+            return (
+              <div key={index} style={{ margin: "0.8rem 0.2rem" }}>
+                <Column style={{ marginTop: 0 }}>
+                  <Row>
+                    <Link
+                      to={`/stats/${platform}/playerid/${
+                        key.id
+                      }?game=bf1&name=${encodeURIComponent(key.name)}`}
+                    >
+                      <Align>
+                        <MemberImage src={key.avatar} />
+                        <h4 style={{ marginTop: "2px", marginBottom: 0 }}>
+                          {key.name}
+                          <CheckBan
+                            playerId={key.id}
+                            bfBanList={bfBanInfo}
+                            loading={loading}
+                            error={error}
+                          />
+                        </h4>
+                      </Align>
+                    </Link>
+                  </Row>
+                  <SmallestPhoneRow>
+                    <h4>{t(`platoon.members.${key.role}`)}</h4>
+                  </SmallestPhoneRow>
+                  <TabletRow>
+                    <ButtonLink
+                      style={{ marginTop: ".3rem" }}
+                      href={`https://gametools.network/stats/${platform}/playerid/${
+                        key.id
+                      }?game=bf1&name=${encodeURIComponent(key.name)}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {t("stats.view")}
+                    </ButtonLink>
+                  </TabletRow>
+                </Column>
+                <hr
+                  style={{
+                    marginTop: "0.6rem",
+                    width: "98%",
+                    border: "1px solid #282a3a",
+                  }}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </Box>
     </Spacing>
   );
 }
@@ -400,7 +394,20 @@ function Results(props: Views): React.ReactElement {
   const { t } = useTranslation();
   const platoon = props.platoon;
 
-  if (!props.loading && !props.error) {
+  if (props.error) {
+    return (
+      <>
+        <h1>{t("platoon.notFound.main")}</h1>
+        <p>{t("platoon.notFound.description")}</p>
+      </>
+    );
+  } else if (props.loading) {
+    return (
+      <Box>
+        <h3>{t("loading")}</h3>
+      </Box>
+    );
+  } else {
     return (
       <div>
         <AlignPlatoonImg>
@@ -434,12 +441,6 @@ function Results(props: Views): React.ReactElement {
           </PageRow>
         </PageColumn>
       </div>
-    );
-  } else {
-    return (
-      <Box>
-        <h3>{t("loading")}</h3>
-      </Box>
     );
   }
 }

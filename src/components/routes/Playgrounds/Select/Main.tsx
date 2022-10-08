@@ -70,20 +70,20 @@ function Main(): React.ReactElement {
   const [game, setGame] = React.useState<string>("bf2042");
   let getter = "playgroundid";
   let playground = "";
-  const isUrl = get_playground_id(searchTerm);
+  const isUrl = get_playground_id(searchTerm.trim());
   if (isUrl.valid_url) {
     if (check_valid_playground_id(isUrl.playground_id)) {
       playground = isUrl.playground_id;
     }
   } else {
-    if (check_valid_playground_id(searchTerm)) {
-      playground = searchTerm;
+    if (check_valid_playground_id(searchTerm.trim())) {
+      playground = searchTerm.trim();
     }
   }
 
-  if (check_valid_shortcode(searchTerm)) {
+  if (check_valid_shortcode(searchTerm.trim())) {
     getter = "experiencecode";
-    playground = searchTerm;
+    playground = searchTerm.trim();
   }
 
   return (

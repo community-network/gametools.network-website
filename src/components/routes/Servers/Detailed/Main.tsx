@@ -19,6 +19,8 @@ import {
   SmallButtonSecondary,
   PageColumn,
   PageRow,
+  PrimaryButtonLink,
+  ButtonLink,
 } from "../../../Materials";
 import {
   DetailedServerInfo,
@@ -139,7 +141,21 @@ export function Results(props: Views): React.ReactElement {
 
   const { t } = useTranslation();
   const stats = props.stats;
-  if (!props.loading && !props.error) {
+
+  if (props.error) {
+    return (
+      <>
+        <h1>{t("servers.notFound.main")}</h1>
+        <p>{t("servers.notFound.description")}</p>
+      </>
+    );
+  } else if (props.loading) {
+    return (
+      <Box>
+        <h3>{t("loading")}</h3>
+      </Box>
+    );
+  } else {
     let queue: number = undefined;
     queue = stats.inQue;
     let queueString = "";
@@ -458,12 +474,6 @@ export function Results(props: Views): React.ReactElement {
           })}
         </PageColumn>
       </div>
-    );
-  } else {
-    return (
-      <Box>
-        <h3>{t("loading")}</h3>
-      </Box>
     );
   }
 }

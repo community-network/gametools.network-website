@@ -308,7 +308,7 @@ export class ApiProvider extends JsonClient {
     } else if (platform == "xboxseries" && !newGen.includes(game)) {
       platform = "xboxone";
     }
-    if (searchType === "experiencename") {
+    if (searchType === "experiencename" && game == "bf2042") {
       experienceName = searchTerm;
     } else {
       serverName = searchTerm;

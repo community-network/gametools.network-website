@@ -104,7 +104,20 @@ export function Results(props: Views): React.ReactElement {
 
   const { t } = useTranslation();
   const stats = props.stats;
-  if (!props.loading && !props.error) {
+  if (props.error) {
+    return (
+      <>
+        <h1>{t("playgrounds.notFound.main")}</h1>
+        <p>{t("playgrounds.notFound.description")}</p>
+      </>
+    );
+  } else if (props.loading) {
+    return (
+      <Box>
+        <h3>{t("loading")}</h3>
+      </Box>
+    );
+  } else {
     const playground = stats.originalPlayground;
     const tags = stats.tag;
     return (
@@ -214,12 +227,6 @@ export function Results(props: Views): React.ReactElement {
           </PageRow>
         </PageColumn>
       </div>
-    );
-  } else {
-    return (
-      <Box>
-        <h3>{t("loading")}</h3>
-      </Box>
     );
   }
 }

@@ -3,9 +3,8 @@
     "siteFullName": "Game tools",  
     "loading": "Loading...",
     "404": "404",
-    "playerNotFound": "Playername not found, try another name or game.",
+    "playerNotFound": "Playername not found, pelase try another.",
     "notApplicable": "N/A",
-    "resultNotFound": "No results found",
     "noName": "Cannot show a playername when accessing stats via playerId",
     "date": "{{date, date|eee, dd MMM yyyy}}",
     "dateTime": "{{date, date|eee, dd MMM yyyy - p}}",
@@ -436,6 +435,10 @@
         },
         "portal": {
             "main": "Portal experience"
+        },
+        "notFound": {
+            "main": "Server not found",
+            "description": "We cant find the server your looking for."
         }
     },
     "platoon": {
@@ -453,6 +456,10 @@
         "rows": {
             "role": "Role",
             "name": "Name"
+        },
+        "notFound": {
+            "main": "Platoon not found",
+            "description": "We cant find the platoon your looking for."
         }
     },
     "getPlaygrounds": {
@@ -471,6 +478,10 @@
             "main": "Experience creator",
             "none": "The creator can only be retrieved if playground id is used",
             "unknown": "Name not found"
+        },
+        "notFound": {
+            "main": "Experience not found",
+            "description": "We cant find the experience your looking for."
         }
     },
     "footer": {
@@ -482,5 +493,10 @@
             "3": {"header": "Privacy Policy", "url": "/privacy/"},
             "4": {"header": "Discord bot", "url": "https://top.gg/bot/714524944783900794"}
         }
+    },
+    "pageNotFound": {
+        "main": "404 - Page not found",
+        "description": "We cant find the page your looking for.",
+        "home": "Back to the home page"
     }
 }
