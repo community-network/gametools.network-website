@@ -312,7 +312,7 @@ export function Results(props: Views): React.ReactElement {
                         gameid={stats.blazeGameId.toString()}
                         platform={props.platform}
                       />
-                    ) : blazeIdQuery !== null ? (
+                    ) : blazeIdQuery !== "null" ? (
                       <ServerPlayerlist
                         game={props.game}
                         gameid={blazeIdQuery}
