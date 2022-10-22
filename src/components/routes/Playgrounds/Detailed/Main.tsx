@@ -168,8 +168,10 @@ export function Results(props: Views): React.ReactElement {
             <Description>
               {t("playgrounds.maxPlayers", {
                 amount: playground.mapRotation.maps[0].gameSize,
-              })}{" "}
-              - {t(`playgrounds.types.${stats.progressionMode.value}`)}
+              })}
+              {stats.progressionMode
+                ? " - " + t(`playgrounds.types.${stats.progressionMode.value}`)
+                : ""}
             </Description>
             <Description>
               {t("dateType.createdAt")}: {t("date", { date: createdDate })}
