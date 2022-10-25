@@ -1,0 +1,50 @@
+{
+  "short_name": "Gametools",
+  "name": "Gametools",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#313443",
+  "background_color": "#0E0F14",
+  "shortcuts": [
+    {
+      "name": "Battlefield servers",
+      "short_name": "Servers",
+      "description": "Search battlefield servers",
+      "url": "/servers",
+      "icons": [{ "src": "/logo.png", "sizes": "256x256" }]
+    },
+    {
+      "name": "Battlefield stats",
+      "short_name": "Stats",
+      "description": "Show your or someone elses stats",
+      "url": "/stats",
+      "icons": [{ "src": "/logo.png", "sizes": "256x256" }]
+    },
+    {
+      "name": "Battlefield platoons",
+      "short_name": "Platoons",
+      "description": "Get info about a Battlefield platoon",
+      "url": "/platoons",
+      "icons": [{ "src": "/logo.png", "sizes": "256x256" }]
+    },
+    {
+      "name": "Battlefield playgrounds",
+      "short_name": "playgrounds",
+      "description": "Get more information about a specific playground",
+      "url": "/playgrounds",
+      "icons": [{ "src": "/logo.png", "sizes": "256x256" }]
+    }
+  ]
+}
