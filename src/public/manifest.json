@@ -13,6 +13,7 @@
       "sizes": "256x256"
     }
   ],
+  "id": "/",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#313443",
