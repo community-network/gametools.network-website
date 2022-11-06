@@ -1,5 +1,6 @@
 // development config
 const { merge } = require("webpack-merge");
+const { resolve } = require("path");
 const webpack = require("webpack");
 const commonConfig = require("./common");
 
@@ -15,6 +16,7 @@ module.exports = merge(commonConfig, {
     historyApiFallback: {
       rewrites: [{ from: /^\/$/, to: "/" }],
     },
+    static: { directory: resolve("src/public") },
   },
   devtool: "cheap-module-source-map",
   plugins: [
