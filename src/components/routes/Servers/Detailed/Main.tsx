@@ -303,31 +303,35 @@ export function Results(props: Views): React.ReactElement {
                 ) : (
                   <></>
                 )}
-                {props.game === "bf2042" ? (
-                  <>
-                    <ServerConfig serverInfo={stats.serverInfo} />
-                    {stats.blazeGameId !== undefined ? (
-                      <ServerPlayerlist
-                        game={props.game}
-                        gameid={stats.blazeGameId.toString()}
-                        platform={props.platform}
-                      />
-                    ) : blazeIdQuery !== "null" ? (
-                      <ServerPlayerlist
-                        game={props.game}
-                        gameid={blazeIdQuery}
-                        platform={props.platform}
-                      />
-                    ) : (
-                      <></>
-                    )}
-                  </>
+                {props.platform == "pc" ? (
+                  props.game === "bf2042" ? (
+                    <>
+                      <ServerConfig serverInfo={stats.serverInfo} />
+                      {stats.blazeGameId !== undefined ? (
+                        <ServerPlayerlist
+                          game={props.game}
+                          gameid={stats.blazeGameId.toString()}
+                          platform={props.platform}
+                        />
+                      ) : blazeIdQuery !== "null" ? (
+                        <ServerPlayerlist
+                          game={props.game}
+                          gameid={blazeIdQuery}
+                          platform={props.platform}
+                        />
+                      ) : (
+                        <></>
+                      )}
+                    </>
+                  ) : (
+                    <ServerPlayerlist
+                      game={props.game}
+                      gameid={stats.gameId}
+                      platform={props.platform}
+                    />
+                  )
                 ) : (
-                  <ServerPlayerlist
-                    game={props.game}
-                    gameid={stats.gameId}
-                    platform={props.platform}
-                  />
+                  <></>
                 )}
               </>
             ) : (

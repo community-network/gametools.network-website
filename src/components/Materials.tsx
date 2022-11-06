@@ -58,6 +58,9 @@ export const PageRow = styled.div`
   @media screen and (max-width: 1800px) {
     flex: 100%;
   }
+  :empty {
+    display: none;
+  }
 `;
 
 export const Container = styled.div`
