@@ -303,7 +303,7 @@ export function Results(props: Views): React.ReactElement {
                 ) : (
                   <></>
                 )}
-                {props.platform == "pc" ? (
+                {props.platform == "pc" || props.platform == "undefined" ? (
                   props.game === "bf2042" ? (
                     <>
                       <ServerConfig serverInfo={stats.serverInfo} />
