@@ -17,6 +17,14 @@ import {
 import { ServerLeaderboardList } from "../../../../api/ReturnTypes";
 import { addSeconds } from "date-fns";
 import { Description, Spacing, Title } from "./Servers";
+import styled from "styled-components";
+
+const ServerPlayerName = styled.h4`
+  width: 9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
 
 export function ServerLeaderboard(props: {
   gameid: string;
@@ -80,10 +88,10 @@ export function ServerLeaderboard(props: {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <h4 style={{ width: "9rem", whiteSpace: "nowrap" }}>
+                      <ServerPlayerName>
                         {key.platoon !== "" ? `[${key.platoon}]` : ""}
                         {key.name}
-                      </h4>
+                      </ServerPlayerName>
                       <Description style={{ lineHeight: 0 }}>
                         {t("stats.view")}
                       </Description>

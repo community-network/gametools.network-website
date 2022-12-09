@@ -28,10 +28,12 @@ import styled from "styled-components";
 
 const ServerPlayerName = styled.h4`
   max-width: 11rem;
-  width: auto;
+  width: 140px;
   min-width: 8rem;
   margin: 0.5rem;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 function CheckBan(props: {
