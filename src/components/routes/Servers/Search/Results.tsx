@@ -126,7 +126,13 @@ export function Results(props: Views): React.ReactElement {
                   <Blur />
                 </ServerImage>
                 <ServerInfo>
-                  <h3>
+                  <h3
+                    style={{
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                  >
                     {key.server}
                     {key.prefix}
                   </h3>

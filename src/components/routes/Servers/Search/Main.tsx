@@ -366,7 +366,7 @@ export function ServerSearch(): React.ReactElement {
           })}
         </SelectPrimary>
         <SmallSearchBox
-          style={{ marginLeft: "1rem" }}
+          style={{ marginLeft: "1rem", width: "16rem" }}
           placeholder={t(`serverSearch.searchPlaceholder.servername`)}
           value={searchTerm}
           onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
