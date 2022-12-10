@@ -31,7 +31,7 @@ export function ServerPlatoon(props: {
   return (
     <Spacing>
       <h2>{t("servers.platoon.main")}</h2>
-      <AlignW style={{ alignItems: "start" }}>
+      <AlignW>
         <Link to={`/platoons/${platform}/${platoon.id}`}>
           <PlatoonEmblem src={platoon.emblem} />
         </Link>
@@ -43,7 +43,7 @@ export function ServerPlatoon(props: {
           </h3>
           {platoon.description !== null ? (
             <Link to={`/platoons/${platform}/${platoon.id}`}>
-              <p>{platoon.description}</p>
+              <p style={{ maxWidth: "600px" }}>{platoon.description}</p>
             </Link>
           ) : (
             <Link to={`/platoons/${platform}/${platoon.id}`}>
