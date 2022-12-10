@@ -55,6 +55,9 @@ const Blur = styled.div`
 const ServerInfo = styled.div`
   margin-top: 16px;
   flex-grow: 2;
+  whitespace: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const Spacing = styled.div`
