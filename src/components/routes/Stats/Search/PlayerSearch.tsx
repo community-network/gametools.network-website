@@ -33,6 +33,12 @@ const AlignMain = styled(AlignT)`
   }
 `;
 
+const AlignSearch = styled(AlignW)`
+  @media screen and (max-width: 530px) {
+    width: 100%;
+  }
+`;
+
 export function StatSearch(): React.ReactElement {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = React.useState<string>("");
@@ -40,7 +46,7 @@ export function StatSearch(): React.ReactElement {
   return (
     <form>
       <AlignMain>
-        <AlignW>
+        <AlignSearch>
           <HomePlayerSearchBox
             placeholder={t("playerSearch.searchPlaceholder")}
             value={searchTerm}
@@ -62,7 +68,7 @@ export function StatSearch(): React.ReactElement {
               );
             })}
           </HomePlayerBigSelectSecondary>
-        </AlignW>
+        </AlignSearch>
         {searchTerm !== "" ? (
           <Link
             to={`/stats/${platform}/name/${encodeURIComponent(searchTerm)}`}
