@@ -49,6 +49,17 @@ const ServerPageColumn = styled.div`
   }
 `;
 
+const ServerPageFilters = styled.div`
+  @media screen and (max-width: 1000px) {
+    display: flex;
+  }
+`;
+
+const ServerPageFilterRow = styled.div`
+  min-width: 8rem;
+  margin-right: 1rem;
+`;
+
 const ServerPageRow = styled.div`
   @media screen and (min-width: 1300px) {
     flex: 0;
@@ -403,102 +414,109 @@ export function ServerSearch(): React.ReactElement {
             sortType={"-prefix"}
             spacingStyle={{ maxWidth: "99rem" }}
           />
-          <Link
-            to={`/servers?${new URLSearchParams({
-              search: searchTerm,
-              game: gameName,
-              region: region,
-              platform: platform,
-              limit: 10,
-            }).toString()}`}
-          >
-            <BigButtonSecondaryBox>
-              {t("serverSearch.showMore")}
-            </BigButtonSecondaryBox>
-          </Link>
         </ServerPageRow>
-        <div>
-          <Box style={{ width: "240px" }} innerStyle={{ maxHeight: "500px" }}>
-            <h2 style={{ marginBottom: "0.4rem" }}>
-              {t("serverSearch.platform")}
-            </h2>
-            <InputItem
-              item={"allPlatforms"}
-              currrentItem={platform}
-              callback={(e: {
-                target: { value: React.SetStateAction<string> };
-              }) => setPlatform(e.target.value)}
-              name={t("platforms.all")}
-              disabled={!newGen.includes(gameName)}
-            />
-            <InputItem
-              item={"pc"}
-              currrentItem={platform}
-              callback={(e: {
-                target: { value: React.SetStateAction<string> };
-              }) => setPlatform(e.target.value)}
-              name={t("platforms.pc")}
-            />
-            <InputItem
-              item={"ps4"}
-              currrentItem={platform}
-              callback={(e: {
-                target: { value: React.SetStateAction<string> };
-              }) => setPlatform(e.target.value)}
-              name={t("platforms.ps4")}
-              disabled={!frostbite3.includes(gameName)}
-            />
-            <InputItem
-              item={"xboxone"}
-              currrentItem={platform}
-              callback={(e: {
-                target: { value: React.SetStateAction<string> };
-              }) => setPlatform(e.target.value)}
-              name={t("platforms.xboxone")}
-              disabled={!frostbite3.includes(gameName)}
-            />
-            <InputItem
-              item={"ps5"}
-              currrentItem={platform}
-              callback={(e: {
-                target: { value: React.SetStateAction<string> };
-              }) => setPlatform(e.target.value)}
-              name={t("platforms.ps5")}
-              disabled={!newGen.includes(gameName)}
-            />
-            <InputItem
-              item={"xboxseries"}
-              currrentItem={platform}
-              callback={(e: {
-                target: { value: React.SetStateAction<string> };
-              }) => setPlatform(e.target.value)}
-              name={t("platforms.xboxseries")}
-              disabled={!newGen.includes(gameName)}
-            />
-            <h2 style={{ marginBottom: "0.4rem" }}>
-              {t("serverSearch.region")}
-            </h2>
-            <>
-              {Object.keys(t("regions", { returnObjects: true })).map(
-                (key, index) => {
-                  return (
-                    <InputItem
-                      key={index}
-                      item={key}
-                      currrentItem={region}
-                      callback={(e: {
-                        target: { value: React.SetStateAction<string> };
-                      }) => setRegion(e.target.value)}
-                      name={t(`regions.${key}`)}
-                      disabled={!frostbite3.includes(gameName)}
-                    />
-                  );
-                },
-              )}
-            </>
-          </Box>
-        </div>
+        <Box
+          style={{ minWidth: "240px", maxWidth: "20rem" }}
+          innerStyle={{ maxHeight: "510px" }}
+        >
+          <ServerPageFilters>
+            <ServerPageFilterRow>
+              <h2 style={{ marginBottom: "0.4rem" }}>
+                {t("serverSearch.platform")}
+              </h2>
+              <InputItem
+                item={"allPlatforms"}
+                currrentItem={platform}
+                callback={(e: {
+                  target: { value: React.SetStateAction<string> };
+                }) => setPlatform(e.target.value)}
+                name={t("platforms.all")}
+                disabled={!newGen.includes(gameName)}
+              />
+              <InputItem
+                item={"pc"}
+                currrentItem={platform}
+                callback={(e: {
+                  target: { value: React.SetStateAction<string> };
+                }) => setPlatform(e.target.value)}
+                name={t("platforms.pc")}
+              />
+              <InputItem
+                item={"ps4"}
+                currrentItem={platform}
+                callback={(e: {
+                  target: { value: React.SetStateAction<string> };
+                }) => setPlatform(e.target.value)}
+                name={t("platforms.ps4")}
+                disabled={!frostbite3.includes(gameName)}
+              />
+              <InputItem
+                item={"xboxone"}
+                currrentItem={platform}
+                callback={(e: {
+                  target: { value: React.SetStateAction<string> };
+                }) => setPlatform(e.target.value)}
+                name={t("platforms.xboxone")}
+                disabled={!frostbite3.includes(gameName)}
+              />
+              <InputItem
+                item={"ps5"}
+                currrentItem={platform}
+                callback={(e: {
+                  target: { value: React.SetStateAction<string> };
+                }) => setPlatform(e.target.value)}
+                name={t("platforms.ps5")}
+                disabled={!newGen.includes(gameName)}
+              />
+              <InputItem
+                item={"xboxseries"}
+                currrentItem={platform}
+                callback={(e: {
+                  target: { value: React.SetStateAction<string> };
+                }) => setPlatform(e.target.value)}
+                name={t("platforms.xboxseries")}
+                disabled={!newGen.includes(gameName)}
+              />
+            </ServerPageFilterRow>
+            <ServerPageFilterRow>
+              <h2 style={{ marginBottom: "0.4rem" }}>
+                {t("serverSearch.region")}
+              </h2>
+              <>
+                {Object.keys(t("regions", { returnObjects: true })).map(
+                  (key, index) => {
+                    return (
+                      <InputItem
+                        key={index}
+                        item={key}
+                        currrentItem={region}
+                        callback={(e: {
+                          target: { value: React.SetStateAction<string> };
+                        }) => setRegion(e.target.value)}
+                        name={t(`regions.${key}`)}
+                        disabled={!frostbite3.includes(gameName)}
+                      />
+                    );
+                  },
+                )}
+              </>
+            </ServerPageFilterRow>
+          </ServerPageFilters>
+        </Box>
       </ServerPageColumn>
+      <Link
+        to={`/servers?${new URLSearchParams({
+          search: searchTerm,
+          game: gameName,
+          region: region,
+          platform: platform,
+          limit: 10,
+        }).toString()}`}
+      >
+        <BigButtonSecondaryBox>
+          {t("serverSearch.showMore")}
+        </BigButtonSecondaryBox>
+      </Link>
     </>
   );
 }

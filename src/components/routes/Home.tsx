@@ -96,6 +96,7 @@ const CloudImage = styled.div`
 const GameLogo = styled.img`
   height: 17px;
   margin-right: 35px;
+  margin-bottom: 10px;
 `;
 
 function Home(): React.ReactElement {

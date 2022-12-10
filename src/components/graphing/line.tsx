@@ -612,6 +612,7 @@ const Title = styled.h1`
 const AmountBox = styled.div`
   padding-left: 24px;
   margin-right: 60px;
+  margin-bottom: 15px;
 `;
 
 function TotalStatistic(props: {
