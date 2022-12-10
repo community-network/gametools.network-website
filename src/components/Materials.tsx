@@ -251,6 +251,9 @@ export const BigButtonPrimary = styled(BigButtonSecondary)`
   :hover {
     background: var(--color-blue-alt);
   }
+  @media screen and (max-width: 530px) {
+    width: 100%;
+  }
 `;
 
 export const BigButtonSecondaryBox = styled(BigButtonSecondary)`

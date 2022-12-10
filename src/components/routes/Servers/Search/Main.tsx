@@ -310,6 +310,13 @@ function Main(): React.ReactElement {
   );
 }
 
+const AlignHomeServers = styled(Align)`
+  margin-top: 1.1rem;
+  @media screen and (max-width: 530px) {
+    width: 100%;
+  }
+`;
+
 export function ServerSearch(): React.ReactElement {
   const [searchTerm, setSearchTerm] = React.useState<string>("");
   const [gameName, setGameName] = React.useState<string>("bf2042");
@@ -344,7 +351,7 @@ export function ServerSearch(): React.ReactElement {
   );
   return (
     <>
-      <Align style={{ marginTop: "1.1rem" }}>
+      <AlignHomeServers>
         <h2 style={{ marginTop: 0, marginBottom: "1.2rem" }}>
           {t("serverSearch.servers")}
         </h2>
@@ -385,7 +392,7 @@ export function ServerSearch(): React.ReactElement {
         ) : (
           <></>
         )}
-      </Align>
+      </AlignHomeServers>
       <ServerPageColumn>
         <ServerPageRow>
           <Results
