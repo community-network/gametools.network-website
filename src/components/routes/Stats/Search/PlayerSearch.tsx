@@ -39,6 +39,13 @@ const AlignSearch = styled(AlignW)`
   }
 `;
 
+const StatsLink = styled(Link)`
+  @media screen and (max-width: 530px) {
+    width: 100%;
+    margin-right: 15px;
+  }
+`;
+
 export function StatSearch(): React.ReactElement {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = React.useState<string>("");
@@ -70,13 +77,13 @@ export function StatSearch(): React.ReactElement {
           </HomePlayerBigSelectSecondary>
         </AlignSearch>
         {searchTerm !== "" ? (
-          <Link
+          <StatsLink
             to={`/stats/${platform}/name/${encodeURIComponent(searchTerm)}`}
           >
             <BigButtonPrimary type="submit">
               {t("playerSearch.search")} <RightArrow />
             </BigButtonPrimary>
-          </Link>
+          </StatsLink>
         ) : (
           // if no name is filled in
           <BigButtonPrimary type="submit">
