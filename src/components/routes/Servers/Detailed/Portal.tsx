@@ -41,7 +41,9 @@ export function ServerConfig(props: {
         <OriginProfile src={background} />
         <div>
           <OriginName>{serverInfo.configName}</OriginName>
-          <OriginDescription>{serverInfo.configDescription}</OriginDescription>
+          <OriginDescription style={{ maxWidth: "600px" }}>
+            {serverInfo.configDescription}
+          </OriginDescription>
         </div>
       </AlignW>
     </Spacing>

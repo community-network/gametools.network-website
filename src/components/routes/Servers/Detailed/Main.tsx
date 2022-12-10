@@ -183,7 +183,7 @@ export function Results(props: Views): React.ReactElement {
           </ServerImage>
           <div>
             <h2>{stats.prefix}</h2>
-            <Description>{stats.description}</Description>
+            <Description style={{ maxWidth: "1000px" }}>{stats.description}</Description>
             <Description>
               {stats.playerAmount}/{stats.maxPlayers}
               {stats.maxPlayerAmount} {queueString} - {stats.currentMap}
