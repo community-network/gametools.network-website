@@ -1,6 +1,6 @@
 import * as React from "react";
 import "../../../../locales/config";
-import { Trans, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
 import {

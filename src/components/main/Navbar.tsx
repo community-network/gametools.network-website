@@ -45,13 +45,6 @@ const LinkWrapper = styled.div`
   }
 `;
 
-const Separator = styled.div`
-  height: 18px;
-  border: 0.5px solid rgba(255, 255, 255, 0.22);
-  display: flex;
-  margin: 0 10px;
-`;
-
 const sharedLink = css`
   font-family: Manrope, serif;
   font-style: normal;
@@ -73,10 +66,6 @@ const sharedLink = css`
   color: rgba(255, 255, 255, 0.72);
 `;
 
-const HLink = styled(NavLink)`
-  ${sharedLink}
-`;
-
 const ALink = styled.a`
   ${sharedLink}
 `;
@@ -84,19 +73,6 @@ const ALink = styled.a`
 const SLink = styled(NavLink)`
   font-weight: 800;
   font-size: 18px;
-`;
-
-const ButtonLink = styled.a`
-  ${sharedLink};
-  padding: 0 20px;
-  height: 35px;
-  background: var(--color-blue);
-  border-radius: 5px;
-  transition: all 0.1s;
-
-  :hover {
-    background: var(--color-blue-alt);
-  }
 `;
 
 const Ul = styled.ul<{ open: boolean }>`
@@ -160,7 +136,6 @@ const StyledBurger = styled.div<{ open: boolean }>`
 
 const RightNav = ({
   open,
-  setOpen,
 }: {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
