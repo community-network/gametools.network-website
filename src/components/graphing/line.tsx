@@ -17,7 +17,7 @@ import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
 import { GametoolsApi } from "../../api/GametoolsApi";
 import { graphGames, gameGraphConvert, graphColors } from "../../api/static";
-import { Align, AlignS, Box, BoxSpacing, BoxWrap } from "../Materials";
+import { Align, Box, BoxSpacing, BoxWrap } from "../Materials";
 
 import { useMeasure } from "react-use";
 import styled from "styled-components";
