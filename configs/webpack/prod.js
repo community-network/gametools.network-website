@@ -2,7 +2,7 @@
 const CopyPlugin = require("copy-webpack-plugin");
 const { merge } = require("webpack-merge");
 const { resolve } = require("path");
-const WorkboxPlugin = require('workbox-webpack-plugin');
+const WorkboxPlugin = require("workbox-webpack-plugin");
 
 const commonConfig = require("./common");
 

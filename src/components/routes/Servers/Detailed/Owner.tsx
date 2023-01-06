@@ -21,8 +21,8 @@ export function OwnerInfo(props: {
   title: string;
 }): React.ReactElement {
   const { t } = useTranslation();
-  // eslint-disable-next-line prefer-const
-  let { owner, game, title } = props;
+  const { game, title } = props;
+  let { owner } = props;
   const ConditionalLink = ({ children, to, condition }: ConLink) =>
     !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
 

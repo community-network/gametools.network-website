@@ -115,6 +115,16 @@ export interface bfbanPlayers {
   cheatMethods: string;
 }
 
+export interface GlobalGraphReturn {
+  serverAmount: number[];
+  soldierAmount: number[];
+  queueAmount: number[];
+  spectatorAmount: number[];
+  timeStamps: string[];
+  start: number;
+  end: number;
+}
+
 export class ApiProvider extends JsonClient {
   constructor() {
     super();
@@ -341,7 +351,7 @@ export class ApiProvider extends JsonClient {
     });
   }
 
-  async globalGraph(): Promise<{ [name: string]: any }> {
+  async globalGraph(): Promise<GlobalGraphReturn> {
     return await this.getJsonMethod(`/bfglobal/totalstatusarray/`, {});
   }
 

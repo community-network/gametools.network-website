@@ -67,7 +67,6 @@ function check_valid_shortcode(test_string: string): boolean {
 function Main(): React.ReactElement {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = React.useState<string>("");
-  const [game, setGame] = React.useState<string>("bf2042");
   let getter = "playgroundid";
   let playground = "";
   const isUrl = get_playground_id(searchTerm.trim());
@@ -103,7 +102,7 @@ function Main(): React.ReactElement {
             }
           />
           {playground !== "" ? (
-            <Link to={`/playgrounds/${game}/${getter}/${playground}`}>
+            <Link to={`/playgrounds/bf2042/${getter}/${playground}`}>
               <BigButtonSecondary type="submit">
                 {t("getPlaygrounds.show")} <RightArrow />
               </BigButtonSecondary>

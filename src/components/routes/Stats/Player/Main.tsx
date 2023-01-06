@@ -124,7 +124,7 @@ function Stats(): React.ReactElement {
       platform: platform,
     }),
   );
-  const games = platformGames[platform];
+  const games: string[] = platformGames[platform];
 
   let playerGamesArr = [];
   let otherGamesArr = [];
@@ -133,10 +133,12 @@ function Stats(): React.ReactElement {
       Object.fromEntries(
         Object.entries(playerGames)
           .filter(([key]) => supportedGames.includes(key))
-          .filter(([_, value]) => value != true),
+          .filter(([, value]) => value != true),
       ),
     );
-    otherGamesArr = games.filter((item) => !playerGamesArr.includes(item));
+    otherGamesArr = games.filter(
+      (item: string) => !playerGamesArr.includes(item),
+    );
   }
 
   React.useState(() => {

@@ -7,6 +7,10 @@ export type PlatoonPlayer = {
   avatar: string;
 };
 
+export type Graph = {
+  timeStamps: string[];
+};
+
 export type UserGames = {
   avatar: string;
   userName: string;

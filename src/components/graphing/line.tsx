@@ -18,7 +18,7 @@ import { useQuery } from "@tanstack/react-query";
 import { GametoolsApi } from "../../api/GametoolsApi";
 import { graphGames, gameGraphConvert, graphColors } from "../../api/static";
 import { Align, Box, BoxSpacing, BoxWrap } from "../Materials";
-
+import { GlobalGraphReturn } from "../../api/GametoolsApi";
 import { useMeasure } from "react-use";
 import styled from "styled-components";
 
@@ -661,12 +661,12 @@ export function TotalGraphQuery(): React.ReactElement {
 interface NewGraphData {
   loading: boolean;
   error: boolean;
-  stats: { [name: string]: any };
+  stats: GlobalGraphReturn;
 }
 
 function TotalGraph(props: NewGraphData): React.ReactElement {
   if (!props.loading && !props.error) {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const chartRef = React.useRef(null);
     const time = props.stats.timeStamps.map((e: string) => {
       const time = new Date(e);
