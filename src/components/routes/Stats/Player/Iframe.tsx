@@ -49,6 +49,7 @@ export function ViewIframe(props: Views): React.ReactElement {
           height="380px"
           width="100%"
           frameBorder="0"
+          // eslint-disable-next-line react/no-unknown-property
           allowtransparency="true"
         ></iframe>
       </Box>
