@@ -186,7 +186,12 @@ export function Results(props: Views): React.ReactElement {
             </Description>
             <Description>
               {stats.playerAmount}/{stats.maxPlayers}
-              {stats.maxPlayerAmount} {queueString} - {stats.currentMap}
+              {stats.maxPlayerAmount}
+              {queueString}
+              {stats.noBotsPlayerAmount
+                ? ` (${stats.noBotsPlayerAmount} without bots)`
+                : ``}{" "}
+              - {stats.currentMap}
               {officialString}
             </Description>
             {props.game == "bf2042" ? (

@@ -620,11 +620,14 @@ function TotalStatistic(props: {
   text: string;
 }): React.ReactElement {
   const amounts = props.amounts;
+
+  if (!amounts) {
+    return <></>;
+  }
   const secondToLastAmount = amounts[amounts.length - 2];
   const lastAmount = amounts[amounts.length - 1];
   const difference =
     ((lastAmount - secondToLastAmount) * 100) / secondToLastAmount;
-
   return (
     <AmountBox>
       <Align>

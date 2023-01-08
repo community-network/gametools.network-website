@@ -365,6 +365,7 @@ export type DetailedServerInfo = {
 
   inQue?: number;
   maxPlayers?: number;
+  noBotsPlayerAmount?: number;
 };
 
 export type ScoreTeamList = {
