@@ -27,7 +27,7 @@ export default class JsonClient {
   }
   async postMethod(
     method: string,
-    params: { [name: string]: any },
+    params: { [name: string]: unknown },
   ): Promise<Response> {
     return fetch(this.constructApiUrl(method, {}), params);
   }
@@ -37,7 +37,10 @@ export default class JsonClient {
   ): Promise<any> {
     return this.errorHandler(this.fetchMethod(method, params));
   }
-  postJsonMethod(method: string, params: any): Promise<any> {
+  postJsonMethod(
+    method: string,
+    params: { [name: string]: string | boolean | number },
+  ): Promise<any> {
     const options = {
       method: "POST",
       body: JSON.stringify(params),

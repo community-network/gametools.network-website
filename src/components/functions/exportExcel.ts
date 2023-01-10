@@ -2,7 +2,7 @@ import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 
 export default function exportExcel(
-  items: { [key: string]: any },
+  items: { [key: string]: unknown[] },
   export_name: string,
 ) {
   const wb = XLSX.utils.book_new();
