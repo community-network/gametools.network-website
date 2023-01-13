@@ -1,49 +1,61 @@
 import * as React from "react";
 import "../locales/config";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import Home from "./routes/Home";
-import PlayerSearch from "./routes/Stats/Search/PlayerSearch";
-import ServerSearch from "./routes/Servers/Search/Main";
-import PlatoonSearch from "./routes/platoons/PlatoonSearch";
-import Stats from "./routes/Stats/Player/Main";
-import Servers from "./routes/Servers/Detailed/Servers";
-import Playgrounds from "./routes/Playgrounds/Detailed/Playgrounds";
-import PlaygroundSelect from "./routes/Playgrounds/Select/Main";
-import Platoon from "./routes/platoons/Platoon";
-import Launch from "./routes/GameLauncher";
-import PageNotFound from "./errors/PageNotFound";
+
+// Routes
+const Home = React.lazy(() => import("./routes/Home"));
+const PlayerSearch = React.lazy(
+  () => import("./routes/Stats/Search/PlayerSearch"),
+);
+const ServerSearch = React.lazy(() => import("./routes/Servers/Search/Main"));
+const PlatoonSearch = React.lazy(
+  () => import("./routes/platoons/PlatoonSearch"),
+);
+const Stats = React.lazy(() => import("./routes/Stats/Player/Main"));
+const Servers = React.lazy(() => import("./routes/Servers/Detailed/Servers"));
+const Playgrounds = React.lazy(
+  () => import("./routes/Playgrounds/Detailed/Playgrounds"),
+);
+const PlaygroundSelect = React.lazy(
+  () => import("./routes/Playgrounds/Select/Main"),
+);
+const Platoon = React.lazy(() => import("./routes/platoons/Platoon"));
+const Launch = React.lazy(() => import("./routes/GameLauncher"));
+const PageNotFound = React.lazy(() => import("./errors/PageNotFound"));
 
 function Views(): React.ReactElement {
   const homePage = useLocation().pathname === "/";
   return (
     <div style={homePage ? {} : { paddingTop: 90 }}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/stats" element={<PlayerSearch />} />
-        <Route path="/stats/:plat/:type/:eaid/" element={<Stats />} />
-        <Route path="/platoons/:plat/:gid" element={<Platoon />} />
-        <Route path="/platoons" element={<PlatoonSearch />} />
-        <Route path="/servers" element={<ServerSearch />} />
-        <Route
-          path="/platoons/:gid"
-          element={<Navigate to="/platoons/pc/:gid" replace />}
-        />
-        <Route
-          path="/servers/:gameid/:type/:sname"
-          element={<Navigate to="/servers/:gameid/:type/:sname/pc" replace />}
-        />
-        <Route
-          path="/servers/:gameid/:type/:sname/:platform"
-          element={<Servers />}
-        />
-        <Route path="/join-game/:gameid/:ip/:port" element={<Launch />} />
-        <Route path="/playgrounds" element={<PlaygroundSelect />} />
-        <Route
-          path="/playgrounds/:gameid/:type/:playground"
-          element={<Playgrounds />}
-        />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
+      <React.Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/stats" element={<PlayerSearch />} />
+          <Route path="/stats/:plat/:type/:eaid/" element={<Stats />} />
+          <Route path="/platoons/:plat/:gid" element={<Platoon />} />
+          <Route path="/platoons" element={<PlatoonSearch />} />
+          <Route path="/servers" element={<ServerSearch />} />
+          <Route
+            path="/platoons/:gid"
+            element={<Navigate to="/platoons/pc/:gid" replace />}
+          />
+          <Route
+            path="/servers/:gameid/:type/:sname"
+            element={<Navigate to="/servers/:gameid/:type/:sname/pc" replace />}
+          />
+          <Route
+            path="/servers/:gameid/:type/:sname/:platform"
+            element={<Servers />}
+          />
+          <Route path="/join-game/:gameid/:ip/:port" element={<Launch />} />
+          <Route path="/playgrounds" element={<PlaygroundSelect />} />
+          <Route
+            path="/playgrounds/:gameid/:type/:playground"
+            element={<Playgrounds />}
+          />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </React.Suspense>
     </div>
   );
 }
