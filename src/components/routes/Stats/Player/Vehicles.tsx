@@ -71,23 +71,23 @@ export function ViewVehicles(props: Views): React.ReactElement {
             return (
               <Column key={index}>
                 <Row>
-                  <h4>{key.vehicleName}</h4>
-                  <ListImage src={key.image} />
+                  <h4>{key?.vehicleName}</h4>
+                  <ListImage src={key?.image} />
                 </Row>
                 <Row>
-                  <h4>{key.type}</h4>
+                  <h4>{key?.type}</h4>
                   <Description>{t("stats.rows.type")}</Description>
                 </Row>
                 <Row>
-                  <h4>{numberFormat.format(key.kills)}</h4>
+                  <h4>{numberFormat.format(key?.kills)}</h4>
                   <Description>{t("stats.rows.kills")}</Description>
                 </Row>
                 <Row>
-                  <h4>{numberFormat.format(key.killsPerMinute)}</h4>
+                  <h4>{numberFormat.format(key?.killsPerMinute)}</h4>
                   <Description>{t("stats.rows.killsPerMinute")}</Description>
                 </Row>
                 <PhoneRow>
-                  <h4>{numberFormat.format(key.destroyed)}</h4>
+                  <h4>{numberFormat.format(key?.destroyed)}</h4>
                   <Description>{t("stats.rows.destroyed")}</Description>
                 </PhoneRow>
               </Column>

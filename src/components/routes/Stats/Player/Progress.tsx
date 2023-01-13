@@ -8,7 +8,7 @@ import { MainStatsProgress } from "../../../../api/ReturnTypes";
 export function ViewProgress(props: Views): React.ReactElement {
   const { t } = useTranslation();
   if (!props.loading && !props.error) {
-    const progress = props.stats.progress;
+    const progress = props?.stats?.progress;
     return (
       <Spacing>
         <Box>
@@ -22,7 +22,7 @@ export function ViewProgress(props: Views): React.ReactElement {
                     {t(`stats.progress.${key.progressName}`)}
                   </h4>
                   <p style={{ margin: "0.3rem 0" }}>
-                    {((100 * key.current) / key.total).toFixed(1)}%
+                    {((100 * key?.current) / key?.total).toFixed(1)}%
                   </p>
                   <p
                     style={{
@@ -31,13 +31,13 @@ export function ViewProgress(props: Views): React.ReactElement {
                       textAlign: "right",
                     }}
                   >
-                    {key.current}/{key.total}
+                    {key?.current}/{key?.total}
                   </p>
                 </Align>
                 <BackgroundBar>
                   <Bar
                     style={{
-                      width: `${(100 * key.current) / key.total}%`,
+                      width: `${(100 * key?.current) / key?.total}%`,
                     }}
                   ></Bar>
                 </BackgroundBar>

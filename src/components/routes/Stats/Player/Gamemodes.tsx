@@ -31,7 +31,7 @@ export function ViewGamemodes(props: Views): React.ReactElement {
                         <p style={{ margin: "0.3rem 0" }}>
                           {t("stats.gamemodes.percentage", {
                             percentage: (
-                              (key["wins"] / (key["wins"] + key["losses"])) *
+                              (key?.wins / (key?.wins + key?.losses)) *
                               100
                             ).toFixed(1),
                           })}
@@ -41,8 +41,7 @@ export function ViewGamemodes(props: Views): React.ReactElement {
                         <Bar
                           style={{
                             width: `${
-                              (key["wins"] / (key["wins"] + key["losses"])) *
-                              100
+                              (key?.wins / (key?.wins + key?.losses)) * 100
                             }%`,
                           }}
                         ></Bar>
@@ -50,15 +49,15 @@ export function ViewGamemodes(props: Views): React.ReactElement {
                       <br />
                       <AlignS>
                         <div>
-                          <h3>{numberFormat.format(key.score)}</h3>
+                          <h3>{numberFormat.format(key?.score)}</h3>
                           <p>{t("stats.gamemodes.amounts.score")}</p>
                         </div>
                         <div>
-                          <h3>{numberFormat.format(key.wins)}</h3>
+                          <h3>{numberFormat.format(key?.wins)}</h3>
                           <p>{t("stats.gamemodes.amounts.wins")}</p>
                         </div>
                         <div>
-                          <h3>{numberFormat.format(key.losses)}</h3>
+                          <h3>{numberFormat.format(key?.losses)}</h3>
                           <p>{t("stats.gamemodes.amounts.losses")}</p>
                         </div>
                       </AlignS>
@@ -86,7 +85,7 @@ export function ViewGamemodes(props: Views): React.ReactElement {
                           </p>
                         </Row>
                         <Row>
-                          <p style={{ margin: 0 }}>{key.score}</p>
+                          <p style={{ margin: 0 }}>{key?.score}</p>
                         </Row>
                       </Column>
                     </>

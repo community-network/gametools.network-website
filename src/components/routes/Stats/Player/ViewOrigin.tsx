@@ -52,9 +52,9 @@ function GetBfBan(props: Views): React.ReactElement {
         delete list[key];
       }
     }
-    if (props.stats.id in list) {
-      isHacker = list[props.stats.id].hacker;
-      bfBanUrl = list[props.stats.id].url;
+    if (props?.stats?.id in list) {
+      isHacker = list[props?.stats?.id]?.hacker;
+      bfBanUrl = list[props?.stats?.id]?.url;
       color = "#DC143C";
     } else {
       color = "#ffffff";
@@ -78,8 +78,8 @@ function GetBfBan(props: Views): React.ReactElement {
 
 export function ViewOrigin(props: Views): React.ReactElement {
   const { t } = useTranslation();
-  const stats = props.stats;
-  const name = props.name;
+  const stats = props?.stats;
+  const name = props?.name;
   if (props.error) {
     return (
       // if playername isnt found
@@ -94,7 +94,7 @@ export function ViewOrigin(props: Views): React.ReactElement {
       </Spacing>
     );
   } else if (!props.loading && !props.error) {
-    if (stats.userName === null) {
+    if (stats?.userName === null) {
       if (name !== null) {
         return (
           // if playerid but ?name behind it

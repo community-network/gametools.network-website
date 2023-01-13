@@ -86,27 +86,27 @@ export function ViewWeapons(props: Views): React.ReactElement {
             return (
               <Column key={index}>
                 <Row>
-                  <h4>{key.weaponName}</h4>
-                  <ListImage src={key.image} />
+                  <h4>{key?.weaponName}</h4>
+                  <ListImage src={key?.image} />
                 </Row>
                 <Row>
-                  <h4>{key.type}</h4>
+                  <h4>{key?.type}</h4>
                   <Description>{t("stats.rows.type")}</Description>
                 </Row>
                 <Row>
-                  <h4>{numberFormat.format(key.kills)}</h4>
+                  <h4>{numberFormat.format(key?.kills)}</h4>
                   <Description>{t("stats.rows.kills")}</Description>
                 </Row>
                 <Row>
-                  <h4>{numberFormat.format(key.killsPerMinute)}</h4>
+                  <h4>{numberFormat.format(key?.killsPerMinute)}</h4>
                   <Description>{t("stats.rows.killsPerMinute")}</Description>
                 </Row>
                 <TabletRow>
-                  <h4>{numberFormat.format(key.accuracy)}%</h4>
+                  <h4>{numberFormat.format(key?.accuracy)}%</h4>
                   <Description>{t("stats.rows.accuracy")}</Description>
                 </TabletRow>
                 <PhoneRow>
-                  <h4>{numberFormat.format(key.headshots)}%</h4>
+                  <h4>{numberFormat.format(key?.headshots)}%</h4>
                   <Description>{t("stats.rows.headshots")}</Description>
                 </PhoneRow>
               </Column>
@@ -136,7 +136,7 @@ export function WeaponGraph(props: Views): React.ReactElement {
       .sort(DynamicSort(`-${graphType}`))
       .map((item: MainStatsWeapon) => {
         if (i >= begin && i < begin + 25) {
-          names.push(item.weaponName);
+          names.push(item?.weaponName);
           values.push(item[graphType]);
         }
         i += 1;

@@ -35,7 +35,7 @@ export function ViewClasses(props: Views): React.ReactElement {
                       </h4>
                       <p>{t("stats.classes.amounts.score")}</p>
                     </Row>
-                    {key.kills !== undefined ? (
+                    {key?.kills !== undefined ? (
                       <Row>
                         <h4 style={{ margin: 0 }}>
                           {numberFormat.format(key.kills)}
@@ -45,7 +45,7 @@ export function ViewClasses(props: Views): React.ReactElement {
                     ) : (
                       <></>
                     )}
-                    {key.kpm !== undefined ? (
+                    {key?.kpm !== undefined ? (
                       <Row>
                         <h4 style={{ margin: 0 }}>
                           {numberFormat.format(key.kpm)}
@@ -55,7 +55,7 @@ export function ViewClasses(props: Views): React.ReactElement {
                     ) : (
                       <></>
                     )}
-                    {key.secondsPlayed !== undefined ? (
+                    {key?.secondsPlayed !== undefined ? (
                       <Row>
                         <h4 style={{ margin: 0 }}>
                           {t("change", {
