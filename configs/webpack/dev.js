@@ -13,4 +13,7 @@ module.exports = merge(commonConfig, {
   plugins: [
     new webpack.HotModuleReplacementPlugin(), // enable HMR globally
   ],
+  output: {
+    publicPath: "/",
+  },
 });

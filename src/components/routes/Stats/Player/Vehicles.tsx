@@ -22,6 +22,7 @@ import {
   DynamicSort,
 } from "./Main";
 import { BarGraph } from "../../../graphing/bar";
+import ErrorBoundary from "../../../functions/ErrorBoundary";
 
 export function ViewVehicles(props: Views): React.ReactElement {
   const { t } = useTranslation();
@@ -64,7 +65,7 @@ export function ViewVehicles(props: Views): React.ReactElement {
           </SelectPrimary>
         </AlignW>
       </Align>
-      {vehicles !== [] ? (
+      {vehicles.length > 0 ? (
         <Box>
           {vehicles.map((key: MainStatsVehicle, index: number) => {
             return (
@@ -151,15 +152,17 @@ export function VehicleGraph(props: Views): React.ReactElement {
           {begin + 1}/{Math.min(length, begin + 25)} {t("stats.vehicles")}
         </Description>
       </Align>
-      {names !== [] ? (
+      {names.length > 0 ? (
         <Box>
-          <BarGraph
-            names={names}
-            values={values}
-            valueName={graphType}
-            loading={props.loading}
-            error={props.error}
-          />
+          <ErrorBoundary>
+            <BarGraph
+              names={names}
+              values={values}
+              valueName={graphType}
+              loading={props.loading}
+              error={props.error}
+            />
+          </ErrorBoundary>
         </Box>
       ) : (
         <Box>

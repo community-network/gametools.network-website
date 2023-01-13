@@ -21,6 +21,7 @@ import {
 } from "../../../Materials";
 import { platformGames, statsPlatforms } from "../../../../api/static";
 import { Graphs } from "./Graphs";
+import ErrorBoundary from "../../../functions/ErrorBoundary";
 
 export const AltDescription = styled.p`
   ${AltText}
@@ -99,7 +100,9 @@ function Main(): React.ReactElement {
   return (
     <Container>
       <Search />
-      <Graphs />
+      <ErrorBoundary>
+        <Graphs />
+      </ErrorBoundary>
     </Container>
   );
 }

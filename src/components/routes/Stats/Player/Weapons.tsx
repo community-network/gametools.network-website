@@ -23,6 +23,7 @@ import {
   DynamicSort,
 } from "./Main";
 import { BarGraph } from "../../../graphing/bar";
+import ErrorBoundary from "../../../functions/ErrorBoundary";
 
 export function ViewWeapons(props: Views): React.ReactElement {
   const { t } = useTranslation();
@@ -79,7 +80,7 @@ export function ViewWeapons(props: Views): React.ReactElement {
           </SelectPrimary>
         </AlignW>
       </Align>
-      {weapons !== [] ? (
+      {weapons.length > 0 ? (
         <Box>
           {weapons.map((key: MainStatsWeapon, index: number) => {
             return (
@@ -171,15 +172,17 @@ export function WeaponGraph(props: Views): React.ReactElement {
           {begin + 1}/{Math.min(length, begin + 25)} {t("stats.weapons")}
         </Description>
       </Align>
-      {names !== [] ? (
+      {names.length > 0 ? (
         <Box>
-          <BarGraph
-            names={names}
-            values={values}
-            valueName={graphType}
-            loading={props.loading}
-            error={props.error}
-          />
+          <ErrorBoundary>
+            <BarGraph
+              names={names}
+              values={values}
+              valueName={graphType}
+              loading={props.loading}
+              error={props.error}
+            />
+          </ErrorBoundary>
         </Box>
       ) : (
         <Box>

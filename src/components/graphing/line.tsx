@@ -21,6 +21,7 @@ import { Align, Box, BoxSpacing, BoxWrap } from "../Materials";
 import { GlobalGraphReturn } from "../../api/GametoolsApi";
 import { useMeasure } from "react-use";
 import styled from "styled-components";
+import ErrorBoundary from "../functions/ErrorBoundary";
 
 ChartJS.register(
   zoomPlugin,
@@ -658,7 +659,11 @@ export function TotalGraphQuery(): React.ReactElement {
     refetchOnWindowFocus: false,
   });
 
-  return <TotalGraph loading={loading} error={error} stats={stats} />;
+  return (
+    <ErrorBoundary>
+      <TotalGraph loading={loading} error={error} stats={stats} />
+    </ErrorBoundary>
+  );
 }
 
 interface NewGraphData {
