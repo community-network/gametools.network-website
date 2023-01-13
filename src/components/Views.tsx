@@ -1,6 +1,7 @@
 import * as React from "react";
 import "../locales/config";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 // Routes
 const Home = React.lazy(() => import("./routes/Home"));
@@ -25,9 +26,10 @@ const PageNotFound = React.lazy(() => import("./errors/PageNotFound"));
 
 function Views(): React.ReactElement {
   const homePage = useLocation().pathname === "/";
+  const { t } = useTranslation();
   return (
     <div style={homePage ? {} : { paddingTop: 90 }}>
-      <React.Suspense fallback={<div>Loading...</div>}>
+      <React.Suspense fallback={<div>{t("loading")}</div>}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/stats" element={<PlayerSearch />} />
