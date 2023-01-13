@@ -60,20 +60,12 @@
         <link rel="apple-touch-startup-image" href="/splashscreens/apple-splash-1334-750.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
         <link rel="apple-touch-startup-image" href="/splashscreens/apple-splash-640-1136.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
         <link rel="apple-touch-startup-image" href="/splashscreens/apple-splash-1136-640.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
-
-        <!-- Bundle -->
-        <% if (webpackConfig.mode == 'production') { %>
-        <script defer src="/js/bundle.gametools-prod-edge.min.js"></script>
-        <% } else { %>
-        <script defer src="/main.js"></script>
-        <% } %>
-
     </head>
     <body>
         <div id="root"></div>
 
         <!-- Dependencies -->
-        <% if (webpackConfig.mode == 'production') { %>
+        <% if (webpackConfig.mode === 'production') { %>
             <script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
             <script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
             <% } else { %>

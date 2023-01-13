@@ -3,6 +3,7 @@ const { resolve } = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
+  entry: "./index.tsx",
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
@@ -19,18 +20,8 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.s[ac]ss$/i,
-        use: [
-          "style-loader",
-          "css-loader",
-          {
-            loader: "sass-loader",
-            options: {
-              // Prefer `dart-sass`
-              implementation: require.resolve("sass"),
-            },
-          },
-        ],
+        test: /\.(scss|sass)$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
         test: /\.(png|jpe?g|svg)$/,
@@ -45,14 +36,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "index.html.ejs",
       favicon: "../src/favicon.ico",
-      inject: false,
     }),
   ],
-  externals: {
-    react: "React",
-    "react-dom": "ReactDOM",
-  },
-  performance: {
-    hints: false,
-  },
 };
