@@ -294,9 +294,12 @@ export class ApiProvider extends JsonClient {
     gameId,
   }: serverPlayerlist): Promise<seederPlayersReturn> {
     const gameStuff = game.split(".");
-    return await this.getJsonMethod(`/${gameStuff[0]}/seederplayers/`, {
-      gameId: gameId,
-    });
+    if (gameStuff[0] === "bf1") {
+      return await this.getJsonMethod(`/${gameStuff[0]}/seederplayers/`, {
+        gameId: gameId,
+      });
+    }
+    return null;
   }
 
   async serverSearch({

@@ -348,6 +348,7 @@ export function Results(props: Views): React.ReactElement {
                 )}
               </>
             )}
+            {/* bf4 */}
             {stats.players != undefined && stats.teams != undefined ? (
               <ServerScoreboard
                 game={props.game}

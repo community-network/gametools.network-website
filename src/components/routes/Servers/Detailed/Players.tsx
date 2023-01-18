@@ -17,6 +17,7 @@ import {
 } from "../../../Materials";
 import {
   ScoreServerPlayer,
+  seederPlayer,
   serverPlayer,
   ServerPlayersReturn,
   serverTeamList,
@@ -101,6 +102,28 @@ function Players(props: {
     update_timestamp = new Date(props.stats.update_timestamp * 1000);
   }
 
+  const {
+    data: seederInfo,
+  } = useQuery(["seederPlayerList" + props.gameid], () =>
+    GametoolsApi.seederPlayerList({
+      game: props.game,
+      gameId: props.gameid,
+    }),
+  );
+
+  const haveSeederPlayers =
+    seederInfo && seederInfo.teams && seederInfo.teams.length > 0;
+  let seederPlayers: Map<number, seederPlayer> = new Map<
+    number,
+    seederPlayer
+  >();
+  if (haveSeederPlayers) {
+    seederPlayers = new Map<number, seederPlayer>();
+    seederInfo.teams.map((team) => {
+      team.players.map((player) => seederPlayers.set(player.player_id, player));
+    });
+  }
+
   return (
     <Spacing>
       <Align>
@@ -146,6 +169,7 @@ function Players(props: {
                     <>
                       {teamInfo.players.map(
                         (key: serverPlayer, index: number) => {
+                          const seederPlayer = seederPlayers.get(key.player_id)
                           const dateAdded = new Date(key.join_time / 1000);
                           return (
                             <Column key={index}>
@@ -214,6 +238,25 @@ function Players(props: {
                                   </Description>
                                 </Row>
                               )}
+                              {haveSeederPlayers ? (
+                                <>
+                                  <Row>
+                                    <h4 style={{ marginTop: "0.5rem" }}>
+                                      {seederPlayer?.score ?? "?"}
+                                    </h4>
+                                    <Description style={{ lineHeight: 0 }}>
+                                      {t("servers.playerlist.row.score")}
+                                    </Description>
+                                  </Row><Row>
+                                    <h4 style={{ marginTop: "0.5rem" }}>
+                                      {seederPlayer?.kills ?? "?"}/{seederPlayer?.deaths ?? "?"}
+                                    </h4>
+                                    <Description style={{ lineHeight: 0 }}>
+                                      {t("servers.playerlist.row.killDeath")}
+                                    </Description>
+                                  </Row>
+                                </>
+                              ):(<></>)}
                               <Row>
                                 <h4 style={{ marginTop: "0.5rem" }}>
                                   {t("change", {
@@ -229,6 +272,7 @@ function Players(props: {
                                   <ButtonLink
                                     style={{
                                       marginTop: ".5rem",
+                                      width: "4rem"
                                     }}
                                     href={`https://gametools.network/stats/${
                                       props.platform
@@ -278,7 +322,7 @@ export function ServerPlayerlist(props: {
     isLoading: loading,
     isError: error,
     data: stats,
-  } = useQuery(["serverPlayerlist" + gameId], () =>
+  } = useQuery(["serverPlayerlist" + gameId + props.game], () =>
     GametoolsApi.serverPlayerlist({
       game: props.game,
       gameId: gameId,

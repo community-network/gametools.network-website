@@ -419,7 +419,9 @@
                 "playerSlot": "Player slot",
                 "playerName": "Player name",
                 "platoon": "Platoon",
-                "rank": "Rank"
+                "rank": "Rank",
+                "score": "Score",
+                "killDeath": "K/D"
             }
         },
         "factions": {

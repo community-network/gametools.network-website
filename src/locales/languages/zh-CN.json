@@ -43,8 +43,8 @@
             "play2142": "战地2142 (.co)"
         },
         "bfvietnam": {
-            "openspy" :"战地越南 (openspy)",
-            "qtracker" :"战地越南 (qtracker)"
+            "openspy": "战地越南 (openspy)",
+            "qtracker": "战地越南 (qtracker)"
         },
         "bfbc2": "战地 BC 2",
         "bf1942": "战地 1942",
@@ -360,7 +360,9 @@
                 "playerSlot": "玩家槽位",
                 "playerName": "玩家名称",
                 "platoon": "战排",
-                "rank": "等级"
+                "rank": "等级",
+                "score": "分数",
+                "killDeath": "K/D"
             }
         },
         "factions": {
@@ -399,11 +401,26 @@
     "footer": {
         "description": "网站是Community Network的一部分。产品是开源的。你可以在我们的GitHub页面中发布问题和建议。API由Community Network提供并开放给公众使用。我们不提供任何第三方的API。我们的后台是封闭的，限制访客查看。\n战地和Origin是Electronic Arts的注册商标。本网站使用根据EA战地1统计条款提供的数据。商标是其各自所有者的财产。游戏材料的版权归Electronic Arts所有。Electronic Arts没有认可也不对本网站或其内容负责。\n代码是GPL V2协议，一些部分是Community Network的版权",
         "links": {
-            "0": {"header": "GitHub页面", "url": "https://github.com/Community-network"},
-            "1": {"header": "公开API", "url": "https://api.gametools.network/"},
-            "2": {"header": "Community Network Discord", "url": "https://discord.gametools.network/"},
-            "3": {"header": "隐私政策", "url": "/privacy/"},
-            "4": {"header": "Discord机器人", "url": "https://top.gg/bot/714524944783900794"}
+            "0": {
+                "header": "GitHub页面",
+                "url": "https://github.com/Community-network"
+            },
+            "1": {
+                "header": "公开API",
+                "url": "https://api.gametools.network/"
+            },
+            "2": {
+                "header": "Community Network Discord",
+                "url": "https://discord.gametools.network/"
+            },
+            "3": {
+                "header": "隐私政策",
+                "url": "/privacy/"
+            },
+            "4": {
+                "header": "Discord机器人",
+                "url": "https://top.gg/bot/714524944783900794"
+            }
         }
     }
 }

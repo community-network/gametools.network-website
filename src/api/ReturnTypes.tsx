@@ -256,9 +256,30 @@ export type ServerPlayersReturn = {
   update_timestamp: number;
 };
 
+export interface SeederGameItem {
+  id?: string;
+  name?: string;
+  shortName?: string;
+  image?: string;
+  type?: string;
+  subtype?: string;
+  class?: string;
+}
+
 export type seederPlayersReturn = {
+  _id: string;
+  gameId: number;
+  ingameChat?: SeederIngameChat[];
   teams: seederTeamList[];
   serverinfo: serverInfoPlayerList;
+  timeStamp: string;
+  update_timestamp: number;
+};
+
+export type SeederIngameChat = {
+  timestamp: string;
+  sender: string;
+  content: string;
 };
 
 export type seederTeamList = {
@@ -269,18 +290,37 @@ export type seederTeamList = {
   score: number;
   faction?: string;
   key?: string;
+  scoreFromKills?: number;
+  scoreFromFlags?: number;
 };
 
-export type seederPlayer = {
-  player_id: number;
+export interface seederPlayer {
+  index?: number;
   teamId: number;
   mark: number;
+  platoon?: {
+    tag: string;
+    name: string;
+    icon: string;
+  };
+  squad_id?: number;
+  squad_name?: string;
   rank: number;
   name: string;
+  player_id: number;
   kills: number;
   deaths: number;
   score: number;
-};
+  player_class?: {
+    id: string;
+    name?: string;
+    black?: string;
+    white?: string;
+  };
+  Spectator?: 0;
+  vehicle?: SeederGameItem;
+  weapons?: SeederGameItem[];
+}
 
 export type serverInfoPlayerList = {
   country: string;

@@ -1,6 +1,6 @@
 {
     "siteName": "GAMETOOLS",
-    "siteFullName": "Game tools",  
+    "siteFullName": "Game tools",
     "loading": "Yükleniyor...",
     "404": "404",
     "playerNotFound": "Oyuncu Adı bulunamadı, başka bir ad veya başka bir oyun deneyin.",
@@ -41,8 +41,8 @@
             "play2142": "Battlefield 2142 (.co)"
         },
         "bfvietnam": {
-            "openspy" :"Battlefield Vietnam (openspy)",
-            "qtracker" :"Battlefield Vietnam (qtracker)"
+            "openspy": "Battlefield Vietnam (openspy)",
+            "qtracker": "Battlefield Vietnam (qtracker)"
         },
         "bfbc2": "Battlefield: Bad Company 2",
         "bf3": "Battlefield 3",
@@ -392,7 +392,7 @@
                 "score": "Skor",
                 "killDeath": "K/D",
                 "kills": "Öldürme",
-                "deaths": "Ölüm",   
+                "deaths": "Ölüm",
                 "wins": "Kazanma",
                 "losses": "Kaybetme",
                 "timePlayed": "Oyun süresi"
@@ -410,7 +410,9 @@
                 "playerSlot": "Oyuncu yuvası",
                 "playerName": "Oyuncu adı",
                 "platoon": "Birlik",
-                "rank": "Sıralama"
+                "rank": "Sıralama",
+                "score": "Skor",
+                "killDeath": "K/D"
             }
         },
         "factions": {
@@ -472,11 +474,26 @@
     "footer": {
         "description": "Bu web sitesi Topluluk Ağının bir parçasıdır. Açık Kaynaklıdır. GitHub aracılığıyla sorunları yayınlayabilir ve değişiklik/iyileştirme önerebilirsiniz. Topluluk Ağı tarafından sağlanan ve genel kullanıma açık API. Herhangi bir üçüncü taraf API sağlamıyoruz. Arka ucumuz kapalı kaynaktır ve herkese açık değildir.\nBattlefield & Origin, Electronic Arts'ın tescilli ticari markasıdır. Bu web sitesi Electronic Arts'ın Battlefield 1 İstatistik Koşulları uyarınca sağlanan verileri kullanır. Ticari markalar ilgili sahiplerinin mülkiyetindedir. Oyun malzemelerinin telif hakkı Electronic Arts Inc. Electronic Arts, bu siteyi veya içeriğini onaylamamıştır ve bunlardan sorumlu değildir.\nKod GPL v2 Lisansı altındadır. Bazı bölümler Community Network telif hakkı kapsamındadır.",
         "links": {
-            "0": {"header": "GitHub", "url": "https://github.com/Community-network"},
-            "1": {"header": "Genel API", "url": "https://api.gametools.network/"},
-            "2": {"header": "Community Network Discord", "url": "https://discord.gametools.network/"},
-            "3": {"header": "Gizlilik Politikası", "url": "/privacy/"},
-            "4": {"header": "Discord bot", "url": "https://top.gg/bot/714524944783900794"}
+            "0": {
+                "header": "GitHub",
+                "url": "https://github.com/Community-network"
+            },
+            "1": {
+                "header": "Genel API",
+                "url": "https://api.gametools.network/"
+            },
+            "2": {
+                "header": "Community Network Discord",
+                "url": "https://discord.gametools.network/"
+            },
+            "3": {
+                "header": "Gizlilik Politikası",
+                "url": "/privacy/"
+            },
+            "4": {
+                "header": "Discord bot",
+                "url": "https://top.gg/bot/714524944783900794"
+            }
         }
     }
 }
