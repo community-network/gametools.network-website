@@ -270,9 +270,11 @@ function Players(props: {
                               {props.game !== "bf2042" ? (
                                 <PhoneRow>
                                   <ButtonLink
-                                    style={{
+                                    style={haveSeederPlayers ? {
                                       marginTop: ".5rem",
                                       width: "4rem"
+                                    }:{
+                                      marginTop: ".5rem"
                                     }}
                                     href={`https://gametools.network/stats/${
                                       props.platform
