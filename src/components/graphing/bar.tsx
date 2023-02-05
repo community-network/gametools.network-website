@@ -2,7 +2,9 @@ import * as React from "react";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, BarElement } from "chart.js";
 import { useTranslation } from "react-i18next";
+import { CategoryScale } from "chart.js";
 
+ChartJS.register(CategoryScale);
 ChartJS.register(BarElement);
 
 interface GraphData {
