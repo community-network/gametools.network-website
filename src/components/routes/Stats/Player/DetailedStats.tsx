@@ -50,10 +50,17 @@ export function DetailedStats(props: Views): React.ReactElement {
               stat={numberFormat.format(stats?.deaths)}
               name={t("stats.detailed.deaths")}
             />
-            <MaybeStats
-              stat={numberFormat.format(stats?.headshots)}
-              name={t("stats.detailed.headshotPercent")}
-            />
+            {newTitles.includes(props.game) ? (
+              <div>
+                <h3>{numberFormat.format(stats?.headShots)}%</h3>
+                <p>{t("stats.detailed.headshotPercent")}</p>
+              </div>
+            ) : (
+              <div>
+                <h3>{numberFormat.format(stats?.headshots)}%</h3>
+                <p>{t("stats.detailed.headshotPercent")}</p>
+              </div>
+            )}
             <MaybeStats
               stat={numberFormat.format(stats?.killAssists)}
               name={t("stats.detailed.killAssists")}
