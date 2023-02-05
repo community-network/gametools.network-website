@@ -144,7 +144,7 @@
     "playerSearch": {
         "back": "Main page",
         "bfStats": "Battlefield Stats",
-        "description": "View your Online Stats! PC, Xbox, and PSN\n Support for most Battlefield games (except 2042 playerstats)",
+        "description": "View your Online Stats! PC, Xbox, and PSN\n Support for most Battlefield games",
         "search": "Search",
         "searchPlaceholder": "Find by Nickname",
         "gameStatus": "Amount of players on the Battlefield",
@@ -201,6 +201,7 @@
             "type": "Type",
             "kills": "Kills",
             "killsPerMinute": "KPM",
+            "damagePerMinute": "DPM",
             "destroyed": "Destroyed",
             "accuracy": "Accuracy",
             "headshots": "Headshots"

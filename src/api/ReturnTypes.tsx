@@ -104,6 +104,7 @@ export type MainStatsGamemode = {
 
 export type MainStatsClasses = {
   className: string;
+  statName?: string; // bf2042
   score: number;
   image: string;
   altImage: string;
@@ -182,7 +183,8 @@ export type MainStatsWeapon = {
   hitVKills: number;
   image: string;
   kills: number;
-  killsPerMinute: number;
+  killsPerMinute?: number;
+  damagePerMinute?: number;
   type: string;
   weaponName: string;
 };

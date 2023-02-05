@@ -139,7 +139,7 @@
     "playerSearch": {
         "back": "Hoofdpagina",
         "bfStats": "Battlefield Stats",
-        "description": "Zie uw online stats! PC, Xbox, and PSN\n Ondersteuning voor meeste battlefield spellen (uitgezonderd 2042 playerstats)",
+        "description": "Zie uw online stats! PC, Xbox, and PSN\n Ondersteuning voor meeste battlefield spellen",
         "search": "Zoeken",
         "searchPlaceholder": "Vind bij bijnaam",
         "gameStatus": "Het aantal spelers in het spel",
@@ -293,6 +293,7 @@
             "rank": "Rank",
             "killDeath": "K/D",
             "killsPerMinute": "KPM",
+            "damagePerMinute": "DPM",
             "winPercent": "Win%",
             "bestClass": "Best class",
             "accuracy": "Accuracy",

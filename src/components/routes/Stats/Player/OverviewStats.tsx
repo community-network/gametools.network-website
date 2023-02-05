@@ -40,21 +40,28 @@ export function ViewStats(props: Views): React.ReactElement {
         <Box>
           <h3>{t("stats.overview")}</h3>
           <p>{t("stats.overviewDescription")}</p>
-          <AlignS>
-            <div>
-              <h3>{stats?.rank}</h3>
-              <p>{t("stats.main.rank")}</p>
-            </div>
-          </AlignS>
-          <BackgroundBar>
-            <Bar
-              style={{
-                width: `${
-                  (100 * stats.currentRankProgress) / stats.totalRankProgress
-                }%`,
-              }}
-            ></Bar>
-          </BackgroundBar>
+          {stats?.rank !== undefined ? (
+            <>
+              <AlignS>
+                <div>
+                  <h3>{stats?.rank}</h3>
+                  <p>{t("stats.main.rank")}</p>
+                </div>
+              </AlignS>
+              <BackgroundBar>
+                <Bar
+                  style={{
+                    width: `${
+                      (100 * stats.currentRankProgress) /
+                      stats.totalRankProgress
+                    }%`,
+                  }}
+                ></Bar>
+              </BackgroundBar>
+            </>
+          ) : (
+            <></>
+          )}
           <p></p>
           <AlignS>
             <div>

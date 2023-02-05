@@ -23,18 +23,28 @@ export function ViewClasses(props: Views): React.ReactElement {
                   <Column>
                     <Row>
                       <h4 style={{ margin: 0 }}>
-                        {i18n.exists(`stats.classes.${key.className}`)
-                          ? t(`stats.classes.${key.className}`)
-                          : key.className}
+                        {props.game === "bf2042" ? (
+                          <>{key.statName}</>
+                        ) : (
+                          <>
+                            {i18n.exists(`stats.classes.${key.className}`)
+                              ? t(`stats.classes.${key.className}`)
+                              : key.className}
+                          </>
+                        )}
                       </h4>
                       <ListImage src={key.image} />
                     </Row>
-                    <Row>
-                      <h4 style={{ margin: 0 }}>
-                        {numberFormat.format(key.score)}
-                      </h4>
-                      <p>{t("stats.classes.amounts.score")}</p>
-                    </Row>
+                    {key?.score !== undefined ? (
+                      <Row>
+                        <h4 style={{ margin: 0 }}>
+                          {numberFormat.format(key.score)}
+                        </h4>
+                        <p>{t("stats.classes.amounts.score")}</p>
+                      </Row>
+                    ) : (
+                      <></>
+                    )}
                     {key?.kills !== undefined ? (
                       <Row>
                         <h4 style={{ margin: 0 }}>

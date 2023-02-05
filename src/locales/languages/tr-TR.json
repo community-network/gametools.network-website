@@ -196,6 +196,7 @@
             "type": "Tür",
             "kills": "Öldürme",
             "killsPerMinute": "KPM",
+            "damagePerMinute": "DPM",
             "destroyed": "Patlatma",
             "accuracy": "isabet",
             "headshots": "Kafadan vurma"

@@ -16,11 +16,13 @@ export const supportedGames = [
 ];
 
 export const platformGames = {
-  pc: ["bf3", "bf4", "bfh", "bf1", "bfv"],
-  xboxone: ["bf4", "bfh", "bf1", "bfv"],
+  pc: ["bf3", "bf4", "bfh", "bf1", "bfv", "bf2042"],
+  xboxone: ["bf4", "bfh", "bf1", "bfv", "bf2042"],
   xbox360: ["bf3", "bf4", "bfh"],
-  ps4: ["bf4", "bfh", "bf1", "bfv"],
+  ps4: ["bf4", "bfh", "bf1", "bfv", "bf2042"],
   ps3: ["bf3", "bf4", "bfh"],
+  ps5: ["bf2042"],
+  xboxseries: ["bf2042"],
 };
 
 export const bfbanTypeConvert = {
