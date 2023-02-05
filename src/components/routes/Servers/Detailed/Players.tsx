@@ -102,13 +102,13 @@ function Players(props: {
     update_timestamp = new Date(props.stats.update_timestamp * 1000);
   }
 
-  const {
-    data: seederInfo,
-  } = useQuery(["seederPlayerList" + props.gameid], () =>
-    GametoolsApi.seederPlayerList({
-      game: props.game,
-      gameId: props.gameid,
-    }),
+  const { data: seederInfo } = useQuery(
+    ["seederPlayerList" + props.gameid],
+    () =>
+      GametoolsApi.seederPlayerList({
+        game: props.game,
+        gameId: props.gameid,
+      }),
   );
 
   const haveSeederPlayers =
@@ -169,7 +169,7 @@ function Players(props: {
                     <>
                       {teamInfo.players.map(
                         (key: serverPlayer, index: number) => {
-                          const seederPlayer = seederPlayers.get(key.player_id)
+                          const seederPlayer = seederPlayers.get(key.player_id);
                           const dateAdded = new Date(key.join_time / 1000);
                           return (
                             <Column key={index}>
@@ -247,16 +247,20 @@ function Players(props: {
                                     <Description style={{ lineHeight: 0 }}>
                                       {t("servers.playerlist.row.score")}
                                     </Description>
-                                  </Row><Row>
+                                  </Row>
+                                  <Row>
                                     <h4 style={{ marginTop: "0.5rem" }}>
-                                      {seederPlayer?.kills ?? "?"}/{seederPlayer?.deaths ?? "?"}
+                                      {seederPlayer?.kills ?? "?"}/
+                                      {seederPlayer?.deaths ?? "?"}
                                     </h4>
                                     <Description style={{ lineHeight: 0 }}>
                                       {t("servers.playerlist.row.killDeath")}
                                     </Description>
                                   </Row>
                                 </>
-                              ):(<></>)}
+                              ) : (
+                                <></>
+                              )}
                               <Row>
                                 <h4 style={{ marginTop: "0.5rem" }}>
                                   {t("change", {
@@ -270,12 +274,16 @@ function Players(props: {
                               {props.game !== "bf2042" ? (
                                 <PhoneRow>
                                   <ButtonLink
-                                    style={haveSeederPlayers ? {
-                                      marginTop: ".5rem",
-                                      width: "4rem"
-                                    }:{
-                                      marginTop: ".5rem"
-                                    }}
+                                    style={
+                                      haveSeederPlayers
+                                        ? {
+                                            marginTop: ".5rem",
+                                            width: "4rem",
+                                          }
+                                        : {
+                                            marginTop: ".5rem",
+                                          }
+                                    }
                                     href={`https://gametools.network/stats/${
                                       props.platform
                                     }/playerid/${key.player_id}?game=${
