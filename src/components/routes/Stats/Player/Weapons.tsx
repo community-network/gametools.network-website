@@ -111,7 +111,7 @@ export function ViewWeapons(props: Views): React.ReactElement {
                 )}
                 {key?.damagePerMinute !== undefined ? (
                   <TabletRow>
-                    <h4>{numberFormat.format(key?.damagePerMinute)}%</h4>
+                    <h4>{numberFormat.format(key?.damagePerMinute)}</h4>
                     <Description>{t("stats.rows.damagePerMinute")}</Description>
                   </TabletRow>
                 ) : (
