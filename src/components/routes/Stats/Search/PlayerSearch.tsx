@@ -71,7 +71,7 @@ export function StatSearch(): React.ReactElement {
             {statsPlatforms.map((key, index) => {
               return (
                 <option key={index} value={key}>
-                  {t(`platforms.${key}`)}
+                  {t(`statPlatforms.${key}`)}
                 </option>
               );
             })}
@@ -137,7 +137,7 @@ function Search(): React.ReactElement {
             {statsPlatforms.map((key, index) => {
               return (
                 <option key={index} value={key}>
-                  {t(`platforms.${key}`)}
+                  {t(`statPlatforms.${key}`)}
                 </option>
               );
             })}
