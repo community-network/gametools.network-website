@@ -72,7 +72,7 @@ export const Bar = styled.div`
 
 export const ListImage = styled.img`
   max-width: 8rem;
-  height: 3rem;
+  max-height: 3rem;
   margin-right: 1.5rem;
 `;
 
