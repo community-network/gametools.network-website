@@ -3,7 +3,7 @@ git:
   - filter_type: file
     file_format: STRUCTURED_JSON
     source_language: en-US
-    source_file: ' src/locales/languages/en-US.json'
+    source_file: 'src/locales/languages/en-US.json'
     translation_files_expression: 'src/locales/languages/<lang>.json'
 
  settings:
