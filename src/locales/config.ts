@@ -1,19 +1,20 @@
 import i18n from "i18next";
 import * as translationEN from "./languages/en-US.json";
 import * as translationTR from "./languages/tr-TR.json";
-// import * as translationRU from "./languages/ru-RU.json";
+import * as translationRU from "./languages/ru-RU.json";
 import * as translationCH from "./languages/zh-CN.json";
 import * as translationNL from "./languages/nl-NL.json";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { formatDistanceToNowStrict, format } from "date-fns";
-import { enUS, tr, zhCN, nl } from "date-fns/locale";
+import { enUS, tr, zhCN, nl, ru } from "date-fns/locale";
 
 const locales = {
   "en-US": enUS,
   "tr-TR": tr,
   "zh-CN": zhCN,
   "nl-NL": nl,
+  "ru-RU": ru,
 };
 
 export const resources = {
@@ -23,9 +24,9 @@ export const resources = {
   "tr-TR": {
     translation: translationTR,
   },
-  // "ru-RU": {
-  //   translation: translationRU,
-  // },
+  "ru-RU": {
+    translation: translationRU,
+  },
   "zh-CN": {
     translation: translationCH,
   },
@@ -62,6 +63,7 @@ i18n
 
 export const apiLanguage = {
   "zh-cn": "zh-tw",
+  "ru-ru": "ru-ru",
 };
 
 export const getLanguage = (): string => {
