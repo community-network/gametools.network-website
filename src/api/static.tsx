@@ -31,6 +31,14 @@ export const bfbanTypeConvert = {
   playerid: "personaids",
 };
 
+export const serverToStatsPlatform = {
+  1: "pc",
+  2: "xboxone",
+  3: "ps4",
+  4: "xboxone",
+  5: "ps4",
+};
+
 export const graphGames = {
   pc: [
     "bfglobal",

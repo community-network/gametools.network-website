@@ -6,7 +6,6 @@ import "../../../../assets/scss/App.scss";
 import { Align, Circle } from "../../../Materials";
 import { ServerOwnerResult } from "../../../../api/ReturnTypes";
 import {
-  ConLink,
   OriginDescription,
   OriginName,
   OriginProfile,
@@ -14,6 +13,7 @@ import {
 } from "./Servers";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
+import { serverToStatsPlatform } from "../../../../api/static";
 
 export function OwnerInfo(props: {
   owner: ServerOwnerResult;
@@ -23,8 +23,6 @@ export function OwnerInfo(props: {
   const { t } = useTranslation();
   const { game, title } = props;
   let { owner } = props;
-  const ConditionalLink = ({ children, to, condition }: ConLink) =>
-    !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
 
   if (game === "bf2042") {
     const {
@@ -86,24 +84,25 @@ export function OwnerInfo(props: {
       </Spacing>
     );
   }
-
   return (
     <Spacing>
       <h2>{title}</h2>
       <Align>
-        <ConditionalLink
-          to={`/stats/pc/playerid/${owner.id}?game=${
+        <Link
+          to={`/stats/${
+            serverToStatsPlatform[owner.platformId] || "pc"
+          }/playerid/${owner.id || owner.personaId}?game=${
             props.game
           }&name=${encodeURIComponent(owner.name)}`}
-          condition={game !== "bf2042"}
         >
           <OriginProfile src={owner.avatar} />
-        </ConditionalLink>
-        <ConditionalLink
-          to={`/stats/pc/playerid/${owner.id}?game=${
+        </Link>
+        <Link
+          to={`/stats/${
+            serverToStatsPlatform[owner.platformId] || "pc"
+          }/playerid/${owner.id || owner.personaId}?game=${
             props.game
           }&name=${encodeURIComponent(owner.name)}`}
-          condition={game !== "bf2042"}
         >
           <div>
             <OriginName>
@@ -113,7 +112,7 @@ export function OwnerInfo(props: {
               {t("stats.originDescription")}
             </OriginDescription>
           </div>
-        </ConditionalLink>
+        </Link>
       </Align>
     </Spacing>
   );
