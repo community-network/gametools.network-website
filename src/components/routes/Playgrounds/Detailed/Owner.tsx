@@ -6,7 +6,6 @@ import "../../../../assets/scss/App.scss";
 import { Align, Circle } from "../../../Materials";
 import { ServerOwnerResult } from "../../../../api/ReturnTypes";
 import {
-  ConLink,
   OriginDescription,
   OriginName,
   OriginProfile,
@@ -14,6 +13,7 @@ import {
 } from "./Playgrounds";
 import { useQuery } from "@tanstack/react-query";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
+import { serverToStatsPlatform } from "../../../../api/static";
 
 export function PlaygroundOwner(props: {
   owner: ServerOwnerResult;
@@ -21,8 +21,6 @@ export function PlaygroundOwner(props: {
 }): React.ReactElement {
   const { t } = useTranslation();
   let owner = props.owner;
-  const ConditionalLink = ({ children, to, condition }: ConLink) =>
-    !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
   if (owner === null) {
     return (
       <Spacing>
@@ -90,19 +88,21 @@ export function PlaygroundOwner(props: {
     <Spacing>
       <h2>{t("playgrounds.owner.main")}</h2>
       <Align>
-        <ConditionalLink
+        <Link
           to={`/stats/pc/playerid/${owner.id}?game=${
+            serverToStatsPlatform[owner.platformId] || "pc"
+          }/playerid/${owner.id || owner.personaId}?game=${
             props.game
           }&name=${encodeURIComponent(owner.name)}`}
-          condition={props.game !== "bf2042"}
         >
           <OriginProfile src={owner.avatar} />
-        </ConditionalLink>
-        <ConditionalLink
+        </Link>
+        <Link
           to={`/stats/pc/playerid/${owner.id}?game=${
+            serverToStatsPlatform[owner.platformId] || "pc"
+          }/playerid/${owner.id || owner.personaId}?game=${
             props.game
           }&name=${encodeURIComponent(owner.name)}`}
-          condition={props.game !== "bf2042"}
         >
           <div>
             <OriginName>
@@ -112,7 +112,7 @@ export function PlaygroundOwner(props: {
               {t("stats.originDescription")}
             </OriginDescription>
           </div>
-        </ConditionalLink>
+        </Link>
       </Align>
     </Spacing>
   );

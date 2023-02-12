@@ -38,12 +38,6 @@ export const OriginDescription = styled.h4`
   margin: 0;
 `;
 
-export interface ConLink {
-  children: React.ReactElement<unknown, string>;
-  to: string;
-  condition: boolean;
-}
-
 function Servers(): React.ReactElement {
   const params = useParams();
   const gameId = params.gameid;
