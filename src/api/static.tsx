@@ -41,7 +41,7 @@ export const serverToStatsPlatform = {
 
 export const playerToStatsPlatform = {
   pc: "pc",
-  xnpx: "xboxone",
+  xbox: "xboxone",
   psn: "ps4",
 };
 
