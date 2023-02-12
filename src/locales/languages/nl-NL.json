@@ -2,6 +2,7 @@
     "siteName": "GAMETOOLS",
     "siteFullName": "Game tools",
     "loading": "Laden...",
+    "error": "Kon het statistiek niet ophalen, er ging iets mis...",
     "404": "404",
     "playerNotFound": "Spelernaam niet gevonden, probeer eens een andere.",
     "notApplicable": "N/A",
@@ -16,6 +17,10 @@
     "intlNumber": "{{val, number}}",
     "ago": "geleden",
     "export": "Exporteren",
+    "dateType": {
+        "createdAt": "Aangemaakt op",
+        "updatedAt": "Geüpdatet op"
+    },
     "bfban": {
         "stats": "Deze speler is gemarkeerd als hacker in bfban!",
         "platoon": " Hacker"
@@ -202,7 +207,8 @@
             "vehicleName": "Voertuig naam",
             "type": "Type",
             "kills": "Kills",
-            "kpm": "killsPerMinute",
+            "killsPerMinute": "KPM",
+            "damagePerMinute": "DPM",
             "destroyed": "Destroyed",
             "accuracy": "Accuracy",
             "headshots": "Headshots"
@@ -300,7 +306,6 @@
             "rank": "Rank",
             "killDeath": "K/D",
             "killsPerMinute": "KPM",
-            "damagePerMinute": "DPM",
             "winPercent": "Win%",
             "bestClass": "Best class",
             "accuracy": "Accuracy",
@@ -374,8 +379,8 @@
         "joinFirefox": "Join server (werkt alleen op firefox)",
         "joinme": {
             "main": "Joinme.click launcher",
-            "launch": "Spel gestart!",
             "view": "Bekijk server op joinme.click",
+            "launch": "Spel gestart!",
             "info": "De join server knoppen gebruiken <0>https://joinme.click/</0> om de het spel te starten, installeer de <0>joinme.click launcher</0> eerst voordat u de knoppen probeert te gebruiken!",
             "smallinfo": "De join server knoppen gebruiken <0>https://joinme.click/</0> om de het spel te starten.",
             "discord": "De joinme launcher moet geïnstalleerd zijn om dit te laten werken!",
