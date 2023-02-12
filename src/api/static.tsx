@@ -39,6 +39,12 @@ export const serverToStatsPlatform = {
   5: "ps4",
 };
 
+export const playerToStatsPlatform = {
+  pc: "pc",
+  xnpx: "xboxone",
+  psn: "ps4",
+};
+
 export const graphGames = {
   pc: [
     "bfglobal",

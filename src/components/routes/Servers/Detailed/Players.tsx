@@ -26,6 +26,7 @@ import { factions } from "../../../../api/Factions";
 import { Description, Spacing, Title } from "./Servers";
 import { DynamicSort } from "../../Stats/Player/Main";
 import styled from "styled-components";
+import { playerToStatsPlatform } from "../../../../api/static";
 
 const ServerPlayerName = styled.h4`
   max-width: 11rem;
@@ -271,33 +272,31 @@ function Players(props: {
                                   {t("servers.playerlist.row.timePlayed")}
                                 </Description>
                               </Row>
-                              {props.game !== "bf2042" ? (
-                                <PhoneRow>
-                                  <ButtonLink
-                                    style={
-                                      haveSeederPlayers
-                                        ? {
-                                            marginTop: ".5rem",
-                                            width: "4rem",
-                                          }
-                                        : {
-                                            marginTop: ".5rem",
-                                          }
-                                    }
-                                    href={`https://gametools.network/stats/${
-                                      props.platform
-                                    }/playerid/${key.player_id}?game=${
-                                      props.game
-                                    }&name=${encodeURIComponent(key.name)}`}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                  >
-                                    {t("stats.view")}
-                                  </ButtonLink>
-                                </PhoneRow>
-                              ) : (
-                                <></>
-                              )}
+                              <PhoneRow>
+                                <ButtonLink
+                                  style={
+                                    haveSeederPlayers
+                                      ? {
+                                          marginTop: ".5rem",
+                                          width: "4rem",
+                                        }
+                                      : {
+                                          marginTop: ".5rem",
+                                        }
+                                  }
+                                  href={`https://gametools.network/stats/${
+                                    playerToStatsPlatform[key.platform] ||
+                                    key.platform ||
+                                    props.platform
+                                  }/playerid/${key.player_id}?game=${
+                                    props.game
+                                  }&name=${encodeURIComponent(key.name)}`}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                >
+                                  {t("stats.view")}
+                                </ButtonLink>
+                              </PhoneRow>
                             </Column>
                           );
                         },
