@@ -5,6 +5,7 @@ interface meta {
 }
 
 interface experienceItem {
+  like_count: number;
   id: number;
   url: string;
   full_url: string;

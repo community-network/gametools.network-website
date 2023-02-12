@@ -64,8 +64,14 @@ export function BfPortalInfo(props: {
           <AlignW>
             <OriginProfile src={bfportal_icon} />
             <div>
-              <OriginName>{experience.title}</OriginName>
-              <OriginDescription>{experience.code}</OriginDescription>
+              <OriginName style={{ marginBottom: "0.25rem" }}>
+                {experience.title}
+              </OriginName>
+              <OriginDescription>
+                Experience code: {experience.code}
+                <br />
+                Likes: {experience.like_count}
+              </OriginDescription>
             </div>
           </AlignW>
         </a>

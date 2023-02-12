@@ -31,11 +31,13 @@ export const OriginProfile = styled.img`
 
 export const OriginName = styled.h2`
   line-height: 100%;
-  margin-top: 0.4rem;
+  margin-top: 0;
+  margin-bottom: 0.6rem;
 `;
 
 export const OriginDescription = styled.h4`
   margin: 0;
+  margin-bottom: 0.25rem;
 `;
 
 function Servers(): React.ReactElement {
