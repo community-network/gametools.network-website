@@ -166,12 +166,18 @@ function Home(): React.ReactElement {
             {t("home.manager.disclaimer")}
           </Description>
           <Align>
-            <GameLogo src={bf1Logo} style={{ height: "17px", width: "96px" }} />
             <GameLogo
+              alt="bf1 logo"
+              src={bf1Logo}
+              style={{ height: "17px", width: "96px" }}
+            />
+            <GameLogo
+              alt="bf5 logo"
               src={bf5Logo}
               style={{ height: "18px", width: "94.7333px" }}
             />
             <GameLogo
+              alt="bf2042 logo"
               src={bf2042Logo}
               style={{ marginTop: "0.5px", height: "17.2px", width: "94.6px" }}
             />
@@ -194,6 +200,7 @@ function Home(): React.ReactElement {
                   <AlignW style={{ marginTop: "0.5rem" }}>
                     <img
                       src={ourFriendLogos[index]}
+                      alt="icon"
                       style={{
                         height: "24px",
                         width: "24px",

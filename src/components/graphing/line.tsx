@@ -508,7 +508,7 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
               },
             }}
             plugins={[borderPlugin]}
-            style={{ height: "20rem" }}
+            style={{ minHeight: "20rem" }}
             data={data}
           />
         ) : (
