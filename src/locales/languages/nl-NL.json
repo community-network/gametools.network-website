@@ -530,6 +530,10 @@
             "4": {
                 "header": "Discord bot",
                 "url": "https://top.gg/bot/714524944783900794"
+            },
+            "5": {
+                "header": "Help met vertalingen",
+                "url": "https://explore.transifex.com/gametools/"
             }
         }
     },
