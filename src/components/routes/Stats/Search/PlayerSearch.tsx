@@ -56,7 +56,7 @@ const DropDown = styled.div`
   border-radius: 8px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background: #1e2028;
-  z-index: 1;
+  z-index: 5;
 `;
 
 const List = styled.ul`
