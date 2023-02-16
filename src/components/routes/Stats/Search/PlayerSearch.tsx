@@ -20,7 +20,6 @@ import {
   AlignW,
   AlignT,
   BigButtonPrimary,
-  SmallButton,
 } from "../../../Materials";
 import { platformGames, statsPlatforms } from "../../../../api/static";
 import { Graphs } from "./Graphs";
