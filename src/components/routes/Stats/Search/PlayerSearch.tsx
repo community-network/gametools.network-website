@@ -68,7 +68,7 @@ const List = styled.ul`
 const Item = styled.li`
   padding: 4px 18px;
   font-family: Manrope;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 150%;
   color: var(--color-alt-text);
