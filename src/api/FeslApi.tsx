@@ -30,12 +30,18 @@ export class ApiProvider extends JsonClient {
     name,
     platform,
   }: playerSearchRequest): Promise<playerSearchReturn> {
-    const r = await fetch(
-      `https://fesl.gametools.network/persona/${platform}/search-name/${encodeURIComponent(
-        name + "*",
-      )}`,
-    );
-    return r.json();
+    if (name.length > 0) {
+      const r = await fetch(
+        `https://fesl.gametools.network/persona/${platform}/search-name/${encodeURIComponent(
+          name + "*",
+        )}`,
+      );
+      return r.json();
+    }
+
+    return new Promise(() => {
+      return {};
+    });
   }
 }
 
