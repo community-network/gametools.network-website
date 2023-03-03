@@ -64,7 +64,10 @@ function Servers(): React.ReactElement {
   return (
     <div>
       <Container>
-        <BackButton text={t("servers.back")} location="/servers" />
+        <BackButton
+          text={t("servers.back")}
+          location={`/servers?game=${gameId}`}
+        />
         <Results
           game={gameId}
           loading={loading}
