@@ -55,7 +55,7 @@ const Blur = styled.div`
 const ServerInfo = styled.div`
   margin-top: 16px;
   flex-grow: 2;
-  whitespace: nowrap;
+  whitespace: pre;
   overflow: hidden;
   text-overflow: ellipsis;
 `;
@@ -131,7 +131,7 @@ export function Results(props: Views): React.ReactElement {
                 <ServerInfo>
                   <h3
                     style={{
-                      whiteSpace: "nowrap",
+                      whiteSpace: "pre",
                       overflow: "hidden",
                       textOverflow: "ellipsis",
                     }}

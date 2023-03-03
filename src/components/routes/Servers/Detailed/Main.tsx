@@ -180,7 +180,7 @@ export function Results(props: Views): React.ReactElement {
             </Blur>
           </ServerImage>
           <div>
-            <h2>{stats.prefix}</h2>
+            <h2 style={{ whiteSpace: "pre" }}>{stats.prefix}</h2>
             <Description style={{ maxWidth: "1000px" }}>
               {stats.description}
             </Description>
