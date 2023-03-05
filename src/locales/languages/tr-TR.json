@@ -2,6 +2,7 @@
     "siteName": "GAMETOOLS",
     "siteFullName": "Game tools",
     "loading": "Yükleniyor...",
+    "error": "Bu istatistiği alamadık, bir şeyler ters gitti...",
     "404": "404",
     "playerNotFound": "Oyuncu Adı bulunamadı, başka bir ad veya başka bir oyun deneyin.",
     "notApplicable": "Yok",
@@ -16,6 +17,10 @@
     "intlNumber": "{{val, number}}",
     "ago": "önce",
     "export": "Dosyaya aktar",
+    "dateType": {
+        "createdAt": "Oluşturma zamanı",
+        "updatedAt": "Güncelleme zamanı"
+    },
     "bfban": {
         "stats": "Oyuncu bfban'da onaylanmış hileci",
         "platoon": " Hileci"
@@ -81,6 +86,13 @@
         "ps4": "PS4",
         "ps3": "PS3",
         "all": "Tüm platformlar"
+    },
+    "statPlatforms": {
+        "pc": "PC",
+        "xboxone": "XBOX ONE (ve daha yenisi)",
+        "xbox360": "XBOX 360",
+        "ps4": "PS4 (ve daha yenisi)",
+        "ps3": "PS3"
     },
     "home": {
         "manager": {
@@ -231,7 +243,7 @@
         },
         "gamemodes": {
             "main": "Oyun modu bilgisi",
-            "Precentage": "Kazanma: {{percentage}}%",
+            "percentage": "Zaferler: {{percentage}}%",
             "Frontlines": "Cephe hattı",
             "Domination": "Üstünlük",
             "Shock operations": "Şok operasyon",
@@ -358,8 +370,8 @@
         },
         "owner": {
             "main": "Sunucu sahibi",
-            "none": "Sunucunun sahibi yok (Dice sunucusu)",
             "experience": "Deneyim yaratıcısı",
+            "none": "Sunucunun sahibi yok (Dice sunucusu)",
             "unknown": "takma ad bulunamadı"
         },
         "password": "Parola korumalı",
@@ -367,12 +379,16 @@
         "joinFirefox": "Sunucuya katıl (yalnızca Firefox)",
         "joinme": {
             "main": "Bana katıl, başlatıcıyı tıkla",
-            "launch": "Oyun başlatıldı!",
             "view": "Bana katıl'a tıklayın",
+            "launch": "Oyun başlatıldı!",
             "info": "Sunucuya katılma düğmeleri oyuna katılmak için <0>https://joinme.click/</0> kullanılır, bu düğmeleri kullanmaya çalışmadan önce <0>joinme.click launcher</0> yükleyin!",
             "smallinfo": "Sunucuya katılma düğmeleri oyuna katılmak için <0>https://joinme.click/</0> kullanılır.",
             "discord": "Bunun çalışması için bana katıl başlatıcısının yüklenmesi gerekiyor!",
             "invite": "Bana katıl. Davet URL'sini tıklayın"
+        },
+        "bfportal": {
+            "found": "BfPortal.gg adresinde bulunan portal deneyimi",
+            "error": "BfPortal.gg için Api hatası"
         },
         "iframe": {
             "main": "Sunucuyu kendi web sitenize ekleyin",
@@ -435,6 +451,10 @@
         },
         "portal": {
             "main": "Portal deneyimi"
+        },
+        "notFound": {
+            "main": "Sunucu bulunamadı",
+            "description": "Aradığınız sunucuyu bulamıyoruz."
         }
     },
     "platoon": {
@@ -452,6 +472,10 @@
         "rows": {
             "role": "Rol",
             "name": "İsim"
+        },
+        "notFound": {
+            "main": "Platoon bulunamadı",
+            "description": "Aradığınız platoon'u bulamıyoruz."
         }
     },
     "getPlaygrounds": {
@@ -470,6 +494,18 @@
             "main": "Deneyim yaratıcısı",
             "none": "İçerik oluşturucu yalnızca oyun alanı kimliği kullanılırsa alınabilir",
             "unknown": "takma ad bulunamadı"
+        },
+        "notFound": {
+            "main": "Deneyim bulunamadı",
+            "description": "Aradığınız deneyimi bulamıyoruz."
+        },
+        "types": {
+            "main": "Tür",
+            "portal-standard": "Standart deneyim",
+            "portal-featured": "Öne çıkan deneyim",
+            "portal-default": "Standart deneyim",
+            "portal-unranked": "Rütbesiz",
+            "portal-spotlight": "Gündemde"
         }
     },
     "footer": {
@@ -494,7 +530,16 @@
             "4": {
                 "header": "Discord bot",
                 "url": "https://top.gg/bot/714524944783900794"
+            },
+            "5": {
+                "header": "Çeviriye yardım",
+                "url": "https://explore.transifex.com/gametools/"
             }
         }
+    },
+    "pageNotFound": {
+        "main": "404 - Sayfa bulunamadı",
+        "description": "Aradığınız sayfayı bulamıyoruz.",
+        "home": "Ana sayfaya geri dön"
     }
 }
