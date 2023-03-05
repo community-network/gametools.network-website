@@ -97,9 +97,9 @@
     "home": {
         "manager": {
             "header": "GAMETOOLS | CLOUD",
-            "description": "We created a web-based Anti-cheat and Management platform to protect your Battlefield Servers.\nBuilt with help of many communities.\n\nLogin now and start your integration for free!",
+            "description": "Мы создали веб-платформу для защиты от читеров и управления для защиты ваших серверов Battlefield.\nСоздан с помощью многих сообществ.\n\nВойдите в систему прямо сейчас и начните свою интеграцию бесплатно!",
             "open": "Запустить приложение",
-            "disclaimer": "Server hosting is not provided. We currently support the following Battlefield titles:"
+            "disclaimer": "Хостинг сервера не предоставляется. В настоящее время мы поддерживаем следующие игры Battlefield:"
         },
         "graphs": {
             "header": "Онлайн статистика и графики",
@@ -124,7 +124,7 @@
             "header": "Наши друзья",
             "0": {
                 "header": "BFBan",
-                "description": "We are hosting and are an active part of bfban.com - an amazing community & reverse engineering/security team created against hackers, to provide united ban list and report system.\nReport cheaters in BF1/BFV, so they can be banned in community servers.",
+                "description": "Мы принимаем гостей и являемся активной частью bfban.com - удивительное сообщество и команда реверс-инжиниринга / безопасности, созданная против хакеров, чтобы обеспечить единый бан-лист и систему жалоб.\nСообщайте о мошенниках в BF1/BFV, чтобы их можно было заблокировать на серверах сообщества.",
                 "link": "Посетить BFBan",
                 "url": "https://bfban.gametools.network/"
             },
@@ -135,14 +135,14 @@
                 "url": "https://bfportal.gg/"
             },
             "2": {
-                "header": "Statbits",
-                "description": "Statbits let's you integrate little bits of game statistics into your live stream chat, as well as any other application. Want a !kd command showing your overall kill/death ratio in Battlefield 4? We got you!",
+                "header": "Статбиты",
+                "description": "Статбиты позволяют вам интегрировать биты игровой статистики в ваш стрим-чат, а также в любое другое приложение. Хотите команду !kd, которая показывает отношение убийств/смертей в Battlefield 4? Мы сделаем это!",
                 "link": "Узнать больше",
                 "url": "https://statbits.io/"
             },
             "3": {
                 "header": "BFList",
-                "description": "bflist provides live data about what is happening on the Battlefield in Battlefield-series games. We provide data on servers as well as players. From a server's name or current map to any player's current score and kd.",
+                "description": "bflist предоставляет данные о том,  что происходит на поле боя в серии игр Battlefield. Мы предоставляем данные как о серверах, так и об игроках. От названия сервера или текущей карты до текущего счета и у/с игрока.",
                 "link": "Узнать больше",
                 "url": "https://bflist.io/"
             }
@@ -155,7 +155,7 @@
         "search": "Поиск",
         "searchPlaceholder": "Найти по никнейму",
         "gameStatus": "Количество игроков в Battlefield",
-        "zoomInfo": "(Click on the table to enable scroll-zoom)",
+        "zoomInfo": "(Нажмите на таблицу, чтобы включить масштабирование прокруткой)",
         "moreGraphs": "Другие графики"
     },
     "serverSearch": {
@@ -242,12 +242,12 @@
             "Dog tags": "Dog tags"
         },
         "gamemodes": {
-            "main": "Gamemode info",
-            "percentage": "Wins: {{percentage}}%",
+            "main": "Информация об игровом режиме",
+            "percentage": "Побед: {{percentage}}%",
             "Frontlines": "Линия фронта",
             "Domination": "Доминирование",
             "Shock operations": "Shock operations",
-            "Rush": "Rush",
+            "Rush": "Штурм",
             "Conquest": "Захват",
             "War pigeons": "Военные голуби",
             "Operations": "Операции",
@@ -294,7 +294,7 @@
                     "TugOfWar": "Линия фронта",
                     "Domination": "Доминирование",
                     "Breakthrough": "Shock Operations",
-                    "Rush": "Rush",
+                    "Rush": "Штурм",
                     "BreakthroughLarge": "Операции",
                     "Conquest": "Захват",
                     "Possession": "Военные голуби",
@@ -439,12 +439,12 @@
             "BFFactionId_FactionITA": "Королевство Италия",
             "BFFactionId_FactionUK": "United Kingdom",
             "BFFactionId_FactionUSA": "Соединенные Штаты Америки",
-            "BFFactionId_FactionFRA": "France",
-            "BFFactionId_FactionRUS": "Russian Empire",
-            "BFFactionId_FactionBOL": "Red Army",
-            "BFFactionId_FactionWA": "White Army",
+            "BFFactionId_FactionFRA": "Франция",
+            "BFFactionId_FactionRUS": "Российская Империя",
+            "BFFactionId_FactionBOL": "Красная армия",
+            "BFFactionId_FactionWA": "Белая армия",
             "BFFactionId_FactionUKM": "Royal Marines",
-            "FactionUS": "Russian Federation",
+            "FactionUS": "Российская федерация",
             "FactionRUS": "Соединенные Штаты Америки",
             "teamOne": "Команда 1",
             "teamTwo": "Команда 2"
@@ -454,7 +454,7 @@
         },
         "notFound": {
             "main": "Сервер не найден",
-            "description": "We cant find the server your looking for."
+            "description": "Мы не можем найти сервер, который вы ищете."
         }
     },
     "platoon": {
@@ -466,7 +466,7 @@
             "General": "General",
             "Colonel": "Colonel",
             "Lieutenant": "Lieutenant",
-            "Private": "Private",
+            "Private": "Приватный",
             "empty": "There are no members with this rank"
         },
         "rows": {
@@ -530,6 +530,10 @@
             "4": {
                 "header": "Бот Discord",
                 "url": "https://top.gg/bot/714524944783900794"
+            },
+            "5": {
+                "header": "Help with translation",
+                "url": "https://explore.transifex.com/gametools/"
             }
         }
     },
