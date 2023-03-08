@@ -364,7 +364,7 @@
             "none": "该服务器还没有关联任何战队"
         },
         "sort": {
-            "serverName": "Server name",
+            "serverName": "服务器名称",
             "playerAmount": "Player amount",
             "maxPlayers": "Max player amount"
         },
@@ -445,7 +445,7 @@
             "BFFactionId_FactionWA": "白军",
             "BFFactionId_FactionUKM": "皇家海军",
             "FactionUS": "Russian Federation",
-            "FactionRUS": "United States of America",
+            "FactionRUS": "美国",
             "teamOne": "队伍 1",
             "teamTwo": "队伍 2"
         },
@@ -479,14 +479,14 @@
         }
     },
     "getPlaygrounds": {
-        "back": "Main page",
+        "back": "主页 ",
         "main": "Get Battlefield Portal Experience info",
         "description": "Get information about a Battlefield Portal experience",
         "getInfo": "Fill in a valid experience url, playground id or experience code",
         "show": "Show"
     },
     "playgrounds": {
-        "back": "Back to search",
+        "back": "搜索主页",
         "rotation": "Experience map rotation",
         "tags": "Experience tags",
         "maxPlayers": "Max {{ amount }} players",
@@ -500,7 +500,7 @@
             "description": "We cant find the experience your looking for."
         },
         "types": {
-            "main": "Type",
+            "main": "种类",
             "portal-standard": "Standard experience",
             "portal-featured": "Featured experience",
             "portal-default": "Standard experience",
