@@ -8,5 +8,5 @@ An Open Source website to host Battlefield stats and tools via our free API. You
 
 * [Discord](https://discord.gametools.network)
 * [API](https://api.gametools.network)
-
 * [Current progress](https://github.com/Community-network/gametools.network-website/projects/1)
+* [Help with translation](https://explore.transifex.com/gametools/gametools-main/)
