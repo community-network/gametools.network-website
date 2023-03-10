@@ -87,6 +87,10 @@
         "ps3": "PS3",
         "all": "All platforms"
     },
+    "serverType": {
+        "official": "Official",
+        "custom": "Custom"
+    },
     "statPlatforms": {
         "pc": "PC",
         "xboxone": "XBOX ONE (and newer)",

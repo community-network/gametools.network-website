@@ -176,3 +176,12 @@ export const bf4Settings = {
   vshe: "Player health in %",
   vvsd: "Vehicle respawn delay %",
 };
+
+export const regionToTranslation = {
+  Asia: "asia",
+  "North America": "nam",
+  "South America": "sam",
+  Europe: "eu",
+  Africa: "afr",
+  Oceania: "oc",
+};

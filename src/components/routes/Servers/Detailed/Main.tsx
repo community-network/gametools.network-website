@@ -137,7 +137,7 @@ export function Results(props: Views): React.ReactElement {
     copyStates[element] = { state: tempCopyState, set: tempSetCopyState };
   });
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const stats = props.stats;
 
   if (props.error) {
@@ -201,7 +201,9 @@ export function Results(props: Views): React.ReactElement {
             ) : (
               <Description>
                 {t(`regions.${stats.region.toLowerCase()}`)} / {stats.country} -{" "}
-                {stats.mode}
+                {i18n.exists(`stats.gamemodes.${stats.mode}`)
+                  ? t(`stats.gamemodes.${stats.mode}`)
+                  : stats.mode}
               </Description>
             )}
           </div>

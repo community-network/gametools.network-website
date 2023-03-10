@@ -10,7 +10,12 @@ import {
   Box,
 } from "../../../Materials";
 import { ServerList, ServerSearch } from "../../../../api/ReturnTypes";
-import { dice, frostbiteJoinGames, oldJoinGames } from "../../../../api/static";
+import {
+  dice,
+  frostbiteJoinGames,
+  oldJoinGames,
+  regionToTranslation,
+} from "../../../../api/static";
 import { DynamicSort } from "../../Stats/Player/Main";
 
 const Description = styled.p`
@@ -79,7 +84,7 @@ interface Views {
 }
 
 export function Results(props: Views): React.ReactElement {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const stats = props.stats;
 
   if (!props.loading && !props.error) {
@@ -100,15 +105,22 @@ export function Results(props: Views): React.ReactElement {
           if (queue !== undefined && queue !== 0 && queue !== null) {
             queueString = `[${queue}]`;
           }
+          // console.log(`${t(`regions.${key.region.toLowerCase()}`)}`);
           let region: string = undefined;
           if (props.game === "bf2042") {
-            region = ` - ${key.region}`;
+            if (Object.keys(regionToTranslation).includes(key.region)) {
+              region = ` - ${t(`regions.${regionToTranslation[key.region]}`)}`;
+            } else {
+              region = ` - ${key.region}`;
+            }
           } else if (key.region !== undefined) {
             region = ` - ${t(`regions.${key.region.toLowerCase()}`)}`;
           }
           let officialString = "";
           if (key.official !== undefined) {
-            officialString = key.official ? " - Official" : " - Custom";
+            officialString = key.official
+              ? " - " + t("serverType.official")
+              : " - " + t("serverType.custom");
           }
           const useLink = dice.includes(props.game);
           return (
@@ -162,7 +174,10 @@ export function Results(props: Views): React.ReactElement {
                       <></>
                     )}
                     {key.playerAmount}/{key.maxPlayers}
-                    {key.maxPlayerAmount} {queueString} - {key.mode}
+                    {key.maxPlayerAmount} {queueString} -{" "}
+                    {i18n.exists(`stats.gamemodes.${key.mode}`)
+                      ? t(`stats.gamemodes.${key.mode}`)
+                      : key.mode}
                     {key.mode === undefined ? key.map : null}
                     {officialString}
                     {region}

@@ -63,7 +63,8 @@ i18n
 
 export const apiLanguage = {
   "zh-cn": "zh-tw",
-  "ru-ru": "ru-ru",
+  "nl-nl": "en-US",
+  "tr-TR": "en-US",
 };
 
 export const getLanguage = (): string => {
