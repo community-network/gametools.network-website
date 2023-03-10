@@ -87,6 +87,10 @@
         "ps3": "PS3",
         "all": "Tüm platformlar"
     },
+    "serverType": {
+        "official": "Resmi",
+        "custom": "Özel"
+    },
     "statPlatforms": {
         "pc": "PC",
         "xboxone": "XBOX ONE (ve daha yenisi)",
