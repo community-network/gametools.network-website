@@ -10,3 +10,10 @@ An Open Source website to host Battlefield stats and tools via our free API. You
 * [API](https://api.gametools.network)
 * [Current progress](https://github.com/Community-network/gametools.network-website/projects/1)
 * [Help with translation](https://explore.transifex.com/gametools/gametools-main/)
+
+## Contribute
+
+use the latest version of node, 
+and install the needed packages with `npm install`
+you can run it with
+`npm run start`
