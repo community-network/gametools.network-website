@@ -5,6 +5,7 @@ import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
 import {
   bf4Settings,
+  dice,
   frostbite3,
   frostbiteJoinGames,
   serverWidgetTypes,
@@ -26,7 +27,11 @@ import {
   ServerSettings,
 } from "../../../../api/ReturnTypes";
 import { OwnerInfo } from "./Owner";
-import { Bf3ServerPlayerlist, ServerPlayerlist } from "./Players";
+import {
+  Bf3ServerPlayerlist,
+  BfListServerPlayerList,
+  ServerPlayerlist,
+} from "./Players";
 import { ServerLeaderboard } from "./Leaderboard";
 import { ServerPlatoon } from "./Platoon";
 import { ServerConfig } from "./Portal";
@@ -167,10 +172,10 @@ export function Results(props: Views): React.ReactElement {
     return (
       <div>
         <AlignSeverImg>
-          <ServerImage background={stats.currentMapImage}>
+          <ServerImage background={stats.currentMapImage || stats.mapImage}>
             <Blur>
               <ServerText>{stats.smallmode}</ServerText>
-              {props.game !== "bf2042" ? (
+              {dice.includes(props.game) ? (
                 <ServerFactorites>
                   &#9734; {numberFormat.format(stats.favorites)}
                 </ServerFactorites>
@@ -191,42 +196,59 @@ export function Results(props: Views): React.ReactElement {
               {stats.noBotsPlayerAmount
                 ? ` (${stats.noBotsPlayerAmount} without bots)`
                 : ``}{" "}
-              - {stats.currentMap}
+              - {stats.currentMap ? stats.currentMap : stats.map}
               {officialString}
             </Description>
-            {props.game == "bf2042" ? (
-              <Description>
-                {t(`regions.${stats.region.toLowerCase()}`)}
-              </Description>
+            {stats.region ? (
+              <>
+                {props.game == "bf2042" ? (
+                  <Description>
+                    {t(`regions.${stats.region?.toLowerCase()}`)}
+                  </Description>
+                ) : (
+                  <Description>
+                    {t(`regions.${stats.region?.toLowerCase()}`)} /{" "}
+                    {stats.country} -{" "}
+                    {i18n.exists(`stats.gamemodes.${stats.mode}`)
+                      ? t(`stats.gamemodes.${stats.mode}`)
+                      : stats.mode}
+                  </Description>
+                )}
+              </>
             ) : (
-              <Description>
-                {t(`regions.${stats.region.toLowerCase()}`)} / {stats.country} -{" "}
-                {i18n.exists(`stats.gamemodes.${stats.mode}`)
-                  ? t(`stats.gamemodes.${stats.mode}`)
-                  : stats.mode}
-              </Description>
+              <Description>{stats.mode}</Description>
             )}
           </div>
         </AlignSeverImg>
-        <Description style={{ marginTop: "6px" }}>
-          {t("servers.permLink")}{" "}
-          <ServerLink
-            onClick={() => {
-              navigator.clipboard.writeText(
-                `https://gametools.network/servers/${
-                  props.game
-                }/name/${encodeURIComponent(stats.prefix)}/pc`,
-              );
-              setCopyState("copied");
-              const timer1 = setTimeout(() => setCopyState("copy"), 3 * 1000);
-              return () => {
-                clearTimeout(timer1);
-              };
-            }}
-          >
-            {t(`states.${copyState}`)}
-          </ServerLink>
-        </Description>
+        {/* older titles use ip address, thats static already */}
+        {dice.includes(props.game) ? (
+          <>
+            <Description style={{ marginTop: "6px" }}>
+              {t("servers.permLink")}{" "}
+              <ServerLink
+                onClick={() => {
+                  navigator.clipboard.writeText(
+                    `https://gametools.network/servers/${
+                      props.game
+                    }/name/${encodeURIComponent(stats.prefix)}/pc`,
+                  );
+                  setCopyState("copied");
+                  const timer1 = setTimeout(
+                    () => setCopyState("copy"),
+                    3 * 1000,
+                  );
+                  return () => {
+                    clearTimeout(timer1);
+                  };
+                }}
+              >
+                {t(`states.${copyState}`)}
+              </ServerLink>
+            </Description>
+          </>
+        ) : (
+          <></>
+        )}
         {frostbiteJoinGames.includes(props.game) ? (
           <>
             <p style={{ marginTop: "-.6rem" }}>
@@ -258,44 +280,53 @@ export function Results(props: Views): React.ReactElement {
         ) : (
           <></>
         )}
-        <Title style={{ marginBottom: 0 }}>{t("servers.rotation")}</Title>
-        <Align>
-          {stats.rotation.map((key: ServerRotation, index: number) => {
-            return (
-              <AlignW key={index}>
-                <div style={{ marginRight: ".7rem", marginTop: "10px" }}>
-                  <div
-                    style={{
-                      backgroundColor: "#fff",
-                      width: "20px",
-                      height: "20px",
-                      borderRadius: "100%",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      position: "absolute",
-                    }}
-                  >
-                    <span>{index + 1}</span>
-                  </div>
-                  <MapImage background={key.image}></MapImage>
-                  <ServerInfo>
-                    <h3
-                      style={{
-                        marginTop: ".2rem",
-                        lineHeight: 0.8,
-                        textAlign: "center",
-                      }}
-                    >
-                      {key.mapname}
-                    </h3>
-                    <p style={{ margin: 0, textAlign: "center" }}>{key.mode}</p>
-                  </ServerInfo>
-                </div>
-              </AlignW>
-            );
-          })}
-        </Align>
+        {/* when available */}
+        {stats.rotation ? (
+          <>
+            <Title style={{ marginBottom: 0 }}>{t("servers.rotation")}</Title>
+            <Align>
+              {stats.rotation.map((key: ServerRotation, index: number) => {
+                return (
+                  <AlignW key={index}>
+                    <div style={{ marginRight: ".7rem", marginTop: "10px" }}>
+                      <div
+                        style={{
+                          backgroundColor: "#fff",
+                          width: "20px",
+                          height: "20px",
+                          borderRadius: "100%",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          position: "absolute",
+                        }}
+                      >
+                        <span>{index + 1}</span>
+                      </div>
+                      <MapImage background={key.image}></MapImage>
+                      <ServerInfo>
+                        <h3
+                          style={{
+                            marginTop: ".2rem",
+                            lineHeight: 0.8,
+                            textAlign: "center",
+                          }}
+                        >
+                          {key.mapname}
+                        </h3>
+                        <p style={{ margin: 0, textAlign: "center" }}>
+                          {key.mode}
+                        </p>
+                      </ServerInfo>
+                    </div>
+                  </AlignW>
+                );
+              })}
+            </Align>
+          </>
+        ) : (
+          <></>
+        )}
 
         <PageColumn>
           <PageRow>
@@ -345,6 +376,13 @@ export function Results(props: Views): React.ReactElement {
               <>
                 {props.game === "bf3" ? (
                   <Bf3ServerPlayerlist players={stats.players} />
+                ) : // older titles
+                stats.ip && stats.port ? (
+                  <BfListServerPlayerList
+                    game={props.game}
+                    serverIp={stats.ip}
+                    serverPort={stats.hostport || stats.port}
+                  />
                 ) : (
                   <></>
                 )}
@@ -375,36 +413,8 @@ export function Results(props: Views): React.ReactElement {
               <></>
             )}
             {props.game === "bfv" ? <></> : <></>}
-            {props.game !== "bf2042" ? (
-              <>
-                <h2>{t("servers.settings")}</h2>
-                <AlignT>
-                  {Object.entries(stats.settings).map(
-                    (key: [string, unknown], index: number) => {
-                      return (
-                        <div key={index}>
-                          <h3>{key[0]}</h3>
-                          {Object.entries(key[1]).map(
-                            (key: [string, string], index: number) => {
-                              return (
-                                <AltDescription key={index}>
-                                  <b>
-                                    {key[0] in bf4Settings
-                                      ? bf4Settings[key[0]]
-                                      : capitalizeFirstLetter(key[0])}
-                                  </b>
-                                  : {key[1]}
-                                </AltDescription>
-                              );
-                            },
-                          )}
-                        </div>
-                      );
-                    },
-                  )}
-                </AlignT>
-              </>
-            ) : (
+            {/* when available */}
+            {props.game === "bf2042" ? (
               <>
                 {stats.configCreator !== null ? (
                   <OwnerInfo
@@ -433,6 +443,41 @@ export function Results(props: Views): React.ReactElement {
                   );
                 })}
                 <br></br>
+              </>
+            ) : (
+              <>
+                {stats.settings ? (
+                  <>
+                    <h2>{t("servers.settings")}</h2>
+                    <AlignT>
+                      {Object.entries(stats.settings).map(
+                        (key: [string, unknown], index: number) => {
+                          return (
+                            <div key={index}>
+                              <h3>{key[0]}</h3>
+                              {Object.entries(key[1]).map(
+                                (key: [string, string], index: number) => {
+                                  return (
+                                    <AltDescription key={index}>
+                                      <b>
+                                        {key[0] in bf4Settings
+                                          ? bf4Settings[key[0]]
+                                          : capitalizeFirstLetter(key[0])}
+                                      </b>
+                                      : {key[1]}
+                                    </AltDescription>
+                                  );
+                                },
+                              )}
+                            </div>
+                          );
+                        },
+                      )}
+                    </AlignT>
+                  </>
+                ) : (
+                  <></>
+                )}
               </>
             )}
           </PageRow>

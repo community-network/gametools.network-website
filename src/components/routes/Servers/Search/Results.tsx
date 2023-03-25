@@ -122,17 +122,24 @@ export function Results(props: Views): React.ReactElement {
               ? " - " + t("serverType.official")
               : " - " + t("serverType.custom");
           }
-          const useLink = dice.includes(props.game);
+          let idElement = "gameid";
+          let result = key.gameId;
+          if (props.game == "bf2042") {
+            idElement = "serverid";
+            result = key.serverId;
+          } else if (!dice.includes(props.game)) {
+            idElement = "serverip";
+            result = `${key.ip}:${key.port}`;
+          }
+
           return (
             <Box
               spacingStyle={props.spacingStyle}
-              className={useLink ? "box_hover box" : ""}
-              link={`/servers/${props.game}/${
-                props.game == "bf2042" ? "serverid" : "gameid"
-              }/${props.game == "bf2042" ? key.serverId : key.gameId}/${
-                key.platform
+              className="box_hover box"
+              link={`/servers/${props.game}/${idElement}/${result}/${
+                key.platform || "pc"
               }${props.game == "bf2042" ? `?blazeid=${key.blazeGameId}` : ""}`}
-              condition={useLink}
+              condition={true}
               key={index}
               innerStyle={props.spacingStyle}
             >

@@ -4,7 +4,7 @@
     "loading": "Loading...",
     "error": "Couldn't get this statistic, something went wrong...",
     "404": "404",
-    "playerNotFound": "Playername not found, pelase try another.",
+    "playerNotFound": "Playername not found, please try another.",
     "notApplicable": "N/A",
     "resultNotFound": "No results found",
     "noName": "Cannot show a playername when accessing stats via playerId",
@@ -433,7 +433,9 @@
                 "platoon": "Platoon",
                 "rank": "Rank",
                 "score": "Score",
-                "killDeath": "K/D"
+                "killDeath": "K/D",
+                "kills": "Kills",
+                "deaths": "Deaths"
             }
         },
         "factions": {
@@ -540,6 +542,9 @@
                 "url": "https://explore.transifex.com/gametools/"
             }
         }
+    },
+    "bflist": {
+        "notFound": "Didn't find server with bflist.io API"
     },
     "pageNotFound": {
         "main": "404 - Page not found",

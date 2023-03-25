@@ -222,6 +222,14 @@ export class ApiProvider extends JsonClient {
         service: gameStuff[1],
         return_ownername: with_ownername.toString(),
       });
+    } else if (getter == "serverip") {
+      const result = await this.getJsonMethod(`/${gameStuff[0]}/servers`, {
+        name: encodeURIComponent(serverName),
+        type: "ip",
+        service: gameStuff[1],
+        platform: platform,
+      });
+      return result.servers[0];
     }
     return await this.getJsonMethod(`/${gameStuff[0]}/detailedserver/`, {
       name: encodeURIComponent(serverName),

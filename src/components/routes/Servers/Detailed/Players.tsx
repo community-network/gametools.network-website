@@ -27,6 +27,7 @@ import { Description, Spacing, Title } from "./Servers";
 import { DynamicSort } from "../../Stats/Player/Main";
 import styled from "styled-components";
 import { playerToStatsPlatform } from "../../../../api/static";
+import { bfListApi, PlayerInfo, TeamInfo } from "../../../../api/bflistApi";
 
 const ServerPlayerName = styled.h4`
   max-width: 11rem;
@@ -426,6 +427,191 @@ export function Bf3ServerPlayerlist(props: {
           <p>{t("servers.playerlist.empty")}</p>
         </Box>
       )}
+    </Spacing>
+  );
+}
+
+export function BfListServerPlayerList(props: {
+  game: string;
+  serverIp: string;
+  serverPort: number;
+}): React.ReactElement {
+  const { t } = useTranslation();
+  const [sortType, setSortType] = React.useState<string>("-kills");
+  const [copyState, setCopyState] = React.useState<string>("");
+
+  const gameStuff = props.game.split(".");
+  const {
+    isLoading: loading,
+    isError: error,
+    data: stats,
+    dataUpdatedAt,
+  } = useQuery(
+    ["serverPlayerlist" + props.serverIp + props.serverPort + props.game],
+    () =>
+      bfListApi.serverPlayerlist({
+        game: gameStuff[0],
+        serverIp: props.serverIp,
+        serverPort: props.serverPort,
+      }),
+  );
+
+  if (!loading && !error) {
+    if (!stats.players) {
+      return (
+        <Spacing>
+          <Title>{t("servers.playerlist.main")}</Title>
+          <Description>{t("bflist.notFound")}</Description>
+        </Spacing>
+      );
+    }
+
+    let teams: TeamInfo[] = [
+      { index: 1, label: "Team 1", players: [] },
+      { index: 2, label: "Team 2", players: [] },
+    ];
+    if (stats.teams && stats.teams.length > 0) {
+      // use labels from bflist api
+      teams = stats.teams;
+
+      // readd players
+      teams.map((team) => {
+        team.players = [];
+      });
+    }
+    stats.players.map((player: PlayerInfo) => {
+      teams[player.team - 1].players.push(player);
+    });
+
+    return (
+      <Spacing>
+        <Align>
+          <h2>{t("servers.playerlist.main")}</h2>
+          <SelectPrimary
+            style={{ margin: 0, marginLeft: "24px" }}
+            value={sortType}
+            onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
+              setSortType(ev.target.value)
+            }
+          >
+            <option value="name">
+              {t("servers.playerlist.row.playerName")}
+            </option>
+            <option value="-ping">{t("servers.playerlist.row.ping")}</option>
+            <option value="-kills">{t("servers.playerlist.row.kills")}</option>
+            <option value="-deaths">
+              {t("servers.playerlist.row.deaths")}
+            </option>
+          </SelectPrimary>
+          <p style={{ marginTop: "1rem", marginLeft: "1rem" }}>
+            {t("servers.playerlist.lastUpdate")}{" "}
+            {t("change", { change: dataUpdatedAt })} {t("ago")}
+          </p>
+        </Align>
+        {teams.map((teamInfo: TeamInfo, index: number) => {
+          teamInfo.players = teamInfo.players.sort(DynamicSort(sortType));
+          return (
+            <div key={index}>
+              <Align>
+                <h3 style={{ margin: ".5rem", marginTop: 0 }}>
+                  {teamInfo.label}
+                </h3>
+              </Align>
+              <Box>
+                {teamInfo.players.length !== 0 ? (
+                  <>
+                    {teamInfo.players.map((key: PlayerInfo, index: number) => {
+                      return (
+                        <Column key={index}>
+                          <Row>
+                            <a
+                              style={{ cursor: "pointer" }}
+                              onClick={() => {
+                                navigator.clipboard.writeText(key.name);
+                                setCopyState(key.name);
+                                const timer1 = setTimeout(
+                                  () => setCopyState(""),
+                                  1 * 1000,
+                                );
+                                return () => {
+                                  clearTimeout(timer1);
+                                };
+                              }}
+                            >
+                              {copyState == key.name ? (
+                                <ServerPlayerName>
+                                  {t("states.copied")}
+                                </ServerPlayerName>
+                              ) : (
+                                <ServerPlayerName>{key.name}</ServerPlayerName>
+                              )}
+                            </a>
+                          </Row>
+                          <Row>
+                            <h4 style={{ marginTop: "0.5rem" }}>{key.ping}</h4>
+                            <Description style={{ lineHeight: 0 }}>
+                              {t("servers.playerlist.row.ping")}
+                            </Description>
+                          </Row>
+                          <Row>
+                            <h4 style={{ marginTop: "0.5rem" }}>
+                              {key?.score ?? "?"}
+                            </h4>
+                            <Description style={{ lineHeight: 0 }}>
+                              {t("servers.playerlist.row.score")}
+                            </Description>
+                          </Row>
+                          <Row>
+                            <h4 style={{ marginTop: "0.5rem" }}>
+                              {key?.kills ?? "?"}/{key?.deaths ?? "?"}
+                            </h4>
+                            <Description style={{ lineHeight: 0 }}>
+                              {t("servers.playerlist.row.killDeath")}
+                            </Description>
+                          </Row>
+                          {/* <PhoneRow>
+                            <ButtonLink
+                              style={
+                                haveSeederPlayers
+                                  ? {
+                                      marginTop: ".5rem",
+                                      width: "4rem",
+                                    }
+                                  : {
+                                      marginTop: ".5rem",
+                                    }
+                              }
+                              href={`https://gametools.network/stats/${
+                                playerToStatsPlatform[key.platform] ||
+                                key.platform ||
+                                props.platform
+                              }/playerid/${key.player_id}?game=${
+                                props.game
+                              }&name=${encodeURIComponent(key.name)}`}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              {t("stats.view")}
+                            </ButtonLink>
+                          </PhoneRow> */}
+                        </Column>
+                      );
+                    })}
+                  </>
+                ) : (
+                  <p>{t("servers.playerlist.empty")}</p>
+                )}
+              </Box>
+            </div>
+          );
+        })}
+      </Spacing>
+    );
+  }
+  return (
+    <Spacing>
+      <Title>{t("servers.playerlist.main")}</Title>
+      <Description>{t("loading")}</Description>
     </Spacing>
   );
 }
