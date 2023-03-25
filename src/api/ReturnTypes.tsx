@@ -377,6 +377,7 @@ export type ServerInfo = {
 };
 
 export type DetailedServerInfo = {
+  hostport: number;
   cache: boolean;
   country: string;
   currentMap: string;
@@ -408,6 +409,12 @@ export type DetailedServerInfo = {
   inQue?: number;
   maxPlayers?: number;
   noBotsPlayerAmount?: number;
+
+  // older games
+  mapImage?: string;
+  map?: string;
+  ip?: string;
+  port?: number;
 };
 
 export type ScoreTeamList = {
