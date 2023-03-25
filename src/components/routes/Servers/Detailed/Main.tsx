@@ -159,6 +159,13 @@ export function Results(props: Views): React.ReactElement {
       </Box>
     );
   } else {
+    let widgetReturn = encodeURIComponent(stats.prefix);
+    let widgetItem = "name";
+    if (!dice.includes(props.game)) {
+      widgetItem = "serverip";
+      widgetReturn = `${stats.ip}:${stats.port}`;
+    }
+
     let queue: number = undefined;
     queue = stats.inQue;
     let queueString = "";
@@ -496,13 +503,7 @@ export function Results(props: Views): React.ReactElement {
                   <ServerLink
                     onClick={() => {
                       navigator.clipboard.writeText(
-                        `<iframe src="https://widgets.gametools.network/servers/${element}/${
-                          props.game
-                        }/name/${encodeURIComponent(
-                          stats.prefix,
-                        )}/pc" height="${
-                          widgetSize[index]
-                        }px" width="700px" frameborder="0" allowtransparency="true"></iframe>`,
+                        `<iframe src="https://widgets.gametools.network/servers/${element}/${props.game}/${widgetItem}/${widgetReturn}/${props.platform}" height="${widgetSize[index]}px" width="700px" frameborder="0" allowtransparency="true"></iframe>`,
                       );
                       copyStates[element].set("copied");
                       const timer1 = setTimeout(
@@ -518,9 +519,7 @@ export function Results(props: Views): React.ReactElement {
                   </ServerLink>
                 </Description>
                 <iframe
-                  src={`https://widgets.gametools.network/servers/${element}/${
-                    props.game
-                  }/name/${encodeURIComponent(stats.prefix)}/pc`}
+                  src={`https://widgets.gametools.network/servers/${element}/${props.game}/${widgetItem}/${widgetReturn}/${props.platform}`}
                   style={{ maxWidth: "700px", backgroundColor: "transparent" }}
                   height={`${widgetSize[index]}px`}
                   width="100%"
