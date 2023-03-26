@@ -4,7 +4,7 @@
     "loading": "Yükleniyor...",
     "error": "Bu istatistiği alamadık, bir şeyler ters gitti...",
     "404": "404",
-    "playerNotFound": "Oyuncu Adı bulunamadı, başka bir ad veya başka bir oyun deneyin.",
+    "playerNotFound": "Oyun adı bulunamadı, lütfen başka bir tane deneyin.",
     "notApplicable": "Yok",
     "resultNotFound": "Sonuç bulunamadı",
     "noName": "Origin adı aracılığıyla istatistiklere erişirken oyuncu adı gösterilemiyor",
@@ -433,7 +433,9 @@
                 "platoon": "Birlik",
                 "rank": "Sıralama",
                 "score": "Skor",
-                "killDeath": "K/D"
+                "killDeath": "K/D",
+                "kills": "Öldürme",
+                "deaths": "Öldürme"
             }
         },
         "factions": {
@@ -540,6 +542,9 @@
                 "url": "https://explore.transifex.com/gametools/"
             }
         }
+    },
+    "bflist": {
+        "notFound": "bflist.io API ile sunucu bulunamadı"
     },
     "pageNotFound": {
         "main": "404 - Sayfa bulunamadı",
