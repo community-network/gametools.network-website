@@ -433,7 +433,9 @@
                 "platoon": "Platoon",
                 "rank": "Rank",
                 "score": "Score",
-                "killDeath": "K/D"
+                "killDeath": "K/D",
+                "kills": "Kills",
+                "deaths": "Deaths"
             }
         },
         "factions": {
@@ -540,6 +542,9 @@
                 "url": "https://explore.transifex.com/gametools/"
             }
         }
+    },
+    "bflist": {
+        "notFound": "Kon server niet vinden met de bflist.io API"
     },
     "pageNotFound": {
         "main": "404 - Pagina niet gevonden",
