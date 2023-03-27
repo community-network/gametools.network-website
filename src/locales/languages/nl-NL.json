@@ -458,6 +458,13 @@
         "portal": {
             "main": "Portal experience"
         },
+        "graph": {
+            "main": "Server grafieken",
+            "map": "Map",
+            "mode": "gamemode",
+            "amount": "Keren opgehaald",
+            "error": "Kon de grafieken voor de server niet ophalen"
+        },
         "notFound": {
             "main": "Server niet gevonden",
             "description": "We konden de server die u zocht niet vinden."
