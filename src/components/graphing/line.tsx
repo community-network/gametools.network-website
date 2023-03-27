@@ -710,6 +710,17 @@ export function ServerGraphQuery(props: ServerGraphData): React.ReactElement {
     },
   );
 
+  if (loading) {
+    return (
+      <>
+        <h2>{t("servers.graph.main")}</h2>
+        <Box>
+          <p>{t("loading")}</p>
+        </Box>
+      </>
+    );
+  }
+
   if (!loading && !error) {
     return (
       <ErrorBoundary>
@@ -739,7 +750,11 @@ export function ServerGraphQuery(props: ServerGraphData): React.ReactElement {
                 }
               >
                 <option value="map">{t("servers.graph.map")}</option>
-                <option value="mode">{t("servers.graph.mode")}</option>
+                {stats["mode"] != undefined ? (
+                  <option value="mode">{t("servers.graph.mode")}</option>
+                ) : (
+                  <></>
+                )}
               </SelectPrimary>
               <ServerPieChart stats={stats} chartValues={pieGraphType} />
             </Row>
