@@ -72,6 +72,8 @@ function Servers(): React.ReactElement {
           game={gameId}
           loading={loading}
           platform={platform}
+          getter={params.type}
+          serverName={serverName}
           stats={stats}
           error={error}
         />

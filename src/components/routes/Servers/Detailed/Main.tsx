@@ -39,6 +39,7 @@ import { Description, Title } from "./Servers";
 import { useLocation } from "react-router-dom";
 import { ServerScoreboard } from "./Scoreboard";
 import { BfPortalInfo } from "./BfPortal";
+import { ServerGraphQuery } from "../../../graphing/line";
 
 const AltDescription = styled.p`
   ${AltText}
@@ -56,6 +57,8 @@ interface Views {
   game: string;
   platform: string;
   stats: DetailedServerInfo;
+  getter: string;
+  serverName: string;
 }
 
 const ServerImage = styled.div<IServerImage>`
@@ -408,6 +411,12 @@ export function Results(props: Views): React.ReactElement {
           </PageRow>
 
           <PageRow>
+            {/* when available */}
+            <ServerGraphQuery
+              game={props.game}
+              getter={props.getter}
+              name={props.serverName}
+            />
             {props.game === "bf1" ? (
               <>
                 <ServerPlatoon
@@ -419,8 +428,6 @@ export function Results(props: Views): React.ReactElement {
             ) : (
               <></>
             )}
-            {props.game === "bfv" ? <></> : <></>}
-            {/* when available */}
             {props.game === "bf2042" ? (
               <>
                 {stats.configCreator !== null ? (

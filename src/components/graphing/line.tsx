@@ -17,11 +17,21 @@ import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
 import { GametoolsApi } from "../../api/GametoolsApi";
 import { graphGames, gameGraphConvert, graphColors } from "../../api/static";
-import { Align, Box, BoxSpacing, BoxWrap } from "../Materials";
+import {
+  Align,
+  Box,
+  BoxSpacing,
+  BoxWrap,
+  Column,
+  Row,
+  SelectPrimary,
+  TabletRow,
+} from "../Materials";
 import { GlobalGraphReturn } from "../../api/GametoolsApi";
 import { useMeasure } from "react-use";
 import styled from "styled-components";
 import ErrorBoundary from "../functions/ErrorBoundary";
+import { ServerPieChart } from "./pie";
 
 ChartJS.register(
   zoomPlugin,
@@ -666,10 +676,171 @@ export function TotalGraphQuery(): React.ReactElement {
   );
 }
 
+interface ServerGraphData {
+  game: string;
+  getter: string;
+  name: string;
+}
+
+export function ServerGraphQuery(props: ServerGraphData): React.ReactElement {
+  const { t } = useTranslation();
+  const [pieGraphType, setPieGraphType] = React.useState<string>("map");
+
+  let getter = props.getter;
+  if (["bf3", "bfh"].includes(props.game)) {
+    getter = "serverid";
+  }
+
+  const {
+    isLoading: loading,
+    isError: error,
+    data: stats,
+  } = useQuery(
+    ["serverGraph", props.game, getter, props.name],
+    () =>
+      GametoolsApi.serverGraphs({
+        game: props.game,
+        days: "7",
+        getter: getter,
+        name: props.name,
+      }),
+    {
+      staleTime: Infinity,
+      refetchOnWindowFocus: false,
+    },
+  );
+
+  if (!loading && !error) {
+    return (
+      <ErrorBoundary>
+        <div style={{ maxWidth: "45rem" }}>
+          <Column>
+            <Row>
+              <h2>{t("servers.graph.main")}</h2>
+              <ServerGraph stats={stats} />
+            </Row>
+            <Row
+              style={{
+                maxWidth: "200px",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <SelectPrimary
+                style={{
+                  margin: 0,
+                  marginLeft: "14px",
+                  marginTop: "18px",
+                  marginBottom: "10px",
+                }}
+                value={pieGraphType}
+                onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
+                  setPieGraphType(ev.target.value)
+                }
+              >
+                <option value="map">{t("servers.graph.map")}</option>
+                <option value="mode">{t("servers.graph.mode")}</option>
+              </SelectPrimary>
+              <ServerPieChart stats={stats} chartValues={pieGraphType} />
+            </Row>
+          </Column>
+        </div>
+      </ErrorBoundary>
+    );
+  }
+
+  return (
+    <>
+      <h2>{t("servers.graph.main")}</h2>
+      <Box>
+        <p>{t("servers.graph.error")}</p>
+      </Box>
+    </>
+  );
+}
+
 interface NewGraphData {
   loading: boolean;
   error: boolean;
   stats: GlobalGraphReturn;
+}
+
+function ServerGraph(props: { stats: GlobalGraphReturn }): React.ReactElement {
+  const { t } = useTranslation();
+  const chartRef = React.useRef(null);
+  const time = props.stats.timeStamps.map((e: string) => {
+    const time = new Date(e);
+    return time;
+  });
+
+  return (
+    <BoxSpacing style={{ maxWidth: "600px" }}>
+      <BoxWrap>
+        <Line
+          ref={chartRef}
+          options={{
+            maintainAspectRatio: false,
+            hover: {
+              intersect: false,
+              mode: "nearest",
+            },
+            scales: {
+              x: {
+                grid: {
+                  display: false,
+                },
+                display: false,
+                type: "time",
+              },
+              y: {
+                display: false,
+                max: Math.max(...props.stats.soldierAmount) > 64 ? 128 : 64,
+                grid: {
+                  display: false,
+                },
+              },
+            },
+            plugins: {
+              tooltip: {
+                mode: "nearest",
+                intersect: false,
+              },
+              zoom: {
+                limits: {
+                  x: {
+                    min: +new Date() - 604800000,
+                    max: +new Date(),
+                    minRange: 50000000,
+                  },
+                },
+              },
+            },
+          }}
+          style={{ height: "200px" }}
+          data={{
+            labels: time,
+            datasets: [
+              {
+                label: t("stats.graph.soldierAmount"),
+                data: props.stats.soldierAmount,
+                fill: "origin",
+                borderColor: "#ffffff81",
+                pointRadius: 0,
+                borderWidth: 1.5,
+                backgroundColor: (context: ScriptableContext<"line">) => {
+                  const ctx = context.chart.ctx;
+                  const gradient = ctx.createLinearGradient(0, 0, 0, 220);
+                  gradient.addColorStop(0, "rgba(255, 255, 255, 0.1)");
+                  gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+                  return gradient;
+                },
+              },
+            ],
+          }}
+        />
+      </BoxWrap>
+    </BoxSpacing>
+  );
 }
 
 function TotalGraph(props: NewGraphData): React.ReactElement {

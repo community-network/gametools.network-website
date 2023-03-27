@@ -98,6 +98,14 @@ interface GraphInfo {
   type?: string;
 }
 
+interface ServerGraphInfo {
+  game: string;
+  days: string;
+  name: string;
+  getter: string;
+  platform?: string;
+}
+
 export interface bfbanPlayer {
   names: { [name: string]: bfbanPlayers };
   userids: { [name: string]: bfbanPlayers };
@@ -359,6 +367,49 @@ export class ApiProvider extends JsonClient {
       platform: platform,
       service: gameStuff[1],
       type: type,
+    });
+  }
+
+  async serverGraphs({
+    game,
+    days,
+    getter,
+    name,
+    platform = "pc",
+  }: ServerGraphInfo): Promise<GlobalGraphReturn> {
+    const gameStuff = game.split(".");
+
+    if (platform == "all") {
+      platform = "pc";
+    }
+    if (getter == "serverid") {
+      return await this.getJsonMethod(`/${gameStuff[0]}/serverarray/`, {
+        serverid: name,
+        platform: platform,
+        service: gameStuff[1],
+        days: days,
+      });
+    } else if (getter == "gameid") {
+      return await this.getJsonMethod(`/${gameStuff[0]}/serverarray/`, {
+        gameid: name,
+        platform: platform,
+        service: gameStuff[1],
+        days: days,
+      });
+    } else if (getter == "serverip") {
+      return await this.getJsonMethod(`/${gameStuff[0]}/serverarray`, {
+        name: encodeURIComponent(name),
+        type: "ip",
+        service: gameStuff[1],
+        platform: platform,
+        days: days,
+      });
+    }
+    return await this.getJsonMethod(`/${gameStuff[0]}/serverarray/`, {
+      name: encodeURIComponent(name),
+      platform: platform,
+      service: gameStuff[1],
+      days: days,
     });
   }
 

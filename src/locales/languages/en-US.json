@@ -458,6 +458,13 @@
         "portal": {
             "main": "Portal experience"
         },
+        "graph": {
+            "main": "Server graphs",
+            "map": "Map",
+            "mode": "Gamemode",
+            "amount": "Times gathered",
+            "error": "Failed to get the graphs for this server"
+        },
         "notFound": {
             "main": "Server not found",
             "description": "We cant find the server your looking for."
