@@ -750,7 +750,8 @@ export function ServerGraphQuery(props: ServerGraphData): React.ReactElement {
                 }
               >
                 <option value="map">{t("servers.graph.map")}</option>
-                {stats["mode"] != undefined && stats["mode"].length > 0 ? (
+                {stats["mode"] != undefined &&
+                Object.keys(stats["mode"]).length > 0 ? (
                   <option value="mode">{t("servers.graph.mode")}</option>
                 ) : (
                   <></>
