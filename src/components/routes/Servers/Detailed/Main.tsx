@@ -413,6 +413,7 @@ export function Results(props: Views): React.ReactElement {
           <PageRow>
             {/* when available */}
             <ServerGraphQuery
+              stats={stats}
               game={props.game}
               getter={props.getter}
               name={props.serverName}

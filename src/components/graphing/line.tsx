@@ -25,13 +25,13 @@ import {
   Column,
   Row,
   SelectPrimary,
-  TabletRow,
 } from "../Materials";
 import { GlobalGraphReturn } from "../../api/GametoolsApi";
 import { useMeasure } from "react-use";
 import styled from "styled-components";
 import ErrorBoundary from "../functions/ErrorBoundary";
 import { ServerPieChart } from "./pie";
+import { DetailedServerInfo } from "../../api/ReturnTypes";
 
 ChartJS.register(
   zoomPlugin,
@@ -677,6 +677,7 @@ export function TotalGraphQuery(): React.ReactElement {
 }
 
 interface ServerGraphData {
+  stats: DetailedServerInfo;
   game: string;
   getter: string;
   name: string;
@@ -687,8 +688,12 @@ export function ServerGraphQuery(props: ServerGraphData): React.ReactElement {
   const [pieGraphType, setPieGraphType] = React.useState<string>("map");
 
   let getter = props.getter;
+  let name = props.name;
   if (["bf3", "bfh"].includes(props.game)) {
     getter = "serverid";
+  } else if (props.game == "bf2042") {
+    getter = "name";
+    name = props.stats.serverInfo.serverName;
   }
 
   const {
@@ -702,7 +707,7 @@ export function ServerGraphQuery(props: ServerGraphData): React.ReactElement {
         game: props.game,
         days: "7",
         getter: getter,
-        name: props.name,
+        name: name,
       }),
     {
       staleTime: Infinity,
