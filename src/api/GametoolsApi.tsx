@@ -406,7 +406,7 @@ export class ApiProvider extends JsonClient {
       });
     }
     return await this.getJsonMethod(`/${gameStuff[0]}/serverarray/`, {
-      name: encodeURIComponent(name),
+      servername: encodeURIComponent(name),
       platform: platform,
       service: gameStuff[1],
       days: days,

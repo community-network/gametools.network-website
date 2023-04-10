@@ -194,7 +194,7 @@
     "stats": {
         "view": "İstatistikleri görüntüle",
         "back": "Ana Sayfa",
-        "originDescription": "Kullanızı hesabı",
+        "originDescription": "Kullanıcı hesabı",
         "detailedName": "Ayrıntılı istatistikler",
         "overview": "Genel bakış",
         "overviewDescription": "Oyundaki istatistiklerinize kısa bir genel bakış.",
@@ -457,6 +457,13 @@
         },
         "portal": {
             "main": "Portal deneyimi"
+        },
+        "graph": {
+            "main": "Sunucu grafikleri",
+            "map": "Harita",
+            "mode": "Oyun modu",
+            "amount": "Toplanan zaman",
+            "error": "Bu sunucu için grafikler alınamadı"
         },
         "notFound": {
             "main": "Sunucu bulunamadı",
