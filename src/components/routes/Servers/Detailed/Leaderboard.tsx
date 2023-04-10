@@ -30,7 +30,7 @@ export function ServerLeaderboard(props: {
   gameid: string;
 }): React.ReactElement {
   const { t } = useTranslation();
-  const [sortType, setSortType] = React.useState<string>("timeplayed");
+  const [sortType, setSortType] = React.useState<string>("score");
   const getLanguage = () => window.localStorage.i18nextLng;
   const numberFormat = new Intl.NumberFormat(getLanguage());
   const gameId = props.gameid;
