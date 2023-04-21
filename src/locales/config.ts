@@ -4,16 +4,18 @@ import * as translationTR from "./languages/tr-TR.json";
 import * as translationRU from "./languages/ru-RU.json";
 import * as translationCH from "./languages/zh-CN.json";
 import * as translationNL from "./languages/nl-NL.json";
+import * as translationDE from "./languages/de_DE.json";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { formatDistanceToNowStrict, format } from "date-fns";
-import { enUS, tr, zhCN, nl, ru } from "date-fns/locale";
+import { enUS, tr, zhCN, nl, ru, de } from "date-fns/locale";
 
 const locales = {
   "en-US": enUS,
   "tr-TR": tr,
   "zh-CN": zhCN,
   "nl-NL": nl,
+  "de-DE": de,
   "ru-RU": ru,
 };
 
@@ -29,6 +31,9 @@ export const resources = {
   },
   "zh-CN": {
     translation: translationCH,
+  },
+  "de-DE": {
+    translation: translationDE,
   },
   "nl-NL": {
     translation: translationNL,
