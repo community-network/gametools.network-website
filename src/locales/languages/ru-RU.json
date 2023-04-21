@@ -4,7 +4,7 @@
     "loading": "Загрузка...",
     "error": "Не получилось получить статистику, что-то пошло не так...",
     "404": "404",
-    "playerNotFound": "Игровое имя не найдено, попробуйте другое.",
+    "playerNotFound": "Playername not found, please try another.",
     "notApplicable": "Н/Д",
     "resultNotFound": "Не найдено",
     "noName": "Не удается отобразить имя игрока при доступе к статистике через PlayerID",
@@ -86,6 +86,10 @@
         "ps4": "PS4",
         "ps3": "PS3",
         "all": "Все платформы"
+    },
+    "serverType": {
+        "official": "Official",
+        "custom": "Custom"
     },
     "statPlatforms": {
         "pc": "PC",
@@ -429,7 +433,9 @@
                 "platoon": "Взвод",
                 "rank": "Ранг",
                 "score": "Очки",
-                "killDeath": "Уб/См"
+                "killDeath": "Уб/См",
+                "kills": "Убийства",
+                "deaths": "Смерти"
             }
         },
         "factions": {
@@ -451,6 +457,13 @@
         },
         "portal": {
             "main": "Portal experience"
+        },
+        "graph": {
+            "main": "Server graphs",
+            "map": "Map",
+            "mode": "Gamemode",
+            "amount": "Times gathered",
+            "error": "Failed to get the graphs for this server"
         },
         "notFound": {
             "main": "Сервер не найден",
@@ -536,6 +549,9 @@
                 "url": "https://explore.transifex.com/gametools/"
             }
         }
+    },
+    "bflist": {
+        "notFound": "Didn't find server with bflist.io API"
     },
     "pageNotFound": {
         "main": "404 - Страница не найдена",
