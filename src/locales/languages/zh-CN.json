@@ -2,10 +2,10 @@
     "siteName": "战地游戏查询工具",
     "siteFullName": "战地游戏查询工具",
     "loading": "读取中",
-    "error": "Couldn't get this statistic, something went wrong...",
+    "error": "无法获取此统计信息，出了些问题...",
     "404": "404",
-    "playerNotFound": "找不到该玩家的id，请确认id的拼写",
-    "notApplicable": "N/A",
+    "playerNotFound": "找不到玩家名，请尝试其他玩家名称。",
+    "notApplicable": "不适用",
     "resultNotFound": "未找到",
     "noName": "当你用player id搜索时，我们不能显示玩家名称",
     "date": "{{date, date|eee, dd MMM yyyy}}",
@@ -18,8 +18,8 @@
     "ago": "前",
     "export": "导出EXCEL",
     "dateType": {
-        "createdAt": "Created at",
-        "updatedAt": "Updated at"
+        "createdAt": "创建于",
+        "updatedAt": "更新于"
     },
     "bfban": {
         "stats": "该玩家已被BFBAN标记外挂!",
@@ -30,8 +30,8 @@
         "copied": "已复制！"
     },
     "navBar": {
-        "help": "Need help?",
-        "serverManager": "Server Manager",
+        "help": "需要更多帮助?",
+        "serverManager": "服务器管理工具",
         "api": "公共API"
     },
     "games": {
@@ -59,12 +59,12 @@
         "bf2042portal": "Battlefield 2042 Portal"
     },
     "limit": {
-        "10": "10 servers",
-        "25": "25 servers",
-        "50": "50 servers",
-        "100": "100 servers",
-        "200": "200 servers",
-        "250": "250 servers"
+        "10": "10服务器",
+        "25": "25服务器",
+        "50": "50服务器",
+        "100": "100服务器",
+        "200": "200服务器",
+        "250": "250服务器"
     },
     "regions": {
         "all": "所有地区",
@@ -87,32 +87,36 @@
         "ps3": "PS3",
         "all": "所有平台"
     },
+    "serverType": {
+        "official": "官方",
+        "custom": "自定义"
+    },
     "statPlatforms": {
         "pc": "PC",
-        "xboxone": "XBOX ONE (and newer)",
+        "xboxone": "XBOX ONE (以及更新版本)",
         "xbox360": "XBOX 360",
-        "ps4": "PS4 (and newer)",
+        "ps4": "PS4 (以及更新版本)",
         "ps3": "PS3"
     },
     "home": {
         "manager": {
             "header": "GAMETOOLS | CLOUD",
-            "description": "We created a web-based Anti-cheat and Management platform to protect your Battlefield Servers.\nBuilt with help of many communities.\n\nLogin now and start your integration for free!",
-            "open": "Launch App",
-            "disclaimer": "Server hosting is not provided. We currently support the following Battlefield titles:"
+            "description": "我们创建了一个基于网络的反作弊和管理平台来保护您的 Battlefield 服务器。\n在许多社区的帮助下建造。\n\n立即登录并免费开始您的管理！",
+            "open": "启动应用程序",
+            "disclaimer": "不提供服务器托管。 我们目前支持以下《战地风云》游戏："
         },
         "graphs": {
-            "header": "Online stats and graphs",
-            "detailed": "View detailed stats"
+            "header": "在线统计数据和图表",
+            "detailed": "查看详细统计数据"
         },
         "otherServices": {
-            "header": "Other services",
+            "header": "其他服务",
             "0": {
-                "header": "Battlefield platoons",
+                "header": "战排",
                 "localUrl": "/platoons/"
             },
             "1": {
-                "header": "Portal Experience info",
+                "header": "门户体验信息",
                 "localUrl": "/playgrounds/"
             },
             "2": {
@@ -129,9 +133,9 @@
                 "url": "https://bfban.gametools.network/"
             },
             "1": {
-                "header": "BFPortal",
-                "description": "Find and share Battlefield 2042 portal experiences.",
-                "link": "Visit BFPortal",
+                "header": "BF门户网站",
+                "description": "查找并分享《战地风云 2042》门户网站体验。",
+                "link": "访问 BFPortal",
                 "url": "https://bfportal.gg/"
             },
             "2": {
@@ -156,7 +160,7 @@
         "searchPlaceholder": "Origin ID",
         "gameStatus": "战地在线人数",
         "zoomInfo": "(点击表格开启滚轮缩放)",
-        "moreGraphs": "Other graphs"
+        "moreGraphs": "其他图表"
     },
     "serverSearch": {
         "servers": "Servers",
@@ -174,9 +178,9 @@
             "name": "服务器名称",
             "playground": "体验名称"
         },
-        "showMore": "Show more",
-        "region": "Region",
-        "platform": "platform"
+        "showMore": "显示更多",
+        "region": "地区",
+        "platform": "平台"
     },
     "platoonSearch": {
         "back": "首页",
@@ -364,17 +368,17 @@
             "none": "该服务器还没有关联任何战队"
         },
         "sort": {
-            "serverName": "Server name",
-            "playerAmount": "Player amount",
-            "maxPlayers": "Max player amount"
+            "serverName": "服务器名称",
+            "playerAmount": "玩家数量",
+            "maxPlayers": "最大玩家数量"
         },
         "owner": {
             "main": "服主",
-            "experience": "Experience creator",
+            "experience": "体验创造者",
             "none": "没有服主 (官服)",
-            "unknown": "Name not found"
+            "unknown": "找不到名称"
         },
-        "password": "Password protected",
+        "password": "密码保护",
         "join": "加入服务器",
         "joinFirefox": "加入服务器 (只限火狐)",
         "joinme": {
@@ -387,8 +391,8 @@
             "invite": "加入我 邀请链接"
         },
         "bfportal": {
-            "found": "Portal experience found on BfPortal.gg",
-            "error": "Api failure for BfPortal.gg"
+            "found": "在 BfPortal.gg 上找到的门户体验",
+            "error": "BfPortal.gg 的 Api 故障"
         },
         "iframe": {
             "main": "把该服务器加入你自己的网站",
@@ -429,7 +433,9 @@
                 "platoon": "战排",
                 "rank": "等级",
                 "score": "分数",
-                "killDeath": "K/D"
+                "killDeath": "K/D",
+                "kills": "击杀",
+                "deaths": "死亡"
             }
         },
         "factions": {
@@ -444,17 +450,24 @@
             "BFFactionId_FactionBOL": "红军",
             "BFFactionId_FactionWA": "白军",
             "BFFactionId_FactionUKM": "皇家海军",
-            "FactionUS": "Russian Federation",
-            "FactionRUS": "United States of America",
+            "FactionUS": "俄罗斯联邦",
+            "FactionRUS": "美国",
             "teamOne": "队伍 1",
             "teamTwo": "队伍 2"
         },
         "portal": {
-            "main": "Portal experience"
+            "main": "门户体验"
+        },
+        "graph": {
+            "main": "服务器图表",
+            "map": "地图",
+            "mode": "游戏模式",
+            "amount": "时代聚集",
+            "error": "无法获取此服务器的图表"
         },
         "notFound": {
-            "main": "Server not found",
-            "description": "We cant find the server your looking for."
+            "main": "找不到服务器",
+            "description": "我们找不到您要找的服务器。"
         }
     },
     "platoon": {
@@ -474,38 +487,38 @@
             "name": "名字"
         },
         "notFound": {
-            "main": "Platoon not found",
-            "description": "We cant find the platoon your looking for."
+            "main": "未找到战排",
+            "description": "我们找不到您要找的战排。"
         }
     },
     "getPlaygrounds": {
-        "back": "Main page",
-        "main": "Get Battlefield Portal Experience info",
-        "description": "Get information about a Battlefield Portal experience",
-        "getInfo": "Fill in a valid experience url, playground id or experience code",
-        "show": "Show"
+        "back": "主页 ",
+        "main": "获取战地门户体验信息",
+        "description": "获取有关 Battlefield Portal 体验的信息",
+        "getInfo": "填写有效的体验 url、playground id 或体验代码",
+        "show": "显示更多"
     },
     "playgrounds": {
-        "back": "Back to search",
-        "rotation": "Experience map rotation",
-        "tags": "Experience tags",
-        "maxPlayers": "Max {{ amount }} players",
+        "back": "搜索主页",
+        "rotation": "体验地图轮换",
+        "tags": "体验标签",
+        "maxPlayers": "最多 {{ amount }} 名玩家",
         "owner": {
-            "main": "Experience creator",
-            "none": "The creator can only be retrieved if playground id is used",
-            "unknown": "Name not found"
+            "main": "体验创造者",
+            "none": "仅当使用 playground id 时才能检索创建者",
+            "unknown": "找不到名称"
         },
         "notFound": {
-            "main": "Experience not found",
-            "description": "We cant find the experience your looking for."
+            "main": "未找到Experience",
+            "description": "我们找不到您想要的体验。"
         },
         "types": {
-            "main": "Type",
-            "portal-standard": "Standard experience",
-            "portal-featured": "Featured experience",
-            "portal-default": "Standard experience",
-            "portal-unranked": "Unranked",
-            "portal-spotlight": "In the spotlight"
+            "main": "种类",
+            "portal-standard": "标准体验",
+            "portal-featured": "特色体验",
+            "portal-default": "标准体验",
+            "portal-unranked": "无排名",
+            "portal-spotlight": "在聚光灯下"
         }
     },
     "footer": {
@@ -532,14 +545,17 @@
                 "url": "https://top.gg/bot/714524944783900794"
             },
             "5": {
-                "header": "Help with translation",
+                "header": "帮助我们进行翻译",
                 "url": "https://explore.transifex.com/gametools/"
             }
         }
     },
+    "bflist": {
+        "notFound": "没有找到带有 bflist.io API 的服务器"
+    },
     "pageNotFound": {
-        "main": "404 - Page not found",
-        "description": "We cant find the page your looking for.",
-        "home": "Back to the home page"
+        "main": "404页面不存在",
+        "description": "我们无法找到您要查找的页面",
+        "home": "返回到首页"
     }
 }
