@@ -1,561 +1,561 @@
 {
-    "siteName": "GAMETOOLS",
-    "siteFullName": "Game tools",
-    "loading": "Laden...",
-    "error": "Kon het statistiek niet ophalen, er ging iets mis...",
-    "404": "404",
-    "playerNotFound": "Spelernaam niet gevonden, probeer eens een andere.",
-    "notApplicable": "N/A",
-    "resultNotFound": "Geen resultaten gevonden",
-    "noName": "Kan geen spelernaam niet laten zien wanneer stats zijn opgehaald via speler ID.",
-    "date": "{{date, date|eee, dd MMM yyyy}}",
-    "dateTime": "{{date, date|eee, dd MMM yyyy - p}}",
-    "shortDateTime": "{{date, date|PPpp}}",
-    "chartHourFormat": "HH:mm, eee d LLL",
-    "time": "{{date, date|p}}",
-    "change": "{{change, change}}",
-    "intlNumber": "{{val, number}}",
-    "ago": "geleden",
-    "export": "Exporteren",
-    "dateType": {
-        "createdAt": "Aangemaakt op",
-        "updatedAt": "Geüpdatet op"
+  "siteName": "GAMETOOLS",
+  "siteFullName": "Game tools",
+  "loading": "Laden...",
+  "error": "Kon het statistiek niet ophalen, er ging iets mis...",
+  "404": "404",
+  "playerNotFound": "Spelernaam niet gevonden, probeer eens een andere.",
+  "notApplicable": "N/A",
+  "resultNotFound": "Geen resultaten gevonden",
+  "noName": "Kan geen spelernaam niet laten zien wanneer stats zijn opgehaald via speler ID.",
+  "date": "{{date, date|eee, dd MMM yyyy}}",
+  "dateTime": "{{date, date|eee, dd MMM yyyy - p}}",
+  "shortDateTime": "{{date, date|PPpp}}",
+  "chartHourFormat": "HH:mm, eee d LLL",
+  "time": "{{date, date|p}}",
+  "change": "{{change, change}}",
+  "intlNumber": "{{val, number}}",
+  "ago": "geleden",
+  "export": "Exporteren",
+  "dateType": {
+    "createdAt": "Aangemaakt op",
+    "updatedAt": "Geüpdatet op"
+  },
+  "bfban": {
+    "stats": "Deze speler is gemarkeerd als hacker in bfban!",
+    "platoon": " Hacker"
+  },
+  "states": {
+    "copy": "Link kopiëren",
+    "copied": "Gekopieerd!"
+  },
+  "navBar": {
+    "help": "Hulp nodig?",
+    "serverManager": "Servermanager",
+    "api": "Battlefield API"
+  },
+  "games": {
+    "bfglobal": "Globaal",
+    "bf1942": "Battlefield 1942",
+    "bf2": {
+      "bf2hub": "Battlefield 2 (bf2hub)",
+      "playbf2": "Battlefield 2 (playbf2)"
     },
-    "bfban": {
-        "stats": "Deze speler is gemarkeerd als hacker in bfban!",
-        "platoon": " Hacker"
+    "bf2142": {
+      "openspy": "Battlefield 2142 (openspy)",
+      "play2142": "Battlefield 2142 (.co)"
     },
-    "states": {
-        "copy": "Link kopiëren",
-        "copied": "Gekopieerd!"
+    "bfvietnam": {
+      "openspy": "Battlefield Vietnam (openspy)",
+      "qtracker": "Battlefield Vietnam (qtracker)"
     },
-    "navBar": {
-        "help": "Hulp nodig?",
-        "serverManager": "Servermanager",
-        "api": "Battlefield API"
+    "bfbc2": "Battlefield: Bad Company 2",
+    "bf3": "Battlefield 3",
+    "bf4": "Battlefield 4",
+    "bfh": "Battlefield Hardline",
+    "bf1": "Battlefield 1",
+    "bfv": "Battlefield 5",
+    "bf2042": "Battlefield 2042",
+    "bf2042portal": "Battlefield 2042 Portal"
+  },
+  "limit": {
+    "10": "10 servers",
+    "25": "25 servers",
+    "50": "50 servers",
+    "100": "100 servers",
+    "200": "200 servers",
+    "250": "250 servers"
+  },
+  "regions": {
+    "all": "Alle regio's",
+    "eu": "Europa",
+    "asia": "Azië",
+    "nam": "Noord-America",
+    "sam": "Zuid-Amerika",
+    "au": "Australië",
+    "oc": "Oceanië",
+    "afr": "Afrika",
+    "ac": "Antarctica"
+  },
+  "platforms": {
+    "pc": "PC",
+    "xboxseries": "XBOX SERIES",
+    "xboxone": "XBOX ONE",
+    "xbox360": "XBOX 360",
+    "ps5": "PS5",
+    "ps4": "PS4",
+    "ps3": "PS3",
+    "all": "Alle platformen"
+  },
+  "serverType": {
+    "official": "Officieel",
+    "custom": "Aangepast"
+  },
+  "statPlatforms": {
+    "pc": "PC",
+    "xboxone": "XBOX ONE (en nieuwer)",
+    "xbox360": "XBOX 360",
+    "ps4": "PS4 (en nieuwer)",
+    "ps3": "PS3"
+  },
+  "home": {
+    "manager": {
+      "header": "GAMETOOLS | CLOUD",
+      "description": "We created a web-based Anti-cheat and Management platform to protect your Battlefield Servers.\nBuilt with help of many communities.\n\nLogin now and start your integration for free!",
+      "open": "Open app",
+      "disclaimer": "Server hosting is not provided. We currently support the following Battlefield titles:"
     },
-    "games": {
-        "bfglobal": "Globaal",
-        "bf1942": "Battlefield 1942",
-        "bf2": {
-            "bf2hub": "Battlefield 2 (bf2hub)",
-            "playbf2": "Battlefield 2 (playbf2)"
-        },
-        "bf2142": {
-            "openspy": "Battlefield 2142 (openspy)",
-            "play2142": "Battlefield 2142 (.co)"
-        },
-        "bfvietnam": {
-            "openspy": "Battlefield Vietnam (openspy)",
-            "qtracker": "Battlefield Vietnam (qtracker)"
-        },
-        "bfbc2": "Battlefield: Bad Company 2",
-        "bf3": "Battlefield 3",
-        "bf4": "Battlefield 4",
-        "bfh": "Battlefield Hardline",
-        "bf1": "Battlefield 1",
-        "bfv": "Battlefield 5",
-        "bf2042": "Battlefield 2042",
-        "bf2042portal": "Battlefield 2042 Portal"
+    "graphs": {
+      "header": "Online statistieken en grafieken",
+      "detailed": "Gedetaileerde stats inzien"
     },
-    "limit": {
-        "10": "10 servers",
-        "25": "25 servers",
-        "50": "50 servers",
-        "100": "100 servers",
-        "200": "200 servers",
-        "250": "250 servers"
+    "otherServices": {
+      "header": "Andere services",
+      "0": {
+        "header": "Battlefield platoons",
+        "localUrl": "/platoons/"
+      },
+      "1": {
+        "header": "Portal Experience info",
+        "localUrl": "/playgrounds/"
+      },
+      "2": {
+        "header": "FESL API (Battlefield bad company 2 APIs)",
+        "url": "https://fesl.gametools.network/docs"
+      }
     },
-    "regions": {
-        "all": "Alle regio's",
-        "eu": "Europa",
-        "asia": "Azië",
-        "nam": "Noord-America",
-        "sam": "Zuid-Amerika",
-        "au": "Australië",
-        "oc": "Oceanië",
-        "afr": "Afrika",
-        "ac": "Antarctica"
+    "ourFriends": {
+      "header": "Van onze vrienden",
+      "0": {
+        "header": "BFBan",
+        "description": "Wij hosten en zijn een actief onderdeel van bfban.com - een geweldige community & reverse engineering/beveiligingsteam opgericht tegen hackers, we bieden een verenigd banlijst- en rapportsysteem.\nRapporteer cheaters in BF1/BV5, zodat ze verbannen kunnen worden op communityservers.",
+        "link": "Bezoek BFBan",
+        "url": "https://bfban.gametools.network/"
+      },
+      "1": {
+        "header": "BFPortal",
+        "description": "Vind en deel Battlefield 2042 portal ervaringen.",
+        "link": "Bezoek BFPortal",
+        "url": "https://bfportal.gg/"
+      },
+      "2": {
+        "header": "Statbits",
+        "description": "Statbits laat je de spelstatistieken integreren in jouw stream chat en andere applicaties. Wil je een !kd command die je algemene kill/death ratio laat zien voor Battlefield 4? We got you!",
+        "link": "Lees de documentatie",
+        "url": "https://statbits.io/"
+      },
+      "3": {
+        "header": "BFList",
+        "description": "bflist biedt live gegevens over wat er op het slagveld gebeurt in spellen uit de Battlefield-serie. Wij geven gegevens over zowel servers als spelers. Van een server zijn naam of huidige map tot de huidige kd en score van elke speler.",
+        "link": "Lees de documentatie",
+        "url": "https://bflist.io/"
+      }
+    }
+  },
+  "playerSearch": {
+    "back": "Hoofdpagina",
+    "bfStats": "Battlefield Stats",
+    "description": "Zie uw online stats! PC, Xbox, and PSN\n Ondersteuning voor meeste battlefield spellen",
+    "search": "Zoeken",
+    "searchPlaceholder": "Vind bij bijnaam",
+    "gameStatus": "Het aantal spelers in het spel",
+    "zoomInfo": "(Klick op het tabel om scroll-zoom te activeren)",
+    "moreGraphs": "Andere grafieken"
+  },
+  "serverSearch": {
+    "servers": "Servers",
+    "back": "Hoofdpagina",
+    "serverInfo": "Battlefield Servers",
+    "description": "Zoek voor Battlefield servers om de aantal spelers/map rotatie van de server te zien.",
+    "search": "Zoeken",
+    "searchPlaceholder": {
+      "null": "Zoek voor servernaam...",
+      "servername": "Zoek voor servernaam...",
+      "experiencename": "Zoek voor experience-naam..."
     },
-    "platforms": {
-        "pc": "PC",
-        "xboxseries": "XBOX SERIES",
-        "xboxone": "XBOX ONE",
-        "xbox360": "XBOX 360",
-        "ps5": "PS5",
-        "ps4": "PS4",
-        "ps3": "PS3",
-        "all": "Alle platformen"
+    "results": "Zoekresultaten",
+    "type": {
+      "name": "Servernaam",
+      "playground": "Experience-naam"
     },
-    "serverType": {
-        "official": "Officieel",
-        "custom": "Aangepast"
+    "showMore": "Meer resultaten",
+    "region": "Regio",
+    "platform": "platform"
+  },
+  "platoonSearch": {
+    "back": "Hoofdpagina",
+    "serverInfo": "Battlefield Platoons",
+    "description": "Zoek voek Battlefield platoons, klik op een platoon om te zien wie er lid van is.",
+    "search": "Search",
+    "searchPlaceholder": "Search for platoon name...",
+    "results": "Search results",
+    "resultNotFound": "Geen resultaten gevonden. Om platoons te zoeken, moet u minimaal 3 karakters invoeren."
+  },
+  "stats": {
+    "view": "Stats bekijken",
+    "back": "Hoofdpagina",
+    "originDescription": "gebruikers profiel",
+    "detailedName": "Gedetaileerde stats",
+    "overview": "Overzicht",
+    "overviewDescription": "Een klein overzicht van uw statistieken in het spel.",
+    "platoonName": "Huidige platoon",
+    "otherPlatoons": "Andere platoons",
+    "weapons": "Wapens",
+    "vehicles": "Voertuigen",
+    "weaponGraph": "Wapens grafiek",
+    "vehicleGraph": "Voertuigen grafiek",
+    "searchWeapon": "Zoek voor een wapen",
+    "searchVehicle": "Zoek voor een voertuig",
+    "rows": {
+      "weaponName": "Wapen naam",
+      "vehicleName": "Voertuig naam",
+      "type": "Type",
+      "kills": "Kills",
+      "killsPerMinute": "KPM",
+      "damagePerMinute": "DPM",
+      "destroyed": "Destroyed",
+      "accuracy": "Accuracy",
+      "headshots": "Headshots"
     },
-    "statPlatforms": {
-        "pc": "PC",
-        "xboxone": "XBOX ONE (en nieuwer)",
-        "xbox360": "XBOX 360",
-        "ps4": "PS4 (en nieuwer)",
-        "ps3": "PS3"
+    "classes": {
+      "main": "Klasse",
+      "Medic": "Medic",
+      "Support": "Support",
+      "Scout": "Scout",
+      "Assault": "Assault",
+      "Pilot": "Pilot",
+      "Tanker": "Tanker",
+      "Cavalry": "Cavalry",
+      "amounts": {
+        "kpm": "KPM",
+        "score": "Score",
+        "kills": "Kills",
+        "timePlayed": "Tijd gespeeld als"
+      }
     },
-    "home": {
-        "manager": {
-            "header": "GAMETOOLS | CLOUD",
-            "description": "We created a web-based Anti-cheat and Management platform to protect your Battlefield Servers.\nBuilt with help of many communities.\n\nLogin now and start your integration for free!",
-            "open": "Open app",
-            "disclaimer": "Server hosting is not provided. We currently support the following Battlefield titles:"
-        },
-        "graphs": {
-            "header": "Online statistieken en grafieken",
-            "detailed": "Gedetaileerde stats inzien"
-        },
-        "otherServices": {
-            "header": "Andere services",
-            "0": {
-                "header": "Battlefield platoons",
-                "localUrl": "/platoons/"
-            },
-            "1": {
-                "header": "Portal Experience info",
-                "localUrl": "/playgrounds/"
-            },
-            "2": {
-                "header": "FESL API (Battlefield bad company 2 APIs)",
-                "url": "https://fesl.gametools.network/docs"
-            }
-        },
-        "ourFriends": {
-            "header": "Van onze vrienden",
-            "0": {
-                "header": "BFBan",
-                "description": "Wij hosten en zijn een actief onderdeel van bfban.com - een geweldige community & reverse engineering/beveiligingsteam opgericht tegen hackers, we bieden een verenigd banlijst- en rapportsysteem.\nRapporteer cheaters in BF1/BV5, zodat ze verbannen kunnen worden op communityservers.",
-                "link": "Bezoek BFBan",
-                "url": "https://bfban.gametools.network/"
-            },
-            "1": {
-                "header": "BFPortal",
-                "description": "Vind en deel Battlefield 2042 portal ervaringen.",
-                "link": "Bezoek BFPortal",
-                "url": "https://bfportal.gg/"
-            },
-            "2": {
-                "header": "Statbits",
-                "description": "Statbits laat je de spelstatistieken integreren in jouw stream chat en andere applicaties. Wil je een !kd command die je algemene kill/death ratio laat zien voor Battlefield 4? We got you!",
-                "link": "Lees de documentatie",
-                "url": "https://statbits.io/"
-            },
-            "3": {
-                "header": "BFList",
-                "description": "bflist biedt live gegevens over wat er op het slagveld gebeurt in spellen uit de Battlefield-serie. Wij geven gegevens over zowel servers als spelers. Van een server zijn naam of huidige map tot de huidige kd en score van elke speler.",
-                "link": "Lees de documentatie",
-                "url": "https://bflist.io/"
-            }
-        }
+    "progress": {
+      "main": "Game progressie",
+      "Campaign": "Campagne",
+      "Assignments": "Assignments",
+      "Medals": "medailles",
+      "Ribbons": "Ribbons",
+      "Weapons": "wapens",
+      "Vehicles": "Voertuigen",
+      "Kits": "Kits",
+      "Codex": "Codex",
+      "Dog tags": "Dog tags"
     },
-    "playerSearch": {
-        "back": "Hoofdpagina",
-        "bfStats": "Battlefield Stats",
-        "description": "Zie uw online stats! PC, Xbox, and PSN\n Ondersteuning voor meeste battlefield spellen",
-        "search": "Zoeken",
-        "searchPlaceholder": "Vind bij bijnaam",
-        "gameStatus": "Het aantal spelers in het spel",
-        "zoomInfo": "(Klick op het tabel om scroll-zoom te activeren)",
-        "moreGraphs": "Andere grafieken"
-    },
-    "serverSearch": {
-        "servers": "Servers",
-        "back": "Hoofdpagina",
-        "serverInfo": "Battlefield Servers",
-        "description": "Zoek voor Battlefield servers om de aantal spelers/map rotatie van de server te zien.",
-        "search": "Zoeken",
-        "searchPlaceholder": {
-            "null": "Zoek voor servernaam...",
-            "servername": "Zoek voor servernaam...",
-            "experiencename": "Zoek voor experience-naam..."
-        },
-        "results": "Zoekresultaten",
-        "type": {
-            "name": "Servernaam",
-            "playground": "Experience-naam"
-        },
-        "showMore": "Meer resultaten",
-        "region": "Regio",
-        "platform": "platform"
-    },
-    "platoonSearch": {
-        "back": "Hoofdpagina",
-        "serverInfo": "Battlefield Platoons",
-        "description": "Zoek voek Battlefield platoons, klik op een platoon om te zien wie er lid van is.",
-        "search": "Search",
-        "searchPlaceholder": "Search for platoon name...",
-        "results": "Search results",
-        "resultNotFound": "Geen resultaten gevonden. Om platoons te zoeken, moet u minimaal 3 karakters invoeren."
-    },
-    "stats": {
-        "view": "Stats bekijken",
-        "back": "Hoofdpagina",
-        "originDescription": "gebruikers profiel",
-        "detailedName": "Gedetaileerde stats",
-        "overview": "Overzicht",
-        "overviewDescription": "Een klein overzicht van uw statistieken in het spel.",
-        "platoonName": "Huidige platoon",
-        "otherPlatoons": "Andere platoons",
-        "weapons": "Wapens",
-        "vehicles": "Voertuigen",
-        "weaponGraph": "Wapens grafiek",
-        "vehicleGraph": "Voertuigen grafiek",
-        "searchWeapon": "Zoek voor een wapen",
-        "searchVehicle": "Zoek voor een voertuig",
-        "rows": {
-            "weaponName": "Wapen naam",
-            "vehicleName": "Voertuig naam",
-            "type": "Type",
-            "kills": "Kills",
-            "killsPerMinute": "KPM",
-            "damagePerMinute": "DPM",
-            "destroyed": "Destroyed",
-            "accuracy": "Accuracy",
-            "headshots": "Headshots"
-        },
-        "classes": {
-            "main": "Klasse",
-            "Medic": "Medic",
-            "Support": "Support",
-            "Scout": "Scout",
-            "Assault": "Assault",
-            "Pilot": "Pilot",
-            "Tanker": "Tanker",
-            "Cavalry": "Cavalry",
-            "amounts": {
-                "kpm": "KPM",
-                "score": "Score",
-                "kills": "Kills",
-                "timePlayed": "Tijd gespeeld als"
-            }
-        },
-        "progress": {
-            "main": "Game progressie",
-            "Campaign": "Campagne",
-            "Assignments": "Assignments",
-            "Medals": "medailles",
-            "Ribbons": "Ribbons",
-            "Weapons": "wapens",
-            "Vehicles": "Voertuigen",
-            "Kits": "Kits",
-            "Codex": "Codex",
-            "Dog tags": "Dog tags"
-        },
-        "gamemodes": {
-            "main": "gamemode info",
-            "percentage": "Wins: {{percentage}}%",
-            "Frontlines": "Frontlines",
-            "Domination": "Domination",
-            "Shock operations": "Shock operations",
-            "Rush": "Rush",
-            "Conquest": "Conquest",
-            "War pigeons": "War pigeons",
-            "Operations": "Operations",
-            "Teamdeathmatch": "Team deathmatch",
-            "Conquestlarge": "Conquest large",
-            "Gunmaster": "Gunmaster",
-            "Capturetheflag": "Capture the flag",
-            "Obliteration": "Obliteration",
-            "Airsuperiority": "Air superiority",
-            "Elimination": "Elimination",
-            "Carrierassault": "Carrier assault",
-            "Carrierassaultlarge": "Carrier assault large",
-            "Carrierassaultsmall": "Carrier assault small",
-            "Chainlink": "Chainlink",
-            "Sqdm": "Squad deathmatch",
-            "Conquestladder": "Conquest Ladder",
-            "Squadobliteration": "Squad obliteration",
-            "table": {
-                "firstRow": "gamemode",
-                "secondRow": "Score"
-            },
-            "amounts": {
-                "wins": "Wins",
-                "losses": "Losses",
-                "score": "Score"
-            }
-        },
-        "platoon": {
-            "none": "Zit niet in een platoon",
-            "noMain": "Heeft geen hoofdplatoon",
-            "noDescription": "De platoon heeft geen descriptie"
-        },
-        "playSession": {
-            "main": "Battlefield speelsessies",
-            "detailed": "We houden bij in welke servers u hebt gespeeld, dit werkt alleen wanneer de server onze manager gebruikt.",
-            "stats": {
-                "kills": "Kills",
-                "deaths": "Deaths",
-                "wins": "Wins",
-                "losses": "Losses",
-                "timePlayedAs": "Tijd gespeeld als",
-                "score": "Score",
-                "gamemodes": {
-                    "TugOfWar": "Frontlines",
-                    "Domination": "Domination",
-                    "Breakthrough": "Shock Operations",
-                    "Rush": "Rush",
-                    "BreakthroughLarge": "Operations",
-                    "Conquest": "Conquest",
-                    "Possession": "War pigeons",
-                    "TeamDeathMatch": "Team Deathmatch"
-                }
-            }
-        },
-        "main": {
-            "rank": "Rank",
-            "killDeath": "K/D",
-            "killsPerMinute": "KPM",
-            "winPercent": "Win%",
-            "bestClass": "Best class",
-            "accuracy": "Accuracy",
-            "timePlayed": "Tijd gespeeld"
-        },
-        "detailed": {
-            "skill": "Skill",
-            "scorePerMinute": "SPM",
-            "headshotPercent": "Headshots",
-            "infantryKillDeath": "infan K/D",
-            "infantryKillsPerMinute": "infan KPM",
-            "kills": "Kills",
-            "deaths": "Deaths",
-            "wins": "Wins",
-            "losses": "Losses",
-            "longestHeadShot": "Longest headshot",
-            "highestKillStreak": "Highest killstreak",
-            "revives": "Revives",
-            "roundsPlayed": "Rounds played",
-            "awardScore": "Award score",
-            "bonusScore": "Bonus score",
-            "squadScore": "Squad score",
-            "avengerKills": "Avenger kills",
-            "saviorKills": "Saviour kills",
-            "headShots": "Headshots",
-            "heals": "Heals",
-            "repairs": "Repairs",
-            "killAssists": "Kill assists",
-            "winPercent": "Win precentage",
-            "quits": "Quits"
-        },
-        "graph": {
-            "graphOptions": {
-                "amounts": "Hoeveelheid",
-                "maps": "Actieve maps",
-                "settings": "Actieve instellingen",
-                "modes": "Actieve modes",
-                "ownerPlatform": "Actieve eigenaar's platform"
-            },
-            "soldierAmount": "Alle spelers",
-            "diceSoldierAmount": "Spelers op Dice servers",
-            "communitySoldierAmount": "Spelers op Community servers"
-        },
-        "iframe": {
-            "main": "Voeg uw eigen stats toe aan uw website",
-            "info": "Hoofdversie:"
-        }
-    },
-    "servers": {
-        "back": "Terug naar zoeken",
-        "rotation": "Server maprotatie",
-        "settings": "Server-instellingen",
-        "permLink": "Permanente link (gebaseerd op huidige naam):",
-        "platoon": {
-            "main": "Server platoon",
-            "none": "Er is geen platoon gekoppeld aan deze server"
-        },
-        "sort": {
-            "serverName": "Servernaam",
-            "playerAmount": "Aantal spelers",
-            "maxPlayers": "Max aantal spelers"
-        },
-        "owner": {
-            "main": "Server eigenaar",
-            "experience": "Experience eigenaar",
-            "none": "Server heeft geen eigenaar (Dice server)",
-            "unknown": "Naam niet gevonden"
-        },
-        "password": "Met wachtwoord beveiligd",
-        "join": "Join server",
-        "joinFirefox": "Join server (werkt alleen op firefox)",
-        "joinme": {
-            "main": "Joinme.click launcher",
-            "view": "Bekijk server op joinme.click",
-            "launch": "Spel gestart!",
-            "info": "De join server knoppen gebruiken <0>https://joinme.click/</0> om de het spel te starten, installeer de <0>joinme.click launcher</0> eerst voordat u de knoppen probeert te gebruiken!",
-            "smallinfo": "De join server knoppen gebruiken <0>https://joinme.click/</0> om de het spel te starten.",
-            "discord": "De joinme launcher moet geïnstalleerd zijn om dit te laten werken!",
-            "invite": "Joinme.click invite URL"
-        },
-        "bfportal": {
-            "found": "Portal experience gevonden op BfPortal.gg",
-            "error": "Api fout voor BfPortal.gg"
-        },
-        "iframe": {
-            "main": "Voeg de server toe aan uw website",
-            "info": "Als u uw eigen versie wilt, vraag dan iiTzArcur op onze discord. (link in footer)",
-            "black": "Zwarte variant:",
-            "white": "Witte variant:",
-            "detailed": "Gedetaileerde variant:",
-            "states": {
-                "copy": "Iframe kopiëren",
-                "copied": "Gekopieerd!"
-            }
-        },
-        "leaderboard": {
-            "main": "Scoreboard van spelerstats van deze server",
-            "info": "alleen beschikbaar wanneer de server the manager-api gebruikt",
-            "none": "Server is net toegevoegd of gebruikt de manager-api niet",
-            "row": {
-                "score": "Score",
-                "killDeath": "K/D",
-                "kills": "Kills",
-                "deaths": "Deaths",
-                "wins": "Wins",
-                "losses": "Losses",
-                "timePlayed": "Tijd gespeeld"
-            }
-        },
-        "playerlist": {
-            "main": "Spelers die nu in de server zijn",
-            "none": "Server is net toegevoegd of gebruikt de manager-api niet",
-            "empty": "Dit team is leeg",
-            "lastUpdate": "Laaste update",
-            "row": {
-                "ping": "Ping",
-                "platform": "Platform",
-                "timePlayed": "Tijd gespeeld",
-                "playerSlot": "Spelerslot",
-                "playerName": "Spelernaam",
-                "platoon": "Platoon",
-                "rank": "Rank",
-                "score": "Score",
-                "killDeath": "K/D",
-                "kills": "Kills",
-                "deaths": "Deaths"
-            }
-        },
-        "factions": {
-            "BFFactionId_FactionAHU": "Austro-Hungarian Empire",
-            "BFFactionId_FactionGER": "German Empire",
-            "BFFactionId_FactionOTM": "Ottoman Empire",
-            "BFFactionId_FactionITA": "Kingdom of Italy",
-            "BFFactionId_FactionUK": "United Kingdom",
-            "BFFactionId_FactionUSA": "United States of America",
-            "BFFactionId_FactionFRA": "France",
-            "BFFactionId_FactionRUS": "Russian Empire",
-            "BFFactionId_FactionBOL": "Red Army",
-            "BFFactionId_FactionWA": "White Army",
-            "BFFactionId_FactionUKM": "Royal Marines",
-            "FactionUS": "Russian Federation",
-            "FactionRUS": "United States of America",
-            "teamOne": "Team 1",
-            "teamTwo": "Team 2"
-        },
-        "portal": {
-            "main": "Portal experience"
-        },
-        "graph": {
-            "main": "Server grafieken",
-            "map": "Map",
-            "mode": "gamemode",
-            "amount": "Keren opgehaald",
-            "error": "Kon de grafieken voor de server niet ophalen"
-        },
-        "notFound": {
-            "main": "Server niet gevonden",
-            "description": "We konden de server die u zocht niet vinden."
-        }
+    "gamemodes": {
+      "main": "gamemode info",
+      "percentage": "Wins: {{percentage}}%",
+      "Frontlines": "Frontlines",
+      "Domination": "Domination",
+      "Shock operations": "Shock operations",
+      "Rush": "Rush",
+      "Conquest": "Conquest",
+      "War pigeons": "War pigeons",
+      "Operations": "Operations",
+      "Teamdeathmatch": "Team deathmatch",
+      "Conquestlarge": "Conquest large",
+      "Gunmaster": "Gunmaster",
+      "Capturetheflag": "Capture the flag",
+      "Obliteration": "Obliteration",
+      "Airsuperiority": "Air superiority",
+      "Elimination": "Elimination",
+      "Carrierassault": "Carrier assault",
+      "Carrierassaultlarge": "Carrier assault large",
+      "Carrierassaultsmall": "Carrier assault small",
+      "Chainlink": "Chainlink",
+      "Sqdm": "Squad deathmatch",
+      "Conquestladder": "Conquest Ladder",
+      "Squadobliteration": "Squad obliteration",
+      "table": {
+        "firstRow": "gamemode",
+        "secondRow": "Score"
+      },
+      "amounts": {
+        "wins": "Wins",
+        "losses": "Losses",
+        "score": "Score"
+      }
     },
     "platoon": {
-        "back": "Terug naar zoeken",
-        "searchPlayer": "Zoek een speler",
-        "servers": "Platoon servers",
-        "members": {
-            "main": "Platoon leden",
-            "General": "Genraal",
-            "Colonel": "Kolonel",
-            "Lieutenant": "Luitenant",
-            "Private": "Soldaat",
-            "empty": "Er zijn geen leden met deze rank"
-        },
-        "rows": {
-            "role": "Rol",
-            "name": "Naam"
-        },
-        "notFound": {
-            "main": "Platoon niet gevonden",
-            "description": "We konden de platoon die u zocht niet vinden."
+      "none": "Zit niet in een platoon",
+      "noMain": "Heeft geen hoofdplatoon",
+      "noDescription": "De platoon heeft geen descriptie"
+    },
+    "playSession": {
+      "main": "Battlefield speelsessies",
+      "detailed": "We houden bij in welke servers u hebt gespeeld, dit werkt alleen wanneer de server onze manager gebruikt.",
+      "stats": {
+        "kills": "Kills",
+        "deaths": "Deaths",
+        "wins": "Wins",
+        "losses": "Losses",
+        "timePlayedAs": "Tijd gespeeld als",
+        "score": "Score",
+        "gamemodes": {
+          "Frontlines": "Frontlines",
+          "Domination": "Domination",
+          "Breakthrough": "Shock Operations",
+          "Rush": "Rush",
+          "BreakthroughLarge": "Operations",
+          "Conquest": "Conquest",
+          "Possession": "War pigeons",
+          "TeamDeathMatch": "Team Deathmatch"
         }
+      }
     },
-    "getPlaygrounds": {
-        "back": "Hoofdpagina",
-        "main": "Krijg Battlefield Portal Experience informatie",
-        "description": "Krijg informatie over een Battlefield Portal experience",
-        "getInfo": "Vul een geldige experience url, playground id of experience code in",
-        "show": "Laat zien"
+    "main": {
+      "rank": "Rank",
+      "killDeath": "K/D",
+      "killsPerMinute": "KPM",
+      "winPercent": "Win%",
+      "bestClass": "Best class",
+      "accuracy": "Accuracy",
+      "timePlayed": "Tijd gespeeld"
     },
-    "playgrounds": {
-        "back": "Terug naar zoeken",
-        "rotation": "Experience map rotatie",
-        "tags": "Experience tags",
-        "maxPlayers": "Max {{ amount }} spelers",
-        "owner": {
-            "main": "Experience eigenaar",
-            "none": "De naam van eigenaar kan alleen opgehaald worden wanneer een playground id gebruikt it",
-            "unknown": "Naam niet gevonden"
-        },
-        "notFound": {
-            "main": "Experience niet gevonden",
-            "description": "We konden de experience die u zocht niet vinden."
-        },
-        "types": {
-            "main": "Type",
-            "portal-standard": "Standard experience",
-            "portal-featured": "Featured experience",
-            "portal-default": "Standard experience",
-            "portal-unranked": "Unranked",
-            "portal-spotlight": "In the spotlight"
-        }
+    "detailed": {
+      "skill": "Skill",
+      "scorePerMinute": "SPM",
+      "headshotPercent": "Headshots",
+      "infantryKillDeath": "infan K/D",
+      "infantryKillsPerMinute": "infan KPM",
+      "kills": "Kills",
+      "deaths": "Deaths",
+      "wins": "Wins",
+      "losses": "Losses",
+      "longestHeadShot": "Longest headshot",
+      "highestKillStreak": "Highest killstreak",
+      "revives": "Revives",
+      "roundsPlayed": "Rounds played",
+      "awardScore": "Award score",
+      "bonusScore": "Bonus score",
+      "squadScore": "Squad score",
+      "avengerKills": "Avenger kills",
+      "saviorKills": "Saviour kills",
+      "headShots": "Headshots",
+      "heals": "Heals",
+      "repairs": "Repairs",
+      "killAssists": "Kill assists",
+      "winPercent": "Win precentage",
+      "quits": "Quits"
     },
-    "footer": {
-        "description": "This website is part of the Community Network. It is Open Source. You can post issues and suggest changes/improvements via GitHub. API provided by Community Network and open for public usage. We don’t provide any third-party API. Our back end is closed source and not available publicly.\nBattlefield & Origin are registered trademark of Electronic Arts. This website uses data provided pursuant to Electronic Arts’ Battlefield 1 Stats Terms. Trademarks are the property of their respective owners. Game materials copyright Electronic Arts Inc. Electronic Arts has not endorsed and is not responsible for this site or its content.\nCode is under GPL v2 License. Some parts are under Community Network copyright.",
-        "links": {
-            "0": {
-                "header": "GitHub",
-                "url": "https://github.com/Community-network"
-            },
-            "1": {
-                "header": "Publieke API",
-                "url": "https://api.gametools.network/"
-            },
-            "2": {
-                "header": "Community Network Discord",
-                "url": "https://discord.gametools.network/"
-            },
-            "3": {
-                "header": "Privacy Policy",
-                "url": "/privacy/"
-            },
-            "4": {
-                "header": "Discord bot",
-                "url": "https://top.gg/bot/714524944783900794"
-            },
-            "5": {
-                "header": "Help met vertalingen",
-                "url": "https://explore.transifex.com/gametools/"
-            }
-        }
+    "graph": {
+      "graphOptions": {
+        "amounts": "Hoeveelheid",
+        "maps": "Actieve maps",
+        "settings": "Actieve instellingen",
+        "modes": "Actieve modes",
+        "ownerPlatform": "Actieve eigenaar's platform"
+      },
+      "soldierAmount": "Alle spelers",
+      "diceSoldierAmount": "Spelers op Dice servers",
+      "communitySoldierAmount": "Spelers op Community servers"
     },
-    "bflist": {
-        "notFound": "Kon server niet vinden met de bflist.io API"
-    },
-    "pageNotFound": {
-        "main": "404 - Pagina niet gevonden",
-        "description": "We konden de pagina die u zocht niet vinden.",
-        "home": "Terug naar de hoofdpagina"
+    "iframe": {
+      "main": "Voeg uw eigen stats toe aan uw website",
+      "info": "Hoofdversie:"
     }
+  },
+  "servers": {
+    "back": "Terug naar zoeken",
+    "rotation": "Server maprotatie",
+    "settings": "Server-instellingen",
+    "permLink": "Permanente link (gebaseerd op huidige naam):",
+    "platoon": {
+      "main": "Server platoon",
+      "none": "Er is geen platoon gekoppeld aan deze server"
+    },
+    "sort": {
+      "serverName": "Servernaam",
+      "playerAmount": "Aantal spelers",
+      "maxPlayers": "Max aantal spelers"
+    },
+    "owner": {
+      "main": "Server eigenaar",
+      "experience": "Experience eigenaar",
+      "none": "Server heeft geen eigenaar (Dice server)",
+      "unknown": "Naam niet gevonden"
+    },
+    "password": "Met wachtwoord beveiligd",
+    "join": "Join server",
+    "joinFirefox": "Join server (werkt alleen op firefox)",
+    "joinme": {
+      "main": "Joinme.click launcher",
+      "view": "Bekijk server op joinme.click",
+      "launch": "Spel gestart!",
+      "info": "De join server knoppen gebruiken <0>https://joinme.click/</0> om de het spel te starten, installeer de <0>joinme.click launcher</0> eerst voordat u de knoppen probeert te gebruiken!",
+      "smallinfo": "De join server knoppen gebruiken <0>https://joinme.click/</0> om de het spel te starten.",
+      "discord": "De joinme launcher moet geïnstalleerd zijn om dit te laten werken!",
+      "invite": "Joinme.click invite URL"
+    },
+    "bfportal": {
+      "found": "Portal experience gevonden op BfPortal.gg",
+      "error": "Api fout voor BfPortal.gg"
+    },
+    "iframe": {
+      "main": "Voeg de server toe aan uw website",
+      "info": "Als u uw eigen versie wilt, vraag dan iiTzArcur op onze discord. (link in footer)",
+      "black": "Zwarte variant:",
+      "white": "Witte variant:",
+      "detailed": "Gedetaileerde variant:",
+      "states": {
+        "copy": "Iframe kopiëren",
+        "copied": "Gekopieerd!"
+      }
+    },
+    "leaderboard": {
+      "main": "Scoreboard van spelerstats van deze server",
+      "info": "alleen beschikbaar wanneer de server the manager-api gebruikt",
+      "none": "Server is net toegevoegd of gebruikt de manager-api niet",
+      "row": {
+        "score": "Score",
+        "killDeath": "K/D",
+        "kills": "Kills",
+        "deaths": "Deaths",
+        "wins": "Wins",
+        "losses": "Losses",
+        "timePlayed": "Tijd gespeeld"
+      }
+    },
+    "playerlist": {
+      "main": "Spelers die nu in de server zijn",
+      "none": "Server is net toegevoegd of gebruikt de manager-api niet",
+      "empty": "Dit team is leeg",
+      "lastUpdate": "Laaste update",
+      "row": {
+        "ping": "Ping",
+        "platform": "Platform",
+        "timePlayed": "Tijd gespeeld",
+        "playerSlot": "Spelerslot",
+        "playerName": "Spelernaam",
+        "platoon": "Platoon",
+        "rank": "Rank",
+        "score": "Score",
+        "killDeath": "K/D",
+        "kills": "Kills",
+        "deaths": "Deaths"
+      }
+    },
+    "factions": {
+      "BFFactionId_FactionAHU": "Austro-Hungarian Empire",
+      "BFFactionId_FactionGER": "German Empire",
+      "BFFactionId_FactionOTM": "Ottoman Empire",
+      "BFFactionId_FactionITA": "Kingdom of Italy",
+      "BFFactionId_FactionUK": "United Kingdom",
+      "BFFactionId_FactionUSA": "United States of America",
+      "BFFactionId_FactionFRA": "France",
+      "BFFactionId_FactionRUS": "Russian Empire",
+      "BFFactionId_FactionBOL": "Red Army",
+      "BFFactionId_FactionWA": "White Army",
+      "BFFactionId_FactionUKM": "Royal Marines",
+      "FactionUS": "Russian Federation",
+      "FactionRUS": "United States of America",
+      "teamOne": "Team 1",
+      "teamTwo": "Team 2"
+    },
+    "portal": {
+      "main": "Portal experience"
+    },
+    "graph": {
+      "main": "Server grafieken",
+      "map": "Map",
+      "mode": "gamemode",
+      "amount": "Keren opgehaald",
+      "error": "Kon de grafieken voor de server niet ophalen"
+    },
+    "notFound": {
+      "main": "Server niet gevonden",
+      "description": "We konden de server die u zocht niet vinden."
+    }
+  },
+  "platoon": {
+    "back": "Terug naar zoeken",
+    "searchPlayer": "Zoek een speler",
+    "servers": "Platoon servers",
+    "members": {
+      "main": "Platoon leden",
+      "General": "Genraal",
+      "Colonel": "Kolonel",
+      "Lieutenant": "Luitenant",
+      "Private": "Soldaat",
+      "empty": "Er zijn geen leden met deze rank"
+    },
+    "rows": {
+      "role": "Rol",
+      "name": "Naam"
+    },
+    "notFound": {
+      "main": "Platoon niet gevonden",
+      "description": "We konden de platoon die u zocht niet vinden."
+    }
+  },
+  "getPlaygrounds": {
+    "back": "Hoofdpagina",
+    "main": "Krijg Battlefield Portal Experience informatie",
+    "description": "Krijg informatie over een Battlefield Portal experience",
+    "getInfo": "Vul een geldige experience url, playground id of experience code in",
+    "show": "Laat zien"
+  },
+  "playgrounds": {
+    "back": "Terug naar zoeken",
+    "rotation": "Experience map rotatie",
+    "tags": "Experience tags",
+    "maxPlayers": "Max {{ amount }} spelers",
+    "owner": {
+      "main": "Experience eigenaar",
+      "none": "De naam van eigenaar kan alleen opgehaald worden wanneer een playground id gebruikt it",
+      "unknown": "Naam niet gevonden"
+    },
+    "notFound": {
+      "main": "Experience niet gevonden",
+      "description": "We konden de experience die u zocht niet vinden."
+    },
+    "types": {
+      "main": "Type",
+      "portal-standard": "Standard experience",
+      "portal-featured": "Featured experience",
+      "portal-default": "Standard experience",
+      "portal-unranked": "Unranked",
+      "portal-spotlight": "In the spotlight"
+    }
+  },
+  "footer": {
+    "description": "This website is part of the Community Network. It is Open Source. You can post issues and suggest changes/improvements via GitHub. API provided by Community Network and open for public usage. We don’t provide any third-party API. Our back end is closed source and not available publicly.\nBattlefield & Origin are registered trademark of Electronic Arts. This website uses data provided pursuant to Electronic Arts’ Battlefield 1 Stats Terms. Trademarks are the property of their respective owners. Game materials copyright Electronic Arts Inc. Electronic Arts has not endorsed and is not responsible for this site or its content.\nCode is under GPL v2 License. Some parts are under Community Network copyright.",
+    "links": {
+      "0": {
+        "header": "GitHub",
+        "url": "https://github.com/Community-network"
+      },
+      "1": {
+        "header": "Publieke API",
+        "url": "https://api.gametools.network/"
+      },
+      "2": {
+        "header": "Community Network Discord",
+        "url": "https://discord.gametools.network/"
+      },
+      "3": {
+        "header": "Privacy Policy",
+        "url": "/privacy/"
+      },
+      "4": {
+        "header": "Discord bot",
+        "url": "https://top.gg/bot/714524944783900794"
+      },
+      "5": {
+        "header": "Help met vertalingen",
+        "url": "https://explore.transifex.com/gametools/"
+      }
+    }
+  },
+  "bflist": {
+    "notFound": "Kon server niet vinden met de bflist.io API"
+  },
+  "pageNotFound": {
+    "main": "404 - Pagina niet gevonden",
+    "description": "We konden de pagina die u zocht niet vinden.",
+    "home": "Terug naar de hoofdpagina"
+  }
 }
