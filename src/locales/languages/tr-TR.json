@@ -1,561 +1,561 @@
 {
-    "siteName": "GAMETOOLS",
-    "siteFullName": "Game tools",
-    "loading": "Yükleniyor...",
-    "error": "Bu istatistiği alamadık, bir şeyler ters gitti...",
-    "404": "404",
-    "playerNotFound": "Oyun adı bulunamadı, lütfen başka bir tane deneyin.",
-    "notApplicable": "Yok",
-    "resultNotFound": "Sonuç bulunamadı",
-    "noName": "Origin adı aracılığıyla istatistiklere erişirken oyuncu adı gösterilemiyor",
-    "date": "{{date, date|eee, dd MMM yyyy}}",
-    "dateTime": "{{date, date|eee, dd MMM yyyy - p}}",
-    "shortDateTime": "{{date, date|PPpp}}",
-    "chartHourFormat": "HH:mm, eee d LLL",
-    "time": "{{date, date|p}}",
-    "change": "{{change, change}}",
-    "intlNumber": "{{val, number}}",
-    "ago": "önce",
-    "export": "Dosyaya aktar",
-    "dateType": {
-        "createdAt": "Oluşturma zamanı",
-        "updatedAt": "Güncelleme zamanı"
+  "siteName": "GAMETOOLS",
+  "siteFullName": "Game tools",
+  "loading": "Yükleniyor...",
+  "error": "Bu istatistiği alamadık, bir şeyler ters gitti...",
+  "404": "404",
+  "playerNotFound": "Oyun adı bulunamadı, lütfen başka bir tane deneyin.",
+  "notApplicable": "Yok",
+  "resultNotFound": "Sonuç bulunamadı",
+  "noName": "Origin adı aracılığıyla istatistiklere erişirken oyuncu adı gösterilemiyor",
+  "date": "{{date, date|eee, dd MMM yyyy}}",
+  "dateTime": "{{date, date|eee, dd MMM yyyy - p}}",
+  "shortDateTime": "{{date, date|PPpp}}",
+  "chartHourFormat": "HH:mm, eee d LLL",
+  "time": "{{date, date|p}}",
+  "change": "{{change, change}}",
+  "intlNumber": "{{val, number}}",
+  "ago": "önce",
+  "export": "Dosyaya aktar",
+  "dateType": {
+    "createdAt": "Oluşturma zamanı",
+    "updatedAt": "Güncelleme zamanı"
+  },
+  "bfban": {
+    "stats": "Oyuncu bfban'da onaylanmış hileci",
+    "platoon": " Hileci"
+  },
+  "states": {
+    "copy": "Bağlantıyı kopyala",
+    "copied": "Kopyalandı!"
+  },
+  "navBar": {
+    "help": "Yardım lazım mı?",
+    "serverManager": "Sunucu Yöneticisi",
+    "api": "Battlefield API"
+  },
+  "games": {
+    "bfglobal": "Global",
+    "bf1942": "Battlefield 1942",
+    "bf2": {
+      "bf2hub": "Battlefield 2 (bf2hub)",
+      "playbf2": "Battlefield 2 (playbf2)"
     },
-    "bfban": {
-        "stats": "Oyuncu bfban'da onaylanmış hileci",
-        "platoon": " Hileci"
+    "bf2142": {
+      "openspy": "Battlefield 2142 (openspy)",
+      "play2142": "Battlefield 2142 (.co)"
     },
-    "states": {
-        "copy": "Bağlantıyı kopyala",
-        "copied": "Kopyalandı!"
+    "bfvietnam": {
+      "openspy": "Battlefield Vietnam (openspy)",
+      "qtracker": "Battlefield Vietnam (qtracker)"
     },
-    "navBar": {
-        "help": "Yardım lazım mı?",
-        "serverManager": "Sunucu Yöneticisi",
-        "api": "Battlefield API"
+    "bfbc2": "Battlefield: Bad Company 2",
+    "bf3": "Battlefield 3",
+    "bf4": "Battlefield 4",
+    "bfh": "Battlefield Hardline",
+    "bf1": "Battlefield 1",
+    "bfv": "Battlefield 5",
+    "bf2042": "Battlefield 2042",
+    "bf2042portal": "Battlefield 2042 Portal"
+  },
+  "limit": {
+    "10": "10 sunucular",
+    "25": "25 sunucular",
+    "50": "50 sunucular",
+    "100": "100 sunucular",
+    "200": "200 sunucular",
+    "250": "250 sunucular"
+  },
+  "regions": {
+    "all": "Tüm bölgeler",
+    "eu": "Avrupa",
+    "asia": "Asya",
+    "nam": "Kuzey Amerika",
+    "sam": "Güney Amerika",
+    "au": "Avustralya",
+    "oc": "Okyanusya",
+    "afr": "Afrika",
+    "ac": "Antarktika"
+  },
+  "platforms": {
+    "pc": "PC",
+    "xboxseries": "XBOX SERIES",
+    "xboxone": "XBOX ONE",
+    "xbox360": "XBOX 360",
+    "ps5": "PS5",
+    "ps4": "PS4",
+    "ps3": "PS3",
+    "all": "Tüm platformlar"
+  },
+  "serverType": {
+    "official": "Resmi",
+    "custom": "Özel"
+  },
+  "statPlatforms": {
+    "pc": "PC",
+    "xboxone": "XBOX ONE (ve daha yenisi)",
+    "xbox360": "XBOX 360",
+    "ps4": "PS4 (ve daha yenisi)",
+    "ps3": "PS3"
+  },
+  "home": {
+    "manager": {
+      "header": "GAMETOOLS | CLOUD",
+      "description": "Battlefield Sunucularınızı korumak için web tabanlı bir Hile Önleme ve Yönetim platformu oluşturduk.\nBirçok topluluğun yardımıyla oluşturuldu.\n\nŞimdi giriş yapın ve entegrasyonunuzu ücretsiz olarak başlatın!",
+      "open": "Launch App",
+      "disclaimer": "Sunucu barındırma sağlanmaz. Şu anda aşağıdaki Battlefield oyunlarını destekliyoruz:"
     },
-    "games": {
-        "bfglobal": "Global",
-        "bf1942": "Battlefield 1942",
-        "bf2": {
-            "bf2hub": "Battlefield 2 (bf2hub)",
-            "playbf2": "Battlefield 2 (playbf2)"
-        },
-        "bf2142": {
-            "openspy": "Battlefield 2142 (openspy)",
-            "play2142": "Battlefield 2142 (.co)"
-        },
-        "bfvietnam": {
-            "openspy": "Battlefield Vietnam (openspy)",
-            "qtracker": "Battlefield Vietnam (qtracker)"
-        },
-        "bfbc2": "Battlefield: Bad Company 2",
-        "bf3": "Battlefield 3",
-        "bf4": "Battlefield 4",
-        "bfh": "Battlefield Hardline",
-        "bf1": "Battlefield 1",
-        "bfv": "Battlefield 5",
-        "bf2042": "Battlefield 2042",
-        "bf2042portal": "Battlefield 2042 Portal"
+    "graphs": {
+      "header": "Çevrimiçi istatistikler ve grafikler",
+      "detailed": "Ayrıntılı istatistikleri görüntüleyin"
     },
-    "limit": {
-        "10": "10 sunucular",
-        "25": "25 sunucular",
-        "50": "50 sunucular",
-        "100": "100 sunucular",
-        "200": "200 sunucular",
-        "250": "250 sunucular"
+    "otherServices": {
+      "header": "Diğer servisler",
+      "0": {
+        "header": "Battlefield toplulukları",
+        "localUrl": "/platoons/"
+      },
+      "1": {
+        "header": "Portal Deneyimi bilgisi",
+        "localUrl": "/playgrounds/"
+      },
+      "2": {
+        "header": "FESL API (Battlefield bad company 2 APIs)",
+        "url": "https://fesl.gametools.network/docs"
+      }
     },
-    "regions": {
-        "all": "Tüm bölgeler",
-        "eu": "Avrupa",
-        "asia": "Asya",
-        "nam": "Kuzey Amerika",
-        "sam": "Güney Amerika",
-        "au": "Avustralya",
-        "oc": "Okyanusya",
-        "afr": "Afrika",
-        "ac": "Antarktika"
+    "ourFriends": {
+      "header": "Arkadaşlarımız",
+      "0": {
+        "header": "BFBan",
+        "description": "Birleşik yasak listesi ve şikayet sistemi sağlamak için hilecilere karşı oluşturulmuş muhteşem bir topluluk ve tersine mühendislik/güvenlik ekibi olan bfban.com'un aktif bir parçasıyız ve ev sahipliği yapıyoruz.\nHile yapanları BF1/BFV'de bildirin, böylece topluluk sunucularında yasaklanabilirler.",
+        "link": "BFBan'ı ziyaret edin",
+        "url": "https://bfban.gametools.network/"
+      },
+      "1": {
+        "header": "BFPortal",
+        "description": "Battlefield 2042 portal deneyimlerini bulun ve paylaşın.",
+        "link": "BFPortal ziyaret et",
+        "url": "https://bfportal.gg/"
+      },
+      "2": {
+        "header": "Statbits",
+        "description": "Statbits, diğer tüm uygulamaların yanı sıra canlı yayın sohbetinize küçük oyun istatistiklerini entegre etmenize olanak tanır. Battlefield 4'te toplam öldürme/ölüm oranınızı gösteren bir !kd komutu ister misiniz? tam istediğin!",
+        "link": "Belgeleri okuyun",
+        "url": "https://statbits.io/"
+      },
+      "3": {
+        "header": "BFList",
+        "description": "Battlefield serisi oyunlarda Battlefield'da neler olduğu hakkında canlı veriler sağlar. Oyuncuların yanı sıra sunucular hakkında da veri sağlıyoruz. Bir sunucunun adından veya mevcut haritasından herhangi bir oyuncunun mevcut puanına ve kd'sine kadar.",
+        "link": "belgeleri okuyun",
+        "url": "https://bflist.io/"
+      }
+    }
+  },
+  "playerSearch": {
+    "back": "Ana Sayfa",
+    "bfStats": "Battlefield istatistik",
+    "description": "Oyuncu istatistiklerini almak için herhangi bir Origin takma adını arayın.",
+    "search": "Arama",
+    "searchPlaceholder": "Origin adını arayın...",
+    "gameStatus": " Battlefield'daki oyuncu sayısı",
+    "zoomInfo": "(Kaydırma-yakınlaştırmayı etkinleştirmek için tabloya tıklayın)",
+    "moreGraphs": "Diğer grafikler"
+  },
+  "serverSearch": {
+    "servers": "Sunucular",
+    "back": "Ana Sayfa",
+    "serverInfo": "Battlefield Sunucuları",
+    "description": "Oyuncu miktarlarını/sunucunun harita rotasyonunu almak için Battlefield sunucularını arayın",
+    "search": "Arama",
+    "searchPlaceholder": {
+      "null": "Sunucu adını ara...",
+      "servername": "Sunucu adını ara...",
+      "experiencename": "Deneyim ismi arama..."
     },
-    "platforms": {
-        "pc": "PC",
-        "xboxseries": "XBOX SERIES",
-        "xboxone": "XBOX ONE",
-        "xbox360": "XBOX 360",
-        "ps5": "PS5",
-        "ps4": "PS4",
-        "ps3": "PS3",
-        "all": "Tüm platformlar"
+    "results": "Arama Sonuçları",
+    "type": {
+      "name": "Sunucu ismi",
+      "playground": "Deneyim ismi"
     },
-    "serverType": {
-        "official": "Resmi",
-        "custom": "Özel"
+    "showMore": "Daha fazla göster",
+    "region": "Bölge",
+    "platform": "platform"
+  },
+  "platoonSearch": {
+    "back": "Ana Sayfa",
+    "serverInfo": "Battlefield Klanları",
+    "description": "Onlar hakkında daha fazla bilgi almak için Battlefield klanlarını arayın, üyelerini görmek için bir Klana tıklayın",
+    "search": "Arama",
+    "searchPlaceholder": "Klan adı ara...",
+    "results": "Arama sonuçları",
+    "resultNotFound": "Sonuç bulunamadı. Klanları aramak için en az 3 karaktere ihtiyacınız var.."
+  },
+  "stats": {
+    "view": "İstatistikleri görüntüle",
+    "back": "Ana Sayfa",
+    "originDescription": "Kullanıcı hesabı",
+    "detailedName": "Ayrıntılı istatistikler",
+    "overview": "Genel bakış",
+    "overviewDescription": "Oyundaki istatistiklerinize kısa bir genel bakış.",
+    "platoonName": "Mevcut klan",
+    "otherPlatoons": "Diğer Klanlar",
+    "weapons": "Silah",
+    "vehicles": "Araç",
+    "weaponGraph": "Silah grafiği",
+    "vehicleGraph": "Araç grafiği",
+    "searchWeapon": "Silah ara",
+    "searchVehicle": "Araç ara",
+    "rows": {
+      "weaponName": "Silah adı",
+      "vehicleName": "Araç adı",
+      "type": "Tür",
+      "kills": "Öldürme",
+      "killsPerMinute": "KPM",
+      "damagePerMinute": "DPM",
+      "destroyed": "Patlatma",
+      "accuracy": "isabet",
+      "headshots": "Kafadan vurma"
     },
-    "statPlatforms": {
-        "pc": "PC",
-        "xboxone": "XBOX ONE (ve daha yenisi)",
-        "xbox360": "XBOX 360",
-        "ps4": "PS4 (ve daha yenisi)",
-        "ps3": "PS3"
+    "classes": {
+      "main": "Sınıflar",
+      "Medic": "Sıhhiyeci",
+      "Support": "Destek",
+      "Scout": "Gözcü",
+      "Assault": "Taarruz",
+      "Pilot": "Pilot",
+      "Tanker": "Tankçı",
+      "Cavalry": "Atlı",
+      "amounts": {
+        "kpm": "KPM",
+        "score": "Skor",
+        "kills": "Öldürme",
+        "timePlayed": "Oynanan süre"
+      }
     },
-    "home": {
-        "manager": {
-            "header": "GAMETOOLS | CLOUD",
-            "description": "Battlefield Sunucularınızı korumak için web tabanlı bir Hile Önleme ve Yönetim platformu oluşturduk.\nBirçok topluluğun yardımıyla oluşturuldu.\n\nŞimdi giriş yapın ve entegrasyonunuzu ücretsiz olarak başlatın!",
-            "open": "Launch App",
-            "disclaimer": "Sunucu barındırma sağlanmaz. Şu anda aşağıdaki Battlefield oyunlarını destekliyoruz:"
-        },
-        "graphs": {
-            "header": "Çevrimiçi istatistikler ve grafikler",
-            "detailed": "Ayrıntılı istatistikleri görüntüleyin"
-        },
-        "otherServices": {
-            "header": "Diğer servisler",
-            "0": {
-                "header": "Battlefield toplulukları",
-                "localUrl": "/platoons/"
-            },
-            "1": {
-                "header": "Portal Deneyimi bilgisi",
-                "localUrl": "/playgrounds/"
-            },
-            "2": {
-                "header": "FESL API (Battlefield bad company 2 APIs)",
-                "url": "https://fesl.gametools.network/docs"
-            }
-        },
-        "ourFriends": {
-            "header": "Arkadaşlarımız",
-            "0": {
-                "header": "BFBan",
-                "description": "Birleşik yasak listesi ve şikayet sistemi sağlamak için hilecilere karşı oluşturulmuş muhteşem bir topluluk ve tersine mühendislik/güvenlik ekibi olan bfban.com'un aktif bir parçasıyız ve ev sahipliği yapıyoruz.\nHile yapanları BF1/BFV'de bildirin, böylece topluluk sunucularında yasaklanabilirler.",
-                "link": "BFBan'ı ziyaret edin",
-                "url": "https://bfban.gametools.network/"
-            },
-            "1": {
-                "header": "BFPortal",
-                "description": "Battlefield 2042 portal deneyimlerini bulun ve paylaşın.",
-                "link": "BFPortal ziyaret et",
-                "url": "https://bfportal.gg/"
-            },
-            "2": {
-                "header": "Statbits",
-                "description": "Statbits, diğer tüm uygulamaların yanı sıra canlı yayın sohbetinize küçük oyun istatistiklerini entegre etmenize olanak tanır. Battlefield 4'te toplam öldürme/ölüm oranınızı gösteren bir !kd komutu ister misiniz? tam istediğin!",
-                "link": "Belgeleri okuyun",
-                "url": "https://statbits.io/"
-            },
-            "3": {
-                "header": "BFList",
-                "description": "Battlefield serisi oyunlarda Battlefield'da neler olduğu hakkında canlı veriler sağlar. Oyuncuların yanı sıra sunucular hakkında da veri sağlıyoruz. Bir sunucunun adından veya mevcut haritasından herhangi bir oyuncunun mevcut puanına ve kd'sine kadar.",
-                "link": "belgeleri okuyun",
-                "url": "https://bflist.io/"
-            }
-        }
+    "progress": {
+      "main": "Oyun ilerlemesi",
+      "Campaign": "Hikaye modu",
+      "Assignments": "Özel görevler",
+      "Medals": "Madalyalar",
+      "Ribbons": "Ödüller",
+      "Weapons": "Silahlar",
+      "Vehicles": "Vasıtalar",
+      "Kits": "Kitler",
+      "Codex": "Kodeks",
+      "Dog tags": "Künye"
     },
-    "playerSearch": {
-        "back": "Ana Sayfa",
-        "bfStats": "Battlefield istatistik",
-        "description": "Oyuncu istatistiklerini almak için herhangi bir Origin takma adını arayın.",
-        "search": "Arama",
-        "searchPlaceholder": "Origin adını arayın...",
-        "gameStatus": " Battlefield'daki oyuncu sayısı",
-        "zoomInfo": "(Kaydırma-yakınlaştırmayı etkinleştirmek için tabloya tıklayın)",
-        "moreGraphs": "Diğer grafikler"
-    },
-    "serverSearch": {
-        "servers": "Sunucular",
-        "back": "Ana Sayfa",
-        "serverInfo": "Battlefield Sunucuları",
-        "description": "Oyuncu miktarlarını/sunucunun harita rotasyonunu almak için Battlefield sunucularını arayın",
-        "search": "Arama",
-        "searchPlaceholder": {
-            "null": "Sunucu adını ara...",
-            "servername": "Sunucu adını ara...",
-            "experiencename": "Deneyim ismi arama..."
-        },
-        "results": "Arama Sonuçları",
-        "type": {
-            "name": "Sunucu ismi",
-            "playground": "Deneyim ismi"
-        },
-        "showMore": "Daha fazla göster",
-        "region": "Bölge",
-        "platform": "platform"
-    },
-    "platoonSearch": {
-        "back": "Ana Sayfa",
-        "serverInfo": "Battlefield Klanları",
-        "description": "Onlar hakkında daha fazla bilgi almak için Battlefield klanlarını arayın, üyelerini görmek için bir Klana tıklayın",
-        "search": "Arama",
-        "searchPlaceholder": "Klan adı ara...",
-        "results": "Arama sonuçları",
-        "resultNotFound": "Sonuç bulunamadı. Klanları aramak için en az 3 karaktere ihtiyacınız var.."
-    },
-    "stats": {
-        "view": "İstatistikleri görüntüle",
-        "back": "Ana Sayfa",
-        "originDescription": "Kullanıcı hesabı",
-        "detailedName": "Ayrıntılı istatistikler",
-        "overview": "Genel bakış",
-        "overviewDescription": "Oyundaki istatistiklerinize kısa bir genel bakış.",
-        "platoonName": "Mevcut klan",
-        "otherPlatoons": "Diğer Klanlar",
-        "weapons": "Silah",
-        "vehicles": "Araç",
-        "weaponGraph": "Silah grafiği",
-        "vehicleGraph": "Araç grafiği",
-        "searchWeapon": "Silah ara",
-        "searchVehicle": "Araç ara",
-        "rows": {
-            "weaponName": "Silah adı",
-            "vehicleName": "Araç adı",
-            "type": "Tür",
-            "kills": "Öldürme",
-            "killsPerMinute": "KPM",
-            "damagePerMinute": "DPM",
-            "destroyed": "Patlatma",
-            "accuracy": "isabet",
-            "headshots": "Kafadan vurma"
-        },
-        "classes": {
-            "main": "Sınıflar",
-            "Medic": "Sıhhiyeci",
-            "Support": "Destek",
-            "Scout": "Gözcü",
-            "Assault": "Taarruz",
-            "Pilot": "Pilot",
-            "Tanker": "Tankçı",
-            "Cavalry": "Atlı",
-            "amounts": {
-                "kpm": "KPM",
-                "score": "Skor",
-                "kills": "Öldürme",
-                "timePlayed": "Oynanan süre"
-            }
-        },
-        "progress": {
-            "main": "Oyun ilerlemesi",
-            "Campaign": "Hikaye modu",
-            "Assignments": "Özel görevler",
-            "Medals": "Madalyalar",
-            "Ribbons": "Ödüller",
-            "Weapons": "Silahlar",
-            "Vehicles": "Vasıtalar",
-            "Kits": "Kitler",
-            "Codex": "Kodeks",
-            "Dog tags": "Künye"
-        },
-        "gamemodes": {
-            "main": "Oyun modu bilgisi",
-            "percentage": "Zaferler: {{percentage}}%",
-            "Frontlines": "Cephe hattı",
-            "Domination": "Üstünlük",
-            "Shock operations": "Şok operasyon",
-            "Rush": "Akın",
-            "Conquest": "Fetih",
-            "War pigeons": "Savaş güvencini",
-            "Operations": "Operasyon",
-            "Teamdeathmatch": "Ölüm karşılaşması",
-            "Conquestlarge": "Büyük fetih",
-            "Gunmaster": "Silah ustası",
-            "Capturetheflag": "Bayrak kapma",
-            "Obliteration": " Tahrip",
-            "Airsuperiority": "Hava Taaruzu",
-            "Elimination": "Eleme",
-            "Carrierassault": " Savaş Gemisi Taarruzu",
-            "Carrierassaultlarge": "Savaş Gemisi Taarruzu - Büyük",
-            "Carrierassaultsmall": "Savaş Gemisi Taarruzu - Küçük",
-            "Chainlink": "Cephe Hattı",
-            "Sqdm": "Takım ölüm karşılaşması",
-            "Conquestladder": "Fetih ilerleyiş",
-            "Squadobliteration": "  Tahrip Mangası",
-            "table": {
-                "firstRow": "Oyun modları",
-                "secondRow": "Skor"
-            },
-            "amounts": {
-                "wins": "Kazanmalar",
-                "losses": "Kaybetmeler",
-                "score": "Skor"
-            }
-        },
-        "platoon": {
-            "none": "Oyuncu herhangi bir klanda değil",
-            "noMain": "Oyuncu bir klanı, ana klanı olarak temsil etmiyor",
-            "noDescription": "Klanın açıklaması yok"
-        },
-        "playSession": {
-            "main": "Battlefield oyun seansları",
-            "detailed": "Hangi sunucuda oynadığınızı takip ediyoruz, sadece sunucu bizim yöneticimizi kullandığında çalışıyor.",
-            "stats": {
-                "kills": "Ölüm",
-                "deaths": "Öldürme",
-                "wins": "Kazanma",
-                "losses": "Kaybetme",
-                "timePlayedAs": "Oynanan süre",
-                "score": "Skor",
-                "gamemodes": {
-                    "TugOfWar": "Cephe hattı",
-                    "Domination": "Üstünlük",
-                    "Breakthrough": "Şok operasyon",
-                    "Rush": "Akın",
-                    "BreakthroughLarge": "=Operasyon",
-                    "Conquest": "Fetih",
-                    "Possession": "Savaş güvencini",
-                    "TeamDeathMatch": "Takım ölüm karşılaşması"
-                }
-            }
-        },
-        "main": {
-            "rank": "rütbe",
-            "killDeath": "K/D",
-            "killsPerMinute": "KPM",
-            "winPercent": "kazanma%",
-            "bestClass": "En iyi sınıf",
-            "accuracy": "İsabet",
-            "timePlayed": "Oynanan süre"
-        },
-        "detailed": {
-            "skill": "Beceri",
-            "scorePerMinute": "SPM",
-            "headshotPercent": ",Kafadan vurma",
-            "infantryKillDeath": "Piyade K/D",
-            "infantryKillsPerMinute": "Piyade KPM",
-            "kills": "Öldürme",
-            "deaths": "Ölüm",
-            "wins": "Kazanma",
-            "losses": "Kaybetme",
-            "longestHeadShot": "En uzun kafadan vuruş",
-            "highestKillStreak": "En yüksek ölüm serisi",
-            "revives": "Canlandırma",
-            "roundsPlayed": "Oynanan turlar",
-            "awardScore": "Ödül puanı",
-            "bonusScore": "Bonus puanı",
-            "squadScore": "Takım puanı",
-            "avengerKills": "intikamcı öldürme",
-            "saviorKills": "kurtarıcı öldürme",
-            "headShots": "Kafanda vuruş",
-            "heals": "iyileştirme",
-            "repairs": "Tamirler",
-            "killAssists": "Öldürme yardımı",
-            "winPercent": "Kazanma yüzdesi",
-            "quits": "Çıkmalar"
-        },
-        "graph": {
-            "graphOptions": {
-                "amounts": "Miktar",
-                "maps": "Aktif haritalar",
-                "settings": "Aktif ayarlar",
-                "modes": "Aktif modlar",
-                "ownerPlatform": "Aktif platform sahipleri"
-            },
-            "soldierAmount": "Tüm oyuncular",
-            "diceSoldierAmount": "Dice sunucularındaki oyuncular",
-            "communitySoldierAmount": "Topluluk sunucularındaki oyuncular"
-        },
-        "iframe": {
-            "main": "İstatistiklerinizi kendi web sitenize ekleyin",
-            "info": "Ana sürüm:"
-        }
-    },
-    "servers": {
-        "back": "Aramaya geri dön",
-        "rotation": "Sunucu haritası döngüsü",
-        "settings": "Sunucu ayarları",
-        "permLink": "Sabit bağlantı (isme dayalı):",
-        "platoon": {
-            "main": "klan serveri",
-            "none": "Sunucu bir klana bağlı değil"
-        },
-        "sort": {
-            "serverName": "Sunucu adı",
-            "playerAmount": "Oyuncu sayısı",
-            "maxPlayers": "En fazla oyuncu sayısı"
-        },
-        "owner": {
-            "main": "Sunucu sahibi",
-            "experience": "Deneyim yaratıcısı",
-            "none": "Sunucunun sahibi yok (Dice sunucusu)",
-            "unknown": "takma ad bulunamadı"
-        },
-        "password": "Parola korumalı",
-        "join": "Sunucuya katıl",
-        "joinFirefox": "Sunucuya katıl (yalnızca Firefox)",
-        "joinme": {
-            "main": "Bana katıl, başlatıcıyı tıkla",
-            "view": "Bana katıl'a tıklayın",
-            "launch": "Oyun başlatıldı!",
-            "info": "Sunucuya katılma düğmeleri oyuna katılmak için <0>https://joinme.click/</0> kullanılır, bu düğmeleri kullanmaya çalışmadan önce <0>joinme.click launcher</0> yükleyin!",
-            "smallinfo": "Sunucuya katılma düğmeleri oyuna katılmak için <0>https://joinme.click/</0> kullanılır.",
-            "discord": "Bunun çalışması için bana katıl başlatıcısının yüklenmesi gerekiyor!",
-            "invite": "Bana katıl. Davet URL'sini tıklayın"
-        },
-        "bfportal": {
-            "found": "BfPortal.gg adresinde bulunan portal deneyimi",
-            "error": "BfPortal.gg için Api hatası"
-        },
-        "iframe": {
-            "main": "Sunucuyu kendi web sitenize ekleyin",
-            "info": "Kendi özel sürümünüzü istiyorsanız, Discord'umuzdan iiTzArcur'a sorun.",
-            "black": "Siyah versiyon:",
-            "white": "Beyaz versiyon:",
-            "detailed": "Detaylı versiyon:",
-            "states": {
-                "copy": "iframe'i kopyala",
-                "copied": "kopyalandı!"
-            }
-        },
-        "leaderboard": {
-            "main": "Bu sunucunun oyuncu lider tablosu",
-            "info": "yalnızca manager-api'yi kullanan sunucularda Kullanılır",
-            "none": "Sunucu yeni eklendi veya manager-api kullanmıyor",
-            "row": {
-                "score": "Skor",
-                "killDeath": "K/D",
-                "kills": "Öldürme",
-                "deaths": "Ölüm",
-                "wins": "Kazanma",
-                "losses": "Kaybetme",
-                "timePlayed": "Oyun süresi"
-            }
-        },
-        "playerlist": {
-            "main": "Sunucudaki mevcut oyuncular",
-            "none": "Sunucu yeni eklendi veya manager-api kullanmıyor",
-            "empty": "Bu takım boş",
-            "lastUpdate": "Son aktif güncellemesi",
-            "row": {
-                "ping": "ping",
-                "platform": "platform",
-                "timePlayed": "Oynanan süre",
-                "playerSlot": "Oyuncu yuvası",
-                "playerName": "Oyuncu adı",
-                "platoon": "Birlik",
-                "rank": "Sıralama",
-                "score": "Skor",
-                "killDeath": "K/D",
-                "kills": "Öldürme",
-                "deaths": "Ölüm"
-            }
-        },
-        "factions": {
-            "BFFactionId_FactionAHU": "Avusturya-Macaristan İmparatorluğu",
-            "BFFactionId_FactionGER": "Alman imparatorluğu",
-            "BFFactionId_FactionOTM": "cOsmanlı imparatorluğu",
-            "BFFactionId_FactionITA": "İtalya Krallığı",
-            "BFFactionId_FactionUK": "Birleşik Krallık",
-            "BFFactionId_FactionUSA": "Amerika Birleşik Devletleri",
-            "BFFactionId_FactionFRA": "Fransa",
-            "BFFactionId_FactionRUS": "Rus imparatorluğu",
-            "BFFactionId_FactionBOL": "Kızıl Ordu",
-            "BFFactionId_FactionWA": "Beyaz Ordu",
-            "BFFactionId_FactionUKM": "Kraliyet Deniz Piyadeleri",
-            "FactionUS": "Rusya Federasyonu",
-            "FactionRUS": "Amerika Birleşik Devletleri",
-            "teamOne": "Takım 1",
-            "teamTwo": "Takım 2"
-        },
-        "portal": {
-            "main": "Portal deneyimi"
-        },
-        "graph": {
-            "main": "Sunucu grafikleri",
-            "map": "Harita",
-            "mode": "Oyun modu",
-            "amount": "Toplanan zaman",
-            "error": "Bu sunucu için grafikler alınamadı"
-        },
-        "notFound": {
-            "main": "Sunucu bulunamadı",
-            "description": "Aradığınız sunucuyu bulamıyoruz."
-        }
+    "gamemodes": {
+      "main": "Oyun modu bilgisi",
+      "percentage": "Zaferler: {{percentage}}%",
+      "Frontlines": "Cephe hattı",
+      "Domination": "Üstünlük",
+      "Shock operations": "Şok operasyon",
+      "Rush": "Akın",
+      "Conquest": "Fetih",
+      "War pigeons": "Savaş güvencini",
+      "Operations": "Operasyon",
+      "Teamdeathmatch": "Ölüm karşılaşması",
+      "Conquestlarge": "Büyük fetih",
+      "Gunmaster": "Silah ustası",
+      "Capturetheflag": "Bayrak kapma",
+      "Obliteration": " Tahrip",
+      "Airsuperiority": "Hava Taaruzu",
+      "Elimination": "Eleme",
+      "Carrierassault": " Savaş Gemisi Taarruzu",
+      "Carrierassaultlarge": "Savaş Gemisi Taarruzu - Büyük",
+      "Carrierassaultsmall": "Savaş Gemisi Taarruzu - Küçük",
+      "Chainlink": "Cephe Hattı",
+      "Sqdm": "Takım ölüm karşılaşması",
+      "Conquestladder": "Fetih ilerleyiş",
+      "Squadobliteration": "  Tahrip Mangası",
+      "table": {
+        "firstRow": "Oyun modları",
+        "secondRow": "Skor"
+      },
+      "amounts": {
+        "wins": "Kazanmalar",
+        "losses": "Kaybetmeler",
+        "score": "Skor"
+      }
     },
     "platoon": {
-        "back": "Aramaya geri dön",
-        "searchPlayer": "Oyuncu ara",
-        "servers": "Klan sunucuları",
-        "members": {
-            "main": "Klan üyeleri",
-            "General": "Orgeneral",
-            "Colonel": "Albay",
-            "Lieutenant": "Teğmen",
-            "Private": "Er",
-            "empty": "Bu rütbeye sahip üye yok"
-        },
-        "rows": {
-            "role": "Rol",
-            "name": "İsim"
-        },
-        "notFound": {
-            "main": "Platoon bulunamadı",
-            "description": "Aradığınız platoon'u bulamıyoruz."
+      "none": "Oyuncu herhangi bir klanda değil",
+      "noMain": "Oyuncu bir klanı, ana klanı olarak temsil etmiyor",
+      "noDescription": "Klanın açıklaması yok"
+    },
+    "playSession": {
+      "main": "Battlefield oyun seansları",
+      "detailed": "Hangi sunucuda oynadığınızı takip ediyoruz, sadece sunucu bizim yöneticimizi kullandığında çalışıyor.",
+      "stats": {
+        "kills": "Ölüm",
+        "deaths": "Öldürme",
+        "wins": "Kazanma",
+        "losses": "Kaybetme",
+        "timePlayedAs": "Oynanan süre",
+        "score": "Skor",
+        "gamemodes": {
+          "Frontlines": "Cephe hattı",
+          "Domination": "Üstünlük",
+          "Breakthrough": "Şok operasyon",
+          "Rush": "Akın",
+          "BreakthroughLarge": "=Operasyon",
+          "Conquest": "Fetih",
+          "Possession": "Savaş güvencini",
+          "TeamDeathMatch": "Takım ölüm karşılaşması"
         }
+      }
     },
-    "getPlaygrounds": {
-        "back": "Ana sayfa",
-        "main": "Battlefield Portal Deneyim bilgileri",
-        "description": "Battlefield Portal deneyimi hakkında bilgi alın",
-        "getInfo": "Geçerli bir deneyim URL'si, oyun alanı kimliği veya deneyim kodu girin",
-        "show": "Göster"
+    "main": {
+      "rank": "rütbe",
+      "killDeath": "K/D",
+      "killsPerMinute": "KPM",
+      "winPercent": "kazanma%",
+      "bestClass": "En iyi sınıf",
+      "accuracy": "İsabet",
+      "timePlayed": "Oynanan süre"
     },
-    "playgrounds": {
-        "back": "Aramaya geri dön",
-        "rotation": "Harita rotasyonunu",
-        "tags": "Deneyim etiketleri",
-        "maxPlayers": "en fazla {{ amount }} oyuncu",
-        "owner": {
-            "main": "Deneyim yaratıcısı",
-            "none": "İçerik oluşturucu yalnızca oyun alanı kimliği kullanılırsa alınabilir",
-            "unknown": "takma ad bulunamadı"
-        },
-        "notFound": {
-            "main": "Deneyim bulunamadı",
-            "description": "Aradığınız deneyimi bulamıyoruz."
-        },
-        "types": {
-            "main": "Tür",
-            "portal-standard": "Standart deneyim",
-            "portal-featured": "Öne çıkan deneyim",
-            "portal-default": "Standart deneyim",
-            "portal-unranked": "Rütbesiz",
-            "portal-spotlight": "Gündemde"
-        }
+    "detailed": {
+      "skill": "Beceri",
+      "scorePerMinute": "SPM",
+      "headshotPercent": ",Kafadan vurma",
+      "infantryKillDeath": "Piyade K/D",
+      "infantryKillsPerMinute": "Piyade KPM",
+      "kills": "Öldürme",
+      "deaths": "Ölüm",
+      "wins": "Kazanma",
+      "losses": "Kaybetme",
+      "longestHeadShot": "En uzun kafadan vuruş",
+      "highestKillStreak": "En yüksek ölüm serisi",
+      "revives": "Canlandırma",
+      "roundsPlayed": "Oynanan turlar",
+      "awardScore": "Ödül puanı",
+      "bonusScore": "Bonus puanı",
+      "squadScore": "Takım puanı",
+      "avengerKills": "intikamcı öldürme",
+      "saviorKills": "kurtarıcı öldürme",
+      "headShots": "Kafanda vuruş",
+      "heals": "iyileştirme",
+      "repairs": "Tamirler",
+      "killAssists": "Öldürme yardımı",
+      "winPercent": "Kazanma yüzdesi",
+      "quits": "Çıkmalar"
     },
-    "footer": {
-        "description": "Bu web sitesi Topluluk Ağının bir parçasıdır. Açık Kaynaklıdır. GitHub aracılığıyla sorunları yayınlayabilir ve değişiklik/iyileştirme önerebilirsiniz. Topluluk Ağı tarafından sağlanan ve genel kullanıma açık API. Herhangi bir üçüncü taraf API sağlamıyoruz. Arka ucumuz kapalı kaynaktır ve herkese açık değildir.\nBattlefield & Origin, Electronic Arts'ın tescilli ticari markasıdır. Bu web sitesi Electronic Arts'ın Battlefield 1 İstatistik Koşulları uyarınca sağlanan verileri kullanır. Ticari markalar ilgili sahiplerinin mülkiyetindedir. Oyun malzemelerinin telif hakkı Electronic Arts Inc. Electronic Arts, bu siteyi veya içeriğini onaylamamıştır ve bunlardan sorumlu değildir.\nKod GPL v2 Lisansı altındadır. Bazı bölümler Community Network telif hakkı kapsamındadır.",
-        "links": {
-            "0": {
-                "header": "GitHub",
-                "url": "https://github.com/Community-network"
-            },
-            "1": {
-                "header": "Genel API",
-                "url": "https://api.gametools.network/"
-            },
-            "2": {
-                "header": "Community Network Discord",
-                "url": "https://discord.gametools.network/"
-            },
-            "3": {
-                "header": "Gizlilik Politikası",
-                "url": "/privacy/"
-            },
-            "4": {
-                "header": "Discord bot",
-                "url": "https://top.gg/bot/714524944783900794"
-            },
-            "5": {
-                "header": "Çeviriye yardım",
-                "url": "https://explore.transifex.com/gametools/"
-            }
-        }
+    "graph": {
+      "graphOptions": {
+        "amounts": "Miktar",
+        "maps": "Aktif haritalar",
+        "settings": "Aktif ayarlar",
+        "modes": "Aktif modlar",
+        "ownerPlatform": "Aktif platform sahipleri"
+      },
+      "soldierAmount": "Tüm oyuncular",
+      "diceSoldierAmount": "Dice sunucularındaki oyuncular",
+      "communitySoldierAmount": "Topluluk sunucularındaki oyuncular"
     },
-    "bflist": {
-        "notFound": "bflist.io API ile sunucu bulunamadı"
-    },
-    "pageNotFound": {
-        "main": "404 - Sayfa bulunamadı",
-        "description": "Aradığınız sayfayı bulamıyoruz.",
-        "home": "Ana sayfaya geri dön"
+    "iframe": {
+      "main": "İstatistiklerinizi kendi web sitenize ekleyin",
+      "info": "Ana sürüm:"
     }
+  },
+  "servers": {
+    "back": "Aramaya geri dön",
+    "rotation": "Sunucu haritası döngüsü",
+    "settings": "Sunucu ayarları",
+    "permLink": "Sabit bağlantı (isme dayalı):",
+    "platoon": {
+      "main": "klan serveri",
+      "none": "Sunucu bir klana bağlı değil"
+    },
+    "sort": {
+      "serverName": "Sunucu adı",
+      "playerAmount": "Oyuncu sayısı",
+      "maxPlayers": "En fazla oyuncu sayısı"
+    },
+    "owner": {
+      "main": "Sunucu sahibi",
+      "experience": "Deneyim yaratıcısı",
+      "none": "Sunucunun sahibi yok (Dice sunucusu)",
+      "unknown": "takma ad bulunamadı"
+    },
+    "password": "Parola korumalı",
+    "join": "Sunucuya katıl",
+    "joinFirefox": "Sunucuya katıl (yalnızca Firefox)",
+    "joinme": {
+      "main": "Bana katıl, başlatıcıyı tıkla",
+      "view": "Bana katıl'a tıklayın",
+      "launch": "Oyun başlatıldı!",
+      "info": "Sunucuya katılma düğmeleri oyuna katılmak için <0>https://joinme.click/</0> kullanılır, bu düğmeleri kullanmaya çalışmadan önce <0>joinme.click launcher</0> yükleyin!",
+      "smallinfo": "Sunucuya katılma düğmeleri oyuna katılmak için <0>https://joinme.click/</0> kullanılır.",
+      "discord": "Bunun çalışması için bana katıl başlatıcısının yüklenmesi gerekiyor!",
+      "invite": "Bana katıl. Davet URL'sini tıklayın"
+    },
+    "bfportal": {
+      "found": "BfPortal.gg adresinde bulunan portal deneyimi",
+      "error": "BfPortal.gg için Api hatası"
+    },
+    "iframe": {
+      "main": "Sunucuyu kendi web sitenize ekleyin",
+      "info": "Kendi özel sürümünüzü istiyorsanız, Discord'umuzdan iiTzArcur'a sorun.",
+      "black": "Siyah versiyon:",
+      "white": "Beyaz versiyon:",
+      "detailed": "Detaylı versiyon:",
+      "states": {
+        "copy": "iframe'i kopyala",
+        "copied": "kopyalandı!"
+      }
+    },
+    "leaderboard": {
+      "main": "Bu sunucunun oyuncu lider tablosu",
+      "info": "yalnızca manager-api'yi kullanan sunucularda Kullanılır",
+      "none": "Sunucu yeni eklendi veya manager-api kullanmıyor",
+      "row": {
+        "score": "Skor",
+        "killDeath": "K/D",
+        "kills": "Öldürme",
+        "deaths": "Ölüm",
+        "wins": "Kazanma",
+        "losses": "Kaybetme",
+        "timePlayed": "Oyun süresi"
+      }
+    },
+    "playerlist": {
+      "main": "Sunucudaki mevcut oyuncular",
+      "none": "Sunucu yeni eklendi veya manager-api kullanmıyor",
+      "empty": "Bu takım boş",
+      "lastUpdate": "Son aktif güncellemesi",
+      "row": {
+        "ping": "ping",
+        "platform": "platform",
+        "timePlayed": "Oynanan süre",
+        "playerSlot": "Oyuncu yuvası",
+        "playerName": "Oyuncu adı",
+        "platoon": "Birlik",
+        "rank": "Sıralama",
+        "score": "Skor",
+        "killDeath": "K/D",
+        "kills": "Öldürme",
+        "deaths": "Ölüm"
+      }
+    },
+    "factions": {
+      "BFFactionId_FactionAHU": "Avusturya-Macaristan İmparatorluğu",
+      "BFFactionId_FactionGER": "Alman imparatorluğu",
+      "BFFactionId_FactionOTM": "cOsmanlı imparatorluğu",
+      "BFFactionId_FactionITA": "İtalya Krallığı",
+      "BFFactionId_FactionUK": "Birleşik Krallık",
+      "BFFactionId_FactionUSA": "Amerika Birleşik Devletleri",
+      "BFFactionId_FactionFRA": "Fransa",
+      "BFFactionId_FactionRUS": "Rus imparatorluğu",
+      "BFFactionId_FactionBOL": "Kızıl Ordu",
+      "BFFactionId_FactionWA": "Beyaz Ordu",
+      "BFFactionId_FactionUKM": "Kraliyet Deniz Piyadeleri",
+      "FactionUS": "Rusya Federasyonu",
+      "FactionRUS": "Amerika Birleşik Devletleri",
+      "teamOne": "Takım 1",
+      "teamTwo": "Takım 2"
+    },
+    "portal": {
+      "main": "Portal deneyimi"
+    },
+    "graph": {
+      "main": "Sunucu grafikleri",
+      "map": "Harita",
+      "mode": "Oyun modu",
+      "amount": "Toplanan zaman",
+      "error": "Bu sunucu için grafikler alınamadı"
+    },
+    "notFound": {
+      "main": "Sunucu bulunamadı",
+      "description": "Aradığınız sunucuyu bulamıyoruz."
+    }
+  },
+  "platoon": {
+    "back": "Aramaya geri dön",
+    "searchPlayer": "Oyuncu ara",
+    "servers": "Klan sunucuları",
+    "members": {
+      "main": "Klan üyeleri",
+      "General": "Orgeneral",
+      "Colonel": "Albay",
+      "Lieutenant": "Teğmen",
+      "Private": "Er",
+      "empty": "Bu rütbeye sahip üye yok"
+    },
+    "rows": {
+      "role": "Rol",
+      "name": "İsim"
+    },
+    "notFound": {
+      "main": "Platoon bulunamadı",
+      "description": "Aradığınız platoon'u bulamıyoruz."
+    }
+  },
+  "getPlaygrounds": {
+    "back": "Ana sayfa",
+    "main": "Battlefield Portal Deneyim bilgileri",
+    "description": "Battlefield Portal deneyimi hakkında bilgi alın",
+    "getInfo": "Geçerli bir deneyim URL'si, oyun alanı kimliği veya deneyim kodu girin",
+    "show": "Göster"
+  },
+  "playgrounds": {
+    "back": "Aramaya geri dön",
+    "rotation": "Harita rotasyonunu",
+    "tags": "Deneyim etiketleri",
+    "maxPlayers": "en fazla {{ amount }} oyuncu",
+    "owner": {
+      "main": "Deneyim yaratıcısı",
+      "none": "İçerik oluşturucu yalnızca oyun alanı kimliği kullanılırsa alınabilir",
+      "unknown": "takma ad bulunamadı"
+    },
+    "notFound": {
+      "main": "Deneyim bulunamadı",
+      "description": "Aradığınız deneyimi bulamıyoruz."
+    },
+    "types": {
+      "main": "Tür",
+      "portal-standard": "Standart deneyim",
+      "portal-featured": "Öne çıkan deneyim",
+      "portal-default": "Standart deneyim",
+      "portal-unranked": "Rütbesiz",
+      "portal-spotlight": "Gündemde"
+    }
+  },
+  "footer": {
+    "description": "Bu web sitesi Topluluk Ağının bir parçasıdır. Açık Kaynaklıdır. GitHub aracılığıyla sorunları yayınlayabilir ve değişiklik/iyileştirme önerebilirsiniz. Topluluk Ağı tarafından sağlanan ve genel kullanıma açık API. Herhangi bir üçüncü taraf API sağlamıyoruz. Arka ucumuz kapalı kaynaktır ve herkese açık değildir.\nBattlefield & Origin, Electronic Arts'ın tescilli ticari markasıdır. Bu web sitesi Electronic Arts'ın Battlefield 1 İstatistik Koşulları uyarınca sağlanan verileri kullanır. Ticari markalar ilgili sahiplerinin mülkiyetindedir. Oyun malzemelerinin telif hakkı Electronic Arts Inc. Electronic Arts, bu siteyi veya içeriğini onaylamamıştır ve bunlardan sorumlu değildir.\nKod GPL v2 Lisansı altındadır. Bazı bölümler Community Network telif hakkı kapsamındadır.",
+    "links": {
+      "0": {
+        "header": "GitHub",
+        "url": "https://github.com/Community-network"
+      },
+      "1": {
+        "header": "Genel API",
+        "url": "https://api.gametools.network/"
+      },
+      "2": {
+        "header": "Community Network Discord",
+        "url": "https://discord.gametools.network/"
+      },
+      "3": {
+        "header": "Gizlilik Politikası",
+        "url": "/privacy/"
+      },
+      "4": {
+        "header": "Discord bot",
+        "url": "https://top.gg/bot/714524944783900794"
+      },
+      "5": {
+        "header": "Çeviriye yardım",
+        "url": "https://explore.transifex.com/gametools/"
+      }
+    }
+  },
+  "bflist": {
+    "notFound": "bflist.io API ile sunucu bulunamadı"
+  },
+  "pageNotFound": {
+    "main": "404 - Sayfa bulunamadı",
+    "description": "Aradığınız sayfayı bulamıyoruz.",
+    "home": "Ana sayfaya geri dön"
+  }
 }
