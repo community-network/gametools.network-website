@@ -1,561 +1,561 @@
 {
-    "siteName": "战地游戏查询工具",
-    "siteFullName": "战地游戏查询工具",
-    "loading": "读取中",
-    "error": "无法获取此统计信息，出了些问题...",
-    "404": "404",
-    "playerNotFound": "找不到玩家名，请尝试其他玩家名称。",
-    "notApplicable": "不适用",
-    "resultNotFound": "未找到",
-    "noName": "当你用player id搜索时，我们不能显示玩家名称",
-    "date": "{{date, date|eee, dd MMM yyyy}}",
-    "dateTime": "{{date, date|eee, dd MMM yyyy - p}}",
-    "shortDateTime": "{{date, date|PPpp}}",
-    "chartHourFormat": "HH:mm, eee d LLL",
-    "time": "{{date, date|p}}",
-    "change": "{{change, change}}",
-    "intlNumber": "{{val, number}}",
-    "ago": "前",
-    "export": "导出EXCEL",
-    "dateType": {
-        "createdAt": "创建于",
-        "updatedAt": "更新于"
+  "siteName": "战地游戏查询工具",
+  "siteFullName": "战地游戏查询工具",
+  "loading": "读取中",
+  "error": "无法获取此统计信息，出了些问题...",
+  "404": "404",
+  "playerNotFound": "找不到玩家名，请尝试其他玩家名称。",
+  "notApplicable": "不适用",
+  "resultNotFound": "未找到",
+  "noName": "当你用player id搜索时，我们不能显示玩家名称",
+  "date": "{{date, date|eee, dd MMM yyyy}}",
+  "dateTime": "{{date, date|eee, dd MMM yyyy - p}}",
+  "shortDateTime": "{{date, date|PPpp}}",
+  "chartHourFormat": "HH:mm, eee d LLL",
+  "time": "{{date, date|p}}",
+  "change": "{{change, change}}",
+  "intlNumber": "{{val, number}}",
+  "ago": "前",
+  "export": "导出EXCEL",
+  "dateType": {
+    "createdAt": "创建于",
+    "updatedAt": "更新于"
+  },
+  "bfban": {
+    "stats": "该玩家已被BFBAN标记外挂!",
+    "platoon": " 挂壁"
+  },
+  "states": {
+    "copy": "复制链接",
+    "copied": "已复制！"
+  },
+  "navBar": {
+    "help": "需要更多帮助?",
+    "serverManager": "服务器管理工具",
+    "api": "公共API"
+  },
+  "games": {
+    "bfglobal": "全部游戏",
+    "bf1942": "战地 1942",
+    "bf2": {
+      "bf2hub": "战地2 (bf2hub)",
+      "playbf2": "战地2 (playbf2)"
     },
-    "bfban": {
-        "stats": "该玩家已被BFBAN标记外挂!",
-        "platoon": " 挂壁"
+    "bf2142": {
+      "openspy": "战地2142 (openspy)",
+      "play2142": "战地2142 (.co)"
     },
-    "states": {
-        "copy": "复制链接",
-        "copied": "已复制！"
+    "bfvietnam": {
+      "openspy": "战地越南 (openspy)",
+      "qtracker": "战地越南 (qtracker)"
     },
-    "navBar": {
-        "help": "需要更多帮助?",
-        "serverManager": "服务器管理工具",
-        "api": "公共API"
+    "bfbc2": "战地 BC 2",
+    "bf3": "战地3",
+    "bf4": "战地4",
+    "bfh": "战地硬仗",
+    "bf1": "战地1",
+    "bfv": "战地5",
+    "bf2042": "战地2042",
+    "bf2042portal": "Battlefield 2042 Portal"
+  },
+  "limit": {
+    "10": "10服务器",
+    "25": "25服务器",
+    "50": "50服务器",
+    "100": "100服务器",
+    "200": "200服务器",
+    "250": "250服务器"
+  },
+  "regions": {
+    "all": "所有地区",
+    "eu": "欧洲",
+    "asia": "亚洲",
+    "nam": "北美",
+    "sam": "南美",
+    "au": "澳大利亚",
+    "oc": "大洋",
+    "afr": "非洲",
+    "ac": "南极洲"
+  },
+  "platforms": {
+    "pc": "PC",
+    "xboxseries": "XBOX SERIES",
+    "xboxone": "XBOX ONE",
+    "xbox360": "XBOX 360",
+    "ps5": "PS5",
+    "ps4": "PS4",
+    "ps3": "PS3",
+    "all": "所有平台"
+  },
+  "serverType": {
+    "official": "官方",
+    "custom": "自定义"
+  },
+  "statPlatforms": {
+    "pc": "PC",
+    "xboxone": "XBOX ONE (以及更新版本)",
+    "xbox360": "XBOX 360",
+    "ps4": "PS4 (以及更新版本)",
+    "ps3": "PS3"
+  },
+  "home": {
+    "manager": {
+      "header": "GAMETOOLS | CLOUD",
+      "description": "我们创建了一个基于网络的反作弊和管理平台来保护您的 Battlefield 服务器。\n在许多社区的帮助下建造。\n\n立即登录并免费开始您的管理！",
+      "open": "启动应用程序",
+      "disclaimer": "不提供服务器托管。 我们目前支持以下《战地风云》游戏："
     },
-    "games": {
-        "bfglobal": "全部游戏",
-        "bf1942": "战地 1942",
-        "bf2": {
-            "bf2hub": "战地2 (bf2hub)",
-            "playbf2": "战地2 (playbf2)"
-        },
-        "bf2142": {
-            "openspy": "战地2142 (openspy)",
-            "play2142": "战地2142 (.co)"
-        },
-        "bfvietnam": {
-            "openspy": "战地越南 (openspy)",
-            "qtracker": "战地越南 (qtracker)"
-        },
-        "bfbc2": "战地 BC 2",
-        "bf3": "战地3",
-        "bf4": "战地4",
-        "bfh": "战地硬仗",
-        "bf1": "战地1",
-        "bfv": "战地5",
-        "bf2042": "战地2042",
-        "bf2042portal": "Battlefield 2042 Portal"
+    "graphs": {
+      "header": "在线统计数据和图表",
+      "detailed": "查看详细统计数据"
     },
-    "limit": {
-        "10": "10服务器",
-        "25": "25服务器",
-        "50": "50服务器",
-        "100": "100服务器",
-        "200": "200服务器",
-        "250": "250服务器"
+    "otherServices": {
+      "header": "其他服务",
+      "0": {
+        "header": "战排",
+        "localUrl": "/platoons/"
+      },
+      "1": {
+        "header": "门户体验信息",
+        "localUrl": "/playgrounds/"
+      },
+      "2": {
+        "header": "FESL API (Battlefield bad company 2 APIs)",
+        "url": "https://fesl.gametools.network/docs"
+      }
     },
-    "regions": {
-        "all": "所有地区",
-        "eu": "欧洲",
-        "asia": "亚洲",
-        "nam": "北美",
-        "sam": "南美",
-        "au": "澳大利亚",
-        "oc": "大洋",
-        "afr": "非洲",
-        "ac": "南极洲"
+    "ourFriends": {
+      "header": "来自我们的开发者",
+      "0": {
+        "header": "战地联ban",
+        "description": "我们在主持联ban的同时也是战地联ban的一部分 - 联ban是一个杰出的社区包含了游戏逆向工程与编程安全团队，建立的初衷是为了对抗外挂，我们提供了联合封禁名单以及一个举报系统，目的是为了给战地玩家提供一个干净的游戏环境。\n举报战地1和战地5的外挂，这样他们就可被社区服务器封禁。",
+        "link": "访问Bfban网站",
+        "url": "https://bfban.gametools.network/"
+      },
+      "1": {
+        "header": "BF门户网站",
+        "description": "查找并分享《战地风云 2042》门户网站体验。",
+        "link": "访问 BFPortal",
+        "url": "https://bfportal.gg/"
+      },
+      "2": {
+        "header": "Statbits",
+        "description": "Statbits 可以让你在包括直播聊天中或其他应用中结合游戏统计数据，想仅打个!kd获取你的战地4击杀死亡比？找我们的就对了",
+        "link": "阅读文档",
+        "url": "https://statbits.io/"
+      },
+      "3": {
+        "header": "战地列表",
+        "description": "战地列表为您提供实时战地系列游戏内数据,我们提供包括服务器信息在内的游戏玩家战绩.从服务器名称到最近的玩的地图再到玩家K/D以及分数等.",
+        "link": "阅读说明文档",
+        "url": "https://bflist.io/"
+      }
+    }
+  },
+  "playerSearch": {
+    "back": "主页 ",
+    "bfStats": "战地数据库",
+    "description": "通过搜索玩家的Origin ID来获取玩家的数据",
+    "search": "搜索",
+    "searchPlaceholder": "Origin ID",
+    "gameStatus": "战地在线人数",
+    "zoomInfo": "(点击表格开启滚轮缩放)",
+    "moreGraphs": "其他图表"
+  },
+  "serverSearch": {
+    "servers": "Servers",
+    "back": "主页",
+    "serverInfo": "战地服务器",
+    "description": "搜索服务器的具体信息",
+    "search": "搜索",
+    "searchPlaceholder": {
+      "null": "服务器名字",
+      "servername": "服务器名字",
+      "experiencename": "搜索某体验的名字..."
     },
-    "platforms": {
-        "pc": "PC",
-        "xboxseries": "XBOX SERIES",
-        "xboxone": "XBOX ONE",
-        "xbox360": "XBOX 360",
-        "ps5": "PS5",
-        "ps4": "PS4",
-        "ps3": "PS3",
-        "all": "所有平台"
+    "results": "搜索结果",
+    "type": {
+      "name": "服务器名称",
+      "playground": "体验名称"
     },
-    "serverType": {
-        "official": "官方",
-        "custom": "自定义"
+    "showMore": "显示更多",
+    "region": "地区",
+    "platform": "平台"
+  },
+  "platoonSearch": {
+    "back": "首页",
+    "serverInfo": "战地战队",
+    "description": "搜索战队查看更多详情, 点击战队名字查看他们的成员.",
+    "search": "搜索",
+    "searchPlaceholder": "搜索战队名字...",
+    "results": "搜索结果",
+    "resultNotFound": "没找到. 你最少输入3个字符去搜索战队."
+  },
+  "stats": {
+    "view": "查看战绩",
+    "back": "回到搜索界面",
+    "originDescription": "Origin 主页",
+    "detailedName": "战绩详情",
+    "overview": "概览",
+    "overviewDescription": "游戏综合数据",
+    "platoonName": "正在代表的战队",
+    "otherPlatoons": "其他战队",
+    "weapons": "武器",
+    "vehicles": "载具",
+    "weaponGraph": "武器图表",
+    "vehicleGraph": "载具图表",
+    "searchWeapon": "搜索他的某一项武器",
+    "searchVehicle": "搜索他的某一项载具",
+    "rows": {
+      "weaponName": "武器名称",
+      "vehicleName": "载具名称",
+      "type": "种类",
+      "kills": "击杀",
+      "killsPerMinute": "KPM",
+      "damagePerMinute": "DPM",
+      "destroyed": "摧毁数量",
+      "accuracy": "准度",
+      "headshots": "爆头数"
     },
-    "statPlatforms": {
-        "pc": "PC",
-        "xboxone": "XBOX ONE (以及更新版本)",
-        "xbox360": "XBOX 360",
-        "ps4": "PS4 (以及更新版本)",
-        "ps3": "PS3"
+    "classes": {
+      "main": "类别",
+      "Medic": "医疗",
+      "Support": "支援",
+      "Scout": "狙击",
+      "Assault": "突击",
+      "Pilot": "飞行员",
+      "Tanker": "坦克手",
+      "Cavalry": "骑兵",
+      "amounts": {
+        "kpm": "KPM",
+        "score": "分数",
+        "kills": "击杀",
+        "timePlayed": "游玩时间"
+      }
     },
-    "home": {
-        "manager": {
-            "header": "GAMETOOLS | CLOUD",
-            "description": "我们创建了一个基于网络的反作弊和管理平台来保护您的 Battlefield 服务器。\n在许多社区的帮助下建造。\n\n立即登录并免费开始您的管理！",
-            "open": "启动应用程序",
-            "disclaimer": "不提供服务器托管。 我们目前支持以下《战地风云》游戏："
-        },
-        "graphs": {
-            "header": "在线统计数据和图表",
-            "detailed": "查看详细统计数据"
-        },
-        "otherServices": {
-            "header": "其他服务",
-            "0": {
-                "header": "战排",
-                "localUrl": "/platoons/"
-            },
-            "1": {
-                "header": "门户体验信息",
-                "localUrl": "/playgrounds/"
-            },
-            "2": {
-                "header": "FESL API (Battlefield bad company 2 APIs)",
-                "url": "https://fesl.gametools.network/docs"
-            }
-        },
-        "ourFriends": {
-            "header": "来自我们的开发者",
-            "0": {
-                "header": "战地联ban",
-                "description": "我们在主持联ban的同时也是战地联ban的一部分 - 联ban是一个杰出的社区包含了游戏逆向工程与编程安全团队，建立的初衷是为了对抗外挂，我们提供了联合封禁名单以及一个举报系统，目的是为了给战地玩家提供一个干净的游戏环境。\n举报战地1和战地5的外挂，这样他们就可被社区服务器封禁。",
-                "link": "访问Bfban网站",
-                "url": "https://bfban.gametools.network/"
-            },
-            "1": {
-                "header": "BF门户网站",
-                "description": "查找并分享《战地风云 2042》门户网站体验。",
-                "link": "访问 BFPortal",
-                "url": "https://bfportal.gg/"
-            },
-            "2": {
-                "header": "Statbits",
-                "description": "Statbits 可以让你在包括直播聊天中或其他应用中结合游戏统计数据，想仅打个!kd获取你的战地4击杀死亡比？找我们的就对了",
-                "link": "阅读文档",
-                "url": "https://statbits.io/"
-            },
-            "3": {
-                "header": "战地列表",
-                "description": "战地列表为您提供实时战地系列游戏内数据,我们提供包括服务器信息在内的游戏玩家战绩.从服务器名称到最近的玩的地图再到玩家K/D以及分数等.",
-                "link": "阅读说明文档",
-                "url": "https://bflist.io/"
-            }
-        }
+    "progress": {
+      "main": "游戏进度",
+      "Campaign": "进度",
+      "Assignments": "成就",
+      "Medals": "奖牌",
+      "Ribbons": "勋带",
+      "Weapons": "武器",
+      "Vehicles": "载具",
+      "Kits": "套件",
+      "Codex": "百科",
+      "Dog tags": "狗牌"
     },
-    "playerSearch": {
-        "back": "主页 ",
-        "bfStats": "战地数据库",
-        "description": "通过搜索玩家的Origin ID来获取玩家的数据",
-        "search": "搜索",
-        "searchPlaceholder": "Origin ID",
-        "gameStatus": "战地在线人数",
-        "zoomInfo": "(点击表格开启滚轮缩放)",
-        "moreGraphs": "其他图表"
-    },
-    "serverSearch": {
-        "servers": "Servers",
-        "back": "主页",
-        "serverInfo": "战地服务器",
-        "description": "搜索服务器的具体信息",
-        "search": "搜索",
-        "searchPlaceholder": {
-            "null": "服务器名字",
-            "servername": "服务器名字",
-            "experiencename": "搜索某体验的名字..."
-        },
-        "results": "搜索结果",
-        "type": {
-            "name": "服务器名称",
-            "playground": "体验名称"
-        },
-        "showMore": "显示更多",
-        "region": "地区",
-        "platform": "平台"
-    },
-    "platoonSearch": {
-        "back": "首页",
-        "serverInfo": "战地战队",
-        "description": "搜索战队查看更多详情, 点击战队名字查看他们的成员.",
-        "search": "搜索",
-        "searchPlaceholder": "搜索战队名字...",
-        "results": "搜索结果",
-        "resultNotFound": "没找到. 你最少输入3个字符去搜索战队."
-    },
-    "stats": {
-        "view": "查看战绩",
-        "back": "回到搜索界面",
-        "originDescription": "Origin 主页",
-        "detailedName": "战绩详情",
-        "overview": "概览",
-        "overviewDescription": "游戏综合数据",
-        "platoonName": "正在代表的战队",
-        "otherPlatoons": "其他战队",
-        "weapons": "武器",
-        "vehicles": "载具",
-        "weaponGraph": "武器图表",
-        "vehicleGraph": "载具图表",
-        "searchWeapon": "搜索他的某一项武器",
-        "searchVehicle": "搜索他的某一项载具",
-        "rows": {
-            "weaponName": "武器名称",
-            "vehicleName": "载具名称",
-            "type": "种类",
-            "kills": "击杀",
-            "killsPerMinute": "KPM",
-            "damagePerMinute": "DPM",
-            "destroyed": "摧毁数量",
-            "accuracy": "准度",
-            "headshots": "爆头数"
-        },
-        "classes": {
-            "main": "类别",
-            "Medic": "医疗",
-            "Support": "支援",
-            "Scout": "狙击",
-            "Assault": "突击",
-            "Pilot": "飞行员",
-            "Tanker": "坦克手",
-            "Cavalry": "骑兵",
-            "amounts": {
-                "kpm": "KPM",
-                "score": "分数",
-                "kills": "击杀",
-                "timePlayed": "游玩时间"
-            }
-        },
-        "progress": {
-            "main": "游戏进度",
-            "Campaign": "进度",
-            "Assignments": "成就",
-            "Medals": "奖牌",
-            "Ribbons": "勋带",
-            "Weapons": "武器",
-            "Vehicles": "载具",
-            "Kits": "套件",
-            "Codex": "百科",
-            "Dog tags": "狗牌"
-        },
-        "gamemodes": {
-            "main": "游戏模式信息",
-            "percentage": "Wins: {{percentage}}%",
-            "Frontlines": "前线",
-            "Domination": "控制",
-            "Shock operations": "突破行动",
-            "Rush": "冲突",
-            "Conquest": "小型征服",
-            "War pigeons": "战争信鸽",
-            "Operations": "行动",
-            "Teamdeathmatch": "团队死斗",
-            "Conquestlarge": "大型征服",
-            "Gunmaster": "枪械大师",
-            "Capturetheflag": "夺旗",
-            "Obliteration": "毁灭",
-            "Airsuperiority": "空中优势",
-            "Elimination": "淘汰",
-            "Carrierassault": "航母突击",
-            "Carrierassaultlarge": "大型航母突击",
-            "Carrierassaultsmall": "小型航母突击",
-            "Chainlink": "链环",
-            "Sqdm": "小队死斗",
-            "Conquestladder": "征服阶梯",
-            "Squadobliteration": "小队清除",
-            "table": {
-                "firstRow": "游戏模式",
-                "secondRow": "分数"
-            },
-            "amounts": {
-                "wins": "胜利",
-                "losses": "失败",
-                "score": "分数"
-            }
-        },
-        "platoon": {
-            "none": "该玩家不属于任何战队",
-            "noMain": "该玩家目前没有代表任何战队",
-            "noDescription": "该战队没有描述"
-        },
-        "playSession": {
-            "main": "对局战报",
-            "detailed": "我们将会追踪你游玩的服务器，前提是该服务器使用了我们的服管工具.",
-            "stats": {
-                "kills": "击杀",
-                "deaths": "死亡",
-                "wins": "胜利",
-                "losses": "失败",
-                "timePlayedAs": "游玩时间",
-                "score": "分数",
-                "gamemodes": {
-                    "TugOfWar": "前线",
-                    "Domination": "抢攻",
-                    "Breakthrough": "突破行动",
-                    "Rush": "突袭",
-                    "BreakthroughLarge": "大行动",
-                    "Conquest": "征服",
-                    "Possession": "战争信鸽",
-                    "TeamDeathMatch": "团队死斗"
-                }
-            }
-        },
-        "main": {
-            "rank": "等级 ",
-            "killDeath": "K/D比",
-            "killsPerMinute": "KPM",
-            "winPercent": "胜率",
-            "bestClass": "最佳兵种",
-            "accuracy": "准度",
-            "timePlayed": "游玩时间"
-        },
-        "detailed": {
-            "skill": "技巧值",
-            "scorePerMinute": "得分/分钟",
-            "headshotPercent": "爆头数",
-            "infantryKillDeath": "步兵击杀死亡比",
-            "infantryKillsPerMinute": "步兵击杀/分钟",
-            "kills": "击杀数",
-            "deaths": "死亡数",
-            "wins": "胜局",
-            "losses": "输局",
-            "longestHeadShot": "最长距离爆头",
-            "highestKillStreak": "最高连续击杀",
-            "revives": "急救数",
-            "roundsPlayed": "总局数",
-            "awardScore": "奖励分数",
-            "bonusScore": "勋带分数",
-            "squadScore": "小队分数",
-            "avengerKills": "复仇击杀",
-            "saviorKills": "掩护击杀",
-            "headShots": "爆头数",
-            "heals": "治疗分",
-            "repairs": "修理分",
-            "killAssists": "协助击杀",
-            "winPercent": "胜率",
-            "quits": "放弃"
-        },
-        "graph": {
-            "graphOptions": {
-                "amounts": "总数",
-                "maps": "活跃地图",
-                "settings": "活跃设置",
-                "modes": "活跃模式",
-                "ownerPlatform": "活跃拥有者平台"
-            },
-            "soldierAmount": "所有玩家",
-            "diceSoldierAmount": "官服玩家",
-            "communitySoldierAmount": "私服玩家"
-        },
-        "iframe": {
-            "main": "把你的战报加入你的服务器",
-            "info": "主版本:"
-        }
-    },
-    "servers": {
-        "back": "搜索主页",
-        "rotation": "服务器地图循环",
-        "settings": "服务器设定",
-        "permLink": "该服永久链接(基于最近设置的服务器名字):",
-        "platoon": {
-            "main": "战队服务器",
-            "none": "该服务器还没有关联任何战队"
-        },
-        "sort": {
-            "serverName": "服务器名称",
-            "playerAmount": "玩家数量",
-            "maxPlayers": "最大玩家数量"
-        },
-        "owner": {
-            "main": "服主",
-            "experience": "体验创造者",
-            "none": "没有服主 (官服)",
-            "unknown": "找不到名称"
-        },
-        "password": "密码保护",
-        "join": "加入服务器",
-        "joinFirefox": "加入服务器 (只限火狐)",
-        "joinme": {
-            "main": "加入我！启动器",
-            "view": "启动状态",
-            "launch": "游戏已启动!",
-            "info": "该服务器加入按钮使用<0>https://joinme.click/</0> 加入游戏,安装<0>你应该先安装 加入我 启动器</0>然后再点击该按钮!",
-            "smallinfo": "该服务器加入按钮使用<0>https://joinme.click/</0> 加入游戏.",
-            "discord": "加入我 启动器已安装 并且工作中!",
-            "invite": "加入我 邀请链接"
-        },
-        "bfportal": {
-            "found": "在 BfPortal.gg 上找到的门户体验",
-            "error": "BfPortal.gg 的 Api 故障"
-        },
-        "iframe": {
-            "main": "把该服务器加入你自己的网站",
-            "info": "如果你想使用自定义版本, 在discord找 iiTzArcur. (链接在页面下方)",
-            "black": "黑色版本:",
-            "white": "白色版本:",
-            "detailed": "详情版本:",
-            "states": {
-                "copy": "复制框架",
-                "copied": "已复制!"
-            }
-        },
-        "leaderboard": {
-            "main": "该服务器最近的榜单",
-            "info": "仅在该服务器使用我们的管理api时有用",
-            "none": "该服务器刚刚加入还没有用管理api",
-            "row": {
-                "score": "分数",
-                "killDeath": "K/D",
-                "kills": "击杀",
-                "deaths": "死亡",
-                "wins": "胜利",
-                "losses": "失败",
-                "timePlayed": "游玩时间"
-            }
-        },
-        "playerlist": {
-            "main": "该服务器最近的玩家",
-            "none": "该服务器刚刚加入或还没有使用管理api",
-            "empty": "这个队伍是空的",
-            "lastUpdate": "线程最后更新",
-            "row": {
-                "ping": "延迟",
-                "platform": "平台",
-                "timePlayed": "游玩时间",
-                "playerSlot": "玩家槽位",
-                "playerName": "玩家名称",
-                "platoon": "战排",
-                "rank": "等级",
-                "score": "分数",
-                "killDeath": "K/D",
-                "kills": "击杀",
-                "deaths": "死亡"
-            }
-        },
-        "factions": {
-            "BFFactionId_FactionAHU": "奥匈帝国",
-            "BFFactionId_FactionGER": "德意志帝国",
-            "BFFactionId_FactionOTM": "奥斯曼土鸡",
-            "BFFactionId_FactionITA": "意呆利王国",
-            "BFFactionId_FactionUK": "大嘤帝国",
-            "BFFactionId_FactionUSA": "美国",
-            "BFFactionId_FactionFRA": "法国",
-            "BFFactionId_FactionRUS": "俄罗斯帝国",
-            "BFFactionId_FactionBOL": "红军",
-            "BFFactionId_FactionWA": "白军",
-            "BFFactionId_FactionUKM": "皇家海军",
-            "FactionUS": "俄罗斯联邦",
-            "FactionRUS": "美国",
-            "teamOne": "队伍 1",
-            "teamTwo": "队伍 2"
-        },
-        "portal": {
-            "main": "门户体验"
-        },
-        "graph": {
-            "main": "服务器图表",
-            "map": "地图",
-            "mode": "游戏模式",
-            "amount": "时代聚集",
-            "error": "无法获取此服务器的图表"
-        },
-        "notFound": {
-            "main": "找不到服务器",
-            "description": "我们找不到您要找的服务器。"
-        }
+    "gamemodes": {
+      "main": "游戏模式信息",
+      "percentage": "Wins: {{percentage}}%",
+      "Frontlines": "前线",
+      "Domination": "控制",
+      "Shock operations": "突破行动",
+      "Rush": "冲突",
+      "Conquest": "小型征服",
+      "War pigeons": "战争信鸽",
+      "Operations": "行动",
+      "Teamdeathmatch": "团队死斗",
+      "Conquestlarge": "大型征服",
+      "Gunmaster": "枪械大师",
+      "Capturetheflag": "夺旗",
+      "Obliteration": "毁灭",
+      "Airsuperiority": "空中优势",
+      "Elimination": "淘汰",
+      "Carrierassault": "航母突击",
+      "Carrierassaultlarge": "大型航母突击",
+      "Carrierassaultsmall": "小型航母突击",
+      "Chainlink": "链环",
+      "Sqdm": "小队死斗",
+      "Conquestladder": "征服阶梯",
+      "Squadobliteration": "小队清除",
+      "table": {
+        "firstRow": "游戏模式",
+        "secondRow": "分数"
+      },
+      "amounts": {
+        "wins": "胜利",
+        "losses": "失败",
+        "score": "分数"
+      }
     },
     "platoon": {
-        "back": "返回搜索",
-        "searchPlayer": "搜索一个玩家",
-        "servers": "战队服务器",
-        "members": {
-            "main": "战队成员",
-            "General": "将军",
-            "Colonel": "上校",
-            "Lieutenant": "中尉",
-            "Private": "列兵",
-            "empty": "在这个职位没有任何人"
-        },
-        "rows": {
-            "role": "角色",
-            "name": "名字"
-        },
-        "notFound": {
-            "main": "未找到战排",
-            "description": "我们找不到您要找的战排。"
+      "none": "该玩家不属于任何战队",
+      "noMain": "该玩家目前没有代表任何战队",
+      "noDescription": "该战队没有描述"
+    },
+    "playSession": {
+      "main": "对局战报",
+      "detailed": "我们将会追踪你游玩的服务器，前提是该服务器使用了我们的服管工具.",
+      "stats": {
+        "kills": "击杀",
+        "deaths": "死亡",
+        "wins": "胜利",
+        "losses": "失败",
+        "timePlayedAs": "游玩时间",
+        "score": "分数",
+        "gamemodes": {
+          "Frontlines": "前线",
+          "Domination": "抢攻",
+          "Breakthrough": "突破行动",
+          "Rush": "突袭",
+          "BreakthroughLarge": "大行动",
+          "Conquest": "征服",
+          "Possession": "战争信鸽",
+          "TeamDeathMatch": "团队死斗"
         }
+      }
     },
-    "getPlaygrounds": {
-        "back": "主页 ",
-        "main": "获取战地门户体验信息",
-        "description": "获取有关 Battlefield Portal 体验的信息",
-        "getInfo": "填写有效的体验 url、playground id 或体验代码",
-        "show": "显示更多"
+    "main": {
+      "rank": "等级 ",
+      "killDeath": "K/D比",
+      "killsPerMinute": "KPM",
+      "winPercent": "胜率",
+      "bestClass": "最佳兵种",
+      "accuracy": "准度",
+      "timePlayed": "游玩时间"
     },
-    "playgrounds": {
-        "back": "搜索主页",
-        "rotation": "体验地图轮换",
-        "tags": "体验标签",
-        "maxPlayers": "最多 {{ amount }} 名玩家",
-        "owner": {
-            "main": "体验创造者",
-            "none": "仅当使用 playground id 时才能检索创建者",
-            "unknown": "找不到名称"
-        },
-        "notFound": {
-            "main": "未找到Experience",
-            "description": "我们找不到您想要的体验。"
-        },
-        "types": {
-            "main": "种类",
-            "portal-standard": "标准体验",
-            "portal-featured": "特色体验",
-            "portal-default": "标准体验",
-            "portal-unranked": "无排名",
-            "portal-spotlight": "在聚光灯下"
-        }
+    "detailed": {
+      "skill": "技巧值",
+      "scorePerMinute": "得分/分钟",
+      "headshotPercent": "爆头数",
+      "infantryKillDeath": "步兵击杀死亡比",
+      "infantryKillsPerMinute": "步兵击杀/分钟",
+      "kills": "击杀数",
+      "deaths": "死亡数",
+      "wins": "胜局",
+      "losses": "输局",
+      "longestHeadShot": "最长距离爆头",
+      "highestKillStreak": "最高连续击杀",
+      "revives": "急救数",
+      "roundsPlayed": "总局数",
+      "awardScore": "奖励分数",
+      "bonusScore": "勋带分数",
+      "squadScore": "小队分数",
+      "avengerKills": "复仇击杀",
+      "saviorKills": "掩护击杀",
+      "headShots": "爆头数",
+      "heals": "治疗分",
+      "repairs": "修理分",
+      "killAssists": "协助击杀",
+      "winPercent": "胜率",
+      "quits": "放弃"
     },
-    "footer": {
-        "description": "网站是Community Network的一部分。产品是开源的。你可以在我们的GitHub页面中发布问题和建议。API由Community Network提供并开放给公众使用。我们不提供任何第三方的API。我们的后台是封闭的，限制访客查看。\n战地和Origin是Electronic Arts的注册商标。本网站使用根据EA战地1统计条款提供的数据。商标是其各自所有者的财产。游戏材料的版权归Electronic Arts所有。Electronic Arts没有认可也不对本网站或其内容负责。\n代码是GPL V2协议，一些部分是Community Network的版权",
-        "links": {
-            "0": {
-                "header": "GitHub页面",
-                "url": "https://github.com/Community-network"
-            },
-            "1": {
-                "header": "公开API",
-                "url": "https://api.gametools.network/"
-            },
-            "2": {
-                "header": "Community Network Discord",
-                "url": "https://discord.gametools.network/"
-            },
-            "3": {
-                "header": "隐私政策",
-                "url": "/privacy/"
-            },
-            "4": {
-                "header": "Discord机器人",
-                "url": "https://top.gg/bot/714524944783900794"
-            },
-            "5": {
-                "header": "帮助我们进行翻译",
-                "url": "https://explore.transifex.com/gametools/"
-            }
-        }
+    "graph": {
+      "graphOptions": {
+        "amounts": "总数",
+        "maps": "活跃地图",
+        "settings": "活跃设置",
+        "modes": "活跃模式",
+        "ownerPlatform": "活跃拥有者平台"
+      },
+      "soldierAmount": "所有玩家",
+      "diceSoldierAmount": "官服玩家",
+      "communitySoldierAmount": "私服玩家"
     },
-    "bflist": {
-        "notFound": "没有找到带有 bflist.io API 的服务器"
-    },
-    "pageNotFound": {
-        "main": "404页面不存在",
-        "description": "我们无法找到您要查找的页面",
-        "home": "返回到首页"
+    "iframe": {
+      "main": "把你的战报加入你的服务器",
+      "info": "主版本:"
     }
+  },
+  "servers": {
+    "back": "搜索主页",
+    "rotation": "服务器地图循环",
+    "settings": "服务器设定",
+    "permLink": "该服永久链接(基于最近设置的服务器名字):",
+    "platoon": {
+      "main": "战队服务器",
+      "none": "该服务器还没有关联任何战队"
+    },
+    "sort": {
+      "serverName": "服务器名称",
+      "playerAmount": "玩家数量",
+      "maxPlayers": "最大玩家数量"
+    },
+    "owner": {
+      "main": "服主",
+      "experience": "体验创造者",
+      "none": "没有服主 (官服)",
+      "unknown": "找不到名称"
+    },
+    "password": "密码保护",
+    "join": "加入服务器",
+    "joinFirefox": "加入服务器 (只限火狐)",
+    "joinme": {
+      "main": "加入我！启动器",
+      "view": "启动状态",
+      "launch": "游戏已启动!",
+      "info": "该服务器加入按钮使用<0>https://joinme.click/</0> 加入游戏,安装<0>你应该先安装 加入我 启动器</0>然后再点击该按钮!",
+      "smallinfo": "该服务器加入按钮使用<0>https://joinme.click/</0> 加入游戏.",
+      "discord": "加入我 启动器已安装 并且工作中!",
+      "invite": "加入我 邀请链接"
+    },
+    "bfportal": {
+      "found": "在 BfPortal.gg 上找到的门户体验",
+      "error": "BfPortal.gg 的 Api 故障"
+    },
+    "iframe": {
+      "main": "把该服务器加入你自己的网站",
+      "info": "如果你想使用自定义版本, 在discord找 iiTzArcur. (链接在页面下方)",
+      "black": "黑色版本:",
+      "white": "白色版本:",
+      "detailed": "详情版本:",
+      "states": {
+        "copy": "复制框架",
+        "copied": "已复制!"
+      }
+    },
+    "leaderboard": {
+      "main": "该服务器最近的榜单",
+      "info": "仅在该服务器使用我们的管理api时有用",
+      "none": "该服务器刚刚加入还没有用管理api",
+      "row": {
+        "score": "分数",
+        "killDeath": "K/D",
+        "kills": "击杀",
+        "deaths": "死亡",
+        "wins": "胜利",
+        "losses": "失败",
+        "timePlayed": "游玩时间"
+      }
+    },
+    "playerlist": {
+      "main": "该服务器最近的玩家",
+      "none": "该服务器刚刚加入或还没有使用管理api",
+      "empty": "这个队伍是空的",
+      "lastUpdate": "线程最后更新",
+      "row": {
+        "ping": "延迟",
+        "platform": "平台",
+        "timePlayed": "游玩时间",
+        "playerSlot": "玩家槽位",
+        "playerName": "玩家名称",
+        "platoon": "战排",
+        "rank": "等级",
+        "score": "分数",
+        "killDeath": "K/D",
+        "kills": "击杀",
+        "deaths": "死亡"
+      }
+    },
+    "factions": {
+      "BFFactionId_FactionAHU": "奥匈帝国",
+      "BFFactionId_FactionGER": "德意志帝国",
+      "BFFactionId_FactionOTM": "奥斯曼土鸡",
+      "BFFactionId_FactionITA": "意呆利王国",
+      "BFFactionId_FactionUK": "大嘤帝国",
+      "BFFactionId_FactionUSA": "美国",
+      "BFFactionId_FactionFRA": "法国",
+      "BFFactionId_FactionRUS": "俄罗斯帝国",
+      "BFFactionId_FactionBOL": "红军",
+      "BFFactionId_FactionWA": "白军",
+      "BFFactionId_FactionUKM": "皇家海军",
+      "FactionUS": "俄罗斯联邦",
+      "FactionRUS": "美国",
+      "teamOne": "队伍 1",
+      "teamTwo": "队伍 2"
+    },
+    "portal": {
+      "main": "门户体验"
+    },
+    "graph": {
+      "main": "服务器图表",
+      "map": "地图",
+      "mode": "游戏模式",
+      "amount": "时代聚集",
+      "error": "无法获取此服务器的图表"
+    },
+    "notFound": {
+      "main": "找不到服务器",
+      "description": "我们找不到您要找的服务器。"
+    }
+  },
+  "platoon": {
+    "back": "返回搜索",
+    "searchPlayer": "搜索一个玩家",
+    "servers": "战队服务器",
+    "members": {
+      "main": "战队成员",
+      "General": "将军",
+      "Colonel": "上校",
+      "Lieutenant": "中尉",
+      "Private": "列兵",
+      "empty": "在这个职位没有任何人"
+    },
+    "rows": {
+      "role": "角色",
+      "name": "名字"
+    },
+    "notFound": {
+      "main": "未找到战排",
+      "description": "我们找不到您要找的战排。"
+    }
+  },
+  "getPlaygrounds": {
+    "back": "主页 ",
+    "main": "获取战地门户体验信息",
+    "description": "获取有关 Battlefield Portal 体验的信息",
+    "getInfo": "填写有效的体验 url、playground id 或体验代码",
+    "show": "显示更多"
+  },
+  "playgrounds": {
+    "back": "搜索主页",
+    "rotation": "体验地图轮换",
+    "tags": "体验标签",
+    "maxPlayers": "最多 {{ amount }} 名玩家",
+    "owner": {
+      "main": "体验创造者",
+      "none": "仅当使用 playground id 时才能检索创建者",
+      "unknown": "找不到名称"
+    },
+    "notFound": {
+      "main": "未找到Experience",
+      "description": "我们找不到您想要的体验。"
+    },
+    "types": {
+      "main": "种类",
+      "portal-standard": "标准体验",
+      "portal-featured": "特色体验",
+      "portal-default": "标准体验",
+      "portal-unranked": "无排名",
+      "portal-spotlight": "在聚光灯下"
+    }
+  },
+  "footer": {
+    "description": "网站是Community Network的一部分。产品是开源的。你可以在我们的GitHub页面中发布问题和建议。API由Community Network提供并开放给公众使用。我们不提供任何第三方的API。我们的后台是封闭的，限制访客查看。\n战地和Origin是Electronic Arts的注册商标。本网站使用根据EA战地1统计条款提供的数据。商标是其各自所有者的财产。游戏材料的版权归Electronic Arts所有。Electronic Arts没有认可也不对本网站或其内容负责。\n代码是GPL V2协议，一些部分是Community Network的版权",
+    "links": {
+      "0": {
+        "header": "GitHub页面",
+        "url": "https://github.com/Community-network"
+      },
+      "1": {
+        "header": "公开API",
+        "url": "https://api.gametools.network/"
+      },
+      "2": {
+        "header": "Community Network Discord",
+        "url": "https://discord.gametools.network/"
+      },
+      "3": {
+        "header": "隐私政策",
+        "url": "/privacy/"
+      },
+      "4": {
+        "header": "Discord机器人",
+        "url": "https://top.gg/bot/714524944783900794"
+      },
+      "5": {
+        "header": "帮助我们进行翻译",
+        "url": "https://explore.transifex.com/gametools/"
+      }
+    }
+  },
+  "bflist": {
+    "notFound": "没有找到带有 bflist.io API 的服务器"
+  },
+  "pageNotFound": {
+    "main": "404页面不存在",
+    "description": "我们无法找到您要查找的页面",
+    "home": "返回到首页"
+  }
 }
