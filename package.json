@@ -1,12 +1,11 @@
 {
   "name": "react-webpack-typescript-starter",
   "version": "0.1.0",
-  "description": "Starter kit for React, Webpack (with Hot Module Replacement), Typescript and Babel.",
+  "description": "Starter kit for React, Webpack (with Hot Module Replacement), Typescript.",
   "keywords": [
     "react",
     "webpack",
     "typescript",
-    "babel",
     "sass",
     "hmr",
     "starter",
@@ -31,10 +30,6 @@
     "start-prod": "yarn run build && node express.js"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.4",
-    "@babel/preset-env": "^7.21.4",
-    "@babel/preset-react": "^7.18.6",
-    "@babel/preset-typescript": "^7.21.4",
     "@testing-library/react": "^14.0.0",
     "@types/file-saver": "^2.0.5",
     "@types/jest": "^29.5.1",
@@ -45,7 +40,6 @@
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.59.0",
     "@typescript-eslint/parser": "^5.59.0",
-    "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
@@ -68,7 +62,8 @@
     "webpack-dev-server": "^4.13.3",
     "webpack-merge": "^5.8.0",
     "workbox-webpack-plugin": "^7.0.0",
-    "yarn": "^1.22.19"
+    "yarn": "^1.22.19",
+    "esbuild-loader": "^3.0.1"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.29.3",
