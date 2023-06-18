@@ -1,6 +1,7 @@
 // shared config (dev and prod)
 const { resolve } = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: "./index.tsx",
@@ -41,6 +42,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "index.html.ejs",
       favicon: "../src/favicon.ico",
+    }),
+    new CopyWebpackPlugin({
+      patterns: [{ from: "public" }],
     }),
   ],
 };
