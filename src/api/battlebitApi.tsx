@@ -56,6 +56,7 @@ export class ApiProvider extends JsonClient {
       TDM: "TDM",
       GunGameFFA: "GM",
       FFA: "Free-for-all",
+      GunGameTeam: "Gungame team",
     };
 
     const r = await fetch(
