@@ -44,8 +44,10 @@ export class ApiProvider extends JsonClient {
       RUSH: "Rush",
       DOMI: "Domination",
       TDM: "Teamdeathmatch",
-      GunGameFFA: "Gungame free-for-all",
       INFCONQ: "Infantry Conquest",
+      GunGameFFA: "Gungame free-for-all",
+      FFA: "Free-for-all",
+      GunGameTeam: "Gungame team",
     };
 
     const smallmodes = {
@@ -54,9 +56,10 @@ export class ApiProvider extends JsonClient {
       RUSH: "RS",
       DOMI: "DM",
       TDM: "TDM",
-      GunGameFFA: "GM",
-      FFA: "Free-for-all",
-      GunGameTeam: "Gungame team",
+      INFCONQ: "IQ",
+      GunGameFFA: "GGF",
+      FFA: "FFA",
+      GunGameTeam: "GGT",
     };
 
     const r = await fetch(
