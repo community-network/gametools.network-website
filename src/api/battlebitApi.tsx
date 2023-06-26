@@ -45,6 +45,7 @@ export class ApiProvider extends JsonClient {
       DOMI: "Domination",
       TDM: "Teamdeathmatch",
       GunGameFFA: "Gungame free-for-all",
+      INFCONQ: "Infantry Conquest",
     };
 
     const smallmodes = {
