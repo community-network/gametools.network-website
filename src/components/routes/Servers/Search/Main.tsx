@@ -24,6 +24,7 @@ import {
 } from "../../../Materials";
 import { getLanguage } from "../../../../locales/config";
 import {
+  extraGames,
   frostbite3,
   frostbiteJoinGames,
   newGen,
@@ -87,60 +88,27 @@ function Main(): React.ReactElement {
   const platformQuery = query.get("platform");
   const limitQuery = query.get("limit");
   const typeQuery = query.get("searchtype");
+  const regionKey = gameName === "battlebit" ? "battlebitRegions" : "regions";
   React.useState(() => {
-    if (nameQuery !== null) {
-      setSearchTerm(nameQuery);
-    }
-    if (gameQuery !== null) {
-      setGameName(gameQuery);
-    }
-    if (regionQuery !== null) {
-      setRegion(regionQuery);
-    }
-    if (platformQuery !== null) {
-      setPlatform(platformQuery);
-    }
-    if (limitQuery !== null) {
-      setLimit(limitQuery);
-    }
-    if (searchType !== null) {
-      setSearchType(typeQuery);
-    }
+    nameQuery !== null ? setSearchTerm(nameQuery) : null;
+    gameQuery !== null ? setGameName(gameQuery) : null;
+    regionQuery !== null ? setRegion(regionQuery) : null;
+    platformQuery !== null ? setPlatform(platformQuery) : null;
+    limitQuery !== null ? setLimit(limitQuery) : null;
+    typeQuery !== null ? setSearchType(typeQuery) : null;
   });
 
   // change top to query
   React.useEffect(() => {
     const params = new URLSearchParams();
-    if (searchTerm) {
-      params.append("search", searchTerm);
-    } else {
-      params.delete("search");
-    }
-    if (gameName) {
-      params.append("game", gameName);
-    } else {
-      params.delete("game");
-    }
-    if (region) {
-      params.append("region", region);
-    } else {
-      params.delete("region");
-    }
-    if (platform) {
-      params.append("platform", platform);
-    } else {
-      params.delete("platform");
-    }
-    if (limit) {
-      params.append("limit", limit);
-    } else {
-      params.delete("limit");
-    }
-    if (searchType) {
-      params.append("searchtype", searchType);
-    } else {
-      params.delete("searchtype");
-    }
+    searchTerm ? params.append("search", searchTerm) : params.delete("search");
+    gameName ? params.append("game", gameName) : params.delete("game");
+    region ? params.append("region", region) : params.delete("region");
+    platform ? params.append("platform", platform) : params.delete("platform");
+    limit ? params.append("limit", limit) : params.delete("limit");
+    searchType
+      ? params.append("searchtype", searchType)
+      : params.delete("searchtype");
     history({ search: params.toString() });
   }, [searchTerm, gameName, region, platform, limit, searchType, history]);
 
@@ -223,24 +191,28 @@ function Main(): React.ReactElement {
           })}
         </BigSelectSecondary>
         <BigSelectSecondary
-          disabled={!frostbite3.includes(gameName)}
+          disabled={
+            !frostbite3.includes(gameName) && !extraGames.includes(gameName)
+          }
           value={region}
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
             setRegion(ev.target.value)
           }
         >
-          {Object.keys(t("regions", { returnObjects: true })).map(
+          {Object.keys(t(regionKey, { returnObjects: true })).map(
             (key, index) => {
               return (
                 <option key={index} value={key}>
-                  {t(`regions.${key}`)}
+                  {t(`${regionKey}.${key}`)}
                 </option>
               );
             },
           )}
         </BigSelectSecondary>
         <BigSelectSecondary
-          disabled={!frostbite3.includes(gameName)}
+          disabled={
+            !frostbite3.includes(gameName) && !extraGames.includes(gameName)
+          }
           value={limit}
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
             setLimit(ev.target.value)
@@ -333,6 +305,7 @@ export function ServerSearch(): React.ReactElement {
   const [gameName, setGameName] = React.useState<string>("bf2042");
   const [region, setRegion] = React.useState<string>("all");
   const [platform, setPlatform] = React.useState<string>("allPlatforms");
+  const regionKey = gameName === "battlebit" ? "battlebitRegions" : "regions";
 
   const { t } = useTranslation();
   const {
@@ -483,7 +456,7 @@ export function ServerSearch(): React.ReactElement {
                 {t("serverSearch.region")}
               </h2>
               <>
-                {Object.keys(t("regions", { returnObjects: true })).map(
+                {Object.keys(t(regionKey, { returnObjects: true })).map(
                   (key, index) => {
                     return (
                       <InputItem
@@ -493,8 +466,11 @@ export function ServerSearch(): React.ReactElement {
                         callback={(e: {
                           target: { value: React.SetStateAction<string> };
                         }) => setRegion(e.target.value)}
-                        name={t(`regions.${key}`)}
-                        disabled={!frostbite3.includes(gameName)}
+                        name={t(`${regionKey}.${key}`)}
+                        disabled={
+                          !frostbite3.includes(gameName) &&
+                          !extraGames.includes(gameName)
+                        }
                       />
                     );
                   },

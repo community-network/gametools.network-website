@@ -12,6 +12,7 @@ import {
   PlaygroundInfoReturn,
   ServerOwnerResult,
 } from "./ReturnTypes";
+import { battlebitApi } from "./battlebitApi";
 import { newGen } from "./static";
 
 interface BfBanInfo {
@@ -341,6 +342,10 @@ export class ApiProvider extends JsonClient {
       experienceName = searchTerm;
     } else {
       serverName = searchTerm;
+    }
+
+    if (game == "battlebit") {
+      return await battlebitApi.serverList({ searchTerm, region, limit });
     }
     return await this.getJsonMethod(`/${gameStuff[0]}/servers/`, {
       name: encodeURIComponent(serverName),

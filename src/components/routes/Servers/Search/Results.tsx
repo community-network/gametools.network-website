@@ -113,6 +113,8 @@ export function Results(props: Views): React.ReactElement {
             } else {
               region = ` - ${key.region}`;
             }
+          } else if (props.game === "battlebit") {
+            region = ` - ${t(`battlebitRegions.${key.region}`)}`;
           } else if (key.region !== undefined) {
             region = ` - ${t(`regions.${key.region.toLowerCase()}`)}`;
           }
@@ -139,7 +141,7 @@ export function Results(props: Views): React.ReactElement {
               link={`/servers/${props.game}/${idElement}/${result}/${
                 key.platform || "pc"
               }${props.game == "bf2042" ? `?blazeid=${key.blazeGameId}` : ""}`}
-              condition={true}
+              condition={props.game !== "battlebit"}
               key={index}
               innerStyle={props.spacingStyle}
             >

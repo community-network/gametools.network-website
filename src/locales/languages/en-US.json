@@ -56,7 +56,8 @@
     "bf1": "Battlefield 1",
     "bfv": "Battlefield 5",
     "bf2042": "Battlefield 2042",
-    "bf2042portal": "Battlefield 2042 Portal"
+    "bf2042portal": "Battlefield 2042 Portal",
+    "battlebit": "BattleBit"
   },
   "limit": {
     "10": "10 servers",
@@ -76,6 +77,14 @@
     "oc": "Oceania",
     "afr": "Africa",
     "ac": "Antartica"
+  },
+  "battlebitRegions": {
+    "all": "All regions",
+    "Europe_Central": "Europe",
+    "America_Central": "America",
+    "Japan_Central": "Japan",
+    "Australia_Central": "Australia",
+    "Brazil_Central": "Brazil"
   },
   "platforms": {
     "pc": "PC",
@@ -257,6 +266,7 @@
       "Operations": "Operations",
       "Teamdeathmatch": "Team deathmatch",
       "Conquestlarge": "Conquest large",
+      "Gungame free-for-all": "Gungame free-for-all",
       "Gunmaster": "Gunmaster",
       "Capturetheflag": "Capture the flag",
       "Obliteration": "Obliteration",
