@@ -61,12 +61,6 @@ export class ApiProvider extends JsonClient {
     );
     const result: ServerInfoReturn[] = await r.json();
     const servers = result
-      .filter((server) => {
-        return (
-          server.Name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-          (server.Region === region || region === "all")
-        );
-      })
       .map((server) => {
         return {
           prefix: `${server.IsOfficial ? "[Official]" : "[Community]"} - ${
@@ -88,6 +82,12 @@ export class ApiProvider extends JsonClient {
           serverInfo: "",
           smallMode: smallmodes[server.Gamemode],
         };
+      })
+      .filter((server) => {
+        return (
+          server.prefix.toLowerCase().includes(searchTerm.toLowerCase()) &&
+          (server.region === region || region === "all")
+        );
       })
       .slice(0, !Number.isNaN(Number(limit)) ? Number(limit) : 10);
 
