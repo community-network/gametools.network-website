@@ -185,9 +185,9 @@ export function Results(props: Views): React.ReactElement {
           <ServerImage background={stats.currentMapImage || stats.mapImage}>
             <Blur>
               <ServerText>{stats.smallmode}</ServerText>
-              {dice.includes(props.game) && (
+              {stats?.favorites && (
                 <ServerFactorites>
-                  &#9734; {numberFormat.format(stats.favorites)}
+                  &#9734; {numberFormat.format(stats?.favorites)}
                 </ServerFactorites>
               )}
             </Blur>
