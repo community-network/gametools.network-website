@@ -48,6 +48,7 @@ export class ApiProvider extends JsonClient {
       GunGameFFA: "Gungame free-for-all",
       FFA: "Free-for-all",
       GunGameTeam: "Gungame team",
+      ELI: "Elimination",
     };
 
     const smallmodes = {
@@ -60,6 +61,7 @@ export class ApiProvider extends JsonClient {
       GunGameFFA: "GGF",
       FFA: "FFA",
       GunGameTeam: "GGT",
+      ELI: "ELI",
     };
 
     const r = await fetch(
