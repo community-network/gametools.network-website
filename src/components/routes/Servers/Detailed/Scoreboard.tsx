@@ -46,13 +46,11 @@ export function ServerScoreboard(props: {
                             <Column key={index}>
                               <Row>
                                 <AlignW>
-                                  {props.game !== "bf2042" ? (
+                                  {props.game !== "bf2042" && (
                                     <img
                                       src={`https://cdn.gametools.network/${props.game}/${key.rank}.png`}
                                       height="25px"
                                     />
-                                  ) : (
-                                    <></>
                                   )}
                                   <Link
                                     to={`/stats/${props.platform}/playerid/${

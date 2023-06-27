@@ -177,13 +177,11 @@ function Players(props: {
                             <Column key={index}>
                               <Row>
                                 <AlignW>
-                                  {props.game !== "bf2042" ? (
+                                  {props.game !== "bf2042" && (
                                     <img
                                       src={`https://cdn.gametools.network/bf1/${key.rank}.png`}
                                       height="25px"
                                     />
-                                  ) : (
-                                    <></>
                                   )}
                                   <a
                                     style={{ cursor: "pointer" }}
@@ -240,7 +238,7 @@ function Players(props: {
                                   </Description>
                                 </Row>
                               )}
-                              {haveSeederPlayers ? (
+                              {haveSeederPlayers && (
                                 <>
                                   <Row>
                                     <h4 style={{ marginTop: "0.5rem" }}>
@@ -260,8 +258,6 @@ function Players(props: {
                                     </Description>
                                   </Row>
                                 </>
-                              ) : (
-                                <></>
                               )}
                               <Row>
                                 <h4 style={{ marginTop: "0.5rem" }}>

@@ -291,7 +291,7 @@ function GameStats(props: GameStatsItems): React.ReactElement {
             error={error}
             name={name}
           />
-          {newTitles.includes(game) ? (
+          {newTitles.includes(game) && (
             <PlatoonInfo
               game={game}
               loading={loading}
@@ -300,10 +300,8 @@ function GameStats(props: GameStatsItems): React.ReactElement {
               name={name}
               platform={platform}
             />
-          ) : (
-            <></>
           )}
-          {game == "bf1" ? (
+          {game == "bf1" && (
             <BfSessionInfo
               game={game}
               loading={loading}
@@ -311,8 +309,6 @@ function GameStats(props: GameStatsItems): React.ReactElement {
               error={error}
               name={name}
             />
-          ) : (
-            <></>
           )}
           <WeaponGraph
             game={game}
@@ -328,7 +324,7 @@ function GameStats(props: GameStatsItems): React.ReactElement {
             error={error}
             name={name}
           />
-          {progressGames.includes(game) ? (
+          {progressGames.includes(game) && (
             <>
               <ViewProgress
                 game={game}
@@ -338,8 +334,6 @@ function GameStats(props: GameStatsItems): React.ReactElement {
                 name={name}
               />
             </>
-          ) : (
-            <></>
           )}
         </PageRow>
         <PageRow>
@@ -364,7 +358,7 @@ function GameStats(props: GameStatsItems): React.ReactElement {
             error={error}
             name={name}
           />
-          {gamemodeGames.includes(game) ? (
+          {gamemodeGames.includes(game) && (
             <>
               <ViewGamemodes
                 game={game}
@@ -374,8 +368,6 @@ function GameStats(props: GameStatsItems): React.ReactElement {
                 name={name}
               />
             </>
-          ) : (
-            <></>
           )}
         </PageRow>
       </PageColumn>

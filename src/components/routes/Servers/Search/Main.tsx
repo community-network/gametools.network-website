@@ -235,37 +235,31 @@ function Main(): React.ReactElement {
             setPlatform(ev.target.value)
           }
         >
-          {gameName == "bf2042" ? (
+          {gameName == "bf2042" && (
             <option value="allPlatforms">{t("platforms.all")}</option>
-          ) : (
-            <></>
           )}
           <option value="pc">{t("platforms.pc")}</option>
           <option value="ps4">{t("platforms.ps4")}</option>
           <option value="xboxone">{t("platforms.xboxone")}</option>
-          {gameName == "bf2042" ? (
+          {gameName == "bf2042" && (
             <>
               <option value="ps5">{t("platforms.ps5")}</option>
               <option value="xboxseries">{t("platforms.xboxseries")}</option>
             </>
-          ) : (
-            <></>
           )}
         </BigSelectSecondary>
         {/* <BigButtonSecondary type="submit">{t("serverSearch.search")} <RightArrow/></BigButtonSecondary> */}
       </Align>
       {oldJoinGames.includes(gameName) ||
-      frostbiteJoinGames.includes(gameName) ? (
-        <p style={{ margin: 0 }}>
-          <Trans i18nKey="servers.joinme.info">
-            <a href="https://joinme.click/download">
-              https://joinme.click/download
-            </a>
-          </Trans>
-        </p>
-      ) : (
-        <></>
-      )}
+        (frostbiteJoinGames.includes(gameName) && (
+          <p style={{ margin: 0 }}>
+            <Trans i18nKey="servers.joinme.info">
+              <a href="https://joinme.click/download">
+                https://joinme.click/download
+              </a>
+            </Trans>
+          </p>
+        ))}
       <Align>
         <Title>{t("serverSearch.results")}</Title>
         <SelectPrimary
@@ -365,17 +359,15 @@ export function ServerSearch(): React.ReactElement {
           }
         />
         {oldJoinGames.includes(gameName) ||
-        frostbiteJoinGames.includes(gameName) ? (
-          <p style={{ marginTop: 0, marginBottom: "1.1rem" }}>
-            <Trans i18nKey="servers.joinme.smallinfo">
-              <a href="https://joinme.click/download">
-                https://joinme.click/download
-              </a>
-            </Trans>
-          </p>
-        ) : (
-          <></>
-        )}
+          (frostbiteJoinGames.includes(gameName) && (
+            <p style={{ marginTop: 0, marginBottom: "1.1rem" }}>
+              <Trans i18nKey="servers.joinme.smallinfo">
+                <a href="https://joinme.click/download">
+                  https://joinme.click/download
+                </a>
+              </Trans>
+            </p>
+          ))}
       </AlignHomeServers>
       <ServerPageColumn>
         <ServerPageRow>

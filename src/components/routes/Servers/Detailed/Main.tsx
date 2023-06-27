@@ -185,12 +185,10 @@ export function Results(props: Views): React.ReactElement {
           <ServerImage background={stats.currentMapImage || stats.mapImage}>
             <Blur>
               <ServerText>{stats.smallmode}</ServerText>
-              {dice.includes(props.game) ? (
+              {dice.includes(props.game) && (
                 <ServerFactorites>
                   &#9734; {numberFormat.format(stats.favorites)}
                 </ServerFactorites>
-              ) : (
-                <></>
               )}
             </Blur>
           </ServerImage>
@@ -231,7 +229,7 @@ export function Results(props: Views): React.ReactElement {
           </div>
         </AlignSeverImg>
         {/* older titles use ip address, thats static already */}
-        {dice.includes(props.game) ? (
+        {dice.includes(props.game) && (
           <>
             <Description style={{ marginTop: "6px" }}>
               {t("servers.permLink")}{" "}
@@ -256,10 +254,8 @@ export function Results(props: Views): React.ReactElement {
               </ServerLink>
             </Description>
           </>
-        ) : (
-          <></>
         )}
-        {frostbiteJoinGames.includes(props.game) ? (
+        {frostbiteJoinGames.includes(props.game) && (
           <>
             <p style={{ marginTop: "-.6rem" }}>
               <Trans i18nKey="servers.joinme.info">
@@ -287,11 +283,9 @@ export function Results(props: Views): React.ReactElement {
               </SmallButtonSecondary>
             </Align>
           </>
-        ) : (
-          <></>
         )}
         {/* when available */}
-        {stats.rotation ? (
+        {stats.rotation && (
           <>
             <Title style={{ marginBottom: 0 }}>{t("servers.rotation")}</Title>
             <Align>
@@ -334,53 +328,30 @@ export function Results(props: Views): React.ReactElement {
               })}
             </Align>
           </>
-        ) : (
-          <></>
         )}
 
         <PageColumn>
           <PageRow>
             {props.game !== "bf4" && frostbite3.includes(props.game) ? (
               <>
-                {stats.owner != null ? (
+                {stats.owner != null && (
                   <OwnerInfo
                     owner={stats.owner}
                     game={props.game}
                     title={t("servers.owner.main")}
                   />
-                ) : (
-                  <></>
                 )}
-                {props.platform == "pc" || props.platform == "undefined" ? (
-                  props.game === "bf2042" ? (
-                    <>
+                {props.platform == "pc" ||
+                  (props.platform == "undefined" &&
+                    (props.game === "bf2042" ? (
                       <ServerConfig serverInfo={stats.serverInfo} />
-                      {stats.blazeGameId !== undefined ? (
-                        <ServerPlayerlist
-                          game={props.game}
-                          gameid={stats.blazeGameId.toString()}
-                          platform={props.platform}
-                        />
-                      ) : blazeIdQuery !== "null" ? (
-                        <ServerPlayerlist
-                          game={props.game}
-                          gameid={blazeIdQuery}
-                          platform={props.platform}
-                        />
-                      ) : (
-                        <></>
-                      )}
-                    </>
-                  ) : (
-                    <ServerPlayerlist
-                      game={props.game}
-                      gameid={stats.gameId}
-                      platform={props.platform}
-                    />
-                  )
-                ) : (
-                  <></>
-                )}
+                    ) : (
+                      <ServerPlayerlist
+                        game={props.game}
+                        gameid={stats.gameId}
+                        platform={props.platform}
+                      />
+                    )))}
               </>
             ) : (
               <>
@@ -399,14 +370,12 @@ export function Results(props: Views): React.ReactElement {
               </>
             )}
             {/* bf4 */}
-            {stats.players != undefined && stats.teams != undefined ? (
+            {stats.players != undefined && stats.teams != undefined && (
               <ServerScoreboard
                 game={props.game}
                 stats={stats.teams}
                 platform={props.platform}
               />
-            ) : (
-              <></>
             )}
           </PageRow>
 
@@ -418,7 +387,7 @@ export function Results(props: Views): React.ReactElement {
               getter={props.getter}
               name={props.serverName}
             />
-            {props.game === "bf1" ? (
+            {props.game === "bf1" && (
               <>
                 <ServerPlatoon
                   platoon={stats.platoon}
@@ -426,19 +395,15 @@ export function Results(props: Views): React.ReactElement {
                 />
                 <ServerLeaderboard gameid={stats.gameId} />
               </>
-            ) : (
-              <></>
             )}
             {props.game === "bf2042" ? (
               <>
-                {stats.configCreator !== null ? (
+                {stats.configCreator !== null && (
                   <OwnerInfo
                     owner={stats.configCreator}
                     game={props.game}
                     title={t("servers.owner.experience")}
                   />
-                ) : (
-                  <></>
                 )}
                 <BfPortalInfo experienceName={stats.serverInfo.configName} />
                 <h2>{t("servers.settings")}</h2>
@@ -461,7 +426,7 @@ export function Results(props: Views): React.ReactElement {
               </>
             ) : (
               <>
-                {stats.settings ? (
+                {stats.settings && (
                   <>
                     <h2>{t("servers.settings")}</h2>
                     <AlignT>
@@ -490,8 +455,6 @@ export function Results(props: Views): React.ReactElement {
                       )}
                     </AlignT>
                   </>
-                ) : (
-                  <></>
                 )}
               </>
             )}

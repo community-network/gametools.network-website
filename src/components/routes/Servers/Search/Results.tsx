@@ -161,7 +161,7 @@ export function Results(props: Views): React.ReactElement {
                     {key.prefix}
                   </h3>
                   <p>
-                    {key.hasPassword ? (
+                    {key.hasPassword && (
                       <span title={t("servers.password")}>
                         <svg
                           style={{ marginRight: "2px" }}
@@ -179,8 +179,6 @@ export function Results(props: Views): React.ReactElement {
                           />
                         </svg>
                       </span>
-                    ) : (
-                      <></>
                     )}
                     {key.playerAmount}/{key.maxPlayers}
                     {key.maxPlayerAmount} {queueString} -{" "}
@@ -192,7 +190,7 @@ export function Results(props: Views): React.ReactElement {
                     {region}
                   </p>
                 </ServerInfo>
-                {oldJoinGames.includes(props.game) ? (
+                {oldJoinGames.includes(props.game) && (
                   <a
                     onClick={(e) => handleChildElementClick(e)}
                     href={`${props.game.split(".")[0]}://${key.ip}:${key.port}`}
@@ -205,10 +203,8 @@ export function Results(props: Views): React.ReactElement {
                       {t("servers.join")}
                     </BigButtonSecondaryBox>
                   </a>
-                ) : (
-                  <></>
                 )}
-                {frostbiteJoinGames.includes(props.game) ? (
+                {frostbiteJoinGames.includes(props.game) && (
                   <a
                     onClick={(e) => handleChildElementClick(e)}
                     href={`${props.game}://${key.gameId}`}
@@ -221,8 +217,6 @@ export function Results(props: Views): React.ReactElement {
                       {t("servers.join")}
                     </BigButtonSecondaryBox>
                   </a>
-                ) : (
-                  <></>
                 )}
               </AlignSeverImg>
             </Box>

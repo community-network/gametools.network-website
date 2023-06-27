@@ -40,7 +40,7 @@ export function ViewStats(props: Views): React.ReactElement {
         <Box>
           <h3>{t("stats.overview")}</h3>
           <p>{t("stats.overviewDescription")}</p>
-          {stats?.rank !== undefined ? (
+          {stats?.rank !== undefined && (
             <>
               <AlignS>
                 <div>
@@ -59,8 +59,6 @@ export function ViewStats(props: Views): React.ReactElement {
                 ></Bar>
               </BackgroundBar>
             </>
-          ) : (
-            <></>
           )}
           <p></p>
           <AlignS>

@@ -35,37 +35,31 @@ export function ViewClasses(props: Views): React.ReactElement {
                       </h4>
                       <ListImage style={{ height: "3rem" }} src={key.image} />
                     </Row>
-                    {key?.score !== undefined ? (
+                    {key?.score !== undefined && (
                       <Row>
                         <h4 style={{ margin: 0 }}>
                           {numberFormat.format(key.score)}
                         </h4>
                         <p>{t("stats.classes.amounts.score")}</p>
                       </Row>
-                    ) : (
-                      <></>
                     )}
-                    {key?.kills !== undefined ? (
+                    {key?.kills !== undefined && (
                       <Row>
                         <h4 style={{ margin: 0 }}>
                           {numberFormat.format(key.kills)}
                         </h4>
                         <p>{t("stats.classes.amounts.kills")}</p>
                       </Row>
-                    ) : (
-                      <></>
                     )}
-                    {key?.kpm !== undefined ? (
+                    {key?.kpm !== undefined && (
                       <Row>
                         <h4 style={{ margin: 0 }}>
                           {numberFormat.format(key.kpm)}
                         </h4>
                         <p>{t("stats.classes.amounts.kpm")}</p>
                       </Row>
-                    ) : (
-                      <></>
                     )}
-                    {key?.secondsPlayed !== undefined ? (
+                    {key?.secondsPlayed !== undefined && (
                       <Row>
                         <h4 style={{ margin: 0 }}>
                           {t("change", {
@@ -74,8 +68,6 @@ export function ViewClasses(props: Views): React.ReactElement {
                         </h4>
                         <p>{t("stats.classes.amounts.timePlayed")}</p>
                       </Row>
-                    ) : (
-                      <></>
                     )}
                   </Column>
                 </div>

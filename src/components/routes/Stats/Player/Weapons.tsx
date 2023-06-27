@@ -101,21 +101,17 @@ export function ViewWeapons(props: Views): React.ReactElement {
                   <h4>{numberFormat.format(key?.killsPerMinute)}</h4>
                   <Description>{t("stats.rows.killsPerMinute")}</Description>
                 </Row>
-                {key?.accuracy !== undefined ? (
+                {key?.accuracy !== undefined && (
                   <TabletRow>
                     <h4>{numberFormat.format(key?.accuracy)}%</h4>
                     <Description>{t("stats.rows.accuracy")}</Description>
                   </TabletRow>
-                ) : (
-                  <></>
                 )}
-                {key?.damagePerMinute !== undefined ? (
+                {key?.damagePerMinute !== undefined && (
                   <TabletRow>
                     <h4>{numberFormat.format(key?.damagePerMinute)}</h4>
                     <Description>{t("stats.rows.damagePerMinute")}</Description>
                   </TabletRow>
-                ) : (
-                  <></>
                 )}
                 <PhoneRow>
                   <h4>{numberFormat.format(key?.headshots)}%</h4>

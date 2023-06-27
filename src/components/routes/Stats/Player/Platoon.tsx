@@ -76,7 +76,7 @@ export function PlatoonInfo(props: PlatformViews): React.ReactElement {
               <p>{t("stats.platoon.noMain")}</p>
             </>
           )}
-          {otherPlatoons.length !== 0 ? (
+          {otherPlatoons.length !== 0 && (
             <>
               <br />
               <br />
@@ -112,8 +112,6 @@ export function PlatoonInfo(props: PlatformViews): React.ReactElement {
                 );
               })}
             </>
-          ) : (
-            <></>
           )}
         </Box>
       </Spacing>

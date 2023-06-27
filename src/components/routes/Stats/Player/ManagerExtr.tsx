@@ -110,7 +110,7 @@ export function BfSessionInfo(props: Views): React.ReactElement {
                     );
                   })}
                 </Align>
-                {typeof props.stats.sessions[index + 1] !== "undefined" ? (
+                {typeof props.stats.sessions[index + 1] !== "undefined" && (
                   <hr
                     style={{
                       marginBottom: "1rem",
@@ -118,8 +118,6 @@ export function BfSessionInfo(props: Views): React.ReactElement {
                       border: "1px solid #282a3a",
                     }}
                   />
-                ) : (
-                  <></>
                 )}
               </>
             );
