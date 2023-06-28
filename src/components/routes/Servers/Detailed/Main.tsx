@@ -341,32 +341,31 @@ export function Results(props: Views): React.ReactElement {
                     title={t("servers.owner.main")}
                   />
                 )}
-                {props.platform == "pc" ||
-                  (props.platform == "undefined" &&
-                    (props.game === "bf2042" ? (
-                      // {stats.blazeGameId !== undefined ? (
-                      //   <ServerPlayerlist
-                      //     game={props.game}
-                      //     gameid={stats.blazeGameId.toString()}
-                      //     platform={props.platform}
-                      //   />
-                      // ) : blazeIdQuery !== "null" ? (
-                      //   <ServerPlayerlist
-                      //     game={props.game}
-                      //     gameid={blazeIdQuery}
-                      //     platform={props.platform}
-                      //   />
-                      // ) : (
-                      //   <></>
-                      // )}
-                      <ServerConfig serverInfo={stats.serverInfo} />
-                    ) : (
-                      <ServerPlayerlist
-                        game={props.game}
-                        gameid={stats.gameId}
-                        platform={props.platform}
-                      />
-                    )))}
+                {(props.platform == "pc" || props.platform == "undefined") &&
+                  (props.game === "bf2042" ? (
+                    // {stats.blazeGameId !== undefined ? (
+                    //   <ServerPlayerlist
+                    //     game={props.game}
+                    //     gameid={stats.blazeGameId.toString()}
+                    //     platform={props.platform}
+                    //   />
+                    // ) : blazeIdQuery !== "null" ? (
+                    //   <ServerPlayerlist
+                    //     game={props.game}
+                    //     gameid={blazeIdQuery}
+                    //     platform={props.platform}
+                    //   />
+                    // ) : (
+                    //   <></>
+                    // )}
+                    <ServerConfig serverInfo={stats.serverInfo} />
+                  ) : (
+                    <ServerPlayerlist
+                      game={props.game}
+                      gameid={stats.gameId}
+                      platform={props.platform}
+                    />
+                  ))}
               </>
             ) : (
               <>
