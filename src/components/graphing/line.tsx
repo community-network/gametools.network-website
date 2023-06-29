@@ -688,12 +688,8 @@ export function ServerGraphQuery(props: ServerGraphData): React.ReactElement {
   const [pieGraphType, setPieGraphType] = React.useState<string>("map");
 
   let getter = props.getter;
-  let name = props.name;
-  if (["bf3", "bfh"].includes(props.game)) {
+  if (["bf3", "bfh", "bf2042"].includes(props.game)) {
     getter = "serverid";
-  } else if (props.game == "bf2042") {
-    getter = "name";
-    name = props.stats.serverInfo.serverName;
   }
 
   const {
@@ -707,7 +703,7 @@ export function ServerGraphQuery(props: ServerGraphData): React.ReactElement {
         game: props.game,
         days: "7",
         getter: getter,
-        name: name,
+        name: props.name,
       }),
     {
       staleTime: Infinity,
