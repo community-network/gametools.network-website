@@ -11,6 +11,7 @@ import {
   UserGames,
   PlaygroundInfoReturn,
   ServerOwnerResult,
+  StatsGraph,
 } from "./ReturnTypes";
 import { battlebitApi } from "./battlebitApi";
 import { newGen } from "./static";
@@ -147,18 +148,43 @@ export class ApiProvider extends JsonClient {
     lang,
     platform = "pc",
   }: PlayerInfo): Promise<MainStats> {
+    const defaultParams = {
+      format_values: "false",
+      lang: lang,
+      platform: platform,
+    };
     if (getter == "playerid") {
       return await this.getJsonMethod(`/${game}/${type}/`, {
-        format_values: "false",
+        ...defaultParams,
         playerid: userName,
-        lang: lang,
-        platform: platform,
       });
     }
     return await this.getJsonMethod(`/${game}/${type}/`, {
-      format_values: "false",
+      ...defaultParams,
       name: encodeURIComponent(userName),
-      lang: lang,
+    });
+  }
+
+  async statsarray({
+    game,
+    getter,
+    userName,
+    platform = "pc",
+  }: {
+    game: string;
+    getter: string;
+    userName: string;
+    platform?: string;
+  }): Promise<StatsGraph> {
+    if (userName == undefined) return null;
+    if (getter == "playerid") {
+      return await this.getJsonMethod(`/${game}/statsarray/`, {
+        playerid: userName,
+        platform: platform,
+      });
+    }
+    return await this.getJsonMethod(`/${game}/statsarray/`, {
+      name: encodeURIComponent(userName),
       platform: platform,
     });
   }
@@ -213,23 +239,22 @@ export class ApiProvider extends JsonClient {
     if (platform == "all") {
       platform = "pc";
     }
+    const defaultParams = {
+      lang: lang,
+      region: region,
+      platform: platform,
+      service: gameStuff[1],
+      return_ownername: with_ownername.toString(),
+    };
     if ((getter == "gameid" || getter == "serverid") && game == "bf2042") {
       return await this.getJsonMethod(`/${gameStuff[0]}/detailedserver/`, {
         serverid: serverName,
-        lang: lang,
-        region: region,
-        platform: platform,
-        service: gameStuff[1],
-        return_ownername: with_ownername.toString(),
+        ...defaultParams,
       });
     } else if (getter == "gameid") {
       return await this.getJsonMethod(`/${gameStuff[0]}/detailedserver/`, {
         gameid: serverName,
-        lang: lang,
-        region: region,
-        platform: platform,
-        service: gameStuff[1],
-        return_ownername: with_ownername.toString(),
+        ...defaultParams,
       });
     } else if (getter == "serverip") {
       const result = await this.getJsonMethod(`/${gameStuff[0]}/servers`, {
@@ -242,11 +267,7 @@ export class ApiProvider extends JsonClient {
     }
     return await this.getJsonMethod(`/${gameStuff[0]}/detailedserver/`, {
       name: encodeURIComponent(serverName),
-      lang: lang,
-      region: region,
-      platform: platform,
-      service: gameStuff[1],
-      return_ownername: with_ownername.toString(),
+      ...defaultParams,
     });
   }
 
@@ -257,17 +278,19 @@ export class ApiProvider extends JsonClient {
     lang,
     with_ownername = true,
   }: PlaygroundInfo): Promise<PlaygroundInfoReturn> {
+    const defaultParams = {
+      lang: lang,
+      return_ownername: with_ownername.toString(),
+    };
     if (getter == "experiencecode") {
       return await this.getJsonMethod(`/${game}/playground/`, {
         experiencecode: playground,
-        lang: lang,
-        return_ownername: with_ownername.toString(),
+        ...defaultParams,
       });
     }
     return await this.getJsonMethod(`/${game}/playground/`, {
       playgroundid: playground,
-      lang: lang,
-      return_ownername: with_ownername.toString(),
+      ...defaultParams,
     });
   }
 
@@ -387,34 +410,31 @@ export class ApiProvider extends JsonClient {
     if (platform == "all") {
       platform = "pc";
     }
+    const defaultParams = {
+      platform: platform,
+      service: gameStuff[1],
+      days: days,
+    };
     if (getter == "serverid") {
       return await this.getJsonMethod(`/${gameStuff[0]}/serverarray/`, {
+        ...defaultParams,
         serverid: name,
-        platform: platform,
-        service: gameStuff[1],
-        days: days,
       });
     } else if (getter == "gameid") {
       return await this.getJsonMethod(`/${gameStuff[0]}/serverarray/`, {
+        ...defaultParams,
         gameid: name,
-        platform: platform,
-        service: gameStuff[1],
-        days: days,
       });
     } else if (getter == "serverip") {
       return await this.getJsonMethod(`/${gameStuff[0]}/serverarray`, {
         name: encodeURIComponent(name),
         type: "ip",
-        service: gameStuff[1],
-        platform: platform,
-        days: days,
+        ...defaultParams,
       });
     }
     return await this.getJsonMethod(`/${gameStuff[0]}/serverarray/`, {
       servername: encodeURIComponent(name),
-      platform: platform,
-      service: gameStuff[1],
-      days: days,
+      ...defaultParams,
     });
   }
 

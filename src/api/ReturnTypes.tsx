@@ -662,3 +662,18 @@ export type PlaygroundInfoReturn = {
   validatedPlayground: Playground;
   tag: Tags[];
 };
+
+export type StatsGraph = {
+  accuracy: number[];
+  headshots: number[];
+  infantryKillDeath: number[];
+  infantryKillsPerMinute: number[];
+  killDeath: number[];
+  killsPerMinute: number[];
+  scorePerMinute: number[];
+  skill: number[];
+  winPercent: number[];
+  timeStamps: string[];
+  startTime: string;
+  endTime: string;
+};
