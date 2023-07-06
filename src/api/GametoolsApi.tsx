@@ -414,6 +414,9 @@ export class ApiProvider extends JsonClient {
     platform = "pc",
   }: ServerGraphInfo): Promise<GlobalGraphReturn> {
     const gameStuff = game.split(".");
+    if (game == "battlebit") {
+      name = name.replace("[Official] - ", "").replace("[Community] - ", "");
+    }
 
     if (platform == "all") {
       platform = "pc";
