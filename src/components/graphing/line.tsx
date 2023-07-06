@@ -811,7 +811,12 @@ function ServerGraph(props: { stats: GlobalGraphReturn }): React.ReactElement {
               },
               y: {
                 display: false,
-                max: Math.max(...props.stats.soldierAmount) > 64 ? 128 : 64,
+                max:
+                  Math.max(...props.stats.soldierAmount) > 128
+                    ? 256
+                    : Math.max(...props.stats.soldierAmount) > 64
+                    ? 128
+                    : 64,
                 grid: {
                   display: false,
                 },
