@@ -377,23 +377,23 @@ export type ServerInfo = {
 };
 
 export type DetailedServerInfo = {
-  hostport: number;
-  cache: boolean;
-  country: string;
+  hostport?: number;
+  cache?: boolean;
+  country?: string;
   currentMap: string;
   currentMapImage: string;
-  description: string;
-  favorites: number;
+  description?: string;
+  favorites?: number;
   mode: string;
   official: boolean;
   platform: string;
   playerAmount: number;
-  prefix: string;
+  prefix?: string;
   region: string;
-  rotation: ServerRotation[];
-  settings: ServerSettings[];
+  rotation?: ServerRotation[];
+  settings?: ServerSettings[];
   smallmode: string;
-  gameId: string;
+  gameId?: string;
 
   blazeGameId?: number;
   teams?: ScoreTeamList[];

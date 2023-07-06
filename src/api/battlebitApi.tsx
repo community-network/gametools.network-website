@@ -75,6 +75,7 @@ export class ApiProvider extends JsonClient {
             server.Name
           }`,
           currentMap: server.Map,
+          currentMapImage: `https://cdn.gametools.network/maps/battlebit/${server.Map}.jpg`,
           url: `https://cdn.gametools.network/maps/battlebit/${server.Map}.jpg`,
           inQue: server.QueuePlayers,
           mode:
@@ -89,6 +90,7 @@ export class ApiProvider extends JsonClient {
           region: server.Region,
           serverInfo: "",
           smallMode: smallmodes[server.Gamemode],
+          smallmode: smallmodes[server.Gamemode],
         };
       })
       .filter((server) => {

@@ -213,6 +213,13 @@ export function Results(props: Views): React.ReactElement {
                   <Description>
                     {t(`regions.${stats.region?.toLowerCase()}`)}
                   </Description>
+                ) : props.game == "battlebit" ? (
+                  <Description>
+                    {t(`battlebitRegions.${stats.region}`)} -{" "}
+                    {i18n.exists(`stats.gamemodes.${stats.mode}`)
+                      ? t(`stats.gamemodes.${stats.mode}`)
+                      : stats.mode}
+                  </Description>
                 ) : (
                   <Description>
                     {t(`regions.${stats.region?.toLowerCase()}`)} /{" "}
@@ -474,46 +481,54 @@ export function Results(props: Views): React.ReactElement {
             )}
           </PageRow>
         </PageColumn>
-
-        <h2 style={{ marginBottom: 0 }}>{t("servers.iframe.main")}</h2>
-        <Description style={{ margin: 0, marginTop: "0.2rem" }}>
-          {t("servers.iframe.info")}
-        </Description>
-        <PageColumn>
-          {serverWidgetTypes.map((element, index) => {
-            return (
-              <PageRow key={index}>
-                <Description style={{ marginTop: "15px" }}>
-                  {t(`servers.iframe.${element}`)}{" "}
-                  <ServerLink
-                    onClick={() => {
-                      navigator.clipboard.writeText(
-                        `<iframe src="https://widgets.gametools.network/servers/${element}/${props.game}/${widgetItem}/${widgetReturn}/${props.platform}" height="${widgetSize[index]}px" width="700px" frameborder="0" allowtransparency="true"></iframe>`,
-                      );
-                      copyStates[element].set("copied");
-                      const timer1 = setTimeout(
-                        () => copyStates[element].set("copy"),
-                        3 * 1000,
-                      );
-                      return () => {
-                        clearTimeout(timer1);
-                      };
-                    }}
-                  >
-                    {t(`servers.iframe.states.${copyStates[element].state}`)}
-                  </ServerLink>
-                </Description>
-                <iframe
-                  src={`https://widgets.gametools.network/servers/${element}/${props.game}/${widgetItem}/${widgetReturn}/${props.platform}`}
-                  style={{ maxWidth: "700px", backgroundColor: "transparent" }}
-                  height={`${widgetSize[index]}px`}
-                  width="100%"
-                  frameBorder="0"
-                />
-              </PageRow>
-            );
-          })}
-        </PageColumn>
+        {props.game !== "battlebit" && (
+          <>
+            <h2 style={{ marginBottom: 0 }}>{t("servers.iframe.main")}</h2>
+            <Description style={{ margin: 0, marginTop: "0.2rem" }}>
+              {t("servers.iframe.info")}
+            </Description>
+            <PageColumn>
+              {serverWidgetTypes.map((element, index) => {
+                return (
+                  <PageRow key={index}>
+                    <Description style={{ marginTop: "15px" }}>
+                      {t(`servers.iframe.${element}`)}{" "}
+                      <ServerLink
+                        onClick={() => {
+                          navigator.clipboard.writeText(
+                            `<iframe src="https://widgets.gametools.network/servers/${element}/${props.game}/${widgetItem}/${widgetReturn}/${props.platform}" height="${widgetSize[index]}px" width="700px" frameborder="0" allowtransparency="true"></iframe>`,
+                          );
+                          copyStates[element].set("copied");
+                          const timer1 = setTimeout(
+                            () => copyStates[element].set("copy"),
+                            3 * 1000,
+                          );
+                          return () => {
+                            clearTimeout(timer1);
+                          };
+                        }}
+                      >
+                        {t(
+                          `servers.iframe.states.${copyStates[element].state}`,
+                        )}
+                      </ServerLink>
+                    </Description>
+                    <iframe
+                      src={`https://widgets.gametools.network/servers/${element}/${props.game}/${widgetItem}/${widgetReturn}/${props.platform}`}
+                      style={{
+                        maxWidth: "700px",
+                        backgroundColor: "transparent",
+                      }}
+                      height={`${widgetSize[index]}px`}
+                      width="100%"
+                      frameBorder="0"
+                    />
+                  </PageRow>
+                );
+              })}
+            </PageColumn>
+          </>
+        )}
       </div>
     );
   }

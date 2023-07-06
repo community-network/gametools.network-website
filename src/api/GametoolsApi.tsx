@@ -246,6 +246,14 @@ export class ApiProvider extends JsonClient {
       service: gameStuff[1],
       return_ownername: with_ownername.toString(),
     };
+    if (game == "battlebit") {
+      const result: any = await battlebitApi.serverList({
+        searchTerm: serverName,
+        region,
+        limit: "1",
+      });
+      return result.servers[0];
+    }
     if ((getter == "gameid" || getter == "serverid") && game == "bf2042") {
       return await this.getJsonMethod(`/${gameStuff[0]}/detailedserver/`, {
         serverid: serverName,

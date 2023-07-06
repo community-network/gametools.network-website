@@ -129,6 +129,9 @@ export function Results(props: Views): React.ReactElement {
           if (props.game == "bf2042") {
             idElement = "serverid";
             result = key.serverId;
+          } else if (props.game == "battlebit") {
+            idElement = "name";
+            result = key.prefix;
           } else if (!dice.includes(props.game)) {
             idElement = "serverip";
             result = `${key.ip}:${key.port}`;
@@ -141,7 +144,7 @@ export function Results(props: Views): React.ReactElement {
               link={`/servers/${props.game}/${idElement}/${result}/${
                 key.platform || "pc"
               }${props.game == "bf2042" ? `?blazeid=${key.blazeGameId}` : ""}`}
-              condition={props.game !== "battlebit"}
+              condition={true}
               key={index}
               innerStyle={props.spacingStyle}
             >
