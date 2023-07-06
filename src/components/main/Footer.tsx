@@ -77,7 +77,7 @@ export function Footer(): JSX.Element {
       <Section>
         <Text>
           <h3>{t("siteFullName")}</h3>
-          <TextGrayP>{t("footer.description")}</TextGrayP>;
+          <TextGrayP>{t("footer.description")}</TextGrayP>
           <AlignT>
             <LanguageSelector />
             <iframe
