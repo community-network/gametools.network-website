@@ -80,7 +80,7 @@
     "react-i18next": "^13.0.1",
     "react-router-dom": "^6.10.0",
     "react-use": "^17.4.0",
-    "styled-components": "^5.3.9",
+    "styled-components": "^6.0.3",
     "xlsx": "^0.18.5"
   }
 }
