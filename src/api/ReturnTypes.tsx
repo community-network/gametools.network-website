@@ -81,6 +81,7 @@ export type MainStats = {
   userName: string;
   vehicles: MainStatsVehicle[];
   weapons: MainStatsWeapon[];
+  gadgets?: MainStatsGadgets[];
   winPercent: number;
   wins: number;
   quits: number;
@@ -187,6 +188,22 @@ export type MainStatsWeapon = {
   damagePerMinute?: number;
   type: string;
   weaponName: string;
+};
+
+export type MainStatsGadgets = {
+  type: string;
+  gadgetName: string;
+  image: string;
+  id: string;
+  kills: number;
+  spawns: number;
+  damage: number;
+  uses: number;
+  multiKills: number;
+  vehiclesDestroyedWith: number;
+  kpm: number;
+  dpm: number;
+  secondsPlayed: number;
 };
 
 export type ServerSearch = {

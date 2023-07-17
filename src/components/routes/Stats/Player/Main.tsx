@@ -26,6 +26,7 @@ import {
   progressGames,
   gamemodeGames,
   supportedGames,
+  newGen,
 } from "../../../../api/static";
 import { getLanguage } from "../../../../locales/config";
 import { MainStats } from "../../../../api/ReturnTypes";
@@ -33,6 +34,7 @@ import { BfSessionInfo } from "./ManagerExtr";
 import { DetailedStats } from "./DetailedStats";
 import { ViewWeapons, WeaponGraph } from "./Weapons";
 import { ViewVehicles, VehicleGraph } from "./Vehicles";
+import { ViewGadgets, GadgetGraph } from "./Gadgets";
 import { PlatoonInfo } from "./Platoon";
 import { ViewProgress } from "./Progress";
 import { ViewGamemodes } from "./Gamemodes";
@@ -324,16 +326,23 @@ function GameStats(props: GameStatsItems): React.ReactElement {
             error={error}
             name={name}
           />
+          {newGen.includes(game) && (
+            <GadgetGraph
+              game={game}
+              loading={loading}
+              stats={stats}
+              error={error}
+              name={name}
+            />
+          )}
           {progressGames.includes(game) && (
-            <>
-              <ViewProgress
-                game={game}
-                loading={loading}
-                stats={stats}
-                error={error}
-                name={name}
-              />
-            </>
+            <ViewProgress
+              game={game}
+              loading={loading}
+              stats={stats}
+              error={error}
+              name={name}
+            />
           )}
         </PageRow>
         <PageRow>
@@ -358,16 +367,23 @@ function GameStats(props: GameStatsItems): React.ReactElement {
             error={error}
             name={name}
           />
+          {newGen.includes(game) && (
+            <ViewGadgets
+              game={game}
+              loading={loading}
+              stats={stats}
+              error={error}
+              name={name}
+            />
+          )}
           {gamemodeGames.includes(game) && (
-            <>
-              <ViewGamemodes
-                game={game}
-                loading={loading}
-                stats={stats}
-                error={error}
-                name={name}
-              />
-            </>
+            <ViewGamemodes
+              game={game}
+              loading={loading}
+              stats={stats}
+              error={error}
+              name={name}
+            />
           )}
         </PageRow>
       </PageColumn>

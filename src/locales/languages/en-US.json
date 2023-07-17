@@ -211,20 +211,25 @@
     "otherPlatoons": "Other platoons",
     "weapons": "Weapons",
     "vehicles": "Vehicles",
+    "gadgets": "Gadgets",
     "weaponGraph": "Weapon graph",
     "vehicleGraph": "Vehicle graph",
+    "gadgetGaph": "Gadget graph",
     "searchWeapon": "Search for weapon",
     "searchVehicle": "Search for vehicle",
+    "searchGadget": "Search for gadget",
     "rows": {
       "weaponName": "Weapon name",
       "vehicleName": "Vehicle name",
+      "gadgetName": "Gadget name",
       "type": "Type",
       "kills": "Kills",
       "killsPerMinute": "KPM",
       "damagePerMinute": "DPM",
       "destroyed": "Destroyed",
       "accuracy": "Accuracy",
-      "headshots": "Headshots"
+      "headshots": "Headshots",
+      "multiKills": "Multikills"
     },
     "classes": {
       "main": "Classes",
