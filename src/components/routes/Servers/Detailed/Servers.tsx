@@ -44,7 +44,7 @@ function Servers(): React.ReactElement {
   const params = useParams();
   const gameId = params.gameid;
   const platform = params.platform;
-  const serverName = unescape(params.sname).replaceAll('"', '\\"');
+  const serverName = decodeURIComponent(params.sname).replaceAll('"', '\\"');
   const { t } = useTranslation();
 
   const {

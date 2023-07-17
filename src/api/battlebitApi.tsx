@@ -1,5 +1,7 @@
+import { useQuery } from "@tanstack/react-query";
 import JsonClient from "./Json";
 import { ServerSearch } from "./ReturnTypes";
+import * as React from "react";
 
 export interface ServerInfoReturn {
   Name: string;
@@ -25,6 +27,9 @@ interface ServerSearchInfo {
 }
 
 export class ApiProvider extends JsonClient {
+  private serverCache: ServerInfoReturn[] = [];
+  private serverCacheAge: number;
+
   constructor() {
     super();
   }
@@ -64,11 +69,20 @@ export class ApiProvider extends JsonClient {
       ELI: "ELI",
     };
 
-    const r = await fetch(
-      `https://publicapi.battlebit.cloud/Servers/GetServerList`,
-    );
-    const result: ServerInfoReturn[] = await r.json();
-    const servers = result
+    console.log(this.serverCacheAge === undefined);
+    console.log((Date.now() - this.serverCacheAge) / 1000 > 30);
+    if (
+      this.serverCacheAge === undefined ||
+      // update only once every 30 seconds
+      (Date.now() - this.serverCacheAge) / 1000 > 30
+    ) {
+      const r = await fetch(
+        `https://publicapi.battlebit.cloud/Servers/GetServerList`,
+      );
+      this.serverCache = await r.json();
+      this.serverCacheAge = Date.now();
+    }
+    const servers = this.serverCache
       .map((server) => {
         return {
           prefix: `${server.IsOfficial ? "[Official]" : "[Community]"} - ${
