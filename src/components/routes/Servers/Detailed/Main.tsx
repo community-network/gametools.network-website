@@ -40,6 +40,7 @@ import { useLocation } from "react-router-dom";
 import { ServerScoreboard } from "./Scoreboard";
 import { BfPortalInfo } from "./BfPortal";
 import { ServerGraphQuery } from "../../../graphing/line";
+import { CopyToClipboard } from "../../../functions/CopyToClipboard";
 
 const AltDescription = styled.p`
   ${AltText}
@@ -117,10 +118,6 @@ const ServerInfo = styled.div`
   align-self: center;
 `;
 
-const ServerLink = styled.a`
-  cursor: pointer;
-`;
-
 const AlignSeverImg = styled.div`
   @media (min-width: 430px) {
     display: flex;
@@ -136,7 +133,6 @@ function capitalizeFirstLetter(string: string) {
 export function Results(props: Views): React.ReactElement {
   const query = new URLSearchParams(useLocation().search);
   const blazeIdQuery = query.get("blazeid");
-  const [copyState, setCopyState] = React.useState<string>("copy");
   const getLanguage = () => window.localStorage.i18nextLng;
   const numberFormat = new Intl.NumberFormat(getLanguage());
   const copyStates = {};
@@ -240,25 +236,12 @@ export function Results(props: Views): React.ReactElement {
           <>
             <Description style={{ marginTop: "6px" }}>
               {t("servers.permLink")}{" "}
-              <ServerLink
-                onClick={() => {
-                  navigator.clipboard.writeText(
-                    `https://gametools.network/servers/${
-                      props.game
-                    }/name/${encodeURIComponent(stats.prefix)}/pc`,
-                  );
-                  setCopyState("copied");
-                  const timer1 = setTimeout(
-                    () => setCopyState("copy"),
-                    3 * 1000,
-                  );
-                  return () => {
-                    clearTimeout(timer1);
-                  };
-                }}
-              >
-                {t(`states.${copyState}`)}
-              </ServerLink>
+              <CopyToClipboard
+                message={`https://gametools.network/servers/${
+                  props.game
+                }/name/${encodeURIComponent(stats.prefix)}/pc`}
+                stateTranslation={"states"}
+              />
             </Description>
           </>
         )}
@@ -491,23 +474,10 @@ export function Results(props: Views): React.ReactElement {
               <PageRow key={index}>
                 <Description style={{ marginTop: "15px" }}>
                   {t(`servers.iframe.${element}`)}{" "}
-                  <ServerLink
-                    onClick={() => {
-                      navigator.clipboard.writeText(
-                        `<iframe src="https://widgets.gametools.network/servers/${element}/${props.game}/${widgetItem}/${widgetReturn}/${props.platform}" height="${widgetSize[index]}px" width="700px" frameborder="0" allowtransparency="true"></iframe>`,
-                      );
-                      copyStates[element].set("copied");
-                      const timer1 = setTimeout(
-                        () => copyStates[element].set("copy"),
-                        3 * 1000,
-                      );
-                      return () => {
-                        clearTimeout(timer1);
-                      };
-                    }}
-                  >
-                    {t(`servers.iframe.states.${copyStates[element].state}`)}
-                  </ServerLink>
+                  <CopyToClipboard
+                    message={`<iframe src="https://widgets.gametools.network/servers/${element}/${props.game}/${widgetItem}/${widgetReturn}/${props.platform}" height="${widgetSize[index]}px" width="700px" frameborder="0" allowtransparency="true"></iframe>`}
+                    stateTranslation={"servers.iframe.states"}
+                  />
                 </Description>
                 <iframe
                   src={`https://widgets.gametools.network/servers/${element}/${props.game}/${widgetItem}/${widgetReturn}/${props.platform}`}
