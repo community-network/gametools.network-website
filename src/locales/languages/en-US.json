@@ -29,6 +29,10 @@
     "copy": "Copy link",
     "copied": "Copied!"
   },
+  "copyApiStates": {
+    "copy": "Copy api url",
+    "copied": "Copied!"
+  },
   "navBar": {
     "help": "Need help?",
     "serverManager": "Server Manager",

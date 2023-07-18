@@ -1,7 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
 import JsonClient from "./Json";
 import { ServerSearch } from "./ReturnTypes";
-import * as React from "react";
 
 export interface ServerInfoReturn {
   Name: string;
@@ -69,8 +67,6 @@ export class ApiProvider extends JsonClient {
       ELI: "ELI",
     };
 
-    console.log(this.serverCacheAge === undefined);
-    console.log((Date.now() - this.serverCacheAge) / 1000 > 30);
     if (
       this.serverCacheAge === undefined ||
       // update only once every 30 seconds
@@ -115,7 +111,11 @@ export class ApiProvider extends JsonClient {
       })
       .slice(0, !Number.isNaN(Number(limit)) ? Number(limit) : 10);
 
-    return { cache: false, servers };
+    return {
+      cache: false,
+      servers,
+      apiUrl: "https://publicapi.battlebit.cloud/Servers/GetServerList",
+    };
   }
 }
 

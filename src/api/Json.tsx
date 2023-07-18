@@ -64,6 +64,9 @@ export default class JsonClient {
             if (!result.ok) {
               throw json.error;
             }
+            if (typeof result === "object" && result !== null) {
+              json.apiUrl = result?.url;
+            }
             return json;
           },
           (error) => this.spawnError(error, 600),

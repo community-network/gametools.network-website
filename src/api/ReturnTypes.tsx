@@ -12,6 +12,7 @@ export type Graph = {
 };
 
 export type UserGames = {
+  apiUrl: string;
   avatar: string;
   userName: string;
   id: number;
@@ -23,6 +24,7 @@ export type UserGames = {
 };
 
 export type PlatoonStats = {
+  apiUrl: string;
   cache: boolean;
   canApplyToJoin: boolean;
   canJoinWithoutApply: boolean;
@@ -37,6 +39,7 @@ export type PlatoonStats = {
 };
 
 export type MainStats = {
+  apiUrl: string;
   accuracy: number;
   avatar: string;
   avengerKills: number;
@@ -207,6 +210,7 @@ export type MainStatsGadgets = {
 };
 
 export type ServerSearch = {
+  apiUrl: string;
   cache: boolean;
   servers: ServerList[];
 };
@@ -246,6 +250,7 @@ export type ServerList = {
 };
 
 export type ServerLeaderboardReturn = {
+  apiUrl: string;
   gameId: string;
   data: ServerLeaderboardList[];
   cache: boolean;
@@ -268,6 +273,7 @@ export type ServerLeaderboardList = {
 };
 
 export type ServerPlayersReturn = {
+  apiUrl: string;
   teams: serverTeamList[];
   loading: serverPlayer[];
   que: serverPlayer[];
@@ -286,6 +292,7 @@ export interface SeederGameItem {
 }
 
 export type seederPlayersReturn = {
+  apiUrl: string;
   _id: string;
   gameId: number;
   ingameChat?: SeederIngameChat[];
@@ -394,6 +401,7 @@ export type ServerInfo = {
 };
 
 export type DetailedServerInfo = {
+  apiUrl: string;
   hostport?: number;
   cache?: boolean;
   country?: string;
@@ -445,6 +453,7 @@ export type ScoreTeamList = {
 };
 
 export type ServerOwnerResult = {
+  apiUrl: string;
   id: string;
   name?: string;
   avatar: string;
@@ -516,6 +525,7 @@ export type ServerSettings = {
 };
 
 export type PlatoonSearchResult = {
+  apiUrl: string;
   cache: boolean;
   platoons: PlatoonResult[];
 };
@@ -674,6 +684,7 @@ export type Playground = {
 };
 
 export type PlaygroundInfoReturn = {
+  apiUrl: string;
   progressionMode: StringValue;
   originalPlayground: Playground;
   validatedPlayground: Playground;
@@ -681,6 +692,7 @@ export type PlaygroundInfoReturn = {
 };
 
 export type StatsGraph = {
+  apiUrl: string;
   accuracy: number[];
   headshots: number[];
   infantryKillDeath: number[];

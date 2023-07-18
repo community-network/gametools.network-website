@@ -109,6 +109,7 @@ interface ServerGraphInfo {
 }
 
 export interface bfbanPlayer {
+  apiUrl: string;
   names: { [name: string]: bfbanPlayers };
   userids: { [name: string]: bfbanPlayers };
   personaids: { [name: string]: bfbanPlayers };
@@ -126,6 +127,7 @@ export interface bfbanPlayers {
 }
 
 export interface GlobalGraphReturn {
+  apiUrl: string;
   serverAmount: number[];
   soldierAmount: number[];
   queueAmount: number[];
