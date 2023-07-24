@@ -60,7 +60,7 @@ export function BfPortalInfo(props: {
     return (
       <Spacing>
         <h2>{t("servers.bfportal.found")}</h2>
-        <a href={experience.full_url} target="_blank" rel="noreferrer">
+        <a href={experience.meta.html_url} target="_blank" rel="noreferrer">
           <AlignW>
             <OriginProfile src={bfportal_icon} />
             <div>
@@ -70,7 +70,7 @@ export function BfPortalInfo(props: {
               <OriginDescription>
                 Experience code: {experience.code}
                 <br />
-                Likes: {experience.like_count}
+                Likes: {experience.liked_by.length}
               </OriginDescription>
             </div>
           </AlignW>
