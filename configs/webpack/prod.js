@@ -1,6 +1,7 @@
 // production config
 const { merge } = require("webpack-merge");
 const { resolve } = require("path");
+const { GenerateSW } = require("workbox-webpack-plugin");
 
 const commonConfig = require("./common");
 
@@ -16,4 +17,36 @@ module.exports = merge(commonConfig, {
     react: "React",
     "react-dom": "ReactDOM",
   },
+  plugins: [
+    new GenerateSW({
+      runtimeCaching: [
+        {
+          urlPattern: /assets/,
+          handler: "CacheFirst",
+        },
+        {
+          urlPattern: new RegExp(
+            "^https://fonts.(?:googleapis|gstatic).com/(.*)",
+          ),
+          handler: "CacheFirst",
+        },
+        {
+          urlPattern: new RegExp(
+            "^https://cdn.jsdelivr.net/(.*)"
+          ),
+          handler: "CacheFirst"
+        },
+        {
+          urlPattern: new RegExp(
+            "^https://unpkg.com/(.*)"
+          ),
+          handler: "CacheFirst"
+        },
+        {
+          urlPattern: /.*/,
+          handler: "NetworkFirst",
+        },
+      ],
+    }),
+  ],
 });
