@@ -33,7 +33,7 @@ export function ViewWeapons(props: Views): React.ReactElement {
   const numberFormat = new Intl.NumberFormat(getLanguage());
   let weapons = [];
   if (!props.loading && !props.error) {
-    weapons = props.stats.weapons.filter(
+    weapons = props?.stats?.weapons?.filter(
       (item: {
         weaponName: string;
         accuracy: string | number;
@@ -46,7 +46,7 @@ export function ViewWeapons(props: Views): React.ReactElement {
           item.accuracy = parseInt(item.accuracy.replace("%", ""));
           item.headshots = parseInt(item.headshots.replace("%", ""));
         }
-        return item.weaponName.toLowerCase().includes(searchTerm.toLowerCase());
+        return item?.weaponName?.toLowerCase().includes(searchTerm?.toLowerCase());
       },
     );
     weapons = weapons.sort(DynamicSort(sortType));
