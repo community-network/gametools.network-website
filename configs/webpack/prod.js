@@ -25,6 +25,10 @@ module.exports = merge(commonConfig, {
           handler: "CacheFirst",
         },
         {
+          urlPattern: /splashscreens/,
+          handler: "CacheFirst",
+        }
+        {
           urlPattern: new RegExp(
             "^https://fonts.(?:googleapis|gstatic).com/(.*)",
           ),
