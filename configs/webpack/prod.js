@@ -21,13 +21,9 @@ module.exports = merge(commonConfig, {
     new GenerateSW({
       runtimeCaching: [
         {
-          urlPattern: /assets/,
+          urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
           handler: "CacheFirst",
         },
-        {
-          urlPattern: /splashscreens/,
-          handler: "CacheFirst",
-        }
         {
           urlPattern: new RegExp(
             "^https://fonts.(?:googleapis|gstatic).com/(.*)",
