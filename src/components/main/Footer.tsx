@@ -86,6 +86,7 @@ export function Footer(): JSX.Element {
               height="35"
               width="116"
               style={{ border: 0, marginLeft: ".5rem" }}
+              loading="lazy"
             />
           </AlignT>
         </Text>

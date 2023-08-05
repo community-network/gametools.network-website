@@ -40,6 +40,7 @@ export function ViewIframe(props: Views): React.ReactElement {
           frameBorder="0"
           // eslint-disable-next-line react/no-unknown-property
           allowtransparency="true"
+          loading="lazy"
         ></iframe>
       </Box>
     );

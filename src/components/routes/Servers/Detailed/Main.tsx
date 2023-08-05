@@ -488,6 +488,7 @@ export function Results(props: Views): React.ReactElement {
                   height={`${widgetSize[index]}px`}
                   width="100%"
                   frameBorder="0"
+                  loading="lazy"
                 />
               </PageRow>
             );
