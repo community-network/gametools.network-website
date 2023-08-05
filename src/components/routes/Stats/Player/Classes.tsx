@@ -33,7 +33,11 @@ export function ViewClasses(props: Views): React.ReactElement {
                           </>
                         )}
                       </h4>
-                      <ListImage style={{ height: "3rem" }} src={key.image} />
+                      <ListImage
+                        style={{ height: "3rem" }}
+                        src={key.image}
+                        loading="lazy"
+                      />
                     </Row>
                     {key?.score !== undefined && (
                       <Row>

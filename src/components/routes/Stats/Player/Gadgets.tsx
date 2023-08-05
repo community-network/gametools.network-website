@@ -70,7 +70,7 @@ export function ViewGadgets(props: Views): React.ReactElement {
               <Column key={index}>
                 <Row>
                   <h4>{key?.gadgetName}</h4>
-                  <ListImage src={key?.image} />
+                  <ListImage src={key?.image} loading="lazy" />
                 </Row>
                 <Row>
                   <h4>{key?.type}</h4>

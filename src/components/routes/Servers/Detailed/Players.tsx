@@ -181,6 +181,7 @@ function Players(props: {
                                     <img
                                       src={`https://cdn.gametools.network/bf1/${key.rank}.png`}
                                       height="25px"
+                                      loading="lazy"
                                     />
                                   )}
                                   <a
@@ -372,7 +373,7 @@ export function Bf3ServerPlayerlist(props: {
                     <Column key={index}>
                       <Row>
                         <AlignW>
-                          <img src={key.avatar} height="35px" />
+                          <img src={key.avatar} height="35px" loading="lazy" />
 
                           <Link
                             to={`/stats/pc/playerid/${

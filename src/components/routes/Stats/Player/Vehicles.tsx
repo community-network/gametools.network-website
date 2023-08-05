@@ -32,9 +32,13 @@ export function ViewVehicles(props: Views): React.ReactElement {
   const numberFormat = new Intl.NumberFormat(getLanguage());
   let vehicles = [];
   if (!props.loading && !props.error) {
-    vehicles = props?.stats?.vehicles?.filter((item: { vehicleName: string }) => {
-      return item?.vehicleName?.toLowerCase().includes(searchTerm?.toLowerCase());
-    });
+    vehicles = props?.stats?.vehicles?.filter(
+      (item: { vehicleName: string }) => {
+        return item?.vehicleName
+          ?.toLowerCase()
+          .includes(searchTerm?.toLowerCase());
+      },
+    );
     vehicles = vehicles.sort(DynamicSort(sortType));
   }
   return (
@@ -72,7 +76,7 @@ export function ViewVehicles(props: Views): React.ReactElement {
               <Column key={index}>
                 <Row>
                   <h4>{key?.vehicleName}</h4>
-                  <ListImage src={key?.image} />
+                  <ListImage src={key?.image} loading="lazy" />
                 </Row>
                 <Row>
                   <h4>{key?.type}</h4>

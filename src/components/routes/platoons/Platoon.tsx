@@ -419,13 +419,14 @@ function Results(props: Views): React.ReactElement {
             <Description>{platoon.currentSize} / 100</Description>
             {platoon.description !== null ? (
               <Description>
-                {platoon.description
-                  .split(". ")
-                  .map(function (descPart: string, idx: number) {
-                    return (
-                      <DescriptionPart key={idx}>{descPart}. </DescriptionPart>
-                    );
-                  })}
+                {platoon.description.split(". ").map(function (
+                  descPart: string,
+                  idx: number,
+                ) {
+                  return (
+                    <DescriptionPart key={idx}>{descPart}. </DescriptionPart>
+                  );
+                })}
               </Description>
             ) : (
               <></>

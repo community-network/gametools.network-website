@@ -46,7 +46,9 @@ export function ViewWeapons(props: Views): React.ReactElement {
           item.accuracy = parseInt(item.accuracy.replace("%", ""));
           item.headshots = parseInt(item.headshots.replace("%", ""));
         }
-        return item?.weaponName?.toLowerCase().includes(searchTerm?.toLowerCase());
+        return item?.weaponName
+          ?.toLowerCase()
+          .includes(searchTerm?.toLowerCase());
       },
     );
     weapons = weapons.sort(DynamicSort(sortType));
@@ -87,7 +89,7 @@ export function ViewWeapons(props: Views): React.ReactElement {
               <Column key={index}>
                 <Row>
                   <h4>{key?.weaponName}</h4>
-                  <ListImage src={key?.image} />
+                  <ListImage src={key?.image} loading="lazy" />
                 </Row>
                 <Row>
                   <h4>{key?.type}</h4>

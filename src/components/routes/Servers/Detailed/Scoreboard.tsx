@@ -50,6 +50,7 @@ export function ServerScoreboard(props: {
                                     <img
                                       src={`https://cdn.gametools.network/${props.game}/${key.rank}.png`}
                                       height="25px"
+                                      loading="lazy"
                                     />
                                   )}
                                   <Link

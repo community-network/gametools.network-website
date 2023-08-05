@@ -171,18 +171,25 @@ function Home(): React.ReactElement {
               src={bf1Logo.src}
               srcSet={bf1Logo.srcSet}
               style={{ height: bf1Logo.height, width: bf1Logo.width }}
+              loading="lazy"
             />
             <GameLogo
               alt="bf5 logo"
               src={bf5Logo.src}
               srcSet={bf5Logo.srcSet}
               style={{ height: bf5Logo.height, width: bf5Logo.width }}
+              loading="lazy"
             />
             <GameLogo
               alt="bf2042 logo"
               src={bf2042Logo.src}
               srcSet={bf2042Logo.srcSet}
-              style={{ marginTop: "0.5px", height: bf2042Logo.height, width: bf2042Logo.width }}
+              style={{
+                marginTop: "0.5px",
+                height: bf2042Logo.height,
+                width: bf2042Logo.width,
+              }}
+              loading="lazy"
             />
           </Align>
         </Container>
@@ -209,6 +216,7 @@ function Home(): React.ReactElement {
                         width: "24px",
                         marginRight: "1rem",
                       }}
+                      loading="lazy"
                     />
                     <h3>{key.header}</h3>
                   </AlignW>
