@@ -1,4 +1,4 @@
-const xlsx = await import('xlsx');
+const xlsx = await import("xlsx");
 import { saveAs } from "file-saver";
 
 export default function exportExcel(
