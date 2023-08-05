@@ -45,7 +45,7 @@ const Image = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("${background}");
+  background-image: url("${background.src}");
 `;
 
 const Blur = styled.div`
@@ -90,7 +90,7 @@ const CloudImage = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("${cloudBg}");
+  background-image: url("${cloudBg.src}");
 `;
 
 const GameLogo = styled.img`

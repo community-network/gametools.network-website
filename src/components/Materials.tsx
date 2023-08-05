@@ -58,9 +58,6 @@ export const PageRow = styled.div`
   @media screen and (max-width: 1800px) {
     flex: 100%;
   }
-  :empty {
-    display: none;
-  }
 `;
 
 export const Container = styled.div`
@@ -145,7 +142,6 @@ export const SmallSearchBox = styled.input`
 
 export const HomePlayerSearchBox = styled(SmallSearchBox)`
   color: rgba(255, 255, 255, 0.7);
-  }
   @media (min-width: 750px) {
     width: 20rem;
     margin-left: -2rem;
