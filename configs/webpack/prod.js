@@ -31,16 +31,12 @@ module.exports = merge(commonConfig, {
           handler: "CacheFirst",
         },
         {
-          urlPattern: new RegExp(
-            "^https://cdn.jsdelivr.net/(.*)"
-          ),
-          handler: "CacheFirst"
+          urlPattern: new RegExp("^https://cdn.jsdelivr.net/(.*)"),
+          handler: "CacheFirst",
         },
         {
-          urlPattern: new RegExp(
-            "^https://unpkg.com/(.*)"
-          ),
-          handler: "CacheFirst"
+          urlPattern: new RegExp("^https://unpkg.com/(.*)"),
+          handler: "CacheFirst",
         },
       ],
     }),
