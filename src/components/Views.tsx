@@ -2,6 +2,8 @@ import * as React from "react";
 import "../locales/config";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Footer } from "./main/Footer";
+import { Navbar } from "./main/Navbar";
 
 // Routes
 const Home = React.lazy(() => import("./routes/Home"));
@@ -30,6 +32,7 @@ function Views(): React.ReactElement {
   return (
     <div style={homePage ? {} : { paddingTop: 90 }}>
       <React.Suspense fallback={<div>{t("loading")}</div>}>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/stats" element={<PlayerSearch />} />
@@ -57,6 +60,7 @@ function Views(): React.ReactElement {
           />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
+        <Footer />
       </React.Suspense>
     </div>
   );
