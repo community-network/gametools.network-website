@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { BfPortalApi } from "../../../../api/BfPortalApi";
-import bfportal_icon from "../../../../assets/icon/bfportal-icon.png";
+import bfportal_icon from "../../../../assets/icon/bfportal-icon.png?as=webp";
 import { AlignW, Circle } from "../../../Materials";
 import { useQuery } from "@tanstack/react-query";
 import {

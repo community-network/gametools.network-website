@@ -19,16 +19,16 @@ import { TotalGraphQuery } from "../graphing/line";
 import { ServerSearch } from "./Servers/Search/Main";
 import { StatSearch } from "./Stats/Search/PlayerSearch";
 
-import background from "../../assets/img/RevealScreenshot_10_VistaHourglass_3840x2160_NoLogo-25798260c0054ec56441 1.png";
-import cloudBg from "../../assets/img/cloud-bg.png";
-import bf1Logo from "../../assets/img/bf1-logo.png";
-import bf5Logo from "../../assets/img/bf5-logo.png";
-import bf2042Logo from "../../assets/img/bf2042-logo.png";
+import background from "../../assets/img/RevealScreenshot_10_VistaHourglass_3840x2160_NoLogo-25798260c0054ec56441 1.png?as=webp";
+import cloudBg from "../../assets/img/cloud-bg.png?as=webp";
+import bf1Logo from "../../assets/img/bf1-logo.png?as=webp";
+import bf5Logo from "../../assets/img/bf5-logo.png?as=webp";
+import bf2042Logo from "../../assets/img/bf2042-logo.png?as=webp";
 
 import statbitsLogo from "../../assets/icon/statbits-icon.svg";
 import bflistLogo from "../../assets/icon/bflist-icon.svg";
-import bfbanLogo from "../../assets/icon/bfban-icon.png";
-import bfportalLogo from "../../assets/icon/bfportal-icon.png";
+import bfbanLogo from "../../assets/icon/bfban-icon.png?as=webp";
+import bfportalLogo from "../../assets/icon/bfportal-icon.png?as=webp";
 import { Link } from "react-router-dom";
 
 export const Container = styled.div`
