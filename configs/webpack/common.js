@@ -30,12 +30,19 @@ module.exports = {
         use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
-        test: /\.(png|jpe?g|svg)$/,
+        test: /\.(svg)$/,
         loader: "file-loader",
         options: {
           name: "assets/[name].[ext]",
         },
       },
+      {
+        test: /\.(jpe?g|png|webp)$/i,
+        use: {
+          loader: 'responsive-loader',
+        },
+        type: 'javascript/auto',
+      }
     ],
   },
   plugins: [

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { BfPortalApi } from "../../../../api/BfPortalApi";
-import bfportal_icon from "../../../../assets/icon/bfportal-icon.png?as=webp";
+import bfportalIcon from "../../../../assets/icon/bfportal-icon.png?sizes[]=60&format=webp&useResponsiveLoader=true";
 import { AlignW, Circle } from "../../../Materials";
 import { useQuery } from "@tanstack/react-query";
 import {
@@ -62,7 +62,7 @@ export function BfPortalInfo(props: {
         <h2>{t("servers.bfportal.found")}</h2>
         <a href={experience.meta.html_url} target="_blank" rel="noreferrer">
           <AlignW>
-            <OriginProfile src={bfportal_icon} />
+            <OriginProfile src={bfportalIcon.src} srcSet={bfportalIcon.srcSet} />
             <div>
               <OriginName style={{ marginBottom: "0.25rem" }}>
                 {experience.title}

@@ -19,16 +19,16 @@ import { TotalGraphQuery } from "../graphing/line";
 import { ServerSearch } from "./Servers/Search/Main";
 import { StatSearch } from "./Stats/Search/PlayerSearch";
 
-import background from "../../assets/img/RevealScreenshot_10_VistaHourglass_3840x2160_NoLogo-25798260c0054ec56441 1.png?as=webp";
-import cloudBg from "../../assets/img/cloud-bg.png?as=webp";
-import bf1Logo from "../../assets/img/bf1-logo.png?as=webp";
-import bf5Logo from "../../assets/img/bf5-logo.png?as=webp";
-import bf2042Logo from "../../assets/img/bf2042-logo.png?as=webp";
+import background from "../../assets/img/RevealScreenshot_10_VistaHourglass_3840x2160_NoLogo-25798260c0054ec56441 1.png?format=webp&useResponsiveLoader=true";
+import cloudBg from "../../assets/img/cloud-bg.png?format=webp&useResponsiveLoader=true";
+import bf1Logo from "../../assets/img/bf1-logo.png?sizes[]=96&format=webp&useResponsiveLoader=true";
+import bf5Logo from "../../assets/img/bf5-logo.png?sizes[]=94.7333&format=webp&useResponsiveLoader=true";
+import bf2042Logo from "../../assets/img/bf2042-logo.png?sizes[]=94.6&format=webp&useResponsiveLoader=true";
 
 import statbitsLogo from "../../assets/icon/statbits-icon.svg";
 import bflistLogo from "../../assets/icon/bflist-icon.svg";
-import bfbanLogo from "../../assets/icon/bfban-icon.png?as=webp";
-import bfportalLogo from "../../assets/icon/bfportal-icon.png?as=webp";
+import bfbanLogo from "../../assets/icon/bfban-icon.png?sizes[]=24&format=webp&useResponsiveLoader=true";
+import bfportalLogo from "../../assets/icon/bfportal-icon.png?sizes[]=24&format=webp&useResponsiveLoader=true";
 import { Link } from "react-router-dom";
 
 export const Container = styled.div`
@@ -168,18 +168,21 @@ function Home(): React.ReactElement {
           <Align>
             <GameLogo
               alt="bf1 logo"
-              src={bf1Logo}
-              style={{ height: "17px", width: "96px" }}
+              src={bf1Logo.src}
+              srcSet={bf1Logo.srcSet}
+              style={{ height: bf1Logo.height, width: bf1Logo.width }}
             />
             <GameLogo
               alt="bf5 logo"
-              src={bf5Logo}
-              style={{ height: "18px", width: "94.7333px" }}
+              src={bf5Logo.src}
+              srcSet={bf5Logo.srcSet}
+              style={{ height: bf5Logo.height, width: bf5Logo.width }}
             />
             <GameLogo
               alt="bf2042 logo"
-              src={bf2042Logo}
-              style={{ marginTop: "0.5px", height: "17.2px", width: "94.6px" }}
+              src={bf2042Logo.src}
+              srcSet={bf2042Logo.srcSet}
+              style={{ marginTop: "0.5px", height: bf2042Logo.height, width: bf2042Logo.width }}
             />
           </Align>
         </Container>
