@@ -2,6 +2,7 @@
 const { merge } = require("webpack-merge");
 const { resolve } = require("path");
 const { GenerateSW } = require("workbox-webpack-plugin");
+// const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 const commonConfig = require("./common");
 
@@ -17,7 +18,13 @@ module.exports = merge(commonConfig, {
     react: "React",
     "react-dom": "ReactDOM",
   },
+  optimization: {
+    splitChunks: {
+      minSize: 0,
+    },
+  },
   plugins: [
+    // new BundleAnalyzerPlugin(),
     new GenerateSW({
       runtimeCaching: [
         {

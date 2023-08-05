@@ -24,6 +24,7 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "build": "pnpm clean-dist && webpack --config=configs/webpack/prod.js",
+    "build:analyze": "webpack serve --config=configs/webpack/prod.js",
     "clean-dist": "rimraf dist/*",
     "lint": "eslint \"./src/**/*.{js,ts,tsx}\" --quiet",
     "start": "pnpm start-dev",
