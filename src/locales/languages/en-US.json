@@ -88,7 +88,8 @@
     "America_Central": "America",
     "Japan_Central": "Japan",
     "Australia_Central": "Australia",
-    "Brazil_Central": "Brazil"
+    "Brazil_Central": "Brazil",
+    "Developer_Server": "Development"
   },
   "platforms": {
     "pc": "PC",
