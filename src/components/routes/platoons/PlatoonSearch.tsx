@@ -66,8 +66,8 @@ interface Views {
 function Results(props: Views): React.ReactElement {
   const { t } = useTranslation();
   const stats = props.platoons;
-  if (!props.loading && !props.error) {
-    if (stats.platoons.length == 0) {
+  if (!props.loading) {
+    if (stats?.platoons == undefined || stats?.platoons?.length == 0) {
       return (
         <Spacing>
           <Description>{t("platoonSearch.resultNotFound")}</Description>
@@ -76,7 +76,7 @@ function Results(props: Views): React.ReactElement {
     }
     return (
       <Spacing>
-        {stats.platoons.map((key: PlatoonResult, index: number) => {
+        {stats?.platoons?.map((key: PlatoonResult, index: number) => {
           return (
             <Box
               className="box_hover box"
