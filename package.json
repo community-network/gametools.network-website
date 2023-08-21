@@ -73,7 +73,7 @@
     "workbox-webpack-plugin": "^7.0.0"
   },
   "dependencies": {
-    "@tanstack/react-query": "^4.32.6",
+    "@tanstack/react-query": "^4.33.0",
     "chart.js": "^4.3.3",
     "chartjs-adapter-date-fns": "^3.0.0",
     "chartjs-plugin-zoom": "^2.0.1",
