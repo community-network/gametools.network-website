@@ -45,7 +45,7 @@
     "@typescript-eslint/parser": "^6.2.1",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
-    "eslint": "^8.46.0",
+    "eslint": "^8.47.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.33.1",
@@ -58,7 +58,7 @@
     "react-dom": "^18.2.0",
     "responsive-loader": "^3.1.2",
     "rimraf": "^5.0.1",
-    "sass": "^1.65.1",
+    "sass": "^1.66.1",
     "sass-loader": "^13.3.2",
     "sharp": "^0.32.4",
     "style-loader": "^3.3.3",
@@ -73,7 +73,7 @@
     "workbox-webpack-plugin": "^7.0.0"
   },
   "dependencies": {
-    "@tanstack/react-query": "^4.32.6",
+    "@tanstack/react-query": "^4.33.0",
     "chart.js": "^4.3.3",
     "chartjs-adapter-date-fns": "^3.0.0",
     "chartjs-plugin-zoom": "^2.0.1",
