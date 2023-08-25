@@ -80,6 +80,24 @@ export function Footer(): JSX.Element {
           <TextGrayP>{t("footer.description")}</TextGrayP>
           <AlignT>
             <LanguageSelector />
+            <a
+              href="https://ko-fi.com/I3I8OL4BV"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                height="36"
+                style={{
+                  border: "0px",
+                  height: "36px",
+                  marginTop: "-2px",
+                  marginLeft: ".5rem",
+                }}
+                src="https://storage.ko-fi.com/cdn/kofi5.png?v=3"
+                border="0"
+                alt="Buy Me a Coffee at ko-fi.com"
+              />
+            </a>
             <iframe
               src="https://github.com/sponsors/community-network/button"
               title="Sponsor community-network"
