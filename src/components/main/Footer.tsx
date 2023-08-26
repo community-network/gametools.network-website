@@ -91,8 +91,10 @@ export function Footer(): JSX.Element {
             <a
               href="https://www.buymeacoffee.com/Gametools"
               style={{ marginLeft: ".5rem" }}
+              aria-label="Support us on buy me a coffee button"
             >
               <img
+                alt="Support us on buy me a coffee"
                 height="32"
                 width="121.6"
                 src="https://img.buymeacoffee.com/button-api/?text=Support us&emoji=❤️&slug=Gametools&button_colour=FFDD00&font_colour=000000&font_family=Inter&outline_colour=000000&coffee_colour=ffffff"

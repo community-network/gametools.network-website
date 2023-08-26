@@ -33,33 +33,37 @@ function Views(): React.ReactElement {
     <div style={homePage ? {} : { paddingTop: 90 }}>
       <React.Suspense fallback={<div>{t("loading")}</div>}>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/stats" element={<PlayerSearch />} />
-          <Route path="/stats/:plat/:type/:eaid/" element={<Stats />} />
-          <Route path="/platoons/:plat/:gid" element={<Platoon />} />
-          <Route path="/platoons" element={<PlatoonSearch />} />
-          <Route path="/servers" element={<ServerSearch />} />
-          <Route
-            path="/platoons/:gid"
-            element={<Navigate to="/platoons/pc/:gid" replace />}
-          />
-          <Route
-            path="/servers/:gameid/:type/:sname"
-            element={<Navigate to="/servers/:gameid/:type/:sname/pc" replace />}
-          />
-          <Route
-            path="/servers/:gameid/:type/:sname/:platform"
-            element={<Servers />}
-          />
-          <Route path="/join-game/:gameid/:ip/:port" element={<Launch />} />
-          <Route path="/playgrounds" element={<PlaygroundSelect />} />
-          <Route
-            path="/playgrounds/:gameid/:type/:playground"
-            element={<Playgrounds />}
-          />
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/stats" element={<PlayerSearch />} />
+            <Route path="/stats/:plat/:type/:eaid/" element={<Stats />} />
+            <Route path="/platoons/:plat/:gid" element={<Platoon />} />
+            <Route path="/platoons" element={<PlatoonSearch />} />
+            <Route path="/servers" element={<ServerSearch />} />
+            <Route
+              path="/platoons/:gid"
+              element={<Navigate to="/platoons/pc/:gid" replace />}
+            />
+            <Route
+              path="/servers/:gameid/:type/:sname"
+              element={
+                <Navigate to="/servers/:gameid/:type/:sname/pc" replace />
+              }
+            />
+            <Route
+              path="/servers/:gameid/:type/:sname/:platform"
+              element={<Servers />}
+            />
+            <Route path="/join-game/:gameid/:ip/:port" element={<Launch />} />
+            <Route path="/playgrounds" element={<PlaygroundSelect />} />
+            <Route
+              path="/playgrounds/:gameid/:type/:playground"
+              element={<Playgrounds />}
+            />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </main>
         <Footer />
       </React.Suspense>
     </div>

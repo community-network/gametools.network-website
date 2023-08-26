@@ -28,7 +28,7 @@ const Header = styled.div`
   align-items: center;
 `;
 
-const LinkWrapper = styled.div`
+const LinkWrapper = styled.nav`
   ${M92};
   display: flex;
   position: relative;
@@ -182,14 +182,14 @@ const Burger = ({
   setOpen: Dispatch<SetStateAction<boolean>>;
 }) => {
   return (
-    <>
+    <nav>
       <StyledBurger open={open} onClick={() => setOpen(!open)}>
         <div />
         <div />
         <div />
       </StyledBurger>
       <RightNav open={open} setOpen={setOpen} />
-    </>
+    </nav>
   );
 };
 
