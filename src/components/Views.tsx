@@ -33,7 +33,7 @@ function Views(): React.ReactElement {
     <div style={homePage ? {} : { paddingTop: 90 }}>
       <React.Suspense fallback={<div>{t("loading")}</div>}>
         <Navbar />
-        <main>
+        <main role="main">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/stats" element={<PlayerSearch />} />

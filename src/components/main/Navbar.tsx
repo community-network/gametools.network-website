@@ -182,7 +182,7 @@ const Burger = ({
   setOpen: Dispatch<SetStateAction<boolean>>;
 }) => {
   return (
-    <nav>
+    <nav role="navigation">
       <StyledBurger open={open} onClick={() => setOpen(!open)}>
         <div />
         <div />
@@ -206,14 +206,14 @@ export function Navbar(): JSX.Element {
   }, []);
 
   return (
-    <Nav>
+    <Nav role="banner">
       <Header onClick={() => setOpen(false)}>
         <SLink to="/">{t("siteName")}</SLink>
       </Header>
       {width < maxWidth ? (
         <Burger open={open} setOpen={setOpen} />
       ) : (
-        <LinkWrapper>
+        <LinkWrapper role="navigation">
           <ALink
             target="_blank"
             href="https://manager.gametools.network/"

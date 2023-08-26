@@ -73,7 +73,7 @@ export function Footer(): JSX.Element {
   }
 
   return (
-    <Background>
+    <Background role="contentinfo">
       <Section>
         <Text>
           <h3>{t("siteFullName")}</h3>
