@@ -24,6 +24,7 @@ import {
 } from "./Main";
 import { BarGraph } from "../../../graphing/bar";
 import ErrorBoundary from "../../../functions/ErrorBoundary";
+import sslFix from "../../../functions/fixEaAssets";
 
 export function ViewWeapons(props: Views): React.ReactElement {
   const { t } = useTranslation();
@@ -89,7 +90,7 @@ export function ViewWeapons(props: Views): React.ReactElement {
               <Column key={index}>
                 <Row>
                   <h4>{key?.weaponName}</h4>
-                  <ListImage src={key?.image} loading="lazy" />
+                  <ListImage src={sslFix(key?.image)} loading="lazy" />
                 </Row>
                 <Row>
                   <h4>{key?.type}</h4>

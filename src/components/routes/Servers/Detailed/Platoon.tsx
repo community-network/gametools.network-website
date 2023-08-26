@@ -7,6 +7,7 @@ import { AlignW } from "../../../Materials";
 import { PlatoonResult } from "../../../../api/ReturnTypes";
 import { Description, Spacing } from "./Servers";
 import styled from "styled-components";
+import sslFix from "../../../functions/fixEaAssets";
 
 const PlatoonEmblem = styled.img`
   width: 100px;
@@ -33,7 +34,7 @@ export function ServerPlatoon(props: {
       <h2>{t("servers.platoon.main")}</h2>
       <AlignW>
         <Link to={`/platoons/${platform}/${platoon.id}`}>
-          <PlatoonEmblem src={platoon.emblem} />
+          <PlatoonEmblem src={sslFix(platoon?.emblem)} />
         </Link>
         <div style={{ marginTop: "1rem" }}>
           <h3>

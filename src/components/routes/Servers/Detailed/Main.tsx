@@ -41,6 +41,7 @@ import { ServerScoreboard } from "./Scoreboard";
 import { BfPortalInfo } from "./BfPortal";
 import { ServerGraphQuery } from "../../../graphing/line";
 import { CopyToClipboard } from "../../../functions/CopyToClipboard";
+import sslFix from "../../../functions/fixEaAssets";
 
 const AltDescription = styled.p`
   ${AltText}
@@ -297,7 +298,7 @@ export function Results(props: Views): React.ReactElement {
                       >
                         <span>{index + 1}</span>
                       </div>
-                      <MapImage background={key.image}></MapImage>
+                      <MapImage background={sslFix(key.image)}></MapImage>
                       <ServerInfo>
                         <h3
                           style={{

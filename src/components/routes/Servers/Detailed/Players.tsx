@@ -28,6 +28,7 @@ import { DynamicSort } from "../../Stats/Player/Main";
 import styled from "styled-components";
 import { playerToStatsPlatform } from "../../../../api/static";
 import { bfListApi, PlayerInfo, TeamInfo } from "../../../../api/bflistApi";
+import sslFix from "../../../functions/fixEaAssets";
 
 const ServerPlayerName = styled.h4`
   max-width: 11rem;
@@ -373,7 +374,11 @@ export function Bf3ServerPlayerlist(props: {
                     <Column key={index}>
                       <Row>
                         <AlignW>
-                          <img src={key.avatar} height="35px" loading="lazy" />
+                          <img
+                            src={sslFix(key?.avatar)}
+                            height="35px"
+                            loading="lazy"
+                          />
 
                           <Link
                             to={`/stats/pc/playerid/${

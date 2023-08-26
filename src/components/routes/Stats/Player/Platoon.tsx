@@ -6,6 +6,7 @@ import { Box, AlignW } from "../../../Materials";
 import styled from "styled-components";
 import { MainStatsPlatoon } from "../../../../api/ReturnTypes";
 import { Description, PlatformViews, Spacing } from "./Main";
+import sslFix from "../../../functions/fixEaAssets";
 
 const PlatoonEmblem = styled.img`
   width: 100px;
@@ -42,7 +43,7 @@ export function PlatoonInfo(props: PlatformViews): React.ReactElement {
               <h3>{t("stats.platoonName")}</h3>
               <AlignW style={{ alignItems: "start" }}>
                 <Link to={`/platoons/${platform}/${stats?.activePlatoon?.id}`}>
-                  <PlatoonEmblem src={stats?.activePlatoon?.emblem} />
+                  <PlatoonEmblem src={sslFix(stats?.activePlatoon?.emblem)} />
                 </Link>
                 <div style={{ marginTop: "1rem" }}>
                   <h3>
@@ -86,7 +87,7 @@ export function PlatoonInfo(props: PlatformViews): React.ReactElement {
                   <div key={index}>
                     <AlignW style={{ alignItems: "start" }}>
                       <Link to={`/platoons/${platform}/${key?.id}`}>
-                        <PlatoonEmblem src={key.emblem} />
+                        <PlatoonEmblem src={sslFix(key?.emblem)} />
                       </Link>
                       <div style={{ marginTop: "1rem" }}>
                         <h3>

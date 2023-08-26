@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { UserGames } from "../../../../api/ReturnTypes";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
+import sslFix from "../../../functions/fixEaAssets";
 
 const OriginProfile = styled.img`
   width: 60px;
@@ -144,7 +145,7 @@ export function ViewOrigin(props: Views): React.ReactElement {
         // normal playerName
         <Spacing>
           <Align>
-            <OriginProfile src={stats.avatar} />
+            <OriginProfile src={sslFix(stats?.avatar)} />
             <div>
               <OriginName>{stats.userName}</OriginName>
               <OriginDescription>

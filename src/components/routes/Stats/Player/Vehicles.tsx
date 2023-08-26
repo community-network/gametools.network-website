@@ -23,6 +23,7 @@ import {
 } from "./Main";
 import { BarGraph } from "../../../graphing/bar";
 import ErrorBoundary from "../../../functions/ErrorBoundary";
+import sslFix from "../../../functions/fixEaAssets";
 
 export function ViewVehicles(props: Views): React.ReactElement {
   const { t } = useTranslation();
@@ -76,7 +77,7 @@ export function ViewVehicles(props: Views): React.ReactElement {
               <Column key={index}>
                 <Row>
                   <h4>{key?.vehicleName}</h4>
-                  <ListImage src={key?.image} loading="lazy" />
+                  <ListImage src={sslFix(key?.image)} loading="lazy" />
                 </Row>
                 <Row>
                   <h4>{key?.type}</h4>

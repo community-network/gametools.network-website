@@ -33,6 +33,7 @@ import {
 } from "../../Materials";
 import { getLanguage } from "../../../locales/config";
 import exportExcel from "../../functions/exportExcel";
+import sslFix from "../../functions/fixEaAssets";
 
 const Spacing = styled.div`
   margin-top: 2rem;
@@ -207,7 +208,7 @@ function Members(props: {
                       }?game=bf1&name=${encodeURIComponent(key.name)}`}
                     >
                       <Align>
-                        <MemberImage src={key.avatar} />
+                        <MemberImage src={sslFix(key?.avatar)} />
                         <h4 style={{ marginTop: "2px", marginBottom: 0 }}>
                           {key.name}
                           <CheckBan

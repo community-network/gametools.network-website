@@ -17,6 +17,7 @@ import {
   regionToTranslation,
 } from "../../../../api/static";
 import { DynamicSort } from "../../Stats/Player/Main";
+import sslFix from "../../../functions/fixEaAssets";
 
 const Description = styled.p`
   ${AltText}
@@ -149,7 +150,9 @@ export function Results(props: Views): React.ReactElement {
               innerStyle={props.spacingStyle}
             >
               <AlignSeverImg>
-                <ServerImage background={key.url ?? key.mapImage}>
+                <ServerImage
+                  background={sslFix(key.url) ?? sslFix(key.mapImage)}
+                >
                   <Blur />
                 </ServerImage>
                 <ServerInfo>

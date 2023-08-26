@@ -14,6 +14,7 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { serverToStatsPlatform } from "../../../../api/static";
+import sslFix from "../../../functions/fixEaAssets";
 
 export function PlaygroundOwner(props: {
   owner: ServerOwnerResult;
@@ -95,7 +96,7 @@ export function PlaygroundOwner(props: {
             props.game
           }&name=${encodeURIComponent(owner.name)}`}
         >
-          <OriginProfile src={owner.avatar} />
+          <OriginProfile src={sslFix(owner?.avatar)} />
         </Link>
         <Link
           to={`/stats/pc/playerid/${owner.id}?game=${

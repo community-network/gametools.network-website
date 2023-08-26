@@ -5,6 +5,7 @@ import { Box, Column, Row } from "../../../Materials";
 import { Spacing, Views, ListImage } from "./Main";
 import { MainStatsClasses } from "../../../../api/ReturnTypes";
 import { addSeconds } from "date-fns";
+import sslFix from "../../../functions/fixEaAssets";
 
 export function ViewClasses(props: Views): React.ReactElement {
   const { t, i18n } = useTranslation();
@@ -35,7 +36,7 @@ export function ViewClasses(props: Views): React.ReactElement {
                       </h4>
                       <ListImage
                         style={{ height: "3rem" }}
-                        src={key.image}
+                        src={sslFix(key?.image)}
                         loading="lazy"
                       />
                     </Row>
