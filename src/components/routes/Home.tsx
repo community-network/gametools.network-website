@@ -30,6 +30,7 @@ import bflistLogo from "../../assets/icon/bflist-icon.svg";
 import bfbanLogo from "../../assets/icon/bfban-icon.png?sizes[]=24&format=webp&useResponsiveLoader=true";
 import bfportalLogo from "../../assets/icon/bfportal-icon.png?sizes[]=24&format=webp&useResponsiveLoader=true";
 import { Link } from "react-router-dom";
+import AdsComponent from "../Ads";
 
 export const Container = styled.div`
   @media (min-width: 1300px) {
@@ -268,6 +269,7 @@ function Home(): React.ReactElement {
               );
             })}
           </div>
+          <AdsComponent dataAdSlot="8911547346" />
         </PageColumn>
       </Container>
     </div>
