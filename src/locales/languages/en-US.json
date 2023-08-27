@@ -546,6 +546,7 @@
   },
   "footer": {
     "description": "This website is part of the Community Network. It is Open Source. You can post issues and suggest changes/improvements via GitHub. API provided by Community Network and open for public usage. We don’t provide any third-party API. Our back end is closed source and not available publicly.\nBattlefield & Origin are registered trademark of Electronic Arts. This website uses data provided pursuant to Electronic Arts’ Battlefield 1 Stats Terms. Trademarks are the property of their respective owners. Game materials copyright Electronic Arts Inc. Electronic Arts has not endorsed and is not responsible for this site or its content.\nCode is under GPL v2 License. Some parts are under Community Network copyright.",
+    "LinkName": "Links",
     "links": {
       "0": {
         "header": "GitHub",
@@ -580,5 +581,9 @@
     "main": "404 - Page not found",
     "description": "We cant find the page your looking for.",
     "home": "Back to the home page"
+  },
+  "ads": {
+    "main": "Ad",
+    "disable": "Disable ads"
   }
 }

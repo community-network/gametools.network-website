@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { AlignT, M88 } from "../Materials";
 import LanguageSelector from "../../locales/ChangeLanguage";
+import AdsComponent, { AdSwitch, AdsEnabled } from "../Ads";
 
 interface FLinkProp {
   href: string;
@@ -15,6 +16,16 @@ const Background = styled.footer`
   padding-top: 2rem;
   padding-bottom: 1rem;
   background-color: #00000010;
+`;
+
+const AdSection = styled.div`
+  @media (min-width: 850px) {
+    padding-left: 8.33%;
+  }
+  @media (max-width: 850px) {
+    padding-left: 3%;
+  }
+  margin-bottom: 1rem;
 `;
 
 const Section = styled.div`
@@ -74,6 +85,17 @@ export function Footer(): JSX.Element {
 
   return (
     <Background role="contentinfo">
+      {AdsEnabled() && (
+        <AdSection>
+          <h3 className="adv-label" style={{ marginBottom: ".8rem" }}>
+            {t("ads.main")}
+          </h3>
+          <AdsComponent
+            dataAdSlot="8911547346"
+            style={{ display: "block", height: "80px" }}
+          />
+        </AdSection>
+      )}
       <Section>
         <Text>
           <h3>{t("siteFullName")}</h3>
@@ -100,10 +122,11 @@ export function Footer(): JSX.Element {
                 src="https://img.buymeacoffee.com/button-api/?text=Support us&emoji=❤️&slug=Gametools&button_colour=FFDD00&font_colour=000000&font_family=Inter&outline_colour=000000&coffee_colour=ffffff"
               />
             </a>
+            <AdSwitch />
           </AlignT>
         </Text>
         <Links>
-          <h3>Links</h3>
+          <h3>{t("footer.LinkName")}</h3>
           {footerLinks.map((key, index) => {
             return <FLink key={index} href={key.url} name={key.header} />;
           })}

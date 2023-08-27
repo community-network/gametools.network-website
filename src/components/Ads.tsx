@@ -1,9 +1,15 @@
 import * as React from "react";
+import { useTranslation } from "react-i18next";
+import { useLocalStorage } from "react-use";
 
-declare const window: { adsbygoogle: any };
+declare const window: { adsbygoogle: any; location: Location };
 
-const AdsComponent = (props: { dataAdSlot: string }) => {
+const AdsComponent = (props: {
+  dataAdSlot: string;
+  style?: React.CSSProperties;
+}) => {
   const { dataAdSlot } = props;
+  const style = props.style || { display: "block" };
 
   React.useEffect(() => {
     try {
@@ -11,16 +17,50 @@ const AdsComponent = (props: { dataAdSlot: string }) => {
     } catch (e) {}
   }, []);
 
+  const [value] = useLocalStorage("disable-ads", false);
+
+  if (value) return <></>;
+
   return (
     <>
       <ins
         className="adsbygoogle"
-        style={{ display: "block" }}
+        style={style}
         data-ad-client="ca-pub-6546858755151450"
         data-ad-slot={dataAdSlot}
-        data-ad-format="auto"
+        // data-ad-format="auto"
         data-full-width-responsive="true"
       ></ins>
+    </>
+  );
+};
+
+export const AdsEnabled = () => {
+  const [value] = useLocalStorage("disable-ads", false);
+  return !value;
+};
+
+export const AdSwitch = (): JSX.Element => {
+  const { t } = useTranslation();
+
+  const [value, setValue] = useLocalStorage("disable-ads", false);
+
+  return (
+    <>
+      <label className="switch">
+        <input
+          checked={value}
+          onClick={() => {
+            setValue(!value);
+            window.location.reload();
+          }}
+          type="checkbox"
+        />
+        <span className="slider round"></span>
+      </label>
+      <p style={{ marginTop: "4.5px", marginLeft: ".3rem" }}>
+        {t("ads.disable")}
+      </p>
     </>
   );
 };

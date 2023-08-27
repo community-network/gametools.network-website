@@ -99,6 +99,19 @@ const GameLogo = styled.img`
   margin-bottom: 10px;
 `;
 
+const AdBox = styled.div`
+  padding-left: 8.33%;
+  margin-top: 0.9rem;
+  display: inline;
+  position: absolute;
+  left: 935px;
+  width: 225px;
+
+  @media (max-width: 1300px) {
+    display: none;
+  }
+`;
+
 function Home(): React.ReactElement {
   const { t, i18n } = useTranslation();
   let i = 0;
@@ -144,7 +157,15 @@ function Home(): React.ReactElement {
         <h2 style={{ margin: "24px 0 24px 24px" }}>
           {t("home.graphs.header")}
         </h2>
-        <TotalGraphQuery />
+        <div>
+          <AdBox>
+            <AdsComponent
+              dataAdSlot="8911547346"
+              style={{ display: "block", height: "300px" }}
+            />
+          </AdBox>
+          <TotalGraphQuery />
+        </div>
         <BigButtonLink target="_blank" href="https://graphs.gametools.network/">
           {t("home.graphs.detailed")}
         </BigButtonLink>
@@ -268,9 +289,6 @@ function Home(): React.ReactElement {
                 </div>
               );
             })}
-            <div style={{ marginTop: ".5rem" }}>
-              <AdsComponent dataAdSlot="8911547346" />
-            </div>
           </div>
         </PageColumn>
       </Container>
