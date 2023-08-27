@@ -268,7 +268,9 @@ function Home(): React.ReactElement {
                 </div>
               );
             })}
-            <AdsComponent dataAdSlot="8911547346" />
+            <div style={{ marginTop: ".5rem" }}>
+              <AdsComponent dataAdSlot="8911547346" />
+            </div>
           </div>
         </PageColumn>
       </Container>
