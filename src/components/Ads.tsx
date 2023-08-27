@@ -46,7 +46,7 @@ export const AdSwitch = (): JSX.Element => {
   const [value, setValue] = useLocalStorage("disable-ads", false);
 
   return (
-    <>
+    <div className="adv-ad" style={{ display: "contents" }}>
       <label className="switch">
         <input
           checked={value}
@@ -61,7 +61,7 @@ export const AdSwitch = (): JSX.Element => {
       <p style={{ marginTop: "4.5px", marginLeft: ".3rem" }}>
         {t("ads.disable")}
       </p>
-    </>
+    </div>
   );
 };
 
