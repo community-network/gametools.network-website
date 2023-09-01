@@ -145,7 +145,7 @@ function SmallExportButton(props: { members: PlatoonPlayer[] }) {
   return (
     <SmallButton
       style={{ marginLeft: "1rem" }}
-      disabled={true}
+      disabled={state !== "ready"}
       onClick={() => exportExcel({ members: props.members }, "platoon members")}
     >
       {state === "loading"
