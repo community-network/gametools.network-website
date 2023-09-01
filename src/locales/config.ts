@@ -7,8 +7,7 @@ import * as translationNL from "./languages/nl-NL.json";
 import * as translationDE from "./languages/de_DE.json";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
-import formatDistanceToNowStrict from "date-fns/formatDistanceStrict";
-import format from "date-fns/format";
+import { format, formatDistanceToNowStrict } from "date-fns";
 import { enUS, tr, zhCN, nl, ru, de } from "date-fns/locale";
 
 const locales = {
