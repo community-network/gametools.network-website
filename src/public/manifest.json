@@ -11,6 +11,23 @@
       "src": "logo.png",
       "type": "image/png",
       "sizes": "256x256"
+    },
+    {
+      "src": "big-logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "maskable-logo.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
     }
   ],
   "id": "/",
@@ -24,28 +41,48 @@
       "short_name": "Servers",
       "description": "Search battlefield servers",
       "url": "/servers",
-      "icons": [{ "src": "/logo.png", "sizes": "256x256" }]
+      "icons": [
+        {
+          "src": "/logo.svg",
+          "sizes": "any"
+        }
+      ]
     },
     {
       "name": "Battlefield stats",
       "short_name": "Stats",
       "description": "Show your or someone elses stats",
       "url": "/stats",
-      "icons": [{ "src": "/logo.png", "sizes": "256x256" }]
+      "icons": [
+        {
+          "src": "/logo.svg",
+          "sizes": "any"
+        }
+      ]
     },
     {
       "name": "Battlefield platoons",
       "short_name": "Platoons",
       "description": "Get info about a Battlefield platoon",
       "url": "/platoons",
-      "icons": [{ "src": "/logo.png", "sizes": "256x256" }]
+      "icons": [
+        {
+          "src": "/logo.svg",
+          "sizes": "any"
+        }
+      ]
     },
     {
       "name": "Battlefield playgrounds",
       "short_name": "playgrounds",
       "description": "Get more information about a specific playground",
       "url": "/playgrounds",
-      "icons": [{ "src": "/logo.png", "sizes": "256x256" }]
+      "icons": [
+        {
+          "src": "/logo.svg",
+          "sizes": "any"
+        }
+      ]
     }
   ]
 }
