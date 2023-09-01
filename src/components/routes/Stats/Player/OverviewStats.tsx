@@ -6,6 +6,8 @@ import { BackgroundBar, Bar, Spacing, Views } from "./Main";
 import styled from "styled-components";
 import { addSeconds } from "date-fns";
 import exportExcel from "../../../functions/exportExcel";
+import useExternalScript from "../../../functions/UseExternalScript";
+import { MainStats } from "../../../../api/ReturnTypes";
 
 const BottomOfBox = styled.div`
   display: inline-block;
@@ -16,6 +18,39 @@ const WhiteText = styled.span`
   color: white;
   margin-left: 0.5rem;
 `;
+
+function ExportButton(props: {
+  mainStats;
+  otherStats;
+  game: string;
+  stats: MainStats;
+}) {
+  const externalScript =
+    "https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.mini.min.js";
+  const { t } = useTranslation();
+  const state = useExternalScript(externalScript);
+  return (
+    <SmallButtonPrimary
+      style={{ margin: 0, marginTop: "1rem" }}
+      disabled={state !== "ready"}
+      onClick={() =>
+        exportExcel(
+          {
+            main: props.mainStats,
+            ...props.otherStats,
+          },
+          `${props.stats.userName} ${props.game} stats`,
+        )
+      }
+    >
+      {state === "loading"
+        ? t("loading")
+        : state === "error"
+        ? t("externalScriptError")
+        : t("export")}
+    </SmallButtonPrimary>
+  );
+}
 
 export function ViewStats(props: Views): React.ReactElement {
   const { t } = useTranslation();
@@ -94,21 +129,12 @@ export function ViewStats(props: Views): React.ReactElement {
               </WhiteText>
             </p>
           </BottomOfBox>
-          {/* export stats */}
-          <SmallButtonPrimary
-            style={{ margin: 0, marginTop: "1rem" }}
-            onClick={() =>
-              exportExcel(
-                {
-                  main: mainStats,
-                  ...otherStats,
-                },
-                `${stats.userName} ${props.game} stats`,
-              )
-            }
-          >
-            {t("export")}
-          </SmallButtonPrimary>
+          <ExportButton
+            mainStats={mainStats}
+            otherStats={otherStats}
+            game={props.game}
+            stats={stats}
+          />
         </Box>
       </Spacing>
     );

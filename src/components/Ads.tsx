@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { useLocalStorage } from "react-use";
+import useExternalScript from "./functions/UseExternalScript";
 
 declare const window: { adsbygoogle: any; location: Location };
 
@@ -42,8 +43,11 @@ export const AdsEnabled = () => {
 
 export const AdSwitch = (): JSX.Element => {
   const { t } = useTranslation();
-
   const [value, setValue] = useLocalStorage("disable-ads", false);
+
+  const externalScript =
+    "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6546858755151450";
+  useExternalScript(externalScript, true);
 
   return (
     <div className="adv-ad" style={{ display: "contents" }}>

@@ -34,6 +34,7 @@ import {
 import { getLanguage } from "../../../locales/config";
 import exportExcel from "../../functions/exportExcel";
 import sslFix from "../../functions/fixEaAssets";
+import useExternalScript from "../../functions/UseExternalScript";
 
 const Spacing = styled.div`
   margin-top: 2rem;
@@ -136,6 +137,26 @@ function CheckBan(props: {
   }
 }
 
+function SmallExportButton(props: { members: PlatoonPlayer[] }) {
+  const externalScript =
+    "https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.mini.min.js";
+  const { t } = useTranslation();
+  const state = useExternalScript(externalScript);
+  return (
+    <SmallButton
+      style={{ marginLeft: "1rem" }}
+      disabled={true}
+      onClick={() => exportExcel({ members: props.members }, "platoon members")}
+    >
+      {state === "loading"
+        ? t("loading")
+        : state === "error"
+        ? t("externalScriptError")
+        : t("export")}
+    </SmallButton>
+  );
+}
+
 function Members(props: {
   members: PlatoonPlayer[];
   platform: string;
@@ -187,12 +208,7 @@ function Members(props: {
             <option value="default">{t("platoon.rows.role")}</option>
             <option value="name">{t("platoon.rows.name")}</option>
           </SelectPrimary>
-          <SmallButton
-            style={{ marginLeft: "1rem" }}
-            onClick={() => exportExcel({ members: members }, "platoon members")}
-          >
-            {t("export")}
-          </SmallButton>
+          <SmallExportButton members={members} />
         </AlignW>
       </Align>
       <Box>
