@@ -1,19 +1,18 @@
-const xlsx = await import("xlsx");
 import { saveAs } from "file-saver";
 
 export default function exportExcel(
   items: { [key: string]: unknown[] },
   export_name: string,
 ) {
-  const wb = xlsx.utils.book_new();
+  const wb = XLSX.utils.book_new();
 
   for (const [key, value] of Object.entries(items)) {
     // add worksheet to file with bookmark members
-    const ws = xlsx.utils.json_to_sheet(value);
-    xlsx.utils.book_append_sheet(wb, ws, key);
+    const ws = XLSX.utils.json_to_sheet(value);
+    XLSX.utils.book_append_sheet(wb, ws, key);
   }
 
-  const wbout = xlsx.write(wb, { bookType: "xlsx", type: "binary" });
+  const wbout = XLSX.write(wb, { bookType: "xlsx", type: "binary" });
 
   function s2ab(s: string) {
     const buf = new ArrayBuffer(s.length);

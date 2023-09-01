@@ -86,7 +86,6 @@
     "react-router-dom": "^6.15.0",
     "react-use": "^17.4.0",
     "regenerator-runtime": "^0.13.11",
-    "styled-components": "^6.0.7",
-    "xlsx": "^0.18.5"
+    "styled-components": "^6.0.7"
   }
 }

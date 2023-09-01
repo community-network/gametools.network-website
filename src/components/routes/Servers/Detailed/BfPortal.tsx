@@ -62,7 +62,10 @@ export function BfPortalInfo(props: {
         <h2>{t("servers.bfportal.found")}</h2>
         <a href={experience.meta.html_url} target="_blank" rel="noreferrer">
           <AlignW>
-            <OriginProfile src={bfportalIcon.src} srcSet={bfportalIcon.srcSet} />
+            <OriginProfile
+              src={bfportalIcon.src}
+              srcSet={bfportalIcon.srcSet}
+            />
             <div>
               <OriginName style={{ marginBottom: "0.25rem" }}>
                 {experience.title}
