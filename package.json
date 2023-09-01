@@ -17,6 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/vikpe/react-webpack-typescript-starter.git"
   },
+  "sideEffects": "*.scss",
   "bugs": {
     "url": "https://github.com/vikpe/react-webpack-typescript-starter/issues"
   },
