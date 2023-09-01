@@ -36,7 +36,7 @@ import { ServerLeaderboard } from "./Leaderboard";
 import { ServerPlatoon } from "./Platoon";
 import { ServerConfig } from "./Portal";
 import { Description, Title } from "./Servers";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import { ServerScoreboard } from "./Scoreboard";
 import { BfPortalInfo } from "./BfPortal";
 import { ServerGraphQuery } from "../../../graphing/line";
@@ -132,8 +132,8 @@ function capitalizeFirstLetter(string: string) {
 }
 
 export function Results(props: Views): React.ReactElement {
-  const query = new URLSearchParams(useLocation().search);
-  const blazeIdQuery = query.get("blazeid");
+  // const query = new URLSearchParams(useLocation().search);
+  // const blazeIdQuery = query.get("blazeid");
   const getLanguage = () => window.localStorage.i18nextLng;
   const numberFormat = new Intl.NumberFormat(getLanguage());
   const copyStates = {};

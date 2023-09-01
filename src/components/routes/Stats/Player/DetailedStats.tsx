@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import { Box, GridContainer } from "../../../Materials";
 import { newTitles } from "../../../../api/static";
 import { Spacing, Views } from "./Main";
-import { MainStats } from "../../../../api/ReturnTypes";
 
 export interface MaybeStat {
   stat: string;
