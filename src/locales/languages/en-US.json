@@ -155,13 +155,13 @@
       "2": {
         "header": "Statbits",
         "description": "Statbits let's you integrate little bits of game statistics into your live stream chat, as well as any other application. Want a !kd command showing your overall kill/death ratio in Battlefield 4? We got you!",
-        "link": "Learn more",
+        "link": "Visit Statbits",
         "url": "https://statbits.io/"
       },
       "3": {
         "header": "BFList",
         "description": "bflist provides live data about what is happening on the Battlefield in Battlefield-series games. We provide data on servers as well as players. From a server's name or current map to any player's current score and kd.",
-        "link": "Learn more",
+        "link": "Visit BFList",
         "url": "https://bflist.io/"
       }
     }
