@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useLocalStorage } from "react-use";
 import useExternalScript from "./functions/UseExternalScript";
 
-declare const window: { adsbygoogle: any; location: Location };
+declare const window: { adsbygoogle; location: Location };
 
 const AdsComponent = (props: {
   dataAdSlot: string;

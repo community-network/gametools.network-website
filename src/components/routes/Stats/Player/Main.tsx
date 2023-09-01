@@ -98,7 +98,7 @@ export function DynamicSort(property: string) {
     sortOrder = -1;
     property = property.substr(1);
   }
-  return function (a: any, b: any): number {
+  return function (a, b): number {
     const result =
       a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
     return result * sortOrder;

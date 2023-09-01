@@ -419,7 +419,7 @@ const InputStyle = styled.input`
 export function InputItem(props: {
   item: string;
   currrentItem: string;
-  callback: (args0?: any) => void;
+  callback: (args0?) => void;
   name: string;
   disabled?: boolean;
 }): React.ReactElement {
