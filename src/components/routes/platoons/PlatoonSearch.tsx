@@ -18,6 +18,7 @@ import {
 } from "../../Materials";
 import { getLanguage } from "../../../locales/config";
 import { PlatoonResult, PlatoonSearchResult } from "../../../api/ReturnTypes";
+import { useLocalStorage } from "react-use";
 
 const Description = styled.p`
   ${AltText}
@@ -109,7 +110,10 @@ function Results(props: Views): React.ReactElement {
 
 function Search(): React.ReactElement {
   const [searchTerm, setSearchTerm] = React.useState<string>("");
-  const [platform, setPlatform] = React.useState<string>("pc");
+  const [platform, setPlatform] = useLocalStorage<string>(
+    "platoonSearch_platform",
+    "pc",
+  );
   const history = useNavigate();
   // get info from query ?search &game
   const query = new URLSearchParams(useLocation().search);

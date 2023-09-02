@@ -42,6 +42,7 @@ import { ViewClasses } from "./Classes";
 import { ViewIframe } from "./Iframe";
 import { ViewStats } from "./OverviewStats";
 import { ViewOrigin } from "./ViewOrigin";
+import { useLocalStorage } from "react-use";
 
 export interface Views {
   loading: boolean;
@@ -108,7 +109,10 @@ export function DynamicSort(property: string) {
 function Stats(): React.ReactElement {
   const params = useParams();
   const platform = params.plat;
-  const [game, setGame] = React.useState<string>(platformGames[platform][0]);
+  const [game, setGame] = useLocalStorage<string>(
+    "stats_game",
+    platformGames[platform][0],
+  );
   const { width } = useWindowDimensions();
   const query = new URLSearchParams(useLocation().search);
   const history = useNavigate();

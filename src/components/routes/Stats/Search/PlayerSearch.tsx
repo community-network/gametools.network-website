@@ -24,6 +24,7 @@ import {
 import { platformGames, statsPlatforms } from "../../../../api/static";
 import { Graphs } from "./Graphs";
 import ErrorBoundary from "../../../functions/ErrorBoundary";
+import { useLocalStorage } from "react-use";
 
 export const AltDescription = styled.p`
   ${AltText}
@@ -166,7 +167,10 @@ export function DropDownAutocomplete({
 export function StatSearch(): React.ReactElement {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = React.useState<string>("");
-  const [platform, setPlatform] = React.useState<string>("pc");
+  const [platform, setPlatform] = useLocalStorage<string>(
+    "statSearch_platform",
+    "pc",
+  );
   const searchBox: React.MutableRefObject<HTMLInputElement> = React.useRef();
 
   return (
@@ -241,8 +245,11 @@ function Main(): React.ReactElement {
 function Search(): React.ReactElement {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = React.useState<string>("");
-  const [platform, setPlatform] = React.useState<string>("pc");
-  const [game, setGame] = React.useState<string>("bf1");
+  const [platform, setPlatform] = useLocalStorage<string>(
+    "statSearch_platform",
+    "pc",
+  );
+  const [game, setGame] = useLocalStorage<string>("stats_game", "bf1");
   const searchBox: React.MutableRefObject<HTMLInputElement> = React.useRef();
   return (
     <>

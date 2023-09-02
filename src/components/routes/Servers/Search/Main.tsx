@@ -32,6 +32,7 @@ import {
   supportedGames,
 } from "../../../../api/static";
 import { Results } from "./Results";
+import { useLocalStorage } from "react-use";
 
 const AltDescription = styled.p`
   ${AltText}
@@ -73,9 +74,15 @@ const ServerPageRow = styled.div`
 
 function Main(): React.ReactElement {
   const [searchTerm, setSearchTerm] = React.useState<string>("");
-  const [gameName, setGameName] = React.useState<string>("bf2042");
+  const [gameName, setGameName] = useLocalStorage<string>(
+    "serverSearch_game",
+    "bf2042",
+  );
+  const [platform, setPlatform] = useLocalStorage<string>(
+    "serverSearch_platform",
+    "allPlatforms",
+  );
   const [region, setRegion] = React.useState<string>("all");
-  const [platform, setPlatform] = React.useState<string>("allPlatforms");
   const [limit, setLimit] = React.useState<string>("10");
   const [searchType, setSearchType] = React.useState<string>("experiencename");
   const [sortType, setSortType] = React.useState<string>("-prefix");
@@ -296,9 +303,15 @@ const AlignHomeServers = styled(Align)`
 
 export function ServerSearch(): React.ReactElement {
   const [searchTerm, setSearchTerm] = React.useState<string>("");
-  const [gameName, setGameName] = React.useState<string>("bf2042");
+  const [gameName, setGameName] = useLocalStorage<string>(
+    "serverSearch_game",
+    "bf2042",
+  );
+  const [platform, setPlatform] = useLocalStorage<string>(
+    "serverSearch_platform",
+    "allPlatforms",
+  );
   const [region, setRegion] = React.useState<string>("all");
-  const [platform, setPlatform] = React.useState<string>("allPlatforms");
   const regionKey = gameName === "battlebit" ? "battlebitRegions" : "regions";
 
   const { t } = useTranslation();
