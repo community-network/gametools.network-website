@@ -448,6 +448,38 @@ export function InputItem(props: {
   );
 }
 
+export function CheckItem(props: {
+  item: string;
+  currrentItems: string[];
+  callback: (args0?) => void;
+  name: string;
+  disabled?: boolean;
+}): React.ReactElement {
+  const { item, currrentItems, callback, name, disabled } = props;
+
+  return (
+    <div style={{ marginBottom: "5px" }}>
+      <InputStyle
+        type="checkbox"
+        id={item}
+        name={item}
+        value={item}
+        onChange={callback}
+        checked={currrentItems.includes(item)}
+        disabled={disabled}
+      />
+      <SelectorLabel
+        htmlFor={item}
+        style={{
+          color: disabled ? "#ffffff40" : "#fff",
+        }}
+      >
+        {name}
+      </SelectorLabel>
+    </div>
+  );
+}
+
 export function RightArrow(): React.ReactElement {
   return (
     <svg

@@ -90,6 +90,7 @@ interface ServerSearchInfo {
   region?: string;
   platform?: string;
   limit?: string;
+  extraQueries?: { [name: string]: string };
 }
 
 interface GraphInfo {
@@ -360,6 +361,7 @@ export class ApiProvider extends JsonClient {
     region = "all",
     platform = "pc",
     limit = "10",
+    extraQueries = {},
   }: ServerSearchInfo): Promise<ServerSearch> {
     const gameStuff = game.split(".");
     let serverName = "";
@@ -388,6 +390,7 @@ export class ApiProvider extends JsonClient {
       platform: platform,
       service: gameStuff[1],
       limit: limit,
+      ...extraQueries,
     });
   }
 

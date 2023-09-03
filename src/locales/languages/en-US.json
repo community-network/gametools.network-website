@@ -195,7 +195,10 @@
     },
     "showMore": "Show more",
     "region": "Region",
-    "platform": "platform"
+    "platform": "platform",
+    "gamemode": "Gamemode",
+    "playerFilter": "Available space",
+    "sorting": "Sort"
   },
   "platoonSearch": {
     "back": "Main page",
@@ -492,6 +495,27 @@
     "notFound": {
       "main": "Server not found",
       "description": "We cant find the server your looking for."
+    },
+    "bf1": {
+      "gamemodes": {
+        "airassault": "Air Assault",
+        "conquest": "Conquest",
+        "domination": "Domination",
+        "frontlines": "Frontlines",
+        "operations": "Operations",
+        "rush": "Rush",
+        "shockoperations": "Shock Operations",
+        "teamdeathmatch": "Team Deathmatch",
+        "warpigeons": "War pigeons"
+      }
+    },
+    "frostbite3": {
+      "playerFilter": {
+        "onetofive": "1-5",
+        "sixtoten": "6-10",
+        "tenplus": "10+",
+        "none": "None"
+      }
     }
   },
   "platoon": {

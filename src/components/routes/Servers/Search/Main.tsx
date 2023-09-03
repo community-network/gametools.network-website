@@ -21,6 +21,7 @@ import {
   Box,
   InputItem,
   BigButtonSecondaryBox,
+  CheckItem,
 } from "../../../Materials";
 import { getLanguage } from "../../../../locales/config";
 import {
@@ -28,6 +29,7 @@ import {
   frostbite3,
   frostbiteJoinGames,
   newGen,
+  newTitles,
   oldJoinGames,
   supportedGames,
 } from "../../../../api/static";
@@ -72,9 +74,37 @@ const ServerPageRow = styled.div`
   }
 `;
 
+function ServerSort(props: {
+  sortType: string;
+  setSortType: (arg0: string) => void;
+}) {
+  const { t } = useTranslation();
+  return (
+    <SelectPrimary
+      style={{
+        marginLeft: "1rem",
+        marginTop: "-0.1rem",
+      }}
+      value={props.sortType}
+      onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
+        props.setSortType(ev.target.value)
+      }
+    >
+      <option value="prefix">{t("servers.sort.serverName")}</option>
+      <option value="-playerAmount">{t("servers.sort.playerAmount")}</option>
+      <option value="-maxPlayers">{t("servers.sort.maxPlayers")}</option>
+    </SelectPrimary>
+  );
+}
+
 function Main(): React.ReactElement {
+  const [width, setWidth] = React.useState(window.innerWidth);
+  React.useEffect(() => {
+    window.addEventListener("resize", () => setWidth(window.innerWidth));
+  }, []);
+
   const [searchTerm, setSearchTerm] = React.useState<string>("");
-  const [gameName, setGameName] = useLocalStorage<string>(
+  const [gameName, setGameNameItem] = useLocalStorage<string>(
     "serverSearch_game",
     "bf2042",
   );
@@ -86,6 +116,17 @@ function Main(): React.ReactElement {
   const [limit, setLimit] = React.useState<string>("10");
   const [searchType, setSearchType] = React.useState<string>("experiencename");
   const [sortType, setSortType] = React.useState<string>("-prefix");
+
+  const [gamemodeFilter, setGamemodeFilter] = React.useState<string[]>([]);
+  const [playerFilter, setPlayerFilter] = React.useState<string[]>([]);
+  function setGameName(newGame: string) {
+    // reset other filters when changing gamename
+    setGamemodeFilter([]);
+    setPlayerFilter([]);
+
+    setGameNameItem(newGame);
+  }
+
   const history = useNavigate();
   // get info from query ?search &game
   const query = new URLSearchParams(useLocation().search);
@@ -119,6 +160,14 @@ function Main(): React.ReactElement {
     history({ search: params.toString() });
   }, [searchTerm, gameName, region, platform, limit, searchType, history]);
 
+  const extraQueries = {};
+  if (gamemodeFilter.length > 0) {
+    extraQueries["gamemode_filters"] = gamemodeFilter.join(",");
+  }
+  if (playerFilter.length > 0) {
+    extraQueries["player_filters"] = playerFilter.join(",");
+  }
+
   const { t } = useTranslation();
   const {
     isLoading: loading,
@@ -132,7 +181,8 @@ function Main(): React.ReactElement {
         searchType +
         region +
         platform +
-        limit,
+        limit +
+        JSON.stringify(extraQueries),
     ],
     () =>
       GametoolsApi.serverSearch({
@@ -143,6 +193,7 @@ function Main(): React.ReactElement {
         region: region,
         platform: platform,
         limit: limit,
+        extraQueries,
       }),
   );
   return (
@@ -259,7 +310,7 @@ function Main(): React.ReactElement {
       </Align>
       {oldJoinGames.includes(gameName) ||
         (frostbiteJoinGames.includes(gameName) && (
-          <p style={{ margin: 0 }}>
+          <p style={{ marginTop: "-0.5rem", marginBottom: "0.7rem" }}>
             <Trans i18nKey="servers.joinme.info">
               <a href="https://joinme.click/download">
                 https://joinme.click/download
@@ -267,29 +318,144 @@ function Main(): React.ReactElement {
             </Trans>
           </p>
         ))}
-      <Align>
-        <Title>{t("serverSearch.results")}</Title>
-        <SelectPrimary
-          style={{ marginLeft: "1rem", marginTop: "2.2rem" }}
-          value={sortType}
-          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
-            setSortType(ev.target.value)
-          }
-        >
-          <option value="prefix">{t("servers.sort.serverName")}</option>
-          <option value="-playerAmount">
-            {t("servers.sort.playerAmount")}
-          </option>
-          <option value="-maxPlayers">{t("servers.sort.maxPlayers")}</option>
-        </SelectPrimary>
-      </Align>
-      <Results
-        game={gameName}
-        loading={loading}
-        stats={stats}
-        error={error}
-        sortType={sortType}
-      />
+      <ServerPageColumn>
+        {newTitles.includes(gameName) && (
+          <div>
+            {width > 1000 && (
+              <Align>
+                <Title
+                  style={{
+                    marginLeft: "1rem",
+                    marginTop: "-0.3rem",
+                  }}
+                >
+                  {t("serverSearch.sorting")}
+                </Title>
+                <ServerSort sortType={sortType} setSortType={setSortType} />
+              </Align>
+            )}
+            <Box
+              style={{
+                minWidth: "240px",
+                maxWidth: "20rem",
+              }}
+              innerStyle={{ maxHeight: "510px" }}
+            >
+              <ServerPageFilters>
+                {newTitles.includes(gameName) && (
+                  <ServerPageFilterRow>
+                    <h2 style={{ marginBottom: "0.4rem" }}>
+                      {t("serverSearch.playerFilter")}
+                    </h2>
+                    {Object.keys(
+                      t("servers.frostbite3.playerFilter", {
+                        returnObjects: true,
+                      }),
+                    ).map((key, index) => {
+                      return (
+                        <CheckItem
+                          key={index}
+                          item={key}
+                          currrentItems={playerFilter}
+                          callback={(e: {
+                            target: {
+                              checked: boolean;
+                              value: string;
+                            };
+                          }) => {
+                            if (e.target.checked) {
+                              setPlayerFilter((oldArray) => [
+                                ...oldArray,
+                                e.target.value,
+                              ]);
+                            } else {
+                              setPlayerFilter((oldArray) => [
+                                ...oldArray.filter(
+                                  (item) => item !== e.target.value,
+                                ),
+                              ]);
+                            }
+                          }}
+                          name={t(`servers.frostbite3.playerFilter.${key}`)}
+                          disabled={
+                            !frostbite3.includes(gameName) &&
+                            !extraGames.includes(gameName)
+                          }
+                        />
+                      );
+                    })}
+                  </ServerPageFilterRow>
+                )}
+                {gameName === "bf1" && (
+                  <ServerPageFilterRow>
+                    <h2 style={{ marginBottom: "0.4rem" }}>
+                      {t("serverSearch.gamemode")}
+                    </h2>
+                    {Object.keys(
+                      t("servers.bf1.gamemodes", { returnObjects: true }),
+                    ).map((key, index) => {
+                      return (
+                        <CheckItem
+                          key={index}
+                          item={key}
+                          currrentItems={gamemodeFilter}
+                          callback={(e: {
+                            target: { value: string; checked: boolean };
+                          }) => {
+                            if (e.target.checked) {
+                              setGamemodeFilter((oldArray) => [
+                                ...oldArray,
+                                e.target.value,
+                              ]);
+                            } else {
+                              setGamemodeFilter((oldArray) => [
+                                ...oldArray.filter(
+                                  (item) => item !== e.target.value,
+                                ),
+                              ]);
+                            }
+                          }}
+                          name={t(`servers.bf1.gamemodes.${key}`)}
+                          disabled={
+                            !frostbite3.includes(gameName) &&
+                            !extraGames.includes(gameName)
+                          }
+                        />
+                      );
+                    })}
+                  </ServerPageFilterRow>
+                )}
+              </ServerPageFilters>
+            </Box>
+          </div>
+        )}
+        <ServerPageRow>
+          <Align>
+            <Title
+              style={{
+                marginLeft: "1rem",
+                marginTop: !newTitles.includes(gameName) ? "-0.4rem" : "0rem",
+                marginBottom: !newTitles.includes(gameName)
+                  ? "0.8rem"
+                  : "1.2rem",
+              }}
+            >
+              {t("serverSearch.results")}
+            </Title>
+            {(!newTitles.includes(gameName) || width <= 1000) && (
+              <ServerSort sortType={sortType} setSortType={setSortType} />
+            )}
+          </Align>
+          <Results
+            game={gameName}
+            loading={loading}
+            stats={stats}
+            error={error}
+            sortType={sortType}
+            spacingStyle={{ maxWidth: "99rem" }}
+          />
+        </ServerPageRow>
+      </ServerPageColumn>
     </Container>
   );
 }
