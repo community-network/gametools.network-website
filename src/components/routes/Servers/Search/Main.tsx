@@ -28,9 +28,11 @@ import {
   extraGames,
   frostbite3,
   frostbiteJoinGames,
+  gamemodeGames,
   newGen,
   newTitles,
   oldJoinGames,
+  playerFilterGames,
   supportedGames,
 } from "../../../../api/static";
 import { Results } from "./Results";
@@ -319,7 +321,7 @@ function Main(): React.ReactElement {
           </p>
         ))}
       <ServerPageColumn>
-        {newTitles.includes(gameName) && (
+        {playerFilterGames.includes(gameName) && (
           <div>
             {width > 1000 && (
               <Align>
@@ -342,7 +344,7 @@ function Main(): React.ReactElement {
               innerStyle={{ maxHeight: "510px" }}
             >
               <ServerPageFilters>
-                {newTitles.includes(gameName) && (
+                {playerFilterGames.includes(gameName) && (
                   <ServerPageFilterRow>
                     <h2 style={{ marginBottom: "0.4rem" }}>
                       {t("serverSearch.playerFilter")}
@@ -386,7 +388,7 @@ function Main(): React.ReactElement {
                     })}
                   </ServerPageFilterRow>
                 )}
-                {gameName === "bf1" && (
+                {gamemodeGames.includes(gameName) && (
                   <ServerPageFilterRow>
                     <h2 style={{ marginBottom: "0.4rem" }}>
                       {t("serverSearch.gamemode")}
