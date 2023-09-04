@@ -8,6 +8,7 @@
   "notApplicable": "N/A",
   "resultNotFound": "Geen resultaten gevonden",
   "noName": "Kan geen spelernaam niet laten zien wanneer stats zijn opgehaald via speler ID.",
+  "externalScriptError": "Kon externe script niet inladen, er ging iets mis...",
   "date": "{{date, date|eee, dd MMM yyyy}}",
   "dateTime": "{{date, date|eee, dd MMM yyyy - p}}",
   "shortDateTime": "{{date, date|PPpp}}",
@@ -88,7 +89,8 @@
     "America_Central": "Amerika",
     "Japan_Central": "Japan",
     "Australia_Central": "Australië",
-    "Brazil_Central": "Brazilië"
+    "Brazil_Central": "Brazilië",
+    "Developer_Server": "Development"
   },
   "platforms": {
     "pc": "PC",
@@ -154,13 +156,13 @@
       "2": {
         "header": "Statbits",
         "description": "Statbits laat je de spelstatistieken integreren in jouw stream chat en andere applicaties. Wil je een !kd command die je algemene kill/death ratio laat zien voor Battlefield 4? We got you!",
-        "link": "Lees de documentatie",
+        "link": "Statsbits bezoeken",
         "url": "https://statbits.io/"
       },
       "3": {
         "header": "BFList",
         "description": "bflist biedt live gegevens over wat er op het slagveld gebeurt in spellen uit de Battlefield-serie. Wij geven gegevens over zowel servers als spelers. Van een server zijn naam of huidige map tot de huidige kd en score van elke speler.",
-        "link": "Lees de documentatie",
+        "link": "BfList bezoeken",
         "url": "https://bflist.io/"
       }
     }
@@ -193,7 +195,11 @@
     },
     "showMore": "Meer resultaten",
     "region": "Regio",
-    "platform": "platform"
+    "map": "Map",
+    "platform": "platform",
+    "gamemode": "gamemode",
+    "playerFilter": "Beschikbare ruimte",
+    "sorting": "Sortering"
   },
   "platoonSearch": {
     "back": "Hoofdpagina",
@@ -490,6 +496,49 @@
     "notFound": {
       "main": "Server niet gevonden",
       "description": "We konden de server die u zocht niet vinden."
+    },
+    "bf1": {
+      "gamemodes": {
+        "airassault": "Air Assault",
+        "conquest": "Conquest",
+        "domination": "Domination",
+        "frontlines": "Frontlines",
+        "operations": "Operations",
+        "rush": "Rush",
+        "shockoperations": "Shock Operations",
+        "teamdeathmatch": "Team Deathmatch",
+        "warpigeons": "War pigeons"
+      }
+    },
+    "bf2042": {
+      "maps": {
+        "Arica Harbor": "Arica Harbor",
+        "Valparaiso": "Valparaiso",
+        "Battle of the Bulge": "Battle of the Bulge",
+        "El Alamein": "El Alamein",
+        "Caspian Border": "Caspian Border",
+        "Noshahr Canals": "Noshahr Canals",
+        "Orbital": "Orbital",
+        "Hourglass": "Hourglass",
+        "Kaleidoscope": "Kaleidoscope",
+        "Breakaway": "Breakaway",
+        "Discarded": "Discarded",
+        "Manifest": "Manifest",
+        "Renewal": "Renewal",
+        "Exposure": "Exposure",
+        "Stranded": "Stranded",
+        "Spearhead": "Spearhead",
+        "Flashpoint": "Flashpoint",
+        "Reclaimed": "Reclaimed"
+      }
+    },
+    "frostbite3": {
+      "playerFilter": {
+        "onetofive": "1-5",
+        "sixtoten": "6-10",
+        "tenplus": "10+",
+        "none": "Geen"
+      }
     }
   },
   "platoon": {
@@ -545,6 +594,7 @@
   },
   "footer": {
     "description": "This website is part of the Community Network. It is Open Source. You can post issues and suggest changes/improvements via GitHub. API provided by Community Network and open for public usage. We don’t provide any third-party API. Our back end is closed source and not available publicly.\nBattlefield & Origin are registered trademark of Electronic Arts. This website uses data provided pursuant to Electronic Arts’ Battlefield 1 Stats Terms. Trademarks are the property of their respective owners. Game materials copyright Electronic Arts Inc. Electronic Arts has not endorsed and is not responsible for this site or its content.\nCode is under GPL v2 License. Some parts are under Community Network copyright.",
+    "LinkName": "Links",
     "links": {
       "0": {
         "header": "GitHub",
@@ -579,5 +629,9 @@
     "main": "404 - Pagina niet gevonden",
     "description": "We konden de pagina die u zocht niet vinden.",
     "home": "Terug naar de hoofdpagina"
+  },
+  "ads": {
+    "main": "Advertentie",
+    "disable": "Ads uitzetten"
   }
 }
