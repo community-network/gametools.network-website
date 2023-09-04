@@ -195,6 +195,7 @@
     },
     "showMore": "Show more",
     "region": "Region",
+    "map": "Map",
     "platform": "platform",
     "gamemode": "Gamemode",
     "playerFilter": "Available space",
@@ -507,6 +508,28 @@
         "shockoperations": "Shock Operations",
         "teamdeathmatch": "Team Deathmatch",
         "warpigeons": "War pigeons"
+      }
+    },
+    "bf2042": {
+      "maps": {
+        "Arica Harbor": "Arica Harbor",
+        "Valparaiso": "Valparaiso",
+        "Battle of the Bulge": "Battle of the Bulge",
+        "El Alamein": "El Alamein",
+        "Caspian Border": "Caspian Border",
+        "Noshahr Canals": "Noshahr Canals",
+        "Orbital": "Orbital",
+        "Hourglass": "Hourglass",
+        "Kaleidoscope": "Kaleidoscope",
+        "Breakaway": "Breakaway",
+        "Discarded": "Discarded",
+        "Manifest": "Manifest",
+        "Renewal": "Renewal",
+        "Exposure": "Exposure",
+        "Stranded": "Stranded",
+        "Spearhead": "Spearhead",
+        "Flashpoint": "Flashpoint",
+        "Reclaimed": "Reclaimed"
       }
     },
     "frostbite3": {

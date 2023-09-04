@@ -120,11 +120,13 @@ function Main(): React.ReactElement {
   const [sortType, setSortType] = React.useState<string>("-prefix");
 
   const [gamemodeFilter, setGamemodeFilter] = React.useState<string[]>([]);
+  const [mapFilter, setMapFilter] = React.useState<string[]>([]);
   const [playerFilter, setPlayerFilter] = React.useState<string[]>([]);
   function setGameName(newGame: string) {
     // reset other filters when changing gamename
     setGamemodeFilter([]);
     setPlayerFilter([]);
+    setMapFilter([]);
 
     setGameNameItem(newGame);
   }
@@ -168,6 +170,9 @@ function Main(): React.ReactElement {
   }
   if (playerFilter.length > 0) {
     extraQueries["player_filters"] = playerFilter.join(",");
+  }
+  if (mapFilter.length > 0) {
+    extraQueries["maps"] = mapFilter.join(";");
   }
 
   const { t } = useTranslation();
@@ -321,7 +326,7 @@ function Main(): React.ReactElement {
           </p>
         ))}
       <ServerPageColumn>
-        {playerFilterGames.includes(gameName) && (
+        {frostbite3.includes(gameName) && (
           <div>
             {width > 1000 && (
               <Align>
@@ -427,6 +432,46 @@ function Main(): React.ReactElement {
                     })}
                   </ServerPageFilterRow>
                 )}
+
+                {gameName === "bf2042" && (
+                  <ServerPageFilterRow>
+                    <h2 style={{ marginBottom: "0.4rem" }}>
+                      {t("serverSearch.map")}
+                    </h2>
+                    {Object.keys(
+                      t("servers.bf2042.maps", { returnObjects: true }),
+                    ).map((key, index) => {
+                      return (
+                        <CheckItem
+                          key={index}
+                          item={key}
+                          currrentItems={mapFilter}
+                          callback={(e: {
+                            target: { value: string; checked: boolean };
+                          }) => {
+                            if (e.target.checked) {
+                              setMapFilter((oldArray) => [
+                                ...oldArray,
+                                e.target.value,
+                              ]);
+                            } else {
+                              setMapFilter((oldArray) => [
+                                ...oldArray.filter(
+                                  (item) => item !== e.target.value,
+                                ),
+                              ]);
+                            }
+                          }}
+                          name={t(`servers.bf2042.maps.${key}`)}
+                          disabled={
+                            !frostbite3.includes(gameName) &&
+                            !extraGames.includes(gameName)
+                          }
+                        />
+                      );
+                    })}
+                  </ServerPageFilterRow>
+                )}
               </ServerPageFilters>
             </Box>
           </div>
@@ -444,7 +489,7 @@ function Main(): React.ReactElement {
             >
               {t("serverSearch.results")}
             </Title>
-            {(!newTitles.includes(gameName) || width <= 1000) && (
+            {(!frostbite3.includes(gameName) || width <= 1000) && (
               <ServerSort sortType={sortType} setSortType={setSortType} />
             )}
           </Align>
