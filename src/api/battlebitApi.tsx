@@ -20,7 +20,7 @@ export interface ServerInfoReturn {
 
 interface ServerSearchInfo {
   searchTerm: string;
-  region?: string;
+  regions?: string[];
   limit?: string;
 }
 
@@ -38,7 +38,7 @@ export class ApiProvider extends JsonClient {
    */
   async serverList({
     searchTerm,
-    region,
+    regions,
     limit,
   }: ServerSearchInfo): Promise<ServerSearch> {
     const modes = {
@@ -106,7 +106,7 @@ export class ApiProvider extends JsonClient {
       .filter((server) => {
         return (
           server.prefix.toLowerCase().includes(searchTerm.toLowerCase()) &&
-          (server.region === region || region === "all")
+          (regions.includes(server.region) || regions.includes("all"))
         );
       })
       .slice(0, !Number.isNaN(Number(limit)) ? Number(limit) : 10);

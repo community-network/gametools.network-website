@@ -114,11 +114,11 @@ function Main(): React.ReactElement {
     "serverSearch_platform",
     "allPlatforms",
   );
-  const [region, setRegion] = React.useState<string>("all");
   const [limit, setLimit] = React.useState<string>("10");
   const [searchType, setSearchType] = React.useState<string>("experiencename");
   const [sortType, setSortType] = React.useState<string>("-prefix");
 
+  const [regionFilter, setRegionFilter] = React.useState<string[]>(["all"]);
   const [gamemodeFilter, setGamemodeFilter] = React.useState<string[]>([]);
   const [mapFilter, setMapFilter] = React.useState<string[]>([]);
   const [playerFilter, setPlayerFilter] = React.useState<string[]>([]);
@@ -127,6 +127,7 @@ function Main(): React.ReactElement {
     setGamemodeFilter([]);
     setPlayerFilter([]);
     setMapFilter([]);
+    setRegionFilter([]);
 
     setGameNameItem(newGame);
   }
@@ -140,11 +141,19 @@ function Main(): React.ReactElement {
   const platformQuery = query.get("platform");
   const limitQuery = query.get("limit");
   const typeQuery = query.get("searchtype");
+  const gamemodeQuery = query.get("gamemode");
+  const mapQuery = query.get("map");
+  const playerFilterQuery = query.get("player_filter");
   const regionKey = gameName === "battlebit" ? "battlebitRegions" : "regions";
   React.useState(() => {
     nameQuery !== null ? setSearchTerm(nameQuery) : null;
     gameQuery !== null ? setGameName(gameQuery) : null;
-    regionQuery !== null ? setRegion(regionQuery) : null;
+    regionQuery !== null ? setRegionFilter(regionQuery.split(",")) : null;
+    gamemodeQuery !== null ? setGamemodeFilter(gamemodeQuery.split(",")) : null;
+    playerFilterQuery !== null
+      ? setPlayerFilter(playerFilterQuery.split(","))
+      : null;
+    mapQuery !== null ? setMapFilter(mapQuery.split(",")) : null;
     platformQuery !== null ? setPlatform(platformQuery) : null;
     limitQuery !== null ? setLimit(limitQuery) : null;
     typeQuery !== null ? setSearchType(typeQuery) : null;
@@ -153,16 +162,44 @@ function Main(): React.ReactElement {
   // change top to query
   React.useEffect(() => {
     const params = new URLSearchParams();
-    searchTerm ? params.append("search", searchTerm) : params.delete("search");
-    gameName ? params.append("game", gameName) : params.delete("game");
-    region ? params.append("region", region) : params.delete("region");
-    platform ? params.append("platform", platform) : params.delete("platform");
-    limit ? params.append("limit", limit) : params.delete("limit");
-    searchType
+    searchTerm.length > 0
+      ? params.append("search", searchTerm)
+      : params.delete("search");
+    gameName.length > 0
+      ? params.append("game", gameName)
+      : params.delete("game");
+    regionFilter.length > 0
+      ? params.append("region", regionFilter.join(","))
+      : params.delete("region");
+    gamemodeFilter.length > 0
+      ? params.append("gamemode", gamemodeFilter.join(","))
+      : params.delete("gamemode");
+    mapFilter.length > 0
+      ? params.append("map", mapFilter.join(","))
+      : params.delete("map");
+    playerFilter.length > 0
+      ? params.append("player_filter", playerFilter.join(","))
+      : params.delete("player_filter");
+    platform.length > 0
+      ? params.append("platform", platform)
+      : params.delete("platform");
+    limit.length > 0 ? params.append("limit", limit) : params.delete("limit");
+    searchType.length > 0
       ? params.append("searchtype", searchType)
       : params.delete("searchtype");
     history({ search: params.toString() });
-  }, [searchTerm, gameName, region, platform, limit, searchType, history]);
+  }, [
+    searchTerm,
+    gameName,
+    regionFilter,
+    gamemodeFilter,
+    mapFilter,
+    playerFilter,
+    platform,
+    limit,
+    searchType,
+    history,
+  ]);
 
   const extraQueries = {};
   if (gamemodeFilter.length > 0) {
@@ -186,7 +223,7 @@ function Main(): React.ReactElement {
         gameName +
         searchTerm +
         searchType +
-        region +
+        regionFilter +
         platform +
         limit +
         JSON.stringify(extraQueries),
@@ -196,8 +233,8 @@ function Main(): React.ReactElement {
         game: gameName,
         searchTerm: searchTerm,
         lang: getLanguage(),
+        regions: regionFilter.length <= 0 ? ["all"] : regionFilter,
         searchType: searchType,
-        region: region,
         platform: platform,
         limit: limit,
         extraQueries,
@@ -259,25 +296,6 @@ function Main(): React.ReactElement {
           disabled={
             !frostbite3.includes(gameName) && !extraGames.includes(gameName)
           }
-          value={region}
-          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
-            setRegion(ev.target.value)
-          }
-        >
-          {Object.keys(t(regionKey, { returnObjects: true })).map(
-            (key, index) => {
-              return (
-                <option key={index} value={key}>
-                  {t(`${regionKey}.${key}`)}
-                </option>
-              );
-            },
-          )}
-        </BigSelectSecondary>
-        <BigSelectSecondary
-          disabled={
-            !frostbite3.includes(gameName) && !extraGames.includes(gameName)
-          }
           value={limit}
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
             setLimit(ev.target.value)
@@ -326,7 +344,7 @@ function Main(): React.ReactElement {
           </p>
         ))}
       <ServerPageColumn>
-        {frostbite3.includes(gameName) && (
+        {(frostbite3.includes(gameName) || extraGames.includes(gameName)) && (
           <div>
             {width > 1000 && (
               <Align>
@@ -349,6 +367,47 @@ function Main(): React.ReactElement {
               innerStyle={{ maxHeight: "510px" }}
             >
               <ServerPageFilters>
+                <ServerPageFilterRow>
+                  <h2 style={{ marginBottom: "0.4rem" }}>
+                    {t("serverSearch.region")}
+                  </h2>
+                  {Object.keys(t(regionKey, { returnObjects: true })).map(
+                    (key, index) => {
+                      if (key === "all") {
+                        return;
+                      }
+                      return (
+                        <CheckItem
+                          key={index}
+                          item={key}
+                          currrentItems={regionFilter}
+                          callback={(e: {
+                            target: { value: string; checked: boolean };
+                          }) => {
+                            if (e.target.checked) {
+                              let oldArray = [...regionFilter];
+                              if (regionFilter.includes("all")) {
+                                oldArray = [];
+                              }
+                              setRegionFilter([...oldArray, e.target.value]);
+                            } else {
+                              setRegionFilter((oldArray) => [
+                                ...oldArray.filter(
+                                  (item) => item !== e.target.value,
+                                ),
+                              ]);
+                            }
+                          }}
+                          name={t(`${regionKey}.${key}`)}
+                          disabled={
+                            !frostbite3.includes(gameName) &&
+                            !extraGames.includes(gameName)
+                          }
+                        />
+                      );
+                    },
+                  )}
+                </ServerPageFilterRow>
                 {playerFilterGames.includes(gameName) && (
                   <ServerPageFilterRow>
                     <h2 style={{ marginBottom: "0.4rem" }}>
@@ -432,7 +491,6 @@ function Main(): React.ReactElement {
                     })}
                   </ServerPageFilterRow>
                 )}
-
                 {gameName === "bf2042" && (
                   <ServerPageFilterRow>
                     <h2 style={{ marginBottom: "0.4rem" }}>
@@ -548,7 +606,7 @@ export function ServerSearch(): React.ReactElement {
         searchTerm: searchTerm,
         lang: getLanguage(),
         searchType: "servername",
-        region: region,
+        regions: [region],
         platform: platform,
         limit: "4",
       }),

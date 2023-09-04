@@ -87,7 +87,7 @@ interface ServerSearchInfo {
   searchTerm: string;
   lang: string;
   searchType?: string;
-  region?: string;
+  regions?: string[];
   platform?: string;
   limit?: string;
   extraQueries?: { [name: string]: string };
@@ -358,7 +358,7 @@ export class ApiProvider extends JsonClient {
     searchTerm,
     lang,
     searchType = "servername",
-    region = "all",
+    regions = ["all"],
     platform = "pc",
     limit = "10",
     extraQueries = {},
@@ -380,13 +380,13 @@ export class ApiProvider extends JsonClient {
     }
 
     if (game == "battlebit") {
-      return await battlebitApi.serverList({ searchTerm, region, limit });
+      return await battlebitApi.serverList({ searchTerm, regions, limit });
     }
     return await this.getJsonMethod(`/${gameStuff[0]}/servers/`, {
       name: encodeURIComponent(serverName),
       experiencename: encodeURIComponent(experienceName),
       lang: lang,
-      region: region,
+      region: regions.join(game === "bf2042" ? ";" : ","),
       platform: platform,
       service: gameStuff[1],
       limit: limit,
