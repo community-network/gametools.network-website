@@ -582,7 +582,7 @@ export function ServerSearch(): React.ReactElement {
     "serverSearch_platform",
     "allPlatforms",
   );
-  const [region, setRegion] = React.useState<string>("all");
+  const [regionFilter, setRegionFilter] = React.useState<string[]>(["all"]);
   const regionKey = gameName === "battlebit" ? "battlebitRegions" : "regions";
 
   const { t } = useTranslation();
@@ -596,7 +596,7 @@ export function ServerSearch(): React.ReactElement {
         gameName +
         searchTerm +
         "servername" +
-        region +
+        regionFilter +
         platform +
         "4",
     ],
@@ -606,7 +606,7 @@ export function ServerSearch(): React.ReactElement {
         searchTerm: searchTerm,
         lang: getLanguage(),
         searchType: "servername",
-        regions: [region],
+        regions: regionFilter,
         platform: platform,
         limit: "4",
       }),
@@ -623,7 +623,7 @@ export function ServerSearch(): React.ReactElement {
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void => {
             setGameName(ev.target.value);
             setPlatform("pc");
-            setRegion("all");
+            setRegionFilter(["all"]);
           }}
         >
           {supportedGames.map((value, index) => {
@@ -734,14 +734,35 @@ export function ServerSearch(): React.ReactElement {
               <>
                 {Object.keys(t(regionKey, { returnObjects: true })).map(
                   (key, index) => {
+                    if (key === "all") {
+                      return;
+                    }
                     return (
-                      <InputItem
+                      <CheckItem
                         key={index}
                         item={key}
-                        currrentItem={region}
+                        currrentItems={regionFilter}
                         callback={(e: {
-                          target: { value: React.SetStateAction<string> };
-                        }) => setRegion(e.target.value)}
+                          target: { value: string; checked: boolean };
+                        }) => {
+                          if (e.target.checked) {
+                            let oldArray = [...regionFilter];
+                            if (regionFilter.includes("all")) {
+                              oldArray = [];
+                            }
+                            setRegionFilter([...oldArray, e.target.value]);
+                          } else {
+                            if (regionFilter.length > 1) {
+                              setRegionFilter((oldArray) => [
+                                ...oldArray.filter(
+                                  (item) => item !== e.target.value,
+                                ),
+                              ]);
+                            } else {
+                              setRegionFilter(["all"]);
+                            }
+                          }
+                        }}
                         name={t(`${regionKey}.${key}`)}
                         disabled={
                           !frostbite3.includes(gameName) &&
@@ -760,7 +781,7 @@ export function ServerSearch(): React.ReactElement {
         to={`/servers?${new URLSearchParams({
           search: searchTerm,
           game: gameName,
-          region: region,
+          region: regionFilter.join(","),
           platform: platform,
           limit: 10,
         }).toString()}`}
