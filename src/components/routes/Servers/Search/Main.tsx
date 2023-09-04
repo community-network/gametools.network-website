@@ -731,48 +731,46 @@ export function ServerSearch(): React.ReactElement {
               <h2 style={{ marginBottom: "0.4rem" }}>
                 {t("serverSearch.region")}
               </h2>
-              <>
-                {Object.keys(t(regionKey, { returnObjects: true })).map(
-                  (key, index) => {
-                    if (key === "all") {
-                      return;
-                    }
-                    return (
-                      <CheckItem
-                        key={index}
-                        item={key}
-                        currrentItems={regionFilter}
-                        callback={(e: {
-                          target: { value: string; checked: boolean };
-                        }) => {
-                          if (e.target.checked) {
-                            let oldArray = [...regionFilter];
-                            if (regionFilter.includes("all")) {
-                              oldArray = [];
-                            }
-                            setRegionFilter([...oldArray, e.target.value]);
-                          } else {
-                            if (regionFilter.length > 1) {
-                              setRegionFilter((oldArray) => [
-                                ...oldArray.filter(
-                                  (item) => item !== e.target.value,
-                                ),
-                              ]);
-                            } else {
-                              setRegionFilter(["all"]);
-                            }
+              {Object.keys(t(regionKey, { returnObjects: true })).map(
+                (key, index) => {
+                  if (key === "all") {
+                    return;
+                  }
+                  return (
+                    <CheckItem
+                      key={index}
+                      item={key}
+                      currrentItems={regionFilter}
+                      callback={(e: {
+                        target: { value: string; checked: boolean };
+                      }) => {
+                        if (e.target.checked) {
+                          let oldArray = [...regionFilter];
+                          if (regionFilter.includes("all")) {
+                            oldArray = [];
                           }
-                        }}
-                        name={t(`${regionKey}.${key}`)}
-                        disabled={
-                          !frostbite3.includes(gameName) &&
-                          !extraGames.includes(gameName)
+                          setRegionFilter([...oldArray, e.target.value]);
+                        } else {
+                          if (regionFilter.length > 1) {
+                            setRegionFilter((oldArray) => [
+                              ...oldArray.filter(
+                                (item) => item !== e.target.value,
+                              ),
+                            ]);
+                          } else {
+                            setRegionFilter(["all"]);
+                          }
                         }
-                      />
-                    );
-                  },
-                )}
-              </>
+                      }}
+                      name={t(`${regionKey}.${key}`)}
+                      disabled={
+                        !frostbite3.includes(gameName) &&
+                        !extraGames.includes(gameName)
+                      }
+                    />
+                  );
+                },
+              )}
             </ServerPageFilterRow>
           </ServerPageFilters>
         </Box>
