@@ -33,8 +33,8 @@ dependencies:
     specifier: ^5.2.0
     version: 5.2.0(chart.js@4.4.0)(react@18.2.0)
   react-i18next:
-    specifier: ^13.2.0
-    version: 13.2.0(i18next@23.4.6)(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^13.2.2
+    version: 13.2.2(i18next@23.4.6)(react-dom@18.2.0)(react@18.2.0)
   react-router-dom:
     specifier: ^6.15.0
     version: 6.15.0(react-dom@18.2.0)(react@18.2.0)
@@ -6894,8 +6894,8 @@ packages:
       react: 18.2.0
       scheduler: 0.23.0
 
-  /react-i18next@13.2.0(i18next@23.4.6)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-YD8xMc+I0jkHHLotd8ERMzZ53hMaCBVLCndbcbBveJn3FbppRP4jyYOAkmR8XItN01sTD9ilAjoEjpH1i42IgA==}
+  /react-i18next@13.2.2(i18next@23.4.6)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-+nFUkbRByFwnrfDcYqvzBuaeZb+nACHx+fAWN/pZMddWOCJH5hoc21+Sa/N/Lqi6ne6/9wC/qRGOoQhJa6IkEQ==}
     peerDependencies:
       i18next: '>= 23.2.3'
       react: '>= 16.8.0'
@@ -8620,7 +8620,7 @@ packages:
   /wide-align@1.1.5:
     resolution: {integrity: sha512-eDMORYaPNZ4sQIuuYPDHdQvf4gyCF9rEEV/yPxGfwPkRodwEgiMUUXTx/dex+Me0wxx53S+NgUHaP7y3MGlDmg==}
     dependencies:
-      string-width: 1.0.2
+      string-width: 4.2.3
     dev: true
 
   /wildcard@2.0.1:
