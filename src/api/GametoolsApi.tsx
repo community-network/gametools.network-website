@@ -252,7 +252,7 @@ export class ApiProvider extends JsonClient {
     if (game == "battlebit") {
       const result: any = await battlebitApi.serverList({
         searchTerm: serverName,
-        region,
+        regions: [region],
         limit: "1",
       });
       return result.servers[0];
