@@ -116,6 +116,11 @@ export interface bfbanPlayer {
   personaids: { [name: string]: bfbanPlayers };
 }
 
+export interface bfeacPlayer {
+  apiUrl: string;
+  personaids: number[];
+}
+
 export interface bfbanPlayers {
   personaId: string;
   url: string;
@@ -480,6 +485,18 @@ export class ApiProvider extends JsonClient {
       names: usernames.toString(),
       userids: "",
       personaids: "",
+    });
+  }
+
+  async bfeacCheckPlayers({
+    playerIds,
+  }: {
+    playerIds: string[];
+  }): Promise<bfeacPlayer> {
+    return await this.getJsonMethod("/bfeac/checkban", {
+      names: "",
+      userids: "",
+      personaids: playerIds.toString(),
     });
   }
 }

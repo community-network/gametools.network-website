@@ -23,8 +23,12 @@
     "updatedAt": "Updated at"
   },
   "bfban": {
+    "main": "BFBan",
     "stats": "Player is marked as hacker in bfban!",
     "platoon": " Hacker"
+  },
+  "bfeac": {
+    "main": "BFEAC"
   },
   "states": {
     "copy": "Copy link",

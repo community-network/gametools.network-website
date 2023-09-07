@@ -3,7 +3,11 @@ import "../../../../locales/config";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "../../../../assets/scss/App.scss";
-import { bfbanPlayer, GametoolsApi } from "../../../../api/GametoolsApi";
+import {
+  bfbanPlayer,
+  bfeacPlayer,
+  GametoolsApi,
+} from "../../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
 import {
   Align,
@@ -43,28 +47,47 @@ const ServerPlayerName = styled.h4`
 function CheckBan(props: {
   playerId: string;
   bfBanList: bfbanPlayer;
-  loading: boolean;
-  error: boolean;
+  bfbanLoading: boolean;
+  bfbanError: boolean;
+  bfeacList: bfeacPlayer;
+  bfeacLoading: boolean;
+  bfeacError: boolean;
 }) {
   const { t } = useTranslation();
-  if (props.loading || props.error) {
-    return <></>;
-  }
 
-  const playerInfo = props.bfBanList.personaids[props.playerId];
+  const playerInfo = props.bfBanList?.personaids[props.playerId];
+  const bfeac = props.bfeacList?.personaids?.includes(Number(props.playerId));
   let color = "#ffffff";
 
-  if (props.playerId in props.bfBanList.personaids) {
+  if (playerInfo?.hacker || bfeac) {
     color = "#DC143C";
     return (
-      <a
-        style={{ color: color, lineHeight: 0 }}
-        href={playerInfo.url}
-        target="_blank"
-        rel="noreferrer"
-      >
-        {playerInfo.hacker ? t("bfban.platoon") : ""}
-      </a>
+      <>
+        <a style={{ color: color, lineHeight: 0 }}>{t("bfban.platoon")}: </a>
+        {playerInfo?.hacker && (
+          <a
+            style={{ color: color, lineHeight: 0 }}
+            href={playerInfo?.url}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {t("bfban.main")}
+          </a>
+        )}
+        {playerInfo?.hacker && bfeac && (
+          <a style={{ color: color, lineHeight: 0 }}> - </a>
+        )}
+        {bfeac && (
+          <a
+            style={{ color: color, lineHeight: 0 }}
+            href={`https://api.gametools.network/bfeac/get_case_id?player_id=${props.playerId}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {t("bfeac.main")}
+          </a>
+        )}
+      </>
     );
   }
   return <></>;
@@ -91,8 +114,8 @@ function Players(props: {
   });
 
   const {
-    isLoading: loading,
-    isError: error,
+    isLoading: bfbanLoading,
+    isError: bfbanError,
     data: bfBanInfo,
   } = useQuery(["bfbanStatsServerPlayers" + props.gameid + props.game], () =>
     GametoolsApi.bfbanCheckPlayers({
@@ -100,6 +123,17 @@ function Players(props: {
       usernames: playerIds,
     }),
   );
+
+  const {
+    isLoading: bfeacLoading,
+    isError: bfeacError,
+    data: bfeacInfo,
+  } = useQuery(["bfeacStatsServerPlayers" + props.gameid + props.game], () =>
+    GametoolsApi.bfeacCheckPlayers({
+      playerIds,
+    }),
+  );
+
   let update_timestamp = new Date();
   if (props.stats.update_timestamp) {
     update_timestamp = new Date(props.stats.update_timestamp * 1000);
@@ -217,8 +251,11 @@ function Players(props: {
                                 <CheckBan
                                   playerId={key.player_id.toString()}
                                   bfBanList={bfBanInfo}
-                                  loading={loading}
-                                  error={error}
+                                  bfbanLoading={bfbanLoading}
+                                  bfbanError={bfbanError}
+                                  bfeacList={bfeacInfo}
+                                  bfeacLoading={bfeacLoading}
+                                  bfeacError={bfeacError}
                                 />
                               </Row>
                               {props.game !== "bf2042" ? (
