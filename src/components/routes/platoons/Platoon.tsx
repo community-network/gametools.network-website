@@ -9,7 +9,11 @@ import {
   PlatoonStats,
   ServerList,
 } from "../../../api/ReturnTypes";
-import { bfbanPlayer, GametoolsApi } from "../../../api/GametoolsApi";
+import {
+  bfbanPlayer,
+  bfeacPlayer,
+  GametoolsApi,
+} from "../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
 import {
   AltText,
@@ -111,30 +115,50 @@ function dynamicSort(property: string) {
 function CheckBan(props: {
   playerId: string;
   bfBanList: bfbanPlayer;
-  loading: boolean;
-  error: boolean;
+  bfbanLoading: boolean;
+  bfbanError: boolean;
+  bfeacList: bfeacPlayer;
+  bfeacLoading: boolean;
+  bfeacError: boolean;
 }) {
   const { t } = useTranslation();
-  if (props.loading || props.error) {
-    return <></>;
-  }
 
-  const playerInfo = props.bfBanList.personaids[props.playerId];
+  const playerInfo = props.bfBanList?.personaids[props.playerId];
+  const bfeac = props.bfeacList?.personaids?.includes(Number(props.playerId));
   let color = "#ffffff";
 
-  if (props.playerId in props.bfBanList.personaids) {
+  if (playerInfo?.hacker || bfeac) {
     color = "#DC143C";
     return (
-      <a
-        style={{ color: color, lineHeight: 0 }}
-        href={playerInfo.url}
-        target="_blank"
-        rel="noreferrer"
-      >
-        {playerInfo.hacker ? t("bfban.platoon") : ""}
-      </a>
+      <>
+        <a style={{ color: color, lineHeight: 0 }}>{t("bfban.platoon")}: </a>
+        {playerInfo?.hacker && (
+          <a
+            style={{ color: color, lineHeight: 0 }}
+            href={playerInfo?.url}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {t("bfban.main")}
+          </a>
+        )}
+        {playerInfo?.hacker && bfeac && (
+          <a style={{ color: color, lineHeight: 0 }}> - </a>
+        )}
+        {bfeac && (
+          <a
+            style={{ color: color, lineHeight: 0 }}
+            href={`https://api.gametools.network/bfeac/get_case_id?player_id=${props.playerId}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {t("bfeac.main")}
+          </a>
+        )}
+      </>
     );
   }
+  return <></>;
 }
 
 function SmallExportButton(props: { members: PlatoonPlayer[] }) {
@@ -177,13 +201,23 @@ function Members(props: {
     return item.id;
   });
   const {
-    isLoading: loading,
-    isError: error,
+    isLoading: bfbanLoading,
+    isError: bfbanError,
     data: bfBanInfo,
   } = useQuery(["bfbanStatsPlatoon" + props.members], () =>
     GametoolsApi.bfbanCheckPlayers({
       getter: "playerid",
       usernames: playerIds,
+    }),
+  );
+
+  const {
+    isLoading: bfeacLoading,
+    isError: bfeacError,
+    data: bfeacInfo,
+  } = useQuery(["bfeacStatsServerPlayers" + props.members], () =>
+    GametoolsApi.bfeacCheckPlayers({
+      playerIds,
     }),
   );
 
@@ -230,8 +264,11 @@ function Members(props: {
                           <CheckBan
                             playerId={key.id}
                             bfBanList={bfBanInfo}
-                            loading={loading}
-                            error={error}
+                            bfbanLoading={bfbanLoading}
+                            bfbanError={bfbanError}
+                            bfeacList={bfeacInfo}
+                            bfeacLoading={bfeacLoading}
+                            bfeacError={bfeacError}
                           />
                         </h4>
                       </Align>
