@@ -18,6 +18,11 @@
   "intlNumber": "{{val, number}}",
   "ago": "ago",
   "export": "Export",
+  "case": {
+    "none": "N/A",
+    "on": "On",
+    "off": "Off"
+  },
   "dateType": {
     "createdAt": "Created at",
     "updatedAt": "Updated at"

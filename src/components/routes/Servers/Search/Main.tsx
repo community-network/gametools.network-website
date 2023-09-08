@@ -123,12 +123,15 @@ function Main(): React.ReactElement {
   const [gamemodeFilter, setGamemodeFilter] = React.useState<string[]>([]);
   const [mapFilter, setMapFilter] = React.useState<string[]>([]);
   const [playerFilter, setPlayerFilter] = React.useState<string[]>([]);
+  const [isPasswordProtected, setIsPasswordProtected] =
+    React.useState<string>("");
   function setGameName(newGame: string) {
     // reset other filters when changing gamename
     setGamemodeFilter([]);
     setPlayerFilter([]);
     setMapFilter([]);
     setRegionFilter([]);
+    setIsPasswordProtected("");
 
     setGameNameItem(newGame);
   }
@@ -145,6 +148,7 @@ function Main(): React.ReactElement {
   const gamemodeQuery = query.get("gamemode");
   const mapQuery = query.get("map");
   const playerFilterQuery = query.get("player_filter");
+  const isPasswordProtectedQuery = query.get("is_password_protected");
   const regionKey = gameName === "battlebit" ? "battlebitRegions" : "regions";
   React.useState(() => {
     nameQuery !== null ? setSearchTerm(nameQuery) : null;
@@ -155,6 +159,9 @@ function Main(): React.ReactElement {
       ? setPlayerFilter(playerFilterQuery.split(","))
       : null;
     mapQuery !== null ? setMapFilter(mapQuery.split(",")) : null;
+    isPasswordProtectedQuery !== null
+      ? setIsPasswordProtected(isPasswordProtectedQuery)
+      : null;
     platformQuery !== null ? setPlatform(platformQuery) : null;
     limitQuery !== null ? setLimit(limitQuery) : null;
     typeQuery !== null ? setSearchType(typeQuery) : null;
@@ -169,6 +176,9 @@ function Main(): React.ReactElement {
     gameName.length > 0
       ? params.append("game", gameName)
       : params.delete("game");
+    isPasswordProtected != ""
+      ? params.append("is_password_protected", isPasswordProtected.toString())
+      : params.delete("is_password_protected");
     regionFilter.length > 0
       ? params.append("region", regionFilter.join(","))
       : params.delete("region");
@@ -195,6 +205,7 @@ function Main(): React.ReactElement {
     regionFilter,
     gamemodeFilter,
     mapFilter,
+    isPasswordProtected,
     playerFilter,
     platform,
     limit,
@@ -214,6 +225,9 @@ function Main(): React.ReactElement {
       extraQueries["maps"] = mapFilter.join(";");
     }
     extraQueries["map_filters"] = mapFilter.join(",");
+  }
+  if (isPasswordProtected != "") {
+    extraQueries["is_password_protected"] = isPasswordProtected === "true";
   }
 
   const { t } = useTranslation();
@@ -533,6 +547,35 @@ function Main(): React.ReactElement {
                     })}
                   </ServerPageFilterRow>
                 )}
+                <ServerPageFilterRow>
+                  <h2 style={{ marginBottom: "0.4rem" }}>
+                    {t("servers.password")}
+                  </h2>
+                  <InputItem
+                    item={""}
+                    currrentItem={isPasswordProtected}
+                    callback={(e: {
+                      target: { value: React.SetStateAction<string> };
+                    }) => setIsPasswordProtected(e.target.value)}
+                    name={t("case.none")}
+                  />
+                  <InputItem
+                    item={"true"}
+                    currrentItem={isPasswordProtected}
+                    callback={(e: {
+                      target: { value: React.SetStateAction<string> };
+                    }) => setIsPasswordProtected(e.target.value)}
+                    name={t("case.on")}
+                  />
+                  <InputItem
+                    item={"false"}
+                    currrentItem={isPasswordProtected}
+                    callback={(e: {
+                      target: { value: React.SetStateAction<string> };
+                    }) => setIsPasswordProtected(e.target.value)}
+                    name={t("case.off")}
+                  />
+                </ServerPageFilterRow>
               </ServerPageFilters>
             </Box>
           </div>
