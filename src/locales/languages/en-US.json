@@ -501,6 +501,30 @@
       "main": "Server not found",
       "description": "We cant find the server your looking for."
     },
+    "bfv": {
+      "maps": {
+        "Fjell 652": "Fjell 652",
+        "Narvik": "Narvik",
+        "Arras": "Arras",
+        "Devastation": "Devastation",
+        "Twisted Steel": "Twisted Steel",
+        "Aerodrome": "Aerodrome",
+        "Hamada": "Hamada",
+        "Rotterdam": "Rotterdam",
+        "Panzerstorm": "Panzerstorm",
+        "Mercury": "Mercury",
+        "Marita": "Marita",
+        "Provence": "Provence",
+        "Al Sudan": "Al Sudan",
+        "Operation Underground": "Operation Underground",
+        "Iwo Jima": "Iwo Jima",
+        "Pacific Storm": "Pacific Storm",
+        "Wake Island": "Wake Island",
+        "Solomon Islands": "Solomon Islands",
+        "Al Marj Encampment": "Al Marj Encampment",
+        "Lofoten Islands": "Lofoten Islands"
+      }
+    },
     "bf1": {
       "gamemodes": {
         "airassault": "Air Assault",
@@ -512,6 +536,40 @@
         "shockoperations": "Shock Operations",
         "teamdeathmatch": "Team Deathmatch",
         "warpigeons": "War pigeons"
+      },
+      "maps": {
+        "Sinai Desert": "Sinai Desert",
+        "Ballroom Blitz": "Ballroom Blitz",
+        "Empire's Edge": "Empire's Edge",
+        "St Quentin Scar": "St Quentin Scar",
+        "Prise de Tahure": "Prise de Tahure",
+        "Monte Grappa": "Monte Grappa",
+        "Fao Fortress": "Fao Fortress",
+        "Giant's Shadow": "Giant's Shadow",
+        "Rupture": "Rupture",
+        "Amiens": "Amiens",
+        "Suez": "Suez",
+        "Fort De Vaux": "Fort De Vaux",
+        "Nivelle Nights": "Nivelle Nights",
+        "Soissons": "Soissons",
+        "Verdun Heights": "Verdun Heights",
+        "Albion": "Albion",
+        "Tsaritsyn": "Tsaritsyn",
+        "Łupków Pass": "Łupków Pass",
+        "Achi Baba": "Achi Baba",
+        "Heligoland Bight": "Heligoland Bight",
+        "Caporetto": "Caporetto",
+        "River Somme": "River Somme",
+        "Passchendaele": "Passchendaele",
+        "Galicia": "Galicia",
+        "Volga River": "Volga River",
+        "Brusilov Keep": "Brusilov Keep",
+        "Cape Helles": "Cape Helles",
+        "Zeebrugge": "Zeebrugge",
+        "Argonne Forest": "Argonne Forest",
+        "Razor's Edge": "Razor's Edge",
+        "London Calling": "London Calling",
+        "London Calling: Scourge": "London Calling: Scourge"
       }
     },
     "bf2042": {

@@ -209,7 +209,10 @@ function Main(): React.ReactElement {
     extraQueries["player_filters"] = playerFilter.join(",");
   }
   if (mapFilter.length > 0) {
-    extraQueries["maps"] = mapFilter.join(";");
+    if (gameName === "bf2042") {
+      extraQueries["maps"] = mapFilter.join(";");
+    }
+    extraQueries["map_filters"] = mapFilter.join(",");
   }
 
   const { t } = useTranslation();
@@ -491,13 +494,13 @@ function Main(): React.ReactElement {
                     })}
                   </ServerPageFilterRow>
                 )}
-                {gameName === "bf2042" && (
+                {(gameName === "bf2042" || newTitles.includes(gameName)) && (
                   <ServerPageFilterRow>
                     <h2 style={{ marginBottom: "0.4rem" }}>
                       {t("serverSearch.map")}
                     </h2>
                     {Object.keys(
-                      t("servers.bf2042.maps", { returnObjects: true }),
+                      t(`servers.${gameName}.maps`, { returnObjects: true }),
                     ).map((key, index) => {
                       return (
                         <CheckItem
@@ -520,7 +523,7 @@ function Main(): React.ReactElement {
                               ]);
                             }
                           }}
-                          name={t(`servers.bf2042.maps.${key}`)}
+                          name={t(`servers.${gameName}.maps.${key}`)}
                           disabled={
                             !frostbite3.includes(gameName) &&
                             !extraGames.includes(gameName)
