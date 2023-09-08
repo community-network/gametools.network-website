@@ -58,6 +58,7 @@ const ServerPageColumn = styled.div`
 const ServerPageFilters = styled.div`
   @media screen and (max-width: 1000px) {
     display: flex;
+    flex-wrap: wrap;
   }
 `;
 
@@ -365,7 +366,6 @@ function Main(): React.ReactElement {
             <Box
               style={{
                 minWidth: "240px",
-                maxWidth: "20rem",
               }}
               innerStyle={{ maxHeight: "510px" }}
             >
