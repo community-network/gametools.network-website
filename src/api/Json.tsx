@@ -1,6 +1,6 @@
 import "regenerator-runtime/runtime";
 
-const MODE = "dev";
+const MODE = "prod";
 
 const endPoints = {
   cors: "http://127.0.0.1:8787",
