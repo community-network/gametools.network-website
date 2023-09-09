@@ -264,6 +264,10 @@ function Main(): React.ReactElement {
   const [dropdownOpen, setDropdownOpen] = React.useState<{
     [string: string]: boolean;
   }>({});
+  const [hideSideBar, setHideSidebar] = useLocalStorage<boolean>(
+    "serverSearch_hideSidebar",
+    false,
+  );
 
   const [regionFilter, setRegionFilter] = React.useState<string[]>(["all"]);
   const [gamemodeFilter, setGamemodeFilter] = React.useState<string[]>([]);
@@ -370,6 +374,19 @@ function Main(): React.ReactElement {
     searchType,
     history,
   ]);
+
+  React.useEffect(() => {
+    if (
+      regionFilter.length > 0 ||
+      gamemodeFilter.length > 0 ||
+      playerFilter.length > 0 ||
+      mapFilter.length > 0 ||
+      isPasswordProtected != "" ||
+      bf2042OwnerList.length > 0
+    ) {
+      setHideSidebar(false);
+    }
+  }, []);
 
   const extraQueries = {};
   if (gamemodeFilter.length > 0) {
@@ -528,7 +545,13 @@ function Main(): React.ReactElement {
       </Align>
       {oldJoinGames.includes(gameName) ||
         (frostbiteJoinGames.includes(gameName) && (
-          <p style={{ marginTop: "-0.5rem", marginBottom: "0.7rem" }}>
+          <p
+            style={{
+              marginTop: "-0.5rem",
+              marginBottom: "0.7rem",
+              marginLeft: "0.5rem",
+            }}
+          >
             <Trans i18nKey="servers.joinme.info">
               <a href="https://joinme.click/download">
                 https://joinme.click/download
@@ -536,271 +559,282 @@ function Main(): React.ReactElement {
             </Trans>
           </p>
         ))}
+      <Align>
+        <Title
+          style={{
+            marginLeft: "0.5rem",
+            marginTop: !newTitles.includes(gameName) ? "-0.4rem" : "0rem",
+            marginBottom: !newTitles.includes(gameName) ? "0.8rem" : "1.2rem",
+          }}
+        >
+          {t("serverSearch.results")}
+        </Title>
+        <ServerSort sortType={sortType} setSortType={setSortType} />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            marginBottom: "10px",
+            marginLeft: "5px",
+          }}
+        >
+          <label className="switch">
+            <input
+              checked={!hideSideBar}
+              onClick={() => {
+                setHideSidebar(!hideSideBar);
+              }}
+              type="checkbox"
+            />
+            <span className="slider round"></span>
+          </label>
+          <p style={{ marginLeft: ".4rem", marginTop: "8px" }}>
+            {t("Show filters")}
+          </p>
+        </div>
+      </Align>
       <ServerPageColumn>
-        {(frostbite3.includes(gameName) || extraGames.includes(gameName)) && (
-          <div>
-            {width > 1000 && (
-              <Align>
-                <Title
-                  style={{
-                    marginLeft: "1rem",
-                    marginTop: "-0.3rem",
-                  }}
-                >
-                  {t("serverSearch.sorting")}
-                </Title>
-                <ServerSort sortType={sortType} setSortType={setSortType} />
-              </Align>
-            )}
-            <Box
-              style={{
-                minWidth: "240px",
-              }}
-              innerStyle={{ maxHeight: "510px" }}
-            >
-              <ServerPageFilters>
-                <ServerPageFilterRow>
-                  <h2 style={{ marginBottom: "0.4rem" }}>
-                    {t("serverSearch.region")}
-                    <DropdownArrow
-                      item={"region"}
-                      dropdownOpen={dropdownOpen}
-                      setDropdownOpen={setDropdownOpen}
-                    />
-                  </h2>
-                  {!dropdownOpen["region"] &&
-                    Object.keys(t(regionKey, { returnObjects: true })).map(
-                      (key, index) => {
-                        if (key === "all") {
-                          return;
-                        }
-                        return (
-                          <CheckItem
-                            key={index}
-                            item={key}
-                            currrentItems={regionFilter}
-                            callback={(e: {
-                              target: { value: string; checked: boolean };
-                            }) => {
-                              if (e.target.checked) {
-                                let oldArray = [...regionFilter];
-                                if (regionFilter.includes("all")) {
-                                  oldArray = [];
+        {(frostbite3.includes(gameName) || extraGames.includes(gameName)) &&
+          !hideSideBar && (
+            <div>
+              <Box
+                style={{
+                  minWidth: "240px",
+                }}
+                innerStyle={{ maxHeight: width >= 1000 ? "600px" : "300px" }}
+              >
+                <ServerPageFilters>
+                  <ServerPageFilterRow>
+                    <h2 style={{ marginBottom: "0.4rem" }}>
+                      {t("serverSearch.region")}
+                      <DropdownArrow
+                        item={"region"}
+                        dropdownOpen={dropdownOpen}
+                        setDropdownOpen={setDropdownOpen}
+                      />
+                    </h2>
+                    {!dropdownOpen["region"] &&
+                      Object.keys(t(regionKey, { returnObjects: true })).map(
+                        (key, index) => {
+                          if (key === "all") {
+                            return;
+                          }
+                          return (
+                            <CheckItem
+                              key={index}
+                              item={key}
+                              currrentItems={regionFilter}
+                              callback={(e: {
+                                target: { value: string; checked: boolean };
+                              }) => {
+                                if (e.target.checked) {
+                                  let oldArray = [...regionFilter];
+                                  if (regionFilter.includes("all")) {
+                                    oldArray = [];
+                                  }
+                                  setRegionFilter([
+                                    ...oldArray,
+                                    e.target.value,
+                                  ]);
+                                } else {
+                                  setRegionFilter((oldArray) => [
+                                    ...oldArray.filter(
+                                      (item) => item !== e.target.value,
+                                    ),
+                                  ]);
                                 }
-                                setRegionFilter([...oldArray, e.target.value]);
-                              } else {
-                                setRegionFilter((oldArray) => [
-                                  ...oldArray.filter(
-                                    (item) => item !== e.target.value,
-                                  ),
-                                ]);
-                              }
-                            }}
-                            name={t(`${regionKey}.${key}`)}
-                          />
-                        );
-                      },
-                    )}
-                </ServerPageFilterRow>
-                {gameName === "bf2042" && (
-                  <ServerPageFilterRow>
-                    <h2 style={{ marginBottom: "0.4rem" }}>
-                      {t("serverSearch.serverOwner.main")}
-                      <DropdownArrow
-                        item={"serverOwner"}
-                        dropdownOpen={dropdownOpen}
-                        setDropdownOpen={setDropdownOpen}
-                      />
-                    </h2>
-                    {!dropdownOpen["serverOwner"] && (
-                      <ServerOwnerSearch
-                        ownerList={bf2042OwnerList}
-                        setOwnerList={setbf2042OwnerList}
-                      />
-                    )}
+                              }}
+                              name={t(`${regionKey}.${key}`)}
+                            />
+                          );
+                        },
+                      )}
                   </ServerPageFilterRow>
-                )}
-                {playerFilterGames.includes(gameName) && (
-                  <ServerPageFilterRow>
-                    <h2 style={{ marginBottom: "0.4rem" }}>
-                      {t("serverSearch.playerFilter")}
-                      <DropdownArrow
-                        item={"playerFilter"}
-                        dropdownOpen={dropdownOpen}
-                        setDropdownOpen={setDropdownOpen}
-                      />
-                    </h2>
-                    {!dropdownOpen["playerFilter"] &&
-                      Object.keys(
-                        t("servers.frostbite3.playerFilter", {
-                          returnObjects: true,
-                        }),
-                      ).map((key, index) => {
-                        return (
-                          <CheckItem
-                            key={index}
-                            item={key}
-                            currrentItems={playerFilter}
-                            callback={(e: {
-                              target: {
-                                checked: boolean;
-                                value: string;
-                              };
-                            }) => {
-                              if (e.target.checked) {
-                                setPlayerFilter((oldArray) => [
-                                  ...oldArray,
-                                  e.target.value,
-                                ]);
-                              } else {
-                                setPlayerFilter((oldArray) => [
-                                  ...oldArray.filter(
-                                    (item) => item !== e.target.value,
-                                  ),
-                                ]);
-                              }
-                            }}
-                            name={t(`servers.frostbite3.playerFilter.${key}`)}
-                          />
-                        );
-                      })}
-                  </ServerPageFilterRow>
-                )}
-                {(gameName === "bf2042" || gameName === "bf1") && (
-                  <ServerPageFilterRow>
-                    <h2 style={{ marginBottom: "0.4rem" }}>
-                      {t("serverSearch.gamemode")}
-                      <DropdownArrow
-                        item={"gamemode"}
-                        dropdownOpen={dropdownOpen}
-                        setDropdownOpen={setDropdownOpen}
-                      />
-                    </h2>
-                    {!dropdownOpen["gamemode"] &&
-                      Object.keys(
-                        t(`servers.${gameName}.gamemodes`, {
-                          returnObjects: true,
-                        }),
-                      ).map((key, index) => {
-                        return (
-                          <CheckItem
-                            key={index}
-                            item={key}
-                            currrentItems={gamemodeFilter}
-                            callback={(e: {
-                              target: { value: string; checked: boolean };
-                            }) => {
-                              if (e.target.checked) {
-                                setGamemodeFilter((oldArray) => [
-                                  ...oldArray,
-                                  e.target.value,
-                                ]);
-                              } else {
-                                setGamemodeFilter((oldArray) => [
-                                  ...oldArray.filter(
-                                    (item) => item !== e.target.value,
-                                  ),
-                                ]);
-                              }
-                            }}
-                            name={t(`servers.${gameName}.gamemodes.${key}`)}
-                          />
-                        );
-                      })}
-                  </ServerPageFilterRow>
-                )}
-                {(gameName === "bf2042" || newTitles.includes(gameName)) && (
-                  <ServerPageFilterRow>
-                    <h2 style={{ marginBottom: "0.4rem" }}>
-                      {t("serverSearch.map")}
-                      <DropdownArrow
-                        item={"map"}
-                        dropdownOpen={dropdownOpen}
-                        setDropdownOpen={setDropdownOpen}
-                      />
-                    </h2>
-                    {!dropdownOpen["map"] &&
-                      Object.keys(
-                        t(`servers.${gameName}.maps`, { returnObjects: true }),
-                      ).map((key, index) => {
-                        return (
-                          <CheckItem
-                            key={index}
-                            item={key}
-                            currrentItems={mapFilter}
-                            callback={(e: {
-                              target: { value: string; checked: boolean };
-                            }) => {
-                              if (e.target.checked) {
-                                setMapFilter((oldArray) => [
-                                  ...oldArray,
-                                  e.target.value,
-                                ]);
-                              } else {
-                                setMapFilter((oldArray) => [
-                                  ...oldArray.filter(
-                                    (item) => item !== e.target.value,
-                                  ),
-                                ]);
-                              }
-                            }}
-                            name={t(`servers.${gameName}.maps.${key}`)}
-                          />
-                        );
-                      })}
-                  </ServerPageFilterRow>
-                )}
-                {frostbite3.includes(gameName) && (
-                  <ServerPageFilterRow>
-                    <h2 style={{ marginBottom: "0.4rem" }}>
-                      {t("servers.password")}
-                      <DropdownArrow
-                        item={"password"}
-                        dropdownOpen={dropdownOpen}
-                        setDropdownOpen={setDropdownOpen}
-                      />
-                    </h2>
-                    {!dropdownOpen["password"] &&
-                      Object.entries({
-                        "": "case.none",
-                        true: "case.on",
-                        false: "case.off",
-                      }).map(([k, v], index) => {
-                        return (
-                          <InputItem
-                            key={index}
-                            item={k}
-                            currrentItem={isPasswordProtected}
-                            callback={(e: {
-                              target: { value: React.SetStateAction<string> };
-                            }) => setIsPasswordProtected(e.target.value)}
-                            name={t(v)}
-                          />
-                        );
-                      })}
-                  </ServerPageFilterRow>
-                )}
-              </ServerPageFilters>
-            </Box>
-          </div>
-        )}
+                  {gameName === "bf2042" && (
+                    <ServerPageFilterRow>
+                      <h2 style={{ marginBottom: "0.4rem" }}>
+                        {t("serverSearch.serverOwner.main")}
+                        <DropdownArrow
+                          item={"serverOwner"}
+                          dropdownOpen={dropdownOpen}
+                          setDropdownOpen={setDropdownOpen}
+                        />
+                      </h2>
+                      {!dropdownOpen["serverOwner"] && (
+                        <ServerOwnerSearch
+                          ownerList={bf2042OwnerList}
+                          setOwnerList={setbf2042OwnerList}
+                        />
+                      )}
+                    </ServerPageFilterRow>
+                  )}
+                  {playerFilterGames.includes(gameName) && (
+                    <ServerPageFilterRow>
+                      <h2 style={{ marginBottom: "0.4rem" }}>
+                        {t("serverSearch.playerFilter")}
+                        <DropdownArrow
+                          item={"playerFilter"}
+                          dropdownOpen={dropdownOpen}
+                          setDropdownOpen={setDropdownOpen}
+                        />
+                      </h2>
+                      {!dropdownOpen["playerFilter"] &&
+                        Object.keys(
+                          t("servers.frostbite3.playerFilter", {
+                            returnObjects: true,
+                          }),
+                        ).map((key, index) => {
+                          return (
+                            <CheckItem
+                              key={index}
+                              item={key}
+                              currrentItems={playerFilter}
+                              callback={(e: {
+                                target: {
+                                  checked: boolean;
+                                  value: string;
+                                };
+                              }) => {
+                                if (e.target.checked) {
+                                  setPlayerFilter((oldArray) => [
+                                    ...oldArray,
+                                    e.target.value,
+                                  ]);
+                                } else {
+                                  setPlayerFilter((oldArray) => [
+                                    ...oldArray.filter(
+                                      (item) => item !== e.target.value,
+                                    ),
+                                  ]);
+                                }
+                              }}
+                              name={t(`servers.frostbite3.playerFilter.${key}`)}
+                            />
+                          );
+                        })}
+                    </ServerPageFilterRow>
+                  )}
+                  {(gameName === "bf2042" || gameName === "bf1") && (
+                    <ServerPageFilterRow>
+                      <h2 style={{ marginBottom: "0.4rem" }}>
+                        {t("serverSearch.gamemode")}
+                        <DropdownArrow
+                          item={"gamemode"}
+                          dropdownOpen={dropdownOpen}
+                          setDropdownOpen={setDropdownOpen}
+                        />
+                      </h2>
+                      {!dropdownOpen["gamemode"] &&
+                        Object.keys(
+                          t(`servers.${gameName}.gamemodes`, {
+                            returnObjects: true,
+                          }),
+                        ).map((key, index) => {
+                          return (
+                            <CheckItem
+                              key={index}
+                              item={key}
+                              currrentItems={gamemodeFilter}
+                              callback={(e: {
+                                target: { value: string; checked: boolean };
+                              }) => {
+                                if (e.target.checked) {
+                                  setGamemodeFilter((oldArray) => [
+                                    ...oldArray,
+                                    e.target.value,
+                                  ]);
+                                } else {
+                                  setGamemodeFilter((oldArray) => [
+                                    ...oldArray.filter(
+                                      (item) => item !== e.target.value,
+                                    ),
+                                  ]);
+                                }
+                              }}
+                              name={t(`servers.${gameName}.gamemodes.${key}`)}
+                            />
+                          );
+                        })}
+                    </ServerPageFilterRow>
+                  )}
+                  {(gameName === "bf2042" || newTitles.includes(gameName)) && (
+                    <ServerPageFilterRow>
+                      <h2 style={{ marginBottom: "0.4rem" }}>
+                        {t("serverSearch.map")}
+                        <DropdownArrow
+                          item={"map"}
+                          dropdownOpen={dropdownOpen}
+                          setDropdownOpen={setDropdownOpen}
+                        />
+                      </h2>
+                      {!dropdownOpen["map"] &&
+                        Object.keys(
+                          t(`servers.${gameName}.maps`, {
+                            returnObjects: true,
+                          }),
+                        ).map((key, index) => {
+                          return (
+                            <CheckItem
+                              key={index}
+                              item={key}
+                              currrentItems={mapFilter}
+                              callback={(e: {
+                                target: { value: string; checked: boolean };
+                              }) => {
+                                if (e.target.checked) {
+                                  setMapFilter((oldArray) => [
+                                    ...oldArray,
+                                    e.target.value,
+                                  ]);
+                                } else {
+                                  setMapFilter((oldArray) => [
+                                    ...oldArray.filter(
+                                      (item) => item !== e.target.value,
+                                    ),
+                                  ]);
+                                }
+                              }}
+                              name={t(`servers.${gameName}.maps.${key}`)}
+                            />
+                          );
+                        })}
+                    </ServerPageFilterRow>
+                  )}
+                  {frostbite3.includes(gameName) && (
+                    <ServerPageFilterRow>
+                      <h2 style={{ marginBottom: "0.4rem" }}>
+                        {t("servers.password")}
+                        <DropdownArrow
+                          item={"password"}
+                          dropdownOpen={dropdownOpen}
+                          setDropdownOpen={setDropdownOpen}
+                        />
+                      </h2>
+                      {!dropdownOpen["password"] &&
+                        Object.entries({
+                          "": "case.none",
+                          true: "case.on",
+                          false: "case.off",
+                        }).map(([k, v], index) => {
+                          return (
+                            <InputItem
+                              key={index}
+                              item={k}
+                              currrentItem={isPasswordProtected}
+                              callback={(e: {
+                                target: { value: React.SetStateAction<string> };
+                              }) => setIsPasswordProtected(e.target.value)}
+                              name={t(v)}
+                            />
+                          );
+                        })}
+                    </ServerPageFilterRow>
+                  )}
+                </ServerPageFilters>
+              </Box>
+            </div>
+          )}
         <ServerPageRow>
-          <Align>
-            <Title
-              style={{
-                marginLeft: "1rem",
-                marginTop: !newTitles.includes(gameName) ? "-0.4rem" : "0rem",
-                marginBottom: !newTitles.includes(gameName)
-                  ? "0.8rem"
-                  : "1.2rem",
-              }}
-            >
-              {t("serverSearch.results")}
-            </Title>
-            {(!frostbite3.includes(gameName) || width <= 1000) && (
-              <ServerSort sortType={sortType} setSortType={setSortType} />
-            )}
-          </Align>
           <Results
             game={gameName}
             loading={loading}
