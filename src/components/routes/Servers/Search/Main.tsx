@@ -299,6 +299,7 @@ function Main(): React.ReactElement {
   const mapQuery = query.get("map");
   const playerFilterQuery = query.get("player_filter");
   const isPasswordProtectedQuery = query.get("is_password_protected");
+  const bf2042OwnerListQuery = query.get("bf2042_owner_list");
   const regionKey = gameName === "battlebit" ? "battlebitRegions" : "regions";
   React.useState(() => {
     nameQuery !== null ? setSearchTerm(nameQuery) : null;
@@ -311,6 +312,9 @@ function Main(): React.ReactElement {
     mapQuery !== null ? setMapFilter(mapQuery.split(",")) : null;
     isPasswordProtectedQuery !== null
       ? setIsPasswordProtected(isPasswordProtectedQuery)
+      : null;
+    bf2042OwnerListQuery !== null
+      ? setbf2042OwnerList(JSON.parse(bf2042OwnerListQuery))
       : null;
     platformQuery !== null ? setPlatform(platformQuery) : null;
     limitQuery !== null ? setLimit(limitQuery) : null;
@@ -341,6 +345,9 @@ function Main(): React.ReactElement {
     playerFilter.length > 0
       ? params.append("player_filter", playerFilter.join(","))
       : params.delete("player_filter");
+    bf2042OwnerList.length > 0
+      ? params.append("bf2042_owner_list", JSON.stringify(bf2042OwnerList))
+      : params.delete("bf2042_owner_list");
     platform.length > 0
       ? params.append("platform", platform)
       : params.delete("platform");
@@ -357,6 +364,7 @@ function Main(): React.ReactElement {
     mapFilter,
     isPasswordProtected,
     playerFilter,
+    bf2042OwnerList,
     platform,
     limit,
     searchType,
