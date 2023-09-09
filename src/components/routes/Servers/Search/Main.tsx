@@ -589,7 +589,7 @@ function Main(): React.ReactElement {
             <span className="slider round"></span>
           </label>
           <p style={{ marginLeft: ".4rem", marginTop: "8px" }}>
-            {t("Show filters")}
+            {t("serverSearch.showFilters")}
           </p>
         </div>
       </Align>

@@ -208,6 +208,7 @@
     "platform": "platform",
     "gamemode": "Gamemode",
     "playerFilter": "Available space",
+    "showFilters": "Show filters",
     "serverOwner": {
       "main": "Server owner",
       "add": "Add"
