@@ -258,7 +258,7 @@ function Main(): React.ReactElement {
     "serverSearch_platform",
     "allPlatforms",
   );
-  const [limit, setLimit] = React.useState<string>("10");
+  const [limit, setLimit] = useLocalStorage<string>("serverSearch_limit", "10");
   const [searchType, setSearchType] = React.useState<string>("experiencename");
   const [sortType, setSortType] = React.useState<string>("-prefix");
   const [dropdownOpen, setDropdownOpen] = React.useState<{
