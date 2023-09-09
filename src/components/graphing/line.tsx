@@ -576,7 +576,7 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
     );
   } else {
     return (
-      <Box>
+      <Box innerStyle={{ minHeight: width > 380 ? "20rem" : "8rem" }}>
         <h3>{t("loading")}</h3>
       </Box>
     );
