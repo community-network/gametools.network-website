@@ -256,6 +256,9 @@ function Main(): React.ReactElement {
 
   const extraQueries = {};
   if (gamemodeFilter.length > 0) {
+    if (gameName === "bf2042") {
+      extraQueries["modes"] = gamemodeFilter.join(";");
+    }
     extraQueries["gamemode_filters"] = gamemodeFilter.join(",");
   }
   if (playerFilter.length > 0) {
@@ -268,6 +271,9 @@ function Main(): React.ReactElement {
     extraQueries["map_filters"] = mapFilter.join(",");
   }
   if (isPasswordProtected != "") {
+    if (gameName === "bf2042") {
+      extraQueries["has_password"] = isPasswordProtected === "true";
+    }
     extraQueries["is_password_protected"] = isPasswordProtected === "true";
   }
 
@@ -514,7 +520,7 @@ function Main(): React.ReactElement {
                       })}
                   </ServerPageFilterRow>
                 )}
-                {gamemodeGames.includes(gameName) && (
+                {(gameName === "bf2042" || gameName === "bf1") && (
                   <ServerPageFilterRow>
                     <h2 style={{ marginBottom: "0.4rem" }}>
                       {t("serverSearch.gamemode")}
@@ -526,7 +532,9 @@ function Main(): React.ReactElement {
                     </h2>
                     {!dropdownOpen["gamemode"] &&
                       Object.keys(
-                        t("servers.bf1.gamemodes", { returnObjects: true }),
+                        t(`servers.${gameName}.gamemodes`, {
+                          returnObjects: true,
+                        }),
                       ).map((key, index) => {
                         return (
                           <CheckItem
@@ -549,7 +557,7 @@ function Main(): React.ReactElement {
                                 ]);
                               }
                             }}
-                            name={t(`servers.bf1.gamemodes.${key}`)}
+                            name={t(`servers.${gameName}.gamemodes.${key}`)}
                           />
                         );
                       })}
@@ -596,7 +604,7 @@ function Main(): React.ReactElement {
                       })}
                   </ServerPageFilterRow>
                 )}
-                {playerFilterGames.includes(gameName) && (
+                {frostbite3.includes(gameName) && (
                   <ServerPageFilterRow>
                     <h2 style={{ marginBottom: "0.4rem" }}>
                       {t("servers.password")}

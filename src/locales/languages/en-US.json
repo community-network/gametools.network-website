@@ -597,6 +597,14 @@
         "Spearhead": "Spearhead",
         "Flashpoint": "Flashpoint",
         "Reclaimed": "Reclaimed"
+      },
+      "gamemodes": {
+        "Breakthrough Large": "Breakthrough Large",
+        "Breakthrough": "Breakthrough",
+        "Conquest": "Conquest",
+        "Custom": "Custom",
+        "Rush": "Rush",
+        "Conquest large": "Conquest large"
       }
     },
     "frostbite3": {
