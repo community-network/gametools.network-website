@@ -570,28 +570,30 @@ function Main(): React.ReactElement {
           {t("serverSearch.results")}
         </Title>
         <ServerSort sortType={sortType} setSortType={setSortType} />
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            marginBottom: "10px",
-            marginLeft: "5px",
-          }}
-        >
-          <label className="switch">
-            <input
-              checked={!hideSideBar}
-              onClick={() => {
-                setHideSidebar(!hideSideBar);
-              }}
-              type="checkbox"
-            />
-            <span className="slider round"></span>
-          </label>
-          <p style={{ marginLeft: ".4rem", marginTop: "8px" }}>
-            {t("serverSearch.showFilters")}
-          </p>
-        </div>
+        {(frostbite3.includes(gameName) || extraGames.includes(gameName)) && (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              marginBottom: "10px",
+              marginLeft: "5px",
+            }}
+          >
+            <label className="switch">
+              <input
+                checked={!hideSideBar}
+                onClick={() => {
+                  setHideSidebar(!hideSideBar);
+                }}
+                type="checkbox"
+              />
+              <span className="slider round"></span>
+            </label>
+            <p style={{ marginLeft: ".4rem", marginTop: "8px" }}>
+              {t("serverSearch.showFilters")}
+            </p>
+          </div>
+        )}
       </Align>
       <ServerPageColumn>
         {(frostbite3.includes(gameName) || extraGames.includes(gameName)) &&
