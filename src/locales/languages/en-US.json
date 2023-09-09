@@ -208,6 +208,10 @@
     "platform": "platform",
     "gamemode": "Gamemode",
     "playerFilter": "Available space",
+    "serverOwner": {
+      "main": "Server owner",
+      "add": "Add"
+    },
     "sorting": "Sort"
   },
   "platoonSearch": {

@@ -10,7 +10,7 @@ interface playerResult {
   name: string;
 }
 
-interface playerSearchReturn {
+export interface playerSearchReturn {
   query: string;
   namespace: string;
   results: playerResult[];

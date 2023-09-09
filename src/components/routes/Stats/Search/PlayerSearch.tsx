@@ -25,6 +25,7 @@ import { platformGames, statsPlatforms } from "../../../../api/static";
 import { Graphs } from "./Graphs";
 import ErrorBoundary from "../../../functions/ErrorBoundary";
 import { useLocalStorage } from "react-use";
+import { DropDownAutocomplete } from "../../../functions/autocomplete";
 
 export const AltDescription = styled.p`
   ${AltText}
@@ -50,120 +51,6 @@ const StatsLink = styled(Link)`
   }
 `;
 
-const DropDown = styled.div`
-  position: absolute;
-  top: 56px;
-  left: -20px;
-  border-radius: 8px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  background: #1e2028;
-  z-index: 5;
-`;
-
-const List = styled.ul`
-  list-style: none;
-  padding: 3px 0px;
-  margin: 0;
-`;
-
-const Item = styled.li`
-  padding: 4px 18px;
-  font-family: Manrope;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 150%;
-  color: var(--color-alt-text);
-  :hover {
-    color: var(--color-text);
-    background-color: rgba(0, 0, 0, 0.14);
-    cursor: pointer;
-  }
-`;
-
-export function DropDownAutocomplete({
-  callback,
-  searchTerm,
-  platform,
-  style,
-  searchBoxRef,
-}: {
-  callback?: (arg0: string) => void;
-  searchTerm: string;
-  platform: string;
-  style?: React.CSSProperties;
-  searchBoxRef: React.MutableRefObject<HTMLInputElement>;
-}): React.ReactElement {
-  const [open, setOpen] = React.useState(false);
-
-  const container: React.MutableRefObject<HTMLDivElement> = React.useRef();
-
-  React.useEffect(() => {
-    const handleClickOutside = (event: { target }) => {
-      if (container.current && !container.current.contains(event.target)) {
-        setOpen(false);
-      }
-
-      if (searchBoxRef.current && searchBoxRef.current.contains(event.target)) {
-        setOpen(true);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return function cleanup() {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  });
-
-  let autocomplete: string[] = [];
-  const {
-    isLoading: isLoading,
-    isError: isError,
-    data: autocompleteResult,
-  } = useQuery(["autocomplete" + platform + searchTerm], () => {
-    setOpen(true);
-    return FeslApi.playerSearch({
-      platform: platform,
-      name: searchTerm,
-    });
-  });
-
-  if (!isError && !isLoading) {
-    if (autocompleteResult.results) {
-      if (
-        !(
-          autocompleteResult.results.length == 1 &&
-          autocompleteResult.results[0].name === searchTerm
-        )
-      ) {
-        autocomplete = autocompleteResult.results.map((user) => {
-          return user.name;
-        });
-      }
-    }
-  }
-
-  return (
-    <DropDown ref={container} style={style}>
-      {open && (
-        <List>
-          {autocomplete.map((userName, index) => {
-            return (
-              <Item
-                key={index}
-                onClick={() => {
-                  setOpen(false);
-                  return callback(userName);
-                }}
-              >
-                {userName}
-              </Item>
-            );
-          })}
-        </List>
-      )}
-    </DropDown>
-  );
-}
-
 export function StatSearch(): React.ReactElement {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = React.useState<string>("");
@@ -172,6 +59,16 @@ export function StatSearch(): React.ReactElement {
     "pc",
   );
   const searchBox: React.MutableRefObject<HTMLInputElement> = React.useRef();
+
+  const { data: autocompleteResult } = useQuery(
+    ["autocomplete" + platform + searchTerm],
+    () => {
+      return FeslApi.playerSearch({
+        platform: platform,
+        name: searchTerm,
+      });
+    },
+  );
 
   return (
     <form
@@ -191,11 +88,12 @@ export function StatSearch(): React.ReactElement {
           />
           <DropDownAutocomplete
             searchTerm={searchTerm}
-            platform={platform}
             searchBoxRef={searchBox}
+            autocompleteResult={autocompleteResult}
             callback={(val) => {
               setSearchTerm(val);
             }}
+            style={{ top: "56px", left: "-20px" }}
           />
           <HomePlayerBigSelectSecondary
             value={platform}

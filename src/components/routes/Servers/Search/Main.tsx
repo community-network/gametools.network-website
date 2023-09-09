@@ -4,7 +4,7 @@ import { useNavigate, useLocation, Link } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
-import { GametoolsApi } from "../../../../api/GametoolsApi";
+import { BF2042Player, GametoolsApi } from "../../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
 import {
   AltText,
@@ -22,13 +22,13 @@ import {
   InputItem,
   BigButtonSecondaryBox,
   CheckItem,
+  SmallButtonSecondary,
 } from "../../../Materials";
 import { getLanguage } from "../../../../locales/config";
 import {
   extraGames,
   frostbite3,
   frostbiteJoinGames,
-  gamemodeGames,
   newGen,
   newTitles,
   oldJoinGames,
@@ -85,6 +85,11 @@ const Arrow = styled.i`
   margin-left: 6px;
 `;
 
+const RemoveIcon = styled.b`
+  margin-right: 8px;
+  cursor: pointer;
+`;
+
 function DropdownArrow(props: {
   item: string;
   dropdownOpen: {
@@ -138,6 +143,106 @@ function ServerSort(props: {
   );
 }
 
+function ServerOwnerSearch(props: {
+  ownerList: BF2042Player[];
+  setOwnerList: React.Dispatch<React.SetStateAction<BF2042Player[]>>;
+}): React.ReactElement {
+  const { ownerList, setOwnerList } = props;
+  const { t } = useTranslation();
+  const [searchTerm, setSearchTerm] = React.useState<string>("");
+  const searchBox: React.MutableRefObject<HTMLInputElement> = React.useRef();
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      addItem();
+    }
+  };
+
+  const addItem = () => {
+    if (
+      autocompleteResult?.results == undefined ||
+      autocompleteResult?.results.length <= 0
+    ) {
+      return;
+    }
+    const firstResult = autocompleteResult?.results[0];
+    if (
+      !ownerList.some(
+        (el) =>
+          el?.personaId === firstResult?.personaId &&
+          el?.platform === firstResult?.platform,
+      )
+    ) {
+      setOwnerList((old) => [...old, firstResult]);
+    }
+    setSearchTerm("");
+  };
+
+  const removeItem = (item: BF2042Player) => {
+    setOwnerList((old) =>
+      old.filter(
+        (el) =>
+          el?.personaId !== item?.personaId || el?.platform !== item?.platform,
+      ),
+    );
+  };
+
+  const { data: autocompleteResult } = useQuery(
+    ["serverOwner" + searchTerm],
+    () =>
+      GametoolsApi.bf2042PlayerSearch({
+        name: searchTerm,
+      }),
+  );
+
+  return (
+    <>
+      <Align>
+        <SmallSearchBox
+          ref={searchBox}
+          placeholder={t(`serverSearch.serverOwner.main`)}
+          value={searchTerm}
+          onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
+            setSearchTerm(ev.target.value)
+          }
+          style={{ marginRight: "10px", marginLeft: "-10px", marginBottom: 0 }}
+          onKeyDown={handleKeyDown}
+        />
+        {/* <DropDownAutocomplete
+          autocompleteResult={autocompleteResult}
+          searchTerm={searchTerm}
+          searchBoxRef={searchBox}
+          callback={(val) => {
+            setSearchTerm(val);
+          }}
+          style={{ position: "relative" }}
+        /> */}
+        <SmallButtonSecondary
+          style={{ marginRight: ".5rem", marginBottom: 0 }}
+          onClick={addItem}
+        >
+          {t("serverSearch.serverOwner.add")}
+        </SmallButtonSecondary>
+      </Align>
+      {ownerList.map((value, index) => {
+        return (
+          <p
+            key={index}
+            style={{
+              marginTop: "8px",
+              marginLeft: "2px",
+              marginBottom: "0px",
+            }}
+          >
+            <RemoveIcon onClick={() => removeItem(value)}>&#10006;</RemoveIcon>
+            {value?.name}
+          </p>
+        );
+      })}
+    </>
+  );
+}
+
 function Main(): React.ReactElement {
   const [width, setWidth] = React.useState<number>(window.innerWidth);
   React.useEffect(() => {
@@ -166,6 +271,9 @@ function Main(): React.ReactElement {
   const [playerFilter, setPlayerFilter] = React.useState<string[]>([]);
   const [isPasswordProtected, setIsPasswordProtected] =
     React.useState<string>("");
+  const [bf2042OwnerList, setbf2042OwnerList] = React.useState<BF2042Player[]>(
+    [],
+  );
   function setGameName(newGame: string) {
     // reset other filters when changing gamename
     setGamemodeFilter([]);
@@ -173,6 +281,7 @@ function Main(): React.ReactElement {
     setMapFilter([]);
     setRegionFilter([]);
     setIsPasswordProtected("");
+    setbf2042OwnerList([]);
 
     setGameNameItem(newGame);
   }
@@ -275,6 +384,17 @@ function Main(): React.ReactElement {
       extraQueries["has_password"] = isPasswordProtected === "true";
     }
     extraQueries["is_password_protected"] = isPasswordProtected === "true";
+  }
+  if (bf2042OwnerList.length > 0) {
+    extraQueries["owners"] = JSON.stringify(
+      bf2042OwnerList.map((val) => {
+        return {
+          personaid: val.personaId,
+          nucleusid: val.nucleusId,
+          platform: val.platform,
+        };
+      }),
+    );
   }
 
   const { t } = useTranslation();
@@ -474,6 +594,24 @@ function Main(): React.ReactElement {
                       },
                     )}
                 </ServerPageFilterRow>
+                {gameName === "bf2042" && (
+                  <ServerPageFilterRow>
+                    <h2 style={{ marginBottom: "0.4rem" }}>
+                      {t("serverSearch.serverOwner.main")}
+                      <DropdownArrow
+                        item={"serverOwner"}
+                        dropdownOpen={dropdownOpen}
+                        setDropdownOpen={setDropdownOpen}
+                      />
+                    </h2>
+                    {!dropdownOpen["serverOwner"] && (
+                      <ServerOwnerSearch
+                        ownerList={bf2042OwnerList}
+                        setOwnerList={setbf2042OwnerList}
+                      />
+                    )}
+                  </ServerPageFilterRow>
+                )}
                 {playerFilterGames.includes(gameName) && (
                   <ServerPageFilterRow>
                     <h2 style={{ marginBottom: "0.4rem" }}>

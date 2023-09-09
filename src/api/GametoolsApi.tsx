@@ -143,6 +143,18 @@ export interface GlobalGraphReturn {
   end: number;
 }
 
+export interface BF2042Player {
+  nucleusId: number;
+  platform: string;
+  name: string;
+  personaId: number;
+  platformId: number;
+}
+
+export interface BF2042PlayerSearchReturn {
+  results: BF2042Player[];
+}
+
 export class ApiProvider extends JsonClient {
   constructor() {
     super();
@@ -497,6 +509,16 @@ export class ApiProvider extends JsonClient {
       names: "",
       userids: "",
       personaids: playerIds.toString(),
+    });
+  }
+
+  async bf2042PlayerSearch({
+    name,
+  }: {
+    name: string;
+  }): Promise<BF2042PlayerSearchReturn> {
+    return await this.getJsonMethod(`/bf2042/player/`, {
+      name: name,
     });
   }
 }
