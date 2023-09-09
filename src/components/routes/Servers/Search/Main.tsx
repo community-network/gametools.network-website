@@ -463,10 +463,6 @@ function Main(): React.ReactElement {
                               }
                             }}
                             name={t(`${regionKey}.${key}`)}
-                            disabled={
-                              !frostbite3.includes(gameName) &&
-                              !extraGames.includes(gameName)
-                            }
                           />
                         );
                       },
@@ -513,10 +509,6 @@ function Main(): React.ReactElement {
                               }
                             }}
                             name={t(`servers.frostbite3.playerFilter.${key}`)}
-                            disabled={
-                              !frostbite3.includes(gameName) &&
-                              !extraGames.includes(gameName)
-                            }
                           />
                         );
                       })}
@@ -558,10 +550,6 @@ function Main(): React.ReactElement {
                               }
                             }}
                             name={t(`servers.bf1.gamemodes.${key}`)}
-                            disabled={
-                              !frostbite3.includes(gameName) &&
-                              !extraGames.includes(gameName)
-                            }
                           />
                         );
                       })}
@@ -603,10 +591,6 @@ function Main(): React.ReactElement {
                               }
                             }}
                             name={t(`servers.${gameName}.maps.${key}`)}
-                            disabled={
-                              !frostbite3.includes(gameName) &&
-                              !extraGames.includes(gameName)
-                            }
                           />
                         );
                       })}
