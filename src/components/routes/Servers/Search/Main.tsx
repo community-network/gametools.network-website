@@ -838,6 +838,7 @@ function Main(): React.ReactElement {
           )}
         <ServerPageRow>
           <Results
+            mainPage={false}
             game={gameName}
             loading={loading}
             stats={stats}
@@ -946,6 +947,7 @@ export function ServerSearch(): React.ReactElement {
             loading={loading}
             stats={stats}
             error={error}
+            mainPage={true}
             sortType={"-prefix"}
             spacingStyle={{ maxWidth: "99rem" }}
           />

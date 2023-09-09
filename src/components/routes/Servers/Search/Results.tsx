@@ -103,6 +103,7 @@ interface Views {
   stats: ServerSearch;
   sortType: string;
   spacingStyle?: React.CSSProperties;
+  mainPage: boolean;
 }
 
 export function Results(props: Views): React.ReactElement {
@@ -254,7 +255,7 @@ export function Results(props: Views): React.ReactElement {
   } else {
     return (
       <>
-        {[...Array(3)].map((key) => (
+        {[...Array(props.mainPage ? 4 : 3)].map((key) => (
           <LoadingServerInfo
             key={key}
             spacingStyle={props.spacingStyle}
