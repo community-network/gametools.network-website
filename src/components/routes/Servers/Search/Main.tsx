@@ -606,34 +606,24 @@ function Main(): React.ReactElement {
                         setDropdownOpen={setDropdownOpen}
                       />
                     </h2>
-                    {!dropdownOpen["password"] && (
-                      <>
-                        <InputItem
-                          item={""}
-                          currrentItem={isPasswordProtected}
-                          callback={(e: {
-                            target: { value: React.SetStateAction<string> };
-                          }) => setIsPasswordProtected(e.target.value)}
-                          name={t("case.none")}
-                        />
-                        <InputItem
-                          item={"true"}
-                          currrentItem={isPasswordProtected}
-                          callback={(e: {
-                            target: { value: React.SetStateAction<string> };
-                          }) => setIsPasswordProtected(e.target.value)}
-                          name={t("case.on")}
-                        />
-                        <InputItem
-                          item={"false"}
-                          currrentItem={isPasswordProtected}
-                          callback={(e: {
-                            target: { value: React.SetStateAction<string> };
-                          }) => setIsPasswordProtected(e.target.value)}
-                          name={t("case.off")}
-                        />
-                      </>
-                    )}
+                    {!dropdownOpen["password"] &&
+                      Object.entries({
+                        "": "case.none",
+                        true: "case.on",
+                        false: "case.off",
+                      }).map(([k, v], index) => {
+                        return (
+                          <InputItem
+                            key={index}
+                            item={k}
+                            currrentItem={isPasswordProtected}
+                            callback={(e: {
+                              target: { value: React.SetStateAction<string> };
+                            }) => setIsPasswordProtected(e.target.value)}
+                            name={t(v)}
+                          />
+                        );
+                      })}
                   </ServerPageFilterRow>
                 )}
               </ServerPageFilters>
