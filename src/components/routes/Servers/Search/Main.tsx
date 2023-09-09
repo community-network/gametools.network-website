@@ -77,6 +77,44 @@ const ServerPageRow = styled.div`
   }
 `;
 
+const Arrow = styled.i`
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-left: 6px;
+`;
+
+function DropdownArrow(props: {
+  item: string;
+  dropdownOpen: {
+    [string: string]: boolean;
+  };
+  setDropdownOpen: React.Dispatch<
+    React.SetStateAction<{
+      [string: string]: boolean;
+    }>
+  >;
+}) {
+  const { item, dropdownOpen, setDropdownOpen } = props;
+  return (
+    <Arrow
+      onClick={() => {
+        const current = { ...dropdownOpen };
+        current[item] = !current[item];
+        setDropdownOpen(current);
+      }}
+      style={{
+        transform: dropdownOpen[item] ? "rotate(-135deg)" : "rotate(45deg)",
+        webkitTransform: dropdownOpen[item]
+          ? "rotate(-135deg)"
+          : "rotate(45deg)",
+        marginBottom: dropdownOpen[item] ? "0" : "2.44px",
+      }}
+    />
+  );
+}
+
 function ServerSort(props: {
   sortType: string;
   setSortType: (arg0: string) => void;
@@ -101,7 +139,7 @@ function ServerSort(props: {
 }
 
 function Main(): React.ReactElement {
-  const [width, setWidth] = React.useState(window.innerWidth);
+  const [width, setWidth] = React.useState<number>(window.innerWidth);
   React.useEffect(() => {
     window.addEventListener("resize", () => setWidth(window.innerWidth));
   }, []);
@@ -118,6 +156,9 @@ function Main(): React.ReactElement {
   const [limit, setLimit] = React.useState<string>("10");
   const [searchType, setSearchType] = React.useState<string>("experiencename");
   const [sortType, setSortType] = React.useState<string>("-prefix");
+  const [dropdownOpen, setDropdownOpen] = React.useState<{
+    [string: string]: boolean;
+  }>({});
 
   const [regionFilter, setRegionFilter] = React.useState<string[]>(["all"]);
   const [gamemodeFilter, setGamemodeFilter] = React.useState<string[]>([]);
@@ -387,195 +428,230 @@ function Main(): React.ReactElement {
                 <ServerPageFilterRow>
                   <h2 style={{ marginBottom: "0.4rem" }}>
                     {t("serverSearch.region")}
+                    <DropdownArrow
+                      item={"region"}
+                      dropdownOpen={dropdownOpen}
+                      setDropdownOpen={setDropdownOpen}
+                    />
                   </h2>
-                  {Object.keys(t(regionKey, { returnObjects: true })).map(
-                    (key, index) => {
-                      if (key === "all") {
-                        return;
-                      }
-                      return (
-                        <CheckItem
-                          key={index}
-                          item={key}
-                          currrentItems={regionFilter}
-                          callback={(e: {
-                            target: { value: string; checked: boolean };
-                          }) => {
-                            if (e.target.checked) {
-                              let oldArray = [...regionFilter];
-                              if (regionFilter.includes("all")) {
-                                oldArray = [];
+                  {!dropdownOpen["region"] &&
+                    Object.keys(t(regionKey, { returnObjects: true })).map(
+                      (key, index) => {
+                        if (key === "all") {
+                          return;
+                        }
+                        return (
+                          <CheckItem
+                            key={index}
+                            item={key}
+                            currrentItems={regionFilter}
+                            callback={(e: {
+                              target: { value: string; checked: boolean };
+                            }) => {
+                              if (e.target.checked) {
+                                let oldArray = [...regionFilter];
+                                if (regionFilter.includes("all")) {
+                                  oldArray = [];
+                                }
+                                setRegionFilter([...oldArray, e.target.value]);
+                              } else {
+                                setRegionFilter((oldArray) => [
+                                  ...oldArray.filter(
+                                    (item) => item !== e.target.value,
+                                  ),
+                                ]);
                               }
-                              setRegionFilter([...oldArray, e.target.value]);
-                            } else {
-                              setRegionFilter((oldArray) => [
-                                ...oldArray.filter(
-                                  (item) => item !== e.target.value,
-                                ),
-                              ]);
+                            }}
+                            name={t(`${regionKey}.${key}`)}
+                            disabled={
+                              !frostbite3.includes(gameName) &&
+                              !extraGames.includes(gameName)
                             }
-                          }}
-                          name={t(`${regionKey}.${key}`)}
-                          disabled={
-                            !frostbite3.includes(gameName) &&
-                            !extraGames.includes(gameName)
-                          }
-                        />
-                      );
-                    },
-                  )}
+                          />
+                        );
+                      },
+                    )}
                 </ServerPageFilterRow>
                 {playerFilterGames.includes(gameName) && (
                   <ServerPageFilterRow>
                     <h2 style={{ marginBottom: "0.4rem" }}>
                       {t("serverSearch.playerFilter")}
+                      <DropdownArrow
+                        item={"playerFilter"}
+                        dropdownOpen={dropdownOpen}
+                        setDropdownOpen={setDropdownOpen}
+                      />
                     </h2>
-                    {Object.keys(
-                      t("servers.frostbite3.playerFilter", {
-                        returnObjects: true,
-                      }),
-                    ).map((key, index) => {
-                      return (
-                        <CheckItem
-                          key={index}
-                          item={key}
-                          currrentItems={playerFilter}
-                          callback={(e: {
-                            target: {
-                              checked: boolean;
-                              value: string;
-                            };
-                          }) => {
-                            if (e.target.checked) {
-                              setPlayerFilter((oldArray) => [
-                                ...oldArray,
-                                e.target.value,
-                              ]);
-                            } else {
-                              setPlayerFilter((oldArray) => [
-                                ...oldArray.filter(
-                                  (item) => item !== e.target.value,
-                                ),
-                              ]);
+                    {!dropdownOpen["playerFilter"] &&
+                      Object.keys(
+                        t("servers.frostbite3.playerFilter", {
+                          returnObjects: true,
+                        }),
+                      ).map((key, index) => {
+                        return (
+                          <CheckItem
+                            key={index}
+                            item={key}
+                            currrentItems={playerFilter}
+                            callback={(e: {
+                              target: {
+                                checked: boolean;
+                                value: string;
+                              };
+                            }) => {
+                              if (e.target.checked) {
+                                setPlayerFilter((oldArray) => [
+                                  ...oldArray,
+                                  e.target.value,
+                                ]);
+                              } else {
+                                setPlayerFilter((oldArray) => [
+                                  ...oldArray.filter(
+                                    (item) => item !== e.target.value,
+                                  ),
+                                ]);
+                              }
+                            }}
+                            name={t(`servers.frostbite3.playerFilter.${key}`)}
+                            disabled={
+                              !frostbite3.includes(gameName) &&
+                              !extraGames.includes(gameName)
                             }
-                          }}
-                          name={t(`servers.frostbite3.playerFilter.${key}`)}
-                          disabled={
-                            !frostbite3.includes(gameName) &&
-                            !extraGames.includes(gameName)
-                          }
-                        />
-                      );
-                    })}
+                          />
+                        );
+                      })}
                   </ServerPageFilterRow>
                 )}
                 {gamemodeGames.includes(gameName) && (
                   <ServerPageFilterRow>
                     <h2 style={{ marginBottom: "0.4rem" }}>
                       {t("serverSearch.gamemode")}
+                      <DropdownArrow
+                        item={"gamemode"}
+                        dropdownOpen={dropdownOpen}
+                        setDropdownOpen={setDropdownOpen}
+                      />
                     </h2>
-                    {Object.keys(
-                      t("servers.bf1.gamemodes", { returnObjects: true }),
-                    ).map((key, index) => {
-                      return (
-                        <CheckItem
-                          key={index}
-                          item={key}
-                          currrentItems={gamemodeFilter}
-                          callback={(e: {
-                            target: { value: string; checked: boolean };
-                          }) => {
-                            if (e.target.checked) {
-                              setGamemodeFilter((oldArray) => [
-                                ...oldArray,
-                                e.target.value,
-                              ]);
-                            } else {
-                              setGamemodeFilter((oldArray) => [
-                                ...oldArray.filter(
-                                  (item) => item !== e.target.value,
-                                ),
-                              ]);
+                    {!dropdownOpen["gamemode"] &&
+                      Object.keys(
+                        t("servers.bf1.gamemodes", { returnObjects: true }),
+                      ).map((key, index) => {
+                        return (
+                          <CheckItem
+                            key={index}
+                            item={key}
+                            currrentItems={gamemodeFilter}
+                            callback={(e: {
+                              target: { value: string; checked: boolean };
+                            }) => {
+                              if (e.target.checked) {
+                                setGamemodeFilter((oldArray) => [
+                                  ...oldArray,
+                                  e.target.value,
+                                ]);
+                              } else {
+                                setGamemodeFilter((oldArray) => [
+                                  ...oldArray.filter(
+                                    (item) => item !== e.target.value,
+                                  ),
+                                ]);
+                              }
+                            }}
+                            name={t(`servers.bf1.gamemodes.${key}`)}
+                            disabled={
+                              !frostbite3.includes(gameName) &&
+                              !extraGames.includes(gameName)
                             }
-                          }}
-                          name={t(`servers.bf1.gamemodes.${key}`)}
-                          disabled={
-                            !frostbite3.includes(gameName) &&
-                            !extraGames.includes(gameName)
-                          }
-                        />
-                      );
-                    })}
+                          />
+                        );
+                      })}
                   </ServerPageFilterRow>
                 )}
                 {(gameName === "bf2042" || newTitles.includes(gameName)) && (
                   <ServerPageFilterRow>
                     <h2 style={{ marginBottom: "0.4rem" }}>
                       {t("serverSearch.map")}
+                      <DropdownArrow
+                        item={"map"}
+                        dropdownOpen={dropdownOpen}
+                        setDropdownOpen={setDropdownOpen}
+                      />
                     </h2>
-                    {Object.keys(
-                      t(`servers.${gameName}.maps`, { returnObjects: true }),
-                    ).map((key, index) => {
-                      return (
-                        <CheckItem
-                          key={index}
-                          item={key}
-                          currrentItems={mapFilter}
-                          callback={(e: {
-                            target: { value: string; checked: boolean };
-                          }) => {
-                            if (e.target.checked) {
-                              setMapFilter((oldArray) => [
-                                ...oldArray,
-                                e.target.value,
-                              ]);
-                            } else {
-                              setMapFilter((oldArray) => [
-                                ...oldArray.filter(
-                                  (item) => item !== e.target.value,
-                                ),
-                              ]);
+                    {!dropdownOpen["map"] &&
+                      Object.keys(
+                        t(`servers.${gameName}.maps`, { returnObjects: true }),
+                      ).map((key, index) => {
+                        return (
+                          <CheckItem
+                            key={index}
+                            item={key}
+                            currrentItems={mapFilter}
+                            callback={(e: {
+                              target: { value: string; checked: boolean };
+                            }) => {
+                              if (e.target.checked) {
+                                setMapFilter((oldArray) => [
+                                  ...oldArray,
+                                  e.target.value,
+                                ]);
+                              } else {
+                                setMapFilter((oldArray) => [
+                                  ...oldArray.filter(
+                                    (item) => item !== e.target.value,
+                                  ),
+                                ]);
+                              }
+                            }}
+                            name={t(`servers.${gameName}.maps.${key}`)}
+                            disabled={
+                              !frostbite3.includes(gameName) &&
+                              !extraGames.includes(gameName)
                             }
-                          }}
-                          name={t(`servers.${gameName}.maps.${key}`)}
-                          disabled={
-                            !frostbite3.includes(gameName) &&
-                            !extraGames.includes(gameName)
-                          }
-                        />
-                      );
-                    })}
+                          />
+                        );
+                      })}
                   </ServerPageFilterRow>
                 )}
-                <ServerPageFilterRow>
-                  <h2 style={{ marginBottom: "0.4rem" }}>
-                    {t("servers.password")}
-                  </h2>
-                  <InputItem
-                    item={""}
-                    currrentItem={isPasswordProtected}
-                    callback={(e: {
-                      target: { value: React.SetStateAction<string> };
-                    }) => setIsPasswordProtected(e.target.value)}
-                    name={t("case.none")}
-                  />
-                  <InputItem
-                    item={"true"}
-                    currrentItem={isPasswordProtected}
-                    callback={(e: {
-                      target: { value: React.SetStateAction<string> };
-                    }) => setIsPasswordProtected(e.target.value)}
-                    name={t("case.on")}
-                  />
-                  <InputItem
-                    item={"false"}
-                    currrentItem={isPasswordProtected}
-                    callback={(e: {
-                      target: { value: React.SetStateAction<string> };
-                    }) => setIsPasswordProtected(e.target.value)}
-                    name={t("case.off")}
-                  />
-                </ServerPageFilterRow>
+                {playerFilterGames.includes(gameName) && (
+                  <ServerPageFilterRow>
+                    <h2 style={{ marginBottom: "0.4rem" }}>
+                      {t("servers.password")}
+                      <DropdownArrow
+                        item={"password"}
+                        dropdownOpen={dropdownOpen}
+                        setDropdownOpen={setDropdownOpen}
+                      />
+                    </h2>
+                    {!dropdownOpen["password"] && (
+                      <>
+                        <InputItem
+                          item={""}
+                          currrentItem={isPasswordProtected}
+                          callback={(e: {
+                            target: { value: React.SetStateAction<string> };
+                          }) => setIsPasswordProtected(e.target.value)}
+                          name={t("case.none")}
+                        />
+                        <InputItem
+                          item={"true"}
+                          currrentItem={isPasswordProtected}
+                          callback={(e: {
+                            target: { value: React.SetStateAction<string> };
+                          }) => setIsPasswordProtected(e.target.value)}
+                          name={t("case.on")}
+                        />
+                        <InputItem
+                          item={"false"}
+                          currrentItem={isPasswordProtected}
+                          callback={(e: {
+                            target: { value: React.SetStateAction<string> };
+                          }) => setIsPasswordProtected(e.target.value)}
+                          name={t("case.off")}
+                        />
+                      </>
+                    )}
+                  </ServerPageFilterRow>
+                )}
               </ServerPageFilters>
             </Box>
           </div>
