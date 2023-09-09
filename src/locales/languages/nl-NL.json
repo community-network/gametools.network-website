@@ -208,6 +208,11 @@
     "platform": "platform",
     "gamemode": "gamemode",
     "playerFilter": "Beschikbare ruimte",
+    "showFilters": "Filters weergeven",
+    "serverOwner": {
+      "main": "Server eigenaar",
+      "add": "Toevoegen"
+    },
     "sorting": "Sortering"
   },
   "platoonSearch": {
@@ -597,6 +602,14 @@
         "Spearhead": "Spearhead",
         "Flashpoint": "Flashpoint",
         "Reclaimed": "Reclaimed"
+      },
+      "gamemodes": {
+        "Breakthrough Large": "Breakthrough Large",
+        "Breakthrough": "Breakthrough",
+        "Conquest": "Conquest",
+        "Custom": "Aangepast",
+        "Rush": "Rush",
+        "Conquest large": "Conquest large"
       }
     },
     "frostbite3": {
