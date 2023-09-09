@@ -19,10 +19,6 @@ import {
 import { DynamicSort } from "../../Stats/Player/Main";
 import sslFix from "../../../functions/fixEaAssets";
 
-const Description = styled.p`
-  ${AltText}
-`;
-
 interface IServerImage {
   background: string;
 }
@@ -66,14 +62,39 @@ const ServerInfo = styled.div`
   text-overflow: ellipsis;
 `;
 
-const Spacing = styled.div`
-  margin-bottom: 2rem;
-`;
-
 const handleChildElementClick = (e: { stopPropagation: () => void }) => {
   e.stopPropagation();
   // Do other stuff here
 };
+
+function LoadingServerInfo(props: { spacingStyle; serverText; style? }) {
+  const { t } = useTranslation();
+  return (
+    <Box spacingStyle={props.spacingStyle}>
+      <AlignSeverImg>
+        <ServerImage background="">
+          <Blur />
+        </ServerImage>
+        <ServerInfo>
+          <h3
+            style={{
+              whiteSpace: "pre",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              color: "gray",
+              ...props.style,
+            }}
+          >
+            {props.serverText}
+          </h3>
+          <p style={{ color: "gray" }}>
+            0/0 - {t("notApplicable")} - {t("notApplicable")}
+          </p>
+        </ServerInfo>
+      </AlignSeverImg>
+    </Box>
+  );
+}
 
 interface Views {
   loading: boolean;
@@ -91,9 +112,9 @@ export function Results(props: Views): React.ReactElement {
   if (!props.loading && !props.error) {
     if (stats.servers.length == 0) {
       return (
-        <Spacing>
-          <Description>{t("resultNotFound")}</Description>
-        </Spacing>
+        <Box spacingStyle={props.spacingStyle}>
+          <h3>{t("resultNotFound")}</h3>
+        </Box>
       );
     }
 
@@ -232,9 +253,15 @@ export function Results(props: Views): React.ReactElement {
     );
   } else {
     return (
-      <Box spacingStyle={props.spacingStyle}>
-        <h3>{t("loading")}</h3>
-      </Box>
+      <>
+        {[...Array(3)].map((key) => (
+          <LoadingServerInfo
+            key={key}
+            spacingStyle={props.spacingStyle}
+            serverText={t("loading")}
+          />
+        ))}
+      </>
     );
   }
 }
