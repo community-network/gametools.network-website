@@ -64,6 +64,23 @@ interface Views {
   platform: string;
 }
 
+function PlatoonLoading(): React.ReactElement {
+  const { t } = useTranslation();
+  return (
+    <Box className="box_hover box" link={""} condition={true}>
+      <AlignW>
+        <div>
+          <PlatoonImage background={""}></PlatoonImage>
+        </div>
+        <PlatoonInfo>
+          <h3 style={{ color: "gray" }}>{t("loading")}</h3>
+          <p style={{ color: "gray" }}>0 / 0</p>
+        </PlatoonInfo>
+      </AlignW>
+    </Box>
+  );
+}
+
 function Results(props: Views): React.ReactElement {
   const { t } = useTranslation();
   const stats = props.platoons;
@@ -101,9 +118,11 @@ function Results(props: Views): React.ReactElement {
     );
   } else {
     return (
-      <Box>
-        <h3>{t("loading")}</h3>
-      </Box>
+      <>
+        {[...Array(3)].map((key) => (
+          <PlatoonLoading key={key} />
+        ))}
+      </>
     );
   }
 }
