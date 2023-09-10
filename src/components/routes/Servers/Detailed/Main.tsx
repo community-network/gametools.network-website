@@ -132,6 +132,7 @@ function capitalizeFirstLetter(string: string) {
 }
 
 export function Results(props: Views): React.ReactElement {
+  const { loading, error } = props;
   // const query = new URLSearchParams(useLocation().search);
   // const blazeIdQuery = query.get("blazeid");
   const getLanguage = () => window.localStorage.i18nextLng;
@@ -145,21 +146,15 @@ export function Results(props: Views): React.ReactElement {
   const { t, i18n } = useTranslation();
   const stats = props.stats;
 
-  if (props.error) {
+  if (error) {
     return (
       <>
         <h1>{t("servers.notFound.main")}</h1>
         <p>{t("servers.notFound.description")}</p>
       </>
     );
-  } else if (props.loading) {
-    return (
-      <Box>
-        <h3>{t("loading")}</h3>
-      </Box>
-    );
   } else {
-    let widgetReturn = encodeURIComponent(stats.prefix);
+    let widgetReturn = encodeURIComponent(stats?.prefix);
     let widgetItem = "name";
     if (!dice.includes(props.game) && props.game != "battlebit") {
       widgetItem = "serverip";
@@ -167,21 +162,21 @@ export function Results(props: Views): React.ReactElement {
     }
 
     let queue: number = undefined;
-    queue = stats.inQue;
+    queue = stats?.inQue;
     let queueString = "";
     if (queue !== undefined && queue !== 0) {
       queueString = `[${queue}]`;
     }
     let officialString = "";
-    if (stats.official !== undefined) {
-      officialString = stats.official ? " - Official" : " - Custom";
+    if (stats?.official !== undefined) {
+      officialString = stats?.official ? " - Official" : " - Custom";
     }
     return (
       <div>
         <AlignSeverImg>
-          <ServerImage background={stats.currentMapImage || stats.mapImage}>
+          <ServerImage background={stats?.currentMapImage || stats?.mapImage}>
             <Blur>
-              <ServerText>{stats.smallmode}</ServerText>
+              <ServerText>{stats?.smallmode}</ServerText>
               {stats?.favorites && (
                 <ServerFactorites>
                   &#9734; {numberFormat.format(stats?.favorites)}
@@ -190,21 +185,27 @@ export function Results(props: Views): React.ReactElement {
             </Blur>
           </ServerImage>
           <div>
-            <h2 style={{ whiteSpace: "pre" }}>{stats.prefix}</h2>
+            <h2 style={{ whiteSpace: "pre" }}>
+              {loading ? t("loading") : stats?.prefix}
+            </h2>
             <Description style={{ maxWidth: "1000px" }}>
-              {stats.description}
+              {loading ? t("notApplicable") : stats?.description}
             </Description>
-            <Description>
-              {stats.playerAmount}/{stats.maxPlayers}
-              {stats.maxPlayerAmount}
-              {queueString}
-              {stats.noBotsPlayerAmount
-                ? ` (${stats.noBotsPlayerAmount} without bots)`
-                : ``}{" "}
-              - {stats.currentMap ? stats.currentMap : stats.map}
-              {officialString}
-            </Description>
-            {stats.region ? (
+            {loading ? (
+              <Description>{t("notApplicable")}</Description>
+            ) : (
+              <Description>
+                {stats?.playerAmount}/{stats?.maxPlayers}
+                {stats?.maxPlayerAmount}
+                {queueString}
+                {stats?.noBotsPlayerAmount
+                  ? ` (${stats.noBotsPlayerAmount} without bots)`
+                  : ``}{" "}
+                - {stats?.currentMap ? stats?.currentMap : stats?.map}
+                {officialString}
+              </Description>
+            )}
+            {stats?.region ? (
               <>
                 {props.game == "bf2042" ? (
                   <Description>
@@ -228,7 +229,7 @@ export function Results(props: Views): React.ReactElement {
                 )}
               </>
             ) : (
-              <Description>{stats.mode}</Description>
+              <Description>{stats?.mode}</Description>
             )}
           </div>
         </AlignSeverImg>
@@ -240,7 +241,7 @@ export function Results(props: Views): React.ReactElement {
               <CopyToClipboard
                 message={`https://gametools.network/servers/${
                   props.game
-                }/name/${encodeURIComponent(stats.prefix)}/pc`}
+                }/name/${encodeURIComponent(stats?.prefix)}/pc`}
                 stateTranslation={"states"}
               />
             </Description>
@@ -276,7 +277,7 @@ export function Results(props: Views): React.ReactElement {
           </>
         )}
         {/* when available */}
-        {stats.rotation && (
+        {stats?.rotation && (
           <>
             <Title style={{ marginBottom: 0 }}>{t("servers.rotation")}</Title>
             <Align>
@@ -325,9 +326,9 @@ export function Results(props: Views): React.ReactElement {
           <PageRow>
             {props.game !== "bf4" && frostbite3.includes(props.game) ? (
               <>
-                {stats.owner != null && (
+                {stats?.owner != null && (
                   <OwnerInfo
-                    owner={stats.owner}
+                    owner={stats?.owner}
                     game={props.game}
                     title={t("servers.owner.main")}
                   />
@@ -349,11 +350,11 @@ export function Results(props: Views): React.ReactElement {
                     // ) : (
                     //   <></>
                     // )}
-                    <ServerConfig serverInfo={stats.serverInfo} />
+                    <ServerConfig serverInfo={stats?.serverInfo} />
                   ) : (
                     <ServerPlayerlist
                       game={props.game}
-                      gameid={stats.gameId}
+                      gameid={stats?.gameId}
                       platform={props.platform}
                     />
                   ))}
@@ -361,13 +362,13 @@ export function Results(props: Views): React.ReactElement {
             ) : (
               <>
                 {props.game === "bf3" ? (
-                  <Bf3ServerPlayerlist players={stats.players} />
+                  <Bf3ServerPlayerlist players={stats?.players} />
                 ) : // older titles
-                stats.ip && stats.port ? (
+                stats?.ip && stats?.port ? (
                   <BfListServerPlayerList
                     game={props.game}
-                    serverIp={stats.ip}
-                    serverPort={stats.hostport || stats.port}
+                    serverIp={stats?.ip}
+                    serverPort={stats?.hostport || stats?.port}
                   />
                 ) : (
                   <></>
@@ -375,10 +376,10 @@ export function Results(props: Views): React.ReactElement {
               </>
             )}
             {/* bf4 */}
-            {stats.players != undefined && stats.teams != undefined && (
+            {stats?.players != undefined && stats?.teams != undefined && (
               <ServerScoreboard
                 game={props.game}
-                stats={stats.teams}
+                stats={stats?.teams}
                 platform={props.platform}
               />
             )}
@@ -395,24 +396,24 @@ export function Results(props: Views): React.ReactElement {
             {props.game === "bf1" && (
               <>
                 <ServerPlatoon
-                  platoon={stats.platoon}
-                  platform={props.platform}
+                  platoon={stats?.platoon}
+                  platform={props?.platform}
                 />
-                <ServerLeaderboard gameid={stats.gameId} />
+                <ServerLeaderboard gameid={stats?.gameId} />
               </>
             )}
             {props.game === "bf2042" ? (
               <>
-                {stats.configCreator !== null && (
+                {stats?.configCreator !== null && (
                   <OwnerInfo
-                    owner={stats.configCreator}
+                    owner={stats?.configCreator}
                     game={props.game}
                     title={t("servers.owner.experience")}
                   />
                 )}
-                <BfPortalInfo experienceName={stats.serverInfo.configName} />
+                <BfPortalInfo experienceName={stats?.serverInfo.configName} />
                 <h2>{t("servers.settings")}</h2>
-                {stats.settings.map((value: ServerSettings, index: number) => {
+                {stats?.settings.map((value: ServerSettings, index: number) => {
                   return (
                     <div key={index}>
                       <AltDescription key={index}>
@@ -431,11 +432,11 @@ export function Results(props: Views): React.ReactElement {
               </>
             ) : (
               <>
-                {stats.settings && (
+                {stats?.settings && (
                   <>
                     <h2>{t("servers.settings")}</h2>
                     <AlignT>
-                      {Object.entries(stats.settings).map(
+                      {Object.entries(stats?.settings).map(
                         (key: [string, unknown], index: number) => {
                           return (
                             <div key={index}>

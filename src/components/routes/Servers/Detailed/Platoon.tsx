@@ -21,7 +21,7 @@ export function ServerPlatoon(props: {
   const { t } = useTranslation();
   const platoon = props.platoon;
   const platform = props.platform;
-  if (platoon === null) {
+  if (!platoon) {
     return (
       <Spacing>
         <h2>{t("servers.platoon.main")}</h2>
