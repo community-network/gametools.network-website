@@ -629,30 +629,35 @@ const AmountBox = styled.div`
 function TotalStatistic(props: {
   amounts: number[];
   text: string;
+  loading: boolean;
 }): React.ReactElement {
-  const amounts = props.amounts;
+  const { amounts, loading } = props;
+  const { t } = useTranslation();
 
-  if (!amounts) {
-    return <></>;
-  }
-  const secondToLastAmount = amounts[amounts.length - 2];
-  const lastAmount = amounts[amounts.length - 1];
+  const secondToLastAmount = amounts ? amounts[amounts.length - 2] : 0;
+  const lastAmount = amounts ? amounts[amounts.length - 1] : 0;
   const difference =
     ((lastAmount - secondToLastAmount) * 100) / secondToLastAmount;
   return (
     <AmountBox>
       <Align>
-        <Title>
-          {lastAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
-        </Title>
-        <div
-          style={{
-            color: difference < 0 ? "#FE143E" : "#14FE72",
-            marginLeft: "10px",
-          }}
-        >
-          {difference < 0 ? "▼" : "▲"} {Math.abs(difference).toFixed(2)}%
-        </div>
+        {loading ? (
+          <Title style={{ color: "gray" }}>{t("loading")}</Title>
+        ) : (
+          <>
+            <Title>
+              {lastAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
+            </Title>
+            <div
+              style={{
+                color: difference < 0 ? "#FE143E" : "#14FE72",
+                marginLeft: "10px",
+              }}
+            >
+              {difference < 0 ? "▼" : "▲"} {Math.abs(difference).toFixed(2)}%
+            </div>
+          </>
+        )}
       </Align>
       <div>{props.text}</div>
     </AmountBox>
@@ -866,94 +871,92 @@ function ServerGraph(props: { stats: GlobalGraphReturn }): React.ReactElement {
 }
 
 function TotalGraph(props: NewGraphData): React.ReactElement {
-  if (!props.loading && !props.error) {
-    const { t } = useTranslation();
-    const chartRef = React.useRef(null);
-    const time = props.stats.timeStamps.map((e: string) => {
-      const time = new Date(e);
-      return time;
-    });
+  const { t } = useTranslation();
+  const chartRef = React.useRef(null);
+  const time = props.stats?.timeStamps?.map((e: string) => {
+    const time = new Date(e);
+    return time;
+  });
 
-    return (
-      <BoxSpacing style={{ maxWidth: "922px" }}>
-        <BoxWrap>
-          <p style={{ position: "absolute", marginTop: "25px" }}>
-            <Align>
-              <TotalStatistic
-                amounts={props.stats.soldierAmount}
-                text="Playing Battlefield right now"
-              />
-              <TotalStatistic
-                amounts={props.stats.serverAmount}
-                text="Active servers"
-              />
-            </Align>
-          </p>
-          <Line
-            ref={chartRef}
-            options={{
-              maintainAspectRatio: false,
-              hover: {
-                intersect: false,
+  return (
+    <BoxSpacing style={{ maxWidth: "922px" }}>
+      <BoxWrap>
+        <p style={{ position: "absolute", marginTop: "25px" }}>
+          <Align>
+            <TotalStatistic
+              amounts={props.stats?.soldierAmount}
+              text="Playing Battlefield right now"
+              loading={props.loading}
+            />
+            <TotalStatistic
+              amounts={props.stats?.serverAmount}
+              text="Active servers"
+              loading={props.loading}
+            />
+          </Align>
+        </p>
+        <Line
+          ref={chartRef}
+          options={{
+            maintainAspectRatio: false,
+            hover: {
+              intersect: false,
+              mode: "nearest",
+            },
+            scales: {
+              x: {
+                grid: {
+                  display: false,
+                },
+                display: false,
+                type: "time",
+              },
+              y: {
+                display: false,
+                grid: {
+                  display: false,
+                },
+              },
+            },
+            plugins: {
+              tooltip: {
                 mode: "nearest",
+                intersect: false,
               },
-              scales: {
-                x: {
-                  grid: {
-                    display: false,
-                  },
-                  display: false,
-                  type: "time",
-                },
-                y: {
-                  display: false,
-                  grid: {
-                    display: false,
+              zoom: {
+                limits: {
+                  x: {
+                    min: +new Date() - 604800000,
+                    max: +new Date(),
+                    minRange: 50000000,
                   },
                 },
               },
-              plugins: {
-                tooltip: {
-                  mode: "nearest",
-                  intersect: false,
-                },
-                zoom: {
-                  limits: {
-                    x: {
-                      min: +new Date() - 604800000,
-                      max: +new Date(),
-                      minRange: 50000000,
-                    },
-                  },
+            },
+          }}
+          style={{ marginTop: "100px", height: "227px" }}
+          data={{
+            labels: time,
+            datasets: [
+              {
+                label: t("stats.graph.soldierAmount"),
+                data: props.stats?.soldierAmount,
+                fill: "origin",
+                borderColor: "#ffffff81",
+                pointRadius: 0,
+                borderWidth: 1.5,
+                backgroundColor: (context: ScriptableContext<"line">) => {
+                  const ctx = context.chart.ctx;
+                  const gradient = ctx.createLinearGradient(0, 0, 0, 220);
+                  gradient.addColorStop(0, "rgba(255, 255, 255, 0.1)");
+                  gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+                  return gradient;
                 },
               },
-            }}
-            style={{ marginTop: "100px", height: "227px" }}
-            data={{
-              labels: time,
-              datasets: [
-                {
-                  label: t("stats.graph.soldierAmount"),
-                  data: props.stats.soldierAmount,
-                  fill: "origin",
-                  borderColor: "#ffffff81",
-                  pointRadius: 0,
-                  borderWidth: 1.5,
-                  backgroundColor: (context: ScriptableContext<"line">) => {
-                    const ctx = context.chart.ctx;
-                    const gradient = ctx.createLinearGradient(0, 0, 0, 220);
-                    gradient.addColorStop(0, "rgba(255, 255, 255, 0.1)");
-                    gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
-                    return gradient;
-                  },
-                },
-              ],
-            }}
-          />
-        </BoxWrap>
-      </BoxSpacing>
-    );
-  } else {
-    return <div></div>;
-  }
+            ],
+          }}
+        />
+      </BoxWrap>
+    </BoxSpacing>
+  );
 }
