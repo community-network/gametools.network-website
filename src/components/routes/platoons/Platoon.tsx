@@ -181,25 +181,87 @@ function SmallExportButton(props: { members: PlatoonPlayer[] }) {
   );
 }
 
+function Member(props: {
+  platform: string;
+  item: PlatoonPlayer;
+  children?: React.ReactElement[] | React.ReactElement;
+}): React.ReactElement {
+  const { item, platform, children } = props;
+  const { t } = useTranslation();
+
+  const loadingStyle = { color: item?.id != "loading" ? "white" : "gray" };
+
+  return (
+    <div style={{ margin: "0.8rem 0.2rem" }}>
+      <Column style={{ marginTop: 0 }}>
+        <Row>
+          <Link
+            to={`/stats/${platform}/playerid/${item?.id}?game=bf1&name=${encodeURIComponent(
+              item?.name,
+            )}`}
+          >
+            <Align>
+              <MemberImage src={sslFix(item?.avatar)} />
+              <h4
+                style={{ marginTop: "2px", marginBottom: 0, ...loadingStyle }}
+              >
+                {item?.name}
+                {children}
+              </h4>
+            </Align>
+          </Link>
+        </Row>
+        <SmallestPhoneRow>
+          <h4 style={loadingStyle}>
+            {item?.id != "loading"
+              ? t(`platoon.members.${item?.role}`)
+              : t("notApplicable")}
+          </h4>
+        </SmallestPhoneRow>
+        <TabletRow>
+          <ButtonLink
+            style={{ marginTop: ".3rem", ...loadingStyle }}
+            href={`https://gametools.network/stats/${platform}/playerid/${item?.id}?game=bf1&name=${encodeURIComponent(
+              item?.name,
+            )}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {t("stats.view")}
+          </ButtonLink>
+        </TabletRow>
+      </Column>
+      <hr
+        style={{
+          marginTop: "0.6rem",
+          width: "98%",
+          border: "1px solid #282a3a",
+        }}
+      />
+    </div>
+  );
+}
+
 function Members(props: {
   members: PlatoonPlayer[];
   platform: string;
+  loading: boolean;
 }): React.ReactElement {
   const { t } = useTranslation();
-  const platform = props.platform;
 
   let members = [];
   const [searchTerm, setSearchTerm] = React.useState<string>("");
   const [sortType, setSortType] = React.useState<string>("default");
 
-  members = props.members.filter((item: { name: string; role: string }) => {
+  members = props.members?.filter((item: { name: string; role: string }) => {
     return item.name.toLowerCase().includes(searchTerm.toLowerCase());
   });
-  members = members.sort(dynamicSort(sortType));
+  members = members?.sort(dynamicSort(sortType));
 
-  const playerIds = members.map((item: { id: string }) => {
+  const playerIds = members?.map((item: { id: string }) => {
     return item.id;
   });
+
   const {
     isLoading: bfbanLoading,
     isError: bfbanError,
@@ -247,59 +309,32 @@ function Members(props: {
       </Align>
       <Box>
         <div>
-          {members.map((key: PlatoonPlayer, index: number) => {
-            return (
-              <div key={index} style={{ margin: "0.8rem 0.2rem" }}>
-                <Column style={{ marginTop: 0 }}>
-                  <Row>
-                    <Link
-                      to={`/stats/${platform}/playerid/${
-                        key.id
-                      }?game=bf1&name=${encodeURIComponent(key.name)}`}
-                    >
-                      <Align>
-                        <MemberImage src={sslFix(key?.avatar)} />
-                        <h4 style={{ marginTop: "2px", marginBottom: 0 }}>
-                          {key.name}
-                          <CheckBan
-                            playerId={key.id}
-                            bfBanList={bfBanInfo}
-                            bfbanLoading={bfbanLoading}
-                            bfbanError={bfbanError}
-                            bfeacList={bfeacInfo}
-                            bfeacLoading={bfeacLoading}
-                            bfeacError={bfeacError}
-                          />
-                        </h4>
-                      </Align>
-                    </Link>
-                  </Row>
-                  <SmallestPhoneRow>
-                    <h4>{t(`platoon.members.${key.role}`)}</h4>
-                  </SmallestPhoneRow>
-                  <TabletRow>
-                    <ButtonLink
-                      style={{ marginTop: ".3rem" }}
-                      href={`https://gametools.network/stats/${platform}/playerid/${
-                        key.id
-                      }?game=bf1&name=${encodeURIComponent(key.name)}`}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {t("stats.view")}
-                    </ButtonLink>
-                  </TabletRow>
-                </Column>
-                <hr
-                  style={{
-                    marginTop: "0.6rem",
-                    width: "98%",
-                    border: "1px solid #282a3a",
+          {props.loading
+            ? [...Array(6)].map((key) => (
+                <Member
+                  platform={props.platform}
+                  item={{
+                    id: "loading",
+                    name: t("loading"),
+                    role: "notApplicable",
+                    avatar: "",
                   }}
+                  key={key}
                 />
-              </div>
-            );
-          })}
+              ))
+            : members.map((key: PlatoonPlayer, index: number) => (
+                <Member platform={props.platform} item={key} key={index}>
+                  <CheckBan
+                    playerId={key?.id}
+                    bfBanList={bfBanInfo}
+                    bfbanLoading={bfbanLoading}
+                    bfbanError={bfbanError}
+                    bfeacList={bfeacInfo}
+                    bfeacLoading={bfeacLoading}
+                    bfeacError={bfeacError}
+                  />
+                </Member>
+              ))}
         </div>
       </Box>
     </Spacing>
@@ -353,7 +388,7 @@ const handleChildElementClick = (e: { stopPropagation: () => void }) => {
 function Servers(props: { servers: ServerList[] }): React.ReactElement {
   const { t } = useTranslation();
   const servers = props.servers;
-  if (servers.length == 0) {
+  if (servers?.length <= 0) {
     return (
       <Spacing>
         <h2>{t("platoon.servers")}</h2>
@@ -373,7 +408,7 @@ function Servers(props: { servers: ServerList[] }): React.ReactElement {
           </Trans>
         </p>
       </Align>
-      {servers.map((key: ServerList, index: number) => {
+      {servers?.map((key: ServerList, index: number) => {
         let queue: number = undefined;
         queue = key.inQue;
         let queueString = "";
@@ -455,25 +490,21 @@ function Results(props: Views): React.ReactElement {
         <p>{t("platoon.notFound.description")}</p>
       </>
     );
-  } else if (props.loading) {
-    return (
-      <Box>
-        <h3>{t("loading")}</h3>
-      </Box>
-    );
   } else {
     return (
       <div>
         <AlignPlatoonImg>
-          <PlatoonImage background={platoon.emblem} />
+          <PlatoonImage background={platoon?.emblem} />
           <div style={{ marginLeft: "0.5rem" }}>
             <PlatoonTitle>
-              [{platoon.tag}] {platoon.name}
+              {props.loading
+                ? t("loading")
+                : `[${platoon?.tag}] ${platoon?.name}`}
             </PlatoonTitle>
-            <Description>{platoon.currentSize} / 100</Description>
-            {platoon.description !== null ? (
+            <Description>{platoon?.currentSize || 0} / 100</Description>
+            {platoon?.description ? (
               <Description>
-                {platoon.description.split(". ").map(function (
+                {platoon?.description.split(". ").map(function (
                   descPart: string,
                   idx: number,
                 ) {
@@ -483,16 +514,20 @@ function Results(props: Views): React.ReactElement {
                 })}
               </Description>
             ) : (
-              <></>
+              <Description>{t("notApplicable")}</Description>
             )}
           </div>
         </AlignPlatoonImg>
         <PageColumn>
           <PageRow>
-            <Members platform={props.platform} members={platoon.members} />
+            <Members
+              loading={props.loading}
+              platform={props?.platform}
+              members={platoon?.members}
+            />
           </PageRow>
           <PageRow>
-            <Servers servers={platoon.servers} />
+            <Servers servers={platoon?.servers} />
           </PageRow>
         </PageColumn>
       </div>
