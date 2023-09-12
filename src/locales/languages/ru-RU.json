@@ -1,561 +1,717 @@
 {
-    "siteName": "GAMETOOLS",
-    "siteFullName": "Game tools",
-    "loading": "Загрузка...",
-    "error": "Не получилось получить статистику, что-то пошло не так...",
-    "404": "404",
-    "playerNotFound": "Playername not found, please try another.",
-    "notApplicable": "Н/Д",
-    "resultNotFound": "Не найдено",
-    "noName": "Не удается отобразить имя игрока при доступе к статистике через PlayerID",
-    "date": "{{date, date|eee, dd MMM yyyy}}",
-    "dateTime": "{{date, date|eee, dd MMM yyyy - p}}",
-    "shortDateTime": "{{date, date|PPpp}}",
-    "chartHourFormat": "HH:mm, eee d LLL",
-    "time": "{{date, date|p}}",
-    "change": "{{change, change}}",
-    "intlNumber": "{{val, number}}",
-    "ago": "назад",
-    "export": "Экспорт",
-    "dateType": {
-        "createdAt": "Создано",
-        "updatedAt": "Обновлено"
+  "siteName": "GAMETOOLS",
+  "siteFullName": "Game tools",
+  "loading": "Загрузка...",
+  "error": "Не получилось получить статистику, что-то пошло не так...",
+  "404": "404",
+  "playerNotFound": "Ник не найден, попробуйте другой.",
+  "notApplicable": "Н/Д",
+  "resultNotFound": "Не найдено",
+  "noName": "Не удается отобразить имя игрока при доступе к статистике через PlayerID",
+  "externalScriptError": "Не удалось загрузить внешний скрипт, что-то пошло не так...",
+  "date": "{{date, date|eee, dd MMM yyyy}}",
+  "dateTime": "{{date, date|eee, dd MMM yyyy - p}}",
+  "shortDateTime": "{{date, date|PPpp}}",
+  "chartHourFormat": "HH:mm, eee d LLL",
+  "time": "{{date, date|p}}",
+  "change": "{{change, change}}",
+  "intlNumber": "{{val, number}}",
+  "ago": "назад",
+  "export": "Экспорт",
+  "case": {
+    "none": "Н/Д",
+    "on": "Вкл",
+    "off": "Выкл"
+  },
+  "dateType": {
+    "createdAt": "Создано",
+    "updatedAt": "Обновлено"
+  },
+  "bfban": {
+    "main": "BFBan",
+    "stats": "Игрок отмечен как хакер в bfban!",
+    "platoon": "Хакер"
+  },
+  "bfeac": {
+    "main": "BFEAC"
+  },
+  "states": {
+    "copy": "Скопировать ссылку",
+    "copied": "Скопировано!"
+  },
+  "copyApiStates": {
+    "copy": "Скопировать ссылку api",
+    "copied": "Скопировано!"
+  },
+  "navBar": {
+    "help": "Нужна помощь?",
+    "serverManager": "Server Manager",
+    "api": "Battlefield API"
+  },
+  "games": {
+    "bfglobal": "Global",
+    "bf1942": "Battlefield 1942",
+    "bf2": {
+      "bf2hub": "Battlefield 2 (bf2hub)",
+      "playbf2": "Battlefield 2 (playbf2)"
     },
-    "bfban": {
-        "stats": "Игрок отмечен как хакер в bfban!",
-        "platoon": "Хакер"
+    "bf2142": {
+      "openspy": "Battlefield 2142 (openspy)",
+      "play2142": "Battlefield 2142 (.co)"
     },
-    "states": {
-        "copy": "Скопировать ссылку",
-        "copied": "Скопировано!"
+    "bfvietnam": {
+      "openspy": "Battlefield Vietnam (openspy)",
+      "qtracker": "Battlefield Vietnam (qtracker)"
     },
-    "navBar": {
-        "help": "Нужна помощь?",
-        "serverManager": "Server Manager",
-        "api": "Battlefield API"
+    "bfbc2": "Battlefield: Bad Company 2",
+    "bf3": "Battlefield 3",
+    "bf4": "Battlefield 4",
+    "bfh": "Battlefield Hardline",
+    "bf1": "Battlefield 1",
+    "bfv": "Battlefield 5",
+    "bf2042": "Battlefield 2042",
+    "bf2042portal": "Battlefield 2042 Portal",
+    "battlebit": "BattleBit"
+  },
+  "limit": {
+    "10": "10 серверов",
+    "25": "25 серверов",
+    "50": "50 серверов",
+    "100": "100 серверов",
+    "200": "200 серверов",
+    "250": "250 серверов"
+  },
+  "regions": {
+    "all": "Все регионы",
+    "eu": "Европа",
+    "asia": "Азия",
+    "nam": "Северная Америка",
+    "sam": "Южная Америка",
+    "au": "Австралия",
+    "oc": "Океания",
+    "afr": "Африка",
+    "ac": "Антарктика"
+  },
+  "battlebitRegions": {
+    "all": "Все регионы",
+    "Europe_Central": "Европа",
+    "America_Central": "Америка",
+    "Japan_Central": "Япония",
+    "Australia_Central": "Австралия",
+    "Brazil_Central": "Бразилия",
+    "Developer_Server": "Разработка"
+  },
+  "platforms": {
+    "pc": "PC",
+    "xboxseries": "XBOX SERIES",
+    "xboxone": "XBOX ONE",
+    "xbox360": "XBOX 360",
+    "ps5": "PS5",
+    "ps4": "PS4",
+    "ps3": "PS3",
+    "all": "Все платформы"
+  },
+  "serverType": {
+    "official": "Официальный",
+    "custom": "Кастомный"
+  },
+  "statPlatforms": {
+    "pc": "PC",
+    "xboxone": "XBOX ONE (и новее)",
+    "xbox360": "XBOX 360",
+    "ps4": "PS4 (и новее)",
+    "ps3": "PS3"
+  },
+  "home": {
+    "manager": {
+      "header": "GAMETOOLS | CLOUD",
+      "description": "Мы создали веб-платформу для защиты от читеров и управления для защиты ваших серверов Battlefield.\nСоздан с помощью многих сообществ.\n\nВойдите в систему прямо сейчас и начните свою интеграцию бесплатно!",
+      "open": "Запустить приложение",
+      "disclaimer": "Хостинг сервера не предоставляется. В настоящее время мы поддерживаем следующие игры Battlefield:"
     },
-    "games": {
-        "bfglobal": "Global",
-        "bf1942": "Battlefield 1942",
-        "bf2": {
-            "bf2hub": "Battlefield 2 (bf2hub)",
-            "playbf2": "Battlefield 2 (playbf2)"
-        },
-        "bf2142": {
-            "openspy": "Battlefield 2142 (openspy)",
-            "play2142": "Battlefield 2142 (.co)"
-        },
-        "bfvietnam": {
-            "openspy": "Battlefield Vietnam (openspy)",
-            "qtracker": "Battlefield Vietnam (qtracker)"
-        },
-        "bfbc2": "Battlefield: Bad Company 2",
-        "bf3": "Battlefield 3",
-        "bf4": "Battlefield 4",
-        "bfh": "Battlefield Hardline",
-        "bf1": "Battlefield 1",
-        "bfv": "Battlefield 5",
-        "bf2042": "Battlefield 2042",
-        "bf2042portal": "Battlefield 2042 Portal"
+    "graphs": {
+      "header": "Онлайн статистика и графики",
+      "detailed": "Показать подробную статистику"
     },
-    "limit": {
-        "10": "10 серверов",
-        "25": "25 серверов",
-        "50": "50 серверов",
-        "100": "100 серверов",
-        "200": "200 серверов",
-        "250": "250 серверов"
+    "otherServices": {
+      "header": "Другие сервисы",
+      "0": {
+        "header": "Взводы Battlefield",
+        "localUrl": "/взводы/"
+      },
+      "1": {
+        "header": "Portal Experience инфо",
+        "localUrl": "/playgrounds/"
+      },
+      "2": {
+        "header": "FESL API (Battlefield bad company 2 APIs)",
+        "url": "https://fesl.gametools.network/docs"
+      }
     },
-    "regions": {
-        "all": "Все регионы",
-        "eu": "Европа",
-        "asia": "Азия",
-        "nam": "Северная Америка",
-        "sam": "Южная Америка",
-        "au": "Австралия",
-        "oc": "Океания",
-        "afr": "Африка",
-        "ac": "Антарктика"
+    "ourFriends": {
+      "header": "Наши друзья",
+      "0": {
+        "header": "BFBan",
+        "description": "Мы принимаем гостей и являемся активной частью bfban.com - удивительное сообщество и команда реверс-инжиниринга / безопасности, созданная против хакеров, чтобы обеспечить единый бан-лист и систему жалоб.\nСообщайте о мошенниках в BF1/BFV, чтобы их можно было заблокировать на серверах сообщества.",
+        "link": "Посетить BFBan",
+        "url": "https://bfban.gametools.network/"
+      },
+      "1": {
+        "header": "BFPortal",
+        "description": "Найти и поделиться Battlefield 2042 portal experiences",
+        "link": "Посетить BFPortal",
+        "url": "https://bfportal.gg/"
+      },
+      "2": {
+        "header": "Статбиты",
+        "description": "Статбиты позволяют вам интегрировать биты игровой статистики в ваш стрим-чат, а также в любое другое приложение. Хотите команду !kd, которая показывает отношение убийств/смертей в Battlefield 4? Мы сделаем это!",
+        "link": "Перейти на Statbits",
+        "url": "https://statbits.io/"
+      },
+      "3": {
+        "header": "BFList",
+        "description": "bflist предоставляет данные о том,  что происходит на поле боя в серии игр Battlefield. Мы предоставляем данные как о серверах, так и об игроках. От названия сервера или текущей карты до текущего счета и у/с игрока.",
+        "link": "Перейти на BFList",
+        "url": "https://bflist.io/"
+      }
+    }
+  },
+  "playerSearch": {
+    "back": "Главная страница",
+    "bfStats": "Battlefield Stats",
+    "description": "Смотрите вашу статистику! PC, Xbox, и PSN\nПоддерживает большинство игр серии Battlefield",
+    "search": "Поиск",
+    "searchPlaceholder": "Найти по никнейму",
+    "gameStatus": "Количество игроков в Battlefield",
+    "zoomInfo": "(Нажмите на таблицу, чтобы включить масштабирование прокруткой)",
+    "moreGraphs": "Другие графики"
+  },
+  "serverSearch": {
+    "servers": "Сервера",
+    "back": "Главная страница",
+    "serverInfo": "Battlefield сервера",
+    "description": "Найдите серверы Battlefield, чтобы узнать количество игроков и ротацию карт сервера.",
+    "search": "Поиск",
+    "searchPlaceholder": {
+      "null": "Поиск сервера по имени...",
+      "servername": "Поиск сервера по имени...",
+      "experiencename": "Найти experience по имени"
     },
-    "platforms": {
-        "pc": "PC",
-        "xboxseries": "XBOX SERIES",
-        "xboxone": "XBOX ONE",
-        "xbox360": "XBOX 360",
-        "ps5": "PS5",
-        "ps4": "PS4",
-        "ps3": "PS3",
-        "all": "Все платформы"
+    "results": "Искать",
+    "type": {
+      "name": "Название сервера",
+      "playground": "Имя experience"
     },
-    "serverType": {
-        "official": "Official",
-        "custom": "Custom"
+    "showMore": "Показать больше",
+    "region": "Регион",
+    "map": "Карта",
+    "platform": "платформа",
+    "gamemode": "Режим",
+    "playerFilter": "Свободное место",
+    "showFilters": "Показать фильтры",
+    "serverOwner": {
+      "main": "Владелец сервера",
+      "add": "Добавить"
     },
-    "statPlatforms": {
-        "pc": "PC",
-        "xboxone": "XBOX ONE (и новее)",
-        "xbox360": "XBOX 360",
-        "ps4": "PS4 (и новее)",
-        "ps3": "PS3"
+    "sorting": "Сортировать"
+  },
+  "platoonSearch": {
+    "back": "Главная страница",
+    "serverInfo": "Взводы Battlefield",
+    "description": "Ищите взводы Battlefield, чтобы получить больше информации о них. Нажмите на взвод, чтобы увидеть его участников",
+    "search": "Поиск",
+    "searchPlaceholder": "Поиск сервера по имени...",
+    "results": "Искать",
+    "resultNotFound": "Ничего не найдено. Чтобы найти взводы, вам нужно ввести минимум 3 символа."
+  },
+  "stats": {
+    "view": "Показать статистику",
+    "back": "Главная страница",
+    "originDescription": "Профиль пользователя",
+    "detailedName": "Детальная статистика",
+    "overview": "Обзор",
+    "overviewDescription": "Краткий обзор вашей статистики в игре.",
+    "platoonName": "Текущий взвод",
+    "otherPlatoons": "Другие взводы",
+    "weapons": "Оружия",
+    "vehicles": "Техника",
+    "gadgets": "Гаджеты",
+    "weaponGraph": "График оружия",
+    "vehicleGraph": "График техники",
+    "gadgetGaph": "График гаджетов",
+    "searchWeapon": "Искать оружие",
+    "searchVehicle": "Искать технику",
+    "searchGadget": "Искать гаджеты",
+    "rows": {
+      "weaponName": "Название оружия",
+      "vehicleName": "Название техники",
+      "gadgetName": "Название гаджита",
+      "type": "Тип",
+      "kills": "Убийства",
+      "killsPerMinute": "Уб/мин",
+      "damagePerMinute": "DPM",
+      "destroyed": "Уничтожено",
+      "accuracy": "Точность",
+      "headshots": "Выстрелы в голову",
+      "multiKills": "Мультикиллы"
     },
-    "home": {
-        "manager": {
-            "header": "GAMETOOLS | CLOUD",
-            "description": "Мы создали веб-платформу для защиты от читеров и управления для защиты ваших серверов Battlefield.\nСоздан с помощью многих сообществ.\n\nВойдите в систему прямо сейчас и начните свою интеграцию бесплатно!",
-            "open": "Запустить приложение",
-            "disclaimer": "Хостинг сервера не предоставляется. В настоящее время мы поддерживаем следующие игры Battlefield:"
-        },
-        "graphs": {
-            "header": "Онлайн статистика и графики",
-            "detailed": "Показать подробную статистику"
-        },
-        "otherServices": {
-            "header": "Другие сервисы",
-            "0": {
-                "header": "Взводы Battlefield",
-                "localUrl": "/взводы/"
-            },
-            "1": {
-                "header": "Portal Experience info",
-                "localUrl": "/playgrounds/"
-            },
-            "2": {
-                "header": "FESL API (Battlefield bad company 2 APIs)",
-                "url": "https://fesl.gametools.network/docs"
-            }
-        },
-        "ourFriends": {
-            "header": "Наши друзья",
-            "0": {
-                "header": "BFBan",
-                "description": "Мы принимаем гостей и являемся активной частью bfban.com - удивительное сообщество и команда реверс-инжиниринга / безопасности, созданная против хакеров, чтобы обеспечить единый бан-лист и систему жалоб.\nСообщайте о мошенниках в BF1/BFV, чтобы их можно было заблокировать на серверах сообщества.",
-                "link": "Посетить BFBan",
-                "url": "https://bfban.gametools.network/"
-            },
-            "1": {
-                "header": "BFPortal",
-                "description": "Find and share Battlefield 2042 portal experiences.",
-                "link": "Посетить BFPortal",
-                "url": "https://bfportal.gg/"
-            },
-            "2": {
-                "header": "Статбиты",
-                "description": "Статбиты позволяют вам интегрировать биты игровой статистики в ваш стрим-чат, а также в любое другое приложение. Хотите команду !kd, которая показывает отношение убийств/смертей в Battlefield 4? Мы сделаем это!",
-                "link": "Узнать больше",
-                "url": "https://statbits.io/"
-            },
-            "3": {
-                "header": "BFList",
-                "description": "bflist предоставляет данные о том,  что происходит на поле боя в серии игр Battlefield. Мы предоставляем данные как о серверах, так и об игроках. От названия сервера или текущей карты до текущего счета и у/с игрока.",
-                "link": "Узнать больше",
-                "url": "https://bflist.io/"
-            }
-        }
+    "classes": {
+      "main": "Классы",
+      "Medic": "Медик",
+      "Support": "Поддержка",
+      "Scout": "Снайпер",
+      "Assault": "Штурмовик",
+      "Pilot": "Пилот",
+      "Tanker": "Танкист",
+      "Cavalry": "Кавалерия",
+      "amounts": {
+        "kpm": "Уб/мин",
+        "score": "Очки",
+        "kills": "Убийства",
+        "timePlayed": "Сыгранное время"
+      }
     },
-    "playerSearch": {
-        "back": "Главная страница",
-        "bfStats": "Battlefield Stats",
-        "description": "Смотрите вашу статистику! PC, Xbox, и PSN\nПоддерживает большинство игр серии Battlefield",
-        "search": "Поиск",
-        "searchPlaceholder": "Найти по никнейму",
-        "gameStatus": "Количество игроков в Battlefield",
-        "zoomInfo": "(Нажмите на таблицу, чтобы включить масштабирование прокруткой)",
-        "moreGraphs": "Другие графики"
+    "progress": {
+      "main": "Игровой прогресс",
+      "Campaign": "Кампания",
+      "Assignments": "Задания",
+      "Medals": "Награды",
+      "Ribbons": "Нашивки",
+      "Weapons": "Оружия",
+      "Vehicles": "Техника",
+      "Kits": "Наборы",
+      "Codex": "Кодекс",
+      "Dog tags": "Жетоны"
     },
-    "serverSearch": {
-        "servers": "Сервера",
-        "back": "Главная страница",
-        "serverInfo": "Battlefield сервера",
-        "description": "Search for Battlefield servers to get playeramounts/map rotation of the server.",
-        "search": "Поиск",
-        "searchPlaceholder": {
-            "null": "Поиск сервера по имени...",
-            "servername": "Поиск сервера по имени...",
-            "experiencename": "Search for an experience by name..."
-        },
-        "results": "Искать",
-        "type": {
-            "name": "Название сервера",
-            "playground": "Experience name"
-        },
-        "showMore": "Показать больше",
-        "region": "Регион",
-        "platform": "платформа"
-    },
-    "platoonSearch": {
-        "back": "Главная страница",
-        "serverInfo": "Взводы Battlefield",
-        "description": "Ищите взводы Battlefield, чтобы получить больше информации о них. Нажмите на взвод, чтобы увидеть его участников",
-        "search": "Поиск",
-        "searchPlaceholder": "Поиск сервера по имени...",
-        "results": "Искать",
-        "resultNotFound": "No results found. To search for platoons, you need a minimum of 3 characters."
-    },
-    "stats": {
-        "view": "Показать статистику",
-        "back": "Главная страница",
-        "originDescription": "Профиль пользователя",
-        "detailedName": "Детальная статистика",
-        "overview": "Обзор",
-        "overviewDescription": "A short overview of your stats in game.",
-        "platoonName": "Текущий взвод",
-        "otherPlatoons": "Другие взводы",
-        "weapons": "Оружия",
-        "vehicles": "Техника",
-        "weaponGraph": "График оружия",
-        "vehicleGraph": "График техники",
-        "searchWeapon": "Искать оружие",
-        "searchVehicle": "Искать технику",
-        "rows": {
-            "weaponName": "Название оружия",
-            "vehicleName": "Название техники",
-            "type": "Тип",
-            "kills": "Убийства",
-            "killsPerMinute": "Уб/мин",
-            "damagePerMinute": "DPM",
-            "destroyed": "Уничтожено",
-            "accuracy": "Точность",
-            "headshots": "Выстрелы в голову"
-        },
-        "classes": {
-            "main": "Классы",
-            "Medic": "Медик",
-            "Support": "Поддержка",
-            "Scout": "Снайпер",
-            "Assault": "Штурмовик",
-            "Pilot": "Пилот",
-            "Tanker": "Танкист",
-            "Cavalry": "Кавалерия",
-            "amounts": {
-                "kpm": "Уб/мин",
-                "score": "Очки",
-                "kills": "Убийства",
-                "timePlayed": "Сыгранное время"
-            }
-        },
-        "progress": {
-            "main": "Игровой прогресс",
-            "Campaign": "Кампания",
-            "Assignments": "Assignments",
-            "Medals": "Награды",
-            "Ribbons": "Ribbons",
-            "Weapons": "Оружия",
-            "Vehicles": "Техника",
-            "Kits": "Наборы",
-            "Codex": "Codex",
-            "Dog tags": "Dog tags"
-        },
-        "gamemodes": {
-            "main": "Информация об игровом режиме",
-            "percentage": "Побед: {{percentage}}%",
-            "Frontlines": "Линия фронта",
-            "Domination": "Доминирование",
-            "Shock operations": "Shock operations",
-            "Rush": "Штурм",
-            "Conquest": "Захват",
-            "War pigeons": "Военные голуби",
-            "Operations": "Операции",
-            "Teamdeathmatch": "Схватка команд",
-            "Conquestlarge": "Conquest large",
-            "Gunmaster": "Gunmaster",
-            "Capturetheflag": "Захват флага",
-            "Obliteration": "Obliteration",
-            "Airsuperiority": "Air superiority",
-            "Elimination": "Elimination",
-            "Carrierassault": "Carrier assault",
-            "Carrierassaultlarge": "Carrier assault large",
-            "Carrierassaultsmall": "Carrier assault small",
-            "Chainlink": "Chainlink",
-            "Sqdm": "Squad deathmatch",
-            "Conquestladder": "Conquest Ladder",
-            "Squadobliteration": "Уничтожение отряда",
-            "table": {
-                "firstRow": "Игровые режимы",
-                "secondRow": "Очки"
-            },
-            "amounts": {
-                "wins": "Победы",
-                "losses": "Поражения",
-                "score": "Очки"
-            }
-        },
-        "platoon": {
-            "none": "Игрок не находится в каком-либо взводе",
-            "noMain": "Игрок не выбрал какой-либо взвод основным",
-            "noDescription": "У взвода нет описания"
-        },
-        "playSession": {
-            "main": "Игровые сессие Battlefield",
-            "detailed": "Мы отслеживаем, на каких серверах вы играли, работает только тогда, когда на сервере используется наш manager.",
-            "stats": {
-                "kills": "Убийства",
-                "deaths": "Смерти",
-                "wins": "Победы",
-                "losses": "Поражения",
-                "timePlayedAs": "Время, сыгранное как",
-                "score": "Очки",
-                "gamemodes": {
-                    "TugOfWar": "Линия фронта",
-                    "Domination": "Доминирование",
-                    "Breakthrough": "Шок Операции",
-                    "Rush": "Штурм",
-                    "BreakthroughLarge": "Операции",
-                    "Conquest": "Захват",
-                    "Possession": "Военные голуби",
-                    "TeamDeathMatch": "Схватка команд"
-                }
-            }
-        },
-        "main": {
-            "rank": "Ранг",
-            "killDeath": "Уб/См",
-            "killsPerMinute": "Уб/мин",
-            "winPercent": "% побед",
-            "bestClass": "Лучший класс",
-            "accuracy": "Точность",
-            "timePlayed": "Сыгранное время"
-        },
-        "detailed": {
-            "skill": "Навык",
-            "scorePerMinute": "SPM",
-            "headshotPercent": "Выстрелы в голову",
-            "infantryKillDeath": "пехот У/С",
-            "infantryKillsPerMinute": "пехот KPM",
-            "kills": "Убийства",
-            "deaths": "Смерти",
-            "wins": "Победы",
-            "losses": "Поражения",
-            "longestHeadShot": "Самый длинный выстрел в голову",
-            "highestKillStreak": "Самая большая серия убийств",
-            "revives": "Оживления",
-            "roundsPlayed": "Раундов сыграно",
-            "awardScore": "Очки наград",
-            "bonusScore": "Бонусные очки",
-            "squadScore": "Очки отряда",
-            "avengerKills": "Avenger kills",
-            "saviorKills": "Saviour kills",
-            "headShots": "Выстрелы в голову",
-            "heals": "Лечений",
-            "repairs": "Ремонтов",
-            "killAssists": "Помощь в убийстве",
-            "winPercent": "Процент побед",
-            "quits": "Quits"
-        },
-        "graph": {
-            "graphOptions": {
-                "amounts": "Количество",
-                "maps": "Активные карты",
-                "settings": "Активные настройки",
-                "modes": "Активные режимы",
-                "ownerPlatform": "Платформа активных владельцев"
-            },
-            "soldierAmount": "Все игроки",
-            "diceSoldierAmount": "Игроки на официальных серверах",
-            "communitySoldierAmount": "Игроки на серверах сообщества"
-        },
-        "iframe": {
-            "main": "Добавьте свою статистику на ваш сайт",
-            "info": "Главная версия:"
-        }
-    },
-    "servers": {
-        "back": "Вернуться к поиску",
-        "rotation": "Выбор карт на сервере",
-        "settings": "Настройки сервера",
-        "permLink": "Permanent link (based on current name):",
-        "platoon": {
-            "main": "Взвод сервера",
-            "none": "Сервер не принадлежит взводу"
-        },
-        "sort": {
-            "serverName": "Название сервера",
-            "playerAmount": "Количество игроков",
-            "maxPlayers": "Максимальное количество игроков"
-        },
-        "owner": {
-            "main": "Владелец сервера",
-            "experience": "Experience creator",
-            "none": "У сервера нет владельца  (Сервер DICE)",
-            "unknown": "Имя не найдено"
-        },
-        "password": "Защищен паролем",
-        "join": "Подключиться к серверу",
-        "joinFirefox": "Подключиться к серверу (Только Firefox)",
-        "joinme": {
-            "main": "Joinme.click лаунчер",
-            "view": "Посмотреть на joinme.click",
-            "launch": "Игра запущена!",
-            "info": "Кнопки подключения к серверу используют <0>https://joinme.click/</0>, чтобы зайти в игру. Сначала установите <0>joinme.click launcher</0> перед тем, как использовать эти кнопки!",
-            "smallinfo": "Кнопки подключения к серверу используют <0>https://joinme.click/</0>, чтобы зайти в игру.",
-            "discord": "Чтобы это работало, необходимо установить joinme launcher!",
-            "invite": "Joinme.click ссылка приглашения"
-        },
-        "bfportal": {
-            "found": "Portal experience found on BfPortal.gg",
-            "error": "Ошибка API для BfPortal.gg"
-        },
-        "iframe": {
-            "main": "Добавить сервер на ваш сайт",
-            "info": "Если вы хотите создать свою собственную версию, напишите iiTzArcur в нашем Discord. (ссылка внизу)",
-            "black": "Темный вариант:",
-            "white": "Светлый вариант:",
-            "detailed": "Подробная версия:",
-            "states": {
-                "copy": "Скопировать iframe",
-                "copied": "Скопировано!"
-            }
-        },
-        "leaderboard": {
-            "main": "Таблица игроков на этом сервере",
-            "info": "Доступно только на серверах, которые используют manager-api",
-            "none": "Сервер был только что добавлен или не использует manager-api",
-            "row": {
-                "score": "Очки",
-                "killDeath": "Уб/См",
-                "kills": "Убийства",
-                "deaths": "Смерти",
-                "wins": "Победы",
-                "losses": "Поражения",
-                "timePlayed": "Сыгранное время"
-            }
-        },
-        "playerlist": {
-            "main": "Текущие игроки на сервере",
-            "none": "Сервер был только что добавлен или не использует manager-api",
-            "empty": "Эта команда пустая",
-            "lastUpdate": "Последнее обновление",
-            "row": {
-                "ping": "Пинг",
-                "platform": "Платформа",
-                "timePlayed": "Сыгранное время",
-                "playerSlot": "Игровой слот",
-                "playerName": "Никнейм",
-                "platoon": "Взвод",
-                "rank": "Ранг",
-                "score": "Очки",
-                "killDeath": "Уб/См",
-                "kills": "Убийства",
-                "deaths": "Смерти"
-            }
-        },
-        "factions": {
-            "BFFactionId_FactionAHU": "Австро-Венгерская империя",
-            "BFFactionId_FactionGER": "Германская империя",
-            "BFFactionId_FactionOTM": "Османская империя",
-            "BFFactionId_FactionITA": "Королевство Италия",
-            "BFFactionId_FactionUK": "Объединенное Королевство",
-            "BFFactionId_FactionUSA": "Соединенные Штаты Америки",
-            "BFFactionId_FactionFRA": "Франция",
-            "BFFactionId_FactionRUS": "Российская Империя",
-            "BFFactionId_FactionBOL": "Красная армия",
-            "BFFactionId_FactionWA": "Белая армия",
-            "BFFactionId_FactionUKM": "Королевская морская пехота",
-            "FactionUS": "Российская федерация",
-            "FactionRUS": "Соединенные Штаты Америки",
-            "teamOne": "Команда 1",
-            "teamTwo": "Команда 2"
-        },
-        "portal": {
-            "main": "Portal experience"
-        },
-        "graph": {
-            "main": "Server graphs",
-            "map": "Map",
-            "mode": "Gamemode",
-            "amount": "Times gathered",
-            "error": "Failed to get the graphs for this server"
-        },
-        "notFound": {
-            "main": "Сервер не найден",
-            "description": "Мы не можем найти сервер, который вы ищете."
-        }
+    "gamemodes": {
+      "main": "Информация об игровом режиме",
+      "percentage": "Побед: {{percentage}}%",
+      "Frontlines": "Линия фронта",
+      "Domination": "Доминирование",
+      "Shock operations": "Ударные операции",
+      "Rush": "Штурм",
+      "Conquest": "Захват",
+      "War pigeons": "Военные голуби",
+      "Operations": "Операции",
+      "Teamdeathmatch": "Схватка команд",
+      "Conquestlarge": "Захват (больш.)",
+      "Gungame free-for-all": "Gungame бесплатно-для-всех",
+      "Gungame team": "Команда Gungame",
+      "Free-for-all": "Бесплатно-для-всех",
+      "Infantry Conquest": "Пехотный захват",
+      "Gunmaster": " Мастер оружия",
+      "Capturetheflag": "Захват флага",
+      "Obliteration": "Истребление",
+      "Airsuperiority": "Воздушное превосходство",
+      "Elimination": "Обезвреживание",
+      "Carrierassault": "Штурм Авианосца",
+      "Carrierassaultlarge": "Штурм Авианосца (больш.)",
+      "Carrierassaultsmall": "Штурм Авианосца",
+      "Chainlink": "Соединение",
+      "Sqdm": "Схватка отрядов",
+      "Conquestladder": "Conquest ладдер",
+      "Squadobliteration": "Уничтожение отряда",
+      "table": {
+        "firstRow": "Игровые режимы",
+        "secondRow": "Очки"
+      },
+      "amounts": {
+        "wins": "Победы",
+        "losses": "Поражения",
+        "score": "Очки"
+      }
     },
     "platoon": {
-        "back": "Вернуться к поиску",
-        "searchPlayer": "Искать игрока",
-        "servers": "Сервера взвода",
-        "members": {
-            "main": "Участники взвода",
-            "General": "Генерал",
-            "Colonel": "Полковник",
-            "Lieutenant": "Лейтенант",
-            "Private": "Приватный",
-            "empty": "Нет участников с таким рангом"
-        },
-        "rows": {
-            "role": "Роль",
-            "name": "Имя"
-        },
-        "notFound": {
-            "main": "Взвод не найден",
-            "description": "Мы не можем найти взвод, который вы ищете."
+      "none": "Игрок не находится в каком-либо взводе",
+      "noMain": "Игрок не выбрал какой-либо взвод основным",
+      "noDescription": "У взвода нет описания"
+    },
+    "playSession": {
+      "main": "Игровые сессие Battlefield",
+      "detailed": "Мы отслеживаем, на каких серверах вы играли, работает только тогда, когда на сервере используется наш manager.",
+      "stats": {
+        "kills": "Убийства",
+        "deaths": "Смерти",
+        "wins": "Победы",
+        "losses": "Поражения",
+        "timePlayedAs": "Время, сыгранное как",
+        "score": "Очки",
+        "gamemodes": {
+          "Frontlines": "Линия фронта",
+          "Domination": "Доминирование",
+          "Breakthrough": "Шок Операции",
+          "Rush": "Штурм",
+          "BreakthroughLarge": "Операции",
+          "Conquest": "Захват",
+          "Possession": "Военные голуби",
+          "TeamDeathMatch": "Схватка команд"
         }
+      }
     },
-    "getPlaygrounds": {
-        "back": "Главная страница",
-        "main": "Получить информацию Battlefield Portal Experience",
-        "description": "Получить информацию о Battlefield Portal experience",
-        "getInfo": "Fill in a valid experience url, playground id or experience code",
-        "show": "Показать"
+    "main": {
+      "rank": "Ранг",
+      "killDeath": "Уб/См",
+      "killsPerMinute": "Уб/мин",
+      "winPercent": "% побед",
+      "bestClass": "Лучший класс",
+      "accuracy": "Точность",
+      "timePlayed": "Сыгранное время"
     },
-    "playgrounds": {
-        "back": "Вернуться к поиску",
-        "rotation": "Experience map rotation",
-        "tags": "Experience tags",
-        "maxPlayers": "Максимум {{ amount }} игроков",
-        "owner": {
-            "main": "Experience creator",
-            "none": "The creator can only be retrieved if playground id is used",
-            "unknown": "Имя не найдено"
-        },
-        "notFound": {
-            "main": "Experience not found",
-            "description": "We cant find the experience your looking for."
-        },
-        "types": {
-            "main": "Тип",
-            "portal-standard": "Standard experience",
-            "portal-featured": "Featured experience",
-            "portal-default": "Standard experience",
-            "portal-unranked": "Unranked",
-            "portal-spotlight": "В центре внимания"
-        }
+    "detailed": {
+      "skill": "Навык",
+      "scorePerMinute": "SPM",
+      "headshotPercent": "Выстрелы в голову",
+      "infantryKillDeath": "пехот У/С",
+      "infantryKillsPerMinute": "пехот KPM",
+      "kills": "Убийства",
+      "deaths": "Смерти",
+      "wins": "Победы",
+      "losses": "Поражения",
+      "longestHeadShot": "Самый длинный выстрел в голову",
+      "highestKillStreak": "Самая большая серия убийств",
+      "revives": "Оживления",
+      "roundsPlayed": "Раундов сыграно",
+      "awardScore": "Очки наград",
+      "bonusScore": "Бонусные очки",
+      "squadScore": "Очки отряда",
+      "avengerKills": "Убийств мстителя",
+      "saviorKills": "Убийств спасения",
+      "headShots": "Выстрелы в голову",
+      "heals": "Лечений",
+      "repairs": "Ремонтов",
+      "killAssists": "Помощь в убийстве",
+      "winPercent": "Процент побед",
+      "quits": "Выходы"
     },
-    "footer": {
-        "description": "Данный сайт - это часть Community Network, с открытым кодом. Вы можете публиковать ошибки и предложения изменений/улучшений на GitHub. API предоставляется Community Network и открыт для публичного использования. Мы не предоставляем API от третьих лиц. Наш backend код закрыт и недоступен для остальных.\nBattlefield и Origin являются зарегистрированными торговыми марками Electronic Arts. Этот сайд использует данные, предоставленные в соответствии с условиями статистики Battlefield 1 от Electronic Arts. Товарные знаки являются собственностью их соответствующих владельцев. Авторское право на игровые материалы принадлежит Electronic Arts Inc. Electronic Arts не одобряла и не несет ответственности за этот сайт или его содержание.\nКод находится под лицензией GPLv2. Некоторые части защищены авторским правом Community Network.",
-        "links": {
-            "0": {
-                "header": "GitHub",
-                "url": "https://github.com/Community-network"
-            },
-            "1": {
-                "header": "Публичное API",
-                "url": "https://api.gametools.network/"
-            },
-            "2": {
-                "header": "Community Network Discord",
-                "url": "https://discord.gametools.network/"
-            },
-            "3": {
-                "header": "Политика конфиденциальности",
-                "url": "/privacy/"
-            },
-            "4": {
-                "header": "Бот Discord",
-                "url": "https://top.gg/bot/714524944783900794"
-            },
-            "5": {
-                "header": "Помочь с переводом",
-                "url": "https://explore.transifex.com/gametools/"
-            }
-        }
+    "graph": {
+      "graphOptions": {
+        "amounts": "Количество",
+        "maps": "Активные карты",
+        "settings": "Активные настройки",
+        "modes": "Активные режимы",
+        "ownerPlatform": "Платформа активных владельцев"
+      },
+      "soldierAmount": "Все игроки",
+      "diceSoldierAmount": "Игроки на официальных серверах",
+      "communitySoldierAmount": "Игроки на серверах сообщества"
     },
-    "bflist": {
-        "notFound": "Didn't find server with bflist.io API"
-    },
-    "pageNotFound": {
-        "main": "404 - Страница не найдена",
-        "description": "Страницу, которую вы ищете, не найдена",
-        "home": "Вернуться на главную страницу"
+    "iframe": {
+      "main": "Добавьте свою статистику на ваш сайт",
+      "info": "Главная версия:"
     }
+  },
+  "servers": {
+    "back": "Вернуться к поиску",
+    "rotation": "Выбор карт на сервере",
+    "settings": "Настройки сервера",
+    "permLink": "Постоянная ссылка (на основе текущего имени):",
+    "platoon": {
+      "main": "Взвод сервера",
+      "none": "Сервер не принадлежит взводу"
+    },
+    "sort": {
+      "serverName": "Название сервера",
+      "playerAmount": "Количество игроков",
+      "maxPlayers": "Максимальное количество игроков"
+    },
+    "owner": {
+      "main": "Владелец сервера",
+      "experience": "Создатель experience",
+      "none": "У сервера нет владельца  (Сервер DICE)",
+      "unknown": "Имя не найдено"
+    },
+    "password": "Защищен паролем",
+    "join": "Подключиться к серверу",
+    "joinFirefox": "Подключиться к серверу (Только Firefox)",
+    "joinme": {
+      "main": "Joinme.click лаунчер",
+      "view": "Посмотреть на joinme.click",
+      "launch": "Игра запущена!",
+      "info": "Кнопки подключения к серверу используют <0>https://joinme.click/</0>, чтобы зайти в игру. Сначала установите <0>joinme.click launcher</0> перед тем, как использовать эти кнопки!",
+      "smallinfo": "Кнопки подключения к серверу используют <0>https://joinme.click/</0>, чтобы зайти в игру.",
+      "discord": "Чтобы это работало, необходимо установить joinme launcher!",
+      "invite": "Joinme.click ссылка приглашения"
+    },
+    "bfportal": {
+      "found": "Portal experience найден на BfPortal.gg",
+      "error": "Ошибка API для BfPortal.gg"
+    },
+    "iframe": {
+      "main": "Добавить сервер на ваш сайт",
+      "info": "Если вы хотите создать свою собственную версию, напишите iiTzArcur в нашем Discord. (ссылка внизу)",
+      "black": "Темный вариант:",
+      "white": "Светлый вариант:",
+      "detailed": "Подробная версия:",
+      "states": {
+        "copy": "Скопировать iframe",
+        "copied": "Скопировано!"
+      }
+    },
+    "leaderboard": {
+      "main": "Таблица игроков на этом сервере",
+      "info": "Доступно только на серверах, которые используют manager-api",
+      "none": "Сервер был только что добавлен или не использует manager-api",
+      "row": {
+        "score": "Очки",
+        "killDeath": "Уб/См",
+        "kills": "Убийства",
+        "deaths": "Смерти",
+        "wins": "Победы",
+        "losses": "Поражения",
+        "timePlayed": "Сыгранное время"
+      }
+    },
+    "playerlist": {
+      "main": "Текущие игроки на сервере",
+      "none": "Сервер был только что добавлен или не использует manager-api",
+      "empty": "Эта команда пустая",
+      "lastUpdate": "Последнее обновление",
+      "row": {
+        "ping": "Пинг",
+        "platform": "Платформа",
+        "timePlayed": "Сыгранное время",
+        "playerSlot": "Игровой слот",
+        "playerName": "Никнейм",
+        "platoon": "Взвод",
+        "rank": "Ранг",
+        "score": "Очки",
+        "killDeath": "Уб/См",
+        "kills": "Убийства",
+        "deaths": "Смерти"
+      }
+    },
+    "factions": {
+      "BFFactionId_FactionAHU": "Австро-Венгерская империя",
+      "BFFactionId_FactionGER": "Германская империя",
+      "BFFactionId_FactionOTM": "Османская империя",
+      "BFFactionId_FactionITA": "Королевство Италия",
+      "BFFactionId_FactionUK": "Объединенное Королевство",
+      "BFFactionId_FactionUSA": "Соединенные Штаты Америки",
+      "BFFactionId_FactionFRA": "Франция",
+      "BFFactionId_FactionRUS": "Российская Империя",
+      "BFFactionId_FactionBOL": "Красная армия",
+      "BFFactionId_FactionWA": "Белая армия",
+      "BFFactionId_FactionUKM": "Королевская морская пехота",
+      "FactionUS": "Российская федерация",
+      "FactionRUS": "Соединенные Штаты Америки",
+      "teamOne": "Команда 1",
+      "teamTwo": "Команда 2"
+    },
+    "portal": {
+      "main": "Portal experience"
+    },
+    "graph": {
+      "main": "Графики сервера",
+      "map": "Карта",
+      "mode": "Режим",
+      "amount": "Количество",
+      "error": "Ошибка получения графиков для этого сервера"
+    },
+    "notFound": {
+      "main": "Сервер не найден",
+      "description": "Мы не можем найти сервер, который вы ищете."
+    },
+    "bfv": {
+      "maps": {
+        "Fjell 652": "Кряж 652",
+        "Narvik": "Нарвик",
+        "Arras": "Аррас",
+        "Devastation": "Уничтожение",
+        "Twisted Steel": "Гнутая сталь",
+        "Aerodrome": "Аэродром",
+        "Hamada": "Хамада",
+        "Rotterdam": "Роттердам",
+        "Panzerstorm": "Панцершторм",
+        "Mercury": "Меркурий",
+        "Marita": "Марита",
+        "Provence": "Прованс",
+        "Al Sudan": "Аль-Сундан",
+        "Operation Underground": "Operation Underground",
+        "Iwo Jima": "Иводзима",
+        "Pacific Storm": "Тихоокеанский шторм",
+        "Wake Island": "Остров Уэйк",
+        "Solomon Islands": "Соломоновы Острова ",
+        "Al Marj Encampment": "Лагерь в Эль-Мардже",
+        "Lofoten Islands": "Лофотенские острова"
+      }
+    },
+    "bf1": {
+      "gamemodes": {
+        "airassault": "Воздушный штурм",
+        "conquest": "Захват",
+        "domination": "Доминирование",
+        "frontlines": "Линия фронта",
+        "operations": "Операции",
+        "rush": "Штурм",
+        "shockoperations": "Шок Операции",
+        "teamdeathmatch": "Схватка команд",
+        "warpigeons": "Военные голуби"
+      },
+      "maps": {
+        "Sinai Desert": "Синайская пустыня",
+        "Ballroom Blitz": "Бальный блиц",
+        "Empire's Edge": "Край империи",
+        "St Quentin Scar": "Сен-Кантен",
+        "Prise de Tahure": "Захват таюра",
+        "Monte Grappa": "Монте-граппа",
+        "Fao Fortress": "Крепость фао",
+        "Giant's Shadow": "Тень гиганта",
+        "Rupture": "Прорыв",
+        "Amiens": "Амьен",
+        "Suez": "Суэц",
+        "Fort De Vaux": "Форт Во",
+        "Nivelle Nights": "Ночи Нивеля",
+        "Soissons": "Суасон",
+        "Verdun Heights": "Высоты Вердена",
+        "Albion": "Альбион",
+        "Tsaritsyn": "Царицын",
+        "Łupków Pass": "Перевал Лупковски",
+        "Achi Baba": "Ачи-Баба",
+        "Heligoland Bight": "Гельголандская бухта",
+        "Caporetto": "Капоретто",
+        "River Somme": "Река Сомма",
+        "Passchendaele": "Пашендейль",
+        "Galicia": "Галиция",
+        "Volga River": "Река Волга",
+        "Brusilov Keep": "Брусиловский укрепрайон",
+        "Cape Helles": "Мыс Геллес",
+        "Zeebrugge": "Зебрюгге",
+        "Argonne Forest": "Аргоннский лес",
+        "Razor's Edge": "Лезвие бритвы",
+        "London Calling": "Лондон вызывает",
+        "London Calling: Scourge": "Лондон вызывает"
+      }
+    },
+    "bf2042": {
+      "maps": {
+        "Arica Harbor": "Порт Арика",
+        "Valparaiso": "Вальпараисо",
+        "Battle of the Bulge": "Арденнская операция: мельница",
+        "El Alamein": "Эль-Аламейн",
+        "Caspian Border": "Граница Каспия",
+        "Noshahr Canals": "Каналы Ноушехра",
+        "Orbital": "Орбита",
+        "Hourglass": "Песочные часы",
+        "Kaleidoscope": "Калейдоскоп",
+        "Breakaway": "Разрыв",
+        "Discarded": "Обломки",
+        "Manifest": "Манифест",
+        "Renewal": "Возрождение",
+        "Exposure": "Открытие",
+        "Stranded": "На мели",
+        "Spearhead": "На острие",
+        "Flashpoint": "Горячая точка",
+        "Reclaimed": "Возвращение"
+      },
+      "gamemodes": {
+        "Breakthrough Large": "Большой прорыв",
+        "Breakthrough": "Прорыв",
+        "Conquest": "Захват",
+        "Custom": "Кастомный",
+        "Rush": "Штурм",
+        "Conquest large": "Захват (больш.)"
+      }
+    },
+    "frostbite3": {
+      "playerFilter": {
+        "onetofive": "1-5",
+        "sixtoten": "6-10",
+        "tenplus": "10+",
+        "none": "Ничего"
+      }
+    }
+  },
+  "platoon": {
+    "back": "Вернуться к поиску",
+    "searchPlayer": "Искать игрока",
+    "servers": "Сервера взвода",
+    "members": {
+      "main": "Участники взвода",
+      "General": "Генерал",
+      "Colonel": "Полковник",
+      "Lieutenant": "Лейтенант",
+      "Private": "Приватный",
+      "empty": "Нет участников с таким рангом"
+    },
+    "rows": {
+      "role": "Роль",
+      "name": "Имя"
+    },
+    "notFound": {
+      "main": "Взвод не найден",
+      "description": "Мы не можем найти взвод, который вы ищете."
+    }
+  },
+  "getPlaygrounds": {
+    "back": "Главная страница",
+    "main": "Получить информацию Battlefield Portal Experience",
+    "description": "Получить информацию о Battlefield Portal experience",
+    "getInfo": "Введите рабочую experience ссылку, id игровой площадки или experience код",
+    "show": "Показать"
+  },
+  "playgrounds": {
+    "back": "Вернуться к поиску",
+    "rotation": "Experience ротации карт",
+    "tags": "Experience теги",
+    "maxPlayers": "Максимум {{ amount }} игроков",
+    "owner": {
+      "main": "Создатель experience",
+      "none": "Имя создателя можно получить, только если используется id игровой площадки",
+      "unknown": "Имя не найдено"
+    },
+    "notFound": {
+      "main": "Experience не найден",
+      "description": "Мы не можем найти experience, который вы ищете"
+    },
+    "types": {
+      "main": "Тип",
+      "portal-standard": "Стандартный experience",
+      "portal-featured": "Избранный experience",
+      "portal-default": "Стандартный experience",
+      "portal-unranked": "Без рейтинга",
+      "portal-spotlight": "В центре внимания"
+    }
+  },
+  "footer": {
+    "description": "Данный сайт - это часть Community Network, с открытым кодом. Вы можете публиковать ошибки и предложения изменений/улучшений на GitHub. API предоставляется Community Network и открыт для публичного использования. Мы не предоставляем API от третьих лиц. Наш backend код закрыт и недоступен для остальных.\nBattlefield и Origin являются зарегистрированными торговыми марками Electronic Arts. Этот сайд использует данные, предоставленные в соответствии с условиями статистики Battlefield 1 от Electronic Arts. Товарные знаки являются собственностью их соответствующих владельцев. Авторское право на игровые материалы принадлежит Electronic Arts Inc. Electronic Arts не одобряла и не несет ответственности за этот сайт или его содержание.\nКод находится под лицензией GPLv2. Некоторые части защищены авторским правом Community Network.",
+    "LinkName": "Ссылки",
+    "links": {
+      "0": {
+        "header": "GitHub",
+        "url": "https://github.com/Community-network"
+      },
+      "1": {
+        "header": "Публичное API",
+        "url": "https://api.gametools.network/"
+      },
+      "2": {
+        "header": "Community Network Discord",
+        "url": "https://discord.gametools.network/"
+      },
+      "3": {
+        "header": "Политика конфиденциальности",
+        "url": "/privacy/"
+      },
+      "4": {
+        "header": "Бот Discord",
+        "url": "https://top.gg/bot/714524944783900794"
+      },
+      "5": {
+        "header": "Помочь с переводом",
+        "url": "https://explore.transifex.com/gametools/"
+      }
+    }
+  },
+  "bflist": {
+    "notFound": "Сервер на найден с bflist.io API"
+  },
+  "pageNotFound": {
+    "main": "404 - Страница не найдена",
+    "description": "Страницу, которую вы ищете, не найдена",
+    "home": "Вернуться на главную страницу"
+  },
+  "ads": {
+    "main": "Реклама",
+    "disable": "Отключить рекламу"
+  }
 }
