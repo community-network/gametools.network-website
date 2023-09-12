@@ -16,7 +16,6 @@ import {
   Align,
   AlignW,
   AlignT,
-  Box,
   SmallButtonSecondary,
   PageColumn,
   PageRow,

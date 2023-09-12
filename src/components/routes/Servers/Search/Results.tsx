@@ -3,12 +3,7 @@ import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
-import {
-  AlignSeverImg,
-  AltText,
-  BigButtonSecondaryBox,
-  Box,
-} from "../../../Materials";
+import { AlignSeverImg, BigButtonSecondaryBox, Box } from "../../../Materials";
 import { ServerList, ServerSearch } from "../../../../api/ReturnTypes";
 import {
   dice,
