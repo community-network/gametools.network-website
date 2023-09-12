@@ -476,13 +476,23 @@ export function Results(props: Views): React.ReactElement {
                 <Description style={{ marginTop: "15px" }}>
                   {t(`servers.iframe.${element}`)}{" "}
                   <CopyToClipboard
-                    message={`<iframe title="Server playercount" src="https://widgets.gametools.network/servers/${element}/${props.game}/${widgetItem}/${widgetReturn}/${props.platform}" height="${widgetSize[index]}px" width="700px" frameborder="0" allowtransparency="true"></iframe>`}
+                    message={`<iframe title="Server playercount" src="https://widgets.gametools.network/servers/${element}/${
+                      props.game
+                    }/${widgetItem}/${widgetReturn}/${
+                      props.platform
+                    }?lng=${getLanguage()}" height="${
+                      widgetSize[index]
+                    }px" width="700px" frameborder="0" allowtransparency="true"></iframe>`}
                     stateTranslation={"servers.iframe.states"}
                   />
                 </Description>
                 <iframe
                   title="Server playercount"
-                  src={`https://widgets.gametools.network/servers/${element}/${props.game}/${widgetItem}/${widgetReturn}/${props.platform}`}
+                  src={`https://widgets.gametools.network/servers/${element}/${
+                    props.game
+                  }/${widgetItem}/${widgetReturn}/${
+                    props.platform
+                  }?lng=${getLanguage()}`}
                   style={{
                     maxWidth: "700px",
                     backgroundColor: "transparent",
