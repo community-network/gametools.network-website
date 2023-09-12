@@ -131,7 +131,9 @@
     },
     "graphs": {
       "header": "Онлайн статистика и графики",
-      "detailed": "Показать подробную статистику"
+      "detailed": "Показать подробную статистику",
+      "totalPlaying": "Играют в Battlefield прямо сейчас",
+      "activeServers": "Активные сервера"
     },
     "otherServices": {
       "header": "Другие сервисы",
