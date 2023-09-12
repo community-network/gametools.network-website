@@ -396,12 +396,12 @@ export function Bf3ServerPlayerlist(props: {
 }): React.ReactElement {
   const { t } = useTranslation();
 
-  const players = props.players;
+  const { players } = props;
 
   return (
     <Spacing>
       <h2>{t("servers.playerlist.main")}</h2>
-      {players !== null ? (
+      {!!players ? (
         <>
           <Box>
             {players.length !== 0 ? (
