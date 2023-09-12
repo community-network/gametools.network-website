@@ -39,10 +39,10 @@ module.exports = {
       {
         test: /\.(jpe?g|png|webp)$/i,
         use: {
-          loader: 'responsive-loader',
+          loader: "responsive-loader",
         },
-        type: 'javascript/auto',
-      }
+        type: "javascript/auto",
+      },
     ],
   },
   plugins: [
