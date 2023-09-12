@@ -131,7 +131,9 @@
     },
     "graphs": {
       "header": "Online statistieken en grafieken",
-      "detailed": "Gedetaileerde stats inzien"
+      "detailed": "Gedetaileerde stats inzien",
+      "totalPlaying": "Zijn nu Battlefield aan het spelen",
+      "activeServers": "Actieve servers"
     },
     "otherServices": {
       "header": "Andere services",
