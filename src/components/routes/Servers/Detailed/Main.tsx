@@ -168,7 +168,9 @@ export function Results(props: Views): React.ReactElement {
     }
     let officialString = "";
     if (stats?.official !== undefined) {
-      officialString = stats?.official ? " - Official" : " - Custom";
+      officialString = stats?.official
+        ? ` - ${t("serverType.official")}`
+        : ` - ${t("serverType.custom")}`;
     }
     return (
       <div>

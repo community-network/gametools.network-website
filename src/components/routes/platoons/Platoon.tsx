@@ -421,7 +421,9 @@ function Servers(props: { servers: ServerList[] }): React.ReactElement {
         }
         let officialString = "";
         if (key.official !== undefined) {
-          officialString = key.official ? " - Official" : " - Custom";
+          officialString = key.official
+            ? ` - ${t("serverType.official")}`
+            : ` - ${t("serverType.custom")}`;
         }
         return (
           <Box
