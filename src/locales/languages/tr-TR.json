@@ -8,6 +8,7 @@
   "notApplicable": "Yok",
   "resultNotFound": "Sonuç bulunamadı",
   "noName": "Origin adı aracılığıyla istatistiklere erişirken oyuncu adı gösterilemiyor",
+  "externalScriptError": "Harici komut dosyası yüklenemedi, bir şeyler ters gitti...",
   "date": "{{date, date|eee, dd MMM yyyy}}",
   "dateTime": "{{date, date|eee, dd MMM yyyy - p}}",
   "shortDateTime": "{{date, date|PPpp}}",
@@ -17,16 +18,29 @@
   "intlNumber": "{{val, number}}",
   "ago": "önce",
   "export": "Dosyaya aktar",
+  "case": {
+    "none": "Yok",
+    "on": "Açık",
+    "off": "Kapalı"
+  },
   "dateType": {
     "createdAt": "Oluşturma zamanı",
     "updatedAt": "Güncelleme zamanı"
   },
   "bfban": {
+    "main": "BFBan",
     "stats": "Oyuncu bfban'da onaylanmış hileci",
     "platoon": " Hileci"
   },
+  "bfeac": {
+    "main": "BFEAC"
+  },
   "states": {
     "copy": "Bağlantıyı kopyala",
+    "copied": "Kopyalandı!"
+  },
+  "copyApiStates": {
+    "copy": "API URL'sini kopyala",
     "copied": "Kopyalandı!"
   },
   "navBar": {
@@ -56,7 +70,8 @@
     "bf1": "Battlefield 1",
     "bfv": "Battlefield 5",
     "bf2042": "Battlefield 2042",
-    "bf2042portal": "Battlefield 2042 Portal"
+    "bf2042portal": "Battlefield 2042 Portal",
+    "battlebit": "BattleBit"
   },
   "limit": {
     "10": "10 sunucular",
@@ -76,6 +91,15 @@
     "oc": "Okyanusya",
     "afr": "Afrika",
     "ac": "Antarktika"
+  },
+  "battlebitRegions": {
+    "all": "Tüm bölgeler",
+    "Europe_Central": "Avrupa",
+    "America_Central": "Amerika",
+    "Japan_Central": "Japonya",
+    "Australia_Central": "Avustralya",
+    "Brazil_Central": "Brazilya",
+    "Developer_Server": "Geliştirme"
   },
   "platforms": {
     "pc": "PC",
@@ -141,13 +165,13 @@
       "2": {
         "header": "Statbits",
         "description": "Statbits, diğer tüm uygulamaların yanı sıra canlı yayın sohbetinize küçük oyun istatistiklerini entegre etmenize olanak tanır. Battlefield 4'te toplam öldürme/ölüm oranınızı gösteren bir !kd komutu ister misiniz? tam istediğin!",
-        "link": "Belgeleri okuyun",
+        "link": "Statbits'i ziyaret et",
         "url": "https://statbits.io/"
       },
       "3": {
         "header": "BFList",
         "description": "Battlefield serisi oyunlarda Battlefield'da neler olduğu hakkında canlı veriler sağlar. Oyuncuların yanı sıra sunucular hakkında da veri sağlıyoruz. Bir sunucunun adından veya mevcut haritasından herhangi bir oyuncunun mevcut puanına ve kd'sine kadar.",
-        "link": "belgeleri okuyun",
+        "link": "BFList'i ziyaret et",
         "url": "https://bflist.io/"
       }
     }
@@ -180,7 +204,16 @@
     },
     "showMore": "Daha fazla göster",
     "region": "Bölge",
-    "platform": "platform"
+    "map": "Harita",
+    "platform": "platform",
+    "gamemode": "Oyun modu",
+    "playerFilter": "Kullanılabilir alan",
+    "showFilters": "Filtreleri göster",
+    "serverOwner": {
+      "main": "Sunucu sahibi",
+      "add": "Ekle"
+    },
+    "sorting": "Sırala"
   },
   "platoonSearch": {
     "back": "Ana Sayfa",
@@ -202,20 +235,25 @@
     "otherPlatoons": "Diğer Klanlar",
     "weapons": "Silah",
     "vehicles": "Araç",
+    "gadgets": "Gadgetlar",
     "weaponGraph": "Silah grafiği",
     "vehicleGraph": "Araç grafiği",
+    "gadgetGaph": "Gadget grafiği",
     "searchWeapon": "Silah ara",
     "searchVehicle": "Araç ara",
+    "searchGadget": "Gadget ara",
     "rows": {
       "weaponName": "Silah adı",
       "vehicleName": "Araç adı",
+      "gadgetName": "Gadget adı",
       "type": "Tür",
       "kills": "Öldürme",
       "killsPerMinute": "KPM",
       "damagePerMinute": "DPM",
       "destroyed": "Patlatma",
       "accuracy": "isabet",
-      "headshots": "Kafadan vurma"
+      "headshots": "Kafadan vurma",
+      "multiKills": "Multikills"
     },
     "classes": {
       "main": "Sınıflar",
@@ -257,6 +295,10 @@
       "Operations": "Operasyon",
       "Teamdeathmatch": "Ölüm karşılaşması",
       "Conquestlarge": "Büyük fetih",
+      "Gungame free-for-all": "Gungame free-for-all",
+      "Gungame team": "Gungame team",
+      "Free-for-all": "Free-for-all",
+      "Infantry Conquest": "Infantry Conquest",
       "Gunmaster": "Silah ustası",
       "Capturetheflag": "Bayrak kapma",
       "Obliteration": " Tahrip",
@@ -468,6 +510,115 @@
     "notFound": {
       "main": "Sunucu bulunamadı",
       "description": "Aradığınız sunucuyu bulamıyoruz."
+    },
+    "bfv": {
+      "maps": {
+        "Fjell 652": "Fjell 652",
+        "Narvik": "Narvik",
+        "Arras": "Arras",
+        "Devastation": "Devastation",
+        "Twisted Steel": "Twisted Steel",
+        "Aerodrome": "Aerodrome",
+        "Hamada": "Hamada",
+        "Rotterdam": "Rotterdam",
+        "Panzerstorm": "Panzerstorm",
+        "Mercury": "Mercury",
+        "Marita": "Marita",
+        "Provence": "Provence",
+        "Al Sudan": "Al Sundan",
+        "Operation Underground": "Operation Underground",
+        "Iwo Jima": "Iwo Jima",
+        "Pacific Storm": "Pacific Storm",
+        "Wake Island": "Wake Island",
+        "Solomon Islands": "Solomon Islands",
+        "Al Marj Encampment": "Al Marj Encampment",
+        "Lofoten Islands": "Lofoten Islands"
+      }
+    },
+    "bf1": {
+      "gamemodes": {
+        "airassault": "Air Assault",
+        "conquest": "Fetih",
+        "domination": "Üstünlük",
+        "frontlines": "Cephe hattı",
+        "operations": "Operasyon",
+        "rush": "Akın",
+        "shockoperations": "Şok operasyon",
+        "teamdeathmatch": "Takım ölüm karşılaşması",
+        "warpigeons": "Savaş güvencini"
+      },
+      "maps": {
+        "Sinai Desert": "Sinai Desert",
+        "Ballroom Blitz": "Ballroom Blitz",
+        "Empire's Edge": "Empire's Edge",
+        "St Quentin Scar": "St Quentin Scar",
+        "Prise de Tahure": "Prise de Tahure",
+        "Monte Grappa": "Monte Grappa",
+        "Fao Fortress": "Fao Fortress",
+        "Giant's Shadow": "Giant's Shadow",
+        "Rupture": "Rupture",
+        "Amiens": "Amiens",
+        "Suez": "Suez",
+        "Fort De Vaux": "Fort De Vaux",
+        "Nivelle Nights": "Nivelle Nights",
+        "Soissons": "Soissons",
+        "Verdun Heights": "Verdun Heights",
+        "Albion": "Albion",
+        "Tsaritsyn": "Tsaritsyn",
+        "Łupków Pass": "Łupków Pass",
+        "Achi Baba": "Achi Baba",
+        "Heligoland Bight": "Heligoland Bight",
+        "Caporetto": "Caporetto",
+        "River Somme": "River Somme",
+        "Passchendaele": "Passchendaele",
+        "Galicia": "Galicia",
+        "Volga River": "Volga River",
+        "Brusilov Keep": "Brusilov Keep",
+        "Cape Helles": "Cape Helles",
+        "Zeebrugge": "Zeebrugge",
+        "Argonne Forest": "Argonne Ormanı",
+        "Razor's Edge": "Razor's Edge",
+        "London Calling": "London Calling",
+        "London Calling: Scourge": "London Calling: Scourge"
+      }
+    },
+    "bf2042": {
+      "maps": {
+        "Arica Harbor": "Arica Harbor",
+        "Valparaiso": "Valparaiso",
+        "Battle of the Bulge": "Battle of the Bulge",
+        "El Alamein": "El Alamein",
+        "Caspian Border": "Caspian Border",
+        "Noshahr Canals": "Noshahr Canals",
+        "Orbital": "Orbital",
+        "Hourglass": "Hourglass",
+        "Kaleidoscope": "Kaleidoscope",
+        "Breakaway": "Breakaway",
+        "Discarded": "Discarded",
+        "Manifest": "Manifest",
+        "Renewal": "Renewal",
+        "Exposure": "Exposure",
+        "Stranded": "Stranded",
+        "Spearhead": "Spearhead",
+        "Flashpoint": "Flashpoint",
+        "Reclaimed": "Reclaimed"
+      },
+      "gamemodes": {
+        "Breakthrough Large": "Breakthrough Large",
+        "Breakthrough": "Breakthrough",
+        "Conquest": "Fetih",
+        "Custom": "Özel",
+        "Rush": "Akın",
+        "Conquest large": "Büyük fetih"
+      }
+    },
+    "frostbite3": {
+      "playerFilter": {
+        "onetofive": "1-5",
+        "sixtoten": "6-10",
+        "tenplus": "10+",
+        "none": "Hiçbiri"
+      }
     }
   },
   "platoon": {
@@ -523,6 +674,7 @@
   },
   "footer": {
     "description": "Bu web sitesi Topluluk Ağının bir parçasıdır. Açık Kaynaklıdır. GitHub aracılığıyla sorunları yayınlayabilir ve değişiklik/iyileştirme önerebilirsiniz. Topluluk Ağı tarafından sağlanan ve genel kullanıma açık API. Herhangi bir üçüncü taraf API sağlamıyoruz. Arka ucumuz kapalı kaynaktır ve herkese açık değildir.\nBattlefield & Origin, Electronic Arts'ın tescilli ticari markasıdır. Bu web sitesi Electronic Arts'ın Battlefield 1 İstatistik Koşulları uyarınca sağlanan verileri kullanır. Ticari markalar ilgili sahiplerinin mülkiyetindedir. Oyun malzemelerinin telif hakkı Electronic Arts Inc. Electronic Arts, bu siteyi veya içeriğini onaylamamıştır ve bunlardan sorumlu değildir.\nKod GPL v2 Lisansı altındadır. Bazı bölümler Community Network telif hakkı kapsamındadır.",
+    "LinkName": "Linkler",
     "links": {
       "0": {
         "header": "GitHub",
@@ -557,5 +709,9 @@
     "main": "404 - Sayfa bulunamadı",
     "description": "Aradığınız sayfayı bulamıyoruz.",
     "home": "Ana sayfaya geri dön"
+  },
+  "ads": {
+    "main": "Reklam",
+    "disable": "Reklamları kapat"
   }
 }
