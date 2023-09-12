@@ -131,7 +131,9 @@
     },
     "graphs": {
       "header": "Online stats and graphs",
-      "detailed": "View detailed stats"
+      "detailed": "View detailed stats",
+      "totalPlaying": "Playing Battlefield right now",
+      "activeServers": "Active servers"
     },
     "otherServices": {
       "header": "Other services",

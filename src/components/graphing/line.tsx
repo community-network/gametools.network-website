@@ -885,12 +885,12 @@ function TotalGraph(props: NewGraphData): React.ReactElement {
           <Align>
             <TotalStatistic
               amounts={props.stats?.soldierAmount}
-              text="Playing Battlefield right now"
+              text={t("home.graphs.totalPlaying")}
               loading={props.loading}
             />
             <TotalStatistic
               amounts={props.stats?.serverAmount}
-              text="Active servers"
+              text={t("home.graphs.activeServers")}
               loading={props.loading}
             />
           </Align>
