@@ -30,7 +30,7 @@ export function OwnerInfo(props: {
       isLoading: loading,
       isError: error,
       data: data,
-    } = useQuery(["feslid" + game + owner.id + owner.platformId], () =>
+    } = useQuery(["feslid" + game + owner?.id + owner?.platformId], () =>
       GametoolsApi.feslid({
         game: game,
         ownerInfo: owner,

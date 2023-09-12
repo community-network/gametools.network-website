@@ -18,16 +18,16 @@ export function ServerConfig(props: {
   const { serverInfo } = props;
   const { t } = useTranslation();
 
-  if (serverInfo.configNameTranslation !== "") {
+  if (serverInfo?.configNameTranslation !== "") {
     return (
       <Spacing>
         <h2>{t("servers.portal.main")}</h2>
         <AlignW>
           <OriginProfile src={background} />
           <div>
-            <OriginName>{serverInfo.configNameTranslation}</OriginName>
+            <OriginName>{serverInfo?.configNameTranslation}</OriginName>
             <OriginDescription>
-              {serverInfo.configDescriptionTranslation}
+              {serverInfo?.configDescriptionTranslation}
             </OriginDescription>
           </div>
         </AlignW>
@@ -40,9 +40,9 @@ export function ServerConfig(props: {
       <AlignW>
         <OriginProfile src={background} />
         <div>
-          <OriginName>{serverInfo.configName}</OriginName>
+          <OriginName>{serverInfo?.configName}</OriginName>
           <OriginDescription style={{ maxWidth: "600px" }}>
-            {serverInfo.configDescription}
+            {serverInfo?.configDescription}
           </OriginDescription>
         </div>
       </AlignW>

@@ -21,7 +21,7 @@ export function PlaygroundOwner(props: {
   game: string;
 }): React.ReactElement {
   const { t } = useTranslation();
-  let owner = props.owner;
+  let { owner } = props;
   if (owner === null) {
     return (
       <Spacing>
@@ -43,7 +43,7 @@ export function PlaygroundOwner(props: {
       isError: error,
       data: data,
     } = useQuery(
-      ["feslid" + props.game + props.owner.id + props.owner.platformId],
+      ["feslid" + props.game + props.owner?.id + props.owner?.platformId],
       () =>
         GametoolsApi.feslid({
           game: props.game,
@@ -107,7 +107,9 @@ export function PlaygroundOwner(props: {
         >
           <div>
             <OriginName>
-              {owner.name !== "" ? owner.name : t("playgrounds.owner.unknown")}
+              {owner?.name !== ""
+                ? owner?.name
+                : t("playgrounds.owner.unknown")}
             </OriginName>
             <OriginDescription>
               {t("stats.originDescription")}
