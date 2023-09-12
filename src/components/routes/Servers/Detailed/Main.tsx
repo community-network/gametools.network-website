@@ -157,7 +157,7 @@ export function Results(props: Views): React.ReactElement {
     let widgetItem = "name";
     if (!dice.includes(props.game) && props.game != "battlebit") {
       widgetItem = "serverip";
-      widgetReturn = `${stats.ip}:${stats.port}`;
+      widgetReturn = `${stats?.ip}:${stats?.port}`;
     }
 
     let queue: number = undefined;
