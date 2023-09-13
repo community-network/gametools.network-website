@@ -131,7 +131,9 @@
     },
     "graphs": {
       "header": "在线统计数据和图表",
-      "detailed": "查看详细统计数据"
+      "detailed": "查看详细统计数据",
+      "totalPlaying": "正在游玩 Battlefield",
+      "activeServers": "活跃服务器"
     },
     "otherServices": {
       "header": "其他服务",
