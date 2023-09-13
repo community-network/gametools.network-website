@@ -131,7 +131,9 @@
     },
     "graphs": {
       "header": "Çevrimiçi istatistikler ve grafikler",
-      "detailed": "Ayrıntılı istatistikleri görüntüleyin"
+      "detailed": "Ayrıntılı istatistikleri görüntüleyin",
+      "totalPlaying": "Şu anda Battlefield oynuyor",
+      "activeServers": "Aktif sunucular"
     },
     "otherServices": {
       "header": "Diğer servisler",
