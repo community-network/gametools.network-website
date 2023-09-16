@@ -107,6 +107,7 @@ const MapImage = styled.div<IServerImage>`
   margin-top: 9px;
   max-height: 4rem;
   border-radius: 4px;
+  background-color: #1e2132;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -126,12 +127,52 @@ const AlignSeverImg = styled.div`
   }
 `;
 
+function MapRotationItem(props: {
+  stats: ServerRotation;
+  index: number;
+}): React.ReactElement {
+  const { stats, index } = props;
+  return (
+    <AlignW>
+      <div style={{ marginRight: ".7rem", marginTop: "10px" }}>
+        <div
+          style={{
+            backgroundColor: "#fff",
+            width: "20px",
+            height: "20px",
+            borderRadius: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            position: "absolute",
+          }}
+        >
+          <span>{index + 1}</span>
+        </div>
+        <MapImage background={sslFix(stats?.image)}></MapImage>
+        <ServerInfo>
+          <h3
+            style={{
+              marginTop: ".2rem",
+              lineHeight: 0.8,
+              textAlign: "center",
+            }}
+          >
+            {stats?.mapname}
+          </h3>
+          <p style={{ margin: 0, textAlign: "center" }}>{stats?.mode}</p>
+        </ServerInfo>
+      </div>
+    </AlignW>
+  );
+}
+
 function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
 
 export function Results(props: Views): React.ReactElement {
-  const { loading, error } = props;
+  const { loading, error, stats } = props;
   // const query = new URLSearchParams(useLocation().search);
   // const blazeIdQuery = query.get("blazeid");
   const getLanguage = () => window.localStorage.i18nextLng;
@@ -143,7 +184,6 @@ export function Results(props: Views): React.ReactElement {
   });
 
   const { t, i18n } = useTranslation();
-  const stats = props.stats;
 
   if (error) {
     return (
@@ -277,52 +317,29 @@ export function Results(props: Views): React.ReactElement {
             </Align>
           </>
         )}
-        {/* when available */}
-        {stats?.rotation && (
+        {dice.includes(props.game) && (
           <>
             <Title style={{ marginBottom: 0 }}>{t("servers.rotation")}</Title>
             <Align>
-              {stats.rotation.map((key: ServerRotation, index: number) => {
-                return (
-                  <AlignW key={index}>
-                    <div style={{ marginRight: ".7rem", marginTop: "10px" }}>
-                      <div
-                        style={{
-                          backgroundColor: "#fff",
-                          width: "20px",
-                          height: "20px",
-                          borderRadius: "100%",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          position: "absolute",
-                        }}
-                      >
-                        <span>{index + 1}</span>
-                      </div>
-                      <MapImage background={sslFix(key.image)}></MapImage>
-                      <ServerInfo>
-                        <h3
-                          style={{
-                            marginTop: ".2rem",
-                            lineHeight: 0.8,
-                            textAlign: "center",
-                          }}
-                        >
-                          {key.mapname}
-                        </h3>
-                        <p style={{ margin: 0, textAlign: "center" }}>
-                          {key.mode}
-                        </p>
-                      </ServerInfo>
-                    </div>
-                  </AlignW>
-                );
-              })}
+              {loading
+                ? [...Array(4)].map((key, index) => (
+                    <MapRotationItem
+                      key={key}
+                      stats={{
+                        image: "",
+                        mapname: t("loading"),
+                        mode: t("notApplicable"),
+                        index: index,
+                      }}
+                      index={index}
+                    />
+                  ))
+                : stats?.rotation?.map((key: ServerRotation, index: number) => (
+                    <MapRotationItem key={index} index={index} stats={key} />
+                  ))}
             </Align>
           </>
         )}
-
         <PageColumn>
           <PageRow>
             {props.game !== "bf4" && frostbite3.includes(props.game) ? (

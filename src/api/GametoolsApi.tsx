@@ -133,6 +133,7 @@ export interface bfbanPlayers {
 }
 
 export interface GlobalGraphReturn {
+  mode: string;
   apiUrl: string;
   serverAmount: number[];
   soldierAmount: number[];

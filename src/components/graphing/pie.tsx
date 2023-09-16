@@ -32,11 +32,12 @@ interface NewGraphData {
 export function ServerPieChart(props: NewGraphData): React.ReactElement {
   const { t } = useTranslation();
   const data = {
-    labels: Object.keys(props.stats[props.chartValues]),
+    labels:
+      Object.keys(props.stats ? props.stats[props.chartValues] : []) || [],
     datasets: [
       {
         label: t("servers.graph.amount"),
-        data: Object.values(props.stats[props.chartValues]),
+        data: Object.values(props.stats ? props.stats[props.chartValues] : []),
         backgroundColor: [
           "#7fffd4",
           "#458b74",

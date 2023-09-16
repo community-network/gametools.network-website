@@ -716,68 +716,57 @@ export function ServerGraphQuery(props: ServerGraphData): React.ReactElement {
     },
   );
 
-  if (loading) {
+  if (error) {
     return (
       <>
         <h2>{t("servers.graph.main")}</h2>
         <Box>
-          <p>{t("loading")}</p>
+          <p>{t("servers.graph.error")}</p>
         </Box>
       </>
     );
   }
 
-  if (!loading && !error) {
-    return (
-      <ErrorBoundary>
-        <div style={{ maxWidth: "45rem" }}>
-          <Column>
-            <Row>
-              <h2>{t("servers.graph.main")}</h2>
-              <ServerGraph stats={stats} />
-            </Row>
-            <Row
-              style={{
-                maxWidth: "200px",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <SelectPrimary
-                style={{
-                  margin: 0,
-                  marginLeft: "14px",
-                  marginTop: "18px",
-                  marginBottom: "10px",
-                }}
-                value={pieGraphType}
-                onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
-                  setPieGraphType(ev.target.value)
-                }
-              >
-                <option value="map">{t("servers.graph.map")}</option>
-                {stats["mode"] != undefined &&
-                Object.keys(stats["mode"]).length > 0 ? (
-                  <option value="mode">{t("servers.graph.mode")}</option>
-                ) : (
-                  <></>
-                )}
-              </SelectPrimary>
-              <ServerPieChart stats={stats} chartValues={pieGraphType} />
-            </Row>
-          </Column>
-        </div>
-      </ErrorBoundary>
-    );
-  }
-
   return (
-    <>
-      <h2>{t("servers.graph.main")}</h2>
-      <Box>
-        <p>{t("servers.graph.error")}</p>
-      </Box>
-    </>
+    <ErrorBoundary>
+      <div style={{ maxWidth: "45rem" }}>
+        <Column>
+          <Row>
+            <h2>{t("servers.graph.main")}</h2>
+            <ServerGraph stats={stats} loading={loading} />
+          </Row>
+          <Row
+            style={{
+              maxWidth: "200px",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <SelectPrimary
+              style={{
+                margin: 0,
+                marginLeft: "14px",
+                marginTop: "18px",
+                marginBottom: "10px",
+              }}
+              value={pieGraphType}
+              onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
+                setPieGraphType(ev.target.value)
+              }
+            >
+              <option value="map">{t("servers.graph.map")}</option>
+              {stats?.mode != undefined &&
+              Object.keys(stats?.mode).length > 0 ? (
+                <option value="mode">{t("servers.graph.mode")}</option>
+              ) : (
+                <></>
+              )}
+            </SelectPrimary>
+            <ServerPieChart stats={stats} chartValues={pieGraphType} />
+          </Row>
+        </Column>
+      </div>
+    </ErrorBoundary>
   );
 }
 
@@ -787,84 +776,94 @@ interface NewGraphData {
   stats: GlobalGraphReturn;
 }
 
-function ServerGraph(props: { stats: GlobalGraphReturn }): React.ReactElement {
+function ServerGraph(props: {
+  stats: GlobalGraphReturn;
+  loading: boolean;
+}): React.ReactElement {
   const { t } = useTranslation();
   const chartRef = React.useRef(null);
-  const time = props.stats.timeStamps.map((e: string) => {
-    const time = new Date(e);
-    return time;
-  });
+  const time =
+    props.stats?.timeStamps.map((e: string) => {
+      const time = new Date(e);
+      return time;
+    }) || [];
 
   return (
     <BoxSpacing style={{ maxWidth: "600px" }}>
       <BoxWrap>
-        <Line
-          ref={chartRef}
-          options={{
-            maintainAspectRatio: false,
-            hover: {
-              intersect: false,
-              mode: "nearest",
-            },
-            scales: {
-              x: {
-                grid: {
-                  display: false,
-                },
-                display: false,
-                type: "time",
-              },
-              y: {
-                display: false,
-                max:
-                  Math.max(...props.stats.soldierAmount) > 128
-                    ? 256
-                    : Math.max(...props.stats.soldierAmount) > 64
-                    ? 128
-                    : 64,
-                grid: {
-                  display: false,
-                },
-              },
-            },
-            plugins: {
-              tooltip: {
-                mode: "nearest",
+        {props.loading ? (
+          <div style={{ height: "200px" }}>
+            <p style={{ marginLeft: "1rem" }}>{t("loading")}</p>
+          </div>
+        ) : (
+          <Line
+            ref={chartRef}
+            options={{
+              maintainAspectRatio: false,
+              hover: {
                 intersect: false,
+                mode: "nearest",
               },
-              zoom: {
-                limits: {
-                  x: {
-                    min: +new Date() - 604800000,
-                    max: +new Date(),
-                    minRange: 50000000,
+              scales: {
+                x: {
+                  grid: {
+                    display: false,
+                  },
+                  display: false,
+                  type: "time",
+                },
+                y: {
+                  display: false,
+                  max:
+                    Math.max(...(props.stats?.soldierAmount || [])) > 128
+                      ? 256
+                      : Math.max(...(props.stats?.soldierAmount || [])) > 64
+                      ? 128
+                      : 64,
+                  grid: {
+                    display: false,
                   },
                 },
               },
-            },
-          }}
-          style={{ height: "200px" }}
-          data={{
-            labels: time,
-            datasets: [
-              {
-                label: t("stats.graph.soldierAmount"),
-                data: props.stats.soldierAmount,
-                fill: "origin",
-                borderColor: "#ffffff81",
-                pointRadius: 0,
-                borderWidth: 1.5,
-                backgroundColor: (context: ScriptableContext<"line">) => {
-                  const ctx = context.chart.ctx;
-                  const gradient = ctx.createLinearGradient(0, 0, 0, 220);
-                  gradient.addColorStop(0, "rgba(255, 255, 255, 0.1)");
-                  gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
-                  return gradient;
+              plugins: {
+                tooltip: {
+                  mode: "nearest",
+                  intersect: false,
+                },
+                zoom: {
+                  limits: {
+                    x: {
+                      min: +new Date() - 604800000,
+                      max: +new Date(),
+                      minRange: 50000000,
+                    },
+                  },
                 },
               },
-            ],
-          }}
-        />
+            }}
+            style={{ height: "200px" }}
+            data={{
+              labels: time,
+              datasets: [
+                {
+                  label: t("stats.graph.soldierAmount"),
+                  data: props.stats?.soldierAmount || [],
+                  fill: "origin",
+                  borderColor: "#ffffff81",
+                  pointRadius: 0,
+                  borderWidth: 1.5,
+                  backgroundColor: (context: ScriptableContext<"line">) => {
+                    const ctx = context.chart.ctx;
+                    const gradient = ctx.createLinearGradient(0, 0, 0, 220);
+                    gradient.addColorStop(0, "rgba(255, 255, 255, 0.1)");
+                    gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+                    return gradient;
+                  },
+                },
+              ],
+            }}
+          />
+        )}
       </BoxWrap>
     </BoxSpacing>
   );
