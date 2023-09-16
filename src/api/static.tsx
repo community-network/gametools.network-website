@@ -102,7 +102,6 @@ export const oldJoinGames = [
 ];
 export const frostbiteJoinGames = ["bf4", "bf1"];
 
-export const playerFilterGames = ["bf4", "bf1", "bfv"];
 export const newGen = ["bf2042"];
 export const frostbite3 = ["bf4", "bf1", "bfv", "bf2042"];
 export const frostbite3Graph = ["bf4", "bf1", "bfv", "bf2042portal"];

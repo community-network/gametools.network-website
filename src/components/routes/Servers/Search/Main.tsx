@@ -26,13 +26,13 @@ import {
 } from "../../../Materials";
 import { getLanguage } from "../../../../locales/config";
 import {
+  dice,
   extraGames,
   frostbite3,
   frostbiteJoinGames,
   newGen,
   newTitles,
   oldJoinGames,
-  playerFilterGames,
   supportedGames,
 } from "../../../../api/static";
 import { Results } from "./Results";
@@ -422,6 +422,10 @@ function Main(): React.ReactElement {
     );
   }
 
+  const backendType = frostbite3.includes(gameName)
+    ? "frostbite3"
+    : "battlelog";
+
   const { t } = useTranslation();
   const {
     isLoading: loading,
@@ -570,7 +574,7 @@ function Main(): React.ReactElement {
           {t("serverSearch.results")}
         </Title>
         <ServerSort sortType={sortType} setSortType={setSortType} />
-        {(frostbite3.includes(gameName) || extraGames.includes(gameName)) && (
+        {(dice.includes(gameName) || extraGames.includes(gameName)) && (
           <div
             style={{
               display: "flex",
@@ -596,7 +600,7 @@ function Main(): React.ReactElement {
         )}
       </Align>
       <ServerPageColumn>
-        {(frostbite3.includes(gameName) || extraGames.includes(gameName)) &&
+        {(dice.includes(gameName) || extraGames.includes(gameName)) &&
           !hideSideBar && (
             <div>
               <Box
@@ -670,7 +674,7 @@ function Main(): React.ReactElement {
                       )}
                     </ServerPageFilterRow>
                   )}
-                  {playerFilterGames.includes(gameName) && (
+                  {dice.includes(gameName) && gameName !== "bf2042" && (
                     <ServerPageFilterRow>
                       <h2 style={{ marginBottom: "0.4rem" }}>
                         {t("serverSearch.playerFilter")}
@@ -682,7 +686,7 @@ function Main(): React.ReactElement {
                       </h2>
                       {!dropdownOpen["playerFilter"] &&
                         Object.keys(
-                          t("servers.frostbite3.playerFilter", {
+                          t(`servers.${backendType}.playerFilter`, {
                             returnObjects: true,
                           }),
                         ).map((key, index) => {
@@ -710,56 +714,60 @@ function Main(): React.ReactElement {
                                   ]);
                                 }
                               }}
-                              name={t(`servers.frostbite3.playerFilter.${key}`)}
+                              name={t(
+                                `servers.${backendType}.playerFilter.${key}`,
+                              )}
                             />
                           );
                         })}
                     </ServerPageFilterRow>
                   )}
-                  {(gameName === "bf2042" || gameName === "bf1") && (
-                    <ServerPageFilterRow>
-                      <h2 style={{ marginBottom: "0.4rem" }}>
-                        {t("serverSearch.gamemode")}
-                        <DropdownArrow
-                          item={"gamemode"}
-                          dropdownOpen={dropdownOpen}
-                          setDropdownOpen={setDropdownOpen}
-                        />
-                      </h2>
-                      {!dropdownOpen["gamemode"] &&
-                        Object.keys(
-                          t(`servers.${gameName}.gamemodes`, {
-                            returnObjects: true,
-                          }),
-                        ).map((key, index) => {
-                          return (
-                            <CheckItem
-                              key={index}
-                              item={key}
-                              currrentItems={gamemodeFilter}
-                              callback={(e: {
-                                target: { value: string; checked: boolean };
-                              }) => {
-                                if (e.target.checked) {
-                                  setGamemodeFilter((oldArray) => [
-                                    ...oldArray,
-                                    e.target.value,
-                                  ]);
-                                } else {
-                                  setGamemodeFilter((oldArray) => [
-                                    ...oldArray.filter(
-                                      (item) => item !== e.target.value,
-                                    ),
-                                  ]);
-                                }
-                              }}
-                              name={t(`servers.${gameName}.gamemodes.${key}`)}
-                            />
-                          );
-                        })}
-                    </ServerPageFilterRow>
-                  )}
-                  {(gameName === "bf2042" || newTitles.includes(gameName)) && (
+                  {dice.includes(gameName) &&
+                    gameName !== "bf4" &&
+                    gameName !== "bfv" && (
+                      <ServerPageFilterRow>
+                        <h2 style={{ marginBottom: "0.4rem" }}>
+                          {t("serverSearch.gamemode")}
+                          <DropdownArrow
+                            item={"gamemode"}
+                            dropdownOpen={dropdownOpen}
+                            setDropdownOpen={setDropdownOpen}
+                          />
+                        </h2>
+                        {!dropdownOpen["gamemode"] &&
+                          Object.keys(
+                            t(`servers.${gameName}.gamemodes`, {
+                              returnObjects: true,
+                            }),
+                          ).map((key, index) => {
+                            return (
+                              <CheckItem
+                                key={index}
+                                item={key}
+                                currrentItems={gamemodeFilter}
+                                callback={(e: {
+                                  target: { value: string; checked: boolean };
+                                }) => {
+                                  if (e.target.checked) {
+                                    setGamemodeFilter((oldArray) => [
+                                      ...oldArray,
+                                      e.target.value,
+                                    ]);
+                                  } else {
+                                    setGamemodeFilter((oldArray) => [
+                                      ...oldArray.filter(
+                                        (item) => item !== e.target.value,
+                                      ),
+                                    ]);
+                                  }
+                                }}
+                                name={t(`servers.${gameName}.gamemodes.${key}`)}
+                              />
+                            );
+                          })}
+                      </ServerPageFilterRow>
+                    )}
+                  {gameName !== "bf4" && dice.includes(gameName) && (
                     <ServerPageFilterRow>
                       <h2 style={{ marginBottom: "0.4rem" }}>
                         {t("serverSearch.map")}
