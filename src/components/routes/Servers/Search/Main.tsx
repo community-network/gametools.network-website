@@ -610,52 +610,54 @@ function Main(): React.ReactElement {
                 innerStyle={{ maxHeight: width >= 1000 ? "600px" : "300px" }}
               >
                 <ServerPageFilters>
-                  <ServerPageFilterRow>
-                    <h2 style={{ marginBottom: "0.4rem" }}>
-                      {t("serverSearch.region")}
-                      <DropdownArrow
-                        item={"region"}
-                        dropdownOpen={dropdownOpen}
-                        setDropdownOpen={setDropdownOpen}
-                      />
-                    </h2>
-                    {!dropdownOpen["region"] &&
-                      Object.keys(t(regionKey, { returnObjects: true })).map(
-                        (key, index) => {
-                          if (key === "all") {
-                            return;
-                          }
-                          return (
-                            <CheckItem
-                              key={index}
-                              item={key}
-                              currrentItems={regionFilter}
-                              callback={(e: {
-                                target: { value: string; checked: boolean };
-                              }) => {
-                                if (e.target.checked) {
-                                  let oldArray = [...regionFilter];
-                                  if (regionFilter.includes("all")) {
-                                    oldArray = [];
+                  {gameName !== "bf3" && gameName !== "bfh" && (
+                    <ServerPageFilterRow>
+                      <h2 style={{ marginBottom: "0.4rem" }}>
+                        {t("serverSearch.region")}
+                        <DropdownArrow
+                          item={"region"}
+                          dropdownOpen={dropdownOpen}
+                          setDropdownOpen={setDropdownOpen}
+                        />
+                      </h2>
+                      {!dropdownOpen["region"] &&
+                        Object.keys(t(regionKey, { returnObjects: true })).map(
+                          (key, index) => {
+                            if (key === "all") {
+                              return;
+                            }
+                            return (
+                              <CheckItem
+                                key={index}
+                                item={key}
+                                currrentItems={regionFilter}
+                                callback={(e: {
+                                  target: { value: string; checked: boolean };
+                                }) => {
+                                  if (e.target.checked) {
+                                    let oldArray = [...regionFilter];
+                                    if (regionFilter.includes("all")) {
+                                      oldArray = [];
+                                    }
+                                    setRegionFilter([
+                                      ...oldArray,
+                                      e.target.value,
+                                    ]);
+                                  } else {
+                                    setRegionFilter((oldArray) => [
+                                      ...oldArray.filter(
+                                        (item) => item !== e.target.value,
+                                      ),
+                                    ]);
                                   }
-                                  setRegionFilter([
-                                    ...oldArray,
-                                    e.target.value,
-                                  ]);
-                                } else {
-                                  setRegionFilter((oldArray) => [
-                                    ...oldArray.filter(
-                                      (item) => item !== e.target.value,
-                                    ),
-                                  ]);
-                                }
-                              }}
-                              name={t(`${regionKey}.${key}`)}
-                            />
-                          );
-                        },
-                      )}
-                  </ServerPageFilterRow>
+                                }}
+                                name={t(`${regionKey}.${key}`)}
+                              />
+                            );
+                          },
+                        )}
+                    </ServerPageFilterRow>
+                  )}
                   {gameName === "bf2042" && (
                     <ServerPageFilterRow>
                       <h2 style={{ marginBottom: "0.4rem" }}>
