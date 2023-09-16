@@ -103,8 +103,10 @@ interface Views {
 
 export function Results(props: Views): React.ReactElement {
   const { t, i18n } = useTranslation();
-  const stats = props.stats;
-
+  const { stats, game } = props;
+  const gamemodeTranslation = ["bf3", "bfh"].includes(game)
+    ? `servers.${game}.gamemodes`
+    : "stats.gamemodes";
   if (!props.loading && !props.error) {
     if (stats.servers.length == 0) {
       return (
@@ -205,8 +207,8 @@ export function Results(props: Views): React.ReactElement {
                     )}
                     {key.playerAmount}/{key.maxPlayers}
                     {key.maxPlayerAmount} {queueString} -{" "}
-                    {i18n.exists(`stats.gamemodes.${key.mode}`)
-                      ? t(`stats.gamemodes.${key.mode}`)
+                    {i18n.exists(`${gamemodeTranslation}.${key.mode}`)
+                      ? t(`${gamemodeTranslation}.${key.mode}`)
                       : key.mode}
                     {key.mode === undefined ? key.map : null}
                     {officialString}
