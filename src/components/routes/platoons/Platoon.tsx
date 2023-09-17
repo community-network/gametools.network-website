@@ -89,6 +89,7 @@ const PlatoonImage = styled.div<IPlatoonImage>`
 const MemberImage = styled.img`
   max-width: 8rem;
   max-height: 3rem;
+  min-width: 3rem;
   margin-right: 1.5rem;
 `;
 
@@ -202,9 +203,7 @@ function Member(props: {
           >
             <Align>
               <MemberImage src={sslFix(item?.avatar)} />
-              <h4
-                style={{ marginTop: "2px", marginBottom: 0, ...loadingStyle }}
-              >
+              <h4 style={{ ...loadingStyle }}>
                 {item?.name}
                 {children}
               </h4>
