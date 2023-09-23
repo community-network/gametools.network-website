@@ -53,6 +53,7 @@ export class ApiProvider extends JsonClient {
       GunGameTeam: "Gungame team",
       ELI: "Elimination",
       VoxelFortify: "Voxel Fortify",
+      CaptureTheFlag: "Capture the flag",
     };
 
     const smallmodes = {
@@ -67,6 +68,7 @@ export class ApiProvider extends JsonClient {
       GunGameTeam: "GGT",
       ELI: "ELI",
       VoxelFortify: "VF",
+      CaptureTheFlag: "CTF",
     };
 
     if (
