@@ -52,6 +52,7 @@ export class ApiProvider extends JsonClient {
       FFA: "Free-for-all",
       GunGameTeam: "Gungame team",
       ELI: "Elimination",
+      VoxelFortify: "Voxel Fortify",
     };
 
     const smallmodes = {
@@ -65,6 +66,7 @@ export class ApiProvider extends JsonClient {
       FFA: "FFA",
       GunGameTeam: "GGT",
       ELI: "ELI",
+      VoxelFortify: "VF",
     };
 
     if (
