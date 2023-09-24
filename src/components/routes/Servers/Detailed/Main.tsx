@@ -505,22 +505,26 @@ export function Results(props: Views): React.ReactElement {
                     stateTranslation={"servers.iframe.states"}
                   />
                 </Description>
-                <iframe
-                  title="Server playercount"
-                  src={`https://widgets.gametools.network/servers/${element}/${
-                    props.game
-                  }/${widgetItem}/${widgetReturn}/${
-                    props.platform
-                  }?lng=${getLanguage()}`}
-                  style={{
-                    maxWidth: "700px",
-                    backgroundColor: "transparent",
-                  }}
-                  height={`${widgetSize[index]}px`}
-                  width="100%"
-                  frameBorder="0"
-                  loading="lazy"
-                />
+                {loading ? (
+                  <Description>{t("loading")}</Description>
+                ) : (
+                  <iframe
+                    title="Server playercount"
+                    src={`https://widgets.gametools.network/servers/${element}/${
+                      props.game
+                    }/${widgetItem}/${widgetReturn}/${
+                      props.platform
+                    }?lng=${getLanguage()}`}
+                    style={{
+                      maxWidth: "700px",
+                      backgroundColor: "transparent",
+                    }}
+                    height={`${widgetSize[index]}px`}
+                    width="100%"
+                    frameBorder="0"
+                    loading="lazy"
+                  />
+                )}
               </PageRow>
             );
           })}
