@@ -27,21 +27,23 @@ export default class JsonClient {
   }
   async postMethod(
     method: string,
-    params: { [name: string]: unknown },
+    params: RequestInit | { [name: string]: unknown },
   ): Promise<Response> {
     return fetch(this.constructApiUrl(method, {}), params);
   }
   getJsonMethod(
     method: string,
     params: { [name: string]: string },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ): Promise<any> {
     return this.errorHandler(this.fetchMethod(method, params));
   }
   postJsonMethod(
     method: string,
     params: { [name: string]: string | boolean | number },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ): Promise<any> {
-    const options = {
+    const options: RequestInit = {
       method: "POST",
       body: JSON.stringify(params),
       credentials: "include",

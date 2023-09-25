@@ -47,6 +47,7 @@ ChartJS.register(
 interface GraphData {
   loading: boolean;
   error: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   stats: { [name: string]: any };
   gameName: string;
   platform: string;

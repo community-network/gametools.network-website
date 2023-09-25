@@ -268,6 +268,7 @@ export class ApiProvider extends JsonClient {
       return_ownername: with_ownername.toString(),
     };
     if (game == "battlebit") {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const result: any = await battlebitApi.serverList({
         searchTerm: serverName,
         regions: [region],
@@ -418,7 +419,10 @@ export class ApiProvider extends JsonClient {
     region = "all",
     platform = "pc",
     type = "amounts",
-  }: GraphInfo): Promise<{ [name: string]: any }> {
+  }: GraphInfo): Promise<{
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [name: string]: any;
+  }> {
     const gameStuff = game.split(".");
     return await this.getJsonMethod(`/${gameStuff[0]}/statusarray/`, {
       days: days,
