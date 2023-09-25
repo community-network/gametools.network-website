@@ -505,7 +505,7 @@ export function Results(props: Views): React.ReactElement {
                     stateTranslation={"servers.iframe.states"}
                   />
                 </Description>
-                {loading ? (
+                {loading || widgetReturn === undefined ? (
                   <Description>{t("loading")}</Description>
                 ) : (
                   <iframe
