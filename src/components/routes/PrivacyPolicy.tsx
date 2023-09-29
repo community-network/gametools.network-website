@@ -1,5 +1,14 @@
 import * as React from "react";
-import { Container } from "../Materials";
+import { styled } from "styled-components";
+
+const Container = styled.div`
+  @media (min-width: 850px) {
+    padding: 0 8.33%;
+  }
+  @media (max-width: 850px) {
+    padding-left: 0 2%;
+  }
+`;
 
 function PrivacyPolicy(): React.ReactElement {
   return (
