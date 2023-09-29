@@ -7,6 +7,7 @@ import { Navbar } from "./main/Navbar";
 
 // Routes
 const Home = React.lazy(() => import("./routes/Home"));
+const PrivacyPolicy = React.lazy(() => import("./routes/PrivacyPolicy"));
 const PlayerSearch = React.lazy(
   () => import("./routes/Stats/Search/PlayerSearch"),
 );
@@ -36,6 +37,7 @@ function Views(): React.ReactElement {
         <main role="main">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/stats" element={<PlayerSearch />} />
             <Route path="/stats/:plat/:type/:eaid/" element={<Stats />} />
             <Route path="/platoons/:plat/:gid" element={<Platoon />} />
