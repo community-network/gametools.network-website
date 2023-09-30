@@ -829,5 +829,12 @@
   "ads": {
     "main": "Advertentie",
     "disable": "Ads uitzetten"
+  },
+  "pageTitle": {
+    "main": "Game Tools: Battlefield Stats, Bots, Serverbeheer",
+    "stats": "Stats",
+    "platoon": "Platoons",
+    "playground": "Playgrounds",
+    "servers": "Servers"
   }
 }
