@@ -177,6 +177,10 @@ function Stats(): React.ReactElement {
     }
   }, [game, history]);
   const { t } = useTranslation();
+  document.title = `${t("siteFullName")} ${t("pageTitle.stats")} | ${
+    playerGames?.userName || t("loading")
+  } | ${game || t("notApplicable")}`;
+
   return (
     <Container>
       <BackButton text={t("stats.back")} location="/" />

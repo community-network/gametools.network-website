@@ -164,6 +164,7 @@ function Search(): React.ReactElement {
   }, [searchTerm, platform, history]);
 
   const { t } = useTranslation();
+  document.title = `${t("siteFullName")} | ${t("platoonSearch.serverInfo")}`;
   const {
     isLoading: loading,
     isError: error,

@@ -483,6 +483,9 @@ const AlignPlatoonImg = styled.div`
 function Results(props: Views): React.ReactElement {
   const { t } = useTranslation();
   const platoon = props.platoon;
+  document.title = `${t("siteFullName")} ${t("pageTitle.platoon")} | ${
+    platoon?.name || t("loading")
+  }`;
 
   if (props.error) {
     return (

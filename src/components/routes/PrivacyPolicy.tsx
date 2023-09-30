@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useTranslation } from "react-i18next";
 import { styled } from "styled-components";
 
 const Container = styled.div`
@@ -11,6 +12,9 @@ const Container = styled.div`
 `;
 
 function PrivacyPolicy(): React.ReactElement {
+  const { t } = useTranslation();
+  document.title = `${t("siteFullName")} | ${t("footer.links.3.header")}`;
+
   return (
     <Container>
       <p>

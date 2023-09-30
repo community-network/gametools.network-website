@@ -829,5 +829,12 @@
   "ads": {
     "main": "Ad",
     "disable": "Disable ads"
+  },
+  "pageTitle": {
+    "main": "Game Tools: Battlefield Stats, Bots, Server management",
+    "stats": "Stats",
+    "platoon": "Platoons",
+    "playground": "Playgrounds",
+    "servers": "Servers"
   }
 }

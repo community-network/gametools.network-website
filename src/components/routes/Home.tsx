@@ -114,6 +114,8 @@ const AdBox = styled.div`
 
 function Home(): React.ReactElement {
   const { t, i18n } = useTranslation();
+  document.title = t("pageTitle.main");
+
   let i = 0;
   const ourFriendLogos = [bfbanLogo, bfportalLogo, statbitsLogo, bflistLogo];
   const ourFriends = [];

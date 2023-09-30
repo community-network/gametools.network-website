@@ -4,6 +4,7 @@ import { Container, PrimaryButtonLink } from "../Materials";
 
 function PageNotFound(): React.ReactElement {
   const { t } = useTranslation();
+  document.title = `${t("siteFullName")} | ${t("404")}`;
   return (
     <Container>
       <h1>{t("pageNotFound.main")}</h1>

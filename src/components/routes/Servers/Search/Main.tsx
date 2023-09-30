@@ -427,6 +427,7 @@ function Main(): React.ReactElement {
     : "battlelog";
 
   const { t } = useTranslation();
+  document.title = `${t("siteFullName")} | ${t("serverSearch.serverInfo")}`;
   const {
     isLoading: loading,
     isError: error,
