@@ -16,6 +16,7 @@ const Background = styled.footer`
   padding-top: 2rem;
   padding-bottom: 1rem;
   background-color: #00000010;
+  margin-bottom: 3rem;
 `;
 
 const AdSection = styled.div`
