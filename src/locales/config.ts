@@ -15,8 +15,17 @@ const locales = {
   "ru-RU": ru,
 };
 
+const langFile = { "de-DE": "de_DE" };
+
 i18n
-  .use(resourcesToBackend((language) => import(`./languages/${language}.json`)))
+  .use(
+    resourcesToBackend((language: string) => {
+      if (language in langFile) {
+        language = langFile[language];
+      }
+      return import(`./languages/${language}.json`);
+    }),
+  )
   .use(initReactI18next)
   .use(LanguageDetector)
   .init({
