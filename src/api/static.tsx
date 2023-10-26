@@ -11,10 +11,10 @@ export const supportedGames = [
   "bf4",
   "bfh",
   "bf1",
+  "bf1marne",
   "bfv",
   "bf2042",
   "battlebit",
-  "bf1marne",
 ];
 
 export const platformGames = {
