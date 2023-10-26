@@ -1,5 +1,7 @@
+import { getCurrentCountry } from "../locales/config";
 import JsonClient from "./Json";
 import { ServerSearch } from "./ReturnTypes";
+import { getName } from "i18n-iso-countries";
 
 export interface PlayerReturn {
   name: string;
@@ -183,7 +185,6 @@ export class ApiProvider extends JsonClient {
       "Xpack4/Levels/MP/MP_River/MP_River":
         "https://cdn.gametools.network/maps/bf1/MP_River_LandscapeLarge-21443ae9.jpg",
     };
-
     if (
       this.serverCacheAge === undefined ||
       // update only once every 30 seconds
@@ -193,6 +194,7 @@ export class ApiProvider extends JsonClient {
       this.serverCache = await r.json();
       this.serverCacheAge = Date.now();
     }
+    const country = await getCurrentCountry();
     const servers = this.serverCache.servers
       .map((server) => {
         return {
@@ -205,6 +207,7 @@ export class ApiProvider extends JsonClient {
           official: false,
           ownerId: 0,
           region: server.region,
+          country: getName(server.country, country),
           platform: "pc",
           playerAmount: server.currentPlayers,
           maxPlayerAmount: server.maxPlayers,

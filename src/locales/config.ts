@@ -9,6 +9,7 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { format, formatDistanceToNowStrict } from "date-fns";
 import { enUS, tr, zhCN, nl, ru, de } from "date-fns/locale";
+import { registerLocale } from "i18n-iso-countries";
 
 const locales = {
   "en-US": enUS,
@@ -72,12 +73,35 @@ export const apiLanguage = {
   "tr-TR": "en-US",
 };
 
+export const apiCountry = {
+  "en-us": "en",
+  "zh-cn": "zh",
+  "nl-nl": "nl",
+  "tr-tr": "tr",
+  "ru-ru": "ru",
+  "de-de": "de",
+};
+
 export const getLanguage = (): string => {
   let language = window.localStorage.i18nextLng.toLowerCase();
   if (language in apiLanguage) {
     language = apiLanguage[language];
   }
   return language;
+};
+
+export const getCurrentCountry = (): Promise<string> => {
+  const language = window.localStorage.i18nextLng.toLowerCase();
+  let country = "en";
+  if (language in apiCountry) {
+    country = apiCountry[language];
+  }
+  return import(`i18n-iso-countries/langs/${country}.json`).then(
+    (countries) => {
+      registerLocale(countries);
+      return country;
+    },
+  );
 };
 
 export default i18n;

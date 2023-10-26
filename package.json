@@ -81,6 +81,7 @@
     "chartjs-plugin-zoom": "^2.0.1",
     "date-fns": "^2.30.0",
     "file-saver": "^2.0.5",
+    "i18n-iso-countries": "^7.7.0",
     "i18next": "^23.5.1",
     "i18next-browser-languagedetector": "^7.1.0",
     "react-chartjs-2": "^5.2.0",
