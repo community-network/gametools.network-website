@@ -14,6 +14,7 @@ export const supportedGames = [
   "bfv",
   "bf2042",
   "battlebit",
+  "bf1marne",
 ];
 
 export const platformGames = {
@@ -109,7 +110,7 @@ export const dice = ["bf3", "bf4", "bfh", "bf1", "bfv", "bf2042"];
 export const diceGraph = ["bf3", "bf4", "bfh", "bf1", "bfv", "bf2042portal"];
 export const newTitles = ["bf1", "bfv"];
 export const gameGraphConvert = { bf2042portal: "bf2042" };
-export const extraGames = ["battlebit"];
+export const extraGames = ["battlebit", "bf1marne"];
 
 export const graphColors = [
   "#4bc0c033",

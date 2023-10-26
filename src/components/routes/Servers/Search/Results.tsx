@@ -164,7 +164,7 @@ export function Results(props: Views): React.ReactElement {
               link={`/servers/${props.game}/${idElement}/${result}/${
                 key.platform || "pc"
               }${props.game == "bf2042" ? `?blazeid=${key.blazeGameId}` : ""}`}
-              condition={true}
+              condition={props.game !== "bf1marne"}
               key={index}
               innerStyle={props.spacingStyle}
             >
