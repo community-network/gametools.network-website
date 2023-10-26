@@ -17,6 +17,15 @@ export const supportedGames = [
   "battlebit",
 ];
 
+export const projects = {
+  "bfvietnam.openspy": "http://openspy.net",
+  "bf2.bf2hub": "https://www.bf2hub.com/",
+  "bf2.playbf2": "https://playbf2.tilda.ws/en",
+  "bf2142.openspy": "http://openspy.net",
+  "bf2142.play2142": "https://battlefield2142.co/",
+  bf1marne: "https://marne.io/",
+};
+
 export const platformGames = {
   pc: ["bf3", "bf4", "bfh", "bf1", "bfv", "bf2042"],
   xboxone: ["bf4", "bfh", "bf1", "bfv", "bf2042"],

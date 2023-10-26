@@ -405,7 +405,7 @@ export class ApiProvider extends JsonClient {
     if (game == "bf1marne") {
       return await bf1MarneApi.serverList({ searchTerm, regions, limit });
     }
-    return await this.getJsonMethod(`/${gameStuff[0]}/servers/`, {
+    const result = await this.getJsonMethod(`/${gameStuff[0]}/servers/`, {
       name: encodeURIComponent(serverName),
       experiencename: encodeURIComponent(experienceName),
       lang: lang,
@@ -415,6 +415,11 @@ export class ApiProvider extends JsonClient {
       limit: limit,
       ...extraQueries,
     });
+    // hard limit to 4 on main page
+    if (limit === "4") {
+      result.servers = result.servers.slice(0, 4);
+    }
+    return result;
   }
 
   async graphs({

@@ -33,6 +33,7 @@ import {
   newGen,
   newTitles,
   oldJoinGames,
+  projects,
   supportedGames,
 } from "../../../../api/static";
 import { Results } from "./Results";
@@ -1087,6 +1088,13 @@ export function ServerSearch(): React.ReactElement {
           {t("serverSearch.showMore")}
         </BigButtonSecondaryBox>
       </Link>
+      {Object.keys(projects).includes(gameName) && (
+        <a href={projects[gameName]} target="_blank" rel="noreferrer">
+          <BigButtonSecondaryBox>
+            {t("serverSearch.showProject")}
+          </BigButtonSecondaryBox>
+        </a>
+      )}
     </>
   );
 }
