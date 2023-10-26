@@ -195,7 +195,11 @@ export function Results(props: Views): React.ReactElement {
   } else {
     let widgetReturn = encodeURIComponent(stats?.prefix);
     let widgetItem = "name";
-    if (!dice.includes(props.game) && props.game != "battlebit") {
+    if (
+      !dice.includes(props.game) &&
+      props.game != "battlebit" &&
+      props.game != "bf1marne"
+    ) {
       widgetItem = "serverip";
       widgetReturn = `${stats?.ip}:${stats?.port}`;
     }
@@ -405,12 +409,14 @@ export function Results(props: Views): React.ReactElement {
 
           <PageRow>
             {/* when available */}
-            <ServerGraphQuery
-              stats={stats}
-              game={props.game}
-              getter={props.getter}
-              name={props.serverName}
-            />
+            {props.game !== "bf1marne" && (
+              <ServerGraphQuery
+                stats={stats}
+                game={props.game}
+                getter={props.getter}
+                name={props.serverName}
+              />
+            )}
             {props.game === "bf1" && (
               <>
                 <ServerPlatoon
