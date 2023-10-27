@@ -10,7 +10,7 @@ export function CopyToClipboard(props: {
 
   return (
     <a
-      style={{ cursor: "pointer" }}
+      style={{ cursor: "pointer", textDecoration: "underline" }}
       onClick={() => {
         navigator.clipboard.writeText(props.message);
         setCopyState("copied");

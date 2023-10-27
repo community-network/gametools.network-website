@@ -8,6 +8,7 @@ import {
   dice,
   frostbite3,
   frostbiteJoinGames,
+  projects,
   serverWidgetTypes,
   widgetSize,
 } from "../../../../api/static";
@@ -227,7 +228,12 @@ export function Results(props: Views): React.ReactElement {
             </Blur>
           </ServerImage>
           <div>
-            <h2 style={{ whiteSpace: "pre" }}>
+            <h2
+              style={{
+                whiteSpace: "pre",
+                marginTop: "1.3rem",
+              }}
+            >
               {loading ? t("loading") : stats?.prefix}
             </h2>
             <Description style={{ maxWidth: "1000px" }}>
@@ -273,6 +279,24 @@ export function Results(props: Views): React.ReactElement {
             ) : (
               <Description>{stats?.mode}</Description>
             )}
+
+            <Description>
+              {t(`games.${props.game}`)}
+              {Object.keys(projects).includes(props.game) && (
+                <>
+                  {" "}
+                  -{" "}
+                  <a
+                    style={{ textDecoration: "underline", lineHeight: 1 }}
+                    href={projects[props.game]}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {t("serverSearch.showProject")}
+                  </a>
+                </>
+              )}
+            </Description>
           </div>
         </AlignSeverImg>
         {/* older titles use ip address, thats static already */}
