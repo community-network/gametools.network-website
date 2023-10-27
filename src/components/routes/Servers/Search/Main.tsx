@@ -547,6 +547,13 @@ function Main(): React.ReactElement {
             </>
           )}
         </BigSelectSecondary>
+        {Object.keys(projects).includes(gameName) && (
+          <a href={projects[gameName]} target="_blank" rel="noreferrer">
+            <BigButtonSecondaryBox>
+              {t("serverSearch.showProject")}
+            </BigButtonSecondaryBox>
+          </a>
+        )}
         {/* <BigButtonSecondary type="submit">{t("serverSearch.search")} <RightArrow/></BigButtonSecondary> */}
       </Align>
       {oldJoinGames.includes(gameName) ||
