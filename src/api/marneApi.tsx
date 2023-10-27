@@ -353,6 +353,15 @@ export class ApiProvider extends JsonClient {
           };
         },
       ),
+      players:
+        result?.playerList === ""
+          ? []
+          : result?.playerList?.map((current: PlayerReturn) => {
+              return {
+                name: current.name,
+                team: current.team,
+              };
+            }),
     };
   }
 }

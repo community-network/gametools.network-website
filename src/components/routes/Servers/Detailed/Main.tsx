@@ -381,7 +381,10 @@ export function Results(props: Views): React.ReactElement {
             ) : (
               <>
                 {props.game === "bf3" ? (
-                  <Bf3ServerPlayerlist players={stats?.players} />
+                  <Bf3ServerPlayerlist
+                    players={stats?.players}
+                    game={props.game}
+                  />
                 ) : // older titles
                 stats?.ip && stats?.port ? (
                   <BfListServerPlayerList
@@ -390,7 +393,9 @@ export function Results(props: Views): React.ReactElement {
                     serverPort={stats?.hostport || stats?.port}
                   />
                 ) : (
-                  <></>
+                  props.game === "bf1marne" && (
+                    <Bf3ServerPlayerlist players={stats?.players} game="bf1" />
+                  )
                 )}
               </>
             )}

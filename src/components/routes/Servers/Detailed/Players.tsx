@@ -393,6 +393,7 @@ export function ServerPlayerlist(props: {
 
 export function Bf3ServerPlayerlist(props: {
   players: ScoreServerPlayer[];
+  game: string;
 }): React.ReactElement {
   const { t } = useTranslation();
 
@@ -445,7 +446,7 @@ export function Bf3ServerPlayerlist(props: {
                           }}
                           href={`https://gametools.network/stats/pc/name/${encodeURIComponent(
                             key.name,
-                          )}?game=bf3`}
+                          )}?game=${props.game}`}
                           target="_blank"
                           rel="noreferrer"
                         >
