@@ -278,12 +278,11 @@ export class ApiProvider extends JsonClient {
       return result.servers[0];
     }
     if (game == "bf1marne") {
-      const result: any = await bf1MarneApi.serverList({
-        searchTerm: serverName,
-        regions: [region],
-        limit: "1",
+      return await bf1MarneApi.server({
+        getter,
+        serverName,
+        region: region,
       });
-      return result.servers[0];
     }
     if ((getter == "gameid" || getter == "serverid") && game == "bf2042") {
       return await this.getJsonMethod(`/${gameStuff[0]}/detailedserver/`, {

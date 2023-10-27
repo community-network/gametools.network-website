@@ -41,6 +41,7 @@ import { BfPortalInfo } from "./BfPortal";
 import { ServerGraphQuery } from "../../../graphing/line";
 import { CopyToClipboard } from "../../../functions/CopyToClipboard";
 import sslFix from "../../../functions/fixEaAssets";
+import { capitalizeFirstLetter } from "../../../functions/capitalizeFirstLetter";
 
 const AltDescription = styled.p`
   ${AltText}
@@ -167,10 +168,6 @@ function MapRotationItem(props: {
   );
 }
 
-function capitalizeFirstLetter(string: string) {
-  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-}
-
 export function Results(props: Views): React.ReactElement {
   const { loading, error, stats } = props;
   // const query = new URLSearchParams(useLocation().search);
@@ -279,7 +276,7 @@ export function Results(props: Views): React.ReactElement {
           </div>
         </AlignSeverImg>
         {/* older titles use ip address, thats static already */}
-        {dice.includes(props.game) && (
+        {(dice.includes(props.game) || props.game === "bf1marne") && (
           <>
             <Description style={{ marginTop: "6px" }}>
               {t("servers.permLink")}{" "}
@@ -321,7 +318,7 @@ export function Results(props: Views): React.ReactElement {
             </Align>
           </>
         )}
-        {dice.includes(props.game) && (
+        {(dice.includes(props.game) || props.game == "bf1marne") && (
           <>
             <Title style={{ marginBottom: 0 }}>{t("servers.rotation")}</Title>
             <Align>
@@ -474,7 +471,7 @@ export function Results(props: Views): React.ReactElement {
                                           ? bf4Settings[key[0]]
                                           : capitalizeFirstLetter(key[0])}
                                       </b>
-                                      : {key[1]}
+                                      : {key[1]?.toString()}
                                     </AltDescription>
                                   );
                                 },

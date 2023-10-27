@@ -149,10 +149,10 @@ export function Results(props: Views): React.ReactElement {
           if (props.game == "bf2042") {
             idElement = "serverid";
             result = key.serverId;
-          } else if (props.game == "battlebit" || props.game == "bf1marne") {
+          } else if (props.game == "battlebit") {
             idElement = "name";
             result = encodeURIComponent(key.prefix);
-          } else if (!dice.includes(props.game)) {
+          } else if (!dice.includes(props.game) && props.game != "bf1marne") {
             idElement = "serverip";
             result = `${key.ip}:${key.port}`;
           }
