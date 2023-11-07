@@ -68,6 +68,7 @@
     "bf4": "Battlefield 4",
     "bfh": "Battlefield Hardline",
     "bf1": "Battlefield 1",
+    "bf1marne": "Battlefield 1 (marne.io)",
     "bfv": "Battlefield 5",
     "bf2042": "Battlefield 2042",
     "bf2042portal": "Battlefield 2042 Portal",
@@ -205,6 +206,7 @@
       "playground": "Experience-naam"
     },
     "showMore": "Meer resultaten",
+    "showProject": "Ga naar project",
     "region": "Regio",
     "map": "Map",
     "platform": "platform",
