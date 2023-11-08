@@ -6,6 +6,14 @@ const commonConfig = require("./common");
 
 module.exports = merge(commonConfig, {
   mode: "development",
+  module: {
+    rules: [
+      {
+        test: /\.(scss|sass)$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+    ],
+  },
   devServer: {
     allowedHosts: "all",
     hot: true, // enable HMR on the server
