@@ -1,0 +1,842 @@
+{
+  "siteName": "Boite à outils",
+  "siteFullName": "boite à outils",
+  "loading": "Chargement...",
+  "error": "Impossible d'obtenir cette statistique, quelque chose s'est mal passé...",
+  "404": "404",
+  "playerNotFound": "Nom de joueur introuvable, veuillez en essayer un autre.",
+  "notApplicable": "N/A",
+  "resultNotFound": "Aucun résultats trouvés",
+  "noName": "Impossible d'afficher le nom d'un joueur lors de l'accès aux statistiques via playerId",
+  "externalScriptError": "Impossible de charger le script externe, quelque chose s'est mal passé...",
+  "date": "{{date, date|eee, dd MMM yyyy}}",
+  "dateTime": "{{date, date|eee, dd MMM yyyy - p}}",
+  "shortDateTime": "{{date, date|PPpp}}",
+  "chartHourFormat": "HH:mm, eee d LLL",
+  "time": "{{date, date|p}}",
+  "change": "{{change, change}}",
+  "intlNumber": "{{val, number}}",
+  "ago": "il y a",
+  "export": "Exporter",
+  "case": {
+    "none": "N/A",
+    "on": "ON",
+    "off": "OFF"
+  },
+  "dateType": {
+    "createdAt": "Crée à ",
+    "updatedAt": "Mis à jour à"
+  },
+  "bfban": {
+    "main": "BFBan",
+    "stats": "Le joueur est marqué comme hacker dans bfban !",
+    "platoon": "Hacker"
+  },
+  "bfeac": {
+    "main": "BFEAC"
+  },
+  "states": {
+    "copy": "Copier le lien",
+    "copied": "Copié"
+  },
+  "copyApiStates": {
+    "copy": "Copier l'url de l'api",
+    "copied": "Copié !"
+  },
+  "navBar": {
+    "help": "Besoin d'aide ? ",
+    "serverManager": "Server Manager",
+    "api": "API Battlefield"
+  },
+  "games": {
+    "bfglobal": "Global",
+    "bf1942": "Battlefield 1942",
+    "bf2": {
+      "bf2hub": "Battlefield 2 (bf2hub)",
+      "playbf2": "Battlefield 2 (playbf2)"
+    },
+    "bf2142": {
+      "openspy": "Battlefield 2142 (openspy)",
+      "play2142": "Battlefield 2142 (.co)"
+    },
+    "bfvietnam": {
+      "openspy": "Battlefield Vietnam (openspy)",
+      "qtracker": "Battlefield Vietnam (qtracker)"
+    },
+    "bfbc2": "Battlefield: Bad Company 2",
+    "bf3": "Battlefield 3",
+    "bf4": "Battlefield 4",
+    "bfh": "Battlefield Hardline",
+    "bf1": "Battlefield 1",
+    "bf1marne": "Battlefield 1 (marne.io)",
+    "bfv": "Battlefield 5",
+    "bf2042": "Battlefield 2042",
+    "bf2042portal": "Battlefield 2042 Portal",
+    "battlebit": "BattleBit"
+  },
+  "limit": {
+    "10": "10 servers",
+    "25": "25 servers",
+    "50": "50 servers",
+    "100": "100 servers",
+    "200": "200 servers",
+    "250": "250 servers"
+  },
+  "regions": {
+    "all": "All regions",
+    "eu": "Europe",
+    "asia": "Asia",
+    "nam": "North America",
+    "sam": "South America",
+    "au": "Australia",
+    "oc": "Oceania",
+    "afr": "Africa",
+    "ac": "Antartica"
+  },
+  "battlebitRegions": {
+    "all": "All regions",
+    "Europe_Central": "Europe",
+    "America_Central": "America",
+    "Japan_Central": "Japan",
+    "Australia_Central": "Australia",
+    "Brazil_Central": "Brazil",
+    "Developer_Server": "Développement"
+  },
+  "platforms": {
+    "pc": "PC",
+    "xboxseries": "XBOX SERIES",
+    "xboxone": "XBOX ONE",
+    "xbox360": "XBOX 360",
+    "ps5": "PS5",
+    "ps4": "PS4",
+    "ps3": "PS3",
+    "all": "Toutes les plateformes"
+  },
+  "serverType": {
+    "official": "Officiel",
+    "custom": "personnaliser"
+  },
+  "statPlatforms": {
+    "pc": "PC",
+    "xboxone": "XBOX ONE ( et plus récent)",
+    "xbox360": "XBOX 360",
+    "ps4": "PS4 ( et plus récent)",
+    "ps3": "PS3"
+  },
+  "home": {
+    "manager": {
+      "header": "GAMETOOLS | CLOUD",
+      "description": " \nNous avons créé une plateforme Web anti-triche et de gestion pour protéger vos serveurs Battlefield.\nConstruit avec l'aide de nombreuses communautés.\n\nConnectez-vous maintenant et démarrez votre intégration gratuitement !",
+      "open": "Lancer l'App",
+      "disclaimer": "L'hébergement du serveur n'est pas fourni. Nous prenons actuellement en charge les titres Battlefield suivants :"
+    },
+    "graphs": {
+      "header": "Statistiques et graphiques en ligne",
+      "detailed": "Afficher les statistiques détaillées",
+      "totalPlaying": "Jouer à Battlefield immédiatement",
+      "activeServers": "Servers Actifs"
+    },
+    "otherServices": {
+      "header": "Autres Services",
+      "0": {
+        "header": "Battlefield platoons",
+        "localUrl": "/platoons/"
+      },
+      "1": {
+        "header": "Portal Experience information",
+        "localUrl": "/playgrounds/"
+      },
+      "2": {
+        "header": "FESL API (Battlefield bad company 2 APIs)",
+        "url": "https://fesl.gametools.network/docs"
+      }
+    },
+    "ourFriends": {
+      "header": "Nos Amis",
+      "0": {
+        "header": "BFBan",
+        "description": "Nous hébergeons et sommes une partie active de bfban.com - une incroyable communauté et une équipe d'ingénierie inverse/sécurité créée contre les pirates informatiques, pour fournir une liste d'interdiction et un système de rapport unifié.\nSignalez les tricheurs dans BF1/BFV afin qu'ils puissent être bannis du service communautaire\n ",
+        "link": "Visiter BFBan",
+        "url": "https://bfban.gametools.network/"
+      },
+      "1": {
+        "header": "BFPortal",
+        "description": "Recherchez et partagez les expériences du portail Battlefield 2042.",
+        "link": "Visiter BFPortal",
+        "url": "https://bfportal.gg/"
+      },
+      "2": {
+        "header": "Statbits",
+        "description": "Statbits vous permet d'intégrer de petits éléments de statistiques de jeu dans votre chat en direct, ainsi que dans toute autre application. Vous voulez une commande !kd affichant votre ratio global de morts/morts dans Battlefield 4 ? Nous savons tous !",
+        "link": "Visiter Statbits",
+        "url": "https://statbits.io/"
+      },
+      "3": {
+        "header": "BFList",
+        "description": "bflist fournit des données en direct sur ce qui se passe sur Battlefield dans les jeux de la série Battlefield. Nous fournissons des données sur les serveurs ainsi que sur les joueurs. Du nom d'un serveur ou de la carte actuelle au score et kd actuels de n'importe quel joueur.",
+        "link": "Visiter BFList",
+        "url": "https://bflist.io/"
+      }
+    }
+  },
+  "playerSearch": {
+    "back": "Page d'accueil",
+    "bfStats": "Battlefield Stats",
+    "description": " \nConsultez vos statistiques en ligne ! PC, Xbox et PSN\nPrise en charge de la plupart des jeux Battlefield",
+    "search": "Recherche",
+    "searchPlaceholder": "recherche par Nickname",
+    "gameStatus": "Nombre de joueurs sur le champ de bataille",
+    "zoomInfo": "(Cliquez sur le tableau pour activer le défilement-zoom)",
+    "moreGraphs": "Autres graphiques"
+  },
+  "serverSearch": {
+    "servers": "Servers",
+    "back": "Page d'accueil",
+    "serverInfo": "Servers Battlefield ",
+    "description": "Recherchez les serveurs Battlefield pour obtenir le nombre de joueurs/la rotation de la carte du serveur.",
+    "search": "Recherche",
+    "searchPlaceholder": {
+      "null": " Rechercher un serveur par nom..",
+      "servername": " Rechercher un serveur par nom..",
+      "experiencename": "Rechercher une expérience par son nom..."
+    },
+    "results": "Résultats de recherche",
+    "type": {
+      "name": "Nom du server",
+      "playground": "Experience name"
+    },
+    "showMore": "Montrer plus",
+    "showProject": "Aller au projet",
+    "region": "Regions",
+    "map": "Map",
+    "platform": "platform",
+    "gamemode": "Gamemode",
+    "playerFilter": "Espace disponible",
+    "showFilters": "Montrer les filtres",
+    "serverOwner": {
+      "main": "Propriétaire du serveur",
+      "add": "Ajouter"
+    },
+    "sorting": "Trier"
+  },
+  "platoonSearch": {
+    "back": "Page d'accueil",
+    "serverInfo": "Battlefield Platoons",
+    "description": "Recherchez les sections Battlefield pour obtenir plus d’informations à leur sujet, cliquez sur une section. pour voir ses membres.",
+    "search": "Recherche",
+    "searchPlaceholder": "Rechercher une section par nom.",
+    "results": "Résultats de recherche",
+    "resultNotFound": "Aucun résultat trouvé. Pour rechercher des sections vous avez besoin d'un minimum de 3 caractères."
+  },
+  "stats": {
+    "view": "Voire les stats",
+    "back": "Page d'accueil",
+    "originDescription": "Profil de l'utilisateur",
+    "detailedName": "Statistiques détaillées",
+    "overview": "Aperçu",
+    "overviewDescription": "Un bref aperçu de vos statistiques en jeu.",
+    "platoonName": "Section Actuel",
+    "otherPlatoons": "Autres Sections",
+    "weapons": "Armes",
+    "vehicles": "Véhicules",
+    "gadgets": "Gadgets",
+    "weaponGraph": "Graphique des armes",
+    "vehicleGraph": "Graphique des véhicule",
+    "gadgetGaph": "Graphique des Gadgets",
+    "searchWeapon": "Recherche d'un arme",
+    "searchVehicle": "Recherche d'un véhicule",
+    "searchGadget": "Recherche d'un accessoire",
+    "rows": {
+      "weaponName": "Nom de l'arme",
+      "vehicleName": "Nom du Véhicule",
+      "gadgetName": "Nom de l'accessoire",
+      "type": "Type",
+      "kills": "Tués",
+      "killsPerMinute": "Tués par minute",
+      "damagePerMinute": "Mort par minute",
+      "destroyed": "Détruit",
+      "accuracy": "Précision",
+      "headshots": "Tire en pleine tête",
+      "multiKills": "Nombre maximum de mort d'affilés"
+    },
+    "classes": {
+      "main": "Classes",
+      "Medic": "Medic",
+      "Support": "Support",
+      "Scout": "Eclaireur",
+      "Assault": "Assaut",
+      "Pilot": "Pilote",
+      "Tanker": "Conducteur de char",
+      "Cavalry": "Cavalier",
+      "amounts": {
+        "kpm": "Tués par minute",
+        "score": "Score",
+        "kills": "Tués",
+        "timePlayed": "Temps joué"
+      }
+    },
+    "progress": {
+      "main": "Progression du jeu",
+      "Campaign": "Campagne",
+      "Assignments": "Missions",
+      "Medals": "Médailles",
+      "Ribbons": "Rubans",
+      "Weapons": "Armes",
+      "Vehicles": "Véhicules",
+      "Kits": "Kits",
+      "Codex": "Codex",
+      "Dog tags": "Dog tags"
+    },
+    "gamemodes": {
+      "main": "Informations sur le mode de jeu",
+      "percentage": "Gagné : {{percentage}} %",
+      "Frontlines": "Lignes de front",
+      "Domination": "Domination",
+      "Shock operations": "Grande Opération",
+      "Rush": "Rush",
+      "Conquest": "Conquête",
+      "War pigeons": "Pigeon de guerre",
+      "Operations": "Opérations",
+      "Teamdeathmatch": "Match à mort par équipe",
+      "Conquestlarge": "Grande Conquêtes",
+      "Gungame free-for-all": "Gungame gratuit pour tous",
+      "Gungame team": "Équipe de jeu de tir",
+      "Free-for-all": "Gratuit pour tous le monde",
+      "Infantry Conquest": "Conquête d'infanterie",
+      "Gunmaster": "Maître d'armes",
+      "Capturetheflag": "Capture de drapeau",
+      "Obliteration": "Oblitération",
+      "Airsuperiority": "Supériorité aérienne",
+      "Elimination": "Éliminations",
+      "Carrierassault": "Carrière Assaut",
+      "Carrierassaultlarge": "Grande Carrière Assaut",
+      "Carrierassaultsmall": "Petite Carrière Assaut",
+      "Chainlink": "Chainlink",
+      "Sqdm": "Squad deathmatch",
+      "Conquestladder": "Conquest Ladder",
+      "Squadobliteration": "Squad obliteration",
+      "table": {
+        "firstRow": "Modes de jeu",
+        "secondRow": "Score"
+      },
+      "amounts": {
+        "wins": "Victoires",
+        "losses": "Défaite",
+        "score": "Score"
+      }
+    },
+    "platoon": {
+      "none": "Le joueur ne fait partie d'aucune section",
+      "noMain": "Le joueur ne représente pas une section comme principal",
+      "noDescription": "La section n'a pas de description"
+    },
+    "playSession": {
+      "main": "Sessions Battlefield",
+      "detailed": "Nous suivons sur quels serveurs vous avez joué, cela ne fonctionne que lorsque le serveur utilise notre gestionnaire.",
+      "stats": {
+        "kills": "Tués",
+        "deaths": "Morts",
+        "wins": "Victoires",
+        "losses": "Défaite",
+        "timePlayedAs": "Temps joué comme",
+        "score": "Score",
+        "gamemodes": {
+          "Frontlines": "Lignes de front",
+          "Domination": "Domination",
+          "Breakthrough": "Opération Choc",
+          "Rush": "Rush",
+          "BreakthroughLarge": "Opérations",
+          "Conquest": "Conquête",
+          "Possession": "Pigeon de guerre",
+          "TeamDeathMatch": "Match à mort par équipe"
+        }
+      }
+    },
+    "main": {
+      "rank": "Rang",
+      "killDeath": "K/D",
+      "killsPerMinute": "Tués par minute",
+      "winPercent": "Victoire%",
+      "bestClass": "Meilleur classe",
+      "accuracy": "Précision",
+      "timePlayed": "Temps joué"
+    },
+    "detailed": {
+      "skill": "Skill",
+      "scorePerMinute": "SPM",
+      "headshotPercent": "Tire en pleine tête",
+      "infantryKillDeath": "infan K/D",
+      "infantryKillsPerMinute": "infan KPM",
+      "kills": "Tués",
+      "deaths": "Morts",
+      "wins": "Victoires",
+      "losses": "Défaites",
+      "longestHeadShot": "Le tir à la tête le plus long",
+      "highestKillStreak": " Série de victimes la plus élevée",
+      "revives": "Réanimations",
+      "roundsPlayed": "Rounds joué",
+      "awardScore": "Note de récompense",
+      "bonusScore": "Score bonus",
+      "squadScore": "Score de l'équipe",
+      "avengerKills": "Revanche de Kill",
+      "saviorKills": "Saviour kills",
+      "headShots": "Tire en pleine tête",
+      "heals": "Guérit",
+      "repairs": "Réparations",
+      "killAssists": "Élimination Assistée",
+      "winPercent": "Pourcentage de victoire",
+      "quits": "Quitte"
+    },
+    "graph": {
+      "graphOptions": {
+        "amounts": "Amounts",
+        "maps": "Map active ",
+        "settings": "Paramètres actif",
+        "modes": "Mode actif",
+        "ownerPlatform": "Plateforme des propriétaires actifs"
+      },
+      "soldierAmount": "Tous les joueurs",
+      "diceSoldierAmount": "Joueurs sur les serveurs Dice",
+      "communitySoldierAmount": "Joueurs sur les serveurs communautaire "
+    },
+    "iframe": {
+      "main": "Ajouter vos stats sur votre site web ",
+      "info": "Version principale :"
+    }
+  },
+  "servers": {
+    "back": "Retour à la recherche",
+    "rotation": "Rotation des cartes du serveur",
+    "settings": "Paramètre du serveurs",
+    "permLink": "Lien permanent (basé sur le nom actuel) :",
+    "platoon": {
+      "main": "Serveurs section",
+      "none": " \nLe serveur n'est pas connecté à une section"
+    },
+    "sort": {
+      "serverName": "Nom du server",
+      "playerAmount": "Nombre de joueur",
+      "maxPlayers": "nombre maximum de joueurs\n "
+    },
+    "owner": {
+      "main": "Propriétaire du serveur",
+      "experience": "Expérience créateur",
+      "none": " Le serveur n'a pas de propriétaire (serveur Dice)",
+      "unknown": "Nom non trouvé"
+    },
+    "password": "Protégé par un mot de passe",
+    "join": "Rejoindre le serveur",
+    "joinFirefox": "Rejoindre le serveur (seulement Firefox)",
+    "joinme": {
+      "main": "Lanceur Joinme.click",
+      "view": "Voir sur joinme.click",
+      "launch": "Jeu lancé !",
+      "info": "Les boutons de participation au serveur utilisent <0>https://joinme.click/</0> pour rejoindre le jeu, installez d'abord le lanceur <0>joinme.click</0> avant d'essayer d'utiliser ces boutons !",
+      "smallinfo": "Les boutons Rejoindre le serveur utilisent <0>https://joinme.click/</0> pour rejoindre le jeu.",
+      "discord": "Le lanceur joinme doit être installé pour que cela fonctionne !",
+      "invite": "URL d'invitation Joinme.click"
+    },
+    "bfportal": {
+      "found": "Expérience de portail trouvée sur BfPortal.gg",
+      "error": " \nÉchec de l'API pour BfPortal.gg"
+    },
+    "iframe": {
+      "main": "Ajoutez le serveur à votre propre site Web",
+      "info": "Si vous voulez votre propre version personnalisée, demandez à iiTzArcur dans notre Discord. (lien en pied de page)",
+      "black": "Version noire :",
+      "white": "Version blanche :",
+      "detailed": "Version détaillée :",
+      "states": {
+        "copy": " Copier l'iframe",
+        "copied": "Copié"
+      }
+    },
+    "leaderboard": {
+      "main": "Classement des joueurs de ce serveur",
+      "info": "disponible uniquement sur les serveurs qui utilisent le manager-api",
+      "none": "Le serveur vient d'être ajouté ou n'utilise pas l'API du gestionnaire",
+      "row": {
+        "score": "Score",
+        "killDeath": "K/D",
+        "kills": "Tués",
+        "deaths": "Morts",
+        "wins": "Victoires",
+        "losses": "Défaite",
+        "timePlayed": "Temps joué"
+      }
+    },
+    "playerlist": {
+      "main": " Joueurs actuels sur le serveur",
+      "none": "Le serveur vient d'être ajouté ou n'utilise pas l'API du gestionnaire",
+      "empty": "Cette équipe est vide",
+      "lastUpdate": "Dernière mise à jour",
+      "row": {
+        "ping": "Ping",
+        "platform": "Platforme",
+        "timePlayed": "Temps joué",
+        "playerSlot": " Emplacement du joueur",
+        "playerName": " \nNom de joueur",
+        "platoon": "Sections",
+        "rank": "Rang",
+        "score": "Score",
+        "killDeath": "K/D",
+        "kills": "Tués",
+        "deaths": "Morts"
+      }
+    },
+    "factions": {
+      "BFFactionId_FactionAHU": "Empire austro-hongrois",
+      "BFFactionId_FactionGER": " Empire allemand",
+      "BFFactionId_FactionOTM": "Empire Ottoman",
+      "BFFactionId_FactionITA": "Royaume d'Italie",
+      "BFFactionId_FactionUK": "Angleterre ",
+      "BFFactionId_FactionUSA": "État unis d’Amérique",
+      "BFFactionId_FactionFRA": "France",
+      "BFFactionId_FactionRUS": "Empire Russe",
+      "BFFactionId_FactionBOL": "Armée rouge",
+      "BFFactionId_FactionWA": "Armée Blanche",
+      "BFFactionId_FactionUKM": "Royal Marines",
+      "FactionUS": "Fédération Russe",
+      "FactionRUS": "État unis d’Amérique",
+      "teamOne": "Équipe 1",
+      "teamTwo": "Équipe 2 "
+    },
+    "portal": {
+      "main": "Portal experience"
+    },
+    "graph": {
+      "main": "Graphique du serveur",
+      "map": "Map",
+      "mode": "Gamemode",
+      "amount": "Temps rassemblés",
+      "error": " Impossible d'obtenir les graphiques pour ce serveur"
+    },
+    "notFound": {
+      "main": "Serveur non trouvé",
+      "description": "Nous ne trouvons pas le serveur que vous recherchez"
+    },
+    "bf3": {
+      "maps": {
+        "Grand Bazaar": "Grand Bazaar",
+        "Tehran Highway": "Tehran Highway",
+        "Caspian Border": "Caspian Border",
+        "Seine Crossing": "Seine Crossing",
+        "Operation Firestorm": "Operation Firestorm",
+        "Damavand Peak": "Damavand Peak",
+        "Noshahr Canals": "Canaux de Noshahr",
+        "Kharg Island": "Kharg Island",
+        "Operation Métro": "Operation Métro",
+        "Strike at Karkand": "Strike at Karkand",
+        "Gulf of Oman": "Gulf of Oman",
+        "Sharqi Peninsula": "Sharqi Peninsula",
+        "Wake Island": "Wake Island",
+        "Scrapmetal": "Scrapmetal",
+        "Operation 925": "Operation 925",
+        "Donya Fortress": "Donya Fortress",
+        "Ziba Tower": "Ziba Tower",
+        "Alborz Mountains": "Alborz Mountains",
+        "Bandar Desert": "Bandar Desert",
+        "Armored Shield": "Armored Shield",
+        "Death Valley": "Death Valley",
+        "Markaz Monolith": "Markaz Monolith",
+        "Azadi Palace": "Azadi Palace",
+        "Epicenter": "Epicenter",
+        "Talah Market": "Talah Market",
+        "Operation Riverside": "Operation Riverside",
+        "Nebandan Flats": "Nebandan Flats",
+        "Kiasar Railroad": "Kiasar Railroad",
+        "Sabalan Pipeline": "Sabalan Pipeline"
+      },
+      "gamemodes": {
+        "CONQUESTLARGE": "Conquest Large",
+        "CONQUEST": "Conquête",
+        "CONQUESTASSAULTLARGE": "Conquest Assault Large",
+        "CONQUESTASSAULTSMALL": "Assaut de conquête",
+        "RUSH": "Rush",
+        "SQRUSH": "Ruée",
+        "SQDM": "Match à mort par équipe",
+        "TEAMDEATHMATCH": "Match à mort par équipe",
+        "TEAMDEATHMATCHC": "Équipe DM Close Quarters",
+        "GUNMASTER": "Gun Master",
+        "DOMINATION": "Domination",
+        "TANKSUPERIORITY": "Supériorité des chars",
+        "SCAVENGER": "Charognard",
+        "CAPTURETHEFLAG": "Capturer le drapeau",
+        "AIRSUPERIORITY": "Supériorité aérienne"
+      }
+    },
+    "bfh": {
+      "maps": {
+        "Bank job": "Bank job",
+        "The block": "The block",
+        "Dust bowl": "Dust bowl",
+        "Downtown": "Downtown",
+        "Derailed": "Derailed",
+        "Everglades": "Everglades",
+        "Growhouse": "Growhouse",
+        "Hollywood heights": "Hollywood heights",
+        "Riptide": "Riptide",
+        "Ep. 10: legacy": "Ep. 10: legacy",
+        "Ep. 6: out of business": "Ep. 6: out of business",
+        "Ep. 1: back to school": "Ep. 1: back to school",
+        "Ep. 2: checking out": "Ep. 2: checking out",
+        "Ep. 8: sovereign land": "Ep. 8: sovereign land",
+        "Ep. 5: gauntlet": "Ep. 5: gauntlet",
+        "Ep. 3: gator bait": "Ep. 3: gator bait",
+        "Ep. 9: independence day": "Ep. 9: independence day",
+        "Ep. 7: glass houses": "Ep. 7: glass houses",
+        "Prologue": "Prologue",
+        "Ep. 4: case closed": "Ep. 4: case closed",
+        "Black friday": "Black friday",
+        "Code blue": "Code blue",
+        "The beat": "The beat",
+        "Backwoods": "Backwoods",
+        "Night job": "Night job",
+        "Night woods": "Night woods",
+        "The docks": "The docks",
+        "Break pointe": "Break pointe",
+        "Museum": "Museum",
+        "Precinct 7": "Precinct 7",
+        "Double cross": "Double cross",
+        "Diversion": "Diversion",
+        "Pacific highway": "Pacific highway",
+        "Train dodge": "Train dodge",
+        "Alcatraz": "Alcatraz",
+        "Cemetery": "Cemetery",
+        "Chinatown": "Chinatown",
+        "Thin ice": "Thin ice"
+      },
+      "gamemodes": {
+        "BLOODMONEY": "Blood Money",
+        "HOTWIRE": "Hotwire",
+        "HEIST": "Heist",
+        "HIT": "Crosshair",
+        "HOSTAGE": "Rescue",
+        "TEAMDEATHMATCH": "Match à mort par équipe",
+        "TURFWARLARGE": "Conquest Large",
+        "TURFWARSMALL": "Conquête",
+        "SQUADHEIST": "Squad Heist",
+        "BOUNTYHUNTER": "Bounty Hunter",
+        "CAPTURETHEFLAG": "Capture The Bag"
+      }
+    },
+    "bfv": {
+      "maps": {
+        "Fjell 652": "Fjell 652",
+        "Narvik": "Narvik",
+        "Arras": "Arras",
+        "Devastation": "Devastation",
+        "Twisted Steel": "Twisted Steel",
+        "Aerodrome": "Aerodrome",
+        "Hamada": "Hamada",
+        "Rotterdam": "Rotterdam",
+        "Panzerstorm": "Panzerstorm",
+        "Mercury": "Mercury",
+        "Marita": "Marita",
+        "Provence": "Provence",
+        "Al Sudan": "Al Sudan",
+        "Operation Underground": "Operation Underground",
+        "Iwo Jima": "Iwo Jima",
+        "Pacific Storm": "Pacific Storm",
+        "Wake Island": "Wake Island",
+        "Solomon Islands": "Solomon Islands",
+        "Al Marj Encampment": "Al Marj Encampment",
+        "Lofoten Islands": "Lofoten Islands"
+      }
+    },
+    "bf1": {
+      "gamemodes": {
+        "airassault": "Air Assault",
+        "conquest": "Conquête",
+        "domination": "Domination",
+        "frontlines": "Lignes de front",
+        "operations": "Opérations",
+        "rush": "Rush",
+        "shockoperations": "Opération Choc",
+        "teamdeathmatch": "Match à mort par équipe",
+        "warpigeons": "Pigeon de guerre"
+      },
+      "maps": {
+        "Sinai Desert": "Sinai Desert",
+        "Ballroom Blitz": "Ballroom Blitz",
+        "Empire's Edge": "Empire's Edge",
+        "St Quentin Scar": "St Quentin Scar",
+        "Prise de Tahure": "Prise de Tahure",
+        "Monte Grappa": "Monte Grappa",
+        "Fao Fortress": "Fao Fortress",
+        "Giant's Shadow": "Giant's Shadow",
+        "Rupture": "Rupture",
+        "Amiens": "Amiens",
+        "Suez": "Suez",
+        "Fort De Vaux": "Fort De Vaux",
+        "Nivelle Nights": "Nivelle Nights",
+        "Soissons": "Soissons",
+        "Verdun Heights": "Verdun Heights",
+        "Albion": "Albion",
+        "Tsaritsyn": "Tsaritsyn",
+        "Łupków Pass": "Łupków Pass",
+        "Achi Baba": "Achi Baba",
+        "Heligoland Bight": "Heligoland Bight",
+        "Caporetto": "Caporetto",
+        "River Somme": "River Somme",
+        "Passchendaele": "Passchendaele",
+        "Galicia": "Galicia",
+        "Volga River": "Volga River",
+        "Brusilov Keep": "Brusilov Keep",
+        "Cape Helles": "Cape Helles",
+        "Zeebrugge": "Zeebrugge",
+        "Argonne Forest": "Argonne Forest",
+        "Razor's Edge": "Razor's Edge",
+        "London Calling": "London Calling",
+        "London Calling: Scourge": "London Calling: Scourge"
+      }
+    },
+    "bf2042": {
+      "maps": {
+        "Arica Harbor": "Arica Harbor",
+        "Valparaiso": "Valparaiso",
+        "Battle of the Bulge": "Battle of the Bulge",
+        "El Alamein": "El Alamein",
+        "Caspian Border": "Caspian Border",
+        "Noshahr Canals": "Canaux de Noshahr",
+        "Orbital": "Orbital",
+        "Hourglass": "Hourglass",
+        "Kaleidoscope": "Kaleidoscope",
+        "Breakaway": "Breakaway",
+        "Discarded": "Discarded",
+        "Manifest": "Manifest",
+        "Renewal": "Renewal",
+        "Exposure": "Exposure",
+        "Stranded": "Stranded",
+        "Spearhead": "Spearhead",
+        "Flashpoint": "Flashpoint",
+        "Reclaimed": "Reclaimed"
+      },
+      "gamemodes": {
+        "Breakthrough Large": "Breakthrough Large",
+        "Breakthrough": "Breakthrough",
+        "Conquest": "Conquête",
+        "Custom": "personnaliser",
+        "Rush": "Rush",
+        "Conquest large": "Grande Conquêtes"
+      }
+    },
+    "frostbite3": {
+      "playerFilter": {
+        "onetofive": "1-5",
+        "sixtoten": "6-10",
+        "tenplus": "10+",
+        "none": "None"
+      }
+    },
+    "battlelog": {
+      "playerFilter": {
+        "full": "Plein",
+        "1-5": "1-5",
+        "6-10": "6-10",
+        "10+": "10+",
+        "empty": "Vide"
+      }
+    }
+  },
+  "platoon": {
+    "back": "Retour à la recherche",
+    "searchPlayer": "Rechercher un joueur",
+    "servers": "Serveur d’escouade ",
+    "members": {
+      "main": "Menbre d'escouade",
+      "General": "Général",
+      "Colonel": "Colonel",
+      "Lieutenant": "Lieutenant",
+      "Private": "Privée",
+      "empty": " Il n'y a aucun membre avec ce rang"
+    },
+    "rows": {
+      "role": "Rôles",
+      "name": "Nom"
+    },
+    "notFound": {
+      "main": "Section non trouvée",
+      "description": "Nous ne pouvons pas trouver la section que vous recherchez"
+    }
+  },
+  "getPlaygrounds": {
+    "back": "Page d'accueil",
+    "main": "Obtenez des informations sur l'expérience du portail Battlefield",
+    "description": "Obtenir des informations sur une expérience Battlefield Portal",
+    "getInfo": "Remplissez une URL d'expérience, un identifiant de terrain de jeu ou un code d'expérience valide",
+    "show": "Montrer"
+  },
+  "playgrounds": {
+    "back": "Retour à la recherche",
+    "rotation": "Faites l'expérience de la rotation de la carte",
+    "tags": "Experience tags",
+    "maxPlayers": "Max {{ montant }} joueurs",
+    "owner": {
+      "main": "Expérience créateur",
+      "none": "Le créateur ne peut être récupéré que si l'identifiant du terrain de jeu est utilisé",
+      "unknown": "Nom non trouvé"
+    },
+    "notFound": {
+      "main": "Expérience introuvable",
+      "description": " Nous ne trouvons pas l'expérience que vous recherchez."
+    },
+    "types": {
+      "main": "Type",
+      "portal-standard": "Expérience standard",
+      "portal-featured": "Expérience en vedette",
+      "portal-default": "Expérience standard",
+      "portal-unranked": "Non classé",
+      "portal-spotlight": "À l'honneur"
+    }
+  },
+  "footer": {
+    "description": "Ce site Web fait partie du réseau communautaire. C'est OpenSource. Vous pouvez publier des problèmes et suggérer des modifications/améliorations via GitHub. API fournie par Community Network et ouverte à l'usage public. Nous ne fournissons aucune API tierce. Notre back-end est fermé et n’est pas disponible publiquement.\nBattlefield & Origin sont des marques déposées d'Electronic Arts. Ce site Web utilise les données fournies conformément aux conditions d’utilisation des statistiques de Battlefield 1 d’Electronic Arts. Les marques déposées sont la propriété de leurs propriétaires respectifs. Le matériel de jeu est protégé par le droit d'auteur d'Electronic Arts Inc. Electronic Arts n'a pas approuvé et n'est pas responsable de ce site ou de son contenu.\nLe code est sous licence GPL v2. Certaines parties sont sous copyright du réseau communautaire.\n ",
+    "LinkName": "Liens",
+    "links": {
+      "0": {
+        "header": "GitHub",
+        "url": "https://github.com/Community-network"
+      },
+      "1": {
+        "header": "API publique",
+        "url": "https://api.gametools.network/"
+      },
+      "2": {
+        "header": "réseau communautaire Discord",
+        "url": "https://discord.gametools.network/"
+      },
+      "3": {
+        "header": "Privacy Policy",
+        "url": "/privacy/"
+      },
+      "4": {
+        "header": "Discord bot",
+        "url": "https://top.gg/bot/714524944783900794"
+      },
+      "5": {
+        "header": "Aide à la traduction",
+        "url": "https://explore.transifex.com/gametools/"
+      }
+    }
+  },
+  "bflist": {
+    "notFound": "Je n'ai pas trouvé de serveur avec l'API bflist.io"
+  },
+  "pageNotFound": {
+    "main": "404 - Page not found",
+    "description": "Nous ne trouvons pas la page que vous recherchez.",
+    "home": "Retour à la page d'accueil"
+  },
+  "ads": {
+    "main": "Ajouter",
+    "disable": "Désactiver les publicités"
+  },
+  "pageTitle": {
+    "main": "Outils de jeu : statistiques de Battlefield, robots, gestion de serveur",
+    "stats": "Stats",
+    "platoon": "Sections",
+    "playground": "Cours de récréation",
+    "servers": "Servers"
+  }
+}
