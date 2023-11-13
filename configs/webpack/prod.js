@@ -2,7 +2,7 @@
 const { merge } = require("webpack-merge");
 const { resolve } = require("path");
 const { GenerateSW } = require("workbox-webpack-plugin");
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+// const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const commonConfig = require("./common");
@@ -33,7 +33,7 @@ module.exports = merge(commonConfig, {
     },
   },
   plugins: [
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
