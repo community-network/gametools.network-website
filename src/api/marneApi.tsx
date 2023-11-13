@@ -1,4 +1,3 @@
-import { ca } from "date-fns/locale";
 import { capitalizeFirstLetter } from "../components/functions/capitalizeFirstLetter";
 import { getCurrentCountry } from "../locales/config";
 import JsonClient from "./Json";

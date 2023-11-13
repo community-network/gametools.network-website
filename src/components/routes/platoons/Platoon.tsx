@@ -176,8 +176,8 @@ function SmallExportButton(props: { members: PlatoonPlayer[] }) {
       {state === "loading"
         ? t("loading")
         : state === "error"
-        ? t("externalScriptError")
-        : t("export")}
+          ? t("externalScriptError")
+          : t("export")}
     </SmallButton>
   );
 }
