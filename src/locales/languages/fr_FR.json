@@ -769,7 +769,7 @@
   },
   "playgrounds": {
     "back": "Retour à la recherche",
-    "rotation": " Faites l'expérience de la rotation de la carte",
+    "rotation": "Faites l'expérience de la rotation de la carte",
     "tags": "Experience tags",
     "maxPlayers": "Max {{ montant }} joueurs",
     "owner": {
