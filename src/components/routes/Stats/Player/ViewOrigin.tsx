@@ -36,12 +36,14 @@ function GetBfBan(props: Views): React.ReactElement {
     isLoading: loading,
     isError: error,
     data: stats,
-  } = useQuery(["bfbanStats" + props.game + props.stats.id], () =>
-    GametoolsApi.bfbanCheckPlayers({
-      getter: "playerid",
-      usernames: [props.stats.id],
-    }),
-  );
+  } = useQuery({
+    queryKey: ["bfbanStats" + props.game + props.stats.id],
+    queryFn: () =>
+      GametoolsApi.bfbanCheckPlayers({
+        getter: "playerid",
+        usernames: [props.stats.id],
+      }),
+  });
 
   let bfBanUrl = "";
   let isHacker = false;

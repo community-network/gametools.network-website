@@ -21,11 +21,13 @@ export function BfPortalInfo(props: {
     isLoading: loading,
     isError: error,
     data: data,
-  } = useQuery(["bfportalExperience" + experienceName], () =>
-    BfPortalApi.experience({
-      title: experienceName,
-    }),
-  );
+  } = useQuery({
+    queryKey: ["bfportalExperience" + experienceName],
+    queryFn: () =>
+      BfPortalApi.experience({
+        title: experienceName,
+      }),
+  });
 
   if (loading) {
     return (

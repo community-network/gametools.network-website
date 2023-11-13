@@ -38,13 +38,15 @@ export function ServerLeaderboard(props: {
     isLoading: loading,
     isError: error,
     data: stats,
-  } = useQuery(["serverLeaderboard" + gameId + sortType], () =>
-    GametoolsApi.serverLeaderboard({
-      gameId: gameId,
-      amount: "50",
-      sort: sortType,
-    }),
-  );
+  } = useQuery({
+    queryKey: ["serverLeaderboard" + gameId + sortType],
+    queryFn: () =>
+      GametoolsApi.serverLeaderboard({
+        gameId: gameId,
+        amount: "50",
+        sort: sortType,
+      }),
+  });
   if (!loading && !error) {
     const players = stats.data;
     return (

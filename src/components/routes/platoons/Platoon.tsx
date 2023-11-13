@@ -265,22 +265,26 @@ function Members(props: {
     isLoading: bfbanLoading,
     isError: bfbanError,
     data: bfBanInfo,
-  } = useQuery(["bfbanStatsPlatoon" + props.members], () =>
-    GametoolsApi.bfbanCheckPlayers({
-      getter: "playerid",
-      usernames: playerIds,
-    }),
-  );
+  } = useQuery({
+    queryKey: ["bfbanStatsPlatoon" + props.members],
+    queryFn: () =>
+      GametoolsApi.bfbanCheckPlayers({
+        getter: "playerid",
+        usernames: playerIds,
+      }),
+  });
 
   const {
     isLoading: bfeacLoading,
     isError: bfeacError,
     data: bfeacInfo,
-  } = useQuery(["bfeacStatsServerPlayers" + props.members], () =>
-    GametoolsApi.bfeacCheckPlayers({
-      playerIds,
-    }),
-  );
+  } = useQuery({
+    queryKey: ["bfeacStatsServerPlayers" + props.members],
+    queryFn: () =>
+      GametoolsApi.bfeacCheckPlayers({
+        playerIds,
+      }),
+  });
 
   return (
     <Spacing>
@@ -549,13 +553,15 @@ function Platoon(): React.ReactElement {
     isLoading: loading,
     isError: error,
     data: platoon,
-  } = useQuery(["detailed" + platoonId], () =>
-    GametoolsApi.platoon({
-      id: platoonId,
-      platform: platform,
-      lang: getLanguage(),
-    }),
-  );
+  } = useQuery({
+    queryKey: ["detailed" + platoonId],
+    queryFn: () =>
+      GametoolsApi.platoon({
+        id: platoonId,
+        platform: platform,
+        lang: getLanguage(),
+      }),
+  });
   return (
     <div>
       <Container>

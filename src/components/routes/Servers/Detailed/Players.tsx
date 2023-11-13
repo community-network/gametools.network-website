@@ -117,36 +117,40 @@ function Players(props: {
     isLoading: bfbanLoading,
     isError: bfbanError,
     data: bfBanInfo,
-  } = useQuery(["bfbanStatsServerPlayers" + props.gameid + props.game], () =>
-    GametoolsApi.bfbanCheckPlayers({
-      getter: "playerid",
-      usernames: playerIds,
-    }),
-  );
+  } = useQuery({
+    queryKey: ["bfbanStatsServerPlayers" + props.gameid + props.game],
+    queryFn: () =>
+      GametoolsApi.bfbanCheckPlayers({
+        getter: "playerid",
+        usernames: playerIds,
+      }),
+  });
 
   const {
     isLoading: bfeacLoading,
     isError: bfeacError,
     data: bfeacInfo,
-  } = useQuery(["bfeacStatsServerPlayers" + props.gameid + props.game], () =>
-    GametoolsApi.bfeacCheckPlayers({
-      playerIds,
-    }),
-  );
+  } = useQuery({
+    queryKey: ["bfeacStatsServerPlayers" + props.gameid + props.game],
+    queryFn: () =>
+      GametoolsApi.bfeacCheckPlayers({
+        playerIds,
+      }),
+  });
 
   let update_timestamp = new Date();
   if (props.stats.update_timestamp) {
     update_timestamp = new Date(props.stats.update_timestamp * 1000);
   }
 
-  const { data: seederInfo } = useQuery(
-    ["seederPlayerList" + props.gameid],
-    () =>
+  const { data: seederInfo } = useQuery({
+    queryKey: ["seederPlayerList" + props.gameid],
+    queryFn: () =>
       GametoolsApi.seederPlayerList({
         game: props.game,
         gameId: props.gameid,
       }),
-  );
+  });
 
   const haveSeederPlayers =
     seederInfo && seederInfo.teams && seederInfo.teams.length > 0;
@@ -367,12 +371,14 @@ export function ServerPlayerlist(props: {
     isLoading: loading,
     isError: error,
     data: stats,
-  } = useQuery(["serverPlayerlist" + gameId + props.game], () =>
-    GametoolsApi.serverPlayerlist({
-      game: props.game,
-      gameId: gameId,
-    }),
-  );
+  } = useQuery({
+    queryKey: ["serverPlayerlist" + gameId + props.game],
+    queryFn: () =>
+      GametoolsApi.serverPlayerlist({
+        game: props.game,
+        gameId: gameId,
+      }),
+  });
   if (!loading && !error) {
     return (
       <Players
@@ -486,15 +492,17 @@ export function BfListServerPlayerList(props: {
     isError: error,
     data: stats,
     dataUpdatedAt,
-  } = useQuery(
-    ["serverPlayerlist" + props.serverIp + props.serverPort + props.game],
-    () =>
+  } = useQuery({
+    queryKey: [
+      "serverPlayerlist" + props.serverIp + props.serverPort + props.game,
+    ],
+    queryFn: () =>
       bfListApi.serverPlayerlist({
         game: gameStuff[0],
         serverIp: props.serverIp,
         serverPort: props.serverPort,
       }),
-  );
+  });
 
   if (!loading && !error) {
     if (!stats.players) {

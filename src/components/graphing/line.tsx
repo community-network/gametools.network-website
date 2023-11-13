@@ -299,17 +299,18 @@ export function OldGameGraph(props: GameInfo): React.ReactElement {
     isLoading: loading,
     isError: error,
     data: stats,
-  } = useQuery(
-    ["regions", "7", "all", props.gameName, props.platform],
-    () =>
+  } = useQuery({
+    queryKey: ["regions", "7", props.gameName, props.platform],
+    queryFn: () =>
       GametoolsApi.graphs({
         game: props.gameName,
         days: "7",
         region: "all",
         platform: props.platform,
       }),
-    { staleTime: Infinity, refetchOnWindowFocus: false },
-  );
+    staleTime: Infinity,
+    refetchOnWindowFocus: false,
+  });
   const { t } = useTranslation();
   if (!loading && !error) {
     return (
@@ -346,8 +347,8 @@ export function Graph(props: NewGameInfo): React.ReactElement {
     isLoading: loading,
     isError: error,
     data: stats,
-  } = useQuery(
-    [
+  } = useQuery({
+    queryKey: [
       "regions",
       "7",
       "multiple",
@@ -355,7 +356,7 @@ export function Graph(props: NewGameInfo): React.ReactElement {
       props.platform,
       props.graphOptions,
     ],
-    () =>
+    queryFn: () =>
       GametoolsApi.graphs({
         game:
           props.gameName in gameGraphConvert
@@ -366,8 +367,9 @@ export function Graph(props: NewGameInfo): React.ReactElement {
         platform: props.platform,
         type: props.graphOptions,
       }),
-    { staleTime: Infinity, refetchOnWindowFocus: false },
-  );
+    staleTime: Infinity,
+    refetchOnWindowFocus: false,
+  });
   const { t } = useTranslation();
   if (!loading && !error) {
     return (
@@ -590,17 +592,18 @@ export function GlobalGraph(props: GlobalInfo): React.ReactElement {
     isLoading: loading,
     isError: error,
     data: stats,
-  } = useQuery(
-    ["globalRegions", "7", props.platform],
-    () =>
+  } = useQuery({
+    queryKey: ["globalRegions", "7", props.platform],
+    queryFn: () =>
       GametoolsApi.graphs({
         game: "bfglobal",
         days: "7",
         region: "all",
         platform: platform,
       }),
-    { staleTime: Infinity, refetchOnWindowFocus: false },
-  );
+    staleTime: Infinity,
+    refetchOnWindowFocus: false,
+  });
 
   return (
     <Box>
@@ -670,7 +673,9 @@ export function TotalGraphQuery(): React.ReactElement {
     isLoading: loading,
     isError: error,
     data: stats,
-  } = useQuery(["globalStats"], () => GametoolsApi.globalGraph(), {
+  } = useQuery({
+    queryKey: ["globalStats"],
+    queryFn: () => GametoolsApi.globalGraph(),
     staleTime: Infinity,
     refetchOnWindowFocus: false,
   });
@@ -702,20 +707,18 @@ export function ServerGraphQuery(props: ServerGraphData): React.ReactElement {
     isLoading: loading,
     isError: error,
     data: stats,
-  } = useQuery(
-    ["serverGraph", props.game, getter, props.name],
-    () =>
+  } = useQuery({
+    queryKey: ["serverGraph", props.game, getter, props.name],
+    queryFn: () =>
       GametoolsApi.serverGraphs({
         game: props.game,
         days: "7",
         getter: getter,
         name: props.name,
       }),
-    {
-      staleTime: Infinity,
-      refetchOnWindowFocus: false,
-    },
-  );
+    staleTime: Infinity,
+    refetchOnWindowFocus: false,
+  });
 
   if (error) {
     return (

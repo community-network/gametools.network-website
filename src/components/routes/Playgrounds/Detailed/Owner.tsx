@@ -42,14 +42,16 @@ export function PlaygroundOwner(props: {
       isLoading: loading,
       isError: error,
       data: data,
-    } = useQuery(
-      ["feslid" + props.game + props.owner?.id + props.owner?.platformId],
-      () =>
+    } = useQuery({
+      queryKey: [
+        "feslid" + props.game + props.owner?.id + props.owner?.platformId,
+      ],
+      queryFn: () =>
         GametoolsApi.feslid({
           game: props.game,
           ownerInfo: props.owner,
         }),
-    );
+    });
     if (loading) {
       return (
         <Spacing>

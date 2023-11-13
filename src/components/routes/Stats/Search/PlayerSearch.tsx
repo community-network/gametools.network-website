@@ -60,15 +60,15 @@ export function StatSearch(): React.ReactElement {
   );
   const searchBox: React.MutableRefObject<HTMLInputElement> = React.useRef();
 
-  const { data: autocompleteResult } = useQuery(
-    ["autocomplete" + platform + searchTerm],
-    () => {
+  const { data: autocompleteResult } = useQuery({
+    queryKey: ["autocomplete" + platform + searchTerm],
+    queryFn: () => {
       return FeslApi.playerSearch({
         platform: platform,
         name: searchTerm,
       });
     },
-  );
+  });
 
   return (
     <form

@@ -169,13 +169,15 @@ function Search(): React.ReactElement {
     isLoading: loading,
     isError: error,
     data: platoons,
-  } = useQuery(["platoons" + searchTerm + platform], () =>
-    GametoolsApi.platoonSearch({
-      name: searchTerm,
-      platform: platform,
-      lang: getLanguage(),
-    }),
-  );
+  } = useQuery({
+    queryKey: ["platoons" + searchTerm + platform],
+    queryFn: () =>
+      GametoolsApi.platoonSearch({
+        name: searchTerm,
+        platform: platform,
+        lang: getLanguage(),
+      }),
+  });
   return (
     <Container>
       <BackButton text={t("platoonSearch.back")} location="/" />

@@ -188,13 +188,13 @@ function ServerOwnerSearch(props: {
     );
   };
 
-  const { data: autocompleteResult } = useQuery(
-    ["serverOwner" + searchTerm],
-    () =>
+  const { data: autocompleteResult } = useQuery({
+    queryKey: ["serverOwner" + searchTerm],
+    queryFn: () =>
       GametoolsApi.bf2042PlayerSearch({
         name: searchTerm,
       }),
-  );
+  });
 
   return (
     <>
@@ -433,8 +433,8 @@ function Main(): React.ReactElement {
     isLoading: loading,
     isError: error,
     data: stats,
-  } = useQuery(
-    [
+  } = useQuery({
+    queryKey: [
       "servers" +
         gameName +
         searchTerm +
@@ -444,7 +444,7 @@ function Main(): React.ReactElement {
         limit +
         JSON.stringify(extraQueries),
     ],
-    () =>
+    queryFn: () =>
       GametoolsApi.serverSearch({
         game: gameName,
         searchTerm: searchTerm,
@@ -455,7 +455,7 @@ function Main(): React.ReactElement {
         limit: limit,
         extraQueries,
       }),
-  );
+  });
   return (
     <Container>
       <BackButton text={t("serverSearch.back")} location="/" />
@@ -896,8 +896,8 @@ export function ServerSearch(): React.ReactElement {
     isLoading: loading,
     isError: error,
     data: stats,
-  } = useQuery(
-    [
+  } = useQuery({
+    queryKey: [
       "servers" +
         gameName +
         searchTerm +
@@ -906,7 +906,7 @@ export function ServerSearch(): React.ReactElement {
         platform +
         "4",
     ],
-    () =>
+    queryFn: () =>
       GametoolsApi.serverSearch({
         game: gameName,
         searchTerm: searchTerm,
@@ -916,7 +916,7 @@ export function ServerSearch(): React.ReactElement {
         platform: platform,
         limit: "4",
       }),
-  );
+  });
   return (
     <>
       <AlignHomeServers>

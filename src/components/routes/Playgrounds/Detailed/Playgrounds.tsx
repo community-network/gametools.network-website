@@ -49,15 +49,17 @@ function Playgrounds(): React.ReactElement {
     isLoading: loading,
     isError: error,
     data: stats,
-  } = useQuery(["playground" + playground + platform], () =>
-    GametoolsApi.playground({
-      game: gameId,
-      getter: params.type,
-      playground: playground,
-      lang: getLanguage(),
-      with_ownername: false,
-    }),
-  );
+  } = useQuery({
+    queryKey: ["playground" + playground + platform],
+    queryFn: () =>
+      GametoolsApi.playground({
+        game: gameId,
+        getter: params.type,
+        playground: playground,
+        lang: getLanguage(),
+        with_ownername: false,
+      }),
+  });
   document.title = `${t("siteFullName")} ${t("pageTitle.playground")} | ${
     stats?.originalPlayground?.settings?.configName?.value || t("loading")
   }`;

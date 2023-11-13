@@ -51,16 +51,18 @@ function Servers(): React.ReactElement {
     isLoading: loading,
     isError: error,
     data: stats,
-  } = useQuery(["detailed" + gameId + serverName + platform], () =>
-    GametoolsApi.server({
-      game: gameId,
-      getter: params.type,
-      serverName: serverName,
-      lang: getLanguage(),
-      platform: platform,
-      with_ownername: false,
-    }),
-  );
+  } = useQuery({
+    queryKey: ["detailed" + gameId + serverName + platform],
+    queryFn: () =>
+      GametoolsApi.server({
+        game: gameId,
+        getter: params.type,
+        serverName: serverName,
+        lang: getLanguage(),
+        platform: platform,
+        with_ownername: false,
+      }),
+  });
   document.title = `${t("siteFullName")} ${t("pageTitle.servers")} | ${
     gameId || t("notApplicable")
   } | ${stats?.prefix || t("loading")}`;

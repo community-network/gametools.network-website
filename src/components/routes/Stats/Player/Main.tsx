@@ -123,13 +123,15 @@ function Stats(): React.ReactElement {
     isLoading: gameLoading,
     isError: gameError,
     data: playerGames,
-  } = useQuery(["games" + params.type + params.eaid, platform], () =>
-    GametoolsApi.games({
-      getter: params.type,
-      userName: params.eaid,
-      platform: platform,
-    }),
-  );
+  } = useQuery({
+    queryKey: ["games" + params.type + params.eaid, platform],
+    queryFn: () =>
+      GametoolsApi.games({
+        getter: params.type,
+        userName: params.eaid,
+        platform: platform,
+      }),
+  });
   const games: string[] = platformGames[platform];
 
   let playerGamesArr = [];
@@ -272,16 +274,18 @@ function GameStats(props: GameStatsItems): React.ReactElement {
     isLoading: loading,
     isError: error,
     data: stats,
-  } = useQuery(["stats" + game + type + name], () =>
-    GametoolsApi.stats({
-      game: game,
-      type: "all",
-      getter: type,
-      userName: name,
-      lang: getLanguage(),
-      platform: platform,
-    }),
-  );
+  } = useQuery({
+    queryKey: ["stats" + game + type + name],
+    queryFn: () =>
+      GametoolsApi.stats({
+        game: game,
+        type: "all",
+        getter: type,
+        userName: name,
+        lang: getLanguage(),
+        platform: platform,
+      }),
+  });
 
   return (
     <>
