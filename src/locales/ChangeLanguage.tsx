@@ -18,6 +18,7 @@ const LanguageSelector = (): JSX.Element => {
       <option value="ru-RU">Русский</option>
       <option value="de-DE">Deutsch</option>
       <option value="nl-NL">Nederlands</option>
+      <option value="fr-FR">Français</option>
     </SelectSecondary>
   );
 };
