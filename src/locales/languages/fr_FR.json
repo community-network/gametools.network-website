@@ -821,7 +821,7 @@
     }
   },
   "bflist": {
-    "notFound": " \nJe n'ai pas trouvé de serveur avec l'API bflist.io"
+    "notFound": "Je n'ai pas trouvé de serveur avec l'API bflist.io"
   },
   "pageNotFound": {
     "main": "404 - Page not found",
