@@ -64,6 +64,7 @@ export const apiCountry = {
   "tr-tr": "tr",
   "ru-ru": "ru",
   "de-de": "de",
+  "fr-fr": "fr",
 };
 
 export const getLanguage = (): string => {
