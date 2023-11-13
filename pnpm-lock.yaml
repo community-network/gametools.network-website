@@ -27,8 +27,8 @@ dependencies:
     specifier: ^7.7.0
     version: 7.7.0
   i18next:
-    specifier: ^23.7.5
-    version: 23.7.5
+    specifier: ^23.7.6
+    version: 23.7.6
   i18next-browser-languagedetector:
     specifier: ^7.2.0
     version: 7.2.0
@@ -42,8 +42,8 @@ dependencies:
     specifier: ^5.2.0
     version: 5.2.0(chart.js@4.4.0)(react@18.2.0)
   react-i18next:
-    specifier: ^13.4.0
-    version: 13.4.0(i18next@23.7.5)(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^13.4.1
+    version: 13.4.1(i18next@23.7.6)(react-dom@18.2.0)(react@18.2.0)
   react-router-dom:
     specifier: ^6.18.0
     version: 6.18.0(react-dom@18.2.0)(react@18.2.0)
@@ -57,8 +57,8 @@ dependencies:
     specifier: ^6.1.1
     version: 6.1.1(react-dom@18.2.0)(react@18.2.0)
   web-vitals:
-    specifier: ^2.1.4
-    version: 2.1.4
+    specifier: ^3.5.0
+    version: 3.5.0
 
 devDependencies:
   '@swc/core':
@@ -4870,8 +4870,8 @@ packages:
       '@babel/runtime': 7.23.2
     dev: false
 
-  /i18next@23.7.5:
-    resolution: {integrity: sha512-IKpP+vu/sU3UYZe6ajizEXiretu6YJQE0zhkPJBoiOboiR4NLzbtJP/MADCcNx9nAGYM5WTEW4MBvaDx+gK+6A==}
+  /i18next@23.7.6:
+    resolution: {integrity: sha512-O66BhXBw0fH4bEJMA0/klQKPEbcwAp5wjXEL803pdAynNbg2f4qhLIYlNHJyE7icrL6XmSZKPYaaXwy11kJ6YQ==}
     dependencies:
       '@babel/runtime': 7.23.2
     dev: false
@@ -6763,8 +6763,8 @@ packages:
     resolution: {integrity: sha512-ZKS7PGNFqqMd3PJ6+C2Jtz/o1iU9ggiy8Y8nUeksgVuvNISbmrQtJiZNvC/TjDsqD0QlU5Wkgs7i+w9+OjHhhQ==}
     dev: true
 
-  /react-i18next@13.4.0(i18next@23.7.5)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-sZlTQEVK5dQuvq8AaIuj2OKviPqEskcBZdcHrsaoNGLv/uVCqUBfKYvJg9vcVeVqlxjJyYQ6A7LIHl4k7kkD3w==}
+  /react-i18next@13.4.1(i18next@23.7.6)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-z02JvLbt6Gavbuhr4CBOI6vasLypo+JSLvMgUOGeOMPv1g6spngfAb9jWAPwvuavPlKYU4dro9yRduflwyBeyA==}
     peerDependencies:
       i18next: '>= 23.2.3'
       react: '>= 16.8.0'
@@ -6778,7 +6778,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.23.2
       html-parse-stringify: 3.0.1
-      i18next: 23.7.5
+      i18next: 23.7.6
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
@@ -8157,8 +8157,8 @@ packages:
     dependencies:
       minimalistic-assert: 1.0.1
 
-  /web-vitals@2.1.4:
-    resolution: {integrity: sha512-sVWcwhU5mX6crfI5Vd2dC4qchyTqxV8URinzt25XqVh+bHEPGH4C3NPrNionCP7Obx59wrYEbNlw4Z8sjALzZg==}
+  /web-vitals@3.5.0:
+    resolution: {integrity: sha512-f5YnCHVG9Y6uLCePD4tY8bO/Ge15NPEQWtvm3tPzDKygloiqtb4SVqRHBcrIAqo2ztqX5XueqDn97zHF0LdT6w==}
     dev: false
 
   /webidl-conversions@4.0.2:
