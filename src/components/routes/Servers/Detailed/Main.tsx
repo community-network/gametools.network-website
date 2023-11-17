@@ -342,29 +342,36 @@ export function Results(props: Views): React.ReactElement {
             </Align>
           </>
         )}
-        {(dice.includes(props.game) || props.game == "bf1marne") && (
-          <>
-            <Title style={{ marginBottom: 0 }}>{t("servers.rotation")}</Title>
-            <Align>
-              {loading
-                ? [...Array(4)].map((key, index) => (
-                    <MapRotationItem
-                      key={key}
-                      stats={{
-                        image: "",
-                        mapname: t("loading"),
-                        mode: t("notApplicable"),
-                        index: index,
-                      }}
-                      index={index}
-                    />
-                  ))
-                : stats?.rotation?.map((key: ServerRotation, index: number) => (
-                    <MapRotationItem key={index} index={index} stats={key} />
-                  ))}
-            </Align>
-          </>
-        )}
+        {(dice.includes(props.game) || props.game == "bf1marne") &&
+          stats?.rotation?.length > 0 && (
+            <>
+              <Title style={{ marginBottom: 0 }}>{t("servers.rotation")}</Title>
+              <Align>
+                {loading
+                  ? [...Array(4)].map((key, index) => (
+                      <MapRotationItem
+                        key={key}
+                        stats={{
+                          image: "",
+                          mapname: t("loading"),
+                          mode: t("notApplicable"),
+                          index: index,
+                        }}
+                        index={index}
+                      />
+                    ))
+                  : stats?.rotation?.map(
+                      (key: ServerRotation, index: number) => (
+                        <MapRotationItem
+                          key={index}
+                          index={index}
+                          stats={key}
+                        />
+                      ),
+                    )}
+              </Align>
+            </>
+          )}
         <PageColumn>
           <PageRow>
             {props.game !== "bf4" && frostbite3.includes(props.game) ? (
