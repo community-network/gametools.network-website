@@ -63,6 +63,7 @@ export interface DetailedServerReturn {
   tickRate: number;
   password: boolean;
   settings: ServerSettings[];
+  rotation?: RotationReturn[];
   modList: ModListReturn[] | "";
   playerList: PlayerReturn[] | "";
   currentPlayers: number;
@@ -319,37 +320,37 @@ export class ApiProvider extends JsonClient {
         limit: "1",
         regions: [region],
       });
-      gameId = servers.servers[0].gameId;
+      gameId = servers?.servers[0]?.gameId;
     }
 
     const r = await fetch(`https://marne.io/api/srvlst/${gameId}`);
     const result: DetailedServerReturn = await r.json();
-    const internalMapName: string = result.mapName.split("/").slice(-1)[0];
+    const internalMapName: string = result?.mapName?.split("/").slice(-1)[0];
     return {
       apiUrl: `https://marne.io/api/srvlst/${gameId}`,
       cache: false,
-      prefix: result.name,
+      prefix: result?.name,
       currentMap: maps[internalMapName],
       currentMapImage: map_image[internalMapName],
       inQue: 0,
-      mode: modes[result.gameMode],
+      mode: modes[result?.gameMode],
       official: false,
-      region: result.region,
-      country: getName(result.country, await getCurrentCountry()),
+      region: result?.region,
+      country: getName(result?.country, await getCurrentCountry()),
       platform: "pc",
-      playerAmount: result.currentPlayers,
-      maxPlayerAmount: result.maxPlayers,
+      playerAmount: result?.currentPlayers,
+      maxPlayerAmount: result?.maxPlayers,
       serverInfo: null,
-      smallmode: smallmodes[result.gameMode],
-      settings: result.settings,
-      description: result.description,
+      smallmode: smallmodes[result?.gameMode],
+      settings: result?.settings,
+      description: result?.description,
       rotation: result?.rotation?.map(
         (current: RotationReturn, index: number) => {
-          const internal = to_internal[current.map.toLowerCase()];
+          const internal = to_internal[current?.map?.toLowerCase()];
           return {
             index,
-            mapname: capitalizeFirstLetter(current.map),
-            mode: capitalizeFirstLetter(current.mode),
+            mapname: capitalizeFirstLetter(current?.map),
+            mode: capitalizeFirstLetter(current?.mode),
             image: map_image[internal],
           };
         },
@@ -359,8 +360,8 @@ export class ApiProvider extends JsonClient {
           ? []
           : result?.playerList?.map((current: PlayerReturn) => {
               return {
-                name: current.name,
-                team: current.team,
+                name: current?.name,
+                team: current?.team,
               };
             }),
     };
