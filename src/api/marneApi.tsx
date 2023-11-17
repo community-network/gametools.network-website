@@ -24,6 +24,8 @@ export interface ModListReturn {
 export interface RotationReturn {
   map: string;
   mode: string;
+  mapLongName?: string;
+  modeLongName?: string;
 }
 
 export interface ServerInfoReturn {
@@ -348,18 +350,22 @@ export class ApiProvider extends JsonClient {
       description: result?.description,
       rotation: result?.rotation?.map(
         (current: RotationReturn, index: number) => {
-          const internalMapName: string =
-            current?.map?.split("/").slice(-1)[0] || "";
-          return {
-            index,
-            mapname:
-              maps[internalMapName] ||
-              capitalizeFirstLetter(current?.map || ""),
-            mode:
-              modes[current?.mode] ||
-              capitalizeFirstLetter(current?.mode || ""),
-            image: map_image[internalMapName] || "",
-          };
+          if (current !== null) {
+            const internalMapName: string =
+              current?.mapLongName?.split("/").slice(-1)[0] ||
+              current?.map?.split("/").slice(-1)[0] ||
+              "";
+            return {
+              index,
+              mapname:
+                maps[internalMapName] ||
+                capitalizeFirstLetter(current?.map || ""),
+              mode:
+                modes[current?.mode] ||
+                capitalizeFirstLetter(current?.mode || ""),
+              image: map_image[internalMapName] || "",
+            };
+          }
         },
       ),
       players:

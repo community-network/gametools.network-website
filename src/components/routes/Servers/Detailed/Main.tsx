@@ -361,13 +361,14 @@ export function Results(props: Views): React.ReactElement {
                       />
                     ))
                   : stats?.rotation?.map(
-                      (key: ServerRotation, index: number) => (
-                        <MapRotationItem
-                          key={index}
-                          index={index}
-                          stats={key}
-                        />
-                      ),
+                      (key: ServerRotation, index: number) =>
+                        key && (
+                          <MapRotationItem
+                            key={index}
+                            stats={key}
+                            index={index}
+                          />
+                        ),
                     )}
               </Align>
             </>
