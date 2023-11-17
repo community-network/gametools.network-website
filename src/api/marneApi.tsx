@@ -54,16 +54,18 @@ export interface DetailedServerReturn {
   country: string;
   mapName: string;
   gameMode: string;
+  map: string;
+  mode: string;
   maxPlayers: number;
   needSameMods: boolean;
   allowMoreMods: boolean;
+  statsSystem: number;
   tickRate: number;
   password: boolean;
   settings: ServerSettings[];
-  rotation: RotationReturn[];
   modList: ModListReturn[] | "";
-  currentPlayers: number;
   playerList: PlayerReturn[] | "";
+  currentPlayers: number;
 }
 
 interface ServerSearchInfo {
@@ -321,7 +323,7 @@ export class ApiProvider extends JsonClient {
     }
 
     const r = await fetch(`https://marne.io/api/srvlst/${gameId}`);
-    const result = await r.json();
+    const result: DetailedServerReturn = await r.json();
     const internalMapName: string = result.mapName.split("/").slice(-1)[0];
     return {
       apiUrl: `https://marne.io/api/srvlst/${gameId}`,
@@ -341,7 +343,7 @@ export class ApiProvider extends JsonClient {
       smallmode: smallmodes[result.gameMode],
       settings: result.settings,
       description: result.description,
-      rotation: result.rotation.map(
+      rotation: result?.rotation?.map(
         (current: RotationReturn, index: number) => {
           const internal = to_internal[current.map.toLowerCase()];
           return {
