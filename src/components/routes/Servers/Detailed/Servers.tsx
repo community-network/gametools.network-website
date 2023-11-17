@@ -66,7 +66,6 @@ function Servers(): React.ReactElement {
   document.title = `${t("siteFullName")} ${t("pageTitle.servers")} | ${
     gameId || t("notApplicable")
   } | ${stats?.prefix || t("loading")}`;
-  console.log(stats);
   return (
     <div>
       <Container>
