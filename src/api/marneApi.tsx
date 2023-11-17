@@ -273,24 +273,26 @@ export class ApiProvider extends JsonClient {
     const country = await getCurrentCountry();
     const servers = this.serverCache.servers
       .map((server) => {
-        const internalMapName: string = server.mapName.split("/").slice(-1)[0];
+        const internalMapName: string = server?.mapName
+          ?.split("/")
+          .slice(-1)[0];
         return {
-          gameId: server.id.toString(),
-          prefix: server.name,
+          gameId: server?.id.toString(),
+          prefix: server?.name,
           currentMap: maps[internalMapName],
           currentMapImage: map_image[internalMapName],
           url: map_image[internalMapName],
           inQue: 0,
-          mode: modes[server.gameMode],
+          mode: modes[server?.gameMode],
           official: false,
           ownerId: 0,
-          region: server.region,
-          country: getName(server.country, country),
+          region: server?.region,
+          country: getName(server?.country, country),
           platform: "pc",
-          playerAmount: server.currentPlayers,
-          maxPlayerAmount: server.maxPlayers,
+          playerAmount: server?.currentPlayers,
+          maxPlayerAmount: server?.maxPlayers,
           serverInfo: "",
-          smallMode: smallmodes[server.gameMode],
+          smallMode: smallmodes[server?.gameMode],
         };
       })
       .filter((server) => {
@@ -346,12 +348,13 @@ export class ApiProvider extends JsonClient {
       description: result?.description,
       rotation: result?.rotation?.map(
         (current: RotationReturn, index: number) => {
-          const internal = to_internal[current?.map?.toLowerCase()];
+          const internalMapName: string =
+            current?.map?.split("/").slice(-1)[0] || "";
           return {
             index,
-            mapname: capitalizeFirstLetter(current?.map),
-            mode: capitalizeFirstLetter(current?.mode),
-            image: map_image[internal],
+            mapname: maps[internalMapName] || "",
+            mode: modes[current?.mode] || "",
+            image: map_image[internalMapName] || "",
           };
         },
       ),
