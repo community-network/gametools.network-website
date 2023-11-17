@@ -350,10 +350,15 @@ export class ApiProvider extends JsonClient {
         (current: RotationReturn, index: number) => {
           const internalMapName: string =
             current?.map?.split("/").slice(-1)[0] || "";
+          console.log(current);
           return {
             index,
-            mapname: maps[internalMapName] || "",
-            mode: modes[current?.mode] || "",
+            mapname:
+              maps[internalMapName] ||
+              capitalizeFirstLetter(current?.map || ""),
+            mode:
+              modes[current?.mode] ||
+              capitalizeFirstLetter(current?.mode || ""),
             image: map_image[internalMapName] || "",
           };
         },
