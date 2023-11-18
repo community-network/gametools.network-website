@@ -125,7 +125,6 @@ export function Results(props: Views): React.ReactElement {
           if (queue !== undefined && queue !== 0 && queue !== null) {
             queueString = `[${queue}]`;
           }
-          // console.log(`${t(`regions.${key.region.toLowerCase()}`)}`);
           let region: string = undefined;
           if (props.game === "bf2042") {
             if (Object.keys(regionToTranslation).includes(key.region)) {

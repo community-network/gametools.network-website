@@ -273,38 +273,43 @@ export class ApiProvider extends JsonClient {
       this.serverCacheAge = Date.now();
     }
     const country = await getCurrentCountry();
-    const servers = this.serverCache.servers
-      .map((server) => {
-        const internalMapName: string = server?.mapName
-          ?.split("/")
-          .slice(-1)[0];
-        return {
-          gameId: server?.id.toString(),
-          prefix: server?.name,
-          currentMap: maps[internalMapName],
-          currentMapImage: map_image[internalMapName],
-          url: map_image[internalMapName],
-          inQue: 0,
-          mode: modes[server?.gameMode],
-          official: false,
-          ownerId: 0,
-          region: server?.region,
-          country: getName(server?.country, country),
-          platform: "pc",
-          playerAmount: server?.currentPlayers,
-          maxPlayerAmount: server?.maxPlayers,
-          serverInfo: "",
-          smallMode: smallmodes[server?.gameMode],
-        };
-      })
-      .filter((server) => {
-        return (
-          server.prefix.toLowerCase().includes(searchTerm.toLowerCase()) &&
-          (regions.includes(server.region.toLowerCase()) ||
-            regions.includes("all"))
-        );
-      })
-      .slice(0, !Number.isNaN(Number(limit)) ? Number(limit) : 10);
+    const servers =
+      this.serverCache.servers == undefined
+        ? []
+        : this.serverCache.servers
+            .map((server) => {
+              const internalMapName: string = server?.mapName
+                ?.split("/")
+                .slice(-1)[0];
+              return {
+                gameId: server?.id.toString(),
+                prefix: server?.name,
+                currentMap: maps[internalMapName],
+                currentMapImage: map_image[internalMapName],
+                url: map_image[internalMapName],
+                inQue: 0,
+                mode: modes[server?.gameMode],
+                official: false,
+                ownerId: 0,
+                region: server?.region,
+                country: getName(server?.country, country),
+                platform: "pc",
+                playerAmount: server?.currentPlayers,
+                maxPlayerAmount: server?.maxPlayers,
+                serverInfo: "",
+                smallMode: smallmodes[server?.gameMode],
+              };
+            })
+            .filter((server) => {
+              return (
+                server.prefix
+                  .toLowerCase()
+                  .includes(searchTerm.toLowerCase()) &&
+                (regions.includes(server.region.toLowerCase()) ||
+                  regions.includes("all"))
+              );
+            })
+            .slice(0, !Number.isNaN(Number(limit)) ? Number(limit) : 10);
     return {
       cache: false,
       servers,
