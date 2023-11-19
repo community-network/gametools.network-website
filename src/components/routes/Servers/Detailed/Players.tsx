@@ -212,8 +212,6 @@ function Players(props: {
                       {teamInfo.players.map(
                         (key: serverPlayer, index: number) => {
                           const seederPlayer = seederPlayers.get(key.player_id);
-                          const statsGame =
-                            props.game === "bf1marne" ? "bf1" : props.game;
                           return (
                             <Column key={index}>
                               <Row>
@@ -340,9 +338,10 @@ function Players(props: {
                                     key?.player_id
                                       ? key?.player_id
                                       : encodeURIComponent(key.name)
-                                  }?game=${statsGame}&name=${encodeURIComponent(
-                                    key.name,
-                                  )}`}
+                                  }?game=${props.game.replace(
+                                    "marne",
+                                    "",
+                                  )}&name=${encodeURIComponent(key.name)}`}
                                   target="_blank"
                                   rel="noreferrer"
                                 >
