@@ -212,6 +212,8 @@ function Players(props: {
                       {teamInfo.players.map(
                         (key: serverPlayer, index: number) => {
                           const seederPlayer = seederPlayers.get(key.player_id);
+                          const statsGame =
+                            props.game === "bf1marne" ? "bf1" : props.game;
                           return (
                             <Column key={index}>
                               <Row>
@@ -334,9 +336,13 @@ function Players(props: {
                                     playerToStatsPlatform[key.platform] ||
                                     key.platform ||
                                     props.platform
-                                  }/playerid/${key.player_id}?game=${
-                                    props.game
-                                  }&name=${encodeURIComponent(key.name)}`}
+                                  }/${key?.player_id ? "playerid" : "name"}/${
+                                    key?.player_id
+                                      ? key?.player_id
+                                      : encodeURIComponent(key.name)
+                                  }?game=${statsGame}&name=${encodeURIComponent(
+                                    key.name,
+                                  )}`}
                                   target="_blank"
                                   rel="noreferrer"
                                 >
