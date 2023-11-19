@@ -31,6 +31,7 @@ import {
   Bf3ServerPlayerlist,
   BfListServerPlayerList,
   ServerPlayerlist,
+  MarnePlayerList,
 } from "./Players";
 import { ServerLeaderboard } from "./Leaderboard";
 import { ServerPlatoon } from "./Platoon";
@@ -426,7 +427,12 @@ export function Results(props: Views): React.ReactElement {
                   />
                 ) : (
                   props.game === "bf1marne" && (
-                    <Bf3ServerPlayerlist players={stats?.players} game="bf1" />
+                    <MarnePlayerList
+                      players={stats?.players}
+                      game={props?.game}
+                      gameId={stats?.gameId}
+                    />
+                    // <Bf3ServerPlayerlist players={stats?.players} game="bf1" />
                   )
                 )}
               </>

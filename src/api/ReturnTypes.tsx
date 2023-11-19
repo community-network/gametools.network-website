@@ -273,7 +273,7 @@ export type ServerLeaderboardList = {
 };
 
 export type ServerPlayersReturn = {
-  apiUrl: string;
+  apiUrl?: string;
   teams: serverTeamList[];
   loading: serverPlayer[];
   que: serverPlayer[];
@@ -371,14 +371,14 @@ export type serverTeamList = {
 };
 
 export type serverPlayer = {
-  player_id: number;
-  user_id: number;
+  player_id?: number;
+  user_id?: number;
   name: string;
-  position: number;
+  position?: number;
   latency?: number;
-  platoon: string;
-  join_time: number;
-  localization: string;
+  platoon?: string;
+  join_time?: number;
+  localization?: string;
 
   platform?: string;
   rank?: number;

@@ -108,7 +108,7 @@ function Players(props: {
   teams.forEach((teamInfo: serverTeamList) => {
     playerIds = playerIds.concat(
       teamInfo.players.map((player) => {
-        return player.player_id.toString();
+        return player?.player_id?.toString();
       }),
     );
   });
@@ -200,7 +200,7 @@ function Players(props: {
               <div key={index}>
                 <Align>
                   <h3 style={{ margin: ".5rem", marginTop: 0 }}>
-                    {teamInfo.faction in factions
+                    {teamInfo?.faction in factions
                       ? t(`servers.factions.${teamInfo.faction}`)
                       : t(`servers.factions.${teamInfo.teamid}`)}
                   </h3>
@@ -211,14 +211,13 @@ function Players(props: {
                       {teamInfo.players.map(
                         (key: serverPlayer, index: number) => {
                           const seederPlayer = seederPlayers.get(key.player_id);
-                          const dateAdded = new Date(key.join_time / 1000);
                           return (
                             <Column key={index}>
                               <Row>
                                 <AlignW>
-                                  {props.game !== "bf2042" && (
+                                  {key?.rank && (
                                     <img
-                                      src={`https://cdn.gametools.network/bf1/${key.rank}.png`}
+                                      src={`https://cdn.gametools.network/bf1/${key?.rank}.png`}
                                       height="25px"
                                       loading="lazy"
                                     />
@@ -253,7 +252,7 @@ function Players(props: {
                                   </a>
                                 </AlignW>
                                 <CheckBan
-                                  playerId={key.player_id.toString()}
+                                  playerId={key?.player_id?.toString()}
                                   bfBanList={bfBanInfo}
                                   bfbanLoading={bfbanLoading}
                                   bfbanError={bfbanError}
@@ -262,16 +261,7 @@ function Players(props: {
                                   bfeacError={bfeacError}
                                 />
                               </Row>
-                              {props.game !== "bf2042" ? (
-                                <Row>
-                                  <h4 style={{ marginTop: "0.5rem" }}>
-                                    {key.latency}
-                                  </h4>
-                                  <Description style={{ lineHeight: 0 }}>
-                                    {t("servers.playerlist.row.ping")}
-                                  </Description>
-                                </Row>
-                              ) : (
+                              {props.game === "bf2042" ? (
                                 <Row>
                                   <h4 style={{ marginTop: "0.5rem" }}>
                                     {key.platform.toUpperCase()}
@@ -280,6 +270,17 @@ function Players(props: {
                                     {t("servers.playerlist.row.platform")}
                                   </Description>
                                 </Row>
+                              ) : (
+                                props.game !== "bf1marne" && (
+                                  <Row>
+                                    <h4 style={{ marginTop: "0.5rem" }}>
+                                      {key.latency}
+                                    </h4>
+                                    <Description style={{ lineHeight: 0 }}>
+                                      {t("servers.playerlist.row.ping")}
+                                    </Description>
+                                  </Row>
+                                )
                               )}
                               {haveSeederPlayers && (
                                 <>
@@ -303,14 +304,18 @@ function Players(props: {
                                 </>
                               )}
                               <Row>
-                                <h4 style={{ marginTop: "0.5rem" }}>
-                                  {t("change", {
-                                    change: dateAdded,
-                                  })}
-                                </h4>
-                                <Description style={{ lineHeight: 0 }}>
-                                  {t("servers.playerlist.row.timePlayed")}
-                                </Description>
+                                {key.join_time && (
+                                  <>
+                                    <h4 style={{ marginTop: "0.5rem" }}>
+                                      {t("change", {
+                                        change: new Date(key?.join_time / 1000),
+                                      })}
+                                    </h4>
+                                    <Description style={{ lineHeight: 0 }}>
+                                      {t("servers.playerlist.row.timePlayed")}
+                                    </Description>
+                                  </>
+                                )}
                               </Row>
                               <PhoneRow>
                                 <ButtonLink
@@ -394,6 +399,42 @@ export function ServerPlayerlist(props: {
       <Title>{t("servers.playerlist.main")}</Title>
       <Description>{t("loading")}</Description>
     </Spacing>
+  );
+}
+
+export function MarnePlayerList(props: {
+  players: ScoreServerPlayer[];
+  game: string;
+  gameId: string;
+}): React.ReactElement {
+  const stats = {
+    teams: [
+      {
+        teamid: "teamOne",
+        players: [],
+        image: "",
+        name: "1",
+      },
+      {
+        teamid: "teamTwo",
+        players: [],
+        image: "",
+        name: "",
+      },
+    ],
+    update_timestamp: Date.now() / 1000,
+  };
+  props?.players?.forEach((element) => {
+    stats.teams[element.team - 1].players.push(element);
+  });
+
+  return (
+    <Players
+      stats={stats}
+      game={props.game}
+      gameid={props.gameId}
+      platform="pc"
+    />
   );
 }
 
@@ -617,31 +658,6 @@ export function BfListServerPlayerList(props: {
                               {t("servers.playerlist.row.killDeath")}
                             </Description>
                           </Row>
-                          {/* <PhoneRow>
-                            <ButtonLink
-                              style={
-                                haveSeederPlayers
-                                  ? {
-                                      marginTop: ".5rem",
-                                      width: "4rem",
-                                    }
-                                  : {
-                                      marginTop: ".5rem",
-                                    }
-                              }
-                              href={`https://gametools.network/stats/${
-                                playerToStatsPlatform[key.platform] ||
-                                key.platform ||
-                                props.platform
-                              }/playerid/${key.player_id}?game=${
-                                props.game
-                              }&name=${encodeURIComponent(key.name)}`}
-                              target="_blank"
-                              rel="noreferrer"
-                            >
-                              {t("stats.view")}
-                            </ButtonLink>
-                          </PhoneRow> */}
                         </Column>
                       );
                     })}

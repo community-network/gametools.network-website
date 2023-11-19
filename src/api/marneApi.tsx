@@ -354,7 +354,7 @@ export class ApiProvider extends JsonClient {
       settings: result?.settings,
       description: result?.description,
       rotation:
-        result?.rotation == ""
+        result?.rotation === ""
           ? []
           : result?.rotation?.map((current: RotationReturn, index: number) => {
               if (current !== null) {
