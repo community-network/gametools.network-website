@@ -65,7 +65,7 @@ export interface DetailedServerReturn {
   tickRate: number;
   password: boolean;
   settings: ServerSettings[];
-  rotation?: RotationReturn[];
+  rotation?: RotationReturn[] | "";
   modList: ModListReturn[] | "";
   playerList: PlayerReturn[] | "";
   currentPlayers: number;
@@ -353,26 +353,27 @@ export class ApiProvider extends JsonClient {
       smallmode: smallmodes[result?.gameMode],
       settings: result?.settings,
       description: result?.description,
-      rotation: result?.rotation?.map(
-        (current: RotationReturn, index: number) => {
-          if (current !== null) {
-            const internalMapName: string =
-              current?.mapLongName?.split("/").slice(-1)[0] ||
-              current?.map?.split("/").slice(-1)[0] ||
-              "";
-            return {
-              index,
-              mapname:
-                maps[internalMapName] ||
-                capitalizeFirstLetter(current?.map || ""),
-              mode:
-                modes[current?.mode] ||
-                capitalizeFirstLetter(current?.mode || ""),
-              image: map_image[internalMapName] || "",
-            };
-          }
-        },
-      ),
+      rotation:
+        result?.rotation == ""
+          ? []
+          : result?.rotation?.map((current: RotationReturn, index: number) => {
+              if (current !== null) {
+                const internalMapName: string =
+                  current?.mapLongName?.split("/").slice(-1)[0] ||
+                  current?.map?.split("/").slice(-1)[0] ||
+                  "";
+                return {
+                  index,
+                  mapname:
+                    maps[internalMapName] ||
+                    capitalizeFirstLetter(current?.map || ""),
+                  mode:
+                    modes[current?.mode] ||
+                    capitalizeFirstLetter(current?.mode || ""),
+                  image: map_image[internalMapName] || "",
+                };
+              }
+            }),
       players:
         result?.playerList === ""
           ? []
