@@ -428,7 +428,7 @@ export function Results(props: Views): React.ReactElement {
                 ) : (
                   props.game === "bf1marne" && (
                     <MarnePlayerList
-                      players={stats?.players}
+                      stats={stats}
                       game={props?.game}
                       gameId={stats?.gameId}
                     />

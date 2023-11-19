@@ -353,6 +353,7 @@ export class ApiProvider extends JsonClient {
       smallmode: smallmodes[result?.gameMode],
       settings: result?.settings,
       description: result?.description,
+      map: internalMapName,
       rotation:
         result?.rotation === ""
           ? []

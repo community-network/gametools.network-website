@@ -20,13 +20,14 @@ import {
   SelectPrimary,
 } from "../../../Materials";
 import {
+  DetailedServerInfo,
   ScoreServerPlayer,
   seederPlayer,
   serverPlayer,
   ServerPlayersReturn,
   serverTeamList,
 } from "../../../../api/ReturnTypes";
-import { factions } from "../../../../api/Factions";
+import { bf1_factions, factions } from "../../../../api/Factions";
 import { Description, Spacing, Title } from "./Servers";
 import { DynamicSort } from "../../Stats/Player/Main";
 import styled from "styled-components";
@@ -403,28 +404,27 @@ export function ServerPlayerlist(props: {
 }
 
 export function MarnePlayerList(props: {
-  players: ScoreServerPlayer[];
+  stats: DetailedServerInfo;
   game: string;
   gameId: string;
 }): React.ReactElement {
+  const current_factions = bf1_factions[props?.stats?.map] ?? [];
   const stats = {
     teams: [
       {
         teamid: "teamOne",
         players: [],
-        image: "",
-        name: "1",
+        faction: current_factions[0],
       },
       {
         teamid: "teamTwo",
         players: [],
-        image: "",
-        name: "",
+        faction: current_factions[1],
       },
     ],
     update_timestamp: Date.now() / 1000,
   };
-  props?.players?.forEach((element) => {
+  props?.stats?.players?.forEach((element) => {
     stats.teams[element.team - 1].players.push(element);
   });
 
