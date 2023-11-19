@@ -275,7 +275,7 @@ export class ApiProvider extends JsonClient {
         regions: [region],
         limit: "1",
       });
-      return result.servers[0];
+      return result?.servers[0];
     }
     if (game == "bf1marne") {
       return await bf1MarneApi.server({
@@ -301,7 +301,7 @@ export class ApiProvider extends JsonClient {
         service: gameStuff[1],
         platform: platform,
       });
-      return result.servers[0];
+      return result?.servers[0];
     }
     return await this.getJsonMethod(`/${gameStuff[0]}/detailedserver/`, {
       name: encodeURIComponent(serverName),
@@ -424,7 +424,7 @@ export class ApiProvider extends JsonClient {
     });
     // hard limit to 4 on main page
     if (limit === "4") {
-      result.servers = result.servers.slice(0, 4);
+      result.servers = result?.servers?.slice(0, 4);
     }
     return result;
   }
