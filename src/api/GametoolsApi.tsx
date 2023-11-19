@@ -233,6 +233,16 @@ export class ApiProvider extends JsonClient {
     platform,
     lang,
   }: PlatoonSearch): Promise<PlatoonSearchResult> {
+    if (name.length < 3)
+      return {
+        platoons: [],
+        cache: false,
+        apiUrl: this.constructApiUrl(`/bfglobal/platoons/`, {
+          name: name,
+          platform: platform,
+          lang: lang,
+        }),
+      };
     return await this.getJsonMethod(`/bfglobal/platoons/`, {
       name: name,
       platform: platform,
