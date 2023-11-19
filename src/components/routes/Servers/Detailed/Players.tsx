@@ -211,7 +211,6 @@ function Players(props: {
                     <>
                       {teamInfo.players.map(
                         (key: serverPlayer, index: number) => {
-                          console.log(key.rank);
                           const seederPlayer = seederPlayers.get(key.player_id);
                           return (
                             <Column key={index}>
