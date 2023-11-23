@@ -246,6 +246,10 @@ const map_image = {
     "https://cdn.gametools.network/maps/bf1/MP_River_LandscapeLarge-21443ae9.jpg",
 };
 
+const marne_regions = {
+  AS: "Asia",
+};
+
 export class ApiProvider extends JsonClient {
   private serverCache: ServerListReturn = { servers: [] };
   private serverCacheAge: number;
@@ -291,7 +295,7 @@ export class ApiProvider extends JsonClient {
                 mode: modes[server?.gameMode],
                 official: false,
                 ownerId: 0,
-                region: server?.region,
+                region: marne_regions[server?.region] || server?.region || "",
                 country: getName(server?.country, country),
                 platform: "pc",
                 playerAmount: server?.currentPlayers,
