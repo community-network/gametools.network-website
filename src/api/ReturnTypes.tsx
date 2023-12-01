@@ -1,4 +1,5 @@
 import { Mutator, PlaygroundMutator } from "./MutatorType";
+import { ModListReturn } from "./marneApi";
 
 export type PlatoonPlayer = {
   id: string;
@@ -434,7 +435,7 @@ export type DetailedServerInfo = {
   inQue?: number;
   maxPlayers?: number;
   noBotsPlayerAmount?: number;
-
+  modList?: ModListReturn[];
   // older games
   mapImage?: string;
   map?: string;

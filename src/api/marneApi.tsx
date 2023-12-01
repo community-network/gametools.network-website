@@ -358,6 +358,7 @@ export class ApiProvider extends JsonClient {
       settings: result?.settings,
       description: result?.description,
       map: internalMapName,
+      modList: result?.modList || [],
       rotation:
         result?.rotation === ""
           ? []

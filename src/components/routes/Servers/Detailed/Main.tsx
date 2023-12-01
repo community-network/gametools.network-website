@@ -44,11 +44,18 @@ import { ServerGraphQuery } from "../../../graphing/line";
 import { CopyToClipboard } from "../../../functions/CopyToClipboard";
 import sslFix from "../../../functions/fixEaAssets";
 import { capitalizeFirstLetter } from "../../../functions/capitalizeFirstLetter";
+import { ModListReturn } from "../../../../api/marneApi";
 
 const AltDescription = styled.p`
   ${AltText}
   line-height: 1.2;
   margin: 0.5rem 0.5rem 0.5rem 0;
+`;
+
+const ModInfo = styled.p`
+  ${AltText}
+  margin: 0;
+  line-height: 1.2;
 `;
 
 interface IServerImage {
@@ -183,6 +190,19 @@ export function Results(props: Views): React.ReactElement {
   });
 
   const { t, i18n } = useTranslation();
+  const modCategories: { [id: string]: ModListReturn[] } = {};
+  stats?.modList.forEach((item) => {
+    if (Object.keys(modCategories).includes(item?.category)) {
+      modCategories[item?.category].push(item);
+    } else {
+      modCategories[item?.category] = [item];
+    }
+  });
+  const sortedModCategories: { [id: string]: ModListReturn[] } = Object.keys(
+    modCategories,
+  )
+    .sort((a, b) => modCategories[b].length - modCategories[a].length)
+    .reduce((acc, key) => ((acc[key] = modCategories[key]), acc), {});
 
   if (error) {
     return (
@@ -530,6 +550,51 @@ export function Results(props: Views): React.ReactElement {
             )}
           </PageRow>
         </PageColumn>
+        {props.game === "bf1marne" && (
+          <>
+            <h2 style={{ marginBottom: 0 }}>{t("servers.modList.main")}</h2>
+            {Object.keys(modCategories).length > 0 ? (
+              <AlignT>
+                {Object.entries(sortedModCategories).map(
+                  ([category, modList], index) => (
+                    <div key={index} style={{ marginRight: "1rem" }}>
+                      <h3>{category}</h3>
+                      {modList.map((current, index) => (
+                        <div key={index} style={{ marginBottom: "0.5rem" }}>
+                          <h4 style={{ margin: 0, marginTop: "0.2rem" }}>
+                            {current?.name || t("notApplicable")}
+                          </h4>
+                          <ModInfo>
+                            {t("servers.modList.file")}
+                            {current?.file_name || t("notApplicable")}
+                          </ModInfo>
+                          <ModInfo>
+                            {t("servers.modList.version")}
+                            {current?.version || t("notApplicable")}
+                          </ModInfo>
+                          <ModInfo>
+                            {current?.link ? (
+                              <a
+                                href={current?.link}
+                                style={{ color: "inherit" }}
+                              >
+                                {current?.link}
+                              </a>
+                            ) : (
+                              t("servers.modList.noURl")
+                            )}
+                          </ModInfo>
+                        </div>
+                      ))}
+                    </div>
+                  ),
+                )}
+              </AlignT>
+            ) : (
+              <Description>{t("servers.modList.noMods")}</Description>
+            )}
+          </>
+        )}
         <h2 style={{ marginBottom: 0 }}>{t("servers.iframe.main")}</h2>
         <Description style={{ margin: 0, marginTop: "0.2rem" }}>
           {t("servers.iframe.info")}

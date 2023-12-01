@@ -737,6 +737,13 @@
         "10+": "10+",
         "empty": "Empty"
       }
+    },
+    "modList": {
+      "main": "Mods",
+      "noMods": "This server has no mods",
+      "file": "file: ",
+      "version": "ver: ",
+      "noURl": "No link available"
     }
   },
   "platoon": {
