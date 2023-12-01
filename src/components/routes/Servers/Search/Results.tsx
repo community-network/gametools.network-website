@@ -151,7 +151,10 @@ export function Results(props: Views): React.ReactElement {
           } else if (props.game == "battlebit") {
             idElement = "name";
             result = encodeURIComponent(key.prefix);
-          } else if (!dice.includes(props.game) && props.game != "bf1marne") {
+          } else if (
+            !dice.includes(props.game) &&
+            !props.game.includes("marne")
+          ) {
             idElement = "serverip";
             result = `${key.ip}:${key.port}`;
           }

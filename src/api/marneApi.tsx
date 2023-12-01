@@ -72,12 +72,14 @@ export interface DetailedServerReturn {
 }
 
 interface ServerSearchInfo {
+  game: string;
   searchTerm: string;
   limit?: string;
   regions?: string[];
 }
 
 interface DetailedSearch {
+  game: string;
   getter: string;
   serverName: string;
   region: string;
@@ -142,6 +144,27 @@ const to_internal = {
   "razor's edge": "MP_Alps",
   "london calling": "MP_Blitz",
   "london calling: Scourge": "MP_London",
+  //bfv
+  "fjell 652": "MP_ArcticFjell",
+  narvik: "MP_ArcticFjord",
+  arras: "MP_Arras",
+  devastation: "MP_Devastation",
+  "twisted steel": "MP_Escaut",
+  aerodrome: "MP_Foxhunt",
+  hamada: "MP_Halfaya",
+  rotterdam: "MP_Rotterdam",
+  panzerstorm: "MP_Hannut",
+  mercury: "MP_Crete",
+  marita: "MP_Kalamas",
+  provence: "MP_Provence",
+  "al sudan": "MP_SandAndSea",
+  "operation Underground": "MP_Bunker",
+  "iwo jima": "MP_IwoJima",
+  "pacific storm": "MP_TropicIslands",
+  "wake island": "MP_WakeIsland",
+  "solomon islands": "MP_Jungle",
+  "al marj encampment": "MP_Libya",
+  "lofoten islands": "MP_Norway",
 };
 
 const maps = {
@@ -177,6 +200,27 @@ const maps = {
   MP_London: "London Calling: Scourge",
   MP_Offensive: "River Somme",
   MP_River: "Caporetto",
+  // bfv
+  MP_ArcticFjell: "Fjell 652",
+  MP_ArcticFjord: "Narvik",
+  MP_Arras: "Arras",
+  MP_Devastation: "Devastation",
+  MP_Escaut: "twisted steel",
+  MP_Foxhunt: "Aerodrome",
+  MP_Halfaya: "Hamada",
+  MP_Rotterdam: "Rotterdam",
+  MP_Hannut: "Panzerstorm",
+  MP_Crete: "Mercury",
+  MP_Kalamas: "Marita",
+  MP_Provence: "Provence",
+  MP_SandAndSea: "Al sudan",
+  MP_Bunker: "Operation Underground",
+  MP_IwoJima: "Iwo jima",
+  MP_TropicIslands: "Pacific storm",
+  MP_WakeIsland: "Wake island",
+  MP_Jungle: "Solomon islands",
+  MP_Libya: "Al marj encampment",
+  MP_Norway: "lofoten islands",
 };
 
 const map_image = {
@@ -244,6 +288,46 @@ const map_image = {
     "https://cdn.gametools.network/maps/bf1/MP_Offensive_LandscapeLarge-6dabdea3.jpg",
   MP_River:
     "https://cdn.gametools.network/maps/bf1/MP_River_LandscapeLarge-21443ae9.jpg",
+  // bfv
+  MP_ArcticFjell:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_ArcticFjell-df3c1290.jpg",
+  MP_ArcticFjord:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_ArcticFjord-7ba29138.jpg",
+  MP_Arras:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_Arras-4b610505.jpg",
+  MP_Devastation:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_Devastation-623dea60.jpg",
+  MP_Escaut: "twisted steel",
+  MP_Foxhunt:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_AfricanFox-8ad380a5.jpg",
+  MP_Halfaya:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_AfricanHalfaya-31165f9b.jpg",
+  MP_Rotterdam:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_Rotterdam-55632240.jpg",
+  MP_Hannut:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_Hannut-ebbe7197.jpg",
+  MP_Crete:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_Crete-304a202d.jpg",
+  MP_Kalamas:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_Kalamas-c64c8451.jpg",
+  MP_Provence:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_ProvenceXL-a950ad3e.jpg",
+  MP_SandAndSea:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_SandAndSea-f071e6f7.jpg",
+  MP_Bunker:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_Bunker-7b518876.jpg",
+  MP_IwoJima:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_IwoJima-760850fc.jpg",
+  MP_TropicIslands:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_TropicIslands-9e0a41c3.jpg",
+  MP_WakeIsland:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_WakeIsland-3238b455.jpg",
+  MP_Jungle:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_Jungle-714218ce.jpg",
+  MP_Libya:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_Libya-bd54b090.jpg",
+  MP_Norway:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_Norway-7d6d6300.jpg",
 };
 
 const marne_regions = {
@@ -253,6 +337,7 @@ const marne_regions = {
 export class ApiProvider extends JsonClient {
   private serverCache: ServerListReturn = { servers: [] };
   private serverCacheAge: number;
+  private serverCacheGame: string;
 
   constructor() {
     super();
@@ -266,15 +351,22 @@ export class ApiProvider extends JsonClient {
     searchTerm,
     limit,
     regions,
+    game,
   }: ServerSearchInfo): Promise<ServerSearch> {
     if (
+      this.serverCacheGame !== game ||
       this.serverCacheAge === undefined ||
       // update only once every 30 seconds
       (Date.now() - this.serverCacheAge) / 1000 > 30
     ) {
-      const r = await fetch(`https://marne.io/api/srvlst/`);
+      const r = await fetch(
+        game.includes("bf1")
+          ? "https://marne.io/api/srvlst/"
+          : "https://marne.io/api/v/srvlst/",
+      );
       this.serverCache = await r.json();
       this.serverCacheAge = Date.now();
+      this.serverCacheGame = game;
     }
     const country = await getCurrentCountry();
     const servers =
@@ -325,10 +417,12 @@ export class ApiProvider extends JsonClient {
     getter,
     serverName,
     region,
+    game,
   }: DetailedSearch): Promise<DetailedServerInfo> {
     let gameId = serverName;
     if (getter === "name") {
       const servers = await this.serverList({
+        game: game,
         searchTerm: serverName,
         limit: "1",
         regions: [region],
@@ -336,11 +430,17 @@ export class ApiProvider extends JsonClient {
       gameId = servers?.servers[0]?.gameId;
     }
 
-    const r = await fetch(`https://marne.io/api/srvlst/${gameId}`);
+    const r = await fetch(
+      game.includes("bf1")
+        ? `https://marne.io/api/srvlst/${gameId}`
+        : `https://marne.io/api/v/srvlst/${gameId}`,
+    );
     const result: DetailedServerReturn = await r.json();
     const internalMapName: string = result?.mapName?.split("/").slice(-1)[0];
     return {
-      apiUrl: `https://marne.io/api/srvlst/${gameId}`,
+      apiUrl: game.includes("bf1")
+        ? `https://marne.io/api/srvlst/${gameId}`
+        : `https://marne.io/api/v/srvlst/${gameId}`,
       cache: false,
       prefix: result?.name,
       currentMap: maps[internalMapName],
@@ -393,4 +493,4 @@ export class ApiProvider extends JsonClient {
   }
 }
 
-export const bf1MarneApi = new ApiProvider();
+export const MarneApi = new ApiProvider();

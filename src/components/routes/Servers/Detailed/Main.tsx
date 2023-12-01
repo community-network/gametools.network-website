@@ -217,7 +217,7 @@ export function Results(props: Views): React.ReactElement {
     if (
       !dice.includes(props.game) &&
       props.game != "battlebit" &&
-      props.game != "bf1marne"
+      !props.game.includes("marne")
     ) {
       widgetItem = "serverip";
       widgetReturn = `${stats?.ip}:${stats?.port}`;
@@ -321,7 +321,7 @@ export function Results(props: Views): React.ReactElement {
           </div>
         </AlignSeverImg>
         {/* older titles use ip address, thats static already */}
-        {(dice.includes(props.game) || props.game === "bf1marne") && (
+        {(dice.includes(props.game) || props.game.includes("marne")) && (
           <>
             <Description style={{ marginTop: "6px" }}>
               {t("servers.permLink")}{" "}
@@ -363,7 +363,7 @@ export function Results(props: Views): React.ReactElement {
             </Align>
           </>
         )}
-        {(dice.includes(props.game) || props.game == "bf1marne") &&
+        {(dice.includes(props.game) || props.game.includes("marne")) &&
           stats?.rotation?.length > 0 && (
             <>
               <Title style={{ marginBottom: 0 }}>{t("servers.rotation")}</Title>
@@ -446,7 +446,7 @@ export function Results(props: Views): React.ReactElement {
                     serverPort={stats?.hostport || stats?.port}
                   />
                 ) : (
-                  props.game === "bf1marne" && (
+                  props.game.includes("marne") && (
                     <MarnePlayerList
                       stats={stats}
                       game={props?.game}
@@ -469,7 +469,7 @@ export function Results(props: Views): React.ReactElement {
 
           <PageRow>
             {/* when available */}
-            {props.game !== "bf1marne" && (
+            {!props.game.includes("marne") && (
               <ServerGraphQuery
                 stats={stats}
                 game={props.game}
@@ -550,7 +550,7 @@ export function Results(props: Views): React.ReactElement {
             )}
           </PageRow>
         </PageColumn>
-        {props.game === "bf1marne" && (
+        {props.game.includes("marne") && (
           <>
             <h2 style={{ marginBottom: 0 }}>{t("servers.modList.main")}</h2>
             {Object.keys(modCategories).length > 0 ? (
@@ -591,7 +591,9 @@ export function Results(props: Views): React.ReactElement {
                 )}
               </AlignT>
             ) : (
-              <Description>{t("servers.modList.noMods")}</Description>
+              <ModInfo style={{ marginBottom: "1.5rem" }}>
+                {t("servers.modList.noMods")}
+              </ModInfo>
             )}
           </>
         )}

@@ -14,7 +14,7 @@ import {
   StatsGraph,
 } from "./ReturnTypes";
 import { battlebitApi } from "./battlebitApi";
-import { bf1MarneApi } from "./marneApi";
+import { MarneApi } from "./marneApi";
 import { newGen } from "./static";
 
 interface BfBanInfo {
@@ -287,8 +287,9 @@ export class ApiProvider extends JsonClient {
       });
       return result?.servers[0];
     }
-    if (game == "bf1marne") {
-      return await bf1MarneApi.server({
+    if (game.includes("marne")) {
+      return await MarneApi.server({
+        game,
         getter,
         serverName,
         region: region,
@@ -419,8 +420,8 @@ export class ApiProvider extends JsonClient {
     if (game == "battlebit") {
       return await battlebitApi.serverList({ searchTerm, regions, limit });
     }
-    if (game == "bf1marne") {
-      return await bf1MarneApi.serverList({ searchTerm, regions, limit });
+    if (game.includes("marne")) {
+      return await MarneApi.serverList({ game, searchTerm, regions, limit });
     }
     const result = await this.getJsonMethod(`/${gameStuff[0]}/servers/`, {
       name: encodeURIComponent(serverName),

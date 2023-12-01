@@ -13,6 +13,7 @@ export const supportedGames = [
   "bf1",
   "bf1marne",
   "bfv",
+  "bfvmarne",
   "bf2042",
   "battlebit",
 ];
@@ -24,6 +25,7 @@ export const projects = {
   "bf2142.openspy": "http://openspy.net",
   "bf2142.play2142": "https://battlefield2142.co/",
   bf1marne: "https://marne.io/",
+  bfvmarne: "https://marne.io/",
 };
 
 export const platformGames = {
@@ -119,7 +121,7 @@ export const dice = ["bf3", "bf4", "bfh", "bf1", "bfv", "bf2042"];
 export const diceGraph = ["bf3", "bf4", "bfh", "bf1", "bfv", "bf2042portal"];
 export const newTitles = ["bf1", "bfv"];
 export const gameGraphConvert = { bf2042portal: "bf2042" };
-export const extraGames = ["battlebit", "bf1marne"];
+export const extraGames = ["battlebit", "bf1marne", "bfvmarne"];
 
 export const graphColors = [
   "#4bc0c033",
