@@ -737,6 +737,13 @@
         "10+": "10+",
         "empty": "Leeg"
       }
+    },
+    "modList": {
+      "main": "Mods",
+      "noMods": "Deze server heeft geen mods",
+      "file": "bestand: ",
+      "version": "versie: ",
+      "noURl": "Geen koppeling beschikbaar"
     }
   },
   "platoon": {
