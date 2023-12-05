@@ -191,7 +191,7 @@ export function Results(props: Views): React.ReactElement {
 
   const { t, i18n } = useTranslation();
   const modCategories: { [id: string]: ModListReturn[] } = {};
-  stats?.modList.forEach((item) => {
+  stats?.modList?.forEach((item) => {
     if (Object.keys(modCategories).includes(item?.category)) {
       modCategories[item?.category].push(item);
     } else {
