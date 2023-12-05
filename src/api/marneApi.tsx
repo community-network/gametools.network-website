@@ -221,6 +221,17 @@ const maps = {
   MP_Jungle: "Solomon islands",
   MP_Libya: "Al marj encampment",
   MP_Norway: "lofoten islands",
+  // bfv special maps
+  DK_Norway: "Halvoy",
+  MP_Escaut_US: "Twisted Steel US",
+  MP_Hannut_US: "Panzerstorm US",
+  MP_GOps_Chapter2_Arras: "Arras (Chapter 2)",
+  MP_WE_Fortress_Devastation: "Devastation (Fortress)",
+  MP_WE_Fortress_Halfaya: "Hamada (Fortress)",
+  MP_WE_Grind_ArcticFjord: "Narvik (Grind)",
+  MP_WE_Grind_Devastation: "Devastation (Grind)",
+  MP_WE_Grind_Escaut: "Twisted Steel (Grind)",
+  MP_WE_Grind_Rotterdam: "Rotterdam (Grind)",
 };
 
 const map_image = {
@@ -297,7 +308,8 @@ const map_image = {
     "https://cdn.gametools.network/maps/bfv/1080p_MP_Arras-4b610505.jpg",
   MP_Devastation:
     "https://cdn.gametools.network/maps/bfv/1080p_MP_Devastation-623dea60.jpg",
-  MP_Escaut: "twisted steel",
+  MP_Escaut:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_Escaut-9764d1fb.jpg",
   MP_Foxhunt:
     "https://cdn.gametools.network/maps/bfv/1080p_MP_AfricanFox-8ad380a5.jpg",
   MP_Halfaya:
@@ -328,6 +340,27 @@ const map_image = {
     "https://cdn.gametools.network/maps/bfv/1080p_MP_Libya-bd54b090.jpg",
   MP_Norway:
     "https://cdn.gametools.network/maps/bfv/1080p_MP_Norway-7d6d6300.jpg",
+  // bfv special maps
+  DK_Norway:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_Norway-7d6d6300.jpg",
+  MP_Escaut_US:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_Escaut-9764d1fb.jpg",
+  MP_Hannut_US:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_Hannut-ebbe7197.jpg",
+  MP_GOps_Chapter2_Arras:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_Arras-4b610505.jpg",
+  MP_WE_Fortress_Devastation:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_Devastation-623dea60.jpg",
+  MP_WE_Fortress_Halfaya:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_AfricanHalfaya-31165f9b.jpg",
+  MP_WE_Grind_ArcticFjord:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_ArcticFjord-7ba29138.jpg",
+  MP_WE_Grind_Devastation:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_Devastation-623dea60.jpg",
+  MP_WE_Grind_Escaut:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_Escaut-9764d1fb.jpg",
+  MP_WE_Grind_Rotterdam:
+    "https://cdn.gametools.network/maps/bfv/1080p_MP_Rotterdam-55632240.jpg",
 };
 
 const marne_regions = {
