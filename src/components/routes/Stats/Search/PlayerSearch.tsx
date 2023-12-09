@@ -4,8 +4,6 @@ import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
-import { useQuery } from "@tanstack/react-query";
-import { FeslApi } from "../../../../api/FeslApi";
 import {
   AltText,
   SearchBox,
@@ -25,7 +23,6 @@ import { platformGames, statsPlatforms } from "../../../../api/static";
 import { Graphs } from "./Graphs";
 import ErrorBoundary from "../../../functions/ErrorBoundary";
 import { useLocalStorage } from "react-use";
-import { DropDownAutocomplete } from "../../../functions/autocomplete";
 
 export const AltDescription = styled.p`
   ${AltText}
@@ -60,16 +57,6 @@ export function StatSearch(): React.ReactElement {
   );
   const searchBox: React.MutableRefObject<HTMLInputElement> = React.useRef();
 
-  const { data: autocompleteResult } = useQuery({
-    queryKey: ["autocomplete" + platform + searchTerm],
-    queryFn: () => {
-      return FeslApi.playerSearch({
-        platform: platform,
-        name: searchTerm,
-      });
-    },
-  });
-
   return (
     <form
       style={{
@@ -85,15 +72,6 @@ export function StatSearch(): React.ReactElement {
             onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
               setSearchTerm(ev.target.value)
             }
-          />
-          <DropDownAutocomplete
-            searchTerm={searchTerm}
-            searchBoxRef={searchBox}
-            autocompleteResult={autocompleteResult}
-            callback={(val) => {
-              setSearchTerm(val);
-            }}
-            style={{ top: "56px", left: "-20px" }}
           />
           <HomePlayerBigSelectSecondary
             value={platform}
@@ -166,15 +144,6 @@ function Search(): React.ReactElement {
             onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
               setSearchTerm(ev.target.value)
             }
-          />
-          <DropDownAutocomplete
-            searchTerm={searchTerm}
-            platform={platform}
-            searchBoxRef={searchBox}
-            callback={(val) => {
-              setSearchTerm(val);
-            }}
-            style={{ left: "10px" }}
           />
           <BigSelectSecondary
             value={platform}
