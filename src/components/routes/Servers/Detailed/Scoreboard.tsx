@@ -48,7 +48,7 @@ export function ServerScoreboard(props: {
                                 <AlignW>
                                   {props.game !== "bf2042" && (
                                     <img
-                                      src={`https://cdn.gametools.network/${props.game}/${key.rank}.png`}
+                                      src={`https://cdn.gametools.network/${props.game}/${key.rank}.webp`}
                                       height="25px"
                                       loading="lazy"
                                     />

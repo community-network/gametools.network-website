@@ -218,7 +218,7 @@ function Players(props: {
                                 <AlignW>
                                   {key?.rank !== undefined && (
                                     <img
-                                      src={`https://cdn.gametools.network/bf1/${key?.rank}.png`}
+                                      src={`https://cdn.gametools.network/bf1/${key?.rank}.webp`}
                                       height="25px"
                                       loading="lazy"
                                     />
