@@ -91,8 +91,8 @@ export class ApiProvider extends JsonClient {
             server.Name
           }`,
           currentMap: server.Map,
-          currentMapImage: `https://cdn.gametools.network/maps/battlebit/${serverImageName}.jpg`,
-          url: `https://cdn.gametools.network/maps/battlebit/${serverImageName}.jpg`,
+          currentMapImage: `https://cdn.gametools.network/maps/battlebit/${serverImageName}.webp`,
+          url: `https://cdn.gametools.network/maps/battlebit/${serverImageName}.webp`,
           inQue: server.QueuePlayers,
           mode:
             modes[server.Gamemode] !== ""

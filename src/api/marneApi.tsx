@@ -181,69 +181,69 @@ const maps = {
 
 const map_image = {
   MP_Amiens:
-    "https://cdn.gametools.network/maps/bf1/MP_Amiens_LandscapeLarge-e195589d.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Amiens_LandscapeLarge-e195589d.webp",
   MP_Chateau:
-    "https://cdn.gametools.network/maps/bf1/MP_Chateau_LandscapeLarge-244d5987.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Chateau_LandscapeLarge-244d5987.webp",
   MP_Desert:
-    "https://cdn.gametools.network/maps/bf1/MP_Desert_LandscapeLarge-d8f749da.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Desert_LandscapeLarge-d8f749da.webp",
   MP_FaoFortress:
-    "https://cdn.gametools.network/maps/bf1/MP_FaoFortress_LandscapeLarge-cad1748e.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_FaoFortress_LandscapeLarge-cad1748e.webp",
   MP_Forest:
-    "https://cdn.gametools.network/maps/bf1/MP_Forest_LandscapeLarge-dfbbe910.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Forest_LandscapeLarge-dfbbe910.webp",
   MP_ItalianCoast:
-    "https://cdn.gametools.network/maps/bf1/MP_ItalianCoast_LandscapeLarge-1503eec7.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_ItalianCoast_LandscapeLarge-1503eec7.webp",
   MP_MountainFort:
-    "https://cdn.gametools.network/maps/bf1/MP_MountainFort_LandscapeLarge-8a517533.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_MountainFort_LandscapeLarge-8a517533.webp",
   MP_Scar:
-    "https://cdn.gametools.network/maps/bf1/MP_Scar_LandscapeLarge-ee25fbd6.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Scar_LandscapeLarge-ee25fbd6.webp",
   MP_Suez:
-    "https://cdn.gametools.network/maps/bf1/MP_Suez_LandscapeLarge-f630fc76.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Suez_LandscapeLarge-f630fc76.webp",
   MP_Giant:
-    "https://cdn.gametools.network/maps/bf1/MP_Giant_LandscapeLarge-dd0b93ef.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Giant_LandscapeLarge-dd0b93ef.webp",
   MP_Fields:
-    "https://cdn.gametools.network/maps/bf1/MP_Fields_LandscapeLarge-5f53ddc4.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Fields_LandscapeLarge-5f53ddc4.webp",
   MP_Graveyard:
-    "https://cdn.gametools.network/maps/bf1/MP_Graveyard_LandscapeLarge-bd1012e6.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Graveyard_LandscapeLarge-bd1012e6.webp",
   MP_Underworld:
-    "https://cdn.gametools.network/maps/bf1/MP_Underworld_LandscapeLarge-b6c5c7e7.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Underworld_LandscapeLarge-b6c5c7e7.webp",
   MP_Verdun:
-    "https://cdn.gametools.network/maps/bf1/MP_Verdun_LandscapeLarge-1a364063.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Verdun_LandscapeLarge-1a364063.webp",
   MP_ShovelTown:
-    "https://cdn.gametools.network/maps/bf1/MP_Shoveltown_LandscapeLarge-d0aa5920.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Shoveltown_LandscapeLarge-d0aa5920.webp",
   MP_Trench:
-    "https://cdn.gametools.network/maps/bf1/MP_Trench_LandscapeLarge-dbd1248f.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Trench_LandscapeLarge-dbd1248f.webp",
   MP_Bridge:
-    "https://cdn.gametools.network/maps/bf1/MP_Bridge_LandscapeLarge-5b7f1b62.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Bridge_LandscapeLarge-5b7f1b62.webp",
   MP_Islands:
-    "https://cdn.gametools.network/maps/bf1/MP_Islands_LandscapeLarge-c9d8272b.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Islands_LandscapeLarge-c9d8272b.webp",
   MP_Ravines:
-    "https://cdn.gametools.network/maps/bf1/MP_Ravines_LandscapeLarge-1fe0d3f6.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Ravines_LandscapeLarge-1fe0d3f6.webp",
   MP_Tsaritsyn:
-    "https://cdn.gametools.network/maps/bf1/MP_Tsaritsyn_LandscapeLarge-2dbd3bf5.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Tsaritsyn_LandscapeLarge-2dbd3bf5.webp",
   MP_Valley:
-    "https://cdn.gametools.network/maps/bf1/MP_Valley_LandscapeLarge-8dc1c7ca.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Valley_LandscapeLarge-8dc1c7ca.webp",
   MP_Volga:
-    "https://cdn.gametools.network/maps/bf1/MP_Volga_LandscapeLarge-6ac49c25.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Volga_LandscapeLarge-6ac49c25.webp",
   MP_Beachhead:
-    "https://cdn.gametools.network/maps/bf1/MP_Beachhead_LandscapeLarge-5a13c655.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Beachhead_LandscapeLarge-5a13c655.webp",
   MP_Harbor:
-    "https://cdn.gametools.network/maps/bf1/MP_Harbor_LandscapeLarge-d382c7ea.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Harbor_LandscapeLarge-d382c7ea.webp",
   MP_Naval:
-    "https://cdn.gametools.network/maps/bf1/MP_Naval_LandscapeLarge-dc2e8daf.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Naval_LandscapeLarge-dc2e8daf.webp",
   MP_Ridge:
-    "https://cdn.gametools.network/maps/bf1/MP_Ridge_LandscapeLarge-8c057a19.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Ridge_LandscapeLarge-8c057a19.webp",
   MP_Alps:
-    "https://cdn.gametools.network/maps/bf1/MP_Alps_LandscapeLarge-7ab30e3e.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Alps_LandscapeLarge-7ab30e3e.webp",
   MP_Blitz:
-    "https://cdn.gametools.network/maps/bf1/MP_Blitz_LandscapeLarge-5e26212f.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Blitz_LandscapeLarge-5e26212f.webp",
   MP_Hell:
-    "https://cdn.gametools.network/maps/bf1/MP_Hell_LandscapeLarge-7176911c.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Hell_LandscapeLarge-7176911c.webp",
   MP_London:
-    "https://cdn.gametools.network/maps/bf1/MP_London_LandscapeLarge-0b51fe46.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_London_LandscapeLarge-0b51fe46.webp",
   MP_Offensive:
-    "https://cdn.gametools.network/maps/bf1/MP_Offensive_LandscapeLarge-6dabdea3.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_Offensive_LandscapeLarge-6dabdea3.webp",
   MP_River:
-    "https://cdn.gametools.network/maps/bf1/MP_River_LandscapeLarge-21443ae9.jpg",
+    "https://cdn.gametools.network/maps/bf1/MP_River_LandscapeLarge-21443ae9.webp",
 };
 
 const marne_regions = {
