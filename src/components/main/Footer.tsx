@@ -121,6 +121,7 @@ export function Footer(): JSX.Element {
                 height="32"
                 width="121.6"
                 src="https://img.buymeacoffee.com/button-api/?text=Support us&emoji=❤️&slug=Gametools&button_colour=FFDD00&font_colour=000000&font_family=Inter&outline_colour=000000&coffee_colour=ffffff"
+                loading="lazy"
               />
             </a>
             <AdSwitch />

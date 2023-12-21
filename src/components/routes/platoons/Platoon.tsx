@@ -202,7 +202,7 @@ function Member(props: {
             )}`}
           >
             <Align>
-              <MemberImage src={sslFix(item?.avatar)} />
+              <MemberImage src={sslFix(item?.avatar)} loading="lazy" />
               <h4 style={{ ...loadingStyle }}>
                 <div>{item?.name}</div>
                 <div>{children}</div>

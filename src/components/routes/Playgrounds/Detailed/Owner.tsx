@@ -98,7 +98,7 @@ export function PlaygroundOwner(props: {
             props.game
           }&name=${encodeURIComponent(owner.name)}`}
         >
-          <OriginProfile src={sslFix(owner?.avatar)} />
+          <OriginProfile src={sslFix(owner?.avatar)} loading="lazy" />
         </Link>
         <Link
           to={`/stats/pc/playerid/${owner.id}?game=${

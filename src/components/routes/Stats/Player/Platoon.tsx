@@ -43,7 +43,10 @@ export function PlatoonInfo(props: PlatformViews): React.ReactElement {
               <h3>{t("stats.platoonName")}</h3>
               <AlignW style={{ alignItems: "start" }}>
                 <Link to={`/platoons/${platform}/${stats?.activePlatoon?.id}`}>
-                  <PlatoonEmblem src={sslFix(stats?.activePlatoon?.emblem)} />
+                  <PlatoonEmblem
+                    src={sslFix(stats?.activePlatoon?.emblem)}
+                    loading="lazy"
+                  />
                 </Link>
                 <div style={{ marginTop: "1rem" }}>
                   <h3>
@@ -87,7 +90,10 @@ export function PlatoonInfo(props: PlatformViews): React.ReactElement {
                   <div key={index}>
                     <AlignW style={{ alignItems: "start" }}>
                       <Link to={`/platoons/${platform}/${key?.id}`}>
-                        <PlatoonEmblem src={sslFix(key?.emblem)} />
+                        <PlatoonEmblem
+                          src={sslFix(key?.emblem)}
+                          loading="lazy"
+                        />
                       </Link>
                       <div style={{ marginTop: "1rem" }}>
                         <h3>
