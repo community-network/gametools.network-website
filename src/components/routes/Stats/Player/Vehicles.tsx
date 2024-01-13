@@ -33,14 +33,16 @@ export function ViewVehicles(props: Views): React.ReactElement {
   const numberFormat = new Intl.NumberFormat(getLanguage());
   let vehicles = [];
   if (!props.loading && !props.error) {
-    vehicles = props?.stats?.vehicles?.filter(
-      (item: { vehicleName: string }) => {
-        return item?.vehicleName
-          ?.toLowerCase()
-          .includes(searchTerm?.toLowerCase());
-      },
-    );
-    vehicles = vehicles.sort(DynamicSort(sortType));
+    if (props?.stats?.vehicles) {
+      vehicles = props.stats.vehicles.filter(
+        (item: { vehicleName: string }) => {
+          return item?.vehicleName
+            ?.toLowerCase()
+            .includes(searchTerm?.toLowerCase());
+        },
+      );
+      vehicles = vehicles.sort(DynamicSort(sortType));
+    }
   }
   return (
     <Spacing>
@@ -117,8 +119,8 @@ export function VehicleGraph(props: Views): React.ReactElement {
   const names = [];
   const values = [];
   if (!props.loading && !props.error) {
-    length = props.stats.vehicles.length;
-    props.stats.vehicles
+    length = props.stats.vehicles?.length;
+    props.stats.vehicles?
       .sort(DynamicSort(`-${graphType}`))
       .map((item: MainStatsVehicle) => {
         if (i >= begin && i < begin + 25) {

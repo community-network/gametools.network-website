@@ -331,13 +331,15 @@ function GameStats(props: GameStatsItems): React.ReactElement {
             error={error}
             name={name}
           />
-          <VehicleGraph
-            game={game}
-            loading={loading}
-            stats={stats}
-            error={error}
-            name={name}
-          />
+          {stats?.vehicles && (
+            <VehicleGraph
+              game={game}
+              loading={loading}
+              stats={stats}
+              error={error}
+              name={name}
+            />
+          )}
           {newGen.includes(game) && (
             <GadgetGraph
               game={game}
@@ -372,13 +374,15 @@ function GameStats(props: GameStatsItems): React.ReactElement {
             error={error}
             name={name}
           />
-          <ViewVehicles
-            game={game}
-            loading={loading}
-            stats={stats}
-            error={error}
-            name={name}
-          />
+          {stats?.vehicles && (
+            <ViewVehicles
+              game={game}
+              loading={loading}
+              stats={stats}
+              error={error}
+              name={name}
+            />
+          )}
           {newGen.includes(game) && (
             <ViewGadgets
               game={game}

@@ -5,6 +5,10 @@ import {
   DetailedServerInfo,
   ServerSearch,
   ServerSettings,
+  MainStats,
+  MainStatsWeapon,
+  MainStatsGamemode,
+  MainStatsClasses,
 } from "./ReturnTypes";
 import { getName } from "i18n-iso-countries";
 
@@ -83,6 +87,273 @@ interface DetailedSearch {
   region: string;
 }
 
+const gamemode_stats = {
+  mgc_roo_g: { gamemodeName: "Conquest" },
+  mgtd_roo_g: { gamemodeName: "Team deathmatch" },
+  mgb_roo_g: { gamemodeName: "Operations" },
+  mgr_roo_g: { gamemodeName: "Rush" },
+  Poss_roo_g: { gamemodeName: "War pigeons" },
+  mgdo_roo_g: { gamemodeName: "Domination" },
+  _roo_g: { gamemodeName: "Total" },
+};
+const classes_stats = {
+  c_md_: { className: "Medic" },
+  c_sp_: { className: "Support" },
+  c_as_: { className: "Assault" },
+  c_sc_: { className: "Scout" },
+  c_pt_: { className: "Pilot" },
+  c_tk_: { className: "Tanker" },
+  c_cv_: { className: "Cavalry" },
+};
+const weapon_stats = {
+  c_wLMGMadsS: { weaponName: "Madsen MG Storm" },
+  c_wHSLuger: { weaponName: "P08 Pistol" },
+  c_wXGN: { weaponName: "Incendiary Grenade" },
+  c_wSPKb: { weaponName: "K Bullets" },
+  c_wSMGBergT: { weaponName: "MP 18 Trench" },
+  c_wHSM14: { weaponName: "Taschenpistole M1914" },
+  c_wMSpik: { weaponName: "Spiked Club" },
+  c_wLMGLew: { weaponName: "Lewis Gun Low Weight" },
+  c_wMJam: { weaponName: "Jambiya Knife" },
+  c_wLMGBARS: { weaponName: "BAR M1918 Storm" },
+  c_wMCoupe: { weaponName: "Coupe Coupe" },
+  c_wXATM: { weaponName: "Anti-Tank Mine" },
+  c_wRSinAriP: { weaponName: "Type 38 Arisaka Patrol" },
+  c_wShotBA5L: { weaponName: "12g Automatic Backbored" },
+  c_wSMGB: { weaponName: "Automatico M1918 Factory" },
+  c_wHSMM3: { weaponName: "No. 3 Revolver" },
+  c_wSPMaxim: { weaponName: "MG 08/15" },
+  c_wSMGBergB: { weaponName: "MP 18 Experimental" },
+  c_wRSemWinA: { weaponName: "M1907 SL Sweeper" },
+  c_wMYata: { weaponName: "Yatagan Sword" },
+  c_wLMGLewR: { weaponName: "Lewis Gun Optical" },
+  c_wRSemCeiR: { weaponName: "Cei-Rigotti Optical" },
+  c_wXTB: { weaponName: "Tripwire Bomb — HE" },
+  c_wRSinMos: { weaponName: "Mosin-Nagant M91 Infantry" },
+  c_wShotBA5C: { weaponName: "12g Automatic Hunter" },
+  c_wMCossack: { weaponName: "Cossack Dagger" },
+  c_wLMGBART: { weaponName: "BAR M1918 Trench" },
+  c_wRSemLugC: { weaponName: "Selbstlader 1906 Sniper" },
+  c_wSMGBergA: { weaponName: "MP 18 Optical" },
+  c_wRSinVet: { weaponName: "Vetterli-Vitali M1870/87 Infantry" },
+  c_wRSemLiuS: { weaponName: "General Liu Rifle Storm" },
+  c_wMNav: { weaponName: "Naval Cutlass" },
+  c_wMClub: { weaponName: "Club" },
+  c_wHSGasser: { weaponName: "Gasser M1870" },
+  c_wHSWeb: { weaponName: "Auto Revolver" },
+  c_wMOFM: { weaponName: "Ottoman Flanged Mace" },
+  c_wPCA1911: { weaponName: "M1911 Extended" },
+  c_wMKukri: { weaponName: "Kukri" },
+  c_wXRGF: { weaponName: "Rifle Grenade — FRG" },
+  c_wM1916: { weaponName: "Combat Knife" },
+  c_wSMGHell: { weaponName: "Hellriegel 1915 Factory" },
+  c_wSMGRib: { weaponName: "Ribeyrolles 1918 Factory" },
+  c_wShotRem: { weaponName: "Model 10-A Factory" },
+  c_wShotWinW: { weaponName: "M97 Trench Gun Sweeper" },
+  c_wSMGCSRA: { weaponName: "RSC SMG Optical" },
+  c_wShotWinC: { weaponName: "M97 Trench Gun Hunter" },
+  c_wMOCS: { weaponName: "Ottoman Kilij" },
+  c_wRSinSprL: { weaponName: "M1903 Sniper" },
+  c_wRSemWin: { weaponName: "M1907 SL Factory" },
+  c_wHSBer: { weaponName: "Modello 1915" },
+  c_wRSin1917: { weaponName: "M1917 Enfield Infantry" },
+  c_wRSiMaL: { weaponName: "Gewehr 98 Sniper" },
+  c_wM1917: { weaponName: "US Trench Knife" },
+  c_wLMGMadsT: { weaponName: "Madsen MG Trench" },
+  c_wMNail: { weaponName: "Nail Knife" },
+  c_wLMGCh: { weaponName: "Chauchat Low Weight" },
+  c_wRSinLeb: { weaponName: "Lebel Model 1886 Infantry" },
+  c_wRSinVetM: { weaponName: "Vetterli-Vitali M1870/87 Carbine" },
+  c_wRSinMosC: { weaponName: "Mosin-Nagant M91 Marksman" },
+  c_wSMGStX: { weaponName: "Maschinenpistole M1912/P.16 Experimental" },
+  c_wShotSjoS: { weaponName: "Sjögren Inertial Slug" },
+  c_wRSemRSCR: { weaponName: "RSC 1917 Optical" },
+  c_wSMGCSR: { weaponName: "RSC SMG Factory" },
+  c_wHSC93: { weaponName: "C93" },
+  c_wRSinStyC: { weaponName: "Gewehr M.95 Marksman" },
+  c_wXRGS: { weaponName: "Rifle Grenade — SMK" },
+  c_wMSho: { weaponName: "Shovel" },
+  c_wHSBodeo: { weaponName: "Bodeo 1889" },
+  c_wRSemLiu: { weaponName: "General Liu Rifle Factory" },
+  c_wMSwKnf: { weaponName: "Sawtooth Knife" },
+  c_mWPry: { weaponName: "Prybar" },
+  c_wLMGChB: { weaponName: "Chauchat Telescopic" },
+  c_wXGG: { weaponName: "Gas Grenade" },
+  c_wLMGParaU: { weaponName: "Parabellum MG14/17 Suppressive" },
+  c_wLMGHotB: { weaponName: "M1909 Benét–Mercié Telescopic" },
+  c_wXGI: { weaponName: "Impact Grenade" },
+  c_wHSNag: { weaponName: "Nagant Revolver" },
+  c_wRSemCei: { weaponName: "Cei-Rigotti Factory" },
+  c_wXD: { weaponName: "Dynamite" },
+  c_wSMGBT: { weaponName: "Automatico M1918 Trench" },
+  c_wSPTG: { weaponName: "Tankgewehr M1918" },
+  c_wRSemCeiT: { weaponName: "Cei-Rigotti Trench" },
+  c_wSMGSte: { weaponName: "Maschinenpistole M1912/P.16 Storm" },
+  c_wShot19U: { weaponName: "Model 1900 Slug" },
+  c_wMHun: { weaponName: "French Butcher Knife" },
+  c_wSMGMaxA: { weaponName: "SMG 08/18 Optical" },
+  c_wSMGBS: { weaponName: "Automatico M1918 Storm" },
+  c_wRSemRSC: { weaponName: "RSC 1917 Factory" },
+  c_wMRAxe: { weaponName: "Russian Axe" },
+  c_wLMGBergU: { weaponName: "MG15 n.A. Suppressive" },
+  c_wXRCBF: { weaponName: "Crossbow Launcher — FRG" },
+  c_wMBill: { weaponName: "Billhook" },
+  c_wRSemR8E: { weaponName: "Autoloading 8 .25 Extended" },
+  c_wRSemBSA: { weaponName: "Howell Automatic Factory" },
+  c_wShotSjo: { weaponName: "Sjögren Inertial Factory" },
+  c_wRSemFarR: { weaponName: "Farquhar-Hill Optical" },
+  c_wRSemFedR: { weaponName: "Fedorov Avtomat Optical" },
+  c_wRSinMH: { weaponName: "Martini-Henry Infantry" },
+  c_wLMGBergS: { weaponName: "MG15 n.A. Storm" },
+  c_wSMGHellA: { weaponName: "Hellriegel 1915 Defensive" },
+  c_wRSemMonB: { weaponName: "Mondragón Sniper" },
+  c_wRSemMauC: { weaponName: "Selbstlader M1916 Marksman" },
+  c_wHBObrez: { weaponName: "Obrez Pistol" },
+  c_wSPFlame: { weaponName: "Wex" },
+  c_wShotRemU: { weaponName: "Model 10-A Slug" },
+  c_wSPBGAA: { weaponName: "AA Rocket Gun" },
+  c_wRSinLeeM: { weaponName: "SMLE MKIII Carbine" },
+  c_wRSinSty: { weaponName: "Gewehr M.95 Infantry" },
+  c_wRSinRoS: { weaponName: "Ross MkIII Marksman" },
+  c_wMAxe: { weaponName: "Pickaxe" },
+  c_wMBart: { weaponName: "Bartek Bludgeon" },
+  c_wLMGBerg: { weaponName: "MG15 n.A. Low Weight" },
+  c_wLMGPara: { weaponName: "Parabellum MG14/17 Low Weight" },
+  c_wRSinTyp: { weaponName: "Type 38 Arisaka Infantry" },
+  c_wMBott: { weaponName: "Broken Bottle" },
+  c_wMBarb: { weaponName: "Barbed Wire Bat" },
+  c_wSPRepair: { weaponName: "Repair Tool" },
+  c_wMStClub: { weaponName: "Raider Club" },
+  c_wMTrKnf: { weaponName: "Trench Knife" },
+  c_wHSColtH: { weaponName: "Hellfighter M1911" },
+  c_wHSMauser: { weaponName: "C96" },
+  c_wSPFlare: { weaponName: "Flare Gun — Spot" },
+  c_wLMGPer: { weaponName: "Perino Model 1908 Low Weight" },
+  c_wLMGHotR: { weaponName: "M1909 Benét–Mercié Optical" },
+  c_wSPDefib: { weaponName: "Medical Syringe" },
+  c_wRSemFarS: { weaponName: "Farquhar-Hill Storm" },
+  c_wShotWinP: { weaponName: "Hellfighter Trench Shotgun" },
+  c_wLMG0818S: { weaponName: "lMG 08/18 Suppressive" },
+  c_wRSemMauR: { weaponName: "Selbstlader M1916 Optical" },
+  c_wMClvr: { weaponName: "Meat Cleaver" },
+  c_wPCSP08: { weaponName: "P08 Artillerie" },
+  c_wRSinMHL: { weaponName: "Martini-Henry Sniper" },
+  c_wMScout: { weaponName: "Survival Knife" },
+  c_wXRGHE: { weaponName: "Rifle Grenade — HE" },
+  c_wShotWinL: { weaponName: "M97 Trench Gun Backbored" },
+  c_wHSKoli: { weaponName: "Kolibri" },
+  c_wXGM: { weaponName: "Improvised Grenade" },
+  c_wLMGBroU: { weaponName: "M1917 MG Telescopic" },
+  c_wRSinRoI: { weaponName: "Ross MkIII Infantry" },
+  c_wXTG: { weaponName: "Tripwire Bomb — GAS" },
+  c_wPCAFrom: { weaponName: "Frommer Stop Auto" },
+  c_wXGF: { weaponName: "Frag Grenade" },
+  c_wRSemFedT: { weaponName: "Fedorov Avtomat Trench" },
+  c_wRSinWinL: { weaponName: "Russian 1895 Sniper" },
+  c_wHSFS: { weaponName: "Frommer Stop" },
+  c_wRSemBSAC: { weaponName: "Howell Automatic Sniper" },
+  c_wLMGHuot: { weaponName: "Huot Automatic Low Weight" },
+  c_wMHook: { weaponName: "Grappling Hook" },
+  c_wRSinCarP: { weaponName: "Carcano M91 Patrol Carbine" },
+  c_wRSemR8: { weaponName: "Autoloading 8 .35 Factory" },
+  c_wHSM1912: { weaponName: "Repetierpistole M1912" },
+  c_wLMGBARB: { weaponName: "BAR M1918 Telescopic" },
+  c_wLMGMads: { weaponName: "Madsen MG Low Weight" },
+  c_wRSinEnfS: { weaponName: "M1917 Enfield Silenced" },
+  c_wMAmKn: { weaponName: "Compact Trench Knife" },
+  c_wMBottUn: { weaponName: "Wine Bottle" },
+  c_wSMGThomT: { weaponName: "Annihilator Trench" },
+  c_wSPVP: { weaponName: "Villar Perosa" },
+  c_wHSFN1903: { weaponName: "Mle 1903" },
+  c_wXLM: { weaponName: "Limpet Charge" },
+  c_wLMGHuotR: { weaponName: "Huot Automatic Optical" },
+  c_wXGS: { weaponName: "Smoke Grenade" },
+  c_wSMGMax: { weaponName: "SMG 08/18 Factory" },
+  c_wMSick: { weaponName: "Sickle" },
+  c_wXCBHE: { weaponName: "Crossbow Launcher — HE" },
+  c_wRSinLeeP: { weaponName: "Lawrence of Arabia's SMLE" },
+  c_wXATG: { weaponName: "Anti-Tank Grenade" },
+  c_wShotSO: { weaponName: "Sawed Off Shotgun" },
+  c_wRSinLebL: { weaponName: "Lebel Model 1886 Sniper" },
+  c_wLMGHotS: { weaponName: "M1909 Benét–Mercié Storm" },
+  c_wShotRemC: { weaponName: "Model 10-A Hunter" },
+  c_wMBolo: { weaponName: "Hellfighter Bolo Knife" },
+  c_wRSinLeeC: { weaponName: "SMLE MKIII Marksman" },
+  c_wRSiMa: { weaponName: "Gewehr 98 Infantry" },
+  c_wXGAT: { weaponName: "Light Anti-Tank Grenade" },
+  c_wMMac: { weaponName: "Trench Mace" },
+  c_wHSHL: { weaponName: "1903 Hammerless" },
+  c_wPCSFN: { weaponName: "Mle 1903 Extended" },
+  c_wPCSC93: { weaponName: "C93 Carbine" },
+  c_wRIRLebel: { weaponName: "Lebel Model 1886" },
+  c_wMSbr: { weaponName: "Saber" },
+  c_wRSemMau: { weaponName: "Selbstlader M1916 Factory" },
+  c_wShot19: { weaponName: "Model 1900 Factory" },
+  c_wMRus: { weaponName: "Russian Award Knife" },
+  c_wSPFlShot: { weaponName: "Flare Gun — Flash" },
+  c_wRIR98: { weaponName: "Gewehr 98" },
+  c_wSPMHGL: { weaponName: "Martini-Henry Grenade Launcher" },
+  c_wXGO: { weaponName: "Mini Grenade" },
+  c_wHSWMVI: { weaponName: "Revolver Mk VI" },
+  c_wLMGLewU: { weaponName: "Lewis Gun Suppressive" },
+  c_wSPBG: { weaponName: "AT Rocket Gun" },
+  c_wRSinSprT: { weaponName: "M1903 Experimental" },
+  c_wLMG0818: { weaponName: "lMG 08/18 Low Weight" },
+  c_wHSMars: { weaponName: "Mars Automatic" },
+  c_wSMGMau: { weaponName: "M1917 Trench Carbine" },
+  c_wHSColt: { weaponName: "M1911" },
+  c_wHSColtT: { weaponName: "Lebel Model 1886" },
+  c_wLMGBro: { weaponName: "M1917 MG Low Weight" },
+  c_wMGren: { weaponName: "Dud Club" },
+  c_wPCSC96: { weaponName: "C96 Carbine" },
+  c_wRSemLug: { weaponName: "Selbstlader 1906 Factory" },
+  c_wSMGRibO: { weaponName: "Ribeyrolles 1918 Optical" },
+  c_wRSemWinT: { weaponName: "M1907 SL Trench" },
+  c_wSMGMauP: { weaponName: "M1917 Patrol Carbine" },
+  c_wRSinSprS: { weaponName: "M1903 Marksman" },
+  c_wMHat: { weaponName: "Hatchet" },
+  c_wMFleur: { weaponName: "Trench Fleur" },
+  c_wShotBA5E: { weaponName: "12g Automatic Extended" },
+  c_wRSinCarT: { weaponName: "Carcano M91 Carbine" },
+  c_wRSinStyM: { weaponName: "Gewehr M.95 Carbine" },
+  c_wHSLugRB: { weaponName: "Red Baron's P08" },
+  c_wMTot: { weaponName: "Totokia" },
+  c_wXTI: { weaponName: "Tripwire Bomb — INC" },
+  c_wLMGPerD: { weaponName: "Perino Model 1908 Defensive" },
+  c_wHSLHow: { weaponName: "Howdah Pistol" },
+  c_wHB: { weaponName: "Obrez Pistol" },
+  c_wRSemMonR: { weaponName: "Mondragón Optical" },
+  c_wRSinLee: { weaponName: "SMLE MKIII Infantry" },
+  c_wHSBull: { weaponName: "Bull Dog Revolver" },
+  c_wMCavS: { weaponName: "Cavalry Sword" },
+  c_wRSemMonS: { weaponName: "Mondragón Storm" },
+  c_wRSiMaC: { weaponName: "Gewehr 98 Marksman" },
+  c_wMBeDag: { weaponName: "Bedouin Dagger" },
+  c_wPCSPiep: { weaponName: "Pieper M1893" },
+  c_wMCogClub: { weaponName: "Cogwheel Club" },
+  c_wRSinWin: { weaponName: "Russian 1895 Infantry" },
+  c_wRSemR8S: { weaponName: "Autoloading 8 .35 Marksman" },
+  c_wRSinWinT: { weaponName: "Russian 1895 Trench" },
+  c_wMWelsh: { weaponName: "Welsh Blade" },
+};
+const gamemode_score = {
+  mgc_roo_g: "sc_conquest",
+  mgtd_roo_g: "sc_deathmatch",
+  mgb_roo_g: "sc_operations",
+  mgr_roo_g: "sc_rush",
+  Poss_roo_g: "sc_possession",
+  mgdo_roo_g: "sc_domination",
+  _roo_g: "sc_general",
+};
+const classes_score = {
+  c_md_: "sc_medic",
+  c_sp_: "sc_support",
+  c_as_: "sc_assault",
+  c_sc_: "sc_scout",
+  c_pt_: "sc_pilot",
+  c_tk_: "sc_tanker",
+  c_cv_: "sc_cavalry",
+};
 const modes = {
   Conquest0: "Conquest",
   Rush0: "Rush",
@@ -250,12 +521,153 @@ const marne_regions = {
   AS: "Asia",
 };
 
+interface PlayerInfo {
+  playerId: string;
+}
+
+function rounding(number: number) {
+  return Math.round((number + Number.EPSILON) * 100) / 100;
+}
+
+function getWeapons(statsDict: {
+  [string: string]: string;
+}): MainStatsWeapon[] {
+  const weapons = [];
+  for (const [_id, extra] of Object.entries(weapon_stats)) {
+    const weapon = extra;
+    const kills = Number.parseFloat(statsDict[`${_id}__kw_g`] ?? "0");
+    const shotsHit = Number.parseFloat(statsDict[`${_id}__shw_g`] ?? "0");
+    const shotsFired = Number.parseFloat(statsDict[`${_id}__sfw_g`] ?? "0");
+    const headshots = Number.parseFloat(
+      statsDict[`${_id.replace("_", "__")}_hsh_g`] ?? "0",
+    );
+    const seconds = Number.parseFloat(statsDict[`${_id}__sw_g`] ?? "0");
+
+    const accuracy = rounding((shotsHit / shotsFired) * 100);
+    const killsPerMinute = rounding(kills / (seconds / 60));
+    const hitsPerKill = rounding(shotsHit / kills);
+    const headshotRate = rounding((headshots / kills) * 100);
+
+    weapon["id"] = _id;
+    weapon["kills"] = kills;
+    weapon["accuracy"] = accuracy ? `${accuracy}%` : 0;
+    weapon["headshots"] = headshots;
+    weapon["headshot_rate"] = headshotRate ? `${headshotRate}%` : 0;
+    weapon["killsPerMinute"] = killsPerMinute || 0;
+    weapon["hitVKills"] = hitsPerKill || 0;
+    weapon["shotsHit"] = shotsHit;
+    weapon["shotsFired"] = shotsFired;
+    weapon["timeEquipped"] = seconds;
+    weapons.push(weapon);
+  }
+  return weapons;
+}
+
+function getGamemodes(statsDict: {
+  [string: string]: string;
+}): MainStatsGamemode[] {
+  const gamemodes = [];
+  for (const [_id, extra] of Object.entries(gamemode_stats)) {
+    const gamemode = extra;
+    gamemode["id"] = _id;
+    gamemode["score"] =
+      Number.parseFloat(statsDict[gamemode_score[_id] ?? ""] ?? "0") || 0;
+    gamemodes.push(gamemode);
+  }
+
+  return gamemodes;
+}
+
+function getClasses(statsDict: {
+  [string: string]: string;
+}): MainStatsClasses[] {
+  const kits = [];
+  for (const [_id, extra] of Object.entries(classes_stats)) {
+    const kit = extra;
+    const kills = Number.parseFloat(statsDict[`${_id}_ks_g`] ?? "0");
+    const seconds = Number.parseFloat(statsDict[`${_id}_sa_g`] ?? "0");
+    const killsPerMinute = rounding(kills / (seconds / 60));
+    kit["id"] = _id;
+    kit["kills"] = kills;
+    kit["kpm"] = killsPerMinute || 0;
+    kit["secondsPlayed"] = seconds;
+    kit["image"] =
+      `https://cdn.gametools.network/classes/bf1/white/${kit["className"]}.png`;
+    kit["altImage"] =
+      `https://cdn.gametools.network/classes/bf1/black/${kit["className"]}.png`;
+    // kit["timePlayed"] = str(datetime.timedelta(seconds=kit["secondsPlayed"]))
+    kit["score"] =
+      Number.parseFloat(statsDict[classes_score[_id] ?? ""] ?? "0") || 0;
+    kits.push(kit);
+  }
+  return kits;
+}
+
 export class ApiProvider extends JsonClient {
   private serverCache: ServerListReturn = { servers: [] };
   private serverCacheAge: number;
 
   constructor() {
     super();
+  }
+
+  async stats({ playerId }: PlayerInfo): Promise<MainStats> {
+    const r = await fetch(`https://marne.io/api/stats/${playerId}/2`);
+    const item = await r.json();
+    const player: { [string: string]: string } = item[playerId];
+    const wins = Number.parseFloat(player["c_mwin__roo_g"] ?? "0");
+    const losses = Number.parseFloat(player["c_mlos__roo_g"] ?? "0");
+    const kills = Number.parseFloat(player["c___k_g"] ?? "0");
+    const deaths = Number.parseFloat(player["c___d_g"] ?? "0");
+    const shotsFired = Number.parseFloat(player["c___sfw_g"] ?? "0");
+    const shotsHit = Number.parseFloat(player["c___shw_g"] ?? "0");
+    const headshotAmount = Number.parseFloat(player["c___hsh_g"] ?? "0");
+    const matchesPlayed = Number.parseFloat(player["c___roo_g"] ?? "0");
+    const result = {
+      weapons: getWeapons(player),
+      gamemodes: getGamemodes(player),
+      classes: getClasses(player),
+      cache: false,
+      apiUrl: `https://marne.io/api/stats/${playerId}/2`,
+    };
+
+    const accuracy = rounding((shotsHit / shotsFired) * 100);
+    const winPercent = rounding((wins / (wins + losses)) * 100);
+    const headshots = rounding((headshotAmount / kills) * 100);
+    const killDeath = rounding(kills / deaths);
+    const killsPerMatch = rounding(kills / (shotsFired / 60));
+
+    result["kills"] = kills;
+    result["deaths"] = deaths;
+    result["wins"] = wins;
+    result["loses"] = losses;
+    result["killsPerMatch"] = killsPerMatch;
+    result["headShots"] = headshotAmount;
+    result["roundsPlayed"] = matchesPlayed;
+    result["winPercent"] = accuracy ? `${winPercent}%` : 0;
+    result["headshots"] = accuracy ? `${headshots}%` : 0;
+    result["accuracy"] = accuracy ? `${accuracy}%` : 0;
+    result["killDeath"] = killDeath;
+    result["score"] = Number.parseFloat(player["score"] ?? "0");
+    result["revives"] = Number.parseFloat(player["c___re_g"] ?? "0");
+    result["heals"] = Number.parseFloat(player["c___h_g"] ?? "0");
+    result["repairs"] = Number.parseFloat(player["c___r_g"] ?? "0");
+    result["killAssists"] = Number.parseFloat(player["c___kak_g"] ?? "0");
+    result["shotsHit"] = shotsHit;
+    result["shotsFired"] = shotsFired;
+    result["awardScore"] = Number.parseFloat(player["sc_award"] ?? "0");
+    result["bonusScore"] = Number.parseFloat(player["sc_bonus"] ?? "0");
+    result["squadScore"] = Number.parseFloat(player["sc_squad"] ?? "0");
+    result["currentRankProgress"] = Number.parseFloat(player["sc_rank"] ?? "0");
+    result["highestKillStreak"] = Number.parseFloat(
+      player["c___k_ghvs"] ?? "0",
+    );
+    result["dogtagsTaken"] = Number.parseFloat(player["c___dt_g"] ?? "0");
+    result["longestHeadShot"] = Number.parseFloat(
+      player["c___hsd_ghva"] ?? "0",
+    );
+    console.log(result);
+    return result;
   }
 
   /**

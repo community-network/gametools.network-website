@@ -157,6 +157,13 @@ export interface BF2042PlayerSearchReturn {
   results: BF2042Player[];
 }
 
+export interface Bf1PlayerReturn {
+  userId: number;
+  avatar: string;
+  userName: string;
+  id: number;
+}
+
 export class ApiProvider extends JsonClient {
   constructor() {
     super();
@@ -175,6 +182,21 @@ export class ApiProvider extends JsonClient {
       lang: lang,
       platform: platform,
     };
+
+    if (game == "bf1marne") {
+      let playerId;
+      if (getter !== "playerid") {
+        const result = await this.bf1PlayerSearch({
+          name: encodeURIComponent(userName),
+        });
+        playerId = result.id;
+      } else {
+        playerId = userName;
+      }
+      return await bf1MarneApi.stats({
+        playerId: playerId,
+      });
+    }
     if (getter == "playerid") {
       return await this.getJsonMethod(`/${game}/${type}/`, {
         ...defaultParams,
@@ -540,6 +562,12 @@ export class ApiProvider extends JsonClient {
       names: "",
       userids: "",
       personaids: playerIds.toString(),
+    });
+  }
+
+  async bf1PlayerSearch({ name }: { name: string }): Promise<Bf1PlayerReturn> {
+    return await this.getJsonMethod(`/bf1/player/`, {
+      name: name,
     });
   }
 

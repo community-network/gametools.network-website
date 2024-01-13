@@ -79,7 +79,7 @@ export type MainStats = {
   scorePerMinute: number;
   skill: number;
   squadScore: number;
-  timePlayed: string;
+  timePlayed?: string;
   secondsPlayed?: number;
   totalRankProgress: number;
   userName: string;

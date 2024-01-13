@@ -119,16 +119,18 @@ export function ViewStats(props: Views): React.ReactElement {
             </div>
           </AlignS>
           <p></p>
-          <BottomOfBox>
-            <p style={{ margin: 0 }}>
-              {t("stats.main.timePlayed")}{" "}
-              <WhiteText>
-                {t("change", {
-                  change: addSeconds(new Date(), stats?.secondsPlayed),
-                })}
-              </WhiteText>
-            </p>
-          </BottomOfBox>
+          {!!stats?.secondsPlayed && (
+            <BottomOfBox>
+              <p style={{ margin: 0 }}>
+                {t("stats.main.timePlayed")}{" "}
+                <WhiteText>
+                  {t("change", {
+                    change: addSeconds(new Date(), stats?.secondsPlayed),
+                  })}
+                </WhiteText>
+              </p>
+            </BottomOfBox>
+          )}
           <ExportButton
             mainStats={mainStats}
             otherStats={otherStats}
