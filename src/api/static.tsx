@@ -27,7 +27,7 @@ export const projects = {
 };
 
 export const platformGames = {
-  pc: ["bf3", "bf4", "bfh", "bf1", "bfv", "bf2042"],
+  pc: ["bf3", "bf4", "bfh", "bf1", "bf1marne", "bfv", "bf2042"],
   xboxone: ["bf4", "bfh", "bf1", "bfv", "bf2042"],
   xbox360: ["bf3", "bf4", "bfh"],
   ps4: ["bf4", "bfh", "bf1", "bfv", "bf2042"],
