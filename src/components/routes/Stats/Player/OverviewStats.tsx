@@ -109,10 +109,12 @@ export function ViewStats(props: Views): React.ReactElement {
               <h3>{numberFormat.format(stats?.winPercent)}%</h3>
               <p>{t("stats.main.winPercent")}</p>
             </div>
-            <div>
-              <h3>{stats?.bestClass}</h3>
-              <p>{t("stats.main.bestClass")}</p>
-            </div>
+            {stats?.bestClass && (
+              <div>
+                <h3>{stats?.bestClass}</h3>
+                <p>{t("stats.main.bestClass")}</p>
+              </div>
+            )}
             <div>
               <h3>{numberFormat.format(stats?.accuracy)}%</h3>
               <p>{t("stats.main.accuracy")}</p>

@@ -550,9 +550,9 @@ function getWeapons(statsDict: {
 
     weapon["id"] = _id;
     weapon["kills"] = kills;
-    weapon["accuracy"] = accuracy ? `${accuracy}%` : 0;
+    weapon["accuracy"] = accuracy || 0;
     weapon["headshots"] = headshots;
-    weapon["headshot_rate"] = headshotRate ? `${headshotRate}%` : 0;
+    weapon["headshot_rate"] = headshotRate || 0;
     weapon["killsPerMinute"] = killsPerMinute || 0;
     weapon["hitVKills"] = hitsPerKill || 0;
     weapon["shotsHit"] = shotsHit;
@@ -623,13 +623,6 @@ export class ApiProvider extends JsonClient {
     const shotsHit = Number.parseFloat(player["c___shw_g"] ?? "0");
     const headshotAmount = Number.parseFloat(player["c___hsh_g"] ?? "0");
     const matchesPlayed = Number.parseFloat(player["c___roo_g"] ?? "0");
-    const result = {
-      weapons: getWeapons(player),
-      gamemodes: getGamemodes(player),
-      classes: getClasses(player),
-      cache: false,
-      apiUrl: `https://marne.io/api/stats/${playerId}/2`,
-    };
 
     const accuracy = rounding((shotsHit / shotsFired) * 100);
     const winPercent = rounding((wins / (wins + losses)) * 100);
@@ -637,36 +630,40 @@ export class ApiProvider extends JsonClient {
     const killDeath = rounding(kills / deaths);
     const killsPerMatch = rounding(kills / (shotsFired / 60));
 
-    result["kills"] = kills;
-    result["deaths"] = deaths;
-    result["wins"] = wins;
-    result["loses"] = losses;
-    result["killsPerMatch"] = killsPerMatch;
-    result["headShots"] = headshotAmount;
-    result["roundsPlayed"] = matchesPlayed;
-    result["winPercent"] = accuracy ? `${winPercent}%` : 0;
-    result["headshots"] = accuracy ? `${headshots}%` : 0;
-    result["accuracy"] = accuracy ? `${accuracy}%` : 0;
-    result["killDeath"] = killDeath;
-    result["score"] = Number.parseFloat(player["score"] ?? "0");
-    result["revives"] = Number.parseFloat(player["c___re_g"] ?? "0");
-    result["heals"] = Number.parseFloat(player["c___h_g"] ?? "0");
-    result["repairs"] = Number.parseFloat(player["c___r_g"] ?? "0");
-    result["killAssists"] = Number.parseFloat(player["c___kak_g"] ?? "0");
-    result["shotsHit"] = shotsHit;
-    result["shotsFired"] = shotsFired;
-    result["awardScore"] = Number.parseFloat(player["sc_award"] ?? "0");
-    result["bonusScore"] = Number.parseFloat(player["sc_bonus"] ?? "0");
-    result["squadScore"] = Number.parseFloat(player["sc_squad"] ?? "0");
-    result["currentRankProgress"] = Number.parseFloat(player["sc_rank"] ?? "0");
-    result["highestKillStreak"] = Number.parseFloat(
-      player["c___k_ghvs"] ?? "0",
-    );
-    result["dogtagsTaken"] = Number.parseFloat(player["c___dt_g"] ?? "0");
-    result["longestHeadShot"] = Number.parseFloat(
-      player["c___hsd_ghva"] ?? "0",
-    );
-    console.log(result);
+    const result = {
+      id: Number(playerId),
+      weapons: getWeapons(player),
+      gamemodes: getGamemodes(player),
+      classes: getClasses(player),
+      cache: false,
+      apiUrl: `https://marne.io/api/stats/${playerId}/2`,
+
+      kills: kills,
+      deaths: deaths,
+      wins: wins,
+      loses: losses,
+      killsPerMatch: killsPerMatch || 0,
+      headShots: headshotAmount,
+      roundsPlayed: matchesPlayed,
+      winPercent: winPercent || 0,
+      headshots: headshots || 0,
+      accuracy: accuracy || 0,
+      killDeath: killDeath || 0,
+      score: Number.parseFloat(player["score"] ?? "0"),
+      revives: Number.parseFloat(player["c___re_g"] ?? "0"),
+      heals: Number.parseFloat(player["c___h_g"] ?? "0"),
+      repairs: Number.parseFloat(player["c___r_g"] ?? "0"),
+      killAssists: Number.parseFloat(player["c___kak_g"] ?? "0"),
+      shotsHit: shotsHit,
+      shotsFired: shotsFired,
+      awardScore: Number.parseFloat(player["sc_award"] ?? "0"),
+      bonusScore: Number.parseFloat(player["sc_bonus"] ?? "0"),
+      squadScore: Number.parseFloat(player["sc_squad"] ?? "0"),
+      currentRankProgress: Number.parseFloat(player["sc_rank"] ?? "0"),
+      highestKillStreak: Number.parseFloat(player["c___k_ghvs"] ?? "0"),
+      dogtagsTaken: Number.parseFloat(player["c___dt_g"] ?? "0"),
+      longestHeadShot: Number.parseFloat(player["c___hsd_ghva"] ?? "0"),
+    };
     return result;
   }
 
