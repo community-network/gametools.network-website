@@ -101,10 +101,12 @@ export function ViewStats(props: Views): React.ReactElement {
               <h3>{numberFormat.format(stats?.killDeath)}</h3>
               <p>{t("stats.main.killDeath")}</p>
             </div>
-            <div>
-              <h3>{numberFormat.format(stats?.killsPerMinute)}</h3>
-              <p>{t("stats.main.killsPerMinute")}</p>
-            </div>
+            {stats?.killsPerMinute && (
+              <div>
+                <h3>{numberFormat.format(stats?.killsPerMinute)}</h3>
+                <p>{t("stats.main.killsPerMinute")}</p>
+              </div>
+            )}
             <div>
               <h3>{numberFormat.format(stats?.winPercent)}%</h3>
               <p>{t("stats.main.winPercent")}</p>
