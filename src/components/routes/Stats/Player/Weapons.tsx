@@ -92,10 +92,12 @@ export function ViewWeapons(props: Views): React.ReactElement {
                   <h4>{key?.weaponName}</h4>
                   <ListImage src={sslFix(key?.image)} loading="lazy" />
                 </Row>
-                <Row>
-                  <h4>{key?.type}</h4>
-                  <Description>{t("stats.rows.type")}</Description>
-                </Row>
+                {key?.type && (
+                  <Row>
+                    <h4>{key?.type}</h4>
+                    <Description>{t("stats.rows.type")}</Description>
+                  </Row>
+                )}
                 <Row>
                   <h4>{numberFormat.format(key?.kills)}</h4>
                   <Description>{t("stats.rows.kills")}</Description>
