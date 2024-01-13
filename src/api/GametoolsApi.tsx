@@ -165,10 +165,6 @@ export interface Bf1PlayerReturn {
 }
 
 export class ApiProvider extends JsonClient {
-  constructor() {
-    super();
-  }
-
   async stats({
     game,
     type,
