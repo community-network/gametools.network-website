@@ -519,6 +519,9 @@ const map_image = {
 
 const marne_regions = {
   AS: "Asia",
+  SA: "sam",
+  NA: "nam",
+  AF: "afr",
 };
 
 interface PlayerInfo {
