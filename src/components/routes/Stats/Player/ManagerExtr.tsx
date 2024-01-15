@@ -10,7 +10,7 @@ import {
 } from "../../../../api/ReturnTypes";
 import { addSeconds } from "date-fns";
 
-export function BfSessionInfo(props: Views): React.ReactElement {
+export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
   const stats = props.stats;
   const getLanguage = () => window.localStorage.i18nextLng;
@@ -28,7 +28,7 @@ export function BfSessionInfo(props: Views): React.ReactElement {
           {stats.sessions.map((key: MainStatsSession, index: number) => {
             const gamemodes = [];
             const stats = key.stats;
-            key.stats.gamemodes.map((key: SessionGamemode) => {
+            key.stats.gamemodes.forEach((key: SessionGamemode) => {
               if (key.score !== 0) {
                 gamemodes.push(
                   t(`stats.playSession.stats.gamemodes.${key.name}`),
@@ -73,10 +73,10 @@ export function BfSessionInfo(props: Views): React.ReactElement {
                   }}
                 />
                 <Align>
-                  {kits.map((key: SessionKit, index: number) => {
+                  {kits.map((key: SessionKit) => {
                     return (
                       <div
-                        key={index}
+                        key={key?.name}
                         style={{ marginRight: "3rem", marginBottom: "1rem" }}
                       >
                         <h3 style={{ marginBottom: 0 }}>{key.name}</h3>

@@ -7,7 +7,7 @@ import { MainStatsClasses } from "../../../../api/ReturnTypes";
 import { addSeconds } from "date-fns";
 import sslFix from "../../../functions/fixEaAssets";
 
-export function ViewClasses(props: Views): React.ReactElement {
+export function ViewClasses(props: Readonly<Views>): React.ReactElement {
   const { t, i18n } = useTranslation();
   const getLanguage = () => window.localStorage.i18nextLng;
   const numberFormat = new Intl.NumberFormat(getLanguage());

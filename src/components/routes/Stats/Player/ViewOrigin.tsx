@@ -30,7 +30,7 @@ export interface Views {
   stats: UserGames;
 }
 
-function GetBfBan(props: Views): React.ReactElement {
+function GetBfBan(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
   const {
     isLoading: loading,
@@ -59,8 +59,6 @@ function GetBfBan(props: Views): React.ReactElement {
       isHacker = list[props?.stats?.id]?.hacker;
       bfBanUrl = list[props?.stats?.id]?.url;
       color = "#DC143C";
-    } else {
-      color = "#ffffff";
     }
   }
 
@@ -79,7 +77,7 @@ function GetBfBan(props: Views): React.ReactElement {
   return <>{t("stats.originDescription")}</>;
 }
 
-export function ViewOrigin(props: Views): React.ReactElement {
+export function ViewOrigin(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
   const stats = props?.stats;
   const name = props?.name;

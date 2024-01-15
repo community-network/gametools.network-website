@@ -25,7 +25,7 @@ import { BarGraph } from "../../../graphing/bar";
 import ErrorBoundary from "../../../functions/ErrorBoundary";
 import sslFix from "../../../functions/fixEaAssets";
 
-export function ViewGadgets(props: Views): React.ReactElement {
+export function ViewGadgets(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = React.useState<string>("");
   const [sortType, setSortType] = React.useState<string>("-kills");
@@ -102,7 +102,7 @@ export function ViewGadgets(props: Views): React.ReactElement {
   );
 }
 
-export function GadgetGraph(props: Views): React.ReactElement {
+export function GadgetGraph(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
   const [graphType, setGraphType] = React.useState<string>("kills");
   const [begin, setBegin] = React.useState<number>(0);

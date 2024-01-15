@@ -13,7 +13,9 @@ const PlatoonEmblem = styled.img`
   margin-right: 0.5rem;
 `;
 
-export function PlatoonInfo(props: PlatformViews): React.ReactElement {
+export function PlatoonInfo(
+  props: Readonly<PlatformViews>,
+): React.ReactElement {
   const { t } = useTranslation();
   const stats = props.stats;
   const platform = props.platform;
@@ -85,9 +87,9 @@ export function PlatoonInfo(props: PlatformViews): React.ReactElement {
               <br />
               <br />
               <h3>{t("stats.otherPlatoons")}</h3>
-              {otherPlatoons.map((key: MainStatsPlatoon, index: number) => {
+              {otherPlatoons.map((key: MainStatsPlatoon) => {
                 return (
-                  <div key={index}>
+                  <div key={key?.id}>
                     <AlignW style={{ alignItems: "start" }}>
                       <Link to={`/platoons/${platform}/${key?.id}`}>
                         <PlatoonEmblem

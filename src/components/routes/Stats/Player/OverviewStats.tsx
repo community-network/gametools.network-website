@@ -7,7 +7,17 @@ import styled from "styled-components";
 import { addSeconds } from "date-fns";
 import exportExcel from "../../../functions/exportExcel";
 import useExternalScript from "../../../functions/UseExternalScript";
-import { MainStats } from "../../../../api/ReturnTypes";
+import {
+  MainStats,
+  MainStatsClasses,
+  MainStatsGadgets,
+  MainStatsGamemode,
+  MainStatsPlatoon,
+  MainStatsProgress,
+  MainStatsSession,
+  MainStatsVehicle,
+  MainStatsWeapon,
+} from "../../../../api/ReturnTypes";
 
 const BottomOfBox = styled.div`
   display: inline-block;
@@ -19,16 +29,40 @@ const WhiteText = styled.span`
   margin-left: 0.5rem;
 `;
 
-function ExportButton(props: {
-  mainStats;
-  otherStats;
-  game: string;
-  stats: MainStats;
-}) {
+function ExportButton(
+  props: Readonly<{
+    mainStats: { item: string; value: number | string | boolean }[];
+    otherStats: {
+      [string: string]:
+        | MainStatsPlatoon[]
+        | MainStatsSession[]
+        | MainStatsProgress[]
+        | MainStatsGamemode[]
+        | MainStatsClasses[]
+        | MainStatsVehicle[]
+        | MainStatsWeapon[]
+        | MainStatsGadgets[];
+    };
+    game: string;
+    stats: MainStats;
+  }>,
+) {
   const externalScript =
     "https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.mini.min.js";
   const { t } = useTranslation();
   const state = useExternalScript(externalScript);
+  let stateString = "";
+  switch (state) {
+    case "loading":
+      stateString = t("loading");
+      break;
+    case "error":
+      stateString = t("externalScriptError");
+      break;
+    default:
+      stateString = t("export");
+      break;
+  }
   return (
     <SmallButtonPrimary
       style={{ margin: 0, marginTop: "1rem" }}
@@ -43,22 +77,28 @@ function ExportButton(props: {
         )
       }
     >
-      {state === "loading"
-        ? t("loading")
-        : state === "error"
-          ? t("externalScriptError")
-          : t("export")}
+      {stateString}
     </SmallButtonPrimary>
   );
 }
 
-export function ViewStats(props: Views): React.ReactElement {
+export function ViewStats(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
   const stats = props.stats;
   const getLanguage = () => window.localStorage.i18nextLng;
   const numberFormat = new Intl.NumberFormat(getLanguage());
-  const mainStats = [];
-  const otherStats = {};
+  const mainStats: { item: string; value: number | string | boolean }[] = [];
+  const otherStats: {
+    [string: string]:
+      | MainStatsPlatoon[]
+      | MainStatsSession[]
+      | MainStatsProgress[]
+      | MainStatsGamemode[]
+      | MainStatsClasses[]
+      | MainStatsVehicle[]
+      | MainStatsWeapon[]
+      | MainStatsGadgets[];
+  } = {};
 
   if (!props.loading && !props.error) {
     for (const [key, value] of Object.entries(stats)) {
@@ -101,7 +141,7 @@ export function ViewStats(props: Views): React.ReactElement {
               <h3>{numberFormat.format(stats?.killDeath)}</h3>
               <p>{t("stats.main.killDeath")}</p>
             </div>
-            {stats?.killsPerMinute && (
+            {!!stats?.killsPerMinute && (
               <div>
                 <h3>{numberFormat.format(stats?.killsPerMinute)}</h3>
                 <p>{t("stats.main.killsPerMinute")}</p>
@@ -111,7 +151,7 @@ export function ViewStats(props: Views): React.ReactElement {
               <h3>{numberFormat.format(stats?.winPercent)}%</h3>
               <p>{t("stats.main.winPercent")}</p>
             </div>
-            {stats?.bestClass && (
+            {!!stats?.bestClass && (
               <div>
                 <h3>{stats?.bestClass}</h3>
                 <p>{t("stats.main.bestClass")}</p>

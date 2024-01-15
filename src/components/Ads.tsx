@@ -53,6 +53,7 @@ export const AdSwitch = (): JSX.Element => {
     <div className="adv-ad" style={{ display: "contents" }}>
       <label className="switch">
         <input
+          onChange={() => {}}
           checked={value}
           onClick={() => {
             setValue(!value);

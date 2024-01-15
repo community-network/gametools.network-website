@@ -10,7 +10,10 @@ export interface MaybeStat {
   name: string;
 }
 
-export function MaybeStats({ stat, name }: MaybeStat): React.ReactElement {
+export function MaybeStats({
+  stat,
+  name,
+}: Readonly<MaybeStat>): React.ReactElement {
   if (stat === "NaN" || Number.isNaN(stat) || stat === undefined) return <></>;
 
   return (
@@ -21,7 +24,7 @@ export function MaybeStats({ stat, name }: MaybeStat): React.ReactElement {
   );
 }
 
-export function DetailedStats(props: Views): React.ReactElement {
+export function DetailedStats(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
   const stats = props.stats;
   const getLanguage = () => window.localStorage.i18nextLng;

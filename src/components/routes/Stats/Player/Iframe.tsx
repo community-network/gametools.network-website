@@ -16,7 +16,7 @@ interface Views {
   stats: MainStats;
 }
 
-export function ViewIframe(props: Views): React.ReactElement {
+export function ViewIframe(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
   const language = window.localStorage.i18nextLng;
   if (!props.loading && !props.error) {

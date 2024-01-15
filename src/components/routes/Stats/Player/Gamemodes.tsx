@@ -5,7 +5,7 @@ import { Box, Align, AlignS, Column, Row } from "../../../Materials";
 import { Spacing, Views, BackgroundBar, Bar } from "./Main";
 import { MainStatsGamemode } from "../../../../api/ReturnTypes";
 
-export function ViewGamemodes(props: Views): React.ReactElement {
+export function ViewGamemodes(props: Readonly<Views>): React.ReactElement {
   const { t, i18n } = useTranslation();
   if (!props.loading && !props.error) {
     const gamemodes = props.stats.gamemodes;
@@ -18,9 +18,9 @@ export function ViewGamemodes(props: Views): React.ReactElement {
             {gamemodes[0].wins !== undefined ? (
               <>
                 <h3>{t("stats.gamemodes.main")}</h3>
-                {gamemodes.map((key: MainStatsGamemode, index: number) => {
+                {gamemodes.map((key: MainStatsGamemode) => {
                   return (
-                    <div key={index}>
+                    <div key={key?.gamemodeName}>
                       <br />
                       <Align style={{ justifyContent: "space-between" }}>
                         <h4 style={{ margin: 0 }}>
@@ -77,18 +77,16 @@ export function ViewGamemodes(props: Views): React.ReactElement {
                 </Column>
                 {gamemodes.map((key: MainStatsGamemode) => {
                   return (
-                    <>
-                      <Column>
-                        <Row>
-                          <p style={{ margin: 0 }}>
-                            {t(`stats.gamemodes.${key.gamemodeName}`)}
-                          </p>
-                        </Row>
-                        <Row>
-                          <p style={{ margin: 0 }}>{key?.score}</p>
-                        </Row>
-                      </Column>
-                    </>
+                    <Column key={key?.gamemodeName}>
+                      <Row>
+                        <p style={{ margin: 0 }}>
+                          {t(`stats.gamemodes.${key.gamemodeName}`)}
+                        </p>
+                      </Row>
+                      <Row>
+                        <p style={{ margin: 0 }}>{key?.score}</p>
+                      </Row>
+                    </Column>
                   );
                 })}
               </>

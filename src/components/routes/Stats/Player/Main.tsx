@@ -200,10 +200,10 @@ function Stats(): React.ReactElement {
             setGame(ev.target.value);
           }}
         >
-          {games.map((key: string, index: number) => {
+          {games.map((key: string) => {
             return (
               <option
-                key={index}
+                key={key}
                 value={key}
                 disabled={playerGamesArr.includes(key)}
               >
@@ -218,9 +218,9 @@ function Stats(): React.ReactElement {
             setGame(ev.target.value);
           }}
         >
-          {games.map((key: string, index: number) => {
+          {games.map((key: string) => {
             return (
-              <Radio key={index}>
+              <Radio key={key}>
                 <InvisableRadioButton
                   id={key}
                   value={key}
@@ -267,7 +267,7 @@ interface GameStatsItems {
   platform: string;
 }
 
-function GameStats(props: GameStatsItems): React.ReactElement {
+function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {
   const { game, name, type, platform } = props;
 
   const {

@@ -5,7 +5,7 @@ import { Box, Align } from "../../../Materials";
 import { Spacing, Views, BackgroundBar, Bar } from "./Main";
 import { MainStatsProgress } from "../../../../api/ReturnTypes";
 
-export function ViewProgress(props: Views): React.ReactElement {
+export function ViewProgress(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
   if (!props.loading && !props.error) {
     const progress = props?.stats?.progress;

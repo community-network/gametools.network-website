@@ -25,7 +25,7 @@ import { BarGraph } from "../../../graphing/bar";
 import ErrorBoundary from "../../../functions/ErrorBoundary";
 import sslFix from "../../../functions/fixEaAssets";
 
-export function ViewVehicles(props: Views): React.ReactElement {
+export function ViewVehicles(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = React.useState<string>("");
   const [sortType, setSortType] = React.useState<string>("-kills");
@@ -110,7 +110,7 @@ export function ViewVehicles(props: Views): React.ReactElement {
   );
 }
 
-export function VehicleGraph(props: Views): React.ReactElement {
+export function VehicleGraph(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
   const [graphType, setGraphType] = React.useState<string>("kills");
   const [begin, setBegin] = React.useState<number>(0);
@@ -120,8 +120,8 @@ export function VehicleGraph(props: Views): React.ReactElement {
   const values = [];
   if (!props.loading && !props.error) {
     length = props.stats.vehicles?.length;
-    props.stats.vehicles?
-      .sort(DynamicSort(`-${graphType}`))
+    props.stats.vehicles
+      ?.sort(DynamicSort(`-${graphType}`))
       .map((item: MainStatsVehicle) => {
         if (i >= begin && i < begin + 25) {
           names.push(item.vehicleName);
