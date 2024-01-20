@@ -1,22 +1,22 @@
 {
-  
-    "jsc": {
-      "experimental": {
-        "plugins": [
-          [
-            "@swc/plugin-styled-components",
-            {
-              "displayName": true,
-              "ssr": true
-            }
-          ]
+  "jsc": {
+    "experimental": {
+      "plugins": [
+        [
+          "@swc/plugin-styled-components",
+          {
+            "displayName": true,
+            "ssr": true
+          }
         ]
-      },
-      "parser": {
-        "syntax": "typescript",
-        "tsx": true,
-        "dynamicImport": true
-      },
-      "target": "es5"
-    }
+      ]
+    },
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true,
+      "dynamicImport": true
+    },
+    "externalHelpers": true,
+    "target": "es5"
   }
+}
