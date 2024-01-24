@@ -238,7 +238,9 @@ export function Results(props: Views): React.ReactElement {
     return (
       <div>
         <AlignSeverImg>
-          <ServerImage background={stats?.currentMapImage || stats?.mapImage}>
+          <ServerImage
+            background={sslFix(stats?.currentMapImage || stats?.mapImage)}
+          >
             <Blur>
               <ServerText>{stats?.smallmode}</ServerText>
               {stats?.favorites && (

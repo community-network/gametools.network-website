@@ -437,7 +437,7 @@ function Servers(props: { servers: ServerList[] }): React.ReactElement {
           >
             <AlignSeverImg>
               <div>
-                <ServerImage background={key.url}>
+                <ServerImage background={sslFix(key.url)}>
                   <Blur>
                     <ServerText>{key.smallMode}</ServerText>
                   </Blur>

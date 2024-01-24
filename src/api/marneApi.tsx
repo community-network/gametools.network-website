@@ -595,9 +595,9 @@ function getClasses(statsDict: {
     kit["kpm"] = killsPerMinute || 0;
     kit["secondsPlayed"] = seconds;
     kit["image"] =
-      `https://cdn.gametools.network/classes/bf1/white/${kit["className"]}.png`;
+      `https://cdn.gametools.network/classes/bf1/white/${kit["className"]}.webp`;
     kit["altImage"] =
-      `https://cdn.gametools.network/classes/bf1/black/${kit["className"]}.png`;
+      `https://cdn.gametools.network/classes/bf1/black/${kit["className"]}.webp`;
     // kit["timePlayed"] = str(datetime.timedelta(seconds=kit["secondsPlayed"]))
     kit["score"] =
       Number.parseFloat(statsDict[classes_score[_id] ?? ""] ?? "0") || 0;
