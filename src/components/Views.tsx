@@ -1,7 +1,7 @@
 import * as React from "react";
 import "../locales/config";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 import { Footer } from "./main/Footer";
 import { Navbar } from "./main/Navbar";
 
@@ -29,45 +29,40 @@ const PageNotFound = React.lazy(() => import("./errors/PageNotFound"));
 
 function Views(): React.ReactElement {
   const homePage = useLocation().pathname === "/";
-  const { t } = useTranslation();
   return (
     <div style={homePage ? {} : { paddingTop: 90 }}>
-      <React.Suspense fallback={<div>{t("loading")}</div>}>
-        <Navbar />
-        <main role="main">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/privacy" element={<PrivacyPolicy />} />
-            <Route path="/stats" element={<PlayerSearch />} />
-            <Route path="/stats/:plat/:type/:eaid/" element={<Stats />} />
-            <Route path="/platoons/:plat/:gid" element={<Platoon />} />
-            <Route path="/platoons" element={<PlatoonSearch />} />
-            <Route path="/servers" element={<ServerSearch />} />
-            <Route
-              path="/platoons/:gid"
-              element={<Navigate to="/platoons/pc/:gid" replace />}
-            />
-            <Route
-              path="/servers/:gameid/:type/:sname"
-              element={
-                <Navigate to="/servers/:gameid/:type/:sname/pc" replace />
-              }
-            />
-            <Route
-              path="/servers/:gameid/:type/:sname/:platform"
-              element={<Servers />}
-            />
-            <Route path="/join-game/:gameid/:ip/:port" element={<Launch />} />
-            <Route path="/playgrounds" element={<PlaygroundSelect />} />
-            <Route
-              path="/playgrounds/:gameid/:type/:playground"
-              element={<Playgrounds />}
-            />
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
-        </main>
-        <Footer />
-      </React.Suspense>
+      <Navbar />
+      <main role="main">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/stats" element={<PlayerSearch />} />
+          <Route path="/stats/:plat/:type/:eaid/" element={<Stats />} />
+          <Route path="/platoons/:plat/:gid" element={<Platoon />} />
+          <Route path="/platoons" element={<PlatoonSearch />} />
+          <Route path="/servers" element={<ServerSearch />} />
+          <Route
+            path="/platoons/:gid"
+            element={<Navigate to="/platoons/pc/:gid" replace />}
+          />
+          <Route
+            path="/servers/:gameid/:type/:sname"
+            element={<Navigate to="/servers/:gameid/:type/:sname/pc" replace />}
+          />
+          <Route
+            path="/servers/:gameid/:type/:sname/:platform"
+            element={<Servers />}
+          />
+          <Route path="/join-game/:gameid/:ip/:port" element={<Launch />} />
+          <Route path="/playgrounds" element={<PlaygroundSelect />} />
+          <Route
+            path="/playgrounds/:gameid/:type/:playground"
+            element={<Playgrounds />}
+          />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </main>
+      <Footer />
     </div>
   );
 }
