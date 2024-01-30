@@ -1,0 +1,39 @@
+.backButton {
+  color: var(--color-m88-text);
+  font-weight: 500;
+  line-height: 150%;
+  font-size: 12px;
+  background: none;
+  font-family: Manrope;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: inherit;
+  align-items: center;
+
+  i {
+    border: solid white;
+    border-width: 0 1.8px 1.8px 0;
+    margin-right: 5px;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+  }
+}
+
+.inputStyle {
+  margin-right: 0.5rem;
+  margin-left: 0;
+}
+
+.selectorLabel {
+  font-family: Manrope;
+  font-style: normal;
+  letter-spacing: 0em;
+  text-align: left;
+  color: var(--color-text);
+  font-weight: 500;
+  line-height: 150%;
+  font-size: 13px;
+}

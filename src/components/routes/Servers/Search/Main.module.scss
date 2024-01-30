@@ -1,0 +1,73 @@
+%align {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.alignHomeServers {
+  @extend %align;
+
+  margin-top: 1.1rem;
+  @media screen and (max-width: 530px) {
+    width: 100%;
+  }
+}
+
+.alignbf2042Search {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.altDescription {
+  --color-text: var(--color-alt-text);
+  margin-left: 24px;
+}
+
+.title {
+  margin-top: 2rem;
+}
+
+.serverPageColumn {
+  @media screen and (min-width: 1000px) {
+    display: flex;
+    flex-flow: no-wrap;
+    align-items: flex-start;
+  }
+}
+
+.serverPageFilters {
+  @media screen and (max-width: 1000px) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.serverPageFilterRow {
+  min-width: 8rem;
+  margin-right: 1rem;
+}
+
+.serverPageRow {
+  @media screen and (min-width: 1300px) {
+    flex: 0;
+    min-width: 922px;
+  }
+  @media screen and (max-width: 1300px) {
+    flex: 100%;
+  }
+}
+
+.arrow {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-left: 6px;
+}
+
+.removeIcon {
+  margin-right: 8px;
+  cursor: pointer;
+}

@@ -1,29 +1,13 @@
 import * as React from "react";
 import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import {
-  Align,
-  Box,
-  SmallSearchBox,
-  SelectPrimary,
-  Column,
-  Row,
-  AlignW,
-  SmallButtonSecondary,
-  PhoneRow,
-} from "../../../Materials";
+import { Box } from "../../../Materials";
 import { MainStatsGadgets } from "../../../../api/ReturnTypes";
-import {
-  Title,
-  ListImage,
-  Description,
-  Spacing,
-  Views,
-  DynamicSort,
-} from "./Main";
+import { Views, DynamicSort } from "./Main";
 import { BarGraph } from "../../../graphing/bar";
 import ErrorBoundary from "../../../functions/ErrorBoundary";
 import sslFix from "../../../functions/fixEaAssets";
+import Styles from "./Main.module.scss";
 
 export function ViewGadgets(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
@@ -39,18 +23,20 @@ export function ViewGadgets(props: Readonly<Views>): React.ReactElement {
     gadgets = gadgets.sort(DynamicSort(sortType));
   }
   return (
-    <Spacing>
-      <Align>
-        <Title>{t("stats.gadgets")}</Title>
-        <AlignW>
-          <SmallSearchBox
+    <div className={Styles.spacing}>
+      <div className="align">
+        <h3 className={Styles.title}>{t("stats.gadgets")}</h3>
+        <div className="alignW">
+          <input
+            className="smallSearchBox"
             placeholder={t("stats.searchGadget")}
             value={searchTerm}
             onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
               setSearchTerm(ev.target.value)
             }
           />
-          <SelectPrimary
+          <select
+            className="selectPrimary"
             value={sortType}
             onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
               setSortType(ev.target.value)
@@ -61,35 +47,43 @@ export function ViewGadgets(props: Readonly<Views>): React.ReactElement {
             <option value="-kills">{t("stats.rows.kills")}</option>
             <option value="-kpm">{t("stats.rows.killsPerMinute")}</option>
             <option value="-multiKills">{t("stats.rows.multiKills")}</option>
-          </SelectPrimary>
-        </AlignW>
-      </Align>
+          </select>
+        </div>
+      </div>
       {gadgets.length > 0 ? (
         <Box>
           {gadgets.map((key: MainStatsGadgets, index: number) => {
             return (
-              <Column key={index}>
-                <Row>
+              <div className="column" key={index}>
+                <div className="row">
                   <h4>{key?.gadgetName}</h4>
-                  <ListImage src={sslFix(key?.image)} loading="lazy" />
-                </Row>
-                <Row>
+                  <img
+                    className={Styles.listImage}
+                    src={sslFix(key?.image)}
+                    loading="lazy"
+                  />
+                </div>
+                <div className="row">
                   <h4>{key?.type}</h4>
-                  <Description>{t("stats.rows.type")}</Description>
-                </Row>
-                <Row>
+                  <p className={Styles.description}>{t("stats.rows.type")}</p>
+                </div>
+                <div className="row">
                   <h4>{numberFormat.format(key?.kills)}</h4>
-                  <Description>{t("stats.rows.kills")}</Description>
-                </Row>
-                <Row>
+                  <p className={Styles.description}>{t("stats.rows.kills")}</p>
+                </div>
+                <div className="row">
                   <h4>{numberFormat.format(key?.kpm)}</h4>
-                  <Description>{t("stats.rows.killsPerMinute")}</Description>
-                </Row>
-                <PhoneRow>
+                  <p className={Styles.description}>
+                    {t("stats.rows.killsPerMinute")}
+                  </p>
+                </div>
+                <div className="phoneRow">
                   <h4>{numberFormat.format(key?.multiKills)}</h4>
-                  <Description>{t("stats.rows.multiKills")}</Description>
-                </PhoneRow>
-              </Column>
+                  <p className={Styles.description}>
+                    {t("stats.rows.multiKills")}
+                  </p>
+                </div>
+              </div>
             );
           })}
         </Box>
@@ -98,7 +92,7 @@ export function ViewGadgets(props: Readonly<Views>): React.ReactElement {
           <p>{t("loading")}</p>
         </Box>
       )}
-    </Spacing>
+    </div>
   );
 }
 
@@ -125,11 +119,12 @@ export function GadgetGraph(props: Readonly<Views>): React.ReactElement {
   const less = () => setBegin(Math.max(0, begin - 25));
   const more = () => setBegin(Math.min(length - 1, begin + 25));
   return (
-    <Spacing>
-      <Align>
-        <Title>{t("stats.gadgetGaph")}</Title>
-        <AlignW style={{ marginRight: "1rem" }}>
-          <SelectPrimary
+    <div className={Styles.spacing}>
+      <div className="align">
+        <h3 className={Styles.title}>{t("stats.gadgetGaph")}</h3>
+        <div className="alignW" style={{ marginRight: "1rem" }}>
+          <select
+            className="selectPrimary"
             value={graphType}
             onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
               setGraphType(ev.target.value)
@@ -138,17 +133,23 @@ export function GadgetGraph(props: Readonly<Views>): React.ReactElement {
             <option value="kills">{t("stats.rows.kills")}</option>
             <option value="kpm">{t("stats.rows.killsPerMinute")}</option>
             <option value="multiKills">{t("stats.rows.multiKills")}</option>
-          </SelectPrimary>
-        </AlignW>
+          </select>
+        </div>
         <p />
-        <SmallButtonSecondary style={{ marginRight: ".5rem" }} onClick={less}>
+        <button
+          className="smallButtonSecondary"
+          style={{ marginRight: ".5rem" }}
+          onClick={less}
+        >
           &#60;
-        </SmallButtonSecondary>
-        <SmallButtonSecondary onClick={more}>&#62;</SmallButtonSecondary>
-        <Description>
+        </button>
+        <button className="smallButtonSecondary" onClick={more}>
+          &#62;
+        </button>
+        <p className={Styles.description}>
           {begin + 1}/{Math.min(length, begin + 25)} {t("stats.gadgets")}
-        </Description>
-      </Align>
+        </p>
+      </div>
       {names.length > 0 ? (
         <Box>
           <ErrorBoundary>
@@ -166,6 +167,6 @@ export function GadgetGraph(props: Readonly<Views>): React.ReactElement {
           <p>{t("loading")}</p>
         </Box>
       )}
-    </Spacing>
+    </div>
   );
 }

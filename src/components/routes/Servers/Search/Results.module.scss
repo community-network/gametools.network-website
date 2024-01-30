@@ -1,0 +1,33 @@
+.serverImage {
+  margin-top: 12px;
+  height: 4rem;
+  min-width: 7rem;
+  @media (min-width: 430px) {
+    margin-right: 1.5rem;
+  }
+  @media (max-width: 430px) {
+    border-radius: 5px;
+  }
+  border-radius: 2px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .blur {
+    height: 100%;
+    flex-grow: 3;
+    border-radius: 2px;
+    @media (max-width: 430px) {
+      border-radius: 5px;
+    }
+    background: radial-gradient(100% 100% at 50% 50%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.48) 100%);
+  }
+}
+
+.serverInfo {
+  margin-top: 16px;
+  flex-grow: 2;
+  whitespace: pre;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

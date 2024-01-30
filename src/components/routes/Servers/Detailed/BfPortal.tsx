@@ -2,14 +2,8 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { BfPortalApi } from "../../../../api/BfPortalApi";
 import bfportalIcon from "../../../../assets/icon/bfportal-icon.png?sizes[]=60&format=webp&useResponsiveLoader=true";
-import { AlignW, Circle } from "../../../Materials";
 import { useQuery } from "@tanstack/react-query";
-import {
-  OriginDescription,
-  OriginName,
-  OriginProfile,
-  Spacing,
-} from "./Servers";
+import Styles from "./Main.module.scss";
 
 export function BfPortalInfo(props: {
   experienceName: string;
@@ -31,56 +25,62 @@ export function BfPortalInfo(props: {
 
   if (loading) {
     return (
-      <Spacing>
+      <div className={Styles.spacing}>
         <h2>{t("servers.bfportal.found")}</h2>
-        <AlignW>
-          <Circle style={{ marginTop: ".5rem" }} />
+        <div className="alignW">
+          <span className="circle" style={{ marginTop: ".5rem" }} />
           <div>
-            <OriginName>{t("loading")}</OriginName>
-            <OriginDescription>{t("loading")}</OriginDescription>
+            <h2 className={Styles.originName}>{t("loading")}</h2>
+            <h4 className={Styles.originDescription}>{t("loading")}</h4>
           </div>
-        </AlignW>
-      </Spacing>
+        </div>
+      </div>
     );
   } else if (error) {
     return (
-      <Spacing>
+      <div className={Styles.spacing}>
         <h2>{t("servers.bfportal.found")}</h2>
-        <AlignW>
-          <Circle style={{ marginTop: ".5rem" }} />
+        <div className="alignW">
+          <span className="circle" style={{ marginTop: ".5rem" }} />
           <div>
-            <OriginName>{t("404")}</OriginName>
-            <OriginDescription>{t("servers.bfportal.error")}</OriginDescription>
+            <h2 className={Styles.originName}>{t("404")}</h2>
+            <h4 className={Styles.originDescription}>
+              {t("servers.bfportal.error")}
+            </h4>
           </div>
-        </AlignW>
-      </Spacing>
+        </div>
+      </div>
     );
   }
 
   if (data.items.length > 0) {
     const experience = data.items[0];
     return (
-      <Spacing>
+      <div className={Styles.spacing}>
         <h2>{t("servers.bfportal.found")}</h2>
         <a href={experience.meta.html_url} target="_blank" rel="noreferrer">
-          <AlignW>
-            <OriginProfile
+          <div className="alignW">
+            <img
+              className={Styles.originProfile}
               src={bfportalIcon.src}
               srcSet={bfportalIcon.srcSet}
             />
             <div>
-              <OriginName style={{ marginBottom: "0.25rem" }}>
+              <h2
+                className={Styles.originName}
+                style={{ marginBottom: "0.25rem" }}
+              >
                 {experience.title}
-              </OriginName>
-              <OriginDescription>
+              </h2>
+              <h4 className={Styles.originDescription}>
                 Experience code: {experience.code}
                 <br />
                 Likes: {experience.liked_by.length}
-              </OriginDescription>
+              </h4>
             </div>
-          </AlignW>
+          </div>
         </a>
-      </Spacing>
+      </div>
     );
   }
 }

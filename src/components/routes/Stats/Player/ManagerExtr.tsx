@@ -1,14 +1,15 @@
 import * as React from "react";
 import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import { AlignS, Align, Box } from "../../../Materials";
-import { Spacing, Title, Description, Views } from "./Main";
+import { Box } from "../../../Materials";
+import { Views } from "./Main";
 import {
   MainStatsSession,
   SessionGamemode,
   SessionKit,
 } from "../../../../api/ReturnTypes";
 import { addSeconds } from "date-fns";
+import Styles from "./Main.module.scss";
 
 export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
@@ -19,11 +20,11 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
     return <></>;
   } else if (!props.loading && !props.error) {
     return (
-      <Spacing>
-        <Align>
-          <Title>{t("stats.playSession.main")}</Title>
+      <div className={Styles.spacing}>
+        <div className="align">
+          <h3 className={Styles.title}>{t("stats.playSession.main")}</h3>
           <p style={{ marginTop: 0 }}>{t("stats.playSession.detailed")}</p>
-        </Align>
+        </div>
         <Box>
           {stats.sessions.map((key: MainStatsSession, index: number) => {
             const gamemodes = [];
@@ -46,8 +47,8 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
                   })}
                   )
                 </h3>
-                <Description>{key.serverName}</Description>
-                <AlignS style={{ marginTop: "0.8rem" }}>
+                <p className={Styles.description}>{key.serverName}</p>
+                <div className="alignS" style={{ marginTop: "0.8rem" }}>
                   <div>
                     <h3>{numberFormat.format(stats.kills)}</h3>
                     <p>{t("stats.playSession.stats.kills")}</p>
@@ -64,7 +65,7 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
                     <h3>{numberFormat.format(stats.losses)}</h3>
                     <p>{t("stats.playSession.stats.losses")}</p>
                   </div>
-                </AlignS>
+                </div>
                 <hr
                   style={{
                     marginBottom: "1rem",
@@ -72,7 +73,7 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
                     border: "1px solid #282a3a",
                   }}
                 />
-                <Align>
+                <div className="align">
                   {kits.map((key: SessionKit) => {
                     return (
                       <div
@@ -80,17 +81,26 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
                         style={{ marginRight: "3rem", marginBottom: "1rem" }}
                       >
                         <h3 style={{ marginBottom: 0 }}>{key.name}</h3>
-                        <Align>
+                        <div className="align">
                           <div style={{ marginRight: "1rem" }}>
-                            <Description style={{ margin: 0 }}>
+                            <div
+                              className={Styles.description}
+                              style={{ margin: 0 }}
+                            >
                               {t("stats.playSession.stats.score")}
-                            </Description>
-                            <Description style={{ margin: 0 }}>
+                            </div>
+                            <div
+                              className={Styles.description}
+                              style={{ margin: 0 }}
+                            >
                               {t("stats.playSession.stats.kills")}
-                            </Description>
-                            <Description style={{ margin: 0 }}>
+                            </div>
+                            <div
+                              className={Styles.description}
+                              style={{ margin: 0 }}
+                            >
                               {t("stats.playSession.stats.timePlayedAs")}
-                            </Description>
+                            </div>
                           </div>
                           <div>
                             <h4 style={{ margin: 0 }}>
@@ -105,11 +115,11 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
                               })}
                             </h4>
                           </div>
-                        </Align>
+                        </div>
                       </div>
                     );
                   })}
-                </Align>
+                </div>
                 {typeof props.stats.sessions[index + 1] !== "undefined" && (
                   <hr
                     style={{
@@ -123,19 +133,19 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
             );
           })}
         </Box>
-      </Spacing>
+      </div>
     );
   } else {
     return (
-      <Spacing>
-        <Align>
-          <Title>{t("stats.playSession.main")}</Title>
+      <div className={Styles.spacing}>
+        <div className="align">
+          <h3 className={Styles.title}>{t("stats.playSession.main")}</h3>
           <p style={{ marginTop: 0 }}>{t("stats.playSession.detailed")}</p>
-        </Align>
+        </div>
         <Box>
           <p>{t("loading")}</p>
         </Box>
-      </Spacing>
+      </div>
     );
   }
 }

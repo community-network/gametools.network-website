@@ -2,7 +2,6 @@ import * as React from "react";
 import "../../../locales/config";
 import { Link, useParams } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
-import styled from "styled-components";
 import "../../../assets/scss/App.scss";
 import {
   PlatoonPlayer,
@@ -15,83 +14,12 @@ import {
   GametoolsApi,
 } from "../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
-import {
-  AltText,
-  Container,
-  Align,
-  AlignW,
-  Box,
-  Column,
-  Row,
-  SmallSearchBox,
-  SelectPrimary,
-  ButtonLink,
-  TabletRow,
-  SmallestPhoneRow,
-  BigButtonSecondaryBox,
-  AlignSeverImg,
-  PageRow,
-  PageColumn,
-  BackButton,
-  SmallButton,
-} from "../../Materials";
+import { Box, BackButton } from "../../Materials";
 import { getLanguage } from "../../../locales/config";
 import exportExcel from "../../functions/exportExcel";
 import sslFix from "../../functions/fixEaAssets";
 import useExternalScript from "../../functions/UseExternalScript";
-
-const Spacing = styled.div`
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-`;
-
-const Description = styled.p`
-  ${AltText}
-  line-height: 1;
-  margin: 0.4rem 0;
-`;
-
-const DescriptionPart = styled.p`
-  ${AltText}
-  line-height: 1;
-  margin: 0.4rem 0;
-`;
-
-const Title = styled.h2`
-  margin: 0 33px;
-  padding-bottom: 1rem;
-`;
-
-const PlatoonTitle = styled.h2`
-  @media (min-width: 600px) {
-    margin-top: 2.2rem;
-  }
-  margin-bottom: 0.4rem;
-`;
-
-interface IPlatoonImage {
-  background: string;
-}
-
-const PlatoonImage = styled.div<IPlatoonImage>`
-  max-width: 13rem;
-  height: 11rem;
-  min-width: 11rem;
-  display: flex;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url("${(props) => props.background}");
-  margin-top: 6px;
-  border-radius: 10px;
-`;
-
-const MemberImage = styled.img`
-  max-width: 8rem;
-  max-height: 3rem;
-  min-width: 3rem;
-  margin-right: 1.5rem;
-`;
+import styles from "./Platoon.module.scss";
 
 interface Views {
   loading: boolean;
@@ -168,7 +96,8 @@ function SmallExportButton(props: { members: PlatoonPlayer[] }) {
   const { t } = useTranslation();
   const state = useExternalScript(externalScript);
   return (
-    <SmallButton
+    <button
+      className="smallButton"
       style={{ marginLeft: "1rem" }}
       disabled={state !== "ready"}
       onClick={() => exportExcel({ members: props.members }, "platoon members")}
@@ -178,7 +107,7 @@ function SmallExportButton(props: { members: PlatoonPlayer[] }) {
         : state === "error"
           ? t("externalScriptError")
           : t("export")}
-    </SmallButton>
+    </button>
   );
 }
 
@@ -194,31 +123,36 @@ function Member(props: {
 
   return (
     <div style={{ margin: "0.8rem 0.2rem" }}>
-      <Column style={{ marginTop: 0 }}>
-        <Row>
+      <div className="column" style={{ marginTop: 0 }}>
+        <div className="row">
           <Link
             to={`/stats/${platform}/playerid/${item?.id}?game=bf1&name=${encodeURIComponent(
               item?.name,
             )}`}
           >
-            <Align>
-              <MemberImage src={sslFix(item?.avatar)} loading="lazy" />
+            <div className="align">
+              <img
+                className={styles.memberImage}
+                src={sslFix(item?.avatar)}
+                loading="lazy"
+              />
               <h4 style={{ ...loadingStyle }}>
                 <div>{item?.name}</div>
                 <div>{children}</div>
               </h4>
-            </Align>
+            </div>
           </Link>
-        </Row>
-        <SmallestPhoneRow>
+        </div>
+        <div className="smallestPhoneRow">
           <h4 style={loadingStyle}>
             {item?.id != "loading"
               ? t(`platoon.members.${item?.role}`)
               : t("notApplicable")}
           </h4>
-        </SmallestPhoneRow>
-        <TabletRow>
-          <ButtonLink
+        </div>
+        <div className="tabletRow">
+          <a
+            className="buttonLink"
             style={{ marginTop: ".3rem", ...loadingStyle }}
             href={`https://gametools.network/stats/${platform}/playerid/${item?.id}?game=bf1&name=${encodeURIComponent(
               item?.name,
@@ -227,9 +161,9 @@ function Member(props: {
             rel="noreferrer"
           >
             {t("stats.view")}
-          </ButtonLink>
-        </TabletRow>
-      </Column>
+          </a>
+        </div>
+      </div>
       <hr
         style={{
           marginTop: "0.6rem",
@@ -287,18 +221,20 @@ function Members(props: {
   });
 
   return (
-    <Spacing>
-      <Align>
-        <Title>{t("platoon.members.main")}</Title>
-        <AlignW>
-          <SmallSearchBox
+    <div className={styles.spacing}>
+      <div className="align">
+        <h2 className={styles.title}>{t("platoon.members.main")}</h2>
+        <div className="alignW">
+          <input
+            className="smallSearchBox"
             placeholder={t("platoon.searchPlayer")}
             value={searchTerm}
             onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
               setSearchTerm(ev.target.value)
             }
           />
-          <SelectPrimary
+          <select
+            className="selectPrimary"
             value={sortType}
             onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
               setSortType(ev.target.value)
@@ -306,10 +242,10 @@ function Members(props: {
           >
             <option value="default">{t("platoon.rows.role")}</option>
             <option value="name">{t("platoon.rows.name")}</option>
-          </SelectPrimary>
+          </select>
           <SmallExportButton members={members} />
-        </AlignW>
-      </Align>
+        </div>
+      </div>
       <Box>
         <div>
           {props.loading
@@ -340,48 +276,9 @@ function Members(props: {
               ))}
         </div>
       </Box>
-    </Spacing>
+    </div>
   );
 }
-
-interface IServerImage {
-  background: string;
-}
-
-const ServerImage = styled.div<IServerImage>`
-  margin-top: 12px;
-  height: 4rem;
-  min-width: 7rem;
-  margin-right: 1.5rem;
-  border-radius: 2px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url("${(props) => props.background}");
-`;
-
-const Blur = styled.div`
-  height: 100%;
-  flex-grow: 3;
-  border-radius: 2px;
-  background: radial-gradient(
-    100% 100% at 50% 50%,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.48) 100%
-  );
-`;
-
-const ServerText = styled.h1`
-  font-size: 1.8rem;
-  text-align: center;
-  padding-top: 2rem;
-  line-height: 0;
-  margin-top: 0;
-`;
-
-const ServerInfo = styled.div`
-  margin-top: 16px;
-`;
 
 const handleChildElementClick = (e: { stopPropagation: () => void }) => {
   e.stopPropagation();
@@ -393,16 +290,18 @@ function Servers(props: { servers: ServerList[] }): React.ReactElement {
   const servers = props.servers;
   if (servers?.length <= 0) {
     return (
-      <Spacing>
+      <div className={styles.spacing}>
         <h2>{t("platoon.servers")}</h2>
-        <Description>{t("resultNotFound")}</Description>
-      </Spacing>
+        <p className={styles.description}>{t("resultNotFound")}</p>
+      </div>
     );
   }
   return (
-    <Spacing>
-      <Align>
-        <Title style={{ marginRight: "1rem" }}>{t("platoon.servers")}</Title>
+    <div className={styles.spacing}>
+      <div className="align">
+        <h2 className={styles.title} style={{ marginRight: "1rem" }}>
+          {t("platoon.servers")}
+        </h2>
         <p style={{ margin: 0, marginBottom: "1rem" }}>
           <Trans i18nKey="servers.joinme.info">
             <a href="https://joinme.click/download">
@@ -410,7 +309,7 @@ function Servers(props: { servers: ServerList[] }): React.ReactElement {
             </a>
           </Trans>
         </p>
-      </Align>
+      </div>
       {servers?.map((key: ServerList, index: number) => {
         let queue: number = undefined;
         queue = key.inQue;
@@ -435,15 +334,18 @@ function Servers(props: { servers: ServerList[] }): React.ReactElement {
             condition={true}
             key={index}
           >
-            <AlignSeverImg>
+            <div className="alignServerImg">
               <div>
-                <ServerImage background={sslFix(key.url)}>
-                  <Blur>
-                    <ServerText>{key.smallMode}</ServerText>
-                  </Blur>
-                </ServerImage>
+                <div
+                  className={styles.serverImage}
+                  style={{ backgroundImage: `url("${sslFix(key.url)}")` }}
+                >
+                  <div className={styles.blur}>
+                    <h1 className={styles.serverText}>{key.smallMode}</h1>
+                  </div>
+                </div>
               </div>
-              <ServerInfo>
+              <div className={styles.serverInfo}>
                 <h3>
                   {key.server}
                   {key.prefix}
@@ -455,34 +357,27 @@ function Servers(props: { servers: ServerList[] }): React.ReactElement {
                   {officialString}
                   {region}
                 </p>
-              </ServerInfo>
+              </div>
               <a
                 onClick={(e) => handleChildElementClick(e)}
                 href={`bf1://${key.gameId}`}
                 style={{ alignSelf: "end" }}
               >
-                <BigButtonSecondaryBox
+                <button
+                  className="bigButtonSecondaryBox"
                   style={{ marginBottom: ".6rem" }}
                   type="submit"
                 >
                   {t("servers.join")}
-                </BigButtonSecondaryBox>
+                </button>
               </a>
-            </AlignSeverImg>
+            </div>
           </Box>
         );
       })}
-    </Spacing>
+    </div>
   );
 }
-
-const AlignPlatoonImg = styled.div`
-  @media (min-width: 600px) {
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-  }
-`;
 
 function Results(props: Views): React.ReactElement {
   const { t } = useTranslation();
@@ -501,43 +396,50 @@ function Results(props: Views): React.ReactElement {
   } else {
     return (
       <div>
-        <AlignPlatoonImg>
-          <PlatoonImage background={platoon?.emblem} />
+        <div className={styles.alignPlatoonImg}>
+          <div
+            className={styles.platoonImage}
+            style={{ backgroundImage: `url("${platoon?.emblem}")` }}
+          />
           <div style={{ marginLeft: "0.5rem" }}>
-            <PlatoonTitle>
+            <h2 className={styles.platoonTitle}>
               {props.loading
                 ? t("loading")
                 : `[${platoon?.tag}] ${platoon?.name}`}
-            </PlatoonTitle>
-            <Description>{platoon?.currentSize || 0} / 100</Description>
+            </h2>
+            <p className={styles.description}>
+              {platoon?.currentSize || 0} / 100
+            </p>
             {platoon?.description ? (
-              <Description>
+              <p className={styles.description}>
                 {platoon?.description.split(". ").map(function (
                   descPart: string,
                   idx: number,
                 ) {
                   return (
-                    <DescriptionPart key={idx}>{descPart}. </DescriptionPart>
+                    <p className={styles.descriptionPart} key={idx}>
+                      {descPart}.{" "}
+                    </p>
                   );
                 })}
-              </Description>
+              </p>
             ) : (
-              <Description>{t("notApplicable")}</Description>
+              <p className={styles.description}>{t("notApplicable")}</p>
             )}
           </div>
-        </AlignPlatoonImg>
-        <PageColumn>
-          <PageRow>
+        </div>
+        <div className="pageColumn">
+          <div className="pageRow">
             <Members
               loading={props.loading}
               platform={props?.platform}
               members={platoon?.members}
             />
-          </PageRow>
-          <PageRow>
+          </div>
+          <div className="pageRow">
             <Servers servers={platoon?.servers} />
-          </PageRow>
-        </PageColumn>
+          </div>
+        </div>
       </div>
     );
   }
@@ -564,7 +466,7 @@ function Platoon(): React.ReactElement {
   });
   return (
     <div>
-      <Container>
+      <div className="container">
         <BackButton text={t("platoon.back")} location="/platoons" />
         <Results
           loading={loading}
@@ -572,7 +474,7 @@ function Platoon(): React.ReactElement {
           platform={platform}
           error={error}
         />
-      </Container>
+      </div>
     </div>
   );
 }

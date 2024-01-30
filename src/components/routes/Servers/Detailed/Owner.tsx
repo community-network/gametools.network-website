@@ -3,18 +3,12 @@ import "../../../../locales/config";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "../../../../assets/scss/App.scss";
-import { Align, Circle } from "../../../Materials";
 import { ServerOwnerResult } from "../../../../api/ReturnTypes";
-import {
-  OriginDescription,
-  OriginName,
-  OriginProfile,
-  Spacing,
-} from "./Servers";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
 import { serverToStatsPlatform } from "../../../../api/static";
 import sslFix from "../../../functions/fixEaAssets";
+import MainStyles from "./Main.module.scss";
 
 export function OwnerInfo(props: {
   owner: ServerOwnerResult;
@@ -40,33 +34,33 @@ export function OwnerInfo(props: {
     });
     if (loading) {
       return (
-        <Spacing>
+        <div className={MainStyles.spacing}>
           <h3>{title}</h3>
-          <Align>
-            <Circle style={{ marginTop: ".5rem" }} />
+          <div className="align">
+            <span className="circle" style={{ marginTop: ".5rem" }} />
             <div>
-              <OriginName>{t("loading")}</OriginName>
-              <OriginDescription>
+              <h2 className={MainStyles.originName}>{t("loading")}</h2>
+              <h4 className={MainStyles.originDescription}>
                 {t("stats.originDescription")}
-              </OriginDescription>
+              </h4>
             </div>
-          </Align>
-        </Spacing>
+          </div>
+        </div>
       );
     } else if (error) {
       return (
-        <Spacing>
+        <div className={MainStyles.spacing}>
           <h3>{title}</h3>
-          <Align>
-            <Circle style={{ marginTop: ".5rem" }} />
+          <div className="align">
+            <span className="circle" style={{ marginTop: ".5rem" }} />
             <div>
-              <OriginName>{t("404")}</OriginName>
-              <OriginDescription>
+              <h2 className={MainStyles.originName}>{t("404")}</h2>
+              <h4 className={MainStyles.originDescription}>
                 {t("stats.originDescription")}
-              </OriginDescription>
+              </h4>
             </div>
-          </Align>
-        </Spacing>
+          </div>
+        </div>
       );
     } else {
       owner = data;
@@ -75,22 +69,24 @@ export function OwnerInfo(props: {
 
   if (owner === null) {
     return (
-      <Spacing>
+      <div className={MainStyles.spacing}>
         <h3>{title}</h3>
-        <Align>
-          <Circle style={{ marginTop: ".5rem" }} />
+        <div className="align">
+          <span className="circle" style={{ marginTop: ".5rem" }} />
           <div>
-            <OriginName>{t("404")}</OriginName>
-            <OriginDescription>{t("servers.owner.none")}</OriginDescription>
+            <h2 className={MainStyles.originName}>{t("404")}</h2>
+            <h4 className={MainStyles.originDescription}>
+              {t("servers.owner.none")}
+            </h4>
           </div>
-        </Align>
-      </Spacing>
+        </div>
+      </div>
     );
   }
   return (
-    <Spacing>
+    <div className={MainStyles.spacing}>
       <h2>{title}</h2>
-      <Align>
+      <div className="align">
         <Link
           to={`/stats/${
             serverToStatsPlatform[owner.platformId] || "pc"
@@ -98,7 +94,10 @@ export function OwnerInfo(props: {
             props.game
           }&name=${encodeURIComponent(owner.name)}`}
         >
-          <OriginProfile src={sslFix(owner?.avatar)} />
+          <img
+            className={MainStyles.originProfile}
+            src={sslFix(owner?.avatar)}
+          />
         </Link>
         <Link
           to={`/stats/${
@@ -108,15 +107,15 @@ export function OwnerInfo(props: {
           }&name=${encodeURIComponent(owner.name)}`}
         >
           <div>
-            <OriginName>
+            <h2 className={MainStyles.originName}>
               {owner.name !== "" ? owner.name : t("servers.owner.unknown")}
-            </OriginName>
-            <OriginDescription>
+            </h2>
+            <h4 className={MainStyles.originDescription}>
               {t("stats.originDescription")}
-            </OriginDescription>
+            </h4>
           </div>
         </Link>
-      </Align>
-    </Spacing>
+      </div>
+    </div>
   );
 }

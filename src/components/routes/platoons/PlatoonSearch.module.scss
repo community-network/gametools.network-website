@@ -1,0 +1,27 @@
+.spacing {
+  margin-bottom: 2rem;
+}
+
+.platoonImage {
+  margin-top: 12px;
+  height: 4rem;
+  min-width: 4rem;
+  margin-right: 1.5rem;
+  border-radius: 2px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.platoonInfo {
+  margin-top: 16px;
+}
+
+.description {
+  --color-text: var(--color-alt-text);
+}
+
+.altDescription {
+  --color-text: var(--color-alt-text);
+  margin-left: 24px;
+}

@@ -9,16 +9,7 @@ import {
   GametoolsApi,
 } from "../../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
-import {
-  Align,
-  AlignW,
-  Box,
-  Row,
-  Column,
-  ButtonLink,
-  PhoneRow,
-  SelectPrimary,
-} from "../../../Materials";
+import { Box } from "../../../Materials";
 import {
   DetailedServerInfo,
   ScoreServerPlayer,
@@ -28,22 +19,12 @@ import {
   serverTeamList,
 } from "../../../../api/ReturnTypes";
 import { bf1_factions, factions } from "../../../../api/Factions";
-import { Description, Spacing, Title } from "./Servers";
 import { DynamicSort } from "../../Stats/Player/Main";
-import styled from "styled-components";
 import { playerToStatsPlatform } from "../../../../api/static";
 import { bfListApi, PlayerInfo, TeamInfo } from "../../../../api/bflistApi";
 import sslFix from "../../../functions/fixEaAssets";
-
-const ServerPlayerName = styled.h4`
-  max-width: 11rem;
-  width: 140px;
-  min-width: 8rem;
-  margin: 0.5rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`;
+import styles from "./Players.module.scss";
+import MainStyles from "./Main.module.scss";
 
 function CheckBan(props: {
   playerId: string;
@@ -167,10 +148,11 @@ function Players(props: {
   }
 
   return (
-    <Spacing>
-      <Align>
+    <div className={MainStyles.spacing}>
+      <div className="align">
         <h2>{t("servers.playerlist.main")}</h2>
-        <SelectPrimary
+        <select
+          className="selectPrimary"
           style={{ margin: 0, marginLeft: "24px" }}
           value={sortType}
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
@@ -187,25 +169,25 @@ function Players(props: {
             {t("servers.playerlist.row.platoon")}
           </option>
           <option value="-rank">{t("servers.playerlist.row.rank")}</option>
-        </SelectPrimary>
+        </select>
         <p style={{ marginTop: "1rem", marginLeft: "1rem" }}>
           {t("servers.playerlist.lastUpdate")}{" "}
           {t("change", { change: update_timestamp })} {t("ago")}
         </p>
-      </Align>
+      </div>
       {teams !== null ? (
         <>
           {teams.map((teamInfo: serverTeamList, index: number) => {
             teamInfo.players = teamInfo.players.sort(DynamicSort(sortType));
             return (
               <div key={index}>
-                <Align>
+                <div className="align">
                   <h3 style={{ margin: ".5rem", marginTop: 0 }}>
                     {teamInfo?.faction in factions
                       ? t(`servers.factions.${teamInfo.faction}`)
                       : t(`servers.factions.${teamInfo.teamid}`)}
                   </h3>
-                </Align>
+                </div>
                 <Box>
                   {teamInfo.players.length !== 0 ? (
                     <>
@@ -213,9 +195,9 @@ function Players(props: {
                         (key: serverPlayer, index: number) => {
                           const seederPlayer = seederPlayers.get(key.player_id);
                           return (
-                            <Column key={index}>
-                              <Row>
-                                <AlignW>
+                            <div className="column" key={index}>
+                              <div className="row">
+                                <div className="alignW">
                                   {key?.rank !== undefined && (
                                     <img
                                       src={`https://cdn.gametools.network/bf1/${key?.rank}.webp`}
@@ -238,20 +220,20 @@ function Players(props: {
                                     }}
                                   >
                                     {copyState == key.name ? (
-                                      <ServerPlayerName>
+                                      <div className={styles.serverPlayerName}>
                                         {t("states.copied")}
-                                      </ServerPlayerName>
+                                      </div>
                                     ) : (
-                                      <ServerPlayerName>
+                                      <div className={styles.serverPlayerName}>
                                         {key.platoon !== "" &&
                                         key.platoon !== undefined
                                           ? `[${key.platoon}]`
                                           : ""}
                                         {key.name}
-                                      </ServerPlayerName>
+                                      </div>
                                     )}
                                   </a>
-                                </AlignW>
+                                </div>
                                 <CheckBan
                                   playerId={key?.player_id?.toString()}
                                   bfBanList={bfBanInfo}
@@ -261,50 +243,62 @@ function Players(props: {
                                   bfeacLoading={bfeacLoading}
                                   bfeacError={bfeacError}
                                 />
-                              </Row>
+                              </div>
                               {props.game === "bf2042" ? (
-                                <Row>
+                                <div className="row">
                                   <h4 style={{ marginTop: "0.5rem" }}>
                                     {key.platform.toUpperCase()}
                                   </h4>
-                                  <Description style={{ lineHeight: 0 }}>
+                                  <p
+                                    className={MainStyles.description}
+                                    style={{ lineHeight: 0 }}
+                                  >
                                     {t("servers.playerlist.row.platform")}
-                                  </Description>
-                                </Row>
+                                  </p>
+                                </div>
                               ) : (
                                 props.game !== "bf1marne" && (
-                                  <Row>
+                                  <div className="row">
                                     <h4 style={{ marginTop: "0.5rem" }}>
                                       {key.latency}
                                     </h4>
-                                    <Description style={{ lineHeight: 0 }}>
+                                    <p
+                                      className={MainStyles.description}
+                                      style={{ lineHeight: 0 }}
+                                    >
                                       {t("servers.playerlist.row.ping")}
-                                    </Description>
-                                  </Row>
+                                    </p>
+                                  </div>
                                 )
                               )}
                               {haveSeederPlayers && (
                                 <>
-                                  <Row>
+                                  <div className="row">
                                     <h4 style={{ marginTop: "0.5rem" }}>
                                       {seederPlayer?.score ?? "?"}
                                     </h4>
-                                    <Description style={{ lineHeight: 0 }}>
+                                    <p
+                                      className={MainStyles.description}
+                                      style={{ lineHeight: 0 }}
+                                    >
                                       {t("servers.playerlist.row.score")}
-                                    </Description>
-                                  </Row>
-                                  <Row>
+                                    </p>
+                                  </div>
+                                  <div className="row">
                                     <h4 style={{ marginTop: "0.5rem" }}>
                                       {seederPlayer?.kills ?? "?"}/
                                       {seederPlayer?.deaths ?? "?"}
                                     </h4>
-                                    <Description style={{ lineHeight: 0 }}>
+                                    <p
+                                      className={MainStyles.description}
+                                      style={{ lineHeight: 0 }}
+                                    >
                                       {t("servers.playerlist.row.killDeath")}
-                                    </Description>
-                                  </Row>
+                                    </p>
+                                  </div>
                                 </>
                               )}
-                              <Row>
+                              <div className="row">
                                 {key.join_time && (
                                   <>
                                     <h4 style={{ marginTop: "0.5rem" }}>
@@ -312,14 +306,18 @@ function Players(props: {
                                         change: new Date(key?.join_time / 1000),
                                       })}
                                     </h4>
-                                    <Description style={{ lineHeight: 0 }}>
+                                    <p
+                                      className={MainStyles.description}
+                                      style={{ lineHeight: 0 }}
+                                    >
                                       {t("servers.playerlist.row.timePlayed")}
-                                    </Description>
+                                    </p>
                                   </>
                                 )}
-                              </Row>
-                              <PhoneRow>
-                                <ButtonLink
+                              </div>
+                              <div className="phoneRow">
+                                <a
+                                  className="buttonLink"
                                   style={
                                     haveSeederPlayers
                                       ? {
@@ -346,9 +344,9 @@ function Players(props: {
                                   rel="noreferrer"
                                 >
                                   {t("stats.view")}
-                                </ButtonLink>
-                              </PhoneRow>
-                            </Column>
+                                </a>
+                              </div>
+                            </div>
                           );
                         },
                       )}
@@ -366,7 +364,7 @@ function Players(props: {
           <p>{t("servers.playerlist.empty")}</p>
         </Box>
       )}
-    </Spacing>
+    </div>
   );
 }
 
@@ -401,10 +399,10 @@ export function ServerPlayerlist(props: {
     );
   }
   return (
-    <Spacing>
-      <Title>{t("servers.playerlist.main")}</Title>
-      <Description>{t("loading")}</Description>
-    </Spacing>
+    <div className={MainStyles.spacing}>
+      <h2 className={MainStyles.title}>{t("servers.playerlist.main")}</h2>
+      <p className={MainStyles.description}>{t("loading")}</p>
+    </div>
   );
 }
 
@@ -452,74 +450,71 @@ export function Bf3ServerPlayerlist(props: {
   const { players } = props;
 
   return (
-    <Spacing>
+    <div className={MainStyles.spacing}>
       <h2>{t("servers.playerlist.main")}</h2>
       {!!players ? (
-        <>
-          <Box>
-            {players.length !== 0 ? (
-              <>
-                {players.map((key: ScoreServerPlayer, index: number) => {
-                  return (
-                    <Column key={index}>
-                      <Row>
-                        <AlignW>
-                          <img
-                            src={sslFix(key?.avatar)}
-                            height="35px"
-                            loading="lazy"
-                          />
+        <Box>
+          {players.length !== 0 ? (
+            <>
+              {players.map((key: ScoreServerPlayer, index: number) => {
+                return (
+                  <div className="column" key={index}>
+                    <div className="row">
+                      <div className="alignW">
+                        <img
+                          src={sslFix(key?.avatar)}
+                          height="35px"
+                          loading="lazy"
+                        />
 
-                          <Link
-                            to={`/stats/pc/playerid/${
-                              key.player_id
-                            }?game=bf3&name=${encodeURIComponent(key.name)}`}
-                          >
-                            <>
-                              <h4
-                                style={{
-                                  maxWidth: "11rem",
-                                  width: "auto",
-                                  minWidth: "8rem",
-                                  margin: "0.5rem",
-                                  whiteSpace: "nowrap",
-                                }}
-                              >
-                                {key.name}
-                              </h4>
-                            </>
-                          </Link>
-                        </AlignW>
-                      </Row>
-                      <PhoneRow>
-                        <ButtonLink
-                          style={{
-                            marginTop: ".5rem",
-                          }}
-                          href={`https://gametools.network/stats/pc/name/${encodeURIComponent(
-                            key.name,
-                          )}?game=${props.game}`}
-                          target="_blank"
-                          rel="noreferrer"
+                        <Link
+                          to={`/stats/pc/playerid/${
+                            key.player_id
+                          }?game=bf3&name=${encodeURIComponent(key.name)}`}
                         >
-                          {t("stats.view")}
-                        </ButtonLink>
-                      </PhoneRow>
-                    </Column>
-                  );
-                })}
-              </>
-            ) : (
-              <p>{t("servers.playerlist.empty")}</p>
-            )}
-          </Box>
-        </>
+                          <h4
+                            style={{
+                              maxWidth: "11rem",
+                              width: "auto",
+                              minWidth: "8rem",
+                              margin: "0.5rem",
+                              whiteSpace: "nowrap",
+                            }}
+                          >
+                            {key.name}
+                          </h4>
+                        </Link>
+                      </div>
+                    </div>
+                    <div className="phoneRow">
+                      <a
+                        className="buttonLink"
+                        style={{
+                          marginTop: ".5rem",
+                        }}
+                        href={`https://gametools.network/stats/pc/name/${encodeURIComponent(
+                          key.name,
+                        )}?game=${props.game}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {t("stats.view")}
+                      </a>
+                    </div>
+                  </div>
+                );
+              })}
+            </>
+          ) : (
+            <p>{t("servers.playerlist.empty")}</p>
+          )}
+        </Box>
       ) : (
         <Box>
           <p>{t("servers.playerlist.empty")}</p>
         </Box>
       )}
-    </Spacing>
+    </div>
   );
 }
 
@@ -553,10 +548,10 @@ export function BfListServerPlayerList(props: {
   if (!loading && !error) {
     if (!stats.players) {
       return (
-        <Spacing>
-          <Title>{t("servers.playerlist.main")}</Title>
-          <Description>{t("bflist.notFound")}</Description>
-        </Spacing>
+        <div className={MainStyles.spacing}>
+          <h2 className={MainStyles.title}>{t("servers.playerlist.main")}</h2>
+          <p className={MainStyles.description}>{t("bflist.notFound")}</p>
+        </div>
       );
     }
 
@@ -578,10 +573,11 @@ export function BfListServerPlayerList(props: {
     });
 
     return (
-      <Spacing>
-        <Align>
+      <div className={MainStyles.spacing}>
+        <div className="align">
           <h2>{t("servers.playerlist.main")}</h2>
-          <SelectPrimary
+          <select
+            className="selectPrimary"
             style={{ margin: 0, marginLeft: "24px" }}
             value={sortType}
             onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
@@ -596,28 +592,28 @@ export function BfListServerPlayerList(props: {
             <option value="-deaths">
               {t("servers.playerlist.row.deaths")}
             </option>
-          </SelectPrimary>
+          </select>
           <p style={{ marginTop: "1rem", marginLeft: "1rem" }}>
             {t("servers.playerlist.lastUpdate")}{" "}
             {t("change", { change: dataUpdatedAt })} {t("ago")}
           </p>
-        </Align>
+        </div>
         {teams.map((teamInfo: TeamInfo, index: number) => {
           teamInfo.players = teamInfo.players.sort(DynamicSort(sortType));
           return (
             <div key={index}>
-              <Align>
+              <div className="align">
                 <h3 style={{ margin: ".5rem", marginTop: 0 }}>
                   {teamInfo.label}
                 </h3>
-              </Align>
+              </div>
               <Box>
                 {teamInfo.players.length !== 0 ? (
                   <>
                     {teamInfo.players.map((key: PlayerInfo, index: number) => {
                       return (
-                        <Column key={index}>
-                          <Row>
+                        <div className="column" key={index}>
+                          <div className="row">
                             <a
                               style={{ cursor: "pointer" }}
                               onClick={() => {
@@ -633,37 +629,48 @@ export function BfListServerPlayerList(props: {
                               }}
                             >
                               {copyState == key.name ? (
-                                <ServerPlayerName>
+                                <div className={styles.serverPlayerName}>
                                   {t("states.copied")}
-                                </ServerPlayerName>
+                                </div>
                               ) : (
-                                <ServerPlayerName>{key.name}</ServerPlayerName>
+                                <div className={styles.serverPlayerName}>
+                                  {key.name}
+                                </div>
                               )}
                             </a>
-                          </Row>
-                          <Row>
+                          </div>
+                          <div className="row">
                             <h4 style={{ marginTop: "0.5rem" }}>{key.ping}</h4>
-                            <Description style={{ lineHeight: 0 }}>
+                            <p
+                              className={MainStyles.description}
+                              style={{ lineHeight: 0 }}
+                            >
                               {t("servers.playerlist.row.ping")}
-                            </Description>
-                          </Row>
-                          <Row>
+                            </p>
+                          </div>
+                          <div className="row">
                             <h4 style={{ marginTop: "0.5rem" }}>
                               {key?.score ?? "?"}
                             </h4>
-                            <Description style={{ lineHeight: 0 }}>
+                            <p
+                              className={MainStyles.description}
+                              style={{ lineHeight: 0 }}
+                            >
                               {t("servers.playerlist.row.score")}
-                            </Description>
-                          </Row>
-                          <Row>
+                            </p>
+                          </div>
+                          <div className="row">
                             <h4 style={{ marginTop: "0.5rem" }}>
                               {key?.kills ?? "?"}/{key?.deaths ?? "?"}
                             </h4>
-                            <Description style={{ lineHeight: 0 }}>
+                            <p
+                              className={MainStyles.description}
+                              style={{ lineHeight: 0 }}
+                            >
                               {t("servers.playerlist.row.killDeath")}
-                            </Description>
-                          </Row>
-                        </Column>
+                            </p>
+                          </div>
+                        </div>
                       );
                     })}
                   </>
@@ -674,13 +681,13 @@ export function BfListServerPlayerList(props: {
             </div>
           );
         })}
-      </Spacing>
+      </div>
     );
   }
   return (
-    <Spacing>
-      <Title>{t("servers.playerlist.main")}</Title>
-      <Description>{t("loading")}</Description>
-    </Spacing>
+    <div className={MainStyles.spacing}>
+      <h2 className={MainStyles.title}>{t("servers.playerlist.main")}</h2>
+      <p className={MainStyles.description}>{t("loading")}</p>
+    </div>
   );
 }

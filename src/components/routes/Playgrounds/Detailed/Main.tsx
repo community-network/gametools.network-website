@@ -1,38 +1,15 @@
 import * as React from "react";
 import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
-import {
-  AltText,
-  Align,
-  AlignW,
-  Box,
-  PageColumn,
-  PageRow,
-} from "../../../Materials";
+import { Box } from "../../../Materials";
 import {
   MapInfo,
   PlaygroundInfoReturn,
   Tags,
 } from "../../../../api/ReturnTypes";
-import { Title } from "./Playgrounds";
 import { PlaygroundOwner } from "./Owner";
-
-const AltDescription = styled.p`
-  ${AltText}
-  line-height: 1.2;
-  margin: 0.5rem 0.5rem 0.5rem 0;
-`;
-
-export const Description = styled.p`
-  ${AltText}
-  line-height: 0.6;
-`;
-
-interface IPlaygroundImage {
-  background: string;
-}
+import styles from "./Main.module.scss";
 
 interface Views {
   loading: boolean;
@@ -41,62 +18,6 @@ interface Views {
   platform: string;
   stats: PlaygroundInfoReturn;
 }
-
-const PlaygroundImage = styled.div<IPlaygroundImage>`
-  height: 7rem;
-  min-width: 11rem;
-  display: flex;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url("${(props) => props.background}");
-  margin-top: 12px;
-  margin-right: 1rem;
-  border-radius: 10px;
-`;
-
-const Blur = styled.div`
-  height: 100%;
-  flex-grow: 3;
-  border-radius: 10px;
-  background: radial-gradient(
-    100% 100% at 50% 50%,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.4872) 100%
-  );
-`;
-
-const PortalLogo = styled.h1`
-  ${AltText}
-  margin-top: .7rem;
-  text-align: center;
-`;
-
-const MapImage = styled.div<IPlaygroundImage>`
-  height: 7rem;
-  display: flex;
-  min-width: 9rem;
-  margin-top: 9px;
-  max-height: 4rem;
-  border-radius: 4px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url("${(props) => props.background}");
-`;
-
-const PlaygroundInfo = styled.div`
-  width: 100%;
-  align-self: center;
-`;
-
-const AlignSeverImg = styled.div`
-  @media (min-width: 430px) {
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-  }
-`;
 
 function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
@@ -130,10 +51,15 @@ export function Results(props: Views): React.ReactElement {
     const tags = stats.tag;
     return (
       <div>
-        <AlignSeverImg>
-          <PlaygroundImage background={playground.mapRotation.maps[0].image}>
-            <Blur>
-              <PortalLogo>
+        <div className={styles.alignServerImg}>
+          <div
+            className={styles.playgroundImage}
+            style={{
+              backgroundImage: `url("${playground.mapRotation.maps[0].image}")`,
+            }}
+          >
+            <div className={styles.blur}>
+              <h1 className={styles.portalLogo}>
                 <svg
                   version="1.1"
                   id="Layer_1"
@@ -155,37 +81,39 @@ export function Results(props: Views): React.ReactElement {
     L10.9,31.1l18.3-10L31.1,8.8z"
                   ></path>
                 </svg>
-              </PortalLogo>
-            </Blur>
-          </PlaygroundImage>
+              </h1>
+            </div>
+          </div>
           <div>
             <h2 style={{ lineHeight: 0.5, marginTop: "1.5rem" }}>
               {playground.settings.configName.value}
             </h2>
-            <Description>
+            <p className={styles.description}>
               {playground.settings.ConfigDescription.value}
-            </Description>
-            <Description>
+            </p>
+            <p className={styles.description}>
               {t("playgrounds.maxPlayers", {
                 amount: playground.mapRotation.maps[0].gameSize,
               })}
               {stats.progressionMode
                 ? " - " + t(`playgrounds.types.${stats.progressionMode.value}`)
                 : ""}
-            </Description>
-            <Description>
+            </p>
+            <p className={styles.description}>
               {t("dateType.createdAt")}: {t("date", { date: createdDate })}
-            </Description>
-            <Description>
+            </p>
+            <p className={styles.description}>
               {t("dateType.updatedAt")}: {t("date", { date: updatedDate })}
-            </Description>
+            </p>
           </div>
-        </AlignSeverImg>
-        <Title style={{ marginBottom: 0 }}>{t("playgrounds.rotation")}</Title>
-        <Align>
+        </div>
+        <h2 style={{ marginTop: "2rem", marginBottom: 0 }}>
+          {t("playgrounds.rotation")}
+        </h2>
+        <div className="align">
           {playground.mapRotation.maps.map((key: MapInfo, index: number) => {
             return (
-              <AlignW key={index}>
+              <div className="alignW" key={index}>
                 <div style={{ marginRight: ".7rem", marginTop: "10px" }}>
                   <div
                     style={{
@@ -201,8 +129,11 @@ export function Results(props: Views): React.ReactElement {
                   >
                     <span>{index + 1}</span>
                   </div>
-                  <MapImage background={key.image}></MapImage>
-                  <PlaygroundInfo>
+                  <div
+                    className={styles.mapImage}
+                    style={{ backgroundImage: `url("${key.image}")` }}
+                  ></div>
+                  <div className={styles.playgroundInfo}>
                     <h3
                       style={{
                         marginTop: ".2rem",
@@ -213,24 +144,24 @@ export function Results(props: Views): React.ReactElement {
                       {key.mapname}
                     </h3>
                     <p style={{ margin: 0, textAlign: "center" }}>{key.mode}</p>
-                  </PlaygroundInfo>
+                  </div>
                 </div>
-              </AlignW>
+              </div>
             );
           })}
-        </Align>
+        </div>
 
-        <PageColumn>
-          <PageRow>
+        <div className="pageColumn">
+          <div className="pageRow">
             <PlaygroundOwner owner={playground.owner} game={props.game} />
-          </PageRow>
+          </div>
 
-          <PageRow>
+          <div className="pageRow">
             <h2>{t("playgrounds.tags")}</h2>
             {tags.map((value: Tags, index: number) => {
               return (
                 <div key={index}>
-                  <AltDescription key={index}>
+                  <p className={styles.altDescription} key={index}>
                     <b>
                       {capitalizeFirstLetter(
                         value.metadata.translations[0].localizedText,
@@ -238,13 +169,13 @@ export function Results(props: Views): React.ReactElement {
                     </b>
                     : {}
                     {value.metadata.translations[1].localizedText}
-                  </AltDescription>
+                  </p>
                 </div>
               );
             })}
             <br></br>
-          </PageRow>
-        </PageColumn>
+          </div>
+        </div>
       </div>
     );
   }

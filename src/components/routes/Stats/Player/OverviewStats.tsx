@@ -1,9 +1,8 @@
 import * as React from "react";
 import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import { Box, AlignS, SmallButtonPrimary } from "../../../Materials";
-import { BackgroundBar, Bar, Spacing, Views } from "./Main";
-import styled from "styled-components";
+import { Box } from "../../../Materials";
+import { Views } from "./Main";
 import { addSeconds } from "date-fns";
 import exportExcel from "../../../functions/exportExcel";
 import useExternalScript from "../../../functions/UseExternalScript";
@@ -18,16 +17,8 @@ import {
   MainStatsVehicle,
   MainStatsWeapon,
 } from "../../../../api/ReturnTypes";
-
-const BottomOfBox = styled.div`
-  display: inline-block;
-  line-height: 0;
-`;
-
-const WhiteText = styled.span`
-  color: white;
-  margin-left: 0.5rem;
-`;
+import Styles from "./OverviewStats.module.scss";
+import MainStyles from "./Main.module.scss";
 
 function ExportButton(
   props: Readonly<{
@@ -64,7 +55,8 @@ function ExportButton(
       break;
   }
   return (
-    <SmallButtonPrimary
+    <button
+      className="smallButtonPrimary"
       style={{ margin: 0, marginTop: "1rem" }}
       disabled={state !== "ready"}
       onClick={() =>
@@ -78,7 +70,7 @@ function ExportButton(
       }
     >
       {stateString}
-    </SmallButtonPrimary>
+    </button>
   );
 }
 
@@ -111,32 +103,33 @@ export function ViewStats(props: Readonly<Views>): React.ReactElement {
     }
 
     return (
-      <Spacing>
+      <div className={MainStyles.spacing}>
         <Box>
           <h3>{t("stats.overview")}</h3>
           <p>{t("stats.overviewDescription")}</p>
           {stats?.rank !== undefined && (
             <>
-              <AlignS>
+              <div className="alignS">
                 <div>
                   <h3>{stats?.rank}</h3>
                   <p>{t("stats.main.rank")}</p>
                 </div>
-              </AlignS>
-              <BackgroundBar>
-                <Bar
+              </div>
+              <div className={MainStyles.backgroundBar}>
+                <div
+                  className={MainStyles.bar}
                   style={{
                     width: `${
                       (100 * stats.currentRankProgress) /
                       stats.totalRankProgress
                     }%`,
                   }}
-                ></Bar>
-              </BackgroundBar>
+                ></div>
+              </div>
             </>
           )}
           <p></p>
-          <AlignS>
+          <div className="alignS">
             <div>
               <h3>{numberFormat.format(stats?.killDeath)}</h3>
               <p>{t("stats.main.killDeath")}</p>
@@ -161,19 +154,19 @@ export function ViewStats(props: Readonly<Views>): React.ReactElement {
               <h3>{numberFormat.format(stats?.accuracy)}%</h3>
               <p>{t("stats.main.accuracy")}</p>
             </div>
-          </AlignS>
+          </div>
           <p></p>
           {!!stats?.secondsPlayed && (
-            <BottomOfBox>
+            <div className={Styles.bottomOfBox}>
               <p style={{ margin: 0 }}>
                 {t("stats.main.timePlayed")}{" "}
-                <WhiteText>
+                <span className={Styles.whiteText}>
                   {t("change", {
                     change: addSeconds(new Date(), stats?.secondsPlayed),
                   })}
-                </WhiteText>
+                </span>
               </p>
-            </BottomOfBox>
+            </div>
           )}
           <ExportButton
             mainStats={mainStats}
@@ -182,16 +175,16 @@ export function ViewStats(props: Readonly<Views>): React.ReactElement {
             stats={stats}
           />
         </Box>
-      </Spacing>
+      </div>
     );
   } else {
     return (
-      <Spacing>
+      <div className={MainStyles.spacing}>
         <Box>
           <h3>{t("stats.overview")}</h3>
           <p>{t("loading")}</p>
         </Box>
-      </Spacing>
+      </div>
     );
   }
 }

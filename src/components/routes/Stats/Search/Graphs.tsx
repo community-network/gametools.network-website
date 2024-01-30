@@ -1,21 +1,11 @@
 import * as React from "react";
 import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
-import {
-  BigSelectSecondary,
-  Align,
-  BigButtonSecondary,
-  OpenExternal,
-} from "../../../Materials";
+import { OpenExternal } from "../../../Materials";
 import { Graph, GlobalGraph, OldGameGraph } from "../../../graphing/line";
 import { diceGraph, graphGames, graphOptions } from "../../../../api/static";
-import { AltDescription } from "./PlayerSearch";
-
-const Title = styled.h2`
-  margin-top: 2rem;
-`;
+import styles from "./PlayerSearch.module.scss";
 
 export function Graphs(): React.ReactElement {
   const { t } = useTranslation();
@@ -24,14 +14,15 @@ export function Graphs(): React.ReactElement {
   const [optionGraph, setOptionGraph] = React.useState<string>("amounts");
   return (
     <>
-      <Align>
-        <Title>{t("playerSearch.gameStatus")}</Title>
-        <AltDescription style={{ marginTop: "2rem" }}>
+      <div className="align">
+        <h2 style={{ marginTop: "2rem" }}>{t("playerSearch.gameStatus")}</h2>
+        <p className={styles.altDescription} style={{ marginTop: "2rem" }}>
           {t("playerSearch.zoomInfo")}
-        </AltDescription>
-      </Align>
-      <Align>
-        <BigSelectSecondary
+        </p>
+      </div>
+      <div className="align">
+        <select
+          className="bigSelectSecondary"
           value={platformGraph}
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void => {
             setPlatformGraph(ev.target.value);
@@ -41,8 +32,9 @@ export function Graphs(): React.ReactElement {
           <option value="xboxone">{t("platforms.xboxone")}</option>
           <option value="ps4">{t("platforms.ps4")}</option>
           <option value="all">{t("platforms.all")}</option>
-        </BigSelectSecondary>
-        <BigSelectSecondary
+        </select>
+        <select
+          className="bigSelectSecondary"
           value={gameGraph}
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
             setGraphGame(ev.target.value)
@@ -55,8 +47,9 @@ export function Graphs(): React.ReactElement {
               </option>
             );
           })}
-        </BigSelectSecondary>
-        <BigSelectSecondary
+        </select>
+        <select
+          className="bigSelectSecondary"
           disabled={!(gameGraph in graphOptions && platformGraph !== "all")}
           value={optionGraph}
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
@@ -73,25 +66,25 @@ export function Graphs(): React.ReactElement {
               </option>
             );
           })}
-        </BigSelectSecondary>
+        </select>
         <a
           target="_blank"
           href="https://graphs.gametools.network/"
           rel="noreferrer"
         >
-          <BigButtonSecondary type="submit">
+          <button className="bigButtonSecondary" type="submit">
             <OpenExternal /> {t("playerSearch.moreGraphs")}
-          </BigButtonSecondary>
+          </button>
         </a>
-      </Align>
+      </div>
       {diceGraph.includes(gameGraph) ? (
-        <Align>
+        <div className="align">
           <Graph
             gameName={gameGraph}
             platform={platformGraph}
             graphOptions={platformGraph !== "all" ? optionGraph : "amounts"}
           />
-        </Align>
+        </div>
       ) : gameGraph == "bfglobal" ? (
         <GlobalGraph platform={platformGraph} />
       ) : (

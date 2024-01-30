@@ -2,16 +2,12 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import { Box, AlignW } from "../../../Materials";
-import styled from "styled-components";
+import { Box } from "../../../Materials";
 import { MainStatsPlatoon } from "../../../../api/ReturnTypes";
-import { Description, PlatformViews, Spacing } from "./Main";
+import { PlatformViews } from "./Main";
 import sslFix from "../../../functions/fixEaAssets";
-
-const PlatoonEmblem = styled.img`
-  width: 100px;
-  margin-right: 0.5rem;
-`;
+import Styles from "./Main.module.scss";
+import PlatoonStyles from "./Platoon.module.scss";
 
 export function PlatoonInfo(
   props: Readonly<PlatformViews>,
@@ -26,26 +22,27 @@ export function PlatoonInfo(
     props.stats.platoons.length === 0
   ) {
     return (
-      <Spacing>
+      <div className={Styles.spacing}>
         <Box>
           <h3>{t("stats.platoonName")}</h3>
           <p>{t("stats.platoon.none")}</p>
         </Box>
-      </Spacing>
+      </div>
     );
   } else if (!props.loading && !props.error) {
     const otherPlatoons = props.stats.platoons.filter(
       (platoon) => platoon?.id !== stats?.activePlatoon?.id,
     );
     return (
-      <Spacing>
+      <div className={Styles.spacing}>
         <Box>
           {stats?.activePlatoon?.name !== null ? (
             <>
               <h3>{t("stats.platoonName")}</h3>
-              <AlignW style={{ alignItems: "start" }}>
+              <div className="alignW" style={{ alignItems: "start" }}>
                 <Link to={`/platoons/${platform}/${stats?.activePlatoon?.id}`}>
-                  <PlatoonEmblem
+                  <img
+                    className={PlatoonStyles.platoonEmblem}
                     src={sslFix(stats?.activePlatoon?.emblem)}
                     loading="lazy"
                   />
@@ -68,13 +65,13 @@ export function PlatoonInfo(
                     <Link
                       to={`/platoons/${platform}/${stats?.activePlatoon?.id}`}
                     >
-                      <Description>
+                      <p className={Styles.description}>
                         {t("stats.platoon.noDescription")}
-                      </Description>
+                      </p>
                     </Link>
                   )}
                 </div>
-              </AlignW>
+              </div>
             </>
           ) : (
             <>
@@ -90,9 +87,10 @@ export function PlatoonInfo(
               {otherPlatoons.map((key: MainStatsPlatoon) => {
                 return (
                   <div key={key?.id}>
-                    <AlignW style={{ alignItems: "start" }}>
+                    <div className="alignW" style={{ alignItems: "start" }}>
                       <Link to={`/platoons/${platform}/${key?.id}`}>
-                        <PlatoonEmblem
+                        <img
+                          className={PlatoonStyles.platoonEmblem}
                           src={sslFix(key?.emblem)}
                           loading="lazy"
                         />
@@ -109,13 +107,13 @@ export function PlatoonInfo(
                           </Link>
                         ) : (
                           <Link to={`/platoons/${platform}/${key?.id}`}>
-                            <Description>
+                            <p className={Styles.description}>
                               {t("stats.platoon.noDescription")}
-                            </Description>
+                            </p>
                           </Link>
                         )}
                       </div>
-                    </AlignW>
+                    </div>
                     <br />
                   </div>
                 );
@@ -123,16 +121,16 @@ export function PlatoonInfo(
             </>
           )}
         </Box>
-      </Spacing>
+      </div>
     );
   } else {
     return (
-      <Spacing>
+      <div className={Styles.spacing}>
         <Box>
           <h3>{t("stats.platoonName")}</h3>
           <p>{t("loading")}</p>
         </Box>
-      </Spacing>
+      </div>
     );
   }
 }

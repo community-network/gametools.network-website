@@ -1,9 +1,8 @@
 import * as React from "react";
 import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
-import { AlignSeverImg, BigButtonSecondaryBox, Box } from "../../../Materials";
+import { Box } from "../../../Materials";
 import { ServerList, ServerSearch } from "../../../../api/ReturnTypes";
 import {
   dice,
@@ -13,64 +12,27 @@ import {
 } from "../../../../api/static";
 import { DynamicSort } from "../../Stats/Player/Main";
 import sslFix from "../../../functions/fixEaAssets";
-
-interface IServerImage {
-  background: string;
-}
-
-const ServerImage = styled.div<IServerImage>`
-  margin-top: 12px;
-  height: 4rem;
-  min-width: 7rem;
-  @media (min-width: 430px) {
-    margin-right: 1.5rem;
-  }
-  @media (max-width: 430px) {
-    border-radius: 5px;
-  }
-  border-radius: 2px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url("${(props) => props.background}");
-`;
-
-const Blur = styled.div`
-  height: 100%;
-  flex-grow: 3;
-  border-radius: 2px;
-  @media (max-width: 430px) {
-    border-radius: 5px;
-  }
-  background: radial-gradient(
-    100% 100% at 50% 50%,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.48) 100%
-  );
-`;
-
-const ServerInfo = styled.div`
-  margin-top: 16px;
-  flex-grow: 2;
-  whitespace: pre;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`;
+import styles from "./Results.module.scss";
 
 const handleChildElementClick = (e: { stopPropagation: () => void }) => {
   e.stopPropagation();
   // Do other stuff here
 };
 
-function LoadingServerInfo(props: { spacingStyle; serverText; style? }) {
+function LoadingServerInfo(
+  props: Readonly<{ spacingStyle; serverText; style? }>,
+) {
   const { t } = useTranslation();
   return (
     <Box spacingStyle={props.spacingStyle}>
-      <AlignSeverImg>
-        <ServerImage background="">
-          <Blur />
-        </ServerImage>
-        <ServerInfo>
+      <div className="alignServerImg">
+        <div
+          className={styles.serverImage}
+          style={{ backgroundImage: `url("")` }}
+        >
+          <div className={styles.blur} />
+        </div>
+        <div className={styles.serverInfo}>
           <h3
             style={{
               whiteSpace: "pre",
@@ -85,8 +47,8 @@ function LoadingServerInfo(props: { spacingStyle; serverText; style? }) {
           <p style={{ color: "gray" }}>
             0/0 - {t("notApplicable")} - {t("notApplicable")}
           </p>
-        </ServerInfo>
-      </AlignSeverImg>
+        </div>
+      </div>
     </Box>
   );
 }
@@ -159,7 +121,7 @@ export function Results(props: Views): React.ReactElement {
           return (
             <Box
               spacingStyle={props.spacingStyle}
-              className="box_hover box"
+              className="box_hover"
               link={`/servers/${props.game}/${idElement}/${result}/${
                 key.platform || "pc"
               }${props.game == "bf2042" ? `?blazeid=${key.blazeGameId}` : ""}`}
@@ -167,13 +129,16 @@ export function Results(props: Views): React.ReactElement {
               key={index}
               innerStyle={props.spacingStyle}
             >
-              <AlignSeverImg>
-                <ServerImage
-                  background={sslFix(key.url) ?? sslFix(key.mapImage)}
+              <div className="alignServerImg">
+                <div
+                  className={styles.serverImage}
+                  style={{
+                    backgroundImage: `url("${sslFix(key.url) ?? sslFix(key.mapImage)}")`,
+                  }}
                 >
-                  <Blur />
-                </ServerImage>
-                <ServerInfo>
+                  <div className={styles.blur} />
+                </div>
+                <div className={styles.serverInfo}>
                   <h3
                     style={{
                       whiteSpace: "pre",
@@ -213,19 +178,20 @@ export function Results(props: Views): React.ReactElement {
                     {officialString}
                     {region}
                   </p>
-                </ServerInfo>
+                </div>
                 {oldJoinGames.includes(props.game) && (
                   <a
                     onClick={(e) => handleChildElementClick(e)}
                     href={`${props.game.split(".")[0]}://${key.ip}:${key.port}`}
                     style={{ alignSelf: "end" }}
                   >
-                    <BigButtonSecondaryBox
+                    <button
+                      className="bigButtonSecondaryBox"
                       style={{ marginBottom: ".6rem" }}
                       type="submit"
                     >
                       {t("servers.join")}
-                    </BigButtonSecondaryBox>
+                    </button>
                   </a>
                 )}
                 {frostbiteJoinGames.includes(props.game) && (
@@ -234,15 +200,16 @@ export function Results(props: Views): React.ReactElement {
                     href={`${props.game}://${key.gameId}`}
                     style={{ alignSelf: "end" }}
                   >
-                    <BigButtonSecondaryBox
+                    <button
+                      className="bigButtonSecondaryBox"
                       style={{ marginBottom: ".6rem" }}
                       type="submit"
                     >
                       {t("servers.join")}
-                    </BigButtonSecondaryBox>
+                    </button>
                   </a>
                 )}
-              </AlignSeverImg>
+              </div>
             </Box>
           );
         })}

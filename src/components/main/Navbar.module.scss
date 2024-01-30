@@ -1,0 +1,105 @@
+.nav {
+  height: 90px;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  padding: 0 3% 0 8.33%;
+  @media (max-width: 600px) {
+    padding: 0 5%;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.linkWrapper {
+  display: flex;
+  position: relative;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+
+  .opened-link {
+    border-radius: 5px;
+    height: 35px;
+    background-color: var(--color-m92-base);
+    color: var(--color-m92-text);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.05));
+  }
+}
+
+.sharedLink {
+  font-family: Manrope, serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 102.3%;
+  text-decoration: none;
+  /* or 14px */
+
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding: 0 50px;
+  align-items: center;
+  text-align: center;
+  height: 35px;
+
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.sLink {
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.ul {
+  list-style: none;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: var(--color-base);
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 220px;
+  padding-left: 0.5rem;
+  padding-right: 1.5rem;
+  padding-top: 4.5rem;
+  transition: transform 0.3s ease-in-out;
+  z-index: 10;
+  margin-top: 0;
+
+  li {
+    color: #fff;
+    padding: 15px 10px;
+  }
+}
+
+.burger {
+  width: 2rem;
+  height: 2rem;
+  position: fixed;
+  top: 30px;
+  right: 20px;
+  z-index: 20;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: column nowrap;
+
+  div {
+    width: 2rem;
+    height: 0.25rem;
+    border-radius: 10px;
+    transform-origin: 1px;
+    transition: all 0.3s linear;
+  }
+}

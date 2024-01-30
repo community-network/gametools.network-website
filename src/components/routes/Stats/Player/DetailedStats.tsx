@@ -1,9 +1,11 @@
 import * as React from "react";
 import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import { Box, GridContainer } from "../../../Materials";
+import { Box } from "../../../Materials";
 import { newTitles } from "../../../../api/static";
-import { Spacing, Views } from "./Main";
+import { Views } from "./Main";
+import styles from "./DetailedStats.module.scss";
+import MainStyles from "./Main.module.scss";
 
 export interface MaybeStat {
   stat: string;
@@ -31,11 +33,11 @@ export function DetailedStats(props: Readonly<Views>): React.ReactElement {
   const numberFormat = new Intl.NumberFormat(getLanguage());
   if (!props.loading && !props.error) {
     return (
-      <Spacing>
+      <div className={MainStyles.spacing}>
         <Box>
           <h3>{t("stats.detailedName")}</h3>
           <p></p>
-          <GridContainer>
+          <div className={styles.gridContainer}>
             <MaybeStats
               stat={numberFormat.format(stats?.skill)}
               name={t("stats.detailed.skill")}
@@ -139,19 +141,19 @@ export function DetailedStats(props: Readonly<Views>): React.ReactElement {
               stat={numberFormat.format(stats?.quits)}
               name={t("stats.detailed.quits")}
             />
-          </GridContainer>
+          </div>
           <p></p>
         </Box>
-      </Spacing>
+      </div>
     );
   } else {
     return (
-      <Spacing>
+      <div className={MainStyles.spacing}>
         <Box>
           <h3>{t("stats.detailedName")}</h3>
           <p>{t("loading")}</p>
         </Box>
-      </Spacing>
+      </div>
     );
   }
 }

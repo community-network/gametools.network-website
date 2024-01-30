@@ -1,20 +1,7 @@
 import * as React from "react";
 import "../../locales/config";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
-import {
-  AltText,
-  Box,
-  ButtonLink,
-  BigButtonLink,
-  PrimaryButtonLink,
-  Align,
-  AlignW,
-  PageColumn,
-  BigButtonSecondaryBox,
-  PageRow,
-  OpenExternal,
-} from "../Materials";
+import { Box, OpenExternal } from "../Materials";
 import { TotalGraphQuery } from "../graphing/line";
 import { ServerSearch } from "./Servers/Search/Main";
 import { StatSearch } from "./Stats/Search/PlayerSearch";
@@ -31,86 +18,7 @@ import bfbanLogo from "../../assets/icon/bfban-icon.png?sizes[]=24&format=webp&u
 import bfportalLogo from "../../assets/icon/bfportal-icon.png?sizes[]=24&format=webp&useResponsiveLoader=true";
 import { Link } from "react-router-dom";
 import AdsComponent from "../Ads";
-
-export const Container = styled.div`
-  @media (min-width: 1300px) {
-    padding-left: 8.33%;
-  }
-  @media (max-width: 1300px) {
-    padding-left: 2%;
-  }
-`;
-
-const Image = styled.div`
-  height: 356px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url("${background.src}");
-`;
-
-const Blur = styled.div`
-  height: 356px;
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.4872) 100%
-  );
-`;
-
-const Welcome = styled.div`
-  position: absolute;
-  top: 6rem;
-  @media (min-width: 750px) {
-    padding-left: 8.33%;
-  }
-  @media (max-width: 750px) {
-    padding-left: 2%;
-  }
-  max-width: 40em;
-`;
-
-const WelcomeText = styled.p`
-  ${AltText}
-  white-space: pre-line;
-  font-size: 18px;
-  @media (min-width: 548px) {
-    margin-bottom: 2.5rem;
-  }
-  @media (max-width: 358px) {
-    margin-top: 0;
-  }
-`;
-
-const Description = styled.p`
-  white-space: pre-line;
-`;
-
-const CloudImage = styled.div`
-  height: 479px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url("${cloudBg.src}");
-`;
-
-const GameLogo = styled.img`
-  margin-right: 35px;
-  margin-bottom: 10px;
-`;
-
-const AdBox = styled.div`
-  padding-left: 8.33%;
-  margin-top: 0.9rem;
-  display: inline;
-  position: absolute;
-  left: 935px;
-  width: 225px;
-
-  @media (max-width: 1300px) {
-    display: none;
-  }
-`;
+import styles from "./Home.module.scss";
 
 function Home(): React.ReactElement {
   const { t, i18n } = useTranslation();
@@ -146,65 +54,81 @@ function Home(): React.ReactElement {
 
   return (
     <div>
-      <Image>
-        <Blur>
-          <Welcome>
-            <WelcomeText>{t("playerSearch.description")}</WelcomeText>
+      <div
+        className={styles.image}
+        style={{ backgroundImage: `url("${background.src}")` }}
+      >
+        <div className={styles.blur}>
+          <div className={styles.welcome}>
+            <p className={styles.text}>{t("playerSearch.description")}</p>
             <StatSearch />
-          </Welcome>
-        </Blur>
-      </Image>
-      <Container>
+          </div>
+        </div>
+      </div>
+      <div className="container">
         <ServerSearch />
         <h2 style={{ margin: "24px 0 24px 24px" }}>
           {t("home.graphs.header")}
         </h2>
         <div>
-          <AdBox>
+          <div className={styles.adBox}>
             <AdsComponent
               dataAdSlot="8911547346"
               style={{ display: "block", height: "300px" }}
             />
-          </AdBox>
+          </div>
           <TotalGraphQuery />
         </div>
-        <BigButtonLink target="_blank" href="https://graphs.gametools.network/">
+        <a
+          className="bigButtonLink"
+          target="_blank"
+          href="https://graphs.gametools.network/"
+          rel="noreferrer"
+        >
           {t("home.graphs.detailed")}
-        </BigButtonLink>
-      </Container>
-      <CloudImage>
-        <Container>
+        </a>
+      </div>
+      <div
+        className={styles.cloudImage}
+        style={{ backgroundImage: `url("${cloudBg.src}")` }}
+      >
+        <div className="container">
           <h1 style={{ paddingTop: "2rem", marginBottom: "3.5rem" }}>
             {t("home.manager.header")}
           </h1>
-          <Description>{t("home.manager.description")}</Description>
-          <PrimaryButtonLink
+          <p className={styles.description}>{t("home.manager.description")}</p>
+          <a
+            className="primaryButtonLink"
             target="_blank"
             href="https://manager.gametools.network/"
             style={{ width: "90px", borderRadius: "10px", marginTop: "3rem" }}
+            rel="noreferrer"
           >
             <OpenExternal style={{ paddingTop: "1px" }} />{" "}
             {t("home.manager.open")}
-          </PrimaryButtonLink>
-          <Description style={{ marginTop: "3rem" }}>
+          </a>
+          <p className={styles.description} style={{ marginTop: "3rem" }}>
             {t("home.manager.disclaimer")}
-          </Description>
-          <Align>
-            <GameLogo
+          </p>
+          <div className="align">
+            <img
+              className={styles.gameLogo}
               alt="bf1 logo"
               src={bf1Logo.src}
               srcSet={bf1Logo.srcSet}
               style={{ height: bf1Logo.height, width: bf1Logo.width }}
               loading="lazy"
             />
-            <GameLogo
+            <img
+              className={styles.gameLogo}
               alt="bf5 logo"
               src={bf5Logo.src}
               srcSet={bf5Logo.srcSet}
               style={{ height: bf5Logo.height, width: bf5Logo.width }}
               loading="lazy"
             />
-            <GameLogo
+            <img
+              className={styles.gameLogo}
               alt="bf2042 logo"
               src={bf2042Logo.src}
               srcSet={bf2042Logo.srcSet}
@@ -215,12 +139,12 @@ function Home(): React.ReactElement {
               }}
               loading="lazy"
             />
-          </Align>
-        </Container>
-      </CloudImage>
-      <Container>
-        <PageColumn>
-          <PageRow title="970px">
+          </div>
+        </div>
+      </div>
+      <div className="container">
+        <div className="pageColumn">
+          <div className={styles.pageRow}>
             <h2 style={{ margin: "24px 0 24px 24px" }}>
               {t("home.ourFriends.header")}
             </h2>
@@ -231,7 +155,7 @@ function Home(): React.ReactElement {
                   align="flex-start"
                   spacingStyle={{ maxWidth: "922px" }}
                 >
-                  <AlignW style={{ marginTop: "0.5rem" }}>
+                  <div className="alignW" style={{ marginTop: "0.5rem" }}>
                     <img
                       src={ourFriendLogos[index]}
                       alt="icon"
@@ -243,16 +167,21 @@ function Home(): React.ReactElement {
                       loading="lazy"
                     />
                     <h3>{key.header}</h3>
-                  </AlignW>
-                  <Description>{key.description}</Description>
+                  </div>
+                  <p className={styles.description}>{key.description}</p>
                   <br></br>
-                  <ButtonLink target="_blank" href={key.url}>
+                  <a
+                    className="buttonLink"
+                    target="_blank"
+                    href={key.url}
+                    rel="noreferrer"
+                  >
                     <OpenExternal style={{ paddingTop: "1px" }} /> {key.link}
-                  </ButtonLink>
+                  </a>
                 </Box>
               );
             })}
-          </PageRow>
+          </div>
           <div>
             <h2 style={{ margin: "24px 0 24px 24px" }}>
               {t("home.otherServices.header")}
@@ -262,7 +191,8 @@ function Home(): React.ReactElement {
                 <div key={index}>
                   {key.localUrl ? (
                     <Link to={key.localUrl}>
-                      <BigButtonSecondaryBox
+                      <button
+                        className="bigButtonSecondaryBox"
                         style={{
                           width: "97%",
                           maxWidth: "470px",
@@ -271,11 +201,12 @@ function Home(): React.ReactElement {
                         }}
                       >
                         {key.header}
-                      </BigButtonSecondaryBox>
+                      </button>
                     </Link>
                   ) : (
                     <a target="_blank" href={key.url} rel="noreferrer">
-                      <BigButtonSecondaryBox
+                      <button
+                        className="bigButtonSecondaryBox"
                         style={{
                           width: "97%",
                           maxWidth: "470px",
@@ -285,15 +216,15 @@ function Home(): React.ReactElement {
                       >
                         <OpenExternal style={{ paddingBottom: "1px" }} />{" "}
                         {key.header}
-                      </BigButtonSecondaryBox>
+                      </button>
                     </a>
                   )}
                 </div>
               );
             })}
           </div>
-        </PageColumn>
-      </Container>
+        </div>
+      </div>
     </div>
   );
 }

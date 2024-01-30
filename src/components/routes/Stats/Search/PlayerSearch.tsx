@@ -2,51 +2,13 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
-import {
-  AltText,
-  SearchBox,
-  BigButtonSecondary,
-  RightArrow,
-  Container,
-  BigSelectSecondary,
-  Align,
-  BackButton,
-  HomePlayerSearchBox,
-  HomePlayerBigSelectSecondary,
-  AlignW,
-  AlignT,
-  BigButtonPrimary,
-} from "../../../Materials";
+import { RightArrow, BackButton } from "../../../Materials";
 import { platformGames, statsPlatforms } from "../../../../api/static";
 import { Graphs } from "./Graphs";
 import ErrorBoundary from "../../../functions/ErrorBoundary";
 import { useLocalStorage } from "react-use";
-
-export const AltDescription = styled.p`
-  ${AltText}
-  margin-left: 24px;
-`;
-
-const AlignMain = styled(AlignT)`
-  @media screen and (min-width: 1000px) {
-    flex-wrap: nowrap;
-  }
-`;
-
-const AlignSearch = styled(AlignW)`
-  @media screen and (max-width: 530px) {
-    width: 100%;
-  }
-`;
-
-const StatsLink = styled(Link)`
-  @media screen and (max-width: 530px) {
-    width: 100%;
-    margin-right: 15px;
-  }
-`;
+import styles from "./PlayerSearch.module.scss";
 
 export function StatSearch(): React.ReactElement {
   const { t } = useTranslation();
@@ -63,9 +25,10 @@ export function StatSearch(): React.ReactElement {
         position: "relative",
       }}
     >
-      <AlignMain>
-        <AlignSearch>
-          <HomePlayerSearchBox
+      <div className={styles.alignMain}>
+        <div className={styles.alignSearch}>
+          <input
+            className="homePlayerSearchBox"
             ref={searchBox}
             placeholder={t("playerSearch.searchPlaceholder")}
             value={searchTerm}
@@ -73,7 +36,8 @@ export function StatSearch(): React.ReactElement {
               setSearchTerm(ev.target.value)
             }
           />
-          <HomePlayerBigSelectSecondary
+          <select
+            className="homePlayerBigSelectSecondary"
             value={platform}
             onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
               setPlatform(ev.target.value)
@@ -86,35 +50,36 @@ export function StatSearch(): React.ReactElement {
                 </option>
               );
             })}
-          </HomePlayerBigSelectSecondary>
-        </AlignSearch>
+          </select>
+        </div>
         {searchTerm !== "" ? (
-          <StatsLink
+          <Link
+            className={styles.statsLink}
             to={`/stats/${platform}/name/${encodeURIComponent(searchTerm)}`}
           >
-            <BigButtonPrimary type="submit">
+            <button className="bigButtonPrimary" type="submit">
               {t("playerSearch.search")} <RightArrow />
-            </BigButtonPrimary>
-          </StatsLink>
+            </button>
+          </Link>
         ) : (
           // if no name is filled in
-          <BigButtonPrimary type="submit">
+          <button className="bigButtonPrimary" type="submit">
             {t("playerSearch.search")} <RightArrow />
-          </BigButtonPrimary>
+          </button>
         )}
-      </AlignMain>
+      </div>
     </form>
   );
 }
 
 function Main(): React.ReactElement {
   return (
-    <Container>
+    <div className="container">
       <Search />
       <ErrorBoundary>
         <Graphs />
       </ErrorBoundary>
-    </Container>
+    </div>
   );
 }
 
@@ -131,13 +96,14 @@ function Search(): React.ReactElement {
   return (
     <>
       <BackButton text={t("playerSearch.back")} location="/" />
-      <Align>
+      <div className="align">
         <h2>{t("playerSearch.bfStats")}</h2>
-        <AltDescription>{t("playerSearch.description")}</AltDescription>
-      </Align>
-      <Align>
+        <p className={styles.altDescription}>{t("playerSearch.description")}</p>
+      </div>
+      <div className="align">
         <form style={{ position: "relative" }}>
-          <SearchBox
+          <input
+            className="searchBox"
             ref={searchBox}
             placeholder={t("playerSearch.searchPlaceholder")}
             value={searchTerm}
@@ -145,7 +111,8 @@ function Search(): React.ReactElement {
               setSearchTerm(ev.target.value)
             }
           />
-          <BigSelectSecondary
+          <select
+            className="bigSelectSecondary"
             value={platform}
             onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
               setPlatform(ev.target.value)
@@ -158,8 +125,9 @@ function Search(): React.ReactElement {
                 </option>
               );
             })}
-          </BigSelectSecondary>
-          <BigSelectSecondary
+          </select>
+          <select
+            className="bigSelectSecondary"
             value={game}
             onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
               setGame(ev.target.value)
@@ -172,25 +140,25 @@ function Search(): React.ReactElement {
                 </option>
               );
             })}
-          </BigSelectSecondary>
+          </select>
           {searchTerm !== "" ? (
             <Link
               to={`/stats/${platform}/name/${encodeURIComponent(
                 searchTerm,
               )}?game=${game}`}
             >
-              <BigButtonSecondary type="submit">
+              <button className="bigButtonSecondary" type="submit">
                 {t("playerSearch.search")} <RightArrow />
-              </BigButtonSecondary>
+              </button>
             </Link>
           ) : (
             // if no name is filled in
-            <BigButtonSecondary type="submit">
+            <button className="bigButtonSecondary" type="submit">
               {t("playerSearch.search")} <RightArrow />
-            </BigButtonSecondary>
+            </button>
           )}
         </form>
-      </Align>
+      </div>
     </>
   );
 }

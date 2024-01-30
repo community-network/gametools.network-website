@@ -3,49 +3,43 @@ import "../../../../locales/config";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "../../../../assets/scss/App.scss";
-import {
-  Align,
-  AlignW,
-  Box,
-  Row,
-  Column,
-  ButtonLink,
-  PhoneRow,
-} from "../../../Materials";
+import { Box } from "../../../Materials";
 import { ScoreServerPlayer, ScoreTeamList } from "../../../../api/ReturnTypes";
-import { Description, Spacing, Title } from "./Servers";
+import Styles from "./Main.module.scss";
 
-export function ServerScoreboard(props: {
-  game: string;
-  platform: string;
-  stats: ScoreTeamList[];
-}): React.ReactElement {
+export function ServerScoreboard(
+  props: Readonly<{
+    game: string;
+    platform: string;
+    stats: ScoreTeamList[];
+  }>,
+): React.ReactElement {
   const teams = props.stats;
   const { t } = useTranslation();
   const getLanguage = () => window.localStorage.i18nextLng;
   const numberFormat = new Intl.NumberFormat(getLanguage());
   return (
-    <Spacing>
-      <Title>{t("servers.playerlist.main")}</Title>
+    <div className={Styles.spacing}>
+      <h2 className={Styles.title}>{t("servers.playerlist.main")}</h2>
       {teams !== null ? (
         <>
           {teams.map((teamInfo: ScoreTeamList, index: number) => {
             return (
               <div key={index}>
-                <Align>
+                <div className="align">
                   <h3 style={{ margin: ".5rem", marginTop: 0 }}>
                     {t(`servers.factions.${teamInfo.teamid}`)}
                   </h3>
-                </Align>
+                </div>
                 <Box>
                   {teamInfo.players.length !== 0 ? (
                     <>
                       {teamInfo.players.map(
                         (key: ScoreServerPlayer, index: number) => {
                           return (
-                            <Column key={index}>
-                              <Row>
-                                <AlignW>
+                            <div className="column" key={index}>
+                              <div className="row">
+                                <div className="alignW">
                                   {props.game !== "bf2042" && (
                                     <img
                                       src={`https://cdn.gametools.network/${props.game}/${key.rank}.webp`}
@@ -77,34 +71,44 @@ export function ServerScoreboard(props: {
                                       </h4>
                                     </>
                                   </Link>
-                                </AlignW>
-                              </Row>
-                              <Row style={{ flex: 0.4 }}>
+                                </div>
+                              </div>
+                              <div className="row" style={{ flex: 0.4 }}>
                                 <h4 style={{ marginTop: "0.5rem" }}>
                                   {numberFormat.format(key.score)}
                                 </h4>
-                                <Description style={{ lineHeight: 0 }}>
+                                <p
+                                  className={Styles.description}
+                                  style={{ lineHeight: 0 }}
+                                >
                                   {t("servers.leaderboard.row.score")}
-                                </Description>
-                              </Row>
-                              <Row style={{ flex: 0.4 }}>
+                                </p>
+                              </div>
+                              <div className="row" style={{ flex: 0.4 }}>
                                 <h4 style={{ marginTop: "0.5rem" }}>
                                   {numberFormat.format(key.kills)}
                                 </h4>
-                                <Description style={{ lineHeight: 0 }}>
+                                <p
+                                  className={Styles.description}
+                                  style={{ lineHeight: 0 }}
+                                >
                                   {t("servers.leaderboard.row.kills")}
-                                </Description>
-                              </Row>
-                              <Row style={{ flex: 0.4 }}>
+                                </p>
+                              </div>
+                              <div className="row" style={{ flex: 0.4 }}>
                                 <h4 style={{ marginTop: "0.5rem" }}>
                                   {numberFormat.format(key.deaths)}
                                 </h4>
-                                <Description style={{ lineHeight: 0 }}>
+                                <p
+                                  className={Styles.description}
+                                  style={{ lineHeight: 0 }}
+                                >
                                   {t("servers.leaderboard.row.deaths")}
-                                </Description>
-                              </Row>
-                              <PhoneRow>
-                                <ButtonLink
+                                </p>
+                              </div>
+                              <div className="phoneRow">
+                                <a
+                                  className="buttonLink"
                                   style={{
                                     marginTop: ".5rem",
                                   }}
@@ -117,9 +121,9 @@ export function ServerScoreboard(props: {
                                   rel="noreferrer"
                                 >
                                   {t("stats.view")}
-                                </ButtonLink>
-                              </PhoneRow>
-                            </Column>
+                                </a>
+                              </div>
+                            </div>
                           );
                         },
                       )}
@@ -137,6 +141,6 @@ export function ServerScoreboard(props: {
           <p>{t("servers.playerlist.empty")}</p>
         </Box>
       )}
-    </Spacing>
+    </div>
   );
 }

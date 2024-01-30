@@ -11,7 +11,11 @@ const LanguageSelector = (): JSX.Element => {
   };
 
   return (
-    <SelectSecondary value={getLanguage()} onChange={changeLanguage}>
+    <select
+      className="selectSecondary"
+      value={getLanguage()}
+      onChange={changeLanguage}
+    >
       <option value="en-US">English</option>
       <option value="zh-CN">简体中文</option>
       <option value="tr-TR">Türkçe</option>
@@ -19,7 +23,7 @@ const LanguageSelector = (): JSX.Element => {
       <option value="de-DE">Deutsch</option>
       <option value="nl-NL">Nederlands</option>
       <option value="fr-FR">Français</option>
-    </SelectSecondary>
+    </select>
   );
 };
 

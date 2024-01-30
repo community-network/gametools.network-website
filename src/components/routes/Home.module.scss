@@ -1,0 +1,75 @@
+.pageRow {
+  @media screen and (min-width: 1800px) {
+    flex: 0;
+    min-width: 970px;
+  }
+
+  @media screen and (max-width: 1800px) {
+    flex: 100%;
+  }
+}
+
+.image {
+  height: 356px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .blur {
+    height: 356px;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4872) 100%);
+  }
+}
+
+.welcome {
+  position: absolute;
+  top: 6rem;
+  @media (min-width: 750px) {
+    padding-left: 8.33%;
+  }
+  @media (max-width: 750px) {
+    padding-left: 2%;
+  }
+  max-width: 40em;
+
+  .text {
+    --color-text: var(--color-alt-text);
+    white-space: pre-line;
+    font-size: 18px;
+    @media (min-width: 548px) {
+      margin-bottom: 2.5rem;
+    }
+    @media (max-width: 358px) {
+      margin-top: 0;
+    }
+  }
+}
+
+.description {
+  white-space: pre-line;
+}
+
+.cloudImage {
+  height: 479px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.gameLogo {
+  margin-right: 35px;
+  margin-bottom: 10px;
+}
+
+.adBox {
+  padding-left: 8.33%;
+  margin-top: 0.9rem;
+  display: inline;
+  position: absolute;
+  left: 935px;
+  width: 225px;
+
+  @media (max-width: 1300px) {
+    display: none;
+  }
+}

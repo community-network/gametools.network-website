@@ -3,37 +3,35 @@ import "../../../../locales/config";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "../../../../assets/scss/App.scss";
-import { Align, Circle } from "../../../Materials";
 import { ServerOwnerResult } from "../../../../api/ReturnTypes";
-import {
-  OriginDescription,
-  OriginName,
-  OriginProfile,
-  Spacing,
-} from "./Playgrounds";
 import { useQuery } from "@tanstack/react-query";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { serverToStatsPlatform } from "../../../../api/static";
 import sslFix from "../../../functions/fixEaAssets";
+import Styles from "./Main.module.scss";
 
-export function PlaygroundOwner(props: {
-  owner: ServerOwnerResult;
-  game: string;
-}): React.ReactElement {
+export function PlaygroundOwner(
+  props: Readonly<{
+    owner: ServerOwnerResult;
+    game: string;
+  }>,
+): React.ReactElement {
   const { t } = useTranslation();
   let { owner } = props;
   if (owner === null) {
     return (
-      <Spacing>
+      <div className={Styles.spacing}>
         <h3>{t("playgrounds.owner.main")}</h3>
-        <Align>
-          <Circle style={{ marginTop: ".5rem" }} />
+        <div className="align">
+          <span className="circle" style={{ marginTop: ".5rem" }} />
           <div>
-            <OriginName>{t("404")}</OriginName>
-            <OriginDescription>{t("playgrounds.owner.none")}</OriginDescription>
+            <h2 className={Styles.originName}>{t("404")}</h2>
+            <h4 className={Styles.originDescription}>
+              {t("playgrounds.owner.none")}
+            </h4>
           </div>
-        </Align>
-      </Spacing>
+        </div>
+      </div>
     );
   }
 
@@ -54,33 +52,33 @@ export function PlaygroundOwner(props: {
     });
     if (loading) {
       return (
-        <Spacing>
+        <div className={Styles.spacing}>
           <h3>{t("servers.owner.main")}</h3>
-          <Align>
-            <Circle style={{ marginTop: ".5rem" }} />
+          <div className="align">
+            <span className="circle" style={{ marginTop: ".5rem" }} />
             <div>
-              <OriginName>{t("loading")}</OriginName>
-              <OriginDescription>
+              <h2 className={Styles.originName}>{t("loading")}</h2>
+              <h4 className={Styles.originDescription}>
                 {t("stats.originDescription")}
-              </OriginDescription>
+              </h4>
             </div>
-          </Align>
-        </Spacing>
+          </div>
+        </div>
       );
     } else if (error) {
       return (
-        <Spacing>
+        <div className={Styles.spacing}>
           <h3>{t("servers.owner.main")}</h3>
-          <Align>
-            <Circle style={{ marginTop: ".5rem" }} />
+          <div className="align">
+            <span className="circle" style={{ marginTop: ".5rem" }} />
             <div>
-              <OriginName>{t("404")}</OriginName>
-              <OriginDescription>
+              <h2 className={Styles.originName}>{t("404")}</h2>
+              <h4 className={Styles.originDescription}>
                 {t("stats.originDescription")}
-              </OriginDescription>
+              </h4>
             </div>
-          </Align>
-        </Spacing>
+          </div>
+        </div>
       );
     } else {
       owner = data;
@@ -88,9 +86,9 @@ export function PlaygroundOwner(props: {
   }
 
   return (
-    <Spacing>
+    <div className={Styles.spacing}>
       <h2>{t("playgrounds.owner.main")}</h2>
-      <Align>
+      <div className="align">
         <Link
           to={`/stats/pc/playerid/${owner.id}?game=${
             serverToStatsPlatform[owner.platformId] || "pc"
@@ -98,7 +96,11 @@ export function PlaygroundOwner(props: {
             props.game
           }&name=${encodeURIComponent(owner.name)}`}
         >
-          <OriginProfile src={sslFix(owner?.avatar)} loading="lazy" />
+          <img
+            className={Styles.originProfile}
+            src={sslFix(owner?.avatar)}
+            loading="lazy"
+          />
         </Link>
         <Link
           to={`/stats/pc/playerid/${owner.id}?game=${
@@ -108,17 +110,17 @@ export function PlaygroundOwner(props: {
           }&name=${encodeURIComponent(owner.name)}`}
         >
           <div>
-            <OriginName>
+            <h2 className={Styles.originName}>
               {owner?.name !== ""
                 ? owner?.name
                 : t("playgrounds.owner.unknown")}
-            </OriginName>
-            <OriginDescription>
+            </h2>
+            <h4 className={Styles.originDescription}>
               {t("stats.originDescription")}
-            </OriginDescription>
+            </h4>
           </div>
         </Link>
-      </Align>
-    </Spacing>
+      </div>
+    </div>
   );
 }

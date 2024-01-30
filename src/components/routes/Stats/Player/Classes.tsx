@@ -1,11 +1,12 @@
 import * as React from "react";
 import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import { Box, Column, Row } from "../../../Materials";
-import { Spacing, Views, ListImage } from "./Main";
+import { Box } from "../../../Materials";
+import { Views } from "./Main";
 import { MainStatsClasses } from "../../../../api/ReturnTypes";
 import { addSeconds } from "date-fns";
 import sslFix from "../../../functions/fixEaAssets";
+import Styles from "./Main.module.scss";
 
 export function ViewClasses(props: Readonly<Views>): React.ReactElement {
   const { t, i18n } = useTranslation();
@@ -14,15 +15,15 @@ export function ViewClasses(props: Readonly<Views>): React.ReactElement {
   if (!props.loading && !props.error) {
     const classes = props.stats.classes;
     return (
-      <Spacing>
+      <div className={Styles.spacing}>
         <Box>
           <>
             <h3>{t("stats.classes.main")}</h3>
             {classes.map((key: MainStatsClasses, index: number) => {
               return (
                 <div key={index}>
-                  <Column>
-                    <Row>
+                  <div className="column">
+                    <div className="row">
                       <h4 style={{ margin: 0 }}>
                         {props.game === "bf2042" ? (
                           <>{key.statName}</>
@@ -34,62 +35,63 @@ export function ViewClasses(props: Readonly<Views>): React.ReactElement {
                           </>
                         )}
                       </h4>
-                      <ListImage
+                      <img
+                        className={Styles.listImage}
                         style={{ height: "3rem" }}
                         src={sslFix(key?.image)}
                         loading="lazy"
                       />
-                    </Row>
+                    </div>
                     {key?.score !== undefined && (
-                      <Row>
+                      <div className="row">
                         <h4 style={{ margin: 0 }}>
                           {numberFormat.format(key.score)}
                         </h4>
                         <p>{t("stats.classes.amounts.score")}</p>
-                      </Row>
+                      </div>
                     )}
                     {key?.kills !== undefined && (
-                      <Row>
+                      <div className="row">
                         <h4 style={{ margin: 0 }}>
                           {numberFormat.format(key.kills)}
                         </h4>
                         <p>{t("stats.classes.amounts.kills")}</p>
-                      </Row>
+                      </div>
                     )}
                     {key?.kpm !== undefined && (
-                      <Row>
+                      <div className="row">
                         <h4 style={{ margin: 0 }}>
                           {numberFormat.format(key.kpm)}
                         </h4>
                         <p>{t("stats.classes.amounts.kpm")}</p>
-                      </Row>
+                      </div>
                     )}
                     {key?.secondsPlayed !== undefined && (
-                      <Row>
+                      <div className="row">
                         <h4 style={{ margin: 0 }}>
                           {t("change", {
                             change: addSeconds(new Date(), key.secondsPlayed),
                           })}
                         </h4>
                         <p>{t("stats.classes.amounts.timePlayed")}</p>
-                      </Row>
+                      </div>
                     )}
-                  </Column>
+                  </div>
                 </div>
               );
             })}
           </>
         </Box>
-      </Spacing>
+      </div>
     );
   } else {
     return (
-      <Spacing>
+      <div className={Styles.spacing}>
         <Box>
           <h3>{t("stats.classes.main")}</h3>
           <p>{t("loading")}</p>
         </Box>
-      </Spacing>
+      </div>
     );
   }
 }

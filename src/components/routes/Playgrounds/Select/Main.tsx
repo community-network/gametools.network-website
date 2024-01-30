@@ -2,22 +2,9 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
-import {
-  AltText,
-  SearchBox,
-  BigButtonSecondary,
-  RightArrow,
-  Container,
-  Align,
-  BackButton,
-} from "../../../Materials";
-
-export const AltDescription = styled.p`
-  ${AltText}
-  margin-left: 24px;
-`;
+import { RightArrow, BackButton } from "../../../Materials";
+import Styles from "./Main.module.scss";
 
 interface IUrl {
   valid_url: boolean;
@@ -87,15 +74,18 @@ function Main(): React.ReactElement {
   }
 
   return (
-    <Container>
+    <div className="container">
       <BackButton text={t("getPlaygrounds.back")} location="/" />
-      <Align>
+      <div className="align">
         <h2>{t("getPlaygrounds.main")}</h2>
-        <AltDescription>{t("getPlaygrounds.description")}</AltDescription>
-      </Align>
-      <Align>
+        <p className={Styles.altDescription}>
+          {t("getPlaygrounds.description")}
+        </p>
+      </div>
+      <div className="align">
         <form>
-          <SearchBox
+          <input
+            className="searchBox"
             placeholder={t("getPlaygrounds.getInfo")}
             value={searchTerm}
             onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
@@ -104,20 +94,20 @@ function Main(): React.ReactElement {
           />
           {playground !== "" ? (
             <Link to={`/playgrounds/bf2042/${getter}/${playground}`}>
-              <BigButtonSecondary type="submit">
+              <button className="bigButtonSecondary" type="submit">
                 {t("getPlaygrounds.show")} <RightArrow />
-              </BigButtonSecondary>
+              </button>
             </Link>
           ) : (
             // if no valid playground is filled in
             <></>
-            // <BigButtonSecondary disabled={true} type="submit">
+            // <button className="bigButtonSecondary" disabled={true} type="submit">
             //   {t("getPlaygrounds.show")} <RightArrow />
-            // </BigButtonSecondary>
+            // </button>
           )}
         </form>
-      </Align>
-    </Container>
+      </div>
+    </div>
   );
 }
 

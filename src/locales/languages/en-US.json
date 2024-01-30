@@ -231,6 +231,7 @@
   "stats": {
     "view": "View stats",
     "back": "Main page",
+    "profileImage": "Profile image",
     "originDescription": "User profile",
     "detailedName": "Detailed stats",
     "overview": "Overview",
@@ -328,7 +329,8 @@
     "platoon": {
       "none": "Player isn't in any platoon",
       "noMain": "Player doesn't represent one platoon as their main",
-      "noDescription": "The platoon doesn't have a description"
+      "noDescription": "The platoon doesn't have a description",
+      "emblem": "Platoon emblem"
     },
     "playSession": {
       "main": "Battlefield playsessions",

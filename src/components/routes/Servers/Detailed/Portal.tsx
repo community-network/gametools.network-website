@@ -3,49 +3,50 @@ import background from "../../../../assets/icon/portal.svg";
 import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
 import "../../../../assets/scss/App.scss";
-import { AlignW } from "../../../Materials";
 import { ServerInfoResult } from "../../../../api/ReturnTypes";
-import {
-  OriginDescription,
-  OriginName,
-  OriginProfile,
-  Spacing,
-} from "./Servers";
+import Styles from "./Main.module.scss";
 
-export function ServerConfig(props: {
-  serverInfo: ServerInfoResult;
-}): React.ReactElement {
+export function ServerConfig(
+  props: Readonly<{
+    serverInfo: ServerInfoResult;
+  }>,
+): React.ReactElement {
   const { serverInfo } = props;
   const { t } = useTranslation();
 
   if (serverInfo?.configNameTranslation !== "") {
     return (
-      <Spacing>
+      <div className={Styles.spacing}>
         <h2>{t("servers.portal.main")}</h2>
-        <AlignW>
-          <OriginProfile src={background} />
+        <div className="alignW">
+          <img className={Styles.originProfile} src={background} />
           <div>
-            <OriginName>{serverInfo?.configNameTranslation}</OriginName>
-            <OriginDescription>
+            <h2 className={Styles.originName}>
+              {serverInfo?.configNameTranslation}
+            </h2>
+            <h4 className={Styles.originDescription}>
               {serverInfo?.configDescriptionTranslation}
-            </OriginDescription>
+            </h4>
           </div>
-        </AlignW>
-      </Spacing>
+        </div>
+      </div>
     );
   }
   return (
-    <Spacing>
+    <div className={Styles.spacing}>
       <h2>{t("servers.portal.main")}</h2>
-      <AlignW>
-        <OriginProfile src={background} />
+      <div className="alignW">
+        <img className={Styles.originProfile} src={background} />
         <div>
-          <OriginName>{serverInfo?.configName}</OriginName>
-          <OriginDescription style={{ maxWidth: "600px" }}>
+          <h2 className={Styles.originName}>{serverInfo?.configName}</h2>
+          <h4
+            className={Styles.originDescription}
+            style={{ maxWidth: "600px" }}
+          >
             {serverInfo?.configDescription}
-          </OriginDescription>
+          </h4>
         </div>
-      </AlignW>
-    </Spacing>
+      </div>
+    </div>
   );
 }

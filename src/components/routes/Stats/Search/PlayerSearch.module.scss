@@ -1,0 +1,37 @@
+%alignT {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+%alignW {
+  @extend %alignT;
+
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.alignMain {
+  @extend %alignT;
+  @media screen and (min-width: 1000px) {
+    flex-wrap: nowrap;
+  }
+}
+
+.alignSearch {
+  @extend %alignW;
+  @media screen and (min-width: 1000px) {
+    flex-wrap: nowrap;
+  }
+}
+
+.altDescription {
+  --color-text: var(--color-alt-text);
+  margin-left: 24px;
+}
+
+.statsLink {
+  @media screen and (max-width: 530px) {
+    width: 100%;
+    margin-right: 15px;
+  }
+}

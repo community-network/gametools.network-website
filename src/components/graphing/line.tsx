@@ -17,21 +17,13 @@ import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
 import { GametoolsApi } from "../../api/GametoolsApi";
 import { graphGames, gameGraphConvert, graphColors } from "../../api/static";
-import {
-  Align,
-  Box,
-  BoxSpacing,
-  BoxWrap,
-  Column,
-  Row,
-  SelectPrimary,
-} from "../Materials";
+import { Box } from "../Materials";
 import { GlobalGraphReturn } from "../../api/GametoolsApi";
 import { useMeasure } from "react-use";
-import styled from "styled-components";
 import ErrorBoundary from "../functions/ErrorBoundary";
 import { ServerPieChart } from "./pie";
 import { DetailedServerInfo } from "../../api/ReturnTypes";
+import styles from "./line.module.scss";
 
 ChartJS.register(
   zoomPlugin,
@@ -619,17 +611,6 @@ export function GlobalGraph(props: GlobalInfo): React.ReactElement {
   );
 }
 
-const Title = styled.h1`
-  margin-top: 0;
-  margin-bottom: 5px;
-`;
-
-const AmountBox = styled.div`
-  padding-left: 24px;
-  margin-right: 60px;
-  margin-bottom: 15px;
-`;
-
 function TotalStatistic(props: {
   amounts: number[];
   text: string;
@@ -643,15 +624,17 @@ function TotalStatistic(props: {
   const difference =
     ((lastAmount - secondToLastAmount) * 100) / secondToLastAmount;
   return (
-    <AmountBox>
-      <Align>
+    <div className={styles.amountBox}>
+      <div className="align">
         {loading ? (
-          <Title style={{ color: "gray" }}>{t("loading")}</Title>
+          <h1 className={styles.title} style={{ color: "gray" }}>
+            {t("loading")}
+          </h1>
         ) : (
           <>
-            <Title>
+            <h1 className={styles.title}>
               {lastAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
-            </Title>
+            </h1>
             <div
               style={{
                 color: difference < 0 ? "#FE143E" : "#14FE72",
@@ -662,9 +645,9 @@ function TotalStatistic(props: {
             </div>
           </>
         )}
-      </Align>
+      </div>
       <div>{props.text}</div>
-    </AmountBox>
+    </div>
   );
 }
 
@@ -734,19 +717,21 @@ export function ServerGraphQuery(props: ServerGraphData): React.ReactElement {
   return (
     <ErrorBoundary>
       <div style={{ maxWidth: "45rem" }}>
-        <Column>
-          <Row>
+        <div className="column">
+          <div className="row">
             <h2>{t("servers.graph.main")}</h2>
             <ServerGraph stats={stats} loading={loading} />
-          </Row>
-          <Row
+          </div>
+          <div
+            className="row"
             style={{
               maxWidth: "200px",
               display: "flex",
               flexDirection: "column",
             }}
           >
-            <SelectPrimary
+            <select
+              className="selectPrimary"
               style={{
                 margin: 0,
                 marginLeft: "14px",
@@ -765,10 +750,10 @@ export function ServerGraphQuery(props: ServerGraphData): React.ReactElement {
               ) : (
                 <></>
               )}
-            </SelectPrimary>
+            </select>
             <ServerPieChart stats={stats} chartValues={pieGraphType} />
-          </Row>
-        </Column>
+          </div>
+        </div>
       </div>
     </ErrorBoundary>
   );
@@ -793,8 +778,8 @@ function ServerGraph(props: {
     }) || [];
 
   return (
-    <BoxSpacing style={{ maxWidth: "600px" }}>
-      <BoxWrap>
+    <div className="box" style={{ maxWidth: "600px" }}>
+      <div className="wrap">
         {props.loading ? (
           <div style={{ height: "200px" }}>
             <p style={{ marginLeft: "1rem" }}>{t("loading")}</p>
@@ -868,8 +853,8 @@ function ServerGraph(props: {
             }}
           />
         )}
-      </BoxWrap>
-    </BoxSpacing>
+      </div>
+    </div>
   );
 }
 
@@ -882,10 +867,10 @@ function TotalGraph(props: NewGraphData): React.ReactElement {
   });
 
   return (
-    <BoxSpacing style={{ maxWidth: "922px" }}>
-      <BoxWrap>
+    <div className="box" style={{ maxWidth: "922px" }}>
+      <div className="wrap">
         <p style={{ position: "absolute", marginTop: "25px" }}>
-          <Align>
+          <div className="align">
             <TotalStatistic
               amounts={props.stats?.soldierAmount}
               text={t("home.graphs.totalPlaying")}
@@ -896,7 +881,7 @@ function TotalGraph(props: NewGraphData): React.ReactElement {
               text={t("home.graphs.activeServers")}
               loading={props.loading}
             />
-          </Align>
+          </div>
         </p>
         <Line
           ref={chartRef}
@@ -959,7 +944,7 @@ function TotalGraph(props: NewGraphData): React.ReactElement {
             ],
           }}
         />
-      </BoxWrap>
-    </BoxSpacing>
+      </div>
+    </div>
   );
 }

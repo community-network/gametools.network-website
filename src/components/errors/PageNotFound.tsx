@@ -6,15 +6,15 @@ function PageNotFound(): React.ReactElement {
   const { t } = useTranslation();
   document.title = `${t("siteFullName")} | ${t("404")}`;
   return (
-    <Container>
+    <div className="container">
       <h1>{t("pageNotFound.main")}</h1>
       <p>{t("pageNotFound.description")}</p>
-      <PrimaryButtonLink style={{ width: "140px" }} href="/">
+      <a className="primaryButtonLink" style={{ width: "140px" }} href="/">
         {t("pageNotFound.home")}
-      </PrimaryButtonLink>
+      </a>
       <br></br>
       <br></br>
-    </Container>
+    </div>
   );
 }
 

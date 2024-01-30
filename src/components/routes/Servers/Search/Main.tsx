@@ -2,28 +2,10 @@ import * as React from "react";
 import "../../../../locales/config";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
-import styled from "styled-components";
 import "../../../../assets/scss/App.scss";
 import { BF2042Player, GametoolsApi } from "../../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
-import {
-  AltText,
-  SearchBox,
-  Container,
-  BigSelectSecondary,
-  SelectPrimary,
-  Align,
-  Bf2042SearchBox,
-  Bf2042BigSelectSecondary,
-  Alignbf2042Search,
-  BackButton,
-  SmallSearchBox,
-  Box,
-  InputItem,
-  BigButtonSecondaryBox,
-  CheckItem,
-  SmallButtonSecondary,
-} from "../../../Materials";
+import { BackButton, Box, InputItem, CheckItem } from "../../../Materials";
 import { getLanguage } from "../../../../locales/config";
 import {
   dice,
@@ -38,58 +20,7 @@ import {
 } from "../../../../api/static";
 import { Results } from "./Results";
 import { useLocalStorage } from "react-use";
-
-const AltDescription = styled.p`
-  ${AltText}
-  margin-left: 24px;
-`;
-
-const Title = styled.h2`
-  margin-top: 2rem;
-`;
-
-const ServerPageColumn = styled.div`
-  @media screen and (min-width: 1000px) {
-    display: flex;
-    flex-flow: no-wrap;
-    align-items: flex-start;
-  }
-`;
-
-const ServerPageFilters = styled.div`
-  @media screen and (max-width: 1000px) {
-    display: flex;
-    flex-wrap: wrap;
-  }
-`;
-
-const ServerPageFilterRow = styled.div`
-  min-width: 8rem;
-  margin-right: 1rem;
-`;
-
-const ServerPageRow = styled.div`
-  @media screen and (min-width: 1300px) {
-    flex: 0;
-    min-width: 922px;
-  }
-  @media screen and (max-width: 1300px) {
-    flex: 100%;
-  }
-`;
-
-const Arrow = styled.i`
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-  margin-left: 6px;
-`;
-
-const RemoveIcon = styled.b`
-  margin-right: 8px;
-  cursor: pointer;
-`;
+import styles, { serverPageColumn } from "./Main.module.scss";
 
 function DropdownArrow(props: {
   item: string;
@@ -104,7 +35,8 @@ function DropdownArrow(props: {
 }) {
   const { item, dropdownOpen, setDropdownOpen } = props;
   return (
-    <Arrow
+    <i
+      className={styles.arrow}
       onClick={() => {
         const current = { ...dropdownOpen };
         current[item] = !current[item];
@@ -127,7 +59,8 @@ function ServerSort(props: {
 }) {
   const { t } = useTranslation();
   return (
-    <SelectPrimary
+    <select
+      className="selectPrimary"
       style={{
         marginLeft: "1rem",
         marginTop: "-0.1rem",
@@ -140,7 +73,7 @@ function ServerSort(props: {
       <option value="prefix">{t("servers.sort.serverName")}</option>
       <option value="-playerAmount">{t("servers.sort.playerAmount")}</option>
       <option value="-maxPlayers">{t("servers.sort.maxPlayers")}</option>
-    </SelectPrimary>
+    </select>
   );
 }
 
@@ -198,8 +131,9 @@ function ServerOwnerSearch(props: {
 
   return (
     <>
-      <Align>
-        <SmallSearchBox
+      <div className="align">
+        <input
+          className="smallSearchBox"
           ref={searchBox}
           placeholder={t(`serverSearch.serverOwner.main`)}
           value={searchTerm}
@@ -218,13 +152,14 @@ function ServerOwnerSearch(props: {
           }}
           style={{ position: "relative" }}
         /> */}
-        <SmallButtonSecondary
+        <button
+          className="smallButtonSecondary"
           style={{ marginRight: ".5rem", marginBottom: 0 }}
           onClick={addItem}
         >
           {t("serverSearch.serverOwner.add")}
-        </SmallButtonSecondary>
-      </Align>
+        </button>
+      </div>
       {ownerList.map((value, index) => {
         return (
           <p
@@ -235,7 +170,9 @@ function ServerOwnerSearch(props: {
               marginBottom: "0px",
             }}
           >
-            <RemoveIcon onClick={() => removeItem(value)}>&#10006;</RemoveIcon>
+            <b className={styles.removeIcon} onClick={() => removeItem(value)}>
+              &#10006;
+            </b>
             {value?.name}
           </p>
         );
@@ -457,23 +394,25 @@ function Main(): React.ReactElement {
       }),
   });
   return (
-    <Container>
+    <div className="container">
       <BackButton text={t("serverSearch.back")} location="/" />
-      <Align>
+      <div className="align">
         <h2>{t("serverSearch.serverInfo")}</h2>
-        <AltDescription>{t("serverSearch.description")}</AltDescription>
-      </Align>
-      <Align>
+        <p className={styles.altDescription}>{t("serverSearch.description")}</p>
+      </div>
+      <div className="align">
         {gameName === "bf2042" ? (
-          <Alignbf2042Search>
-            <Bf2042SearchBox
+          <div className={styles.alignbf2042Search}>
+            <input
+              className="bf2042SearchBox"
               placeholder={t(`serverSearch.searchPlaceholder.${searchType}`)}
               value={searchTerm}
               onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
                 setSearchTerm(ev.target.value)
               }
             />
-            <Bf2042BigSelectSecondary
+            <select
+              className="bf2042BigSelectSecondary"
               value={searchType}
               onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
                 setSearchType(ev.target.value)
@@ -483,10 +422,11 @@ function Main(): React.ReactElement {
               <option value="experiencename">
                 {t("serverSearch.type.playground")}
               </option>
-            </Bf2042BigSelectSecondary>
-          </Alignbf2042Search>
+            </select>
+          </div>
         ) : (
-          <SearchBox
+          <input
+            className="searchBox"
             placeholder={t(`serverSearch.searchPlaceholder.${searchType}`)}
             value={searchTerm}
             onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
@@ -494,7 +434,8 @@ function Main(): React.ReactElement {
             }
           />
         )}
-        <BigSelectSecondary
+        <select
+          className="bigSelectSecondary"
           value={gameName}
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
             setGameName(ev.target.value)
@@ -507,8 +448,9 @@ function Main(): React.ReactElement {
               </option>
             );
           })}
-        </BigSelectSecondary>
-        <BigSelectSecondary
+        </select>
+        <select
+          className="bigSelectSecondary"
           disabled={
             !frostbite3.includes(gameName) && !extraGames.includes(gameName)
           }
@@ -526,8 +468,9 @@ function Main(): React.ReactElement {
               );
             },
           )}
-        </BigSelectSecondary>
-        <BigSelectSecondary
+        </select>
+        <select
+          className="bigSelectSecondary"
           disabled={!frostbite3.includes(gameName)}
           value={platform}
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
@@ -546,16 +489,16 @@ function Main(): React.ReactElement {
               <option value="xboxseries">{t("platforms.xboxseries")}</option>
             </>
           )}
-        </BigSelectSecondary>
+        </select>
         {Object.keys(projects).includes(gameName) && (
           <a href={projects[gameName]} target="_blank" rel="noreferrer">
-            <BigButtonSecondaryBox>
+            <button className="bigButtonSecondaryBox">
               {t("serverSearch.showProject")}
-            </BigButtonSecondaryBox>
+            </button>
           </a>
         )}
-        {/* <BigButtonSecondary type="submit">{t("serverSearch.search")} <RightArrow/></BigButtonSecondary> */}
-      </Align>
+        {/* <button className="bigButtonSecondary" type="submit">{t("serverSearch.search")} <RightArrow/></button> */}
+      </div>
       {oldJoinGames.includes(gameName) ||
         (frostbiteJoinGames.includes(gameName) && (
           <p
@@ -572,8 +515,9 @@ function Main(): React.ReactElement {
             </Trans>
           </p>
         ))}
-      <Align>
-        <Title
+      <div className="align">
+        <h2
+          className={styles.title}
           style={{
             marginLeft: "0.5rem",
             marginTop: !newTitles.includes(gameName) ? "-0.4rem" : "0rem",
@@ -581,7 +525,7 @@ function Main(): React.ReactElement {
           }}
         >
           {t("serverSearch.results")}
-        </Title>
+        </h2>
         <ServerSort sortType={sortType} setSortType={setSortType} />
         {(dice.includes(gameName) || extraGames.includes(gameName)) && (
           <div
@@ -607,8 +551,8 @@ function Main(): React.ReactElement {
             </p>
           </div>
         )}
-      </Align>
-      <ServerPageColumn>
+      </div>
+      <div className={styles.serverPageColumn}>
         {(dice.includes(gameName) || extraGames.includes(gameName)) &&
           !hideSideBar && (
             <div>
@@ -618,9 +562,9 @@ function Main(): React.ReactElement {
                 }}
                 innerStyle={{ maxHeight: width >= 1000 ? "600px" : "300px" }}
               >
-                <ServerPageFilters>
+                <div className={styles.serverPageFilters}>
                   {gameName !== "bf3" && gameName !== "bfh" && (
-                    <ServerPageFilterRow>
+                    <div className={styles.serverPageFilterRow}>
                       <h2 style={{ marginBottom: "0.4rem" }}>
                         {t("serverSearch.region")}
                         <DropdownArrow
@@ -665,10 +609,10 @@ function Main(): React.ReactElement {
                             );
                           },
                         )}
-                    </ServerPageFilterRow>
+                    </div>
                   )}
                   {gameName === "bf2042" && (
-                    <ServerPageFilterRow>
+                    <div className={styles.serverPageFilterRow}>
                       <h2 style={{ marginBottom: "0.4rem" }}>
                         {t("serverSearch.serverOwner.main")}
                         <DropdownArrow
@@ -683,10 +627,10 @@ function Main(): React.ReactElement {
                           setOwnerList={setbf2042OwnerList}
                         />
                       )}
-                    </ServerPageFilterRow>
+                    </div>
                   )}
                   {dice.includes(gameName) && gameName !== "bf2042" && (
-                    <ServerPageFilterRow>
+                    <div className={styles.serverPageFilterRow}>
                       <h2 style={{ marginBottom: "0.4rem" }}>
                         {t("serverSearch.playerFilter")}
                         <DropdownArrow
@@ -731,12 +675,12 @@ function Main(): React.ReactElement {
                             />
                           );
                         })}
-                    </ServerPageFilterRow>
+                    </div>
                   )}
                   {dice.includes(gameName) &&
                     gameName !== "bf4" &&
                     gameName !== "bfv" && (
-                      <ServerPageFilterRow>
+                      <div className={styles.serverPageFilterRow}>
                         <h2 style={{ marginBottom: "0.4rem" }}>
                           {t("serverSearch.gamemode")}
                           <DropdownArrow
@@ -776,10 +720,10 @@ function Main(): React.ReactElement {
                               />
                             );
                           })}
-                      </ServerPageFilterRow>
+                      </div>
                     )}
                   {gameName !== "bf4" && dice.includes(gameName) && (
-                    <ServerPageFilterRow>
+                    <div className={styles.serverPageFilterRow}>
                       <h2 style={{ marginBottom: "0.4rem" }}>
                         {t("serverSearch.map")}
                         <DropdownArrow
@@ -819,10 +763,10 @@ function Main(): React.ReactElement {
                             />
                           );
                         })}
-                    </ServerPageFilterRow>
+                    </div>
                   )}
                   {frostbite3.includes(gameName) && (
-                    <ServerPageFilterRow>
+                    <div className={styles.serverPageFilterRow}>
                       <h2 style={{ marginBottom: "0.4rem" }}>
                         {t("servers.password")}
                         <DropdownArrow
@@ -849,13 +793,13 @@ function Main(): React.ReactElement {
                             />
                           );
                         })}
-                    </ServerPageFilterRow>
+                    </div>
                   )}
-                </ServerPageFilters>
+                </div>
               </Box>
             </div>
           )}
-        <ServerPageRow>
+        <div className={styles.serverPageRow}>
           <Results
             mainPage={false}
             game={gameName}
@@ -865,18 +809,11 @@ function Main(): React.ReactElement {
             sortType={sortType}
             spacingStyle={{ maxWidth: "99rem" }}
           />
-        </ServerPageRow>
-      </ServerPageColumn>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 }
-
-const AlignHomeServers = styled(Align)`
-  margin-top: 1.1rem;
-  @media screen and (max-width: 530px) {
-    width: 100%;
-  }
-`;
 
 export function ServerSearch(): React.ReactElement {
   const [searchTerm, setSearchTerm] = React.useState<string>("");
@@ -919,11 +856,12 @@ export function ServerSearch(): React.ReactElement {
   });
   return (
     <>
-      <AlignHomeServers>
+      <div className={styles.alignHomeServers}>
         <h2 style={{ marginTop: 0, marginBottom: "1.2rem" }}>
           {t("serverSearch.servers")}
         </h2>
-        <SelectPrimary
+        <select
+          className="selectPrimary"
           style={{ marginLeft: "1rem" }}
           value={gameName}
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void => {
@@ -939,8 +877,9 @@ export function ServerSearch(): React.ReactElement {
               </option>
             );
           })}
-        </SelectPrimary>
-        <SmallSearchBox
+        </select>
+        <input
+          className="smallSearchBox"
           style={{ marginLeft: "1rem", width: "16rem" }}
           placeholder={t(`serverSearch.searchPlaceholder.servername`)}
           value={searchTerm}
@@ -958,9 +897,9 @@ export function ServerSearch(): React.ReactElement {
               </Trans>
             </p>
           ))}
-      </AlignHomeServers>
-      <ServerPageColumn>
-        <ServerPageRow>
+      </div>
+      <div className={styles.serverPageColumn}>
+        <div className={styles.serverPageRow}>
           <Results
             game={gameName}
             loading={loading}
@@ -970,13 +909,13 @@ export function ServerSearch(): React.ReactElement {
             sortType={"-prefix"}
             spacingStyle={{ maxWidth: "99rem" }}
           />
-        </ServerPageRow>
+        </div>
         <Box
           style={{ minWidth: "240px", maxWidth: "20rem" }}
           innerStyle={{ maxHeight: "510px" }}
         >
-          <ServerPageFilters>
-            <ServerPageFilterRow>
+          <div className={styles.serverPageFilters}>
+            <div className={styles.serverPageFilterRow}>
               <h2 style={{ marginBottom: "0.4rem" }}>
                 {t("serverSearch.platform")}
               </h2>
@@ -1033,8 +972,8 @@ export function ServerSearch(): React.ReactElement {
                 name={t("platforms.xboxseries")}
                 disabled={!newGen.includes(gameName)}
               />
-            </ServerPageFilterRow>
-            <ServerPageFilterRow>
+            </div>
+            <div className={styles.serverPageFilterRow}>
               <h2 style={{ marginBottom: "0.4rem" }}>
                 {t("serverSearch.region")}
               </h2>
@@ -1078,10 +1017,10 @@ export function ServerSearch(): React.ReactElement {
                   );
                 },
               )}
-            </ServerPageFilterRow>
-          </ServerPageFilters>
+            </div>
+          </div>
         </Box>
-      </ServerPageColumn>
+      </div>
       <Link
         to={`/servers?${new URLSearchParams({
           search: searchTerm,
@@ -1091,15 +1030,15 @@ export function ServerSearch(): React.ReactElement {
           limit: 10,
         }).toString()}`}
       >
-        <BigButtonSecondaryBox>
+        <button className="bigButtonSecondaryBox">
           {t("serverSearch.showMore")}
-        </BigButtonSecondaryBox>
+        </button>
       </Link>
       {Object.keys(projects).includes(gameName) && (
         <a href={projects[gameName]} target="_blank" rel="noreferrer">
-          <BigButtonSecondaryBox>
+          <button className="bigButtonSecondaryBox">
             {t("serverSearch.showProject")}
-          </BigButtonSecondaryBox>
+          </button>
         </a>
       )}
     </>

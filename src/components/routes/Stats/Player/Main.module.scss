@@ -1,0 +1,83 @@
+// radio buttons (label)
+
+%smallButtonRadio {
+  background: #1e2028;
+  color: var(--color-m96-text);
+  border: none;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  padding: 0.5rem 1.5rem;
+  margin-right: 1rem;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  font-family: Manrope;
+  font-weight: medium;
+  font-style: normal;
+}
+
+.smallButtonRadio {
+  @extend %smallButtonRadio;
+}
+
+.uncheckedSmallButtonRadio {
+  @extend %smallButtonRadio;
+
+  background: none;
+  filter: none;
+  cursor: pointer;
+
+  :hover {
+    background: var(--color-m96-base);
+  }
+}
+
+.disabledSmallButtonRadio {
+  @extend %smallButtonRadio;
+
+  background: none;
+  filter: none;
+  color: var(--color-m96-alt-text);
+}
+
+.invisableRadioButton {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+
+.radio {
+  // for next-row
+  margin-bottom: 1rem;
+  height: 35px;
+}
+
+.backgroundBar {
+  width: 100%;
+  background-color: #313443;
+  border-radius: 2.5px;
+}
+
+.bar {
+  background-color: #14fed4;
+  height: 5px;
+  border-radius: 2.5px;
+}
+
+.listImage {
+  max-width: 8rem;
+  max-height: 3rem;
+  margin-right: 1.5rem;
+}
+
+.title {
+  margin: 0 33px;
+  padding-bottom: 1rem;
+}
+
+.description {
+  --color-text: var(--color-alt-text);
+}
+
+.spacing {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}

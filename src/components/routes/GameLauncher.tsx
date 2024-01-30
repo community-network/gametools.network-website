@@ -13,24 +13,26 @@ function Launch(): React.ReactElement {
   }
 
   return (
-    <Container>
+    <div className="container">
       <BackButton text={t("serverSearch.back")} location="/" />
       <h2>{t("servers.joinme.launch")}</h2>
       <p>{t("servers.joinme.discord")}</p>
-      <Align style={{ width: "23rem" }}>
-        <ButtonLink
+      <div className="align" style={{ width: "23rem" }}>
+        <a
+          className="buttonLink"
           style={{ marginRight: "1rem" }}
           href="https://joinme.click/download"
         >
           {t("servers.joinme.main")}
-        </ButtonLink>
-        <ButtonLink
+        </a>
+        <a
+          className="buttonLink"
           href={`https://joinme.click/g/${params.gameid}/${params.ip}:${params.port}`}
         >
           {t("servers.joinme.invite")}
-        </ButtonLink>
-      </Align>
-    </Container>
+        </a>
+      </div>
+    </div>
   );
 }
 

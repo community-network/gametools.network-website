@@ -2,60 +2,14 @@ import * as React from "react";
 import "../../../locales/config";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
 import "../../../assets/scss/App.scss";
 import { GametoolsApi } from "../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
-import {
-  AltText,
-  SearchBox,
-  Container,
-  Align,
-  AlignW,
-  Box,
-  BigSelectSecondary,
-  BackButton,
-} from "../../Materials";
+import { Box, BackButton } from "../../Materials";
 import { getLanguage } from "../../../locales/config";
 import { PlatoonResult, PlatoonSearchResult } from "../../../api/ReturnTypes";
 import { useLocalStorage } from "react-use";
-
-const Description = styled.p`
-  ${AltText}
-`;
-
-const AltDescription = styled.p`
-  ${AltText}
-  margin-left: 24px;
-`;
-
-const Title = styled.h2`
-  margin-top: 2rem;
-`;
-
-interface IServerImage {
-  background: string;
-}
-
-const PlatoonImage = styled.div<IServerImage>`
-  margin-top: 12px;
-  height: 4rem;
-  min-width: 4rem;
-  margin-right: 1.5rem;
-  border-radius: 2px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url("${(props) => props.background}");
-`;
-
-const PlatoonInfo = styled.div`
-  margin-top: 16px;
-`;
-
-const Spacing = styled.div`
-  margin-bottom: 2rem;
-`;
+import styles from "./PlatoonSearch.module.scss";
 
 interface Views {
   loading: boolean;
@@ -68,15 +22,18 @@ function PlatoonLoading(): React.ReactElement {
   const { t } = useTranslation();
   return (
     <Box className="box_hover box" link={""} condition={true}>
-      <AlignW>
+      <div className="alignW">
         <div>
-          <PlatoonImage background={""}></PlatoonImage>
+          <div
+            className={styles.platoonImage}
+            style={{ backgroundImage: `url("")` }}
+          ></div>
         </div>
-        <PlatoonInfo>
+        <div className={styles.platoonInfo}>
           <h3 style={{ color: "gray" }}>{t("loading")}</h3>
           <p style={{ color: "gray" }}>0 / 0</p>
-        </PlatoonInfo>
-      </AlignW>
+        </div>
+      </div>
     </Box>
   );
 }
@@ -87,13 +44,15 @@ function Results(props: Views): React.ReactElement {
   if (!props.loading) {
     if (stats?.platoons == undefined || stats?.platoons?.length == 0) {
       return (
-        <Spacing>
-          <Description>{t("platoonSearch.resultNotFound")}</Description>
-        </Spacing>
+        <div className={styles.spacing}>
+          <p className={styles.description}>
+            {t("platoonSearch.resultNotFound")}
+          </p>
+        </div>
       );
     }
     return (
-      <Spacing>
+      <div className={styles.spacing}>
         {stats?.platoons?.map((key: PlatoonResult, index: number) => {
           return (
             <Box
@@ -102,19 +61,22 @@ function Results(props: Views): React.ReactElement {
               condition={true}
               key={index}
             >
-              <AlignW>
+              <div className="alignW">
                 <div>
-                  <PlatoonImage background={key.emblem}></PlatoonImage>
+                  <div
+                    className={styles.platoonImage}
+                    style={{ backgroundImage: `url("${key.emblem}")` }}
+                  ></div>
                 </div>
-                <PlatoonInfo>
+                <div className={styles.platoonInfo}>
                   <h3>{key.name}</h3>
                   <p>{key.currentSize} / 100</p>
-                </PlatoonInfo>
-              </AlignW>
+                </div>
+              </div>
             </Box>
           );
         })}
-      </Spacing>
+      </div>
     );
   } else {
     return (
@@ -179,21 +141,25 @@ function Search(): React.ReactElement {
       }),
   });
   return (
-    <Container>
+    <div className="container">
       <BackButton text={t("platoonSearch.back")} location="/" />
-      <Align>
+      <div className="align">
         <h2>{t("platoonSearch.serverInfo")}</h2>
-        <AltDescription>{t("platoonSearch.description")}</AltDescription>
-      </Align>
-      <Align>
-        <SearchBox
+        <p className={styles.altDescription}>
+          {t("platoonSearch.description")}
+        </p>
+      </div>
+      <div className="align">
+        <input
+          className="searchBox"
           placeholder={t("platoonSearch.searchPlaceholder")}
           value={searchTerm}
           onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
             setSearchTerm(ev.target.value)
           }
         />
-        <BigSelectSecondary
+        <select
+          className="bigSelectSecondary"
           value={platform}
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
             setPlatform(ev.target.value)
@@ -202,17 +168,23 @@ function Search(): React.ReactElement {
           <option value="pc">{t("platforms.pc")}</option>
           <option value="xboxone">{t("platforms.xboxone")}</option>
           <option value="ps4">{t("platforms.ps4")}</option>
-        </BigSelectSecondary>
-        {/* <BigButtonSecondary type="submit">{t("serverSearch.search")} <RightArrow/></BigButtonSecondary> */}
-      </Align>
-      <Title>{t("platoonSearch.results")}</Title>
+        </select>
+        {/* <button className="bigButtonSecondary" type="submit">{t("serverSearch.search")} <RightArrow/></button> */}
+      </div>
+      <h1
+        style={{
+          marginTop: "2rem",
+        }}
+      >
+        {t("platoonSearch.results")}
+      </h1>
       <Results
         loading={loading}
         platoons={platoons}
         platform={platform}
         error={error}
       />
-    </Container>
+    </div>
   );
 }
 

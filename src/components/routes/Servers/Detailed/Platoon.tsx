@@ -3,16 +3,10 @@ import "../../../../locales/config";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "../../../../assets/scss/App.scss";
-import { AlignW } from "../../../Materials";
 import { PlatoonResult } from "../../../../api/ReturnTypes";
-import { Description, Spacing } from "./Servers";
-import styled from "styled-components";
 import sslFix from "../../../functions/fixEaAssets";
-
-const PlatoonEmblem = styled.img`
-  width: 100px;
-  margin-right: 0.5rem;
-`;
+import styles from "./Platoon.module.scss";
+import MainStyles from "./Main.module.scss";
 
 export function ServerPlatoon(props: {
   platoon: PlatoonResult;
@@ -23,18 +17,22 @@ export function ServerPlatoon(props: {
   const platform = props.platform;
   if (!platoon) {
     return (
-      <Spacing>
+      <div className={MainStyles.spacing}>
         <h2>{t("servers.platoon.main")}</h2>
         <p>{t("servers.platoon.none")}</p>
-      </Spacing>
+      </div>
     );
   }
   return (
-    <Spacing>
+    <div className={MainStyles.spacing}>
       <h2>{t("servers.platoon.main")}</h2>
-      <AlignW>
+      <div className="alignW">
         <Link to={`/platoons/${platform}/${platoon.id}`}>
-          <PlatoonEmblem src={sslFix(platoon?.emblem)} />
+          <img
+            className={styles.platoonEmblem}
+            src={sslFix(platoon?.emblem)}
+            alt={t("servers.platoon.emblem")}
+          />
         </Link>
         <div style={{ marginTop: "1rem" }}>
           <h3>
@@ -48,11 +46,13 @@ export function ServerPlatoon(props: {
             </Link>
           ) : (
             <Link to={`/platoons/${platform}/${platoon.id}`}>
-              <Description>{t("stats.platoon.noDescription")}</Description>
+              <p className={MainStyles.description}>
+                {t("stats.platoon.noDescription")}
+              </p>
             </Link>
           )}
         </div>
-      </AlignW>
-    </Spacing>
+      </div>
+    </div>
   );
 }

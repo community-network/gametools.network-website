@@ -1,22 +1,12 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { styled } from "styled-components";
-
-const Container = styled.div`
-  @media (min-width: 850px) {
-    padding: 0 8.33%;
-  }
-  @media (max-width: 850px) {
-    padding-left: 0 2%;
-  }
-`;
 
 function PrivacyPolicy(): React.ReactElement {
   const { t } = useTranslation();
   document.title = `${t("siteFullName")} | ${t("footer.links.3.header")}`;
 
   return (
-    <Container>
+    <div className="container">
       <p>
         <h1>Privacy Policy for Gametools</h1>
         <div>
@@ -132,7 +122,7 @@ function PrivacyPolicy(): React.ReactElement {
           agree to its Terms and Conditions.
         </div>
       </p>
-    </Container>
+    </div>
   );
 }
 

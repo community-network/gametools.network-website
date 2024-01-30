@@ -1,26 +1,12 @@
 import * as React from "react";
 import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import { Circle, Align } from "../../../Materials";
-import { Spacing } from "./Main";
-import styled from "styled-components";
 import { UserGames } from "../../../../api/ReturnTypes";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
 import sslFix from "../../../functions/fixEaAssets";
-
-const OriginProfile = styled.img`
-  width: 60px;
-  margin-right: 1.5rem;
-`;
-
-const OriginName = styled.h2`
-  line-height: 60%;
-`;
-
-const OriginDescription = styled.h4`
-  line-height: 60%;
-`;
+import styles from "./ViewOrigin.module.scss";
+import MainStyles from "./Main.module.scss";
 
 export interface Views {
   loading: boolean;
@@ -84,27 +70,27 @@ export function ViewOrigin(props: Readonly<Views>): React.ReactElement {
   if (props.error) {
     return (
       // if playername isnt found
-      <Spacing>
-        <Align>
-          <Circle />
+      <div className={MainStyles.spacing}>
+        <div className="align">
+          <span className="circle" />
           <div>
-            <OriginName>{t("404")}</OriginName>
-            <OriginDescription>{t("playerNotFound")}</OriginDescription>
+            <h2 className={styles.originName}>{t("404")}</h2>
+            <h4 className={styles.originDescription}>{t("playerNotFound")}</h4>
           </div>
-        </Align>
-      </Spacing>
+        </div>
+      </div>
     );
   } else if (!props.loading && !props.error) {
     if (stats?.userName === null) {
       if (name !== null) {
         return (
           // if playerid but ?name behind it
-          <Spacing>
-            <Align>
-              <Circle />
+          <div className={MainStyles.spacing}>
+            <div className="align">
+              <span className="circle" />
               <div>
-                <OriginName>{name}</OriginName>
-                <OriginDescription>
+                <h2 className={styles.originName}>{name}</h2>
+                <h4 className={styles.originDescription}>
                   <GetBfBan
                     loading={false}
                     error={false}
@@ -112,20 +98,20 @@ export function ViewOrigin(props: Readonly<Views>): React.ReactElement {
                     name={props.name}
                     stats={props.stats}
                   />
-                </OriginDescription>
+                </h4>
               </div>
-            </Align>
-          </Spacing>
+            </div>
+          </div>
         );
       } else {
         return (
           // if no ?name behind it
-          <Spacing>
-            <Align>
-              <Circle />
+          <div className={MainStyles.spacing}>
+            <div className="align">
+              <span className="circle" />
               <div>
-                <OriginName>{t("notApplicable")}</OriginName>
-                <OriginDescription>
+                <h2 className={styles.originName}>{t("notApplicable")}</h2>
+                <h4 className={styles.originDescription}>
                   {t("noName")} - {}
                   <GetBfBan
                     loading={false}
@@ -134,21 +120,25 @@ export function ViewOrigin(props: Readonly<Views>): React.ReactElement {
                     name={props.name}
                     stats={props.stats}
                   />
-                </OriginDescription>
+                </h4>
               </div>
-            </Align>
-          </Spacing>
+            </div>
+          </div>
         );
       }
     } else {
       return (
         // normal playerName
-        <Spacing>
-          <Align>
-            <OriginProfile src={sslFix(stats?.avatar)} />
+        <div className={MainStyles.spacing}>
+          <div className="align">
+            <img
+              className={styles.originProfile}
+              src={sslFix(stats?.avatar)}
+              alt={t("stats.profileImage")}
+            />
             <div>
-              <OriginName>{stats.userName}</OriginName>
-              <OriginDescription>
+              <h2 className={styles.originName}>{stats.userName}</h2>
+              <h4 className={styles.originDescription}>
                 <GetBfBan
                   loading={false}
                   error={false}
@@ -156,24 +146,24 @@ export function ViewOrigin(props: Readonly<Views>): React.ReactElement {
                   name={props.name}
                   stats={props.stats}
                 />
-              </OriginDescription>
+              </h4>
             </div>
-          </Align>
-        </Spacing>
+          </div>
+        </div>
       );
     }
   } else {
     return (
       // loading page
-      <Spacing>
-        <Align>
-          <Circle />
+      <div className={MainStyles.spacing}>
+        <div className="align">
+          <span className="circle" />
           <div>
-            <OriginName>{t("loading")}</OriginName>
-            <OriginDescription>{t("loading")}</OriginDescription>
+            <h2 className={styles.originName}>{t("loading")}</h2>
+            <h4 className={styles.originDescription}>{t("loading")}</h4>
           </div>
-        </Align>
-      </Spacing>
+        </div>
+      </div>
     );
   }
 }

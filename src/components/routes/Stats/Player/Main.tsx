@@ -5,21 +5,7 @@ import { useTranslation } from "react-i18next";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
 import useWindowDimensions from "../../../functions/useWindowDimensions";
-import {
-  Container,
-  Align,
-  AltText,
-  SelectPrimary,
-  InvisableRadioButton,
-  Radio,
-  SmallButtonRadio,
-  UncheckedSmallButtonRadio,
-  DisabledSmallButtonRadio,
-  PageColumn,
-  PageRow,
-  BackButton,
-} from "../../../Materials";
-import styled from "styled-components";
+import { BackButton } from "../../../Materials";
 import {
   newTitles,
   platformGames,
@@ -43,6 +29,7 @@ import { ViewIframe } from "./Iframe";
 import { ViewStats } from "./OverviewStats";
 import { ViewOrigin } from "./ViewOrigin";
 import { useLocalStorage } from "react-use";
+import styles from "./Main.module.scss";
 
 export interface Views {
   loading: boolean;
@@ -60,38 +47,6 @@ export interface PlatformViews {
   platform: string;
   stats: MainStats;
 }
-
-export const BackgroundBar = styled.div`
-  width: 100%;
-  background-color: #313443;
-  border-radius: 2.5px;
-`;
-
-export const Bar = styled.div`
-  background-color: #14fed4;
-  height: 5px;
-  border-radius: 2.5px;
-`;
-
-export const ListImage = styled.img`
-  max-width: 8rem;
-  max-height: 3rem;
-  margin-right: 1.5rem;
-`;
-
-export const Title = styled.h3`
-  margin: 0 33px;
-  padding-bottom: 1rem;
-`;
-
-export const Description = styled.p`
-  ${AltText}
-`;
-
-export const Spacing = styled.div`
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-`;
 
 export function DynamicSort(property: string) {
   let sortOrder = 1;
@@ -184,7 +139,7 @@ function Stats(): React.ReactElement {
   } | ${game || t("notApplicable")}`;
 
   return (
-    <Container>
+    <div className="container">
       <BackButton text={t("stats.back")} location="/" />
       <ViewOrigin
         game={game}
@@ -194,7 +149,8 @@ function Stats(): React.ReactElement {
         name={nameQuery}
       />
       {width < 930 ? (
-        <SelectPrimary
+        <select
+          className="selectPrimary"
           value={game}
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void => {
             setGame(ev.target.value);
@@ -211,17 +167,20 @@ function Stats(): React.ReactElement {
               </option>
             );
           })}
-        </SelectPrimary>
+        </select>
       ) : (
-        <Align
+        <div
+          className="align"
           onChange={(ev: React.ChangeEvent<HTMLInputElement>): void => {
             setGame(ev.target.value);
           }}
         >
           {games.map((key: string) => {
             return (
-              <Radio key={key}>
-                <InvisableRadioButton
+              <div className={styles.radio} key={key}>
+                <input
+                  className={styles.invisableRadioButton}
+                  type="radio"
                   id={key}
                   value={key}
                   name="game"
@@ -229,26 +188,32 @@ function Stats(): React.ReactElement {
                   defaultChecked={game === key}
                 />
                 {playerGamesArr.includes(key) ? (
-                  <DisabledSmallButtonRadio htmlFor={key}>
+                  <label
+                    className={styles.disabledSmallButtonRadio}
+                    htmlFor={key}
+                  >
                     {t(`games.${key}`)}
-                  </DisabledSmallButtonRadio>
+                  </label>
                 ) : (
                   <>
                     {game === key ? (
-                      <SmallButtonRadio htmlFor={key}>
+                      <label className={styles.smallButtonRadio} htmlFor={key}>
                         {t(`games.${key}`)}
-                      </SmallButtonRadio>
+                      </label>
                     ) : (
-                      <UncheckedSmallButtonRadio htmlFor={key}>
+                      <label
+                        className={styles.uncheckedSmallButtonRadio}
+                        htmlFor={key}
+                      >
                         {t(`games.${key}`)}
-                      </UncheckedSmallButtonRadio>
+                      </label>
                     )}
                   </>
                 )}
-              </Radio>
+              </div>
             );
           })}
-        </Align>
+        </div>
       )}
       <GameStats
         game={game}
@@ -256,7 +221,7 @@ function Stats(): React.ReactElement {
         type={params.type}
         platform={platform}
       />
-    </Container>
+    </div>
   );
 }
 
@@ -289,8 +254,8 @@ function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {
 
   return (
     <>
-      <PageColumn>
-        <PageRow>
+      <div className="pageColumn">
+        <div className="pageRow">
           <ViewStats
             game={game}
             loading={loading}
@@ -358,8 +323,8 @@ function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {
               name={name}
             />
           )}
-        </PageRow>
-        <PageRow>
+        </div>
+        <div className="pageRow">
           <ViewClasses
             game={game}
             loading={loading}
@@ -401,8 +366,8 @@ function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {
               name={name}
             />
           )}
-        </PageRow>
-      </PageColumn>
+        </div>
+      </div>
       <ViewIframe
         game={game}
         loading={loading}

@@ -4,27 +4,11 @@ import { useTranslation } from "react-i18next";
 import "../../../../assets/scss/App.scss";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
-import {
-  Align,
-  Box,
-  Row,
-  Column,
-  SelectPrimary,
-  TabletRow,
-  SmallestPhoneRow,
-  SmallPhoneRow,
-} from "../../../Materials";
+import { Box } from "../../../Materials";
 import { ServerLeaderboardList } from "../../../../api/ReturnTypes";
 import { addSeconds } from "date-fns";
-import { Description, Spacing, Title } from "./Servers";
-import styled from "styled-components";
-
-const ServerPlayerName = styled.h4`
-  width: 9rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`;
+import styles from "./Leaderboard.module.scss";
+import MainStyles from "./Main.module.scss";
 
 export function ServerLeaderboard(props: {
   gameid: string;
@@ -50,10 +34,11 @@ export function ServerLeaderboard(props: {
   if (!loading && !error) {
     const players = stats.data;
     return (
-      <Spacing>
-        <Align>
+      <div className={MainStyles.spacing}>
+        <div className="align">
           <h2>{t("servers.leaderboard.main")}</h2>
-          <SelectPrimary
+          <select
+            className="selectPrimary"
             style={{ margin: 0, marginLeft: "24px" }}
             value={sortType}
             onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
@@ -75,14 +60,14 @@ export function ServerLeaderboard(props: {
             <option value="losses">
               {t("servers.leaderboard.row.losses")}
             </option>
-          </SelectPrimary>
-        </Align>
+          </select>
+        </div>
         {players.length !== 0 ? (
           <Box>
             {players.map((key: ServerLeaderboardList, index: number) => {
               return (
-                <Column key={index}>
-                  <Row>
+                <div className="column" key={index}>
+                  <div className="row">
                     <a
                       href={`https://gametools.network/stats/pc/playerid/${
                         key.playerId
@@ -90,62 +75,86 @@ export function ServerLeaderboard(props: {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <ServerPlayerName>
+                      <h4 className={styles.serverPlayerName}>
                         {key.platoon !== "" ? `[${key.platoon}]` : ""}
                         {key.name}
-                      </ServerPlayerName>
-                      <Description style={{ lineHeight: 0 }}>
+                      </h4>
+                      <p
+                        className={MainStyles.description}
+                        style={{ lineHeight: 0 }}
+                      >
                         {t("stats.view")}
-                      </Description>
+                      </p>
                     </a>
-                  </Row>
-                  <SmallestPhoneRow>
+                  </div>
+                  <div className="smallestPhoneRow">
                     <h4>{numberFormat.format(key.score)}</h4>
-                    <Description style={{ lineHeight: 0 }}>
+                    <p
+                      className={MainStyles.description}
+                      style={{ lineHeight: 0 }}
+                    >
                       {t("servers.leaderboard.row.score")}
-                    </Description>
-                  </SmallestPhoneRow>
-                  <Row>
+                    </p>
+                  </div>
+                  <div className="row">
                     <h4>{numberFormat.format(key.killDeath)}</h4>
-                    <Description style={{ lineHeight: 0 }}>
+                    <p
+                      className={MainStyles.description}
+                      style={{ lineHeight: 0 }}
+                    >
                       {t("servers.leaderboard.row.killDeath")}
-                    </Description>
-                  </Row>
-                  <TabletRow>
+                    </p>
+                  </div>
+                  <div className="tabletRow">
                     <h4>{numberFormat.format(key.kills)}</h4>
-                    <Description style={{ lineHeight: 0 }}>
+                    <p
+                      className={MainStyles.description}
+                      style={{ lineHeight: 0 }}
+                    >
                       {t("servers.leaderboard.row.kills")}
-                    </Description>
-                  </TabletRow>
-                  <TabletRow>
+                    </p>
+                  </div>
+                  <div className="tabletRow">
                     <h4>{numberFormat.format(key.deaths)}</h4>
-                    <Description style={{ lineHeight: 0 }}>
+                    <p
+                      className={MainStyles.description}
+                      style={{ lineHeight: 0 }}
+                    >
                       {t("servers.leaderboard.row.deaths")}
-                    </Description>
-                  </TabletRow>
-                  <SmallPhoneRow>
+                    </p>
+                  </div>
+                  <div className="smallPhoneRow">
                     <h4>{numberFormat.format(key.wins)}</h4>
-                    <Description style={{ lineHeight: 0 }}>
+                    <p
+                      className={MainStyles.description}
+                      style={{ lineHeight: 0 }}
+                    >
                       {t("servers.leaderboard.row.wins")}
-                    </Description>
-                  </SmallPhoneRow>
-                  <SmallPhoneRow>
+                    </p>
+                  </div>
+                  <div className="smallPhoneRow">
                     <h4>{numberFormat.format(key.losses)}</h4>
-                    <Description style={{ lineHeight: 0 }}>
+                    <p
+                      className={MainStyles.description}
+                      style={{ lineHeight: 0 }}
+                    >
                       {t("servers.leaderboard.row.losses")}
-                    </Description>
-                  </SmallPhoneRow>
-                  <Row>
+                    </p>
+                  </div>
+                  <div className="row">
                     <h4>
                       {t("change", {
                         change: addSeconds(new Date(), key.timePlayed),
                       })}
                     </h4>
-                    <Description style={{ lineHeight: 0 }}>
+                    <p
+                      className={MainStyles.description}
+                      style={{ lineHeight: 0 }}
+                    >
                       {t("servers.leaderboard.row.timePlayed")}
-                    </Description>
-                  </Row>
-                </Column>
+                    </p>
+                  </div>
+                </div>
               );
             })}
           </Box>
@@ -154,13 +163,13 @@ export function ServerLeaderboard(props: {
             <p>{t("servers.leaderboard.none")}</p>
           </Box>
         )}
-      </Spacing>
+      </div>
     );
   }
   return (
-    <Spacing>
-      <Title>{t("servers.leaderboard.main")}</Title>
-      <Description>{t("loading")}</Description>
-    </Spacing>
+    <div className={MainStyles.spacing}>
+      <h2 className={MainStyles.title}>{t("servers.leaderboard.main")}</h2>
+      <p className={MainStyles.description}>{t("loading")}</p>
+    </div>
   );
 }
