@@ -27,11 +27,6 @@ module.exports = merge(commonConfig, {
     react: "React",
     "react-dom": "ReactDOM",
   },
-  optimization: {
-    splitChunks: {
-      minSize: 0,
-    },
-  },
   plugins: [
     // new BundleAnalyzerPlugin(),
     new MiniCssExtractPlugin({
