@@ -61,6 +61,7 @@ export function BfPortalInfo(props: {
         <a href={experience.meta.html_url} target="_blank" rel="noreferrer">
           <div className="alignW">
             <img
+              alt={t("servers.bfportal.main")}
               className={Styles.originProfile}
               src={bfportalIcon.src}
               srcSet={bfportalIcon.srcSet}

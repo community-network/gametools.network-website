@@ -22,6 +22,7 @@ export function Graphs(): React.ReactElement {
       </div>
       <div className="align">
         <select
+          aria-label={t("ariaLabels.platform")}
           className="bigSelectSecondary"
           value={platformGraph}
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void => {
@@ -34,6 +35,7 @@ export function Graphs(): React.ReactElement {
           <option value="all">{t("platforms.all")}</option>
         </select>
         <select
+          aria-label={t("ariaLabels.game")}
           className="bigSelectSecondary"
           value={gameGraph}
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
@@ -49,6 +51,7 @@ export function Graphs(): React.ReactElement {
           })}
         </select>
         <select
+          aria-label={t("ariaLabels.chartType")}
           className="bigSelectSecondary"
           disabled={!(gameGraph in graphOptions && platformGraph !== "all")}
           value={optionGraph}

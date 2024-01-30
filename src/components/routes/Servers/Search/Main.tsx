@@ -60,6 +60,7 @@ function ServerSort(props: {
   const { t } = useTranslation();
   return (
     <select
+      aria-label={t("ariaLabels.sort")}
       className="selectPrimary"
       style={{
         marginLeft: "1rem",
@@ -412,6 +413,7 @@ function Main(): React.ReactElement {
               }
             />
             <select
+              aria-label={t("ariaLabels.searchType")}
               className="bf2042BigSelectSecondary"
               value={searchType}
               onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
@@ -435,6 +437,7 @@ function Main(): React.ReactElement {
           />
         )}
         <select
+          aria-label={t("ariaLabels.game")}
           className="bigSelectSecondary"
           value={gameName}
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
@@ -450,6 +453,7 @@ function Main(): React.ReactElement {
           })}
         </select>
         <select
+          aria-label={t("ariaLabels.game")}
           className="bigSelectSecondary"
           disabled={
             !frostbite3.includes(gameName) && !extraGames.includes(gameName)
@@ -470,6 +474,7 @@ function Main(): React.ReactElement {
           )}
         </select>
         <select
+          aria-label={t("ariaLabels.platform")}
           className="bigSelectSecondary"
           disabled={!frostbite3.includes(gameName)}
           value={platform}
@@ -536,7 +541,10 @@ function Main(): React.ReactElement {
               marginLeft: "5px",
             }}
           >
-            <label className="switch">
+            <label
+              aria-label={t("ariaLabels.toggleSidebar")}
+              className="switch"
+            >
               <input
                 checked={!hideSideBar}
                 onClick={() => {
@@ -861,6 +869,7 @@ export function ServerSearch(): React.ReactElement {
           {t("serverSearch.servers")}
         </h2>
         <select
+          aria-label={t("ariaLabels.game")}
           className="selectPrimary"
           style={{ marginLeft: "1rem" }}
           value={gameName}

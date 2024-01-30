@@ -51,7 +51,7 @@ export const AdSwitch = (): JSX.Element => {
 
   return (
     <div className="adv-ad" style={{ display: "contents" }}>
-      <label className="switch">
+      <label aria-label={t("ariaLabels.toggleAds")} className="switch">
         <input
           onChange={() => {}}
           checked={value}

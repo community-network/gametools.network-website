@@ -19,7 +19,11 @@ export function ServerConfig(
       <div className={Styles.spacing}>
         <h2>{t("servers.portal.main")}</h2>
         <div className="alignW">
-          <img className={Styles.originProfile} src={background} />
+          <img
+            className={Styles.originProfile}
+            alt={t("servers.bfportal.main")}
+            src={background}
+          />
           <div>
             <h2 className={Styles.originName}>
               {serverInfo?.configNameTranslation}
@@ -36,7 +40,11 @@ export function ServerConfig(
     <div className={Styles.spacing}>
       <h2>{t("servers.portal.main")}</h2>
       <div className="alignW">
-        <img className={Styles.originProfile} src={background} />
+        <img
+          className={Styles.originProfile}
+          alt={t("servers.bfportal.main")}
+          src={background}
+        />
         <div>
           <h2 className={Styles.originName}>{serverInfo?.configName}</h2>
           <h4

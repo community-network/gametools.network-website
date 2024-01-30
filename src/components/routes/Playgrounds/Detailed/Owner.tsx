@@ -97,6 +97,7 @@ export function PlaygroundOwner(
           }&name=${encodeURIComponent(owner.name)}`}
         >
           <img
+            alt={t("stats.profileImage")}
             className={Styles.originProfile}
             src={sslFix(owner?.avatar)}
             loading="lazy"

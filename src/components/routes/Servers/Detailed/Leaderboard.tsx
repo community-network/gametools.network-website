@@ -38,6 +38,7 @@ export function ServerLeaderboard(props: {
         <div className="align">
           <h2>{t("servers.leaderboard.main")}</h2>
           <select
+            aria-label={t("ariaLabels.sort")}
             className="selectPrimary"
             style={{ margin: 0, marginLeft: "24px" }}
             value={sortType}

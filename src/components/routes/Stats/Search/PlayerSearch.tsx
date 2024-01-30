@@ -37,6 +37,7 @@ export function StatSearch(): React.ReactElement {
             }
           />
           <select
+            aria-label={t("ariaLabels.platform")}
             className="homePlayerBigSelectSecondary"
             value={platform}
             onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
@@ -112,6 +113,7 @@ function Search(): React.ReactElement {
             }
           />
           <select
+            aria-label={t("ariaLabels.platform")}
             className="bigSelectSecondary"
             value={platform}
             onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
@@ -127,6 +129,7 @@ function Search(): React.ReactElement {
             })}
           </select>
           <select
+            aria-label={t("ariaLabels.game")}
             className="bigSelectSecondary"
             value={game}
             onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>

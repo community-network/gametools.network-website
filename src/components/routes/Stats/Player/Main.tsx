@@ -150,6 +150,7 @@ function Stats(): React.ReactElement {
       />
       {width < 930 ? (
         <select
+          aria-label={t("ariaLabels.game")}
           className="selectPrimary"
           value={game}
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void => {
@@ -189,6 +190,7 @@ function Stats(): React.ReactElement {
                 />
                 {playerGamesArr.includes(key) ? (
                   <label
+                    title={t("stats.missingGame")}
                     className={styles.disabledSmallButtonRadio}
                     htmlFor={key}
                   >
@@ -197,11 +199,16 @@ function Stats(): React.ReactElement {
                 ) : (
                   <>
                     {game === key ? (
-                      <label className={styles.smallButtonRadio} htmlFor={key}>
+                      <label
+                        aria-label={t("ariaLabels.toggleGame")}
+                        className={styles.smallButtonRadio}
+                        htmlFor={key}
+                      >
                         {t(`games.${key}`)}
                       </label>
                     ) : (
                       <label
+                        aria-label={t("ariaLabels.toggleGame")}
                         className={styles.uncheckedSmallButtonRadio}
                         htmlFor={key}
                       >

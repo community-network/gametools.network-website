@@ -51,6 +51,7 @@ export function ViewWeapons(props: Readonly<Views>): React.ReactElement {
             }
           />
           <select
+            aria-label={t("ariaLabels.sort")}
             className="selectPrimary"
             value={sortType}
             onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
@@ -160,6 +161,7 @@ export function WeaponGraph(props: Readonly<Views>): React.ReactElement {
         <h3 className={Styles.title}>{t("stats.weaponGraph")}</h3>
         <div className="alignW" style={{ marginRight: "1rem" }}>
           <select
+            aria-label={t("ariaLabels.chartType")}
             className="selectPrimary"
             value={graphType}
             onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>

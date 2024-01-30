@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { SelectSecondary } from "../components/Materials";
 
 const LanguageSelector = (): JSX.Element => {
   const { i18n } = useTranslation();
@@ -12,6 +11,7 @@ const LanguageSelector = (): JSX.Element => {
 
   return (
     <select
+      aria-label="Select language"
       className="selectSecondary"
       value={getLanguage()}
       onChange={changeLanguage}

@@ -18,6 +18,16 @@
   "intlNumber": "{{val, number}}",
   "ago": "ago",
   "export": "Export",
+  "ariaLabels": {
+    "sort": "Select sort by",
+    "chartType": "Select chart type",
+    "platform": "Select platform",
+    "game": "Select game name",
+    "searchType": "Select search type",
+    "toggleAds": "Toggle ads",
+    "toggleSidebar": "Toggle sidebar",
+    "toggleGame": "Toggle game"
+  },
   "case": {
     "none": "N/A",
     "on": "On",
@@ -247,6 +257,7 @@
     "searchWeapon": "Search for weapon",
     "searchVehicle": "Search for vehicle",
     "searchGadget": "Search for gadget",
+    "missingGame": "Current player doesn't have this game",
     "rows": {
       "weaponName": "Weapon name",
       "vehicleName": "Vehicle name",
@@ -439,6 +450,7 @@
       "invite": "Joinme.click invite URL"
     },
     "bfportal": {
+      "main": "BFPortal",
       "found": "Portal experience found on BfPortal.gg",
       "error": "Api failure for BfPortal.gg"
     },

@@ -731,6 +731,7 @@ export function ServerGraphQuery(props: ServerGraphData): React.ReactElement {
             }}
           >
             <select
+              aria-label={t("ariaLabels.chartType")}
               className="selectPrimary"
               style={{
                 margin: 0,

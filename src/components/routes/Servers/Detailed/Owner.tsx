@@ -95,6 +95,7 @@ export function OwnerInfo(props: {
           }&name=${encodeURIComponent(owner.name)}`}
         >
           <img
+            alt={t("stats.profileImage")}
             className={MainStyles.originProfile}
             src={sslFix(owner?.avatar)}
           />

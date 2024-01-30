@@ -234,6 +234,7 @@ function Members(props: {
             }
           />
           <select
+            aria-label={t("ariaLabels.sort")}
             className="selectPrimary"
             value={sortType}
             onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>

@@ -159,6 +159,7 @@ function Search(): React.ReactElement {
           }
         />
         <select
+          aria-label={t("ariaLabels.chartType")}
           className="bigSelectSecondary"
           value={platform}
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>

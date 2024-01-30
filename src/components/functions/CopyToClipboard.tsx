@@ -9,8 +9,8 @@ export function CopyToClipboard(props: {
   const [copyState, setCopyState] = React.useState<string>("copy");
 
   return (
-    <a
-      style={{ cursor: "pointer", textDecoration: "underline" }}
+    <button
+      style={{ all: "unset", cursor: "pointer", textDecoration: "underline" }}
       onClick={() => {
         navigator.clipboard.writeText(props.message);
         setCopyState("copied");
@@ -21,6 +21,6 @@ export function CopyToClipboard(props: {
       }}
     >
       {t(`${props.stateTranslation}.${copyState}`)}
-    </a>
+    </button>
   );
 }
