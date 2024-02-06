@@ -129,7 +129,7 @@ export function Results(props: Views): React.ReactElement {
     if (
       !dice.includes(props.game) &&
       props.game != "battlebit" &&
-      props.game != "bf1marne"
+      !props.game.includes("marne")
     ) {
       widgetItem = "serverip";
       widgetReturn = `${stats?.ip}:${stats?.port}`;
@@ -241,7 +241,7 @@ export function Results(props: Views): React.ReactElement {
           </div>
         </div>
         {/* older titles use ip address, thats static already */}
-        {(dice.includes(props.game) || props.game === "bf1marne") && (
+        {(dice.includes(props.game) || props.game.includes("marne")) && (
           <p className={MainStyles.description} style={{ marginTop: "6px" }}>
             {t("servers.permLink")}{" "}
             <CopyToClipboard
@@ -283,7 +283,7 @@ export function Results(props: Views): React.ReactElement {
             </div>
           </>
         )}
-        {(dice.includes(props.game) || props.game == "bf1marne") &&
+        {(dice.includes(props.game) || props.game.includes("marne")) &&
           stats?.rotation?.length > 0 && (
             <>
               <h2 className={MainStyles.title} style={{ marginBottom: 0 }}>
@@ -368,7 +368,7 @@ export function Results(props: Views): React.ReactElement {
                     serverPort={stats?.hostport || stats?.port}
                   />
                 ) : (
-                  props.game === "bf1marne" && (
+                  props.game.includes("marne") && (
                     <MarnePlayerList
                       stats={stats}
                       game={props?.game}
@@ -391,7 +391,7 @@ export function Results(props: Views): React.ReactElement {
 
           <div className="pageRow">
             {/* when available */}
-            {props.game !== "bf1marne" && (
+            {!props.game.includes("marne") && (
               <ServerGraphQuery
                 stats={stats}
                 game={props.game}
@@ -475,7 +475,7 @@ export function Results(props: Views): React.ReactElement {
             )}
           </div>
         </div>
-        {props.game === "bf1marne" && (
+        {props.game.includes("marne") && (
           <>
             <h2 style={{ marginBottom: 0 }}>{t("servers.modList.main")}</h2>
             {Object.keys(modCategories).length > 0 ? (

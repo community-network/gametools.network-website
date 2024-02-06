@@ -258,7 +258,7 @@ function Players(props: {
                                   </p>
                                 </div>
                               ) : (
-                                props.game !== "bf1marne" && (
+                                !props.game.includes("marne") && (
                                   <div className="row">
                                     <h4 style={{ marginTop: "0.5rem" }}>
                                       {key.latency}
