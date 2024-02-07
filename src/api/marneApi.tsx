@@ -860,7 +860,9 @@ export class ApiProvider extends JsonClient {
     return {
       cache: false,
       servers,
-      apiUrl: "https://marne.io/api/srvlst/",
+      apiUrl: game.includes("bf1")
+        ? "https://marne.io/api/srvlst/"
+        : "https://marne.io/api/v/srvlst/",
     };
   }
 
