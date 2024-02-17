@@ -390,15 +390,13 @@ export function Results(props: Views): React.ReactElement {
           </div>
 
           <div className="pageRow">
-            {/* when available */}
-            {!props.game.includes("marne") && (
-              <ServerGraphQuery
-                stats={stats}
-                game={props.game}
-                getter={props.getter}
-                name={props.serverName}
-              />
-            )}
+            <ServerGraphQuery
+              stats={stats}
+              game={props.game}
+              // use serverid for marne
+              getter={props.game.includes("marne") ? "serverid" : props.getter}
+              name={props.serverName}
+            />
             {props.game === "bf1" && (
               <>
                 <ServerPlatoon
