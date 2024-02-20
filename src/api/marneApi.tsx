@@ -736,8 +736,8 @@ export class ApiProvider extends JsonClient {
   async stats({ game, playerId }: PlayerInfo): Promise<MainStats> {
     const r = await fetch(
       game.includes("bf1")
-        ? "https://marne.io/api/stats/${playerId}/2"
-        : "https://marne.io/api/v/stats/${playerId}/2",
+        ? `https://marne.io/api/stats/${playerId}/2`
+        : `https://marne.io/api/v/stats/${playerId}/2`,
     );
     const item = await r.json();
     const player: { [string: string]: string } = item[playerId];
@@ -763,8 +763,8 @@ export class ApiProvider extends JsonClient {
       classes: getClasses(player),
       cache: false,
       apiUrl: game.includes("bf1")
-        ? "https://marne.io/api/stats/${playerId}/2"
-        : "https://marne.io/api/v/stats/${playerId}/2",
+        ? `https://marne.io/api/stats/${playerId}/2`
+        : `https://marne.io/api/v/stats/${playerId}/2`,
       kills: kills,
       deaths: deaths,
       wins: wins,
