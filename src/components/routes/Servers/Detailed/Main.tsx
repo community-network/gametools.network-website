@@ -33,8 +33,8 @@ import { CopyToClipboard } from "../../../functions/CopyToClipboard";
 import sslFix from "../../../functions/fixEaAssets";
 import { capitalizeFirstLetter } from "../../../functions/capitalizeFirstLetter";
 import { ModListReturn } from "../../../../api/marneApi";
-import Styles from "./Main.module.scss";
-import MainStyles from "./Main.module.scss";
+import * as styles from "./Main.module.scss";
+import * as Mainstyles from "./Main.module.scss";
 
 interface Views {
   loading: boolean;
@@ -69,10 +69,10 @@ function MapRotationItem(props: {
           <span>{index + 1}</span>
         </div>
         <div
-          className={Styles.mapImage}
+          className={styles.mapImage}
           style={{ backgroundImage: `url("${sslFix(stats?.image)}")` }}
         ></div>
-        <div className={Styles.serverInfo}>
+        <div className={styles.serverInfo}>
           <h3
             style={{
               marginTop: ".2rem",
@@ -149,17 +149,17 @@ export function Results(props: Views): React.ReactElement {
     }
     return (
       <div>
-        <div className={Styles.alignServerImg}>
+        <div className={styles.alignServerImg}>
           <div
-            className={Styles.serverImage}
+            className={styles.serverImage}
             style={{
               backgroundImage: `url("${sslFix(stats?.currentMapImage || stats?.mapImage)}")`,
             }}
           >
-            <div className={Styles.blur}>
-              <h1 className={Styles.serverText}>{stats?.smallmode}</h1>
+            <div className={styles.blur}>
+              <h1 className={styles.serverText}>{stats?.smallmode}</h1>
               {stats?.favorites && (
-                <h1 className={Styles.serverFavorites}>
+                <h1 className={styles.serverFavorites}>
                   &#9734; {numberFormat.format(stats?.favorites)}
                 </h1>
               )}
@@ -175,15 +175,15 @@ export function Results(props: Views): React.ReactElement {
               {loading ? t("loading") : stats?.prefix}
             </h2>
             <p
-              className={MainStyles.description}
+              className={Mainstyles.description}
               style={{ maxWidth: "1000px" }}
             >
               {loading ? t("notApplicable") : stats?.description}
             </p>
             {loading ? (
-              <p className={MainStyles.description}>{t("notApplicable")}</p>
+              <p className={Mainstyles.description}>{t("notApplicable")}</p>
             ) : (
-              <p className={MainStyles.description}>
+              <p className={Mainstyles.description}>
                 {stats?.playerAmount}/{stats?.maxPlayers}
                 {stats?.maxPlayerAmount}
                 {queueString}
@@ -197,18 +197,18 @@ export function Results(props: Views): React.ReactElement {
             {stats?.region ? (
               <>
                 {props.game == "bf2042" ? (
-                  <p className={MainStyles.description}>
+                  <p className={Mainstyles.description}>
                     {t(`regions.${stats.region?.toLowerCase()}`)}
                   </p>
                 ) : props.game == "battlebit" ? (
-                  <p className={MainStyles.description}>
+                  <p className={Mainstyles.description}>
                     {t(`battlebitRegions.${stats.region}`)} -{" "}
                     {i18n.exists(`stats.gamemodes.${stats.mode}`)
                       ? t(`stats.gamemodes.${stats.mode}`)
                       : stats.mode}
                   </p>
                 ) : (
-                  <p className={MainStyles.description}>
+                  <p className={Mainstyles.description}>
                     {t(`regions.${stats.region?.toLowerCase()}`)} /{" "}
                     {stats.country} -{" "}
                     {i18n.exists(`stats.gamemodes.${stats.mode}`)
@@ -218,10 +218,10 @@ export function Results(props: Views): React.ReactElement {
                 )}
               </>
             ) : (
-              <p className={MainStyles.description}>{stats?.mode}</p>
+              <p className={Mainstyles.description}>{stats?.mode}</p>
             )}
 
-            <p className={MainStyles.description}>
+            <p className={Mainstyles.description}>
               {t(`games.${props.game}`)}
               {Object.keys(projects).includes(props.game) && (
                 <>
@@ -242,7 +242,7 @@ export function Results(props: Views): React.ReactElement {
         </div>
         {/* older titles use ip address, thats static already */}
         {(dice.includes(props.game) || props.game.includes("marne")) && (
-          <p className={MainStyles.description} style={{ marginTop: "6px" }}>
+          <p className={Mainstyles.description} style={{ marginTop: "6px" }}>
             {t("servers.permLink")}{" "}
             <CopyToClipboard
               message={`https://gametools.network/servers/${
@@ -286,7 +286,7 @@ export function Results(props: Views): React.ReactElement {
         {(dice.includes(props.game) || props.game.includes("marne")) &&
           stats?.rotation?.length > 0 && (
             <>
-              <h2 className={MainStyles.title} style={{ marginBottom: 0 }}>
+              <h2 className={Mainstyles.title} style={{ marginBottom: 0 }}>
                 {t("servers.rotation")}
               </h2>
               <div className="align">
@@ -420,7 +420,7 @@ export function Results(props: Views): React.ReactElement {
                 {stats?.settings.map((value: ServerSettings, index: number) => {
                   return (
                     <div key={index}>
-                      <p className={Styles.altDescription} key={index}>
+                      <p className={styles.altDescription} key={index}>
                         <b>
                           {capitalizeFirstLetter(
                             value.values[0].readableSettingName,
@@ -449,7 +449,7 @@ export function Results(props: Views): React.ReactElement {
                                 (key: [string, string], index: number) => {
                                   return (
                                     <p
-                                      className={Styles.altDescription}
+                                      className={styles.altDescription}
                                       key={index}
                                     >
                                       <b>
@@ -487,15 +487,15 @@ export function Results(props: Views): React.ReactElement {
                           <h4 style={{ margin: 0, marginTop: "0.2rem" }}>
                             {current?.name || t("notApplicable")}
                           </h4>
-                          <p className={Styles.altDescription}>
+                          <p className={styles.altDescription}>
                             {t("servers.modList.file")}
                             {current?.file_name || t("notApplicable")}
                           </p>
-                          <p className={Styles.altDescription}>
+                          <p className={styles.altDescription}>
                             {t("servers.modList.version")}
                             {current?.version || t("notApplicable")}
                           </p>
-                          <p className={Styles.altDescription}>
+                          <p className={styles.altDescription}>
                             {current?.link ? (
                               <a
                                 href={current?.link}
@@ -514,7 +514,7 @@ export function Results(props: Views): React.ReactElement {
                 )}
               </div>
             ) : (
-              <p className={MainStyles.description}>
+              <p className={Mainstyles.description}>
                 {t("servers.modList.noMods")}
               </p>
             )}
@@ -522,7 +522,7 @@ export function Results(props: Views): React.ReactElement {
         )}
         <h2 style={{ marginBottom: 0 }}>{t("servers.iframe.main")}</h2>
         <p
-          className={MainStyles.description}
+          className={Mainstyles.description}
           style={{ margin: 0, marginTop: "0.2rem" }}
         >
           {t("servers.iframe.info")}
@@ -532,7 +532,7 @@ export function Results(props: Views): React.ReactElement {
             return (
               <div className="pageRow" key={index}>
                 <p
-                  className={MainStyles.description}
+                  className={Mainstyles.description}
                   style={{ marginTop: "15px" }}
                 >
                   {t(`servers.iframe.${element}`)}{" "}
@@ -548,7 +548,7 @@ export function Results(props: Views): React.ReactElement {
                   />
                 </p>
                 {loading || widgetReturn === undefined ? (
-                  <p className={MainStyles.description}>{t("loading")}</p>
+                  <p className={Mainstyles.description}>{t("loading")}</p>
                 ) : (
                   <iframe
                     title="Server playercount"

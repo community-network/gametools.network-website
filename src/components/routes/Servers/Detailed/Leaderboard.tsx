@@ -7,8 +7,8 @@ import { useQuery } from "@tanstack/react-query";
 import { Box } from "../../../Materials";
 import { ServerLeaderboardList } from "../../../../api/ReturnTypes";
 import { addSeconds } from "date-fns";
-import styles from "./Leaderboard.module.scss";
-import MainStyles from "./Main.module.scss";
+import * as styles from "./Leaderboard.module.scss";
+import * as Mainstyles from "./Main.module.scss";
 
 export function ServerLeaderboard(props: {
   gameid: string;
@@ -34,7 +34,7 @@ export function ServerLeaderboard(props: {
   if (!loading && !error) {
     const players = stats.data;
     return (
-      <div className={MainStyles.spacing}>
+      <div className={Mainstyles.spacing}>
         <div className="align">
           <h2>{t("servers.leaderboard.main")}</h2>
           <select
@@ -81,7 +81,7 @@ export function ServerLeaderboard(props: {
                         {key.name}
                       </h4>
                       <p
-                        className={MainStyles.description}
+                        className={Mainstyles.description}
                         style={{ lineHeight: 0 }}
                       >
                         {t("stats.view")}
@@ -91,7 +91,7 @@ export function ServerLeaderboard(props: {
                   <div className="smallestPhoneRow">
                     <h4>{numberFormat.format(key.score)}</h4>
                     <p
-                      className={MainStyles.description}
+                      className={Mainstyles.description}
                       style={{ lineHeight: 0 }}
                     >
                       {t("servers.leaderboard.row.score")}
@@ -100,7 +100,7 @@ export function ServerLeaderboard(props: {
                   <div className="row">
                     <h4>{numberFormat.format(key.killDeath)}</h4>
                     <p
-                      className={MainStyles.description}
+                      className={Mainstyles.description}
                       style={{ lineHeight: 0 }}
                     >
                       {t("servers.leaderboard.row.killDeath")}
@@ -109,7 +109,7 @@ export function ServerLeaderboard(props: {
                   <div className="tabletRow">
                     <h4>{numberFormat.format(key.kills)}</h4>
                     <p
-                      className={MainStyles.description}
+                      className={Mainstyles.description}
                       style={{ lineHeight: 0 }}
                     >
                       {t("servers.leaderboard.row.kills")}
@@ -118,7 +118,7 @@ export function ServerLeaderboard(props: {
                   <div className="tabletRow">
                     <h4>{numberFormat.format(key.deaths)}</h4>
                     <p
-                      className={MainStyles.description}
+                      className={Mainstyles.description}
                       style={{ lineHeight: 0 }}
                     >
                       {t("servers.leaderboard.row.deaths")}
@@ -127,7 +127,7 @@ export function ServerLeaderboard(props: {
                   <div className="smallPhoneRow">
                     <h4>{numberFormat.format(key.wins)}</h4>
                     <p
-                      className={MainStyles.description}
+                      className={Mainstyles.description}
                       style={{ lineHeight: 0 }}
                     >
                       {t("servers.leaderboard.row.wins")}
@@ -136,7 +136,7 @@ export function ServerLeaderboard(props: {
                   <div className="smallPhoneRow">
                     <h4>{numberFormat.format(key.losses)}</h4>
                     <p
-                      className={MainStyles.description}
+                      className={Mainstyles.description}
                       style={{ lineHeight: 0 }}
                     >
                       {t("servers.leaderboard.row.losses")}
@@ -149,7 +149,7 @@ export function ServerLeaderboard(props: {
                       })}
                     </h4>
                     <p
-                      className={MainStyles.description}
+                      className={Mainstyles.description}
                       style={{ lineHeight: 0 }}
                     >
                       {t("servers.leaderboard.row.timePlayed")}
@@ -168,9 +168,9 @@ export function ServerLeaderboard(props: {
     );
   }
   return (
-    <div className={MainStyles.spacing}>
-      <h2 className={MainStyles.title}>{t("servers.leaderboard.main")}</h2>
-      <p className={MainStyles.description}>{t("loading")}</p>
+    <div className={Mainstyles.spacing}>
+      <h2 className={Mainstyles.title}>{t("servers.leaderboard.main")}</h2>
+      <p className={Mainstyles.description}>{t("loading")}</p>
     </div>
   );
 }

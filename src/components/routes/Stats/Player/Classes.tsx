@@ -6,7 +6,7 @@ import { Views } from "./Main";
 import { MainStatsClasses } from "../../../../api/ReturnTypes";
 import { addSeconds } from "date-fns";
 import sslFix from "../../../functions/fixEaAssets";
-import Styles from "./Main.module.scss";
+import * as styles from "./Main.module.scss";
 
 export function ViewClasses(props: Readonly<Views>): React.ReactElement {
   const { t, i18n } = useTranslation();
@@ -15,7 +15,7 @@ export function ViewClasses(props: Readonly<Views>): React.ReactElement {
   if (!props.loading && !props.error) {
     const classes = props.stats.classes;
     return (
-      <div className={Styles.spacing}>
+      <div className={styles.spacing}>
         <Box>
           <>
             <h3>{t("stats.classes.main")}</h3>
@@ -36,7 +36,7 @@ export function ViewClasses(props: Readonly<Views>): React.ReactElement {
                         )}
                       </h4>
                       <img
-                        className={Styles.listImage}
+                        className={styles.listImage}
                         style={{ height: "3rem" }}
                         src={sslFix(key?.image)}
                         loading="lazy"
@@ -86,7 +86,7 @@ export function ViewClasses(props: Readonly<Views>): React.ReactElement {
     );
   } else {
     return (
-      <div className={Styles.spacing}>
+      <div className={styles.spacing}>
         <Box>
           <h3>{t("stats.classes.main")}</h3>
           <p>{t("loading")}</p>

@@ -12,7 +12,7 @@ import {
 } from "../../../../api/static";
 import { DynamicSort } from "../../Stats/Player/Main";
 import sslFix from "../../../functions/fixEaAssets";
-import styles from "./Results.module.scss";
+import * as styles from "./Results.module.scss";
 
 const handleChildElementClick = (e: { stopPropagation: () => void }) => {
   e.stopPropagation();

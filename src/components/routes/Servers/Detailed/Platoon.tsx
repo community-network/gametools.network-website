@@ -5,8 +5,8 @@ import { useTranslation } from "react-i18next";
 import "../../../../assets/scss/App.scss";
 import { PlatoonResult } from "../../../../api/ReturnTypes";
 import sslFix from "../../../functions/fixEaAssets";
-import styles from "./Platoon.module.scss";
-import MainStyles from "./Main.module.scss";
+import * as styles from "./Platoon.module.scss";
+import * as Mainstyles from "./Main.module.scss";
 
 export function ServerPlatoon(props: {
   platoon: PlatoonResult;
@@ -17,14 +17,14 @@ export function ServerPlatoon(props: {
   const platform = props.platform;
   if (!platoon) {
     return (
-      <div className={MainStyles.spacing}>
+      <div className={Mainstyles.spacing}>
         <h2>{t("servers.platoon.main")}</h2>
         <p>{t("servers.platoon.none")}</p>
       </div>
     );
   }
   return (
-    <div className={MainStyles.spacing}>
+    <div className={Mainstyles.spacing}>
       <h2>{t("servers.platoon.main")}</h2>
       <div className="alignW">
         <Link to={`/platoons/${platform}/${platoon.id}`}>
@@ -46,7 +46,7 @@ export function ServerPlatoon(props: {
             </Link>
           ) : (
             <Link to={`/platoons/${platform}/${platoon.id}`}>
-              <p className={MainStyles.description}>
+              <p className={Mainstyles.description}>
                 {t("stats.platoon.noDescription")}
               </p>
             </Link>

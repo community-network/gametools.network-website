@@ -8,7 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { serverToStatsPlatform } from "../../../../api/static";
 import sslFix from "../../../functions/fixEaAssets";
-import Styles from "./Main.module.scss";
+import * as styles from "./Main.module.scss";
 
 export function PlaygroundOwner(
   props: Readonly<{
@@ -20,13 +20,13 @@ export function PlaygroundOwner(
   let { owner } = props;
   if (owner === null) {
     return (
-      <div className={Styles.spacing}>
+      <div className={styles.spacing}>
         <h3>{t("playgrounds.owner.main")}</h3>
         <div className="align">
           <span className="circle" style={{ marginTop: ".5rem" }} />
           <div>
-            <h2 className={Styles.originName}>{t("404")}</h2>
-            <h4 className={Styles.originDescription}>
+            <h2 className={styles.originName}>{t("404")}</h2>
+            <h4 className={styles.originDescription}>
               {t("playgrounds.owner.none")}
             </h4>
           </div>
@@ -52,13 +52,13 @@ export function PlaygroundOwner(
     });
     if (loading) {
       return (
-        <div className={Styles.spacing}>
+        <div className={styles.spacing}>
           <h3>{t("servers.owner.main")}</h3>
           <div className="align">
             <span className="circle" style={{ marginTop: ".5rem" }} />
             <div>
-              <h2 className={Styles.originName}>{t("loading")}</h2>
-              <h4 className={Styles.originDescription}>
+              <h2 className={styles.originName}>{t("loading")}</h2>
+              <h4 className={styles.originDescription}>
                 {t("stats.originDescription")}
               </h4>
             </div>
@@ -67,13 +67,13 @@ export function PlaygroundOwner(
       );
     } else if (error) {
       return (
-        <div className={Styles.spacing}>
+        <div className={styles.spacing}>
           <h3>{t("servers.owner.main")}</h3>
           <div className="align">
             <span className="circle" style={{ marginTop: ".5rem" }} />
             <div>
-              <h2 className={Styles.originName}>{t("404")}</h2>
-              <h4 className={Styles.originDescription}>
+              <h2 className={styles.originName}>{t("404")}</h2>
+              <h4 className={styles.originDescription}>
                 {t("stats.originDescription")}
               </h4>
             </div>
@@ -86,7 +86,7 @@ export function PlaygroundOwner(
   }
 
   return (
-    <div className={Styles.spacing}>
+    <div className={styles.spacing}>
       <h2>{t("playgrounds.owner.main")}</h2>
       <div className="align">
         <Link
@@ -98,7 +98,7 @@ export function PlaygroundOwner(
         >
           <img
             alt={t("stats.profileImage")}
-            className={Styles.originProfile}
+            className={styles.originProfile}
             src={sslFix(owner?.avatar)}
             loading="lazy"
           />
@@ -111,12 +111,12 @@ export function PlaygroundOwner(
           }&name=${encodeURIComponent(owner.name)}`}
         >
           <div>
-            <h2 className={Styles.originName}>
+            <h2 className={styles.originName}>
               {owner?.name !== ""
                 ? owner?.name
                 : t("playgrounds.owner.unknown")}
             </h2>
-            <h4 className={Styles.originDescription}>
+            <h4 className={styles.originDescription}>
               {t("stats.originDescription")}
             </h4>
           </div>

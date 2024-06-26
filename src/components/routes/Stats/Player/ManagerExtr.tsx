@@ -9,7 +9,7 @@ import {
   SessionKit,
 } from "../../../../api/ReturnTypes";
 import { addSeconds } from "date-fns";
-import Styles from "./Main.module.scss";
+import * as styles from "./Main.module.scss";
 
 export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
@@ -20,9 +20,9 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
     return <></>;
   } else if (!props.loading && !props.error) {
     return (
-      <div className={Styles.spacing}>
+      <div className={styles.spacing}>
         <div className="align">
-          <h3 className={Styles.title}>{t("stats.playSession.main")}</h3>
+          <h3 className={styles.title}>{t("stats.playSession.main")}</h3>
           <p style={{ marginTop: 0 }}>{t("stats.playSession.detailed")}</p>
         </div>
         <Box>
@@ -47,7 +47,7 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
                   })}
                   )
                 </h3>
-                <p className={Styles.description}>{key.serverName}</p>
+                <p className={styles.description}>{key.serverName}</p>
                 <div className="alignS" style={{ marginTop: "0.8rem" }}>
                   <div>
                     <h3>{numberFormat.format(stats.kills)}</h3>
@@ -84,19 +84,19 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
                         <div className="align">
                           <div style={{ marginRight: "1rem" }}>
                             <div
-                              className={Styles.description}
+                              className={styles.description}
                               style={{ margin: 0 }}
                             >
                               {t("stats.playSession.stats.score")}
                             </div>
                             <div
-                              className={Styles.description}
+                              className={styles.description}
                               style={{ margin: 0 }}
                             >
                               {t("stats.playSession.stats.kills")}
                             </div>
                             <div
-                              className={Styles.description}
+                              className={styles.description}
                               style={{ margin: 0 }}
                             >
                               {t("stats.playSession.stats.timePlayedAs")}
@@ -137,9 +137,9 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
     );
   } else {
     return (
-      <div className={Styles.spacing}>
+      <div className={styles.spacing}>
         <div className="align">
-          <h3 className={Styles.title}>{t("stats.playSession.main")}</h3>
+          <h3 className={styles.title}>{t("stats.playSession.main")}</h3>
           <p style={{ marginTop: 0 }}>{t("stats.playSession.detailed")}</p>
         </div>
         <Box>

@@ -23,8 +23,8 @@ import { DynamicSort } from "../../Stats/Player/Main";
 import { playerToStatsPlatform } from "../../../../api/static";
 import { bfListApi, PlayerInfo, TeamInfo } from "../../../../api/bflistApi";
 import sslFix from "../../../functions/fixEaAssets";
-import styles from "./Players.module.scss";
-import MainStyles from "./Main.module.scss";
+import * as styles from "./Players.module.scss";
+import * as Mainstyles from "./Main.module.scss";
 
 function CheckBan(props: {
   playerId: string;
@@ -148,7 +148,7 @@ function Players(props: {
   }
 
   return (
-    <div className={MainStyles.spacing}>
+    <div className={Mainstyles.spacing}>
       <div className="align">
         <h2>{t("servers.playerlist.main")}</h2>
         <select
@@ -251,7 +251,7 @@ function Players(props: {
                                     {key.platform.toUpperCase()}
                                   </h4>
                                   <p
-                                    className={MainStyles.description}
+                                    className={Mainstyles.description}
                                     style={{ lineHeight: 0 }}
                                   >
                                     {t("servers.playerlist.row.platform")}
@@ -264,7 +264,7 @@ function Players(props: {
                                       {key.latency}
                                     </h4>
                                     <p
-                                      className={MainStyles.description}
+                                      className={Mainstyles.description}
                                       style={{ lineHeight: 0 }}
                                     >
                                       {t("servers.playerlist.row.ping")}
@@ -279,7 +279,7 @@ function Players(props: {
                                       {seederPlayer?.score ?? "?"}
                                     </h4>
                                     <p
-                                      className={MainStyles.description}
+                                      className={Mainstyles.description}
                                       style={{ lineHeight: 0 }}
                                     >
                                       {t("servers.playerlist.row.score")}
@@ -291,7 +291,7 @@ function Players(props: {
                                       {seederPlayer?.deaths ?? "?"}
                                     </h4>
                                     <p
-                                      className={MainStyles.description}
+                                      className={Mainstyles.description}
                                       style={{ lineHeight: 0 }}
                                     >
                                       {t("servers.playerlist.row.killDeath")}
@@ -308,7 +308,7 @@ function Players(props: {
                                       })}
                                     </h4>
                                     <p
-                                      className={MainStyles.description}
+                                      className={Mainstyles.description}
                                       style={{ lineHeight: 0 }}
                                     >
                                       {t("servers.playerlist.row.timePlayed")}
@@ -400,9 +400,9 @@ export function ServerPlayerlist(props: {
     );
   }
   return (
-    <div className={MainStyles.spacing}>
-      <h2 className={MainStyles.title}>{t("servers.playerlist.main")}</h2>
-      <p className={MainStyles.description}>{t("loading")}</p>
+    <div className={Mainstyles.spacing}>
+      <h2 className={Mainstyles.title}>{t("servers.playerlist.main")}</h2>
+      <p className={Mainstyles.description}>{t("loading")}</p>
     </div>
   );
 }
@@ -451,7 +451,7 @@ export function Bf3ServerPlayerlist(props: {
   const { players } = props;
 
   return (
-    <div className={MainStyles.spacing}>
+    <div className={Mainstyles.spacing}>
       <h2>{t("servers.playerlist.main")}</h2>
       {!!players ? (
         <Box>
@@ -549,9 +549,9 @@ export function BfListServerPlayerList(props: {
   if (!loading && !error) {
     if (!stats.players) {
       return (
-        <div className={MainStyles.spacing}>
-          <h2 className={MainStyles.title}>{t("servers.playerlist.main")}</h2>
-          <p className={MainStyles.description}>{t("bflist.notFound")}</p>
+        <div className={Mainstyles.spacing}>
+          <h2 className={Mainstyles.title}>{t("servers.playerlist.main")}</h2>
+          <p className={Mainstyles.description}>{t("bflist.notFound")}</p>
         </div>
       );
     }
@@ -574,7 +574,7 @@ export function BfListServerPlayerList(props: {
     });
 
     return (
-      <div className={MainStyles.spacing}>
+      <div className={Mainstyles.spacing}>
         <div className="align">
           <h2>{t("servers.playerlist.main")}</h2>
           <select
@@ -644,7 +644,7 @@ export function BfListServerPlayerList(props: {
                           <div className="row">
                             <h4 style={{ marginTop: "0.5rem" }}>{key.ping}</h4>
                             <p
-                              className={MainStyles.description}
+                              className={Mainstyles.description}
                               style={{ lineHeight: 0 }}
                             >
                               {t("servers.playerlist.row.ping")}
@@ -655,7 +655,7 @@ export function BfListServerPlayerList(props: {
                               {key?.score ?? "?"}
                             </h4>
                             <p
-                              className={MainStyles.description}
+                              className={Mainstyles.description}
                               style={{ lineHeight: 0 }}
                             >
                               {t("servers.playerlist.row.score")}
@@ -666,7 +666,7 @@ export function BfListServerPlayerList(props: {
                               {key?.kills ?? "?"}/{key?.deaths ?? "?"}
                             </h4>
                             <p
-                              className={MainStyles.description}
+                              className={Mainstyles.description}
                               style={{ lineHeight: 0 }}
                             >
                               {t("servers.playerlist.row.killDeath")}
@@ -687,9 +687,9 @@ export function BfListServerPlayerList(props: {
     );
   }
   return (
-    <div className={MainStyles.spacing}>
-      <h2 className={MainStyles.title}>{t("servers.playerlist.main")}</h2>
-      <p className={MainStyles.description}>{t("loading")}</p>
+    <div className={Mainstyles.spacing}>
+      <h2 className={Mainstyles.title}>{t("servers.playerlist.main")}</h2>
+      <p className={Mainstyles.description}>{t("loading")}</p>
     </div>
   );
 }

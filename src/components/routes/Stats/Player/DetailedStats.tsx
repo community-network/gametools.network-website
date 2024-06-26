@@ -4,8 +4,8 @@ import { useTranslation } from "react-i18next";
 import { Box } from "../../../Materials";
 import { newTitles } from "../../../../api/static";
 import { Views } from "./Main";
-import styles from "./DetailedStats.module.scss";
-import MainStyles from "./Main.module.scss";
+import * as styles from "./DetailedStats.module.scss";
+import * as Mainstyles from "./Main.module.scss";
 
 export interface MaybeStat {
   stat: string;
@@ -33,7 +33,7 @@ export function DetailedStats(props: Readonly<Views>): React.ReactElement {
   const numberFormat = new Intl.NumberFormat(getLanguage());
   if (!props.loading && !props.error) {
     return (
-      <div className={MainStyles.spacing}>
+      <div className={Mainstyles.spacing}>
         <Box>
           <h3>{t("stats.detailedName")}</h3>
           <p></p>
@@ -148,7 +148,7 @@ export function DetailedStats(props: Readonly<Views>): React.ReactElement {
     );
   } else {
     return (
-      <div className={MainStyles.spacing}>
+      <div className={Mainstyles.spacing}>
         <Box>
           <h3>{t("stats.detailedName")}</h3>
           <p>{t("loading")}</p>

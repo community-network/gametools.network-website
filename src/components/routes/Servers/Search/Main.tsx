@@ -20,7 +20,7 @@ import {
 } from "../../../../api/static";
 import { Results } from "./Results";
 import { useLocalStorage } from "react-use";
-import styles, { serverPageColumn } from "./Main.module.scss";
+import * as styles from "./Main.module.scss";
 
 function DropdownArrow(props: {
   item: string;

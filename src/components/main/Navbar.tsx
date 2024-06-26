@@ -3,7 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import "../../locales/config";
 import { useTranslation } from "react-i18next";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import styles from "./Navbar.module.scss";
+import * as styles from "./Navbar.module.scss";
 
 const RightNav = ({
   open,

@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Box } from "../../../Materials";
 import { MainStats } from "../../../../api/ReturnTypes";
 import { CopyToClipboard } from "../../../functions/CopyToClipboard";
-import Styles from "./Main.module.scss";
+import * as styles from "./Main.module.scss";
 
 interface Views {
   loading: boolean;
@@ -23,7 +23,7 @@ export function ViewIframe(props: Readonly<Views>): React.ReactElement {
     return (
       <Box>
         <h3>{t("stats.iframe.main")}</h3>
-        <p className={Styles.description} style={{ marginTop: "15px" }}>
+        <p className={styles.description} style={{ marginTop: "15px" }}>
           {t(`stats.iframe.info`)}{" "}
           <CopyToClipboard
             message={`<iframe title="Stats widget" src="https://widgets.gametools.network/stats/${props.platform}/${props.getter}/${props.name}/${props.game}/${language}/50" height="380px" width="600px" frameborder="0" allowtransparency="true"></iframe>`}

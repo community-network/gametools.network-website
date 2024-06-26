@@ -3,7 +3,7 @@ import "../../locales/config";
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "../../locales/ChangeLanguage";
 import AdsComponent, { AdSwitch, AdsEnabled } from "../Ads";
-import styles from "./Footer.module.scss";
+import * as styles from "./Footer.module.scss";
 
 interface FLinkProp {
   href: string;

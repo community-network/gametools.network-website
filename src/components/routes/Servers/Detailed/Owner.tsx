@@ -8,7 +8,7 @@ import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
 import { serverToStatsPlatform } from "../../../../api/static";
 import sslFix from "../../../functions/fixEaAssets";
-import MainStyles from "./Main.module.scss";
+import * as Mainstyles from "./Main.module.scss";
 
 export function OwnerInfo(props: {
   owner: ServerOwnerResult;
@@ -34,13 +34,13 @@ export function OwnerInfo(props: {
     });
     if (loading) {
       return (
-        <div className={MainStyles.spacing}>
+        <div className={Mainstyles.spacing}>
           <h3>{title}</h3>
           <div className="align">
             <span className="circle" style={{ marginTop: ".5rem" }} />
             <div>
-              <h2 className={MainStyles.originName}>{t("loading")}</h2>
-              <h4 className={MainStyles.originDescription}>
+              <h2 className={Mainstyles.originName}>{t("loading")}</h2>
+              <h4 className={Mainstyles.originDescription}>
                 {t("stats.originDescription")}
               </h4>
             </div>
@@ -49,13 +49,13 @@ export function OwnerInfo(props: {
       );
     } else if (error) {
       return (
-        <div className={MainStyles.spacing}>
+        <div className={Mainstyles.spacing}>
           <h3>{title}</h3>
           <div className="align">
             <span className="circle" style={{ marginTop: ".5rem" }} />
             <div>
-              <h2 className={MainStyles.originName}>{t("404")}</h2>
-              <h4 className={MainStyles.originDescription}>
+              <h2 className={Mainstyles.originName}>{t("404")}</h2>
+              <h4 className={Mainstyles.originDescription}>
                 {t("stats.originDescription")}
               </h4>
             </div>
@@ -69,13 +69,13 @@ export function OwnerInfo(props: {
 
   if (owner === null) {
     return (
-      <div className={MainStyles.spacing}>
+      <div className={Mainstyles.spacing}>
         <h3>{title}</h3>
         <div className="align">
           <span className="circle" style={{ marginTop: ".5rem" }} />
           <div>
-            <h2 className={MainStyles.originName}>{t("404")}</h2>
-            <h4 className={MainStyles.originDescription}>
+            <h2 className={Mainstyles.originName}>{t("404")}</h2>
+            <h4 className={Mainstyles.originDescription}>
               {t("servers.owner.none")}
             </h4>
           </div>
@@ -84,7 +84,7 @@ export function OwnerInfo(props: {
     );
   }
   return (
-    <div className={MainStyles.spacing}>
+    <div className={Mainstyles.spacing}>
       <h2>{title}</h2>
       <div className="align">
         <Link
@@ -96,7 +96,7 @@ export function OwnerInfo(props: {
         >
           <img
             alt={t("stats.profileImage")}
-            className={MainStyles.originProfile}
+            className={Mainstyles.originProfile}
             src={sslFix(owner?.avatar)}
           />
         </Link>
@@ -108,10 +108,10 @@ export function OwnerInfo(props: {
           }&name=${encodeURIComponent(owner.name)}`}
         >
           <div>
-            <h2 className={MainStyles.originName}>
+            <h2 className={Mainstyles.originName}>
               {owner.name !== "" ? owner.name : t("servers.owner.unknown")}
             </h2>
-            <h4 className={MainStyles.originDescription}>
+            <h4 className={Mainstyles.originDescription}>
               {t("stats.originDescription")}
             </h4>
           </div>

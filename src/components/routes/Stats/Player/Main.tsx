@@ -29,7 +29,7 @@ import { ViewIframe } from "./Iframe";
 import { ViewStats } from "./OverviewStats";
 import { ViewOrigin } from "./ViewOrigin";
 import { useLocalStorage } from "react-use";
-import styles from "./Main.module.scss";
+import * as styles from "./Main.module.scss";
 
 export interface Views {
   loading: boolean;

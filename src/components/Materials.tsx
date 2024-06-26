@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import styles from "./Materials.module.scss";
+import * as styles from "./Materials.module.scss";
 
 export function BackButton(
   props: Readonly<{

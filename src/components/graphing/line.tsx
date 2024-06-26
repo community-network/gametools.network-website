@@ -23,7 +23,7 @@ import { useMeasure } from "react-use";
 import ErrorBoundary from "../functions/ErrorBoundary";
 import { ServerPieChart } from "./pie";
 import { DetailedServerInfo } from "../../api/ReturnTypes";
-import styles from "./line.module.scss";
+import * as styles from "./line.module.scss";
 
 ChartJS.register(
   zoomPlugin,

@@ -4,14 +4,14 @@ import { useTranslation } from "react-i18next";
 import { Box } from "../../../Materials";
 import { Views } from "./Main";
 import { MainStatsProgress } from "../../../../api/ReturnTypes";
-import Styles from "./Main.module.scss";
+import * as styles from "./Main.module.scss";
 
 export function ViewProgress(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
   if (!props.loading && !props.error) {
     const progress = props?.stats?.progress;
     return (
-      <div className={Styles.spacing}>
+      <div className={styles.spacing}>
         <Box>
           <h3>{t("stats.progress.main")}</h3>
           {progress.map((key: MainStatsProgress, index: number) => {
@@ -38,9 +38,9 @@ export function ViewProgress(props: Readonly<Views>): React.ReactElement {
                     {key?.current}/{key?.total}
                   </p>
                 </div>
-                <div className={Styles.backgroundBar}>
+                <div className={styles.backgroundBar}>
                   <div
-                    className={Styles.bar}
+                    className={styles.bar}
                     style={{
                       width: `${(100 * key?.current) / key?.total}%`,
                     }}
@@ -54,7 +54,7 @@ export function ViewProgress(props: Readonly<Views>): React.ReactElement {
     );
   } else {
     return (
-      <div className={Styles.spacing}>
+      <div className={styles.spacing}>
         <Box>
           <h3>{t("stats.progress.main")}</h3>
           <p>{t("loading")}</p>

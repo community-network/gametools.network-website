@@ -8,7 +8,7 @@ import { platformGames, statsPlatforms } from "../../../../api/static";
 import { Graphs } from "./Graphs";
 import ErrorBoundary from "../../../functions/ErrorBoundary";
 import { useLocalStorage } from "react-use";
-import styles from "./PlayerSearch.module.scss";
+import * as styles from "./PlayerSearch.module.scss";
 
 export function StatSearch(): React.ReactElement {
   const { t } = useTranslation();

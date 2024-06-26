@@ -18,7 +18,7 @@ import bfbanLogo from "../../assets/icon/bfban-icon.png?sizes[]=24&format=webp&u
 import bfportalLogo from "../../assets/icon/bfportal-icon.png?sizes[]=24&format=webp&useResponsiveLoader=true";
 import { Link } from "react-router-dom";
 import AdsComponent from "../Ads";
-import styles from "./Home.module.scss";
+import * as styles from "./Home.module.scss";
 
 function Home(): React.ReactElement {
   const { t, i18n } = useTranslation();

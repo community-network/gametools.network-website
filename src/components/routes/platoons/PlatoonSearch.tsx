@@ -9,7 +9,7 @@ import { Box, BackButton } from "../../Materials";
 import { getLanguage } from "../../../locales/config";
 import { PlatoonResult, PlatoonSearchResult } from "../../../api/ReturnTypes";
 import { useLocalStorage } from "react-use";
-import styles from "./PlatoonSearch.module.scss";
+import * as styles from "./PlatoonSearch.module.scss";
 
 interface Views {
   loading: boolean;

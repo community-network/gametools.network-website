@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Box } from "../../../Materials";
 import { Views } from "./Main";
 import { MainStatsGamemode } from "../../../../api/ReturnTypes";
-import Styles from "./Main.module.scss";
+import * as styles from "./Main.module.scss";
 
 export function ViewGamemodes(props: Readonly<Views>): React.ReactElement {
   const { t, i18n } = useTranslation();
@@ -13,7 +13,7 @@ export function ViewGamemodes(props: Readonly<Views>): React.ReactElement {
     const getLanguage = () => window.localStorage.i18nextLng;
     const numberFormat = new Intl.NumberFormat(getLanguage());
     return (
-      <div className={Styles.spacing}>
+      <div className={styles.spacing}>
         <Box>
           <>
             {gamemodes[0].wins !== undefined ? (
@@ -41,9 +41,9 @@ export function ViewGamemodes(props: Readonly<Views>): React.ReactElement {
                           })}
                         </p>
                       </div>
-                      <div className={Styles.backgroundBar}>
+                      <div className={styles.backgroundBar}>
                         <div
-                          className={Styles.bar}
+                          className={styles.bar}
                           style={{
                             width: `${
                               (key?.wins / (key?.wins + key?.losses)) * 100
@@ -102,7 +102,7 @@ export function ViewGamemodes(props: Readonly<Views>): React.ReactElement {
     );
   } else {
     return (
-      <div className={Styles.spacing}>
+      <div className={styles.spacing}>
         <Box>
           <h3>{t("stats.gamemodes.main")}</h3>
           <p>{t("loading")}</p>

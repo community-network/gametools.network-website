@@ -6,8 +6,8 @@ import { Box } from "../../../Materials";
 import { MainStatsPlatoon } from "../../../../api/ReturnTypes";
 import { PlatformViews } from "./Main";
 import sslFix from "../../../functions/fixEaAssets";
-import Styles from "./Main.module.scss";
-import PlatoonStyles from "./Platoon.module.scss";
+import * as styles from "./Main.module.scss";
+import * as Platoonstyles from "./Platoon.module.scss";
 
 export function PlatoonInfo(
   props: Readonly<PlatformViews>,
@@ -22,7 +22,7 @@ export function PlatoonInfo(
     props.stats.platoons.length === 0
   ) {
     return (
-      <div className={Styles.spacing}>
+      <div className={styles.spacing}>
         <Box>
           <h3>{t("stats.platoonName")}</h3>
           <p>{t("stats.platoon.none")}</p>
@@ -34,7 +34,7 @@ export function PlatoonInfo(
       (platoon) => platoon?.id !== stats?.activePlatoon?.id,
     );
     return (
-      <div className={Styles.spacing}>
+      <div className={styles.spacing}>
         <Box>
           {stats?.activePlatoon?.name !== null ? (
             <>
@@ -42,7 +42,7 @@ export function PlatoonInfo(
               <div className="alignW" style={{ alignItems: "start" }}>
                 <Link to={`/platoons/${platform}/${stats?.activePlatoon?.id}`}>
                   <img
-                    className={PlatoonStyles.platoonEmblem}
+                    className={Platoonstyles.platoonEmblem}
                     src={sslFix(stats?.activePlatoon?.emblem)}
                     loading="lazy"
                   />
@@ -65,7 +65,7 @@ export function PlatoonInfo(
                     <Link
                       to={`/platoons/${platform}/${stats?.activePlatoon?.id}`}
                     >
-                      <p className={Styles.description}>
+                      <p className={styles.description}>
                         {t("stats.platoon.noDescription")}
                       </p>
                     </Link>
@@ -90,7 +90,7 @@ export function PlatoonInfo(
                     <div className="alignW" style={{ alignItems: "start" }}>
                       <Link to={`/platoons/${platform}/${key?.id}`}>
                         <img
-                          className={PlatoonStyles.platoonEmblem}
+                          className={Platoonstyles.platoonEmblem}
                           src={sslFix(key?.emblem)}
                           loading="lazy"
                         />
@@ -107,7 +107,7 @@ export function PlatoonInfo(
                           </Link>
                         ) : (
                           <Link to={`/platoons/${platform}/${key?.id}`}>
-                            <p className={Styles.description}>
+                            <p className={styles.description}>
                               {t("stats.platoon.noDescription")}
                             </p>
                           </Link>
@@ -125,7 +125,7 @@ export function PlatoonInfo(
     );
   } else {
     return (
-      <div className={Styles.spacing}>
+      <div className={styles.spacing}>
         <Box>
           <h3>{t("stats.platoonName")}</h3>
           <p>{t("loading")}</p>

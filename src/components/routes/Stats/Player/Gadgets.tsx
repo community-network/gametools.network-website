@@ -7,7 +7,7 @@ import { Views, DynamicSort } from "./Main";
 import { BarGraph } from "../../../graphing/bar";
 import ErrorBoundary from "../../../functions/ErrorBoundary";
 import sslFix from "../../../functions/fixEaAssets";
-import Styles from "./Main.module.scss";
+import * as styles from "./Main.module.scss";
 
 export function ViewGadgets(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
@@ -23,9 +23,9 @@ export function ViewGadgets(props: Readonly<Views>): React.ReactElement {
     gadgets = gadgets.sort(DynamicSort(sortType));
   }
   return (
-    <div className={Styles.spacing}>
+    <div className={styles.spacing}>
       <div className="align">
-        <h3 className={Styles.title}>{t("stats.gadgets")}</h3>
+        <h3 className={styles.title}>{t("stats.gadgets")}</h3>
         <div className="alignW">
           <input
             className="smallSearchBox"
@@ -59,28 +59,28 @@ export function ViewGadgets(props: Readonly<Views>): React.ReactElement {
                 <div className="row">
                   <h4>{key?.gadgetName}</h4>
                   <img
-                    className={Styles.listImage}
+                    className={styles.listImage}
                     src={sslFix(key?.image)}
                     loading="lazy"
                   />
                 </div>
                 <div className="row">
                   <h4>{key?.type}</h4>
-                  <p className={Styles.description}>{t("stats.rows.type")}</p>
+                  <p className={styles.description}>{t("stats.rows.type")}</p>
                 </div>
                 <div className="row">
                   <h4>{numberFormat.format(key?.kills)}</h4>
-                  <p className={Styles.description}>{t("stats.rows.kills")}</p>
+                  <p className={styles.description}>{t("stats.rows.kills")}</p>
                 </div>
                 <div className="row">
                   <h4>{numberFormat.format(key?.kpm)}</h4>
-                  <p className={Styles.description}>
+                  <p className={styles.description}>
                     {t("stats.rows.killsPerMinute")}
                   </p>
                 </div>
                 <div className="phoneRow">
                   <h4>{numberFormat.format(key?.multiKills)}</h4>
-                  <p className={Styles.description}>
+                  <p className={styles.description}>
                     {t("stats.rows.multiKills")}
                   </p>
                 </div>
@@ -120,9 +120,9 @@ export function GadgetGraph(props: Readonly<Views>): React.ReactElement {
   const less = () => setBegin(Math.max(0, begin - 25));
   const more = () => setBegin(Math.min(length - 1, begin + 25));
   return (
-    <div className={Styles.spacing}>
+    <div className={styles.spacing}>
       <div className="align">
-        <h3 className={Styles.title}>{t("stats.gadgetGaph")}</h3>
+        <h3 className={styles.title}>{t("stats.gadgetGaph")}</h3>
         <div className="alignW" style={{ marginRight: "1rem" }}>
           <select
             aria-label={t("ariaLabels.chartType")}
@@ -148,7 +148,7 @@ export function GadgetGraph(props: Readonly<Views>): React.ReactElement {
         <button className="smallButtonSecondary" onClick={more}>
           &#62;
         </button>
-        <p className={Styles.description}>
+        <p className={styles.description}>
           {begin + 1}/{Math.min(length, begin + 25)} {t("stats.gadgets")}
         </p>
       </div>

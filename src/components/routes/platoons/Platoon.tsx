@@ -19,7 +19,7 @@ import { getLanguage } from "../../../locales/config";
 import exportExcel from "../../functions/exportExcel";
 import sslFix from "../../functions/fixEaAssets";
 import useExternalScript from "../../functions/UseExternalScript";
-import styles from "./Platoon.module.scss";
+import * as styles from "./Platoon.module.scss";
 
 interface Views {
   loading: boolean;

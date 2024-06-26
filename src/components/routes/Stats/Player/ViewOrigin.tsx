@@ -5,8 +5,8 @@ import { UserGames } from "../../../../api/ReturnTypes";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
 import sslFix from "../../../functions/fixEaAssets";
-import styles from "./ViewOrigin.module.scss";
-import MainStyles from "./Main.module.scss";
+import * as styles from "./ViewOrigin.module.scss";
+import * as Mainstyles from "./Main.module.scss";
 
 export interface Views {
   loading: boolean;
@@ -70,7 +70,7 @@ export function ViewOrigin(props: Readonly<Views>): React.ReactElement {
   if (props.error) {
     return (
       // if playername isnt found
-      <div className={MainStyles.spacing}>
+      <div className={Mainstyles.spacing}>
         <div className="align">
           <span className="circle" />
           <div>
@@ -85,7 +85,7 @@ export function ViewOrigin(props: Readonly<Views>): React.ReactElement {
       if (name !== null) {
         return (
           // if playerid but ?name behind it
-          <div className={MainStyles.spacing}>
+          <div className={Mainstyles.spacing}>
             <div className="align">
               <span className="circle" />
               <div>
@@ -106,7 +106,7 @@ export function ViewOrigin(props: Readonly<Views>): React.ReactElement {
       } else {
         return (
           // if no ?name behind it
-          <div className={MainStyles.spacing}>
+          <div className={Mainstyles.spacing}>
             <div className="align">
               <span className="circle" />
               <div>
@@ -129,7 +129,7 @@ export function ViewOrigin(props: Readonly<Views>): React.ReactElement {
     } else {
       return (
         // normal playerName
-        <div className={MainStyles.spacing}>
+        <div className={Mainstyles.spacing}>
           <div className="align">
             <img
               className={styles.originProfile}
@@ -155,7 +155,7 @@ export function ViewOrigin(props: Readonly<Views>): React.ReactElement {
   } else {
     return (
       // loading page
-      <div className={MainStyles.spacing}>
+      <div className={Mainstyles.spacing}>
         <div className="align">
           <span className="circle" />
           <div>

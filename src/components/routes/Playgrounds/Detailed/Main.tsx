@@ -9,7 +9,7 @@ import {
   Tags,
 } from "../../../../api/ReturnTypes";
 import { PlaygroundOwner } from "./Owner";
-import styles from "./Main.module.scss";
+import * as styles from "./Main.module.scss";
 
 interface Views {
   loading: boolean;

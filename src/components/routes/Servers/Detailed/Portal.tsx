@@ -4,7 +4,7 @@ import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
 import "../../../../assets/scss/App.scss";
 import { ServerInfoResult } from "../../../../api/ReturnTypes";
-import Styles from "./Main.module.scss";
+import * as styles from "./Main.module.scss";
 
 export function ServerConfig(
   props: Readonly<{
@@ -16,19 +16,19 @@ export function ServerConfig(
 
   if (serverInfo?.configNameTranslation !== "") {
     return (
-      <div className={Styles.spacing}>
+      <div className={styles.spacing}>
         <h2>{t("servers.portal.main")}</h2>
         <div className="alignW">
           <img
-            className={Styles.originProfile}
+            className={styles.originProfile}
             alt={t("servers.bfportal.main")}
             src={background}
           />
           <div>
-            <h2 className={Styles.originName}>
+            <h2 className={styles.originName}>
               {serverInfo?.configNameTranslation}
             </h2>
-            <h4 className={Styles.originDescription}>
+            <h4 className={styles.originDescription}>
               {serverInfo?.configDescriptionTranslation}
             </h4>
           </div>
@@ -37,18 +37,18 @@ export function ServerConfig(
     );
   }
   return (
-    <div className={Styles.spacing}>
+    <div className={styles.spacing}>
       <h2>{t("servers.portal.main")}</h2>
       <div className="alignW">
         <img
-          className={Styles.originProfile}
+          className={styles.originProfile}
           alt={t("servers.bfportal.main")}
           src={background}
         />
         <div>
-          <h2 className={Styles.originName}>{serverInfo?.configName}</h2>
+          <h2 className={styles.originName}>{serverInfo?.configName}</h2>
           <h4
-            className={Styles.originDescription}
+            className={styles.originDescription}
             style={{ maxWidth: "600px" }}
           >
             {serverInfo?.configDescription}

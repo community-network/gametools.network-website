@@ -4,7 +4,7 @@ import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
 import "../../../../assets/scss/App.scss";
 import { RightArrow, BackButton } from "../../../Materials";
-import Styles from "./Main.module.scss";
+import * as styles from "./Main.module.scss";
 
 interface IUrl {
   valid_url: boolean;
@@ -78,7 +78,7 @@ function Main(): React.ReactElement {
       <BackButton text={t("getPlaygrounds.back")} location="/" />
       <div className="align">
         <h2>{t("getPlaygrounds.main")}</h2>
-        <p className={Styles.altDescription}>
+        <p className={styles.altDescription}>
           {t("getPlaygrounds.description")}
         </p>
       </div>

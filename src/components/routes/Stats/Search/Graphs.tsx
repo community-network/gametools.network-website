@@ -5,7 +5,7 @@ import "../../../../assets/scss/App.scss";
 import { OpenExternal } from "../../../Materials";
 import { Graph, GlobalGraph, OldGameGraph } from "../../../graphing/line";
 import { diceGraph, graphGames, graphOptions } from "../../../../api/static";
-import styles from "./PlayerSearch.module.scss";
+import * as styles from "./PlayerSearch.module.scss";
 
 export function Graphs(): React.ReactElement {
   const { t } = useTranslation();

@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import "../../../../assets/scss/App.scss";
 import { Box } from "../../../Materials";
 import { ScoreServerPlayer, ScoreTeamList } from "../../../../api/ReturnTypes";
-import Styles from "./Main.module.scss";
+import * as styles from "./Main.module.scss";
 
 export function ServerScoreboard(
   props: Readonly<{
@@ -19,8 +19,8 @@ export function ServerScoreboard(
   const getLanguage = () => window.localStorage.i18nextLng;
   const numberFormat = new Intl.NumberFormat(getLanguage());
   return (
-    <div className={Styles.spacing}>
-      <h2 className={Styles.title}>{t("servers.playerlist.main")}</h2>
+    <div className={styles.spacing}>
+      <h2 className={styles.title}>{t("servers.playerlist.main")}</h2>
       {teams !== null ? (
         <>
           {teams.map((teamInfo: ScoreTeamList, index: number) => {
@@ -78,7 +78,7 @@ export function ServerScoreboard(
                                   {numberFormat.format(key.score)}
                                 </h4>
                                 <p
-                                  className={Styles.description}
+                                  className={styles.description}
                                   style={{ lineHeight: 0 }}
                                 >
                                   {t("servers.leaderboard.row.score")}
@@ -89,7 +89,7 @@ export function ServerScoreboard(
                                   {numberFormat.format(key.kills)}
                                 </h4>
                                 <p
-                                  className={Styles.description}
+                                  className={styles.description}
                                   style={{ lineHeight: 0 }}
                                 >
                                   {t("servers.leaderboard.row.kills")}
@@ -100,7 +100,7 @@ export function ServerScoreboard(
                                   {numberFormat.format(key.deaths)}
                                 </h4>
                                 <p
-                                  className={Styles.description}
+                                  className={styles.description}
                                   style={{ lineHeight: 0 }}
                                 >
                                   {t("servers.leaderboard.row.deaths")}

@@ -17,8 +17,8 @@ import {
   MainStatsVehicle,
   MainStatsWeapon,
 } from "../../../../api/ReturnTypes";
-import Styles from "./OverviewStats.module.scss";
-import MainStyles from "./Main.module.scss";
+import * as styles from "./OverviewStats.module.scss";
+import * as Mainstyles from "./Main.module.scss";
 
 function ExportButton(
   props: Readonly<{
@@ -103,7 +103,7 @@ export function ViewStats(props: Readonly<Views>): React.ReactElement {
     }
 
     return (
-      <div className={MainStyles.spacing}>
+      <div className={Mainstyles.spacing}>
         <Box>
           <h3>{t("stats.overview")}</h3>
           <p>{t("stats.overviewDescription")}</p>
@@ -115,9 +115,9 @@ export function ViewStats(props: Readonly<Views>): React.ReactElement {
                   <p>{t("stats.main.rank")}</p>
                 </div>
               </div>
-              <div className={MainStyles.backgroundBar}>
+              <div className={Mainstyles.backgroundBar}>
                 <div
-                  className={MainStyles.bar}
+                  className={Mainstyles.bar}
                   style={{
                     width: `${
                       (100 * stats.currentRankProgress) /
@@ -157,10 +157,10 @@ export function ViewStats(props: Readonly<Views>): React.ReactElement {
           </div>
           <p></p>
           {!!stats?.secondsPlayed && (
-            <div className={Styles.bottomOfBox}>
+            <div className={styles.bottomOfBox}>
               <p style={{ margin: 0 }}>
                 {t("stats.main.timePlayed")}{" "}
-                <span className={Styles.whiteText}>
+                <span className={styles.whiteText}>
                   {t("change", {
                     change: addSeconds(new Date(), stats?.secondsPlayed),
                   })}
@@ -179,7 +179,7 @@ export function ViewStats(props: Readonly<Views>): React.ReactElement {
     );
   } else {
     return (
-      <div className={MainStyles.spacing}>
+      <div className={Mainstyles.spacing}>
         <Box>
           <h3>{t("stats.overview")}</h3>
           <p>{t("loading")}</p>
