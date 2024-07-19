@@ -24,13 +24,13 @@
 .welcome {
   position: absolute;
   top: 6rem;
+  max-width: 40em;
   @media (min-width: 750px) {
     padding-left: 8.33%;
   }
   @media (max-width: 750px) {
     padding-left: 2%;
   }
-  max-width: 40em;
 
   .text {
     --color-text: var(--color-alt-text);
