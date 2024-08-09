@@ -1,7 +1,11 @@
 import * as React from "react";
-import "../../../../locales/config";
 import { Trans, useTranslation } from "react-i18next";
-import "../../../../assets/scss/App.scss";
+import { ModListReturn } from "../../../../api/marneApi";
+import {
+  DetailedServerInfo,
+  ServerRotation,
+  ServerSettings,
+} from "../../../../api/ReturnTypes";
 import {
   bf4Settings,
   dice,
@@ -11,30 +15,26 @@ import {
   serverWidgetTypes,
   widgetSize,
 } from "../../../../api/static";
-import {
-  DetailedServerInfo,
-  ServerRotation,
-  ServerSettings,
-} from "../../../../api/ReturnTypes";
+import "../../../../assets/scss/App.scss";
+import "../../../../locales/config";
+import { capitalizeFirstLetter } from "../../../functions/capitalizeFirstLetter";
+import { CopyToClipboard } from "../../../functions/CopyToClipboard";
+import sslFix from "../../../functions/fixEaAssets";
+import { ServerGraphQuery } from "../../../graphing/line";
+import { BfPortalInfo } from "./BfPortal";
+import { ServerLeaderboard } from "./Leaderboard";
+import * as Mainstyles from "./Main.module.scss";
+import * as styles from "./Main.module.scss";
 import { OwnerInfo } from "./Owner";
+import { ServerPlatoon } from "./Platoon";
 import {
   Bf3ServerPlayerlist,
   BfListServerPlayerList,
-  ServerPlayerlist,
   MarnePlayerList,
+  ServerPlayerlist,
 } from "./Players";
-import { ServerLeaderboard } from "./Leaderboard";
-import { ServerPlatoon } from "./Platoon";
 import { ServerConfig } from "./Portal";
 import { ServerScoreboard } from "./Scoreboard";
-import { BfPortalInfo } from "./BfPortal";
-import { ServerGraphQuery } from "../../../graphing/line";
-import { CopyToClipboard } from "../../../functions/CopyToClipboard";
-import sslFix from "../../../functions/fixEaAssets";
-import { capitalizeFirstLetter } from "../../../functions/capitalizeFirstLetter";
-import { ModListReturn } from "../../../../api/marneApi";
-import * as styles from "./Main.module.scss";
-import * as Mainstyles from "./Main.module.scss";
 
 interface Views {
   loading: boolean;
@@ -245,9 +245,8 @@ export function Results(props: Views): React.ReactElement {
           <p className={Mainstyles.description} style={{ marginTop: "6px" }}>
             {t("servers.permLink")}{" "}
             <CopyToClipboard
-              message={`https://gametools.network/servers/${
-                props.game
-              }/name/${encodeURIComponent(stats?.prefix)}/pc`}
+              message={`https://gametools.network/servers/${props.game
+                }/name/${encodeURIComponent(stats?.prefix)}/pc`}
               stateTranslation={"states"}
             />
           </p>
@@ -266,7 +265,7 @@ export function Results(props: Views): React.ReactElement {
                 className="smallButtonSecondary"
                 style={{ marginBottom: 0 }}
                 onClick={function () {
-                  location.href = `${props.game}://${stats.gameId}`;
+                  location.href = `${window.encodeURIComponent(props.game)}://${stats.gameId}`;
                 }}
               >
                 {t("servers.join")}
@@ -275,7 +274,7 @@ export function Results(props: Views): React.ReactElement {
                 className="smallButtonSecondary"
                 style={{ marginBottom: 0 }}
                 onClick={function () {
-                  location.href = `https://joinme.click/g/${props.game}/${stats.gameId}`;
+                  location.href = `https://joinme.click/g/${window.encodeURIComponent(props.game)}/${stats.gameId}`;
                 }}
               >
                 {t("servers.joinme.view")}
@@ -292,27 +291,27 @@ export function Results(props: Views): React.ReactElement {
               <div className="align">
                 {loading
                   ? [...Array(4)].map((key, index) => (
-                      <MapRotationItem
-                        key={key}
-                        stats={{
-                          image: "",
-                          mapname: t("loading"),
-                          mode: t("notApplicable"),
-                          index: index,
-                        }}
-                        index={index}
-                      />
-                    ))
+                    <MapRotationItem
+                      key={key}
+                      stats={{
+                        image: "",
+                        mapname: t("loading"),
+                        mode: t("notApplicable"),
+                        index: index,
+                      }}
+                      index={index}
+                    />
+                  ))
                   : stats?.rotation?.map(
-                      (key: ServerRotation, index: number) =>
-                        key && (
-                          <MapRotationItem
-                            key={index}
-                            stats={key}
-                            index={index}
-                          />
-                        ),
-                    )}
+                    (key: ServerRotation, index: number) =>
+                      key && (
+                        <MapRotationItem
+                          key={index}
+                          stats={key}
+                          index={index}
+                        />
+                      ),
+                  )}
               </div>
             </>
           )}
@@ -361,22 +360,22 @@ export function Results(props: Views): React.ReactElement {
                     game={props.game}
                   />
                 ) : // older titles
-                stats?.ip && stats?.port ? (
-                  <BfListServerPlayerList
-                    game={props.game}
-                    serverIp={stats?.ip}
-                    serverPort={stats?.hostport || stats?.port}
-                  />
-                ) : (
-                  props.game.includes("marne") && (
-                    <MarnePlayerList
-                      stats={stats}
-                      game={props?.game}
-                      gameId={stats?.gameId}
+                  stats?.ip && stats?.port ? (
+                    <BfListServerPlayerList
+                      game={props.game}
+                      serverIp={stats?.ip}
+                      serverPort={stats?.hostport || stats?.port}
                     />
-                    // <Bf3ServerPlayerlist players={stats?.players} game="bf1" />
-                  )
-                )}
+                  ) : (
+                    props.game.includes("marne") && (
+                      <MarnePlayerList
+                        stats={stats}
+                        game={props?.game}
+                        gameId={stats?.gameId}
+                      />
+                      // <Bf3ServerPlayerlist players={stats?.players} game="bf1" />
+                    )
+                  )}
               </>
             )}
             {/* bf4 */}
@@ -426,7 +425,7 @@ export function Results(props: Views): React.ReactElement {
                             value.values[0].readableSettingName,
                           )}
                         </b>
-                        : {}
+                        : { }
                         {value.values[1].readableSettingName}
                       </p>
                     </div>
@@ -537,13 +536,10 @@ export function Results(props: Views): React.ReactElement {
                 >
                   {t(`servers.iframe.${element}`)}{" "}
                   <CopyToClipboard
-                    message={`<iframe title="Server playercount" src="https://widgets.gametools.network/servers/${element}/${
-                      props.game
-                    }/${widgetItem}/${widgetReturn}/${
-                      props.platform
-                    }?lng=${getLanguage()}" height="${
-                      widgetSize[index]
-                    }px" width="700px" frameborder="0" allowtransparency="true"></iframe>`}
+                    message={`<iframe title="Server playercount" src="https://widgets.gametools.network/servers/${element}/${props.game
+                      }/${widgetItem}/${widgetReturn}/${props.platform
+                      }?lng=${getLanguage()}" height="${widgetSize[index]
+                      }px" width="700px" frameborder="0" allowtransparency="true"></iframe>`}
                     stateTranslation={"servers.iframe.states"}
                   />
                 </p>
@@ -552,11 +548,9 @@ export function Results(props: Views): React.ReactElement {
                 ) : (
                   <iframe
                     title="Server playercount"
-                    src={`https://widgets.gametools.network/servers/${element}/${
-                      props.game
-                    }/${widgetItem}/${widgetReturn}/${
-                      props.platform
-                    }?lng=${getLanguage()}`}
+                    src={`https://widgets.gametools.network/servers/${element}/${props.game
+                      }/${widgetItem}/${widgetReturn}/${props.platform
+                      }?lng=${getLanguage()}`}
                     style={{
                       maxWidth: "700px",
                       backgroundColor: "transparent",
