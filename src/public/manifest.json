@@ -1,6 +1,7 @@
 {
   "short_name": "Gametools",
-  "name": "Gametools",
+  "name": "Game Tools: Battlefield Stats, Bots, Server management",
+  "description": "See your Battlefield 1, V, 4, 3, 2, HL, 2042 stats! Watch live game statistics, get our Battlefield APIs, Discord Bots, BF1 Server administration and protection tools.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -83,6 +84,26 @@
           "sizes": "any"
         }
       ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/image-1.png",
+      "type": "image/png",
+      "sizes": "1976x1394",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/screenshots/image-2.png",
+      "type": "image/png",
+      "sizes": "1976x1394",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/screenshots/image-3.png",
+      "type": "image/png",
+      "sizes": "1976x1394",
+      "form_factor": "wide"
     }
   ]
 }
