@@ -725,7 +725,10 @@
         "Stranded": "Stranded",
         "Spearhead": "Spearhead",
         "Flashpoint": "Flashpoint",
-        "Reclaimed": "Reclaimed"
+        "Reclaimed": "Reclaimed",
+        "Redacted": "Redacted",
+        "Haven": "Haven",
+        "Stadium": "Stadium"
       },
       "gamemodes": {
         "Breakthrough Large": "Breakthrough Large",
