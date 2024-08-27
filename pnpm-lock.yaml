@@ -12,14 +12,14 @@ importers:
         specifier: ^5.51.24
         version: 5.51.24(react@18.3.1)
       chart.js:
-        specifier: ^4.4.3
-        version: 4.4.3
+        specifier: ^4.4.4
+        version: 4.4.4
       chartjs-adapter-date-fns:
         specifier: ^3.0.0
-        version: 3.0.0(chart.js@4.4.3)(date-fns@3.6.0)
+        version: 3.0.0(chart.js@4.4.4)(date-fns@3.6.0)
       chartjs-plugin-zoom:
         specifier: ^2.0.1
-        version: 2.0.1(chart.js@4.4.3)
+        version: 2.0.1(chart.js@4.4.4)
       date-fns:
         specifier: ^3.6.0
         version: 3.6.0
@@ -46,7 +46,7 @@ importers:
         version: 18.3.1
       react-chartjs-2:
         specifier: ^5.2.0
-        version: 5.2.0(chart.js@4.4.3)(react@18.3.1)
+        version: 5.2.0(chart.js@4.4.4)(react@18.3.1)
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
@@ -1876,8 +1876,8 @@ packages:
     resolution: {integrity: sha512-kWWXztvZ5SBQV+eRgKFeh8q5sLuZY2+8WUIzlxWVTg+oGwY14qylx1KbKzHd8P6ZYkAg0xyIDU9JMHhyJMZ1jw==}
     engines: {node: '>=10'}
 
-  chart.js@4.4.3:
-    resolution: {integrity: sha512-qK1gkGSRYcJzqrrzdR6a+I0vQ4/R+SoODXyAjscQ/4mzuNzySaMCd+hyVxitSY1+L2fjPD1Gbn+ibNqRmwQeLw==}
+  chart.js@4.4.4:
+    resolution: {integrity: sha512-emICKGBABnxhMjUjlYRR12PmOXhJ2eJjEHL2/dZlWjxRAZT1D8xplLFq5M0tMQK8ja+wBS/tuVEJB5C6r7VxJA==}
     engines: {pnpm: '>=8'}
 
   chartjs-adapter-date-fns@3.0.0:
@@ -7364,18 +7364,18 @@ snapshots:
 
   char-regex@1.0.2: {}
 
-  chart.js@4.4.3:
+  chart.js@4.4.4:
     dependencies:
       '@kurkle/color': 0.3.2
 
-  chartjs-adapter-date-fns@3.0.0(chart.js@4.4.3)(date-fns@3.6.0):
+  chartjs-adapter-date-fns@3.0.0(chart.js@4.4.4)(date-fns@3.6.0):
     dependencies:
-      chart.js: 4.4.3
+      chart.js: 4.4.4
       date-fns: 3.6.0
 
-  chartjs-plugin-zoom@2.0.1(chart.js@4.4.3):
+  chartjs-plugin-zoom@2.0.1(chart.js@4.4.4):
     dependencies:
-      chart.js: 4.4.3
+      chart.js: 4.4.4
       hammerjs: 2.0.8
 
   chokidar@3.6.0:
@@ -9917,9 +9917,9 @@ snapshots:
       minimist: 1.2.8
       strip-json-comments: 2.0.1
 
-  react-chartjs-2@5.2.0(chart.js@4.4.3)(react@18.3.1):
+  react-chartjs-2@5.2.0(chart.js@4.4.4)(react@18.3.1):
     dependencies:
-      chart.js: 4.4.3
+      chart.js: 4.4.4
       react: 18.3.1
 
   react-dom@18.3.1(react@18.3.1):
