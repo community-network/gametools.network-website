@@ -1,9 +1,9 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
-import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import "../../../../assets/scss/App.scss";
-import { RightArrow, BackButton } from "../../../Materials";
+import "../../../../locales/config";
+import { BackButton, RightArrow } from "../../../Materials";
 import * as styles from "./Main.module.scss";
 
 interface IUrl {

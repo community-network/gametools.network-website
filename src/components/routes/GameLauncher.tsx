@@ -1,9 +1,9 @@
 import * as React from "react";
-import "../../locales/config";
-import { oldJoinGames } from "../../api/static";
-import { Align, BackButton, ButtonLink, Container } from "../Materials";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
+import { oldJoinGames } from "../../api/static";
+import "../../locales/config";
+import { BackButton } from "../Materials";
 
 function Launch(): React.ReactElement {
   const params = useParams();

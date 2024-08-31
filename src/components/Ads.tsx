@@ -15,7 +15,7 @@ const AdsComponent = (props: {
   React.useEffect(() => {
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (e) {}
+    } catch (_) {}
   }, []);
 
   const [value] = useLocalStorage("disable-ads", false);
