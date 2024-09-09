@@ -56,8 +56,9 @@ export function ViewGamemodes(props: Readonly<Views>): React.ReactElement {
                       <div
                         className={styles.bar}
                         style={{
-                          width: `${(key?.wins / (key?.wins + key?.losses)) * 100
-                            }%`,
+                          width: `${
+                            (key?.wins / (key?.wins + key?.losses)) * 100
+                          }%`,
                         }}
                       ></div>
                     </div>

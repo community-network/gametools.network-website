@@ -9,7 +9,6 @@ import * as styles from "./Main.module.scss";
 export function ViewProgress(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
 
-
   if (props.isError || props.isLoading) {
     return (
       <div className={styles.spacing}>

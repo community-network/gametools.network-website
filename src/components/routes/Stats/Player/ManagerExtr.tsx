@@ -27,7 +27,7 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
           <p>{t("loading")}</p>
         </Box>
       </div>
-    )
+    );
   }
 
   if (props.isError || stats.sessions.length === 0) {

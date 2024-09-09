@@ -37,8 +37,9 @@ export function ViewIframe(props: Readonly<IframeViews>): React.ReactElement {
       <iframe
         style={{ maxWidth: "600px" }}
         title="Stats widget"
-        src={`https://widgets.gametools.network/stats/${props.platform}/${props.getter
-          }/${encodeURIComponent(props.name)}/${props.game}/${language}/50`}
+        src={`https://widgets.gametools.network/stats/${props.platform}/${
+          props.getter
+        }/${encodeURIComponent(props.name)}/${props.game}/${language}/50`}
         height="380px"
         width="100%"
         frameBorder="0"

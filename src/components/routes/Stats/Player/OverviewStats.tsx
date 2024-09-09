@@ -25,14 +25,14 @@ function ExportButton(
     mainStats: { item: string; value: number | string | boolean }[];
     otherStats: {
       [string: string]:
-      | MainStatsPlatoon[]
-      | MainStatsSession[]
-      | MainStatsProgress[]
-      | MainStatsGamemode[]
-      | MainStatsClasses[]
-      | MainStatsVehicle[]
-      | MainStatsWeapon[]
-      | MainStatsGadgets[];
+        | MainStatsPlatoon[]
+        | MainStatsSession[]
+        | MainStatsProgress[]
+        | MainStatsGamemode[]
+        | MainStatsClasses[]
+        | MainStatsVehicle[]
+        | MainStatsWeapon[]
+        | MainStatsGadgets[];
     };
     game: string;
     stats: MainStats;
@@ -82,14 +82,14 @@ export function ViewStats(props: Readonly<Views>): React.ReactElement {
   const mainStats: { item: string; value: number | string | boolean }[] = [];
   const otherStats: {
     [string: string]:
-    | MainStatsPlatoon[]
-    | MainStatsSession[]
-    | MainStatsProgress[]
-    | MainStatsGamemode[]
-    | MainStatsClasses[]
-    | MainStatsVehicle[]
-    | MainStatsWeapon[]
-    | MainStatsGadgets[];
+      | MainStatsPlatoon[]
+      | MainStatsSession[]
+      | MainStatsProgress[]
+      | MainStatsGamemode[]
+      | MainStatsClasses[]
+      | MainStatsVehicle[]
+      | MainStatsWeapon[]
+      | MainStatsGadgets[];
   } = {};
 
   if (props.isError || props.isLoading) {
@@ -129,9 +129,9 @@ export function ViewStats(props: Readonly<Views>): React.ReactElement {
               <div
                 className={Mainstyles.bar}
                 style={{
-                  width: `${(100 * stats.currentRankProgress) /
-                    stats.totalRankProgress
-                    }%`,
+                  width: `${
+                    (100 * stats.currentRankProgress) / stats.totalRankProgress
+                  }%`,
                 }}
               ></div>
             </div>

@@ -20,7 +20,6 @@ interface OriginViews extends Views {
   errors: string[];
 }
 
-
 function GetBfBan(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
   const {
@@ -73,10 +72,11 @@ export function ViewOrigin(props: Readonly<OriginViews>): React.ReactElement {
   const stats = props?.stats;
   const name = props?.name;
 
-
-
   if (props.error) {
-    if (typeof props.errors == "object" && props.errors.includes("Player not found")) {
+    if (
+      typeof props.errors == "object" &&
+      props.errors.includes("Player not found")
+    ) {
       return (
         // if playername isnt found
         <div className={Mainstyles.spacing}>
@@ -84,7 +84,9 @@ export function ViewOrigin(props: Readonly<OriginViews>): React.ReactElement {
             <span className="circle" />
             <div>
               <h2 className={styles.originName}>{t("404")}</h2>
-              <h4 className={styles.originDescription}>{t("playerNotFound")}</h4>
+              <h4 className={styles.originDescription}>
+                {t("playerNotFound")}
+              </h4>
             </div>
           </div>
         </div>
@@ -177,7 +179,7 @@ export function ViewOrigin(props: Readonly<OriginViews>): React.ReactElement {
           <div>
             <h2 className={styles.originName}>{t("notApplicable")}</h2>
             <h4 className={styles.originDescription}>
-              {t("noName")} - { }
+              {t("noName")} - {}
               <GetBfBan
                 loading={false}
                 error={false}

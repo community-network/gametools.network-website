@@ -34,7 +34,7 @@ import { ViewWeapons, WeaponGraph } from "./Weapons";
 export interface Views {
   isLoading: boolean;
   isError: boolean;
-  errors: any,
+  errors: any;
   game: string;
   name: string;
   stats: MainStats;
@@ -44,17 +44,23 @@ export interface PlatformViews extends Views {
   platform: string;
 }
 
-export function ComponentHandling(t: useTranslation, props: Readonly<Views>): React.ReactElement {
+export function ComponentHandling(
+  t: useTranslation,
+  props: Readonly<Views>,
+): React.ReactElement {
   if (props.isLoading) {
-    return t("loading")
+    return t("loading");
   }
 
   if (props.isError) {
-    if (typeof props.errors == "object" && props.errors.includes("Player not found")) {
-      return t("notApplicable")
+    if (
+      typeof props.errors == "object" &&
+      props.errors.includes("Player not found")
+    ) {
+      return t("notApplicable");
     }
 
-    return t("stats.error", { error: props.errors })
+    return t("stats.error", { error: props.errors });
   }
 }
 
@@ -146,8 +152,9 @@ function Stats(): React.ReactElement {
     }
   }, [game, history]);
   const { t } = useTranslation();
-  document.title = `${t("siteFullName")} ${t("pageTitle.stats")} | ${playerGames?.userName || t("loading")
-    } | ${game || t("notApplicable")}`;
+  document.title = `${t("siteFullName")} ${t("pageTitle.stats")} | ${
+    playerGames?.userName || t("loading")
+  } | ${game || t("notApplicable")}`;
 
   return (
     <div className="container">

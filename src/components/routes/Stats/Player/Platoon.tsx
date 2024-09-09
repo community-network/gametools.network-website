@@ -16,7 +16,6 @@ export function PlatoonInfo(
   const stats = props.stats;
   const platform = props.platform;
 
-
   if (props.isError || props.isLoading) {
     return (
       <div className={styles.spacing}>
@@ -28,10 +27,7 @@ export function PlatoonInfo(
     );
   }
 
-  if (
-    stats.activePlatoon.name === null &&
-    props.stats.platoons.length === 0
-  ) {
+  if (stats.activePlatoon.name === null && props.stats.platoons.length === 0) {
     return (
       <div className={styles.spacing}>
         <Box>
