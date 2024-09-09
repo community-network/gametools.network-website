@@ -1,12 +1,12 @@
 import * as React from "react";
-import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import { Box } from "../../../Materials";
 import { MainStatsWeapon } from "../../../../api/ReturnTypes";
-import { Views, DynamicSort } from "./Main";
-import { BarGraph } from "../../../graphing/bar";
+import "../../../../locales/config";
 import ErrorBoundary from "../../../functions/ErrorBoundary";
 import sslFix from "../../../functions/fixEaAssets";
+import { BarGraph } from "../../../graphing/bar";
+import { Box } from "../../../Materials";
+import { ComponentHandling, DynamicSort, Views } from "./Main";
 import * as styles from "./Main.module.scss";
 
 export function ViewWeapons(props: Readonly<Views>): React.ReactElement {
@@ -16,7 +16,8 @@ export function ViewWeapons(props: Readonly<Views>): React.ReactElement {
   const getLanguage = () => window.localStorage.i18nextLng;
   const numberFormat = new Intl.NumberFormat(getLanguage());
   let weapons = [];
-  if (!props.loading && !props.error) {
+
+  if (!props.isLoading && !props.isError) {
     weapons = props?.stats?.weapons?.filter(
       (item: {
         weaponName: string;
@@ -126,7 +127,7 @@ export function ViewWeapons(props: Readonly<Views>): React.ReactElement {
         </Box>
       ) : (
         <Box>
-          <p>{t("loading")}</p>
+          <p>{ComponentHandling(t, props)}</p>
         </Box>
       )}
     </div>
@@ -141,7 +142,7 @@ export function WeaponGraph(props: Readonly<Views>): React.ReactElement {
   let length = 0;
   const names = [];
   const values = [];
-  if (!props.loading && !props.error) {
+  if (!props.isLoading && !props.isError) {
     length = props.stats.weapons.length;
     props.stats.weapons
       .sort(DynamicSort(`-${graphType}`))
@@ -198,14 +199,14 @@ export function WeaponGraph(props: Readonly<Views>): React.ReactElement {
               names={names}
               values={values}
               valueName={graphType}
-              loading={props.loading}
-              error={props.error}
+              loading={props.isLoading}
+              error={props.isError}
             />
           </ErrorBoundary>
         </Box>
       ) : (
         <Box>
-          <p>{t("loading")}</p>
+          <p>{ComponentHandling(t, props)}</p>
         </Box>
       )}
     </div>

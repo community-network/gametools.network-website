@@ -1,11 +1,11 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
-import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import { Box } from "../../../Materials";
+import { Link } from "react-router-dom";
 import { MainStatsPlatoon } from "../../../../api/ReturnTypes";
-import { PlatformViews } from "./Main";
+import "../../../../locales/config";
 import sslFix from "../../../functions/fixEaAssets";
+import { Box } from "../../../Materials";
+import { ComponentHandling, PlatformViews } from "./Main";
 import * as styles from "./Main.module.scss";
 import * as Platoonstyles from "./Platoon.module.scss";
 
@@ -15,9 +15,20 @@ export function PlatoonInfo(
   const { t } = useTranslation();
   const stats = props.stats;
   const platform = props.platform;
+
+
+  if (props.isError || props.isLoading) {
+    return (
+      <div className={styles.spacing}>
+        <Box>
+          <h3>{t("stats.platoonName")}</h3>
+          <p>{ComponentHandling(t, props)}</p>
+        </Box>
+      </div>
+    );
+  }
+
   if (
-    !props.loading &&
-    !props.error &&
     stats.activePlatoon.name === null &&
     props.stats.platoons.length === 0
   ) {
@@ -29,7 +40,7 @@ export function PlatoonInfo(
         </Box>
       </div>
     );
-  } else if (!props.loading && !props.error) {
+  } else {
     const otherPlatoons = props.stats.platoons.filter(
       (platoon) => platoon?.id !== stats?.activePlatoon?.id,
     );
@@ -120,15 +131,6 @@ export function PlatoonInfo(
               })}
             </>
           )}
-        </Box>
-      </div>
-    );
-  } else {
-    return (
-      <div className={styles.spacing}>
-        <Box>
-          <h3>{t("stats.platoonName")}</h3>
-          <p>{t("loading")}</p>
         </Box>
       </div>
     );

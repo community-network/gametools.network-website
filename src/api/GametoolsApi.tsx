@@ -1,17 +1,17 @@
 import JsonClient from "./Json";
 import {
-  PlatoonStats,
-  MainStats,
-  ServerSearch,
   DetailedServerInfo,
+  MainStats,
   PlatoonSearchResult,
-  ServerLeaderboardReturn,
-  ServerPlayersReturn,
-  seederPlayersReturn,
-  UserGames,
+  PlatoonStats,
   PlaygroundInfoReturn,
+  seederPlayersReturn,
+  ServerLeaderboardReturn,
   ServerOwnerResult,
+  ServerPlayersReturn,
+  ServerSearch,
   StatsGraph,
+  UserGames,
 } from "./ReturnTypes";
 import { battlebitApi } from "./battlebitApi";
 import { MarneApi } from "./marneApi";

@@ -1,10 +1,10 @@
 import * as React from "react";
-import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import { Box } from "../../../Materials";
 import { newTitles } from "../../../../api/static";
-import { Views } from "./Main";
+import "../../../../locales/config";
+import { Box } from "../../../Materials";
 import * as styles from "./DetailedStats.module.scss";
+import { ComponentHandling, Views } from "./Main";
 import * as Mainstyles from "./Main.module.scss";
 
 export interface MaybeStat {
@@ -31,129 +31,130 @@ export function DetailedStats(props: Readonly<Views>): React.ReactElement {
   const stats = props.stats;
   const getLanguage = () => window.localStorage.i18nextLng;
   const numberFormat = new Intl.NumberFormat(getLanguage());
-  if (!props.loading && !props.error) {
+
+  if (props.isError || props.isLoading) {
     return (
       <div className={Mainstyles.spacing}>
         <Box>
           <h3>{t("stats.detailedName")}</h3>
-          <p></p>
-          <div className={styles.gridContainer}>
-            <MaybeStats
-              stat={numberFormat.format(stats?.skill)}
-              name={t("stats.detailed.skill")}
-            />
-            <MaybeStats
-              stat={numberFormat.format(stats?.scorePerMinute)}
-              name={t("stats.detailed.scorePerMinute")}
-            />
-            <MaybeStats
-              stat={numberFormat.format(stats?.kills)}
-              name={t("stats.detailed.kills")}
-            />
-            <MaybeStats
-              stat={numberFormat.format(stats?.deaths)}
-              name={t("stats.detailed.deaths")}
-            />
-            {newTitles.includes(props.game) ? (
-              <div>
-                <h3>{numberFormat.format(stats?.headShots)}%</h3>
-                <p>{t("stats.detailed.headshotPercent")}</p>
-              </div>
-            ) : (
-              <div>
-                <h3>{numberFormat.format(stats?.headshots)}%</h3>
-                <p>{t("stats.detailed.headshotPercent")}</p>
-              </div>
-            )}
-            <MaybeStats
-              stat={numberFormat.format(stats?.killAssists)}
-              name={t("stats.detailed.killAssists")}
-            />
-            <MaybeStats
-              stat={numberFormat.format(stats?.wins)}
-              name={t("stats.detailed.wins")}
-            />
-            <MaybeStats
-              stat={numberFormat.format(stats?.loses)}
-              name={t("stats.detailed.losses")}
-            />
-            <MaybeStats
-              stat={numberFormat.format(stats?.revives)}
-              name={t("stats.detailed.revives")}
-            />
-            <MaybeStats
-              stat={numberFormat.format(stats?.repairs)}
-              name={t("stats.detailed.repairs")}
-            />
-            <MaybeStats
-              stat={numberFormat.format(stats?.infantryKillDeath)}
-              name={t("stats.detailed.infantryKillDeath")}
-            />
-            <MaybeStats
-              stat={numberFormat.format(stats?.infantryKillsPerMinute)}
-              name={t("stats.detailed.infantryKillsPerMinute")}
-            />
-            <MaybeStats
-              stat={numberFormat.format(stats?.heals)}
-              name={t("stats.detailed.heals")}
-            />
-            <MaybeStats
-              stat={numberFormat.format(stats?.headShots)}
-              name={t("stats.detailed.headShots")}
-            />
-            <MaybeStats
-              stat={numberFormat.format(stats?.avengerKills)}
-              name={t("stats.detailed.avengerKills")}
-            />
-            <MaybeStats
-              stat={numberFormat.format(stats?.saviorKills)}
-              name={t("stats.detailed.saviorKills")}
-            />
-            <MaybeStats
-              stat={numberFormat.format(stats?.roundsPlayed)}
-              name={t("stats.detailed.roundsPlayed")}
-            />
-            <MaybeStats
-              stat={numberFormat.format(stats?.awardScore)}
-              name={t("stats.detailed.awardScore")}
-            />
-            <MaybeStats
-              stat={numberFormat.format(stats?.bonusScore)}
-              name={t("stats.detailed.bonusScore")}
-            />
-            <MaybeStats
-              stat={numberFormat.format(stats?.squadScore)}
-              name={t("stats.detailed.squadScore")}
-            />
-            <MaybeStats
-              stat={numberFormat.format(stats?.longestHeadShot)}
-              name={t("stats.detailed.longestHeadShot")}
-            />
-            <MaybeStats
-              stat={numberFormat.format(stats?.highestKillStreak)}
-              name={t("stats.detailed.highestKillStreak")}
-            />
-            <MaybeStats
-              stat={numberFormat.format(stats?.winPercent)}
-              name={t("stats.detailed.winPercent")}
-            />
-            <MaybeStats
-              stat={numberFormat.format(stats?.quits)}
-              name={t("stats.detailed.quits")}
-            />
-          </div>
-          <p></p>
-        </Box>
-      </div>
-    );
-  } else {
-    return (
-      <div className={Mainstyles.spacing}>
-        <Box>
-          <h3>{t("stats.detailedName")}</h3>
-          <p>{t("loading")}</p>
+          <p>{ComponentHandling(t, props)}</p>
         </Box>
       </div>
     );
   }
+
+  return (
+    <div className={Mainstyles.spacing}>
+      <Box>
+        <h3>{t("stats.detailedName")}</h3>
+        <p></p>
+        <div className={styles.gridContainer}>
+          <MaybeStats
+            stat={numberFormat.format(stats?.skill)}
+            name={t("stats.detailed.skill")}
+          />
+          <MaybeStats
+            stat={numberFormat.format(stats?.scorePerMinute)}
+            name={t("stats.detailed.scorePerMinute")}
+          />
+          <MaybeStats
+            stat={numberFormat.format(stats?.kills)}
+            name={t("stats.detailed.kills")}
+          />
+          <MaybeStats
+            stat={numberFormat.format(stats?.deaths)}
+            name={t("stats.detailed.deaths")}
+          />
+          {newTitles.includes(props.game) ? (
+            <div>
+              <h3>{numberFormat.format(stats?.headShots)}%</h3>
+              <p>{t("stats.detailed.headshotPercent")}</p>
+            </div>
+          ) : (
+            <div>
+              <h3>{numberFormat.format(stats?.headshots)}%</h3>
+              <p>{t("stats.detailed.headshotPercent")}</p>
+            </div>
+          )}
+          <MaybeStats
+            stat={numberFormat.format(stats?.killAssists)}
+            name={t("stats.detailed.killAssists")}
+          />
+          <MaybeStats
+            stat={numberFormat.format(stats?.wins)}
+            name={t("stats.detailed.wins")}
+          />
+          <MaybeStats
+            stat={numberFormat.format(stats?.loses)}
+            name={t("stats.detailed.losses")}
+          />
+          <MaybeStats
+            stat={numberFormat.format(stats?.revives)}
+            name={t("stats.detailed.revives")}
+          />
+          <MaybeStats
+            stat={numberFormat.format(stats?.repairs)}
+            name={t("stats.detailed.repairs")}
+          />
+          <MaybeStats
+            stat={numberFormat.format(stats?.infantryKillDeath)}
+            name={t("stats.detailed.infantryKillDeath")}
+          />
+          <MaybeStats
+            stat={numberFormat.format(stats?.infantryKillsPerMinute)}
+            name={t("stats.detailed.infantryKillsPerMinute")}
+          />
+          <MaybeStats
+            stat={numberFormat.format(stats?.heals)}
+            name={t("stats.detailed.heals")}
+          />
+          <MaybeStats
+            stat={numberFormat.format(stats?.headShots)}
+            name={t("stats.detailed.headShots")}
+          />
+          <MaybeStats
+            stat={numberFormat.format(stats?.avengerKills)}
+            name={t("stats.detailed.avengerKills")}
+          />
+          <MaybeStats
+            stat={numberFormat.format(stats?.saviorKills)}
+            name={t("stats.detailed.saviorKills")}
+          />
+          <MaybeStats
+            stat={numberFormat.format(stats?.roundsPlayed)}
+            name={t("stats.detailed.roundsPlayed")}
+          />
+          <MaybeStats
+            stat={numberFormat.format(stats?.awardScore)}
+            name={t("stats.detailed.awardScore")}
+          />
+          <MaybeStats
+            stat={numberFormat.format(stats?.bonusScore)}
+            name={t("stats.detailed.bonusScore")}
+          />
+          <MaybeStats
+            stat={numberFormat.format(stats?.squadScore)}
+            name={t("stats.detailed.squadScore")}
+          />
+          <MaybeStats
+            stat={numberFormat.format(stats?.longestHeadShot)}
+            name={t("stats.detailed.longestHeadShot")}
+          />
+          <MaybeStats
+            stat={numberFormat.format(stats?.highestKillStreak)}
+            name={t("stats.detailed.highestKillStreak")}
+          />
+          <MaybeStats
+            stat={numberFormat.format(stats?.winPercent)}
+            name={t("stats.detailed.winPercent")}
+          />
+          <MaybeStats
+            stat={numberFormat.format(stats?.quits)}
+            name={t("stats.detailed.quits")}
+          />
+        </div>
+        <p></p>
+      </Box>
+    </div>
+  );
 }

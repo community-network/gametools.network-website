@@ -1,51 +1,61 @@
-import * as React from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import "../../../../locales/config";
-import { useTranslation } from "react-i18next";
-import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
-import useWindowDimensions from "../../../functions/useWindowDimensions";
-import { BackButton } from "../../../Materials";
+import * as React from "react";
+import { useTranslation } from "react-i18next";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocalStorage } from "react-use";
+import { GametoolsApi } from "../../../../api/GametoolsApi";
+import { MainStats } from "../../../../api/ReturnTypes";
 import {
+  gamemodeGames,
+  newGen,
   newTitles,
   platformGames,
   progressGames,
-  gamemodeGames,
   supportedGames,
-  newGen,
 } from "../../../../api/static";
+import "../../../../locales/config";
 import { getLanguage } from "../../../../locales/config";
-import { MainStats } from "../../../../api/ReturnTypes";
-import { BfSessionInfo } from "./ManagerExtr";
+import useWindowDimensions from "../../../functions/useWindowDimensions";
+import { BackButton } from "../../../Materials";
+import { ViewClasses } from "./Classes";
 import { DetailedStats } from "./DetailedStats";
-import { ViewWeapons, WeaponGraph } from "./Weapons";
-import { ViewVehicles, VehicleGraph } from "./Vehicles";
-import { ViewGadgets, GadgetGraph } from "./Gadgets";
+import { GadgetGraph, ViewGadgets } from "./Gadgets";
+import { ViewGamemodes } from "./Gamemodes";
+import { ViewIframe } from "./Iframe";
+import * as styles from "./Main.module.scss";
+import { BfSessionInfo } from "./ManagerExtr";
+import { ViewStats } from "./OverviewStats";
 import { PlatoonInfo } from "./Platoon";
 import { ViewProgress } from "./Progress";
-import { ViewGamemodes } from "./Gamemodes";
-import { ViewClasses } from "./Classes";
-import { ViewIframe } from "./Iframe";
-import { ViewStats } from "./OverviewStats";
+import { VehicleGraph, ViewVehicles } from "./Vehicles";
 import { ViewOrigin } from "./ViewOrigin";
-import { useLocalStorage } from "react-use";
-import * as styles from "./Main.module.scss";
+import { ViewWeapons, WeaponGraph } from "./Weapons";
 
 export interface Views {
-  loading: boolean;
-  error: boolean;
+  isLoading: boolean;
+  isError: boolean;
+  errors: any,
   game: string;
   name: string;
   stats: MainStats;
 }
 
-export interface PlatformViews {
-  loading: boolean;
-  error: boolean;
-  game: string;
-  name: string;
+export interface PlatformViews extends Views {
   platform: string;
-  stats: MainStats;
+}
+
+export function ComponentHandling(t: useTranslation, props: Readonly<Views>): React.ReactElement {
+  if (props.isLoading) {
+    return t("loading")
+  }
+
+  if (props.isError) {
+    if (typeof props.errors == "object" && props.errors.includes("Player not found")) {
+      return t("notApplicable")
+    }
+
+    return t("stats.error", { error: props.errors })
+  }
 }
 
 export function DynamicSort(property: string) {
@@ -77,6 +87,7 @@ function Stats(): React.ReactElement {
   const {
     isLoading: gameLoading,
     isError: gameError,
+    error: gameErrors,
     data: playerGames,
   } = useQuery({
     queryKey: ["games" + params.type + params.eaid, platform],
@@ -86,9 +97,10 @@ function Stats(): React.ReactElement {
         userName: params.eaid,
         platform: platform,
       }),
+    retry: 1,
   });
-  const games: string[] = platformGames[platform];
 
+  const games: string[] = platformGames[platform];
   let playerGamesArr = [];
   let otherGamesArr = [];
   if (!gameLoading && !gameError) {
@@ -96,7 +108,7 @@ function Stats(): React.ReactElement {
       Object.fromEntries(
         Object.entries(playerGames)
           .filter(([key]) => supportedGames.includes(key))
-          .filter(([, value]) => value != true),
+          .filter(([, value]) => !value),
       ),
     );
     otherGamesArr = games.filter(
@@ -134,9 +146,8 @@ function Stats(): React.ReactElement {
     }
   }, [game, history]);
   const { t } = useTranslation();
-  document.title = `${t("siteFullName")} ${t("pageTitle.stats")} | ${
-    playerGames?.userName || t("loading")
-  } | ${game || t("notApplicable")}`;
+  document.title = `${t("siteFullName")} ${t("pageTitle.stats")} | ${playerGames?.userName || t("loading")
+    } | ${game || t("notApplicable")}`;
 
   return (
     <div className="container">
@@ -146,6 +157,7 @@ function Stats(): React.ReactElement {
         loading={gameLoading}
         stats={playerGames}
         error={gameError}
+        errors={gameErrors}
         name={nameQuery}
       />
       {width < 930 ? (
@@ -243,8 +255,9 @@ function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {
   const { game, name, type, platform } = props;
 
   const {
-    isLoading: loading,
-    isError: error,
+    isLoading,
+    isError,
+    error,
     data: stats,
   } = useQuery({
     queryKey: ["stats" + game + type + name],
@@ -257,6 +270,7 @@ function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {
         lang: getLanguage(),
         platform: platform,
       }),
+    retry: 1,
   });
 
   return (
@@ -265,24 +279,27 @@ function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {
         <div className="pageRow">
           <ViewStats
             game={game}
-            loading={loading}
+            isLoading={isLoading}
             stats={stats}
-            error={error}
+            errors={error}
+            isError={isError}
             name={name}
           />
           <DetailedStats
             game={game}
-            loading={loading}
+            isLoading={isLoading}
             stats={stats}
-            error={error}
+            errors={error}
+            isError={isError}
             name={name}
           />
           {newTitles.includes(game) && (
             <PlatoonInfo
               game={game}
-              loading={loading}
+              isLoading={isLoading}
               stats={stats}
-              error={error}
+              errors={error}
+              isError={isError}
               name={name}
               platform={platform}
             />
@@ -290,43 +307,48 @@ function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {
           {game == "bf1" && (
             <BfSessionInfo
               game={game}
-              loading={loading}
+              isLoading={isLoading}
               stats={stats}
-              error={error}
+              errors={error}
+              isError={isError}
               name={name}
             />
           )}
           <WeaponGraph
             game={game}
-            loading={loading}
+            isLoading={isLoading}
             stats={stats}
-            error={error}
+            errors={error}
+            isError={isError}
             name={name}
           />
           {stats?.vehicles && (
             <VehicleGraph
               game={game}
-              loading={loading}
+              isLoading={isLoading}
               stats={stats}
-              error={error}
+              errors={error}
+              isError={isError}
               name={name}
             />
           )}
           {newGen.includes(game) && (
             <GadgetGraph
               game={game}
-              loading={loading}
+              isLoading={isLoading}
               stats={stats}
-              error={error}
+              errors={error}
+              isError={isError}
               name={name}
             />
           )}
           {progressGames.includes(game) && (
             <ViewProgress
               game={game}
-              loading={loading}
+              isLoading={isLoading}
               stats={stats}
-              error={error}
+              errors={error}
+              isError={isError}
               name={name}
             />
           )}
@@ -334,42 +356,47 @@ function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {
         <div className="pageRow">
           <ViewClasses
             game={game}
-            loading={loading}
+            isLoading={isLoading}
             stats={stats}
-            error={error}
+            errors={error}
+            isError={isError}
             name={name}
           />
           <ViewWeapons
             game={game}
-            loading={loading}
+            isLoading={isLoading}
             stats={stats}
-            error={error}
+            errors={error}
+            isError={isError}
             name={name}
           />
           {stats?.vehicles && (
             <ViewVehicles
               game={game}
-              loading={loading}
+              isLoading={isLoading}
               stats={stats}
-              error={error}
+              errors={error}
+              isError={isError}
               name={name}
             />
           )}
           {newGen.includes(game) && (
             <ViewGadgets
               game={game}
-              loading={loading}
+              isLoading={isLoading}
               stats={stats}
-              error={error}
+              errors={error}
+              isError={isError}
               name={name}
             />
           )}
           {gamemodeGames.includes(game) && (
             <ViewGamemodes
               game={game}
-              loading={loading}
+              isLoading={isLoading}
               stats={stats}
-              error={error}
+              errors={error}
+              isError={isError}
               name={name}
             />
           )}
@@ -377,9 +404,10 @@ function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {
       </div>
       <ViewIframe
         game={game}
-        loading={loading}
+        isLoading={isLoading}
         stats={stats}
-        error={error}
+        errors={error}
+        isError={isError}
         getter={type}
         name={name}
         platform={platform}

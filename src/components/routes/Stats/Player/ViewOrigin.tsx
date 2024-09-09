@@ -1,12 +1,12 @@
-import * as React from "react";
-import "../../../../locales/config";
-import { useTranslation } from "react-i18next";
-import { UserGames } from "../../../../api/ReturnTypes";
-import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
+import * as React from "react";
+import { useTranslation } from "react-i18next";
+import { GametoolsApi } from "../../../../api/GametoolsApi";
+import { UserGames } from "../../../../api/ReturnTypes";
+import "../../../../locales/config";
 import sslFix from "../../../functions/fixEaAssets";
-import * as styles from "./ViewOrigin.module.scss";
 import * as Mainstyles from "./Main.module.scss";
+import * as styles from "./ViewOrigin.module.scss";
 
 export interface Views {
   loading: boolean;
@@ -15,6 +15,11 @@ export interface Views {
   name: string;
   stats: UserGames;
 }
+
+interface OriginViews extends Views {
+  errors: string[];
+}
+
 
 function GetBfBan(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
@@ -63,96 +68,44 @@ function GetBfBan(props: Readonly<Views>): React.ReactElement {
   return <>{t("stats.originDescription")}</>;
 }
 
-export function ViewOrigin(props: Readonly<Views>): React.ReactElement {
+export function ViewOrigin(props: Readonly<OriginViews>): React.ReactElement {
   const { t } = useTranslation();
   const stats = props?.stats;
   const name = props?.name;
+
+
+
   if (props.error) {
-    return (
-      // if playername isnt found
-      <div className={Mainstyles.spacing}>
-        <div className="align">
-          <span className="circle" />
-          <div>
-            <h2 className={styles.originName}>{t("404")}</h2>
-            <h4 className={styles.originDescription}>{t("playerNotFound")}</h4>
-          </div>
-        </div>
-      </div>
-    );
-  } else if (!props.loading && !props.error) {
-    if (stats?.userName === null) {
-      if (name !== null) {
-        return (
-          // if playerid but ?name behind it
-          <div className={Mainstyles.spacing}>
-            <div className="align">
-              <span className="circle" />
-              <div>
-                <h2 className={styles.originName}>{name}</h2>
-                <h4 className={styles.originDescription}>
-                  <GetBfBan
-                    loading={false}
-                    error={false}
-                    game={props.game}
-                    name={props.name}
-                    stats={props.stats}
-                  />
-                </h4>
-              </div>
-            </div>
-          </div>
-        );
-      } else {
-        return (
-          // if no ?name behind it
-          <div className={Mainstyles.spacing}>
-            <div className="align">
-              <span className="circle" />
-              <div>
-                <h2 className={styles.originName}>{t("notApplicable")}</h2>
-                <h4 className={styles.originDescription}>
-                  {t("noName")} - {}
-                  <GetBfBan
-                    loading={false}
-                    error={false}
-                    game={props.game}
-                    name={props.name}
-                    stats={props.stats}
-                  />
-                </h4>
-              </div>
-            </div>
-          </div>
-        );
-      }
-    } else {
+    if (typeof props.errors == "object" && props.errors.includes("Player not found")) {
       return (
-        // normal playerName
+        // if playername isnt found
         <div className={Mainstyles.spacing}>
           <div className="align">
-            <img
-              className={styles.originProfile}
-              src={sslFix(stats?.avatar)}
-              alt={t("stats.profileImage")}
-            />
+            <span className="circle" />
             <div>
-              <h2 className={styles.originName}>{stats.userName}</h2>
-              <h4 className={styles.originDescription}>
-                <GetBfBan
-                  loading={false}
-                  error={false}
-                  game={props.game}
-                  name={props.name}
-                  stats={props.stats}
-                />
-              </h4>
+              <h2 className={styles.originName}>{t("404")}</h2>
+              <h4 className={styles.originDescription}>{t("playerNotFound")}</h4>
             </div>
           </div>
         </div>
       );
     }
-  } else {
+
+    return (
+      // for other errors
+      <div className={Mainstyles.spacing}>
+        <div className="align">
+          <span className="circle" />
+          <div>
+            <h2 className={styles.originName}>{t("404")}</h2>
+            <h4 className={styles.originDescription}>{props.errors}</h4>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (props.loading) {
     return (
       // loading page
       <div className={Mainstyles.spacing}>
@@ -161,6 +114,78 @@ export function ViewOrigin(props: Readonly<Views>): React.ReactElement {
           <div>
             <h2 className={styles.originName}>{t("loading")}</h2>
             <h4 className={styles.originDescription}>{t("loading")}</h4>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (stats?.userName !== null) {
+    return (
+      // normal playerName
+      <div className={Mainstyles.spacing}>
+        <div className="align">
+          <img
+            className={styles.originProfile}
+            src={sslFix(stats?.avatar)}
+            alt={t("stats.profileImage")}
+          />
+          <div>
+            <h2 className={styles.originName}>{stats.userName}</h2>
+            <h4 className={styles.originDescription}>
+              <GetBfBan
+                loading={false}
+                error={false}
+                game={props.game}
+                name={props.name}
+                stats={props.stats}
+              />
+            </h4>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (name !== null) {
+    return (
+      // if playerid but ?name behind it
+      <div className={Mainstyles.spacing}>
+        <div className="align">
+          <span className="circle" />
+          <div>
+            <h2 className={styles.originName}>{name}</h2>
+            <h4 className={styles.originDescription}>
+              <GetBfBan
+                loading={false}
+                error={false}
+                game={props.game}
+                name={props.name}
+                stats={props.stats}
+              />
+            </h4>
+          </div>
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      // if no ?name behind it
+      <div className={Mainstyles.spacing}>
+        <div className="align">
+          <span className="circle" />
+          <div>
+            <h2 className={styles.originName}>{t("notApplicable")}</h2>
+            <h4 className={styles.originDescription}>
+              {t("noName")} - { }
+              <GetBfBan
+                loading={false}
+                error={false}
+                game={props.game}
+                name={props.name}
+                stats={props.stats}
+              />
+            </h4>
           </div>
         </div>
       </div>

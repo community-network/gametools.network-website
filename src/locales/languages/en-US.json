@@ -242,6 +242,7 @@
   "stats": {
     "view": "View stats",
     "back": "Main page",
+    "error": "Error while fetching: {{ error }}",
     "profileImage": "Profile image",
     "originDescription": "User profile",
     "detailedName": "Detailed stats",
