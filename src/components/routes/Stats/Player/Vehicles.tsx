@@ -1,3 +1,4 @@
+import { addSeconds } from "date-fns";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { MainStatsVehicle } from "../../../../api/ReturnTypes";
@@ -92,6 +93,16 @@ export function ViewVehicles(props: Readonly<Views>): React.ReactElement {
                     {t("stats.rows.destroyed")}
                   </p>
                 </div>
+                {key?.timeIn !== undefined && (
+                  <div className="phoneRow">
+                    <h4>
+                      {t("change", {
+                        change: addSeconds(new Date(), key.timeIn),
+                      })}
+                    </h4>
+                    <p>{t("stats.classes.amounts.timePlayed")}</p>
+                  </div>
+                )}
               </div>
             );
           })}
