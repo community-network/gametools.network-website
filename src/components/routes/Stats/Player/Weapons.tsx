@@ -137,9 +137,8 @@ export function ViewWeapons(props: Readonly<Views>): React.ReactElement {
         <Box>
           <p>{ComponentHandling(t, props)}</p>
         </Box>
-      )
-      }
-    </div >
+      )}
+    </div>
   );
 }
 
