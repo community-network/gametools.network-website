@@ -1,12 +1,12 @@
-import * as React from "react";
-import "../../../../locales/config";
-import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import "../../../../assets/scss/App.scss";
-import { ServerOwnerResult } from "../../../../api/ReturnTypes";
-import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
+import * as React from "react";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import { GametoolsApi } from "../../../../api/GametoolsApi";
+import { ServerOwnerResult } from "../../../../api/ReturnTypes";
 import { serverToStatsPlatform } from "../../../../api/static";
+import "../../../../assets/scss/App.scss";
+import "../../../../locales/config";
 import sslFix from "../../../functions/fixEaAssets";
 import * as Mainstyles from "./Main.module.scss";
 
@@ -67,7 +67,7 @@ export function OwnerInfo(props: {
     }
   }
 
-  if (owner === null) {
+  if (owner === null || owner === undefined) {
     return (
       <div className={Mainstyles.spacing}>
         <h3>{title}</h3>

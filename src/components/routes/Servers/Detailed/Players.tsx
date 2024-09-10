@@ -1,15 +1,14 @@
+import { useQuery } from "@tanstack/react-query";
 import * as React from "react";
-import "../../../../locales/config";
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import "../../../../assets/scss/App.scss";
+import { Link } from "react-router-dom";
+import { bfListApi, PlayerInfo, TeamInfo } from "../../../../api/bflistApi";
+import { bf1_factions, factions } from "../../../../api/Factions";
 import {
   bfbanPlayer,
   bfeacPlayer,
   GametoolsApi,
 } from "../../../../api/GametoolsApi";
-import { useQuery } from "@tanstack/react-query";
-import { Box } from "../../../Materials";
 import {
   DetailedServerInfo,
   ScoreServerPlayer,
@@ -18,13 +17,14 @@ import {
   ServerPlayersReturn,
   serverTeamList,
 } from "../../../../api/ReturnTypes";
-import { bf1_factions, factions } from "../../../../api/Factions";
-import { DynamicSort } from "../../Stats/Player/Main";
 import { playerToStatsPlatform } from "../../../../api/static";
-import { bfListApi, PlayerInfo, TeamInfo } from "../../../../api/bflistApi";
+import "../../../../assets/scss/App.scss";
+import "../../../../locales/config";
 import sslFix from "../../../functions/fixEaAssets";
-import * as styles from "./Players.module.scss";
+import { Box } from "../../../Materials";
+import { DynamicSort } from "../../Stats/Player/Main";
 import * as Mainstyles from "./Main.module.scss";
+import * as styles from "./Players.module.scss";
 
 function CheckBan(props: {
   playerId: string;
@@ -82,7 +82,7 @@ function Players(props: {
   gameid: string;
 }): React.ReactElement {
   const { t } = useTranslation();
-  const teams = props.stats.teams;
+  const teams = props?.stats?.teams;
   const [sortType, setSortType] = React.useState<string>("slot");
   const [copyState, setCopyState] = React.useState<string>("");
 
@@ -369,6 +369,19 @@ function Players(props: {
   );
 }
 
+export function ComponentHandling(
+  t: useTranslation,
+  props: Readonly<Views>,
+): React.ReactElement {
+  if (props.isError) {
+    return t("notApplicable");
+  }
+
+  if (props.isLoading) {
+    return t("loading");
+  }
+}
+
 export function ServerPlayerlist(props: {
   game: string;
   platform: string;
@@ -378,8 +391,9 @@ export function ServerPlayerlist(props: {
   const gameId = props.gameid;
 
   const {
-    isLoading: loading,
-    isError: error,
+    isLoading,
+    isError,
+    error,
     data: stats,
   } = useQuery({
     queryKey: ["serverPlayerlist" + gameId + props.game],
@@ -389,21 +403,33 @@ export function ServerPlayerlist(props: {
         gameId: gameId,
       }),
   });
-  if (!loading && !error) {
+  if (isError) {
     return (
-      <Players
-        stats={stats}
-        game={props.game}
-        gameid={props.gameid}
-        platform={props.platform}
-      />
+      <div className={Mainstyles.spacing}>
+        <h2 className={Mainstyles.title}>{t("servers.playerlist.main")}</h2>
+        <p className={Mainstyles.description}>
+          {t("stats.error", { error: error })}
+        </p>
+      </div>
     );
   }
+
+  if (isLoading || stats === undefined) {
+    return (
+      <div className={Mainstyles.spacing}>
+        <h2 className={Mainstyles.title}>{t("servers.playerlist.main")}</h2>
+        <p className={Mainstyles.description}>{t("loading")}</p>
+      </div>
+    );
+  }
+
   return (
-    <div className={Mainstyles.spacing}>
-      <h2 className={Mainstyles.title}>{t("servers.playerlist.main")}</h2>
-      <p className={Mainstyles.description}>{t("loading")}</p>
-    </div>
+    <Players
+      stats={stats}
+      game={props.game}
+      gameid={props.gameid}
+      platform={props.platform}
+    />
   );
 }
 
@@ -411,7 +437,10 @@ export function MarnePlayerList(props: {
   stats: DetailedServerInfo;
   game: string;
   gameId: string;
+  isLoading: boolean;
+  isError: boolean;
 }): React.ReactElement {
+  const { t } = useTranslation();
   const current_factions = bf1_factions[props?.stats?.map] ?? [];
   const stats = {
     teams: [
@@ -432,6 +461,15 @@ export function MarnePlayerList(props: {
     stats.teams[element.team - 1].players.push(element);
   });
 
+  if (props.isError || props.isLoading) {
+    return (
+      <div className={Mainstyles.spacing}>
+        <h2 className={Mainstyles.title}>{t("servers.playerlist.main")}</h2>
+        <p>{ComponentHandling(t, props)}</p>
+      </div>
+    );
+  }
+
   return (
     <Players
       stats={stats}
@@ -445,8 +483,19 @@ export function MarnePlayerList(props: {
 export function Bf3ServerPlayerlist(props: {
   players: ScoreServerPlayer[];
   game: string;
+  isLoading: boolean;
+  isError: boolean;
 }): React.ReactElement {
   const { t } = useTranslation();
+
+  if (props.isError || props.isLoading) {
+    return (
+      <div className={Mainstyles.spacing}>
+        <h2 className={Mainstyles.title}>{t("servers.playerlist.main")}</h2>
+        <p>{ComponentHandling(t, props)}</p>
+      </div>
+    );
+  }
 
   const { players } = props;
 
@@ -546,150 +595,147 @@ export function BfListServerPlayerList(props: {
       }),
   });
 
-  if (!loading && !error) {
-    if (!stats.players) {
-      return (
-        <div className={Mainstyles.spacing}>
-          <h2 className={Mainstyles.title}>{t("servers.playerlist.main")}</h2>
-          <p className={Mainstyles.description}>{t("bflist.notFound")}</p>
-        </div>
-      );
-    }
-
-    let teams: TeamInfo[] = [
-      { index: 1, label: "Team 1", players: [] },
-      { index: 2, label: "Team 2", players: [] },
-    ];
-    if (stats.teams && stats.teams.length > 0) {
-      // use labels from bflist api
-      teams = stats.teams;
-
-      // readd players
-      teams.map((team) => {
-        team.players = [];
-      });
-    }
-    stats.players.map((player: PlayerInfo) => {
-      teams[player.team - 1].players.push(player);
-    });
-
+  if (!stats?.players) {
     return (
       <div className={Mainstyles.spacing}>
-        <div className="align">
-          <h2>{t("servers.playerlist.main")}</h2>
-          <select
-            aria-label={t("ariaLabels.sort")}
-            className="selectPrimary"
-            style={{ margin: 0, marginLeft: "24px" }}
-            value={sortType}
-            onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
-              setSortType(ev.target.value)
-            }
-          >
-            <option value="name">
-              {t("servers.playerlist.row.playerName")}
-            </option>
-            <option value="-ping">{t("servers.playerlist.row.ping")}</option>
-            <option value="-kills">{t("servers.playerlist.row.kills")}</option>
-            <option value="-deaths">
-              {t("servers.playerlist.row.deaths")}
-            </option>
-          </select>
-          <p style={{ marginTop: "1rem", marginLeft: "1rem" }}>
-            {t("servers.playerlist.lastUpdate")}{" "}
-            {t("change", { change: dataUpdatedAt })} {t("ago")}
-          </p>
-        </div>
-        {teams.map((teamInfo: TeamInfo, index: number) => {
-          teamInfo.players = teamInfo.players.sort(DynamicSort(sortType));
-          return (
-            <div key={index}>
-              <div className="align">
-                <h3 style={{ margin: ".5rem", marginTop: 0 }}>
-                  {teamInfo.label}
-                </h3>
-              </div>
-              <Box>
-                {teamInfo.players.length !== 0 ? (
-                  <>
-                    {teamInfo.players.map((key: PlayerInfo, index: number) => {
-                      return (
-                        <div className="column" key={index}>
-                          <div className="row">
-                            <a
-                              style={{ cursor: "pointer" }}
-                              onClick={() => {
-                                navigator.clipboard.writeText(key.name);
-                                setCopyState(key.name);
-                                const timer1 = setTimeout(
-                                  () => setCopyState(""),
-                                  1 * 1000,
-                                );
-                                return () => {
-                                  clearTimeout(timer1);
-                                };
-                              }}
-                            >
-                              {copyState == key.name ? (
-                                <div className={styles.serverPlayerName}>
-                                  {t("states.copied")}
-                                </div>
-                              ) : (
-                                <div className={styles.serverPlayerName}>
-                                  {key.name}
-                                </div>
-                              )}
-                            </a>
-                          </div>
-                          <div className="row">
-                            <h4 style={{ marginTop: "0.5rem" }}>{key.ping}</h4>
-                            <p
-                              className={Mainstyles.description}
-                              style={{ lineHeight: 0 }}
-                            >
-                              {t("servers.playerlist.row.ping")}
-                            </p>
-                          </div>
-                          <div className="row">
-                            <h4 style={{ marginTop: "0.5rem" }}>
-                              {key?.score ?? "?"}
-                            </h4>
-                            <p
-                              className={Mainstyles.description}
-                              style={{ lineHeight: 0 }}
-                            >
-                              {t("servers.playerlist.row.score")}
-                            </p>
-                          </div>
-                          <div className="row">
-                            <h4 style={{ marginTop: "0.5rem" }}>
-                              {key?.kills ?? "?"}/{key?.deaths ?? "?"}
-                            </h4>
-                            <p
-                              className={Mainstyles.description}
-                              style={{ lineHeight: 0 }}
-                            >
-                              {t("servers.playerlist.row.killDeath")}
-                            </p>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </>
-                ) : (
-                  <p>{t("servers.playerlist.empty")}</p>
-                )}
-              </Box>
-            </div>
-          );
-        })}
+        <h2 className={Mainstyles.title}>{t("servers.playerlist.main")}</h2>
+        <p className={Mainstyles.description}>{t("bflist.notFound")}</p>
       </div>
     );
   }
+
+  let teams: TeamInfo[] = [
+    { index: 1, label: "Team 1", players: [] },
+    { index: 2, label: "Team 2", players: [] },
+  ];
+  if (stats.teams && stats.teams.length > 0) {
+    // use labels from bflist api
+    teams = stats.teams;
+
+    // readd players
+    teams.map((team) => {
+      team.players = [];
+    });
+  }
+  stats.players.map((player: PlayerInfo) => {
+    teams[player.team - 1].players.push(player);
+  });
+
+  if (error || loading) {
+    return (
+      <div className={Mainstyles.spacing}>
+        <h2 className={Mainstyles.title}>{t("servers.playerlist.main")}</h2>
+        <p>{ComponentHandling(t, { isLoading: loading, isError: error })}</p>
+      </div>
+    );
+  }
+
   return (
     <div className={Mainstyles.spacing}>
-      <h2 className={Mainstyles.title}>{t("servers.playerlist.main")}</h2>
-      <p className={Mainstyles.description}>{t("loading")}</p>
+      <div className="align">
+        <h2>{t("servers.playerlist.main")}</h2>
+        <select
+          aria-label={t("ariaLabels.sort")}
+          className="selectPrimary"
+          style={{ margin: 0, marginLeft: "24px" }}
+          value={sortType}
+          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
+            setSortType(ev.target.value)
+          }
+        >
+          <option value="name">{t("servers.playerlist.row.playerName")}</option>
+          <option value="-ping">{t("servers.playerlist.row.ping")}</option>
+          <option value="-kills">{t("servers.playerlist.row.kills")}</option>
+          <option value="-deaths">{t("servers.playerlist.row.deaths")}</option>
+        </select>
+        <p style={{ marginTop: "1rem", marginLeft: "1rem" }}>
+          {t("servers.playerlist.lastUpdate")}{" "}
+          {t("change", { change: dataUpdatedAt })} {t("ago")}
+        </p>
+      </div>
+      {teams.map((teamInfo: TeamInfo, index: number) => {
+        teamInfo.players = teamInfo.players.sort(DynamicSort(sortType));
+        return (
+          <div key={index}>
+            <div className="align">
+              <h3 style={{ margin: ".5rem", marginTop: 0 }}>
+                {teamInfo.label}
+              </h3>
+            </div>
+            <Box>
+              {teamInfo.players.length !== 0 ? (
+                <>
+                  {teamInfo.players.map((key: PlayerInfo, index: number) => {
+                    return (
+                      <div className="column" key={index}>
+                        <div className="row">
+                          <a
+                            style={{ cursor: "pointer" }}
+                            onClick={() => {
+                              navigator.clipboard.writeText(key.name);
+                              setCopyState(key.name);
+                              const timer1 = setTimeout(
+                                () => setCopyState(""),
+                                1 * 1000,
+                              );
+                              return () => {
+                                clearTimeout(timer1);
+                              };
+                            }}
+                          >
+                            {copyState == key.name ? (
+                              <div className={styles.serverPlayerName}>
+                                {t("states.copied")}
+                              </div>
+                            ) : (
+                              <div className={styles.serverPlayerName}>
+                                {key.name}
+                              </div>
+                            )}
+                          </a>
+                        </div>
+                        <div className="row">
+                          <h4 style={{ marginTop: "0.5rem" }}>{key.ping}</h4>
+                          <p
+                            className={Mainstyles.description}
+                            style={{ lineHeight: 0 }}
+                          >
+                            {t("servers.playerlist.row.ping")}
+                          </p>
+                        </div>
+                        <div className="row">
+                          <h4 style={{ marginTop: "0.5rem" }}>
+                            {key?.score ?? "?"}
+                          </h4>
+                          <p
+                            className={Mainstyles.description}
+                            style={{ lineHeight: 0 }}
+                          >
+                            {t("servers.playerlist.row.score")}
+                          </p>
+                        </div>
+                        <div className="row">
+                          <h4 style={{ marginTop: "0.5rem" }}>
+                            {key?.kills ?? "?"}/{key?.deaths ?? "?"}
+                          </h4>
+                          <p
+                            className={Mainstyles.description}
+                            style={{ lineHeight: 0 }}
+                          >
+                            {t("servers.playerlist.row.killDeath")}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </>
+              ) : (
+                <p>{t("servers.playerlist.empty")}</p>
+              )}
+            </Box>
+          </div>
+        );
+      })}
     </div>
   );
 }

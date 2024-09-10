@@ -1,13 +1,13 @@
-import * as React from "react";
-import "../../../../locales/config";
-import { useTranslation } from "react-i18next";
-import "../../../../assets/scss/App.scss";
-import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
-import { BackButton } from "../../../Materials";
-import { getLanguage } from "../../../../locales/config";
-import { Results } from "./Main";
+import * as React from "react";
+import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
+import { GametoolsApi } from "../../../../api/GametoolsApi";
+import "../../../../assets/scss/App.scss";
+import "../../../../locales/config";
+import { getLanguage } from "../../../../locales/config";
+import { BackButton } from "../../../Materials";
+import { Results } from "./Main";
 
 function Servers(): React.ReactElement {
   const params = useParams();
@@ -31,6 +31,8 @@ function Servers(): React.ReactElement {
         platform: platform,
         with_ownername: false,
       }),
+    retryDelay: 3,
+    retryOnMount: false,
   });
   document.title = `${t("siteFullName")} ${t("pageTitle.servers")} | ${
     gameId || t("notApplicable")

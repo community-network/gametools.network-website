@@ -48,10 +48,6 @@ export function ComponentHandling(
   t: useTranslation,
   props: Readonly<Views>,
 ): React.ReactElement {
-  if (props.isLoading) {
-    return t("loading");
-  }
-
   if (props.isError) {
     if (
       typeof props.errors == "object" &&
@@ -61,6 +57,10 @@ export function ComponentHandling(
     }
 
     return t("stats.error", { error: props.errors });
+  }
+
+  if (props.isLoading) {
+    return t("loading");
   }
 }
 
