@@ -66,7 +66,7 @@ export function ViewVehicles(props: Readonly<Views>): React.ReactElement {
             return (
               <div className="column" key={index}>
                 <div className="row">
-                  <h4>{key?.vehicleName}</h4>
+                  <h4 className="nameRow">{key?.vehicleName}</h4>
                   <img
                     className={styles.listImage}
                     src={sslFix(key?.image)}
@@ -74,7 +74,7 @@ export function ViewVehicles(props: Readonly<Views>): React.ReactElement {
                   />
                 </div>
                 <div className="row">
-                  <h4>{key?.type}</h4>
+                  <h4 className="nameRow">{key?.type}</h4>
                   <p className={styles.description}>{t("stats.rows.type")}</p>
                 </div>
                 <div className="row">

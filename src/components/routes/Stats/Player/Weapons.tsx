@@ -76,7 +76,7 @@ export function ViewWeapons(props: Readonly<Views>): React.ReactElement {
             return (
               <div className="column" key={index}>
                 <div className="row">
-                  <h4>{key?.weaponName}</h4>
+                  <h4 className="nameRow">{key?.weaponName}</h4>
                   <img
                     className={styles.listImage}
                     src={sslFix(key?.image)}
@@ -85,7 +85,7 @@ export function ViewWeapons(props: Readonly<Views>): React.ReactElement {
                 </div>
                 {key?.type && (
                   <div className="row">
-                    <h4>{key?.type}</h4>
+                    <h4 className="nameRow">{key?.type}</h4>
                     <p className={styles.description}>{t("stats.rows.type")}</p>
                   </div>
                 )}
@@ -100,7 +100,7 @@ export function ViewWeapons(props: Readonly<Views>): React.ReactElement {
                   </p>
                 </div>
                 {key?.accuracy !== undefined && (
-                  <div className="tabletRow">
+                  <div className="smallestPhoneRow">
                     <h4>{numberFormat.format(key?.accuracy)}%</h4>
                     <p className={styles.description}>
                       {t("stats.rows.accuracy")}
@@ -115,12 +115,20 @@ export function ViewWeapons(props: Readonly<Views>): React.ReactElement {
                     </p>
                   </div>
                 )}
-                <div className="phoneRow">
+                <div className="tabletRow">
                   <h4>{numberFormat.format(key?.headshots)}%</h4>
                   <p className={styles.description}>
                     {t("stats.rows.headshots")}
                   </p>
                 </div>
+                {key?.hitVKills !== undefined && (
+                  <div className="phoneRow">
+                    <h4>{numberFormat.format(key?.hitVKills)}</h4>
+                    <p className={styles.description}>
+                      {t("stats.rows.hitVKills")}
+                    </p>
+                  </div>
+                )}
               </div>
             );
           })}
@@ -129,8 +137,9 @@ export function ViewWeapons(props: Readonly<Views>): React.ReactElement {
         <Box>
           <p>{ComponentHandling(t, props)}</p>
         </Box>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 }
 

@@ -271,7 +271,8 @@
       "destroyed": "Destroyed",
       "accuracy": "Accuracy",
       "headshots": "Headshots",
-      "multiKills": "Multikills"
+      "multiKills": "Multikills",
+      "hitVKills": "Hit/kill"
     },
     "classes": {
       "main": "Classes",

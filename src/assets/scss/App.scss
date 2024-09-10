@@ -116,6 +116,10 @@ body {
     @extend %font-shared;
   }
 
+  span {
+    color: var(--color-text);
+  }
+
   label {
     margin-bottom: 10px;
   }
@@ -233,6 +237,11 @@ input:checked + .slider:before {
 
 .row {
   flex: 1;
+}
+
+.nameRow {
+  margin-right: 0.5rem;
+  height: 18px;
 }
 
 // smaller screen table
