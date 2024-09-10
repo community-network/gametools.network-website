@@ -115,8 +115,10 @@ export function Results(props: Views): React.ReactElement {
   )
     .sort((a, b) => modCategories[b].length - modCategories[a].length)
     .reduce((acc, key) => ((acc[key] = modCategories[key]), acc), {});
-
-  let widgetReturn = encodeURIComponent(stats?.prefix);
+  let widgetReturn =
+    props.getter === "name"
+      ? props.serverName
+      : encodeURIComponent(stats?.prefix);
   let widgetItem = "name";
 
   if (
