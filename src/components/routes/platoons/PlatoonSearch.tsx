@@ -142,6 +142,7 @@ function Search(): React.ReactElement {
     history({ search: params.toString() }, { replace: true });
   }, [searchTerm, platform, platoonId, history]);
 
+  // sidebar redirect if platoonId is set but screen is to small to display it
   React.useEffect(() => {
     if (window.innerWidth <= 1800 && platoonId !== "") {
       const params = new URLSearchParams();
