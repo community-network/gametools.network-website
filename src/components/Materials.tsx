@@ -135,7 +135,7 @@ export function OpenExternal(props: {
   );
 }
 
-interface ConLink {
+export interface ConLink {
   children: React.ReactElement<unknown, string>;
   to: string;
   condition: boolean;
@@ -154,6 +154,7 @@ export function Box(props: {
   spacingStyle?: React.CSSProperties;
   link?: string;
   condition?: boolean;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
 }): React.ReactElement {
   const ConditionalLink = ({ children, to, condition }: ConLink) =>
     !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
@@ -183,6 +184,7 @@ export function Box(props: {
     <div className="box" style={props.spacingStyle}>
       <ConditionalLink to={props.link} condition={props.condition}>
         <div
+          onClick={props.onClick}
           className={["wrap", props.className].join(" ")}
           style={props.style}
         >

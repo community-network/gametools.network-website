@@ -1,30 +1,31 @@
+import { useQuery } from "@tanstack/react-query";
 import * as React from "react";
-import "../../../locales/config";
-import { Link, useParams } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
-import "../../../assets/scss/App.scss";
-import {
-  PlatoonPlayer,
-  PlatoonStats,
-  ServerList,
-} from "../../../api/ReturnTypes";
+import { Link, useParams } from "react-router-dom";
 import {
   bfbanPlayer,
   bfeacPlayer,
   GametoolsApi,
 } from "../../../api/GametoolsApi";
-import { useQuery } from "@tanstack/react-query";
-import { Box, BackButton } from "../../Materials";
+import {
+  PlatoonPlayer,
+  PlatoonStats,
+  ServerList,
+} from "../../../api/ReturnTypes";
+import "../../../assets/scss/App.scss";
+import "../../../locales/config";
 import { getLanguage } from "../../../locales/config";
 import exportExcel from "../../functions/exportExcel";
 import sslFix from "../../functions/fixEaAssets";
 import useExternalScript from "../../functions/UseExternalScript";
+import { BackButton, Box, ConLink } from "../../Materials";
 import * as styles from "./Platoon.module.scss";
 
 interface Views {
   loading: boolean;
   error: boolean;
   platform: string;
+  sidebar: boolean;
   platoon: PlatoonStats;
 }
 
@@ -87,7 +88,7 @@ function CheckBan(props: {
       </>
     );
   }
-  return <></>;
+  return <>&nbsp;</>;
 }
 
 function SmallExportButton(props: { members: PlatoonPlayer[] }) {
@@ -133,10 +134,13 @@ function Member(props: {
             <div className="align">
               <img
                 className={styles.memberImage}
-                src={sslFix(item?.avatar)}
+                src={sslFix(
+                  item?.avatar ||
+                    "https://secure.download.dm.origin.com/production/avatar/prod/1/599/208x208.JPEG",
+                )}
                 loading="lazy"
               />
-              <h4 style={{ ...loadingStyle }}>
+              <h4 style={{ marginBottom: 0, ...loadingStyle }}>
                 <div>{item?.name}</div>
                 <div>{children}</div>
               </h4>
@@ -260,7 +264,9 @@ function Members(props: {
                     avatar: "",
                   }}
                   key={key}
-                />
+                >
+                  <>&nbsp;</>
+                </Member>
               ))
             : members.map((key: PlatoonPlayer, index: number) => (
                 <Member platform={props.platform} item={key} key={index}>
@@ -386,6 +392,8 @@ function Results(props: Views): React.ReactElement {
   document.title = `${t("siteFullName")} ${t("pageTitle.platoon")} | ${
     platoon?.name || t("loading")
   }`;
+  const ConditionalLink = ({ children, to, condition }: ConLink) =>
+    !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
 
   if (props.error) {
     return (
@@ -398,16 +406,26 @@ function Results(props: Views): React.ReactElement {
     return (
       <div>
         <div className={styles.alignPlatoonImg}>
-          <div
-            className={styles.platoonImage}
-            style={{ backgroundImage: `url("${platoon?.emblem}")` }}
-          />
+          <ConditionalLink
+            to={`/platoons/${props.platform}/${props.platoon?.id}`}
+            condition={props.sidebar}
+          >
+            <div
+              className={styles.platoonImage}
+              style={{ backgroundImage: `url("${platoon?.emblem}")` }}
+            />
+          </ConditionalLink>
           <div style={{ marginLeft: "0.5rem" }}>
-            <h2 className={styles.platoonTitle}>
-              {props.loading
-                ? t("loading")
-                : `[${platoon?.tag}] ${platoon?.name}`}
-            </h2>
+            <ConditionalLink
+              to={`/platoons/${props.platform}/${props.platoon?.id}`}
+              condition={props.sidebar}
+            >
+              <h2 className={styles.platoonTitle}>
+                {props.loading
+                  ? t("loading")
+                  : `[${platoon?.tag}] ${platoon?.name}`}
+              </h2>
+            </ConditionalLink>
             <p className={styles.description}>
               {platoon?.currentSize || 0} / 100
             </p>
@@ -452,6 +470,27 @@ function Platoon(): React.ReactElement {
   const platform = params.plat;
 
   const { t } = useTranslation();
+  return (
+    <div>
+      <div className="container">
+        <BackButton text={t("platoon.back")} location="/platoons" />
+        <PlatoonInfo
+          sidebar={false}
+          platform={platform}
+          platoonId={platoonId}
+        />
+      </div>
+    </div>
+  );
+}
+
+export function PlatoonInfo(props: {
+  platoonId: string;
+  platform: string;
+  sidebar: boolean;
+}): React.ReactElement {
+  const { platoonId, platform } = props;
+
   const {
     isLoading: loading,
     isError: error,
@@ -466,17 +505,13 @@ function Platoon(): React.ReactElement {
       }),
   });
   return (
-    <div>
-      <div className="container">
-        <BackButton text={t("platoon.back")} location="/platoons" />
-        <Results
-          loading={loading}
-          platoon={platoon}
-          platform={platform}
-          error={error}
-        />
-      </div>
-    </div>
+    <Results
+      sidebar={props.sidebar}
+      loading={loading}
+      platoon={platoon}
+      platform={platform}
+      error={error}
+    />
   );
 }
 

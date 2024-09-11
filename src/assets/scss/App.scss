@@ -276,6 +276,12 @@ input:checked + .slider:before {
 
 // page
 
+.hideOnSmallScreen {
+  @media screen and (max-width: 1800px) {
+    display: none;
+  }
+}
+
 .pageColumn {
   @media screen and (min-width: 1800px) {
     display: flex;

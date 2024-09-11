@@ -9,6 +9,7 @@ import "../../../assets/scss/App.scss";
 import "../../../locales/config";
 import { getLanguage } from "../../../locales/config";
 import { BackButton, Box } from "../../Materials";
+import { PlatoonInfo } from "./Platoon";
 import * as styles from "./PlatoonSearch.module.scss";
 
 interface Views {
@@ -16,6 +17,7 @@ interface Views {
   error: boolean;
   platoons: PlatoonSearchResult;
   platform: string;
+  setPlatoonId: React.Dispatch<React.SetStateAction<string>>;
 }
 
 function PlatoonLoading(): React.ReactElement {
@@ -41,6 +43,10 @@ function PlatoonLoading(): React.ReactElement {
 function Results(props: Views): React.ReactElement {
   const { t } = useTranslation();
   const stats = props.platoons;
+  const [width, setWidth] = React.useState<number>(window.innerWidth);
+  React.useEffect(() => {
+    window.addEventListener("resize", () => setWidth(window.innerWidth));
+  }, []);
   if (!props.loading) {
     if (stats?.platoons == undefined || stats?.platoons?.length == 0) {
       return (
@@ -58,7 +64,8 @@ function Results(props: Views): React.ReactElement {
             <Box
               className="box_hover box"
               link={`/platoons/${props.platform}/${key.id}`}
-              condition={true}
+              condition={width <= 1800}
+              onClick={() => props.setPlatoonId(key.id)}
               key={index}
             >
               <div className="alignW">
@@ -95,6 +102,7 @@ function Search(): React.ReactElement {
     "platoonSearch_platform",
     "pc",
   );
+  const [platoonId, setPlatoonId] = React.useState<string>("");
   const history = useNavigate();
   // get info from query ?search &game
   const query = new URLSearchParams(useLocation().search);
@@ -143,48 +151,62 @@ function Search(): React.ReactElement {
   return (
     <div className="container">
       <BackButton text={t("platoonSearch.back")} location="/" />
-      <div className="align">
-        <h2>{t("platoonSearch.serverInfo")}</h2>
-        <p className={styles.altDescription}>
-          {t("platoonSearch.description")}
-        </p>
+      <div className="pageColumn">
+        <div className="pageRow">
+          <div className="align">
+            <h2>{t("platoonSearch.serverInfo")}</h2>
+            <p className={styles.altDescription}>
+              {t("platoonSearch.description")}
+            </p>
+          </div>
+          <div className="align">
+            <input
+              className="searchBox"
+              placeholder={t("platoonSearch.searchPlaceholder")}
+              value={searchTerm}
+              onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
+                setSearchTerm(ev.target.value)
+              }
+            />
+            <select
+              aria-label={t("ariaLabels.chartType")}
+              className="bigSelectSecondary"
+              value={platform}
+              onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
+                setPlatform(ev.target.value)
+              }
+            >
+              <option value="pc">{t("platforms.pc")}</option>
+              <option value="xboxone">{t("platforms.xboxone")}</option>
+              <option value="ps4">{t("platforms.ps4")}</option>
+            </select>
+            {/* <button className="bigButtonSecondary" type="submit">{t("serverSearch.search")} <RightArrow/></button> */}
+          </div>
+          <h1
+            style={{
+              marginTop: "2rem",
+            }}
+          >
+            {t("platoonSearch.results")}
+          </h1>
+          <Results
+            loading={loading}
+            platoons={platoons}
+            platform={platform}
+            error={error}
+            setPlatoonId={setPlatoonId}
+          />
+        </div>
+        {platoonId !== "" && (
+          <div className="pageRow hideOnSmallScreen">
+            <PlatoonInfo
+              platform={platform}
+              platoonId={platoonId}
+              sidebar={true}
+            />
+          </div>
+        )}
       </div>
-      <div className="align">
-        <input
-          className="searchBox"
-          placeholder={t("platoonSearch.searchPlaceholder")}
-          value={searchTerm}
-          onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
-            setSearchTerm(ev.target.value)
-          }
-        />
-        <select
-          aria-label={t("ariaLabels.chartType")}
-          className="bigSelectSecondary"
-          value={platform}
-          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
-            setPlatform(ev.target.value)
-          }
-        >
-          <option value="pc">{t("platforms.pc")}</option>
-          <option value="xboxone">{t("platforms.xboxone")}</option>
-          <option value="ps4">{t("platforms.ps4")}</option>
-        </select>
-        {/* <button className="bigButtonSecondary" type="submit">{t("serverSearch.search")} <RightArrow/></button> */}
-      </div>
-      <h1
-        style={{
-          marginTop: "2rem",
-        }}
-      >
-        {t("platoonSearch.results")}
-      </h1>
-      <Results
-        loading={loading}
-        platoons={platoons}
-        platform={platform}
-        error={error}
-      />
     </div>
   );
 }
