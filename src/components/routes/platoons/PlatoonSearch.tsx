@@ -182,13 +182,23 @@ function Search(): React.ReactElement {
             </select>
             {/* <button className="bigButtonSecondary" type="submit">{t("serverSearch.search")} <RightArrow/></button> */}
           </div>
-          <h1
-            style={{
-              marginTop: "2rem",
-            }}
-          >
-            {t("platoonSearch.results")}
-          </h1>
+          <div className="align">
+            <h1
+              style={{
+                marginTop: "2rem",
+              }}
+            >
+              {t("platoonSearch.results")}
+            </h1>
+            <p
+              style={{
+                marginTop: "2rem",
+              }}
+              className={styles.altDescription}
+            >
+              {t("platoonSearch.sidebarInfo")}
+            </p>
+          </div>
           <Results
             loading={loading}
             platoons={platoons}

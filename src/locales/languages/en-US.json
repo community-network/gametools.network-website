@@ -237,6 +237,7 @@
     "search": "Search",
     "searchPlaceholder": "Search for platoon by name...",
     "results": "Search results",
+    "sidebarInfo": "Clicking a result will display on the side if it can fit on your monitor",
     "resultNotFound": "No results found. To search for platoons, you need a minimum of 3 characters."
   },
   "stats": {
