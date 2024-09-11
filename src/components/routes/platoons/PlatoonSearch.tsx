@@ -62,6 +62,7 @@ function Results(props: Views): React.ReactElement {
         {stats?.platoons?.map((key: PlatoonResult, index: number) => {
           return (
             <Box
+              style={{ cursor: "pointer" }}
               className="box_hover box"
               link={`/platoons/${props.platform}/${key.id}`}
               condition={width <= 1800}
