@@ -108,12 +108,16 @@ function Search(): React.ReactElement {
   const query = new URLSearchParams(useLocation().search);
   const platformQuery = query.get("platform");
   const nameQuery = query.get("search");
+  const platoonQuery = query.get("platoon");
   React.useState(() => {
     if (platformQuery !== null) {
       setPlatform(platformQuery);
     }
     if (nameQuery !== null) {
       setSearchTerm(nameQuery);
+    }
+    if (platoonQuery !== null) {
+      setPlatoonId(platoonQuery);
     }
   });
 
@@ -130,8 +134,31 @@ function Search(): React.ReactElement {
     } else {
       params.delete("platform");
     }
+    if (platoonId) {
+      params.append("platoon", platoonId);
+    } else {
+      params.delete("platoon");
+    }
     history({ search: params.toString() }, { replace: true });
-  }, [searchTerm, platform, history]);
+  }, [searchTerm, platform, platoonId, history]);
+
+  React.useEffect(() => {
+    if (window.innerWidth <= 1800 && platoonId !== "") {
+      const params = new URLSearchParams();
+      if (searchTerm) {
+        params.append("search", searchTerm);
+      } else {
+        params.delete("search");
+      }
+      if (platform) {
+        params.append("platform", platform);
+      } else {
+        params.delete("platform");
+      }
+      history({ search: params.toString() }, { replace: true });
+      history(`/platoons/${platform}/${platoonId}`);
+    }
+  }, []);
 
   const { t } = useTranslation();
   document.title = `${t("siteFullName")} | ${t("platoonSearch.serverInfo")}`;
