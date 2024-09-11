@@ -1,12 +1,9 @@
-import * as React from "react";
-import "../../../../locales/config";
-import { useNavigate, useLocation, Link } from "react-router-dom";
-import { Trans, useTranslation } from "react-i18next";
-import "../../../../assets/scss/App.scss";
-import { BF2042Player, GametoolsApi } from "../../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
-import { BackButton, Box, InputItem, CheckItem } from "../../../Materials";
-import { getLanguage } from "../../../../locales/config";
+import * as React from "react";
+import { Trans, useTranslation } from "react-i18next";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocalStorage } from "react-use";
+import { BF2042Player, GametoolsApi } from "../../../../api/GametoolsApi";
 import {
   dice,
   extraGames,
@@ -18,9 +15,12 @@ import {
   projects,
   supportedGames,
 } from "../../../../api/static";
-import { Results } from "./Results";
-import { useLocalStorage } from "react-use";
+import "../../../../assets/scss/App.scss";
+import "../../../../locales/config";
+import { getLanguage } from "../../../../locales/config";
+import { BackButton, Box, CheckItem, InputItem } from "../../../Materials";
 import * as styles from "./Main.module.scss";
+import { Results } from "./Results";
 
 function DropdownArrow(props: {
   item: string;
@@ -298,7 +298,7 @@ function Main(): React.ReactElement {
     searchType.length > 0
       ? params.append("searchtype", searchType)
       : params.delete("searchtype");
-    history({ search: params.toString() });
+    history({ search: params.toString() }, { replace: true });
   }, [
     searchTerm,
     gameName,

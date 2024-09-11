@@ -148,7 +148,7 @@ function Stats(): React.ReactElement {
       params.delete("name");
     }
     if (params.toString() != old_params) {
-      history({ search: params.toString() });
+      history({ search: params.toString() }, { replace: true });
     }
   }, [game, history]);
   const { t } = useTranslation();

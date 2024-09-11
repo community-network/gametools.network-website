@@ -1,14 +1,14 @@
-import * as React from "react";
-import "../../../locales/config";
-import { useNavigate, useLocation } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import "../../../assets/scss/App.scss";
-import { GametoolsApi } from "../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
-import { Box, BackButton } from "../../Materials";
-import { getLanguage } from "../../../locales/config";
-import { PlatoonResult, PlatoonSearchResult } from "../../../api/ReturnTypes";
+import * as React from "react";
+import { useTranslation } from "react-i18next";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useLocalStorage } from "react-use";
+import { GametoolsApi } from "../../../api/GametoolsApi";
+import { PlatoonResult, PlatoonSearchResult } from "../../../api/ReturnTypes";
+import "../../../assets/scss/App.scss";
+import "../../../locales/config";
+import { getLanguage } from "../../../locales/config";
+import { BackButton, Box } from "../../Materials";
 import * as styles from "./PlatoonSearch.module.scss";
 
 interface Views {
@@ -122,7 +122,7 @@ function Search(): React.ReactElement {
     } else {
       params.delete("platform");
     }
-    history({ search: params.toString() });
+    history({ search: params.toString() }, { replace: true });
   }, [searchTerm, platform, history]);
 
   const { t } = useTranslation();
