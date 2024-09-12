@@ -245,6 +245,7 @@
     "back": "Main page",
     "error": "Error while fetching: {{ error }}",
     "profileImage": "Profile image",
+    "currentEmblem": "Current emblem",
     "originDescription": "User profile",
     "detailedName": "Detailed stats",
     "overview": "Overview",

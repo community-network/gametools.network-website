@@ -69,15 +69,16 @@ function GetBfBan(props: Readonly<Views>): React.ReactElement {
 export function ViewEmblem(
   props: Readonly<{ emblem: string }>,
 ): React.ReactElement {
+  const { t } = useTranslation();
   return (
     // normal playerName
     <div style={{ position: "absolute", right: 0 }}>
       <div className="align">
-        <h4 className={styles.originDescription}>Current emblem</h4>
+        <h4 className={styles.originDescription}>{t("stats.currentEmblem")}</h4>
         <img
           className={styles.originProfile}
           src={sslFix(props?.emblem)}
-          // alt={t("stats.profileImage")}
+          alt={t("stats.currentEmblem")}
         />
       </div>
     </div>
