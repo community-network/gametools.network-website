@@ -169,9 +169,9 @@ export function VehicleGraph(props: Readonly<Views>): React.ReactElement {
         <button className="smallButtonSecondary" onClick={more}>
           &#62;
         </button>
-        <div className={styles.description}>
+        <p className={styles.description}>
           {begin + 1}/{Math.min(length, begin + 25)} {t("stats.vehicles")}
-        </div>
+        </p>
       </div>
       {names.length > 0 ? (
         <Box>
