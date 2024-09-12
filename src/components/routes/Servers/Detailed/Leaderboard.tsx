@@ -1,12 +1,12 @@
-import * as React from "react";
-import "../../../../locales/config";
-import { useTranslation } from "react-i18next";
-import "../../../../assets/scss/App.scss";
-import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
-import { Box } from "../../../Materials";
-import { ServerLeaderboardList } from "../../../../api/ReturnTypes";
 import { addSeconds } from "date-fns";
+import * as React from "react";
+import { useTranslation } from "react-i18next";
+import { GametoolsApi } from "../../../../api/GametoolsApi";
+import { ServerLeaderboardList } from "../../../../api/ReturnTypes";
+import "../../../../assets/scss/App.scss";
+import "../../../../locales/config";
+import { Box } from "../../../Materials";
 import * as styles from "./Leaderboard.module.scss";
 import * as Mainstyles from "./Main.module.scss";
 
@@ -62,6 +62,9 @@ export function ServerLeaderboard(props: {
               {t("servers.leaderboard.row.losses")}
             </option>
           </select>
+          <p style={{ marginTop: "1rem", marginLeft: "1rem" }}>
+            {t("servers.leaderboard.reset")}
+          </p>
         </div>
         {players.length !== 0 ? (
           <Box>

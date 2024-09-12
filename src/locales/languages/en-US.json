@@ -474,6 +474,7 @@
       "main": "Player leaderboard of this server",
       "info": "only available on servers that use the manager-api",
       "none": "Server was just added or doesn't use the manager-api",
+      "reset": "This leaderboard will reset the 1st day of the month",
       "row": {
         "score": "Score",
         "killDeath": "K/D",
