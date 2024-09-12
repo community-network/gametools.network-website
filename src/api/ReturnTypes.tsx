@@ -22,6 +22,7 @@ export type UserGames = {
   bfv: boolean;
   bf3: boolean;
   bfh: boolean;
+  emblem: string;
 };
 
 export type PlatoonStats = {

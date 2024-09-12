@@ -239,11 +239,13 @@ export class ApiProvider extends JsonClient {
       return await this.getJsonMethod(`/bfglobal/games`, {
         playerid: userName,
         platform: platform,
+        include_emblem: "true",
       });
     }
     return await this.getJsonMethod(`/bfglobal/games`, {
       name: encodeURIComponent(userName),
       platform: platform,
+      include_emblem: "true",
     });
   }
 

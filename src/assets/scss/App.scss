@@ -449,7 +449,7 @@ input:checked + .slider:before {
   }
 }
 
-.bigButtonPrimary {
+.bigButtonPrimaryD {
   @extend .bigButtonSecondary;
 
   background: var(--color-blue);
@@ -459,6 +459,11 @@ input:checked + .slider:before {
   :hover {
     background: var(--color-blue-alt);
   }
+}
+
+.bigButtonPrimary {
+  @extend .bigButtonPrimaryD;
+
   @media screen and (max-width: 530px) {
     width: 100%;
   }

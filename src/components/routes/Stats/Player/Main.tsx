@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useLocalStorage } from "react-use";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { MainStats } from "../../../../api/ReturnTypes";
@@ -11,24 +11,23 @@ import {
   newTitles,
   platformGames,
   progressGames,
+  statsPlatforms,
   supportedGames,
 } from "../../../../api/static";
 import "../../../../locales/config";
 import { getLanguage } from "../../../../locales/config";
-import useWindowDimensions from "../../../functions/useWindowDimensions";
-import { BackButton } from "../../../Materials";
+import { BackButton, RightArrow } from "../../../Materials";
 import { ViewClasses } from "./Classes";
 import { DetailedStats } from "./DetailedStats";
 import { GadgetGraph, ViewGadgets } from "./Gadgets";
 import { ViewGamemodes } from "./Gamemodes";
 import { ViewIframe } from "./Iframe";
-import * as styles from "./Main.module.scss";
 import { BfSessionInfo } from "./ManagerExtr";
 import { ViewStats } from "./OverviewStats";
 import { PlatoonInfo } from "./Platoon";
 import { ViewProgress } from "./Progress";
 import { VehicleGraph, ViewVehicles } from "./Vehicles";
-import { ViewOrigin } from "./ViewOrigin";
+import { ViewEmblem, ViewOrigin } from "./ViewOrigin";
 import { ViewWeapons, WeaponGraph } from "./Weapons";
 
 export interface Views {
@@ -79,16 +78,21 @@ export function DynamicSort(property: string) {
 
 function Stats(): React.ReactElement {
   const params = useParams();
-  const platform = params.plat;
+  const platformParam = params.plat;
   const [game, setGame] = useLocalStorage<string>(
     "stats_game",
-    platformGames[platform][0],
+    platformGames[platformParam][0],
   );
-  const { width } = useWindowDimensions();
   const query = new URLSearchParams(useLocation().search);
   const history = useNavigate();
   const gameQuery = query.get("game");
   const nameQuery = query.get("name");
+
+  const [searchTerm, setSearchTerm] = React.useState<string>("");
+  const [platform, setPlatform] = useLocalStorage<string>(
+    "statSearch_platform",
+    "pc",
+  );
 
   const {
     isLoading: gameLoading,
@@ -96,17 +100,17 @@ function Stats(): React.ReactElement {
     error: gameErrors,
     data: playerGames,
   } = useQuery({
-    queryKey: ["games" + params.type + params.eaid, platform],
+    queryKey: ["games" + params.type + params.eaid, platformParam],
     queryFn: () =>
       GametoolsApi.games({
         getter: params.type,
         userName: params.eaid,
-        platform: platform,
+        platform: platformParam,
       }),
     retry: 1,
   });
 
-  const games: string[] = platformGames[platform];
+  const games: string[] = platformGames[platformParam];
   let playerGamesArr = [];
   let otherGamesArr = [];
   if (!gameLoading && !gameError) {
@@ -127,6 +131,12 @@ function Stats(): React.ReactElement {
       setGame(gameQuery);
     }
   });
+
+  React.useEffect(() => {
+    if (playerGames?.userName != null) {
+      setSearchTerm(playerGames?.userName);
+    }
+  }, [playerGames]);
 
   React.useEffect(() => {
     if (playerGamesArr.includes(gameQuery)) {
@@ -159,94 +169,106 @@ function Stats(): React.ReactElement {
   return (
     <div className="container">
       <BackButton text={t("stats.back")} location="/" />
-      <ViewOrigin
-        game={game}
-        loading={gameLoading}
-        stats={playerGames}
-        error={gameError}
-        errors={gameErrors}
-        name={nameQuery}
-      />
-      {width < 930 ? (
-        <select
-          aria-label={t("ariaLabels.game")}
-          className="selectPrimary"
-          value={game}
-          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void => {
-            setGame(ev.target.value);
-          }}
-        >
-          {games.map((key: string) => {
-            return (
-              <option
-                key={key}
-                value={key}
-                disabled={playerGamesArr.includes(key)}
-              >
-                {t(`games.${key}`)}
-              </option>
-            );
-          })}
-        </select>
-      ) : (
-        <div
-          className="align"
-          onChange={(ev: React.ChangeEvent<HTMLInputElement>): void => {
-            setGame(ev.target.value);
-          }}
-        >
-          {games.map((key: string) => {
-            return (
-              <div className={styles.radio} key={key}>
-                <input
-                  className={styles.invisableRadioButton}
-                  type="radio"
-                  id={key}
+      <form style={{ marginTop: "1.5rem" }}>
+        <div className="align">
+          <div className="align" style={{ flexWrap: "nowrap" }}>
+            <input
+              className="bf2042SearchBox"
+              placeholder={t(`playerSearch.searchPlaceholder`)}
+              value={searchTerm}
+              onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
+                setSearchTerm(ev.target.value)
+              }
+            />
+
+            <select
+              aria-label={t("ariaLabels.platform")}
+              className="bf2042BigSelectSecondary"
+              value={platform}
+              onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
+                setPlatform(ev.target.value)
+              }
+            >
+              {statsPlatforms.map((key, index) => {
+                return (
+                  <option key={index} value={key}>
+                    {t(`statPlatforms.${key}`)}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          {searchTerm !== "" ? (
+            <Link
+              to={`/stats/${platform}/name/${encodeURIComponent(searchTerm)}`}
+            >
+              <button className="bigButtonPrimaryD" type="submit">
+                {t("playerSearch.search")} <RightArrow />
+              </button>
+            </Link>
+          ) : (
+            // if no name is filled in
+            <button className="bigButtonPrimaryD" type="submit">
+              {t("playerSearch.search")} <RightArrow />
+            </button>
+          )}
+          <div
+            style={{
+              backgroundColor: "#1e2028",
+              // height: "100%",
+              marginRight: "1rem",
+              width: "1px",
+              float: "left",
+              height: "3.3rem",
+              alignSelf: "stretch",
+            }}
+          />
+          <select
+            aria-label={t("ariaLabels.game")}
+            className="bigSelectSecondary"
+            value={game}
+            onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void => {
+              setGame(ev.target.value);
+            }}
+          >
+            {games.map((key: string) => {
+              return (
+                <option
+                  key={key}
                   value={key}
-                  name="game"
                   disabled={playerGamesArr.includes(key)}
-                  defaultChecked={game === key}
-                />
-                {playerGamesArr.includes(key) ? (
-                  <label
-                    title={t("stats.missingGame")}
-                    className={styles.disabledSmallButtonRadio}
-                    htmlFor={key}
-                  >
-                    {t(`games.${key}`)}
-                  </label>
-                ) : (
-                  <>
-                    {game === key ? (
-                      <label
-                        aria-label={t("ariaLabels.toggleGame")}
-                        className={styles.smallButtonRadio}
-                        htmlFor={key}
-                      >
-                        {t(`games.${key}`)}
-                      </label>
-                    ) : (
-                      <label
-                        aria-label={t("ariaLabels.toggleGame")}
-                        className={styles.uncheckedSmallButtonRadio}
-                        htmlFor={key}
-                      >
-                        {t(`games.${key}`)}
-                      </label>
-                    )}
-                  </>
-                )}
-              </div>
-            );
-          })}
+                >
+                  {t(`games.${key}`)}
+                </option>
+              );
+            })}
+          </select>
         </div>
-      )}
+      </form>
       <GameStats
         game={game}
         name={params.eaid}
         type={params.type}
-        platform={platform}
-      />
+        platform={platformParam}
+      >
+        <div className="column">
+          <div className="row">
+            <ViewOrigin
+              game={game}
+              loading={gameLoading}
+              stats={playerGames}
+              error={gameError}
+              errors={gameErrors}
+              name={nameQuery}
+            />
+          </div>
+          {typeof playerGames?.emblem === "string" && (
+            <div className="row">
+              <ViewEmblem emblem={playerGames?.emblem} />
+            </div>
+          )}
+        </div>
+      </GameStats>
     </div>
   );
 }
@@ -256,6 +278,11 @@ interface GameStatsItems {
   name: string;
   type: string;
   platform: string;
+  children:
+    | boolean
+    | React.ReactChild
+    | React.ReactFragment
+    | React.ReactPortal;
 }
 
 function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {
@@ -291,7 +318,9 @@ function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {
             errors={error}
             isError={isError}
             name={name}
-          />
+          >
+            {props.children}
+          </ViewStats>
           <DetailedStats
             game={game}
             isLoading={isLoading}

@@ -74,7 +74,15 @@ function ExportButton(
   );
 }
 
-export function ViewStats(props: Readonly<Views>): React.ReactElement {
+interface ViewStatsView extends Views {
+  children:
+    | boolean
+    | React.ReactChild
+    | React.ReactFragment
+    | React.ReactPortal;
+}
+
+export function ViewStats(props: Readonly<ViewStatsView>): React.ReactElement {
   const { t } = useTranslation();
   const stats = props.stats;
   const getLanguage = () => window.localStorage.i18nextLng;
@@ -96,7 +104,7 @@ export function ViewStats(props: Readonly<Views>): React.ReactElement {
     return (
       <div className={Mainstyles.spacing}>
         <Box>
-          <h3>{t("stats.overview")}</h3>
+          {props.children}
           <p>{ComponentHandling(t, props)}</p>
         </Box>
       </div>
@@ -115,8 +123,7 @@ export function ViewStats(props: Readonly<Views>): React.ReactElement {
   return (
     <div className={Mainstyles.spacing}>
       <Box>
-        <h3>{t("stats.overview")}</h3>
-        <p>{t("stats.overviewDescription")}</p>
+        {props.children}
         {stats?.rank !== undefined && (
           <>
             <div className="alignS">
