@@ -88,20 +88,20 @@
   ],
   "screenshots": [
     {
-      "src": "/screenshots/image-1.png",
-      "type": "image/png",
+      "src": "/screenshots/image-1.webp",
+      "type": "image/webp",
       "sizes": "1976x1394",
       "form_factor": "wide"
     },
     {
-      "src": "/screenshots/image-2.png",
-      "type": "image/png",
+      "src": "/screenshots/image-2.webp",
+      "type": "image/webp",
       "sizes": "1976x1394",
       "form_factor": "wide"
     },
     {
-      "src": "/screenshots/image-3.png",
-      "type": "image/png",
+      "src": "/screenshots/image-3.webp",
+      "type": "image/webp",
       "sizes": "1976x1394",
       "form_factor": "wide"
     }
