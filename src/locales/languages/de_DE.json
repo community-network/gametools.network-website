@@ -18,6 +18,16 @@
   "intlNumber": "{{val, number}}",
   "ago": "vor",
   "export": "exportieren",
+  "ariaLabels": {
+    "sort": "Select sort by",
+    "chartType": "Select chart type",
+    "platform": "Select platform",
+    "game": "Select game name",
+    "searchType": "Select search type",
+    "toggleAds": "Toggle ads",
+    "toggleSidebar": "Toggle sidebar",
+    "toggleGame": "Toggle game"
+  },
   "case": {
     "none": "Nicht verfügbar",
     "on": "Ein",
@@ -68,6 +78,8 @@
     "bf4": "Battlefield 4",
     "bfh": "Battlefield Hardline",
     "bf1": "Battlefield 1",
+    "bf1marne": "Battlefield 1 (marne.io)",
+    "bfvmarne": "Battlefield 5 (marne.io)",
     "bfv": "Battlefield 5",
     "bf2042": "Battlefield 2042",
     "bf2042portal": "Battlefield 2042 Portal",
@@ -205,6 +217,7 @@
       "playground": "Name der Erfahrung"
     },
     "showMore": "Zeige mehr",
+    "showProject": "Go to project",
     "region": "Region",
     "map": "Karte",
     "platform": "Plattform",
@@ -224,11 +237,16 @@
     "search": "Suchen",
     "searchPlaceholder": "Suche nach Platoon nach Name...",
     "results": "Suchergebnisse",
+    "sidebarInfo": "Clicking a result will display on the side if it can fit on your monitor",
     "resultNotFound": "Keine Ergebnisse gefunden. Um nach Platoons zu suchen, benötigen Sie mindestens 3 Zeichen."
   },
   "stats": {
     "view": "Statistiken ansehen",
     "back": "Hauptseite",
+    "error": "Error while fetching: {{ error }}",
+    "toggleAdminPanel": "Show admin panel",
+    "profileImage": "Profile image",
+    "currentEmblem": "Current emblem",
     "originDescription": "Benutzerprofil",
     "detailedName": "detailierte Statistik",
     "overview": "Übersicht",
@@ -244,6 +262,21 @@
     "searchWeapon": "Nach Waffe suchen",
     "searchVehicle": "Nach Fahrzeug suchen",
     "searchGadget": "Suche nach Gadget",
+    "missingGame": "Current player doesn't have this game",
+    "adminPanel": {
+      "main": "Admin panel",
+      "susWeapons": "Sus weapons",
+      "bannedServer": {
+        "main": "Banned in server"
+      },
+      "otherNames": {
+        "main": "Other names"
+      },
+      "vban": {
+        "group": "VBAN group",
+        "reason": "Reason"
+      }
+    },
     "rows": {
       "weaponName": "Waffenname",
       "vehicleName": "Fahrzeugname",
@@ -255,7 +288,8 @@
       "destroyed": "Zerstört",
       "accuracy": "Genauigkeit",
       "headshots": "Kopfschüsse",
-      "multiKills": "Multikills"
+      "multiKills": "Multikills",
+      "hitVKills": "Hit/kill"
     },
     "classes": {
       "main": "Klassen",
@@ -326,7 +360,8 @@
     "platoon": {
       "none": "Spieler ist in keinem Platoon",
       "noMain": "Spieler vertritt keinen Platoon",
-      "noDescription": "Der Platoon hat keine Beschreibung"
+      "noDescription": "Der Platoon hat keine Beschreibung",
+      "emblem": "Platoon emblem"
     },
     "playSession": {
       "main": "Battlefield Spielsitzungen",
@@ -435,6 +470,7 @@
       "invite": "Joinme.click Einladungslink"
     },
     "bfportal": {
+      "main": "BFPortal",
       "found": "Portal Erfahrung gefunden auf BfPortal.gg",
       "error": "Technischer Fehler in der API von BFPortal.gg"
     },
@@ -453,6 +489,7 @@
       "main": "Spieler-Rangliste dieses Servers",
       "info": "nur auf Servern verfügbar, die die manager-api verwenden",
       "none": "Server wurde gerade hinzugefügt oder verwendet die Manager-Api nicht",
+      "reset": "This leaderboard will reset the 1st day of the month",
       "row": {
         "score": "Punktestand",
         "killDeath": "K/D",
@@ -512,6 +549,111 @@
     "notFound": {
       "main": "Server nicht gefunden",
       "description": "Wir können den von Ihnen gesuchten Server nicht finden."
+    },
+    "bf3": {
+      "maps": {
+        "Grand Bazaar": "Großer Basar",
+        "Tehran Highway": "Teheran-Schnellstraße",
+        "Caspian Border": "Kaspische Grenze",
+        "Seine Crossing": "Seine-Überquerung",
+        "Operation Firestorm": "Operation Firestorm",
+        "Damavand Peak": "Damavand-Gipfel",
+        "Noshahr Canals": "Noshahr-Kanäle",
+        "Kharg Island": "Insel Kharg",
+        "Operation Métro": "Operation Métro",
+        "Strike at Karkand": "Angriff auf Karkand",
+        "Gulf of Oman": "Golf von Oman",
+        "Sharqi Peninsula": "Sharqi-Halbinsel",
+        "Wake Island": "Wake Island",
+        "Scrapmetal": "Altmetall",
+        "Operation 925": "Operation 925",
+        "Donya Fortress": "Donya-Festung",
+        "Ziba Tower": "Ziba-Turm",
+        "Alborz Mountains": "Elbors-Gebirge",
+        "Bandar Desert": "Bandar-Wüste",
+        "Armored Shield": "Armored Shield",
+        "Death Valley": "Tal des Todes",
+        "Markaz Monolith": "Markaz-Monolith",
+        "Azadi Palace": "Azadi-Palast",
+        "Epicenter": "Epizentrum",
+        "Talah Market": "Talah-Markt",
+        "Operation Riverside": "Operation Flussufer",
+        "Nebandan Flats": "Nebandan-Ebene",
+        "Kiasar Railroad": "Kiasar-Eisenbahn",
+        "Sabalan Pipeline": "Sabalan-Pipeline"
+      },
+      "gamemodes": {
+        "CONQUESTLARGE": "Eroberung groß",
+        "CONQUEST": "Eroberung",
+        "CONQUESTASSAULTLARGE": "Eroberung: Sturmangriff groß",
+        "CONQUESTASSAULTSMALL": "Eroberung: Sturmangriff",
+        "RUSH": "Rush",
+        "SQRUSH": "Squad Rush",
+        "SQDM": "Squad-Deathmatch",
+        "TEAMDEATHMATCH": "Team Deathmatch",
+        "TEAMDEATHMATCHC": "Team-DM: Nahkampf",
+        "GUNMASTER": "Waffenmeister",
+        "DOMINATION": "Vorherrschaft",
+        "TANKSUPERIORITY": "Panzer-Übermacht",
+        "SCAVENGER": "Plünderer",
+        "CAPTURETHEFLAG": "Capture the Flag",
+        "AIRSUPERIORITY": "Luftüberlegenheit"
+      }
+    },
+    "bfh": {
+      "maps": {
+        "Bank job": "BANKÜBERFALL",
+        "The block": "DER BLOCK",
+        "Dust bowl": "STAUBWÜSTE",
+        "Downtown": "Downtown",
+        "Derailed": "ENTGLEISUNG",
+        "Everglades": "Everglades",
+        "Growhouse": "Drogenlabor",
+        "Hollywood heights": "HOLLYWOOD HEIGHTS",
+        "Riptide": "BRANDUNG",
+        "Ep. 10: legacy": "Ep. 10: legacy",
+        "Ep. 6: out of business": "Ep. 6: out of business",
+        "Ep. 1: back to school": "Ep. 1: back to school",
+        "Ep. 2: checking out": "Ep. 2: checking out",
+        "Ep. 8: sovereign land": "Ep. 8: sovereign land",
+        "Ep. 5: gauntlet": "Ep. 5: gauntlet",
+        "Ep. 3: gator bait": "Ep. 3: gator bait",
+        "Ep. 9: independence day": "Ep. 9: independence day",
+        "Ep. 7: glass houses": "Ep. 7: glass houses",
+        "Prologue": "Prologue",
+        "Ep. 4: case closed": "Ep. 4: case closed",
+        "Black friday": "Black friday",
+        "Code blue": "Code blue",
+        "The beat": "The beat",
+        "Backwoods": "Backwoods",
+        "Night job": "Night job",
+        "Night woods": "Night woods",
+        "The docks": "Docks",
+        "Break pointe": "Break pointe",
+        "Museum": "Museum",
+        "Precinct 7": "Polizeiwache 7",
+        "Double cross": "Doppelspiel",
+        "Diversion": "Ablenkung",
+        "Pacific highway": "Pacific highway",
+        "Train dodge": "Vorsicht: zug",
+        "Alcatraz": "Alcatraz",
+        "Cemetery": "Friedhof",
+        "Chinatown": "Chinatown",
+        "Thin ice": "Dünnes eis"
+      },
+      "gamemodes": {
+        "BLOODMONEY": "Blood Money",
+        "HOTWIRE": "Hotwire",
+        "HEIST": "Überfall",
+        "HIT": "Fadenkreuz",
+        "HOSTAGE": "Rettung",
+        "TEAMDEATHMATCH": "Team Deathmatch",
+        "TURFWARLARGE": "Eroberung groß",
+        "TURFWARSMALL": "Eroberung",
+        "SQUADHEIST": "Squad-Überfall",
+        "BOUNTYHUNTER": "Kopfgeldjäger",
+        "CAPTURETHEFLAG": "Capture The Bag"
+      }
     },
     "bfv": {
       "maps": {
@@ -603,7 +745,10 @@
         "Stranded": "Gestrandet",
         "Spearhead": "Speerspitze",
         "Flashpoint": "Flashpoint",
-        "Reclaimed": "Zurückgewonnen"
+        "Reclaimed": "Zurückgewonnen",
+        "Redacted": "Redacted",
+        "Haven": "Haven",
+        "Stadium": "Stadium"
       },
       "gamemodes": {
         "Breakthrough Large": "Durchbruch Groß",
@@ -621,6 +766,22 @@
         "tenplus": "10+",
         "none": "nichts"
       }
+    },
+    "battlelog": {
+      "playerFilter": {
+        "full": "Full",
+        "1-5": "1-5",
+        "6-10": "6-10",
+        "10+": "10+",
+        "empty": "Empty"
+      }
+    },
+    "modList": {
+      "main": "Mods",
+      "noMods": "This server has no mods",
+      "file": "file: ",
+      "version": "ver: ",
+      "noURl": "No link available"
     }
   },
   "platoon": {
@@ -675,7 +836,7 @@
     }
   },
   "footer": {
-    "description": "Diese Website ist Teil des Community Networks. Sie ist Open Source. Sie können Probleme über GitHub melden und Änderungen/Verbesserungen vorschlagen. Die API wird vom Community Network bereitgestellt und ist für die Öffentlichkeit zugänglich. Wir stellen keine API von Drittanbietern zur Verfügung. Unser Backend ist Closed Source und nicht öffentlich zugänglich.\nBattlefield & Origin sind eingetragene Marken von Electronic Arts. Diese Website verwendet Daten, die gemäß den Battlefield 1-Statistikbedingungen von Electronic Arts bereitgestellt werden. Die Marken sind Eigentum ihrer jeweiligen Inhaber. Das Spielmaterial unterliegt dem Copyright von Electronic Arts Inc. Electronic Arts hat diese Website nicht gebilligt und ist nicht verantwortlich für diese Website oder ihren Inhalt.\nDer Code steht unter der GPL v2 Lizenz. Einige Teile stehen unter dem Copyright von Community Network.",
+    "description": "This website is part of the Community Network. It is Open Source. You can post issues and suggest changes/improvements via GitHub. API provided by Community Network and open for public usage. We don’t provide any third-party API. Our back end is closed source and not available publicly.\nThis site was created under Electronic Arts’ Fansite Agreement using materials from Battlefield 2042. Trademarks are the property of their respective owners. Game materials copyright Electronic Arts Inc. and/or its licensors. Electronic Arts Inc. and its licensors have not otherwise endorsed and are not responsible for the operation of or content on this site.\nCode is under GPL v2 License. Some parts are under Community Network copyright.",
     "LinkName": "Links",
     "links": {
       "0": {
@@ -715,5 +876,12 @@
   "ads": {
     "main": "Werbung",
     "disable": "Werbung ausschalten"
+  },
+  "pageTitle": {
+    "main": "Game Tools: Battlefield Stats, Bots, Server management",
+    "stats": "Stats",
+    "platoon": "Platoons",
+    "playground": "Playgrounds",
+    "servers": "Server"
   }
 }
