@@ -18,6 +18,16 @@
   "intlNumber": "{{val, number}}",
   "ago": "назад",
   "export": "Экспорт",
+  "ariaLabels": {
+    "sort": "Select sort by",
+    "chartType": "Select chart type",
+    "platform": "Select platform",
+    "game": "Select game name",
+    "searchType": "Select search type",
+    "toggleAds": "Toggle ads",
+    "toggleSidebar": "Toggle sidebar",
+    "toggleGame": "Toggle game"
+  },
   "case": {
     "none": "Н/Д",
     "on": "Вкл",
@@ -68,6 +78,8 @@
     "bf4": "Battlefield 4",
     "bfh": "Battlefield Hardline",
     "bf1": "Battlefield 1",
+    "bf1marne": "Battlefield 1 (marne.io)",
+    "bfvmarne": "Battlefield 5 (marne.io)",
     "bfv": "Battlefield 5",
     "bf2042": "Battlefield 2042",
     "bf2042portal": "Battlefield 2042 Portal",
@@ -205,6 +217,7 @@
       "playground": "Имя experience"
     },
     "showMore": "Показать больше",
+    "showProject": "Go to project",
     "region": "Регион",
     "map": "Карта",
     "platform": "платформа",
@@ -224,11 +237,16 @@
     "search": "Поиск",
     "searchPlaceholder": "Поиск сервера по имени...",
     "results": "Искать",
+    "sidebarInfo": "Clicking a result will display on the side if it can fit on your monitor",
     "resultNotFound": "Ничего не найдено. Чтобы найти взводы, вам нужно ввести минимум 3 символа."
   },
   "stats": {
     "view": "Показать статистику",
     "back": "Главная страница",
+    "error": "Error while fetching: {{ error }}",
+    "toggleAdminPanel": "Show admin panel",
+    "profileImage": "Profile image",
+    "currentEmblem": "Current emblem",
     "originDescription": "Профиль пользователя",
     "detailedName": "Детальная статистика",
     "overview": "Обзор",
@@ -244,6 +262,21 @@
     "searchWeapon": "Искать оружие",
     "searchVehicle": "Искать технику",
     "searchGadget": "Искать гаджеты",
+    "missingGame": "Current player doesn't have this game",
+    "adminPanel": {
+      "main": "Admin panel",
+      "susWeapons": "Sus weapons",
+      "bannedServer": {
+        "main": "Banned in server"
+      },
+      "otherNames": {
+        "main": "Other names"
+      },
+      "vban": {
+        "group": "VBAN group",
+        "reason": "Reason"
+      }
+    },
     "rows": {
       "weaponName": "Название оружия",
       "vehicleName": "Название техники",
@@ -255,7 +288,8 @@
       "destroyed": "Уничтожено",
       "accuracy": "Точность",
       "headshots": "Выстрелы в голову",
-      "multiKills": "Мультикиллы"
+      "multiKills": "Мультикиллы",
+      "hitVKills": "Hit/kill"
     },
     "classes": {
       "main": "Классы",
@@ -326,7 +360,8 @@
     "platoon": {
       "none": "Игрок не находится в каком-либо взводе",
       "noMain": "Игрок не выбрал какой-либо взвод основным",
-      "noDescription": "У взвода нет описания"
+      "noDescription": "У взвода нет описания",
+      "emblem": "Platoon emblem"
     },
     "playSession": {
       "main": "Игровые сессие Battlefield",
@@ -435,6 +470,7 @@
       "invite": "Joinme.click ссылка приглашения"
     },
     "bfportal": {
+      "main": "BFPortal",
       "found": "Portal experience найден на BfPortal.gg",
       "error": "Ошибка API для BfPortal.gg"
     },
@@ -453,6 +489,7 @@
       "main": "Таблица игроков на этом сервере",
       "info": "Доступно только на серверах, которые используют manager-api",
       "none": "Сервер был только что добавлен или не использует manager-api",
+      "reset": "This leaderboard will reset the 1st day of the month",
       "row": {
         "score": "Очки",
         "killDeath": "Уб/См",
@@ -708,7 +745,10 @@
         "Stranded": "На мели",
         "Spearhead": "На острие",
         "Flashpoint": "Горячая точка",
-        "Reclaimed": "Возвращение"
+        "Reclaimed": "Возвращение",
+        "Redacted": "Redacted",
+        "Haven": "Haven",
+        "Stadium": "Stadium"
       },
       "gamemodes": {
         "Breakthrough Large": "Большой прорыв",
@@ -735,6 +775,13 @@
         "10+": "10+",
         "empty": "Пустой"
       }
+    },
+    "modList": {
+      "main": "Mods",
+      "noMods": "This server has no mods",
+      "file": "file: ",
+      "version": "ver: ",
+      "noURl": "No link available"
     }
   },
   "platoon": {
@@ -789,7 +836,7 @@
     }
   },
   "footer": {
-    "description": "Данный сайт - это часть Community Network, с открытым кодом. Вы можете публиковать ошибки и предложения изменений/улучшений на GitHub. API предоставляется Community Network и открыт для публичного использования. Мы не предоставляем API от третьих лиц. Наш backend код закрыт и недоступен для остальных.\nBattlefield и Origin являются зарегистрированными торговыми марками Electronic Arts. Этот сайд использует данные, предоставленные в соответствии с условиями статистики Battlefield 1 от Electronic Arts. Товарные знаки являются собственностью их соответствующих владельцев. Авторское право на игровые материалы принадлежит Electronic Arts Inc. Electronic Arts не одобряла и не несет ответственности за этот сайт или его содержание.\nКод находится под лицензией GPLv2. Некоторые части защищены авторским правом Community Network.",
+    "description": "This website is part of the Community Network. It is Open Source. You can post issues and suggest changes/improvements via GitHub. API provided by Community Network and open for public usage. We don’t provide any third-party API. Our back end is closed source and not available publicly.\nThis site was created under Electronic Arts’ Fansite Agreement using materials from Battlefield 2042. Trademarks are the property of their respective owners. Game materials copyright Electronic Arts Inc. and/or its licensors. Electronic Arts Inc. and its licensors have not otherwise endorsed and are not responsible for the operation of or content on this site.\nCode is under GPL v2 License. Some parts are under Community Network copyright.",
     "LinkName": "Ссылки",
     "links": {
       "0": {
@@ -829,5 +876,12 @@
   "ads": {
     "main": "Реклама",
     "disable": "Отключить рекламу"
+  },
+  "pageTitle": {
+    "main": "Game Tools: Battlefield Stats, Bots, Server management",
+    "stats": "Stats",
+    "platoon": "Platoons",
+    "playground": "Playgrounds",
+    "servers": "Сервера"
   }
 }
