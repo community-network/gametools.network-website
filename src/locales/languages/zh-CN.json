@@ -18,6 +18,16 @@
   "intlNumber": "{{val, number}}",
   "ago": "以前",
   "export": "导出EXCEL",
+  "ariaLabels": {
+    "sort": "Select sort by",
+    "chartType": "Select chart type",
+    "platform": "Select platform",
+    "game": "Select game name",
+    "searchType": "Select search type",
+    "toggleAds": "Toggle ads",
+    "toggleSidebar": "Toggle sidebar",
+    "toggleGame": "Toggle game"
+  },
   "case": {
     "none": "不适用",
     "on": "打开",
@@ -68,6 +78,8 @@
     "bf4": "战地4",
     "bfh": "战地硬仗",
     "bf1": "战地1",
+    "bf1marne": "Battlefield 1 (marne.io)",
+    "bfvmarne": "Battlefield 5 (marne.io)",
     "bfv": "战地5",
     "bf2042": "战地2042",
     "bf2042portal": "Battlefield 2042 Portal",
@@ -124,7 +136,7 @@
   },
   "home": {
     "manager": {
-      "header": "GAMETOOLS | CLOUD",
+      "header": "GAMETOOLS | 云",
       "description": "我们创建了一个基于网络的反作弊和管理平台来保护您的 Battlefield 服务器。\n在许多社区的帮助下建造。\n\n立即登录并免费开始您的管理！",
       "open": "启动应用程序",
       "disclaimer": "不提供服务器托管。 我们目前支持以下《战地风云》游戏："
@@ -205,6 +217,7 @@
       "playground": "体验名称"
     },
     "showMore": "显示更多",
+    "showProject": "Go to project",
     "region": "地区",
     "map": "地图",
     "platform": "平台",
@@ -224,11 +237,16 @@
     "search": "搜索",
     "searchPlaceholder": "搜索战队名字...",
     "results": "搜索结果",
+    "sidebarInfo": "Clicking a result will display on the side if it can fit on your monitor",
     "resultNotFound": "没找到. 你最少输入3个字符去搜索战队."
   },
   "stats": {
     "view": "查看战绩",
     "back": "回到搜索界面",
+    "error": "Error while fetching: {{ error }}",
+    "toggleAdminPanel": "Show admin panel",
+    "profileImage": "Profile image",
+    "currentEmblem": "Current emblem",
     "originDescription": "Origin 主页",
     "detailedName": "战绩详情",
     "overview": "概览",
@@ -244,6 +262,21 @@
     "searchWeapon": "搜索他的某一项武器",
     "searchVehicle": "搜索他的某一项载具",
     "searchGadget": "搜索小工具",
+    "missingGame": "Current player doesn't have this game",
+    "adminPanel": {
+      "main": "Admin panel",
+      "susWeapons": "Sus weapons",
+      "bannedServer": {
+        "main": "Banned in server"
+      },
+      "otherNames": {
+        "main": "Other names"
+      },
+      "vban": {
+        "group": "VBAN group",
+        "reason": "Reason"
+      }
+    },
     "rows": {
       "weaponName": "武器名称",
       "vehicleName": "载具名称",
@@ -255,7 +288,8 @@
       "destroyed": "摧毁数量",
       "accuracy": "准度",
       "headshots": "爆头数",
-      "multiKills": "连杀"
+      "multiKills": "连杀",
+      "hitVKills": "Hit/kill"
     },
     "classes": {
       "main": "类别",
@@ -326,7 +360,8 @@
     "platoon": {
       "none": "该玩家不属于任何战队",
       "noMain": "该玩家目前没有代表任何战队",
-      "noDescription": "该战队没有描述"
+      "noDescription": "该战队没有描述",
+      "emblem": "Platoon emblem"
     },
     "playSession": {
       "main": "对局战报",
@@ -435,6 +470,7 @@
       "invite": "加入我 邀请链接"
     },
     "bfportal": {
+      "main": "BF门户网站",
       "found": "在 BfPortal.gg 上找到的门户体验",
       "error": "BfPortal.gg 的 Api 故障"
     },
@@ -453,6 +489,7 @@
       "main": "该服务器最近的榜单",
       "info": "仅在该服务器使用我们的管理api时有用",
       "none": "该服务器刚刚加入还没有用管理api",
+      "reset": "This leaderboard will reset the 1st day of the month",
       "row": {
         "score": "分数",
         "killDeath": "K/D",
@@ -512,6 +549,111 @@
     "notFound": {
       "main": "找不到服务器",
       "description": "我们找不到您要找的服务器。"
+    },
+    "bf3": {
+      "maps": {
+        "Grand Bazaar": "大型市集",
+        "Tehran Highway": "德黑蘭公路",
+        "Caspian Border": "里海边境",
+        "Seine Crossing": "裡海邊境",
+        "Operation Firestorm": "火線風暴行動",
+        "Damavand Peak": "德馬峰頂",
+        "Noshahr Canals": "诺沙赫运河",
+        "Kharg Island": "哈格島",
+        "Operation Métro": "地鐵行動",
+        "Strike at Karkand": "強襲卡肯",
+        "Gulf of Oman": "阿曼灣",
+        "Sharqi Peninsula": "半島電視台",
+        "Wake Island": "威客岛",
+        "Scrapmetal": "廢置工場",
+        "Operation 925": "白領行動",
+        "Donya Fortress": "當亞堡壘",
+        "Ziba Tower": "史巴塔",
+        "Alborz Mountains": "厄爾布爾士山脈",
+        "Bandar Desert": "班達沙漠",
+        "Armored Shield": "裝甲護罩",
+        "Death Valley": "死亡谷",
+        "Markaz Monolith": "瑪卡斯巨石",
+        "Azadi Palace": "阿扎迪王宮",
+        "Epicenter": "震央",
+        "Talah Market": "塔拉市場",
+        "Operation Riverside": "河岸行動",
+        "Nebandan Flats": "內班丹淺灘",
+        "Kiasar Railroad": "基沙鐵路",
+        "Sabalan Pipeline": "沙巴蘭管線"
+      },
+      "gamemodes": {
+        "CONQUESTLARGE": "大型征服",
+        "CONQUEST": "小型征服",
+        "CONQUESTASSAULTLARGE": "征服突擊（大",
+        "CONQUESTASSAULTSMALL": "征服突擊",
+        "RUSH": "突袭",
+        "SQRUSH": "小隊突襲",
+        "SQDM": "小隊死鬥",
+        "TEAMDEATHMATCH": "团队死斗",
+        "TEAMDEATHMATCHC": "團隊死鬥正面交鋒",
+        "GUNMASTER": "槍神",
+        "DOMINATION": "抢攻",
+        "TANKSUPERIORITY": "裝甲優勢",
+        "SCAVENGER": "荒蕩征服",
+        "CAPTURETHEFLAG": "奪旗",
+        "AIRSUPERIORITY": "空域優勢"
+      }
+    },
+    "bfh": {
+      "maps": {
+        "Bank job": "銀行",
+        "The block": "住宅區",
+        "Dust bowl": "沙塵暴",
+        "Downtown": "市中心",
+        "Derailed": "脫軌",
+        "Everglades": "Everglades",
+        "Growhouse": "溫室",
+        "Hollywood heights": "好萊塢山丘",
+        "Riptide": "激流",
+        "Ep. 10: legacy": "Ep. 10: legacy",
+        "Ep. 6: out of business": "Ep. 6: out of business",
+        "Ep. 1: back to school": "Ep. 1: back to school",
+        "Ep. 2: checking out": "Ep. 2: checking out",
+        "Ep. 8: sovereign land": "Ep. 8: sovereign land",
+        "Ep. 5: gauntlet": "Ep. 5: gauntlet",
+        "Ep. 3: gator bait": "Ep. 3: gator bait",
+        "Ep. 9: independence day": "Ep. 9: independence day",
+        "Ep. 7: glass houses": "Ep. 7: glass houses",
+        "Prologue": "Prologue",
+        "Ep. 4: case closed": "Ep. 4: case closed",
+        "Black friday": "黑色星期五",
+        "Code blue": "衰竭警戒",
+        "The beat": "巡邏",
+        "Backwoods": "蠻荒",
+        "Night job": "夜間銀行",
+        "Night woods": "夜間森林",
+        "The docks": "碼頭",
+        "Break pointe": "渡假村",
+        "Museum": "Museum",
+        "Precinct 7": "7號轄區",
+        "Double cross": "出賣",
+        "Diversion": "分散注意力",
+        "Pacific highway": "太平洋公路",
+        "Train dodge": "閃火車",
+        "Alcatraz": "惡魔島",
+        "Cemetery": "墓地",
+        "Chinatown": "中國城",
+        "Thin ice": "薄冰"
+      },
+      "gamemodes": {
+        "BLOODMONEY": "血錢",
+        "HOTWIRE": "熱網",
+        "HEIST": "搶劫",
+        "HIT": "準星",
+        "HOSTAGE": "救援行動",
+        "TEAMDEATHMATCH": "团队死斗",
+        "TURFWARLARGE": "大型征服",
+        "TURFWARSMALL": "小型征服",
+        "SQUADHEIST": "小隊搶劫",
+        "BOUNTYHUNTER": "賞金獵人",
+        "CAPTURETHEFLAG": "奪袋"
+      }
     },
     "bfv": {
       "maps": {
@@ -603,7 +745,10 @@
         "Stranded": "搁浅",
         "Spearhead": "急先锋",
         "Flashpoint": "闪点",
-        "Reclaimed": "重生"
+        "Reclaimed": "重生",
+        "Redacted": "Redacted",
+        "Haven": "Haven",
+        "Stadium": "Stadium"
       },
       "gamemodes": {
         "Breakthrough Large": "大型突破",
@@ -621,6 +766,22 @@
         "tenplus": "大于10",
         "none": "无"
       }
+    },
+    "battlelog": {
+      "playerFilter": {
+        "full": "Full",
+        "1-5": "1至5",
+        "6-10": "6至5",
+        "10+": "大于10",
+        "empty": "Empty"
+      }
+    },
+    "modList": {
+      "main": "Mods",
+      "noMods": "This server has no mods",
+      "file": "file: ",
+      "version": "ver: ",
+      "noURl": "No link available"
     }
   },
   "platoon": {
@@ -675,7 +836,7 @@
     }
   },
   "footer": {
-    "description": "网站是Community Network的一部分。产品是开源的。你可以在我们的GitHub页面中发布问题和建议。API由Community Network提供并开放给公众使用。我们不提供任何第三方的API。我们的后台是封闭的，限制访客查看。\n战地和Origin是Electronic Arts的注册商标。本网站使用根据EA战地1统计条款提供的数据。商标是其各自所有者的财产。游戏材料的版权归Electronic Arts所有。Electronic Arts没有认可也不对本网站或其内容负责。\n代码是GPL V2协议，一些部分是Community Network的版权",
+    "description": "This website is part of the Community Network. It is Open Source. You can post issues and suggest changes/improvements via GitHub. API provided by Community Network and open for public usage. We don’t provide any third-party API. Our back end is closed source and not available publicly.\nThis site was created under Electronic Arts’ Fansite Agreement using materials from Battlefield 2042. Trademarks are the property of their respective owners. Game materials copyright Electronic Arts Inc. and/or its licensors. Electronic Arts Inc. and its licensors have not otherwise endorsed and are not responsible for the operation of or content on this site.\nCode is under GPL v2 License. Some parts are under Community Network copyright.",
     "LinkName": "链接",
     "links": {
       "0": {
@@ -715,5 +876,12 @@
   "ads": {
     "main": "广告",
     "disable": "禁用广告"
+  },
+  "pageTitle": {
+    "main": "Game Tools: Battlefield Stats, Bots, Server management",
+    "stats": "Stats",
+    "platoon": "Platoons",
+    "playground": "Playgrounds",
+    "servers": "服务器列表"
   }
 }
