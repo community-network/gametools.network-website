@@ -80,6 +80,8 @@ interface ViewStatsView extends Views {
     | React.ReactChild
     | React.ReactFragment
     | React.ReactPortal;
+  showAdminPanel: boolean;
+  setShowAdminPanel: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export function ViewStats(props: Readonly<ViewStatsView>): React.ReactElement {
@@ -172,18 +174,42 @@ export function ViewStats(props: Readonly<ViewStatsView>): React.ReactElement {
           </div>
         </div>
         <p></p>
-        {!!stats?.secondsPlayed && (
-          <div className={styles.bottomOfBox}>
-            <p style={{ margin: 0 }}>
-              {t("stats.main.timePlayed")}{" "}
-              <span className={styles.whiteText}>
-                {t("change", {
-                  change: addSeconds(new Date(), stats?.secondsPlayed),
-                })}
-              </span>
+        <div className="align">
+          {!!stats?.secondsPlayed && (
+            <div className={styles.bottomOfBox}>
+              <p style={{ margin: 0 }}>
+                {t("stats.main.timePlayed")}{" "}
+                <span className={styles.whiteText}>
+                  {t("change", {
+                    change: addSeconds(new Date(), stats?.secondsPlayed),
+                  })}
+                </span>
+              </p>
+            </div>
+          )}
+          <div
+            style={{
+              position: "absolute",
+              right: "1rem",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <label aria-label={t("stats.toggleAdminPanel")} className="switch">
+              <input
+                checked={props.showAdminPanel}
+                onClick={() => {
+                  props.setShowAdminPanel(!props.showAdminPanel);
+                }}
+                type="checkbox"
+              />
+              <span className="darkSlider round"></span>
+            </label>
+            <p style={{ marginLeft: ".4rem", marginTop: "8px" }}>
+              {t("stats.toggleAdminPanel")}
             </p>
           </div>
-        )}
+        </div>
         <ExportButton
           mainStats={mainStats}
           otherStats={otherStats}

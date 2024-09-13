@@ -40,6 +40,10 @@ export type PlatoonStats = {
   servers: ServerList[];
 };
 
+export type SusStats = {
+  weapons: MainStatsWeapon & SusWeapon[];
+};
+
 export type MainStats = {
   apiUrl: string;
   accuracy: number;
@@ -181,6 +185,10 @@ export type MainStatsVehicle = {
   killsPerMinute: number;
   type: string;
   vehicleName: string;
+};
+
+export type SusWeapon = {
+  susReason: string;
 };
 
 export type MainStatsWeapon = {

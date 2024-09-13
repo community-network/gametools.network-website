@@ -244,6 +244,7 @@
     "view": "View stats",
     "back": "Main page",
     "error": "Error while fetching: {{ error }}",
+    "toggleAdminPanel": "Show admin panel",
     "profileImage": "Profile image",
     "currentEmblem": "Current emblem",
     "originDescription": "User profile",
@@ -262,6 +263,20 @@
     "searchVehicle": "Search for vehicle",
     "searchGadget": "Search for gadget",
     "missingGame": "Current player doesn't have this game",
+    "adminPanel": {
+      "main": "Admin panel",
+      "susWeapons": "Sus weapons",
+      "bannedServer": {
+        "main": "Banned in server"
+      },
+      "otherNames": {
+        "main": "Other names"
+      },
+      "vban": {
+        "group": "VBAN group",
+        "reason": "Reason"
+      }
+    },
     "rows": {
       "weaponName": "Weapon name",
       "vehicleName": "Vehicle name",

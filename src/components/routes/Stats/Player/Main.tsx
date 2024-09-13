@@ -17,6 +17,7 @@ import {
 import "../../../../locales/config";
 import { getLanguage } from "../../../../locales/config";
 import { BackButton, RightArrow } from "../../../Materials";
+import { AdminPanel } from "./AdminPanel";
 import { ViewClasses } from "./Classes";
 import { DetailedStats } from "./DetailedStats";
 import { GadgetGraph, ViewGadgets } from "./Gadgets";
@@ -288,6 +289,11 @@ interface GameStatsItems {
 function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {
   const { game, name, type, platform } = props;
 
+  const [showAdminPanel, setShowAdminPanel] = useLocalStorage<boolean>(
+    "stats_showAdminPanel",
+    false,
+  );
+
   const {
     isLoading,
     isError,
@@ -318,9 +324,22 @@ function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {
             errors={error}
             isError={isError}
             name={name}
+            showAdminPanel={showAdminPanel}
+            setShowAdminPanel={setShowAdminPanel}
           >
             {props.children}
           </ViewStats>
+          {showAdminPanel && (
+            <AdminPanel
+              game={game}
+              isLoading={isLoading}
+              stats={stats}
+              errors={error}
+              isError={isError}
+              name={name}
+              platform={platform}
+            />
+          )}
           <DetailedStats
             game={game}
             isLoading={isLoading}

@@ -11,6 +11,7 @@ import {
   ServerPlayersReturn,
   ServerSearch,
   StatsGraph,
+  SusStats,
   UserGames,
 } from "./ReturnTypes";
 import { battlebitApi } from "./battlebitApi";
@@ -110,6 +111,23 @@ interface ServerGraphInfo {
   platform?: string;
 }
 
+interface managerPlayerInfo {
+  playerId: number;
+}
+
+interface managerPlayer {
+  id: number;
+  avatar: string;
+  name: string;
+  vban: { [Key: string]: { bannedUntil: string; reason: string } };
+  ingame: string[];
+  otherNames: {
+    updateTimestamp: string;
+    usedNames: string[];
+  };
+  bfban: bfbanPlayers;
+}
+
 export interface bfbanPlayer {
   apiUrl: string;
   names: { [name: string]: bfbanPlayers };
@@ -123,7 +141,7 @@ export interface bfeacPlayer {
 }
 
 export interface bfbanPlayers {
-  personaId: string;
+  personaId?: string;
   url: string;
   status: string;
   hacker: boolean;
@@ -203,6 +221,21 @@ export class ApiProvider extends JsonClient {
     return await this.getJsonMethod(`/${game}/${type}/`, {
       ...defaultParams,
       name: encodeURIComponent(userName),
+    });
+  }
+
+  async sus({
+    game,
+    playerId,
+    platform = "pc",
+  }: {
+    game: string;
+    playerId: number;
+    platform: string;
+  }): Promise<SusStats | undefined> {
+    return await this.getJsonMethod(`/${game}/sus/`, {
+      platform: platform,
+      playerid: playerId.toString(),
     });
   }
 
@@ -526,6 +559,14 @@ export class ApiProvider extends JsonClient {
 
   async globalGraph(): Promise<GlobalGraphReturn> {
     return await this.getJsonMethod(`/bfglobal/totalstatusarray/`, {});
+  }
+
+  async managerCheckPlayer({
+    playerId,
+  }: managerPlayerInfo): Promise<managerPlayer> {
+    return await this.getJsonMethod("/manager/checkban", {
+      playerid: playerId.toString(),
+    });
   }
 
   async bfbanCheckPlayers({

@@ -116,6 +116,20 @@ body {
     @extend %font-shared;
   }
 
+  th {
+    color: var(--color-text);
+    font-weight: bold;
+    font-size: 12px;
+    @extend %font-shared;
+  }
+
+  td {
+    color: var(--color-alt-text);
+    font-weight: 500;
+    font-size: 13px;
+    @extend %font-shared;
+  }
+
   span {
     color: var(--color-text);
   }
@@ -203,8 +217,17 @@ body {
   transition: 0.4s;
 }
 
+.darkSlider {
+  @extend .slider;
+  background-color: var(--color-m96-base);
+}
+
 input:checked + .slider {
   background-color: #2196f3;
+}
+
+input:checked + .darkSlider {
+  background-color: var(--color-m96-alt-base);
 }
 
 input:focus + .slider {
