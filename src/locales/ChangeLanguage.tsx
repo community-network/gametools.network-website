@@ -1,6 +1,9 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 
+// stop it from removing react import
+React.version;
+
 const LanguageSelector = (): JSX.Element => {
   const { i18n } = useTranslation();
   const getLanguage = () => window.localStorage.i18nextLng;
@@ -23,6 +26,7 @@ const LanguageSelector = (): JSX.Element => {
       <option value="de-DE">Deutsch</option>
       <option value="nl-NL">Nederlands</option>
       <option value="fr-FR">Français</option>
+      <option value="es">Español</option>
     </select>
   );
 };

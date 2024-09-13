@@ -1,10 +1,10 @@
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
 import { format, formatDistanceToNowStrict } from "date-fns";
-import { enUS, tr, zhCN, nl, ru, de, fr } from "date-fns/locale";
+import { de, enUS, es, fr, nl, ru, tr, zhCN } from "date-fns/locale";
 import { registerLocale } from "i18n-iso-countries";
+import i18n from "i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
 import resourcesToBackend from "i18next-resources-to-backend";
+import { initReactI18next } from "react-i18next";
 
 const locales = {
   "en-US": enUS,
@@ -14,6 +14,7 @@ const locales = {
   "de-DE": de,
   "ru-RU": ru,
   "fr-FR": fr,
+  "es": es
 };
 
 const langFile = { "de-DE": "de_DE", "fr-FR": "fr_FR" };
@@ -55,6 +56,7 @@ export const apiLanguage = {
   "zh-cn": "zh-tw",
   "nl-nl": "en-US",
   "tr-TR": "en-US",
+  "es": "es-es"
 };
 
 export const apiCountry = {
@@ -65,6 +67,7 @@ export const apiCountry = {
   "ru-ru": "ru",
   "de-de": "de",
   "fr-fr": "fr",
+  "es": "es"
 };
 
 export const getLanguage = (): string => {
