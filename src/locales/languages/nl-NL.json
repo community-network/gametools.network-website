@@ -18,6 +18,16 @@
   "intlNumber": "{{val, number}}",
   "ago": "geleden",
   "export": "Exporteren",
+  "ariaLabels": {
+    "sort": "Selecteer sorteren op",
+    "chartType": "Selecteer grafiektype",
+    "platform": "Selecteer platform",
+    "game": "Selecteer spelnaam",
+    "searchType": "Selecteer zoektype",
+    "toggleAds": "Schakel advertenties in",
+    "toggleSidebar": "Schakel zijbalk in",
+    "toggleGame": "Spel wisselen"
+  },
   "case": {
     "none": "N/A",
     "on": "Aan",
@@ -69,6 +79,7 @@
     "bfh": "Battlefield Hardline",
     "bf1": "Battlefield 1",
     "bf1marne": "Battlefield 1 (marne.io)",
+    "bfvmarne": "Battlefield 5 (marne.io)",
     "bfv": "Battlefield 5",
     "bf2042": "Battlefield 2042",
     "bf2042portal": "Battlefield 2042 Portal",
@@ -226,11 +237,16 @@
     "search": "Search",
     "searchPlaceholder": "Search for platoon name...",
     "results": "Search results",
+    "sidebarInfo": "Als u op een resultaat klikt, wordt het aan de zijkant weergegeven als het op uw monitor past",
     "resultNotFound": "Geen resultaten gevonden. Om platoons te zoeken, moet u minimaal 3 karakters invoeren."
   },
   "stats": {
     "view": "Stats bekijken",
     "back": "Hoofdpagina",
+    "error": "Fout bij het ophalen: {{ error }}",
+    "toggleAdminPanel": "Beheerderspaneel weergeven",
+    "profileImage": "Profielafbeelding",
+    "currentEmblem": "Huidig embleem",
     "originDescription": "gebruikers profiel",
     "detailedName": "Gedetaileerde stats",
     "overview": "Overzicht",
@@ -246,6 +262,21 @@
     "searchWeapon": "Zoek voor een wapen",
     "searchVehicle": "Zoek voor een voertuig",
     "searchGadget": "Zoek voor een gadget",
+    "missingGame": "Huidige speler heeft dit spel niet ",
+    "adminPanel": {
+      "main": "Beheerderspaneel",
+      "susWeapons": "Sus-wapens",
+      "bannedServer": {
+        "main": "Verbannen in server"
+      },
+      "otherNames": {
+        "main": "Andere namen"
+      },
+      "vban": {
+        "group": "VBAN groep",
+        "reason": "Reden"
+      }
+    },
     "rows": {
       "weaponName": "Wapen naam",
       "vehicleName": "Voertuig naam",
@@ -257,7 +288,8 @@
       "destroyed": "Destroyed",
       "accuracy": "Accuracy",
       "headshots": "Headshots",
-      "multiKills": "Multikills"
+      "multiKills": "Multikills",
+      "hitVKills": "Hit/Kill"
     },
     "classes": {
       "main": "Klasse",
@@ -328,7 +360,8 @@
     "platoon": {
       "none": "Zit niet in een platoon",
       "noMain": "Heeft geen hoofdplatoon",
-      "noDescription": "De platoon heeft geen descriptie"
+      "noDescription": "De platoon heeft geen descriptie",
+      "emblem": "Platoon embleem"
     },
     "playSession": {
       "main": "Battlefield speelsessies",
@@ -437,6 +470,7 @@
       "invite": "Joinme.click invite URL"
     },
     "bfportal": {
+      "main": "BFPortal",
       "found": "Portal experience gevonden op BfPortal.gg",
       "error": "Api fout voor BfPortal.gg"
     },
@@ -455,6 +489,7 @@
       "main": "Scoreboard van spelerstats van deze server",
       "info": "alleen beschikbaar wanneer de server the manager-api gebruikt",
       "none": "Server is net toegevoegd of gebruikt de manager-api niet",
+      "reset": "Dit scorebord wordt op de 1e dag van de maand gereset",
       "row": {
         "score": "Score",
         "killDeath": "K/D",
@@ -710,7 +745,10 @@
         "Stranded": "Stranded",
         "Spearhead": "Spearhead",
         "Flashpoint": "Flashpoint",
-        "Reclaimed": "Reclaimed"
+        "Reclaimed": "Reclaimed",
+        "Redacted": "Redacted",
+        "Haven": "Haven",
+        "Stadium": "Stadium"
       },
       "gamemodes": {
         "Breakthrough Large": "Breakthrough Large",
