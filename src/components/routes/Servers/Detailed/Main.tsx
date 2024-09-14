@@ -189,7 +189,11 @@ export function Results(props: Views): React.ReactElement {
               {queueString}
               {stats?.noBotsPlayerAmount
                 ? ` (${stats.noBotsPlayerAmount} without bots)`
-                : ``}{" "}
+                : ``}
+              {stats?.botAmount !== undefined &&
+                t("serverSearch.botAmount", {
+                  botAmount: stats?.botAmount,
+                })}{" "}
               - {stats?.currentMap ? stats?.currentMap : stats?.map}
               {officialString}
             </p>

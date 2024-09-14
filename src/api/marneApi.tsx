@@ -1,16 +1,16 @@
+import { getName } from "i18n-iso-countries";
 import { capitalizeFirstLetter } from "../components/functions/capitalizeFirstLetter";
 import { getCurrentCountry } from "../locales/config";
 import JsonClient from "./Json";
 import {
   DetailedServerInfo,
+  MainStats,
+  MainStatsClasses,
+  MainStatsGamemode,
+  MainStatsWeapon,
   ServerSearch,
   ServerSettings,
-  MainStats,
-  MainStatsWeapon,
-  MainStatsGamemode,
-  MainStatsClasses,
 } from "./ReturnTypes";
-import { getName } from "i18n-iso-countries";
 
 export interface PlayerReturn {
   name: string;
@@ -38,13 +38,15 @@ export interface ServerInfoReturn {
   mapName: string;
   gameMode: string;
   maxPlayers: number;
+  natType: number;
   tickRate: number;
   password: number;
   needSameMods: number;
   allowMoreMods: number;
-  modList: ModListReturn[] | "";
-  playerList: PlayerReturn[] | "";
+  isModded: boolean;
   currentPlayers: number;
+  currentSpectators: number;
+  botCount: number;
   region: string;
   country: string;
 }
@@ -54,6 +56,7 @@ export interface ServerListReturn {
 }
 
 export interface DetailedServerReturn {
+  id: number;
   name: string;
   description: string;
   region: string;
@@ -71,8 +74,11 @@ export interface DetailedServerReturn {
   settings: ServerSettings[];
   rotation?: RotationReturn[] | "";
   modList: ModListReturn[] | "";
-  playerList: PlayerReturn[] | "";
   currentPlayers: number;
+  botCount: number;
+  playerList: PlayerReturn[] | "";
+  spectatorList: PlayerReturn[] | "";
+  natType: number;
 }
 
 interface ServerSearchInfo {
@@ -845,6 +851,7 @@ export class ApiProvider extends JsonClient {
                 maxPlayerAmount: server?.maxPlayers,
                 serverInfo: "",
                 smallMode: smallmodes[server?.gameMode],
+                botAmount: server?.botCount,
               };
             })
             .filter((server) => {
@@ -912,6 +919,7 @@ export class ApiProvider extends JsonClient {
       description: result?.description,
       map: internalMapName,
       modList: result?.modList || [],
+      botAmount: result?.botCount,
       rotation:
         result?.rotation === ""
           ? []

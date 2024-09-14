@@ -220,6 +220,7 @@
     "showProject": "Go to project",
     "region": "Region",
     "map": "Map",
+    "botAmount": "({{ botAmount }} bots)",
     "platform": "platform",
     "gamemode": "Gamemode",
     "playerFilter": "Available space",

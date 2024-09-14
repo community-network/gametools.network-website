@@ -14,7 +14,7 @@ const locales = {
   "de-DE": de,
   "ru-RU": ru,
   "fr-FR": fr,
-  "es": es
+  es: es,
 };
 
 const langFile = { "de-DE": "de_DE", "fr-FR": "fr_FR" };
@@ -56,7 +56,7 @@ export const apiLanguage = {
   "zh-cn": "zh-tw",
   "nl-nl": "en-US",
   "tr-TR": "en-US",
-  "es": "es-es"
+  es: "es-es",
 };
 
 export const apiCountry = {
@@ -67,7 +67,7 @@ export const apiCountry = {
   "ru-ru": "ru",
   "de-de": "de",
   "fr-fr": "fr",
-  "es": "es"
+  es: "es",
 };
 
 export const getLanguage = (): string => {

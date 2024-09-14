@@ -1,8 +1,5 @@
 import * as React from "react";
-import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import "../../../../assets/scss/App.scss";
-import { Box } from "../../../Materials";
 import { ServerList, ServerSearch } from "../../../../api/ReturnTypes";
 import {
   dice,
@@ -10,8 +7,11 @@ import {
   oldJoinGames,
   regionToTranslation,
 } from "../../../../api/static";
-import { DynamicSort } from "../../Stats/Player/Main";
+import "../../../../assets/scss/App.scss";
+import "../../../../locales/config";
 import sslFix from "../../../functions/fixEaAssets";
+import { Box } from "../../../Materials";
+import { DynamicSort } from "../../Stats/Player/Main";
 import * as styles from "./Results.module.scss";
 
 const handleChildElementClick = (e: { stopPropagation: () => void }) => {
@@ -82,6 +82,7 @@ export function Results(props: Views): React.ReactElement {
     return (
       <>
         {servers.map((key: ServerList, index: number) => {
+          console.log(key);
           const queue = key.inQue ?? key.inQueue;
           let queueString = "";
           if (queue !== undefined && queue !== 0 && queue !== null) {
@@ -173,7 +174,12 @@ export function Results(props: Views): React.ReactElement {
                       </span>
                     )}
                     {key.playerAmount}/{key.maxPlayers}
-                    {key.maxPlayerAmount} {queueString} -{" "}
+                    {key.maxPlayerAmount} {queueString}
+                    {key?.botAmount !== undefined &&
+                      t("serverSearch.botAmount", {
+                        botAmount: key?.botAmount,
+                      })}{" "}
+                    -{" "}
                     {i18n.exists(`${gamemodeTranslation}.${key.mode}`)
                       ? t(`${gamemodeTranslation}.${key.mode}`)
                       : key.mode}

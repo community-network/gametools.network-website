@@ -234,6 +234,7 @@ export type ServerList = {
   ownerId: number;
   platform: string;
   playerAmount: number;
+  botAmount?: number;
   region: string;
   serverInfo: string;
   smallMode: string;
@@ -423,6 +424,7 @@ export type DetailedServerInfo = {
   official: boolean;
   platform: string;
   playerAmount: number;
+  botAmount?: number;
   prefix?: string;
   region: string;
   rotation?: ServerRotation[];
