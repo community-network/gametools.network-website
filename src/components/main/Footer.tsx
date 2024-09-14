@@ -1,7 +1,8 @@
 import * as React from "react";
-import "../../locales/config";
 import { useTranslation } from "react-i18next";
+import { useLocalStorage } from "react-use";
 import LanguageSelector from "../../locales/ChangeLanguage";
+import "../../locales/config";
 import AdsComponent, { AdSwitch, AdsEnabled } from "../Ads";
 import * as styles from "./Footer.module.scss";
 
@@ -20,6 +21,9 @@ function FLink(props: FLinkProp) {
   );
 }
 
+// stop it from removing react import
+React.version;
+
 export function Footer(): JSX.Element {
   const { t, i18n } = useTranslation();
   let i = 0;
@@ -31,6 +35,11 @@ export function Footer(): JSX.Element {
     });
     i += 1;
   }
+
+  const [showAdminPanel, setShowAdminPanel] = useLocalStorage<boolean>(
+    "adminMode",
+    false,
+  );
 
   return (
     <footer className={styles.background} role="contentinfo">
@@ -73,6 +82,21 @@ export function Footer(): JSX.Element {
               />
             </a>
             <AdSwitch />
+            <div style={{ display: "flex", paddingLeft: ".2rem" }}>
+              <label aria-label={t("stats.toggleAdminMode")} className="switch">
+                <input
+                  checked={showAdminPanel}
+                  onClick={() => {
+                    setShowAdminPanel(!showAdminPanel);
+                  }}
+                  type="checkbox"
+                />
+                <span className="slider round"></span>
+              </label>
+              <p style={{ marginTop: "4.5px", marginLeft: ".3rem" }}>
+                {t("stats.toggleAdminMode")}
+              </p>
+            </div>
           </div>
         </div>
         <div>

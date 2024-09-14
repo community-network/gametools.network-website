@@ -50,7 +50,7 @@ export const AdSwitch = (): JSX.Element => {
   useExternalScript(externalScript, true);
 
   return (
-    <div className="adv-ad" style={{ display: "contents" }}>
+    <div className="adv-ad" style={{ display: "flex", paddingLeft: ".3rem" }}>
       <label aria-label={t("ariaLabels.toggleAds")} className="switch">
         <input
           onChange={() => {}}

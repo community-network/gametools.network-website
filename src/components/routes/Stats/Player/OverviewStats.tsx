@@ -80,8 +80,6 @@ interface ViewStatsView extends Views {
     | React.ReactChild
     | React.ReactFragment
     | React.ReactPortal;
-  showAdminPanel: boolean;
-  setShowAdminPanel: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export function ViewStats(props: Readonly<ViewStatsView>): React.ReactElement {
@@ -187,28 +185,6 @@ export function ViewStats(props: Readonly<ViewStatsView>): React.ReactElement {
               </p>
             </div>
           )}
-          <div
-            style={{
-              position: "absolute",
-              right: "1rem",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <label aria-label={t("stats.toggleAdminPanel")} className="switch">
-              <input
-                checked={props.showAdminPanel}
-                onClick={() => {
-                  props.setShowAdminPanel(!props.showAdminPanel);
-                }}
-                type="checkbox"
-              />
-              <span className="darkSlider round"></span>
-            </label>
-            <p style={{ marginLeft: ".4rem", marginTop: "8px" }}>
-              {t("stats.toggleAdminPanel")}
-            </p>
-          </div>
         </div>
         <ExportButton
           mainStats={mainStats}

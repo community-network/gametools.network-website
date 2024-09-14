@@ -245,7 +245,7 @@
     "view": "View stats",
     "back": "Main page",
     "error": "Error while fetching: {{ error }}",
-    "toggleAdminPanel": "Show admin panel",
+    "toggleAdminMode": "Enable server-admin mode",
     "profileImage": "Profile image",
     "currentEmblem": "Current emblem",
     "originDescription": "User profile",

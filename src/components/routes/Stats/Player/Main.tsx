@@ -288,11 +288,7 @@ interface GameStatsItems {
 
 function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {
   const { game, name, type, platform } = props;
-
-  const [showAdminPanel, setShowAdminPanel] = useLocalStorage<boolean>(
-    "stats_showAdminPanel",
-    false,
-  );
+  const [showAdminPanel] = useLocalStorage<boolean>("adminMode", false);
 
   const {
     isLoading,
@@ -324,8 +320,6 @@ function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {
             errors={error}
             isError={isError}
             name={name}
-            showAdminPanel={showAdminPanel}
-            setShowAdminPanel={setShowAdminPanel}
           >
             {props.children}
           </ViewStats>
