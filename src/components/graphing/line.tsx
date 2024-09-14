@@ -1,29 +1,28 @@
-import * as React from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useMeasure } from "@uidotdev/usehooks";
 import {
-  Chart as ChartJS,
   CategoryScale,
-  LinearScale,
-  TimeScale,
-  PointElement,
-  LineElement,
-  Tooltip,
+  Chart as ChartJS,
   Filler,
+  LinearScale,
+  LineElement,
+  PointElement,
   ScriptableContext,
+  TimeScale,
+  Tooltip,
 } from "chart.js";
-import { Line } from "react-chartjs-2";
 import "chartjs-adapter-date-fns";
 import zoomPlugin from "chartjs-plugin-zoom";
+import * as React from "react";
+import { Line } from "react-chartjs-2";
 import { useTranslation } from "react-i18next";
-import { useQuery } from "@tanstack/react-query";
-import { GametoolsApi } from "../../api/GametoolsApi";
-import { graphGames, gameGraphConvert, graphColors } from "../../api/static";
-import { Box } from "../Materials";
-import { GlobalGraphReturn } from "../../api/GametoolsApi";
-import { useMeasure } from "react-use";
-import ErrorBoundary from "../functions/ErrorBoundary";
-import { ServerPieChart } from "./pie";
+import { GametoolsApi, GlobalGraphReturn } from "../../api/GametoolsApi";
 import { DetailedServerInfo } from "../../api/ReturnTypes";
+import { gameGraphConvert, graphColors, graphGames } from "../../api/static";
+import ErrorBoundary from "../functions/ErrorBoundary";
+import { Box } from "../Materials";
 import * as styles from "./line.module.scss";
+import { ServerPieChart } from "./pie";
 
 ChartJS.register(
   zoomPlugin,

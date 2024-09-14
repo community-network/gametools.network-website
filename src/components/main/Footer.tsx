@@ -1,6 +1,6 @@
+import { useLocalStorage } from "@uidotdev/usehooks";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { useLocalStorage } from "react-use";
 import LanguageSelector from "../../locales/ChangeLanguage";
 import "../../locales/config";
 import AdsComponent, { AdSwitch, AdsEnabled } from "../Ads";

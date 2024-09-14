@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
+import { useLocalStorage } from "@uidotdev/usehooks";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import { useLocalStorage } from "react-use";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { MainStats } from "../../../../api/ReturnTypes";
 import {

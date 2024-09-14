@@ -1,13 +1,13 @@
+import { useLocalStorage } from "@uidotdev/usehooks";
 import * as React from "react";
-import { Link } from "react-router-dom";
-import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
-import "../../../../assets/scss/App.scss";
-import { RightArrow, BackButton } from "../../../Materials";
+import { Link } from "react-router-dom";
 import { platformGames, statsPlatforms } from "../../../../api/static";
-import { Graphs } from "./Graphs";
+import "../../../../assets/scss/App.scss";
+import "../../../../locales/config";
 import ErrorBoundary from "../../../functions/ErrorBoundary";
-import { useLocalStorage } from "react-use";
+import { BackButton, RightArrow } from "../../../Materials";
+import { Graphs } from "./Graphs";
 import * as styles from "./PlayerSearch.module.scss";
 
 export function StatSearch(): React.ReactElement {

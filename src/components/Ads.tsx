@@ -1,6 +1,6 @@
+import { useLocalStorage } from "@uidotdev/usehooks";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { useLocalStorage } from "react-use";
 import useExternalScript from "./functions/UseExternalScript";
 
 declare const window: { adsbygoogle; location: Location };

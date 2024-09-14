@@ -78,6 +78,7 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.56.2",
+    "@uidotdev/usehooks": "^2.4.1",
     "chart.js": "^4.4.4",
     "chartjs-adapter-date-fns": "^3.0.0",
     "chartjs-plugin-zoom": "^2.0.1",
@@ -93,7 +94,6 @@
     "react-dom": "^18.3.1",
     "react-i18next": "^15.0.1",
     "react-router-dom": "^6.26.2",
-    "react-use": "^17.5.1",
     "regenerator-runtime": "^0.14.1",
     "web-vitals": "^4.2.3"
   }
