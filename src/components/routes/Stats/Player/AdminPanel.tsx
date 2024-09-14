@@ -11,12 +11,14 @@ import { PlatformViews } from "./Main";
 import * as Mainstyles from "./Main.module.scss";
 import * as styles from "./Main.module.scss";
 
-function SusWeapon(props: Readonly<PlatformViews>): React.ReactElement {
+function SusWeapon(
+  props: Readonly<
+    PlatformViews & {
+      setSusCount: React.Dispatch<React.SetStateAction<number>>;
+    }
+  >,
+): React.ReactElement {
   const { t } = useTranslation();
-
-  if (!newTitles.includes(props.game)) {
-    return <></>;
-  }
 
   const getLanguage = () => window.localStorage.i18nextLng;
   const numberFormat = new Intl.NumberFormat(getLanguage());
@@ -35,6 +37,14 @@ function SusWeapon(props: Readonly<PlatformViews>): React.ReactElement {
         platform: props.platform,
       }),
   });
+
+  React.useEffect(() => {
+    props.setSusCount(stats?.weapons?.length);
+  }, [stats]);
+
+  if (!newTitles.includes(props.game)) {
+    return <></>;
+  }
 
   if (isError) {
     return (
@@ -150,6 +160,7 @@ function SusWeapon(props: Readonly<PlatformViews>): React.ReactElement {
 }
 
 export function AdminPanel(props: Readonly<PlatformViews>): React.ReactElement {
+  const [susCount, setSusCount] = React.useState(0);
   const { t } = useTranslation();
 
   const {
@@ -165,35 +176,12 @@ export function AdminPanel(props: Readonly<PlatformViews>): React.ReactElement {
       }),
   });
 
-  // stats = {
-  //     "id": 1699922734,
-  //     "avatar": "https://secure.download.dm.origin.com/production/avatar/prod/userAvatar/37268238/208x208.JPEG",
-  //     "name": "ABARN1998",
-  //     "vban": {
-  //         "BoB": {
-  //             "bannedUntil": "2022-07-22T11:15:01.350000",
-  //             "reason": "raciscm",
-  //         }
-  //     },
-  //     "ingame": [
-  //         "[BoB]#3 EU Sinai 24/7 join US discord.gg/BoBofficial",
-  //         "[BoB]#1 EU All CQ Maps! JOIN US:discord.gg/BoB",
-  //         "[BoB]#4 EU Frontlines JOIN US: discord.gg/BoB",
-  //     ],
-  //     "otherNames": {
-  //         "updateTimestamp": "2022-07-03T20:03:46.395000",
-  //         "usedNames": ["iiTzArcur"],
-  //     },
-  //     "bfban": {
-  //         "url": "https://bfban.com/#/cheaters/1007506226959",
-  //         "status": "1",
-  //         "hacker": true,
-  //         "originId": "unturned6646",
-  //         "originPersonaId": "1004008026959",
-  //         "originUserId": "1007506226959",
-  //         "cheatMethods": "aimbot",
-  //     },
-  // }
+  const warningColor =
+    stats &&
+    (Object.keys(stats?.vban)?.length > 0 ||
+      stats?.ingame?.length > 0 ||
+      stats?.otherNames?.usedNames?.length > 30 ||
+      susCount > 0);
 
   if (isError) {
     return (
@@ -219,7 +207,7 @@ export function AdminPanel(props: Readonly<PlatformViews>): React.ReactElement {
 
   return (
     <div className={Mainstyles.spacing}>
-      <Box>
+      <Box style={{ background: warningColor && "#26181f" }}>
         <h3>{t("stats.adminPanel.main")}</h3>
         {/* <h3>{t("stats.adminPanel.vban.main")}</h3> */}
         <table>
@@ -270,6 +258,7 @@ export function AdminPanel(props: Readonly<PlatformViews>): React.ReactElement {
         </table>
         <div style={{ margin: ".5rem" }} />
         <SusWeapon
+          setSusCount={setSusCount}
           platform={props.platform}
           isLoading={false}
           isError={false}

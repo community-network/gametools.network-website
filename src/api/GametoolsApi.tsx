@@ -16,7 +16,7 @@ import {
 } from "./ReturnTypes";
 import { battlebitApi } from "./battlebitApi";
 import { MarneApi } from "./marneApi";
-import { newGen } from "./static";
+import { newGen, newTitles } from "./static";
 
 interface BfBanInfo {
   getter: string;
@@ -233,6 +233,9 @@ export class ApiProvider extends JsonClient {
     playerId: number;
     platform: string;
   }): Promise<SusStats | undefined> {
+    if (!newTitles.includes(game)) {
+      return undefined;
+    }
     return await this.getJsonMethod(`/${game}/sus/`, {
       platform: platform,
       playerid: playerId.toString(),
