@@ -5,6 +5,7 @@ import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { MainStatsWeapon, SusWeapon } from "../../../../api/ReturnTypes";
 import { newTitles } from "../../../../api/static";
 import "../../../../locales/config";
+import { CopyToClipboard } from "../../../functions/CopyToClipboard";
 import sslFix from "../../../functions/fixEaAssets";
 import { Box } from "../../../Materials";
 import { PlatformViews } from "./Main";
@@ -207,7 +208,27 @@ export function AdminPanel(props: Readonly<PlatformViews>): React.ReactElement {
   return (
     <div className={styles.spacing}>
       <Box style={{ background: warningColor && "#26181f" }}>
-        <h3>{t("stats.adminPanel.main")}</h3>
+        <div className="align" style={{ marginBottom: ".2rem" }}>
+          <h3>{t("stats.adminPanel.main")}</h3>
+          <div style={{ position: "absolute", right: "1.5rem" }}>
+            <p style={{ margin: 0, marginLeft: ".5rem" }}>
+              ID:{" "}
+              <CopyToClipboard
+                stateTranslation="hiddenCopy"
+                message={props?.stats?.id?.toString()}
+                translateOptions={{ msg: props?.stats?.id }}
+                style={{ all: "unset", cursor: "pointer", color: "white" }}
+              />{" "}
+              UID:{" "}
+              <CopyToClipboard
+                stateTranslation="hiddenCopy"
+                message={props?.stats?.userId?.toString()}
+                translateOptions={{ msg: props?.stats?.userId }}
+                style={{ all: "unset", cursor: "pointer", color: "white" }}
+              />
+            </p>
+          </div>
+        </div>
         {/* <h3>{t("stats.adminPanel.vban.main")}</h3> */}
         <table>
           <tr>

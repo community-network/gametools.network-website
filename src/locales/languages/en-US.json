@@ -49,6 +49,10 @@
     "copy": "Copy link",
     "copied": "Copied!"
   },
+  "hiddenCopy": {
+    "copy": "{{msg}}",
+    "copied": "Copied!"
+  },
   "copyApiStates": {
     "copy": "Copy api url",
     "copied": "Copied!"

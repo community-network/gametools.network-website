@@ -179,7 +179,7 @@ function Players(props: {
       {teams !== null ? (
         <>
           {teams.map((teamInfo: serverTeamList, index: number) => {
-            teamInfo.players = teamInfo.players.sort(DynamicSort(sortType));
+            teamInfo.players.sort(DynamicSort(sortType));
             return (
               <div key={index}>
                 <div className="align">
@@ -206,8 +206,8 @@ function Players(props: {
                                       loading="lazy"
                                     />
                                   )}
-                                  <a
-                                    style={{ cursor: "pointer" }}
+                                  <button
+                                    style={{ all: "unset", cursor: "pointer" }}
                                     onClick={() => {
                                       navigator.clipboard.writeText(key.name);
                                       setCopyState(key.name);
@@ -221,19 +221,19 @@ function Players(props: {
                                     }}
                                   >
                                     {copyState == key.name ? (
-                                      <div className={styles.serverPlayerName}>
+                                      <h4 className={styles.serverPlayerName}>
                                         {t("states.copied")}
-                                      </div>
+                                      </h4>
                                     ) : (
-                                      <div className={styles.serverPlayerName}>
+                                      <h4 className={styles.serverPlayerName}>
                                         {key.platoon !== "" &&
                                         key.platoon !== undefined
                                           ? `[${key.platoon}]`
                                           : ""}
                                         {key.name}
-                                      </div>
+                                      </h4>
                                     )}
-                                  </a>
+                                  </button>
                                 </div>
                                 <CheckBan
                                   playerId={key?.player_id?.toString()}
@@ -654,7 +654,7 @@ export function BfListServerPlayerList(props: {
         </p>
       </div>
       {teams.map((teamInfo: TeamInfo, index: number) => {
-        teamInfo.players = teamInfo.players.sort(DynamicSort(sortType));
+        teamInfo.players.sort(DynamicSort(sortType));
         return (
           <div key={index}>
             <div className="align">
@@ -669,8 +669,8 @@ export function BfListServerPlayerList(props: {
                     return (
                       <div className="column" key={index}>
                         <div className="row">
-                          <a
-                            style={{ cursor: "pointer" }}
+                          <button
+                            style={{ all: "unset", cursor: "pointer" }}
                             onClick={() => {
                               navigator.clipboard.writeText(key.name);
                               setCopyState(key.name);
@@ -684,15 +684,15 @@ export function BfListServerPlayerList(props: {
                             }}
                           >
                             {copyState == key.name ? (
-                              <div className={styles.serverPlayerName}>
+                              <h4 className={styles.serverPlayerName}>
                                 {t("states.copied")}
-                              </div>
+                              </h4>
                             ) : (
-                              <div className={styles.serverPlayerName}>
+                              <h4 className={styles.serverPlayerName}>
                                 {key.name}
-                              </div>
+                              </h4>
                             )}
-                          </a>
+                          </button>
                         </div>
                         <div className="row">
                           <h4 style={{ marginTop: "0.5rem" }}>{key.ping}</h4>
