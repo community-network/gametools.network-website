@@ -413,6 +413,9 @@ export class ApiProvider extends JsonClient {
     amount,
     sort,
   }: ServerLeaderboard): Promise<ServerLeaderboardReturn> {
+    if (gameId == undefined) {
+      return undefined;
+    }
     return await this.getJsonMethod(`/manager/leaderboard/`, {
       gameId: gameId,
       amount: amount,
@@ -424,6 +427,9 @@ export class ApiProvider extends JsonClient {
     game,
     gameId,
   }: serverPlayerlist): Promise<ServerPlayersReturn> {
+    if (gameId == undefined) {
+      return undefined;
+    }
     const gameStuff = game.split(".");
     if (game === "bf2042") {
       return await this.getJsonMethod(`/${gameStuff[0]}/players/`, {
