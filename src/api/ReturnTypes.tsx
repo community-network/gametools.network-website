@@ -61,6 +61,7 @@ export type MainStats = {
   heals: number;
   highestKillStreak: number;
   id: number;
+  userId?: number;
   infantryKillDeath?: number;
   infantryKillsPerMinute?: number;
   killAssists: number;

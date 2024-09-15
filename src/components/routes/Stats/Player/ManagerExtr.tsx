@@ -98,24 +98,24 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
                       <h3 style={{ marginBottom: 0 }}>{key.name}</h3>
                       <div className="align">
                         <div style={{ marginRight: "1rem" }}>
-                          <div
+                          <p
                             className={styles.description}
                             style={{ margin: 0 }}
                           >
                             {t("stats.playSession.stats.score")}
-                          </div>
-                          <div
+                          </p>
+                          <p
                             className={styles.description}
                             style={{ margin: 0 }}
                           >
                             {t("stats.playSession.stats.kills")}
-                          </div>
-                          <div
+                          </p>
+                          <p
                             className={styles.description}
                             style={{ margin: 0 }}
                           >
                             {t("stats.playSession.stats.timePlayedAs")}
-                          </div>
+                          </p>
                         </div>
                         <div>
                           <h4 style={{ margin: 0 }}>

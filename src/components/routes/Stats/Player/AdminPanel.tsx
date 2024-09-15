@@ -8,7 +8,6 @@ import "../../../../locales/config";
 import sslFix from "../../../functions/fixEaAssets";
 import { Box } from "../../../Materials";
 import { PlatformViews } from "./Main";
-import * as Mainstyles from "./Main.module.scss";
 import * as styles from "./Main.module.scss";
 
 function SusWeapon(
@@ -185,7 +184,7 @@ export function AdminPanel(props: Readonly<PlatformViews>): React.ReactElement {
 
   if (isError) {
     return (
-      <div className={Mainstyles.spacing}>
+      <div className={styles.spacing}>
         <Box>
           <h3>{t("stats.adminPanel.main")}</h3>
           <p>{t("stats.error", { error: error })}</p>
@@ -196,7 +195,7 @@ export function AdminPanel(props: Readonly<PlatformViews>): React.ReactElement {
 
   if (isLoading || stats === undefined) {
     return (
-      <div className={Mainstyles.spacing}>
+      <div className={styles.spacing}>
         <Box>
           <h3>{t("stats.adminPanel.main")}</h3>
           <p>{t("loading")}</p>
@@ -206,7 +205,7 @@ export function AdminPanel(props: Readonly<PlatformViews>): React.ReactElement {
   }
 
   return (
-    <div className={Mainstyles.spacing}>
+    <div className={styles.spacing}>
       <Box style={{ background: warningColor && "#26181f" }}>
         <h3>{t("stats.adminPanel.main")}</h3>
         {/* <h3>{t("stats.adminPanel.vban.main")}</h3> */}

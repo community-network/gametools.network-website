@@ -3,6 +3,7 @@ declare module "*.png" {
   export default value;
 }
 
+declare module "*.scss";
 declare module "*.svg";
 declare module "*.png?as=webp";
 declare module "*useResponsiveLoader=true" {
