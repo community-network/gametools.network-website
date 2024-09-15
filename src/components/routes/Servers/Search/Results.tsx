@@ -20,7 +20,11 @@ const handleChildElementClick = (e: { stopPropagation: () => void }) => {
 };
 
 function LoadingServerInfo(
-  props: Readonly<{ spacingStyle; serverText; style? }>,
+  props: Readonly<{
+    spacingStyle: React.CSSProperties;
+    serverText: string;
+    style?: React.CSSProperties;
+  }>,
 ) {
   const { t } = useTranslation();
   return (
