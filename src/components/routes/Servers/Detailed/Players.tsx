@@ -119,7 +119,7 @@ function Players(props: {
     isError: checkBanError,
     data: checkBanInfo,
   } = useQuery({
-    queryKey: ["managerCheckPlayers" + +props.gameid + props.game],
+    queryKey: ["managerCheckPlayers" + props.gameid + props.game],
     queryFn: () =>
       GametoolsApi.managerCheckPlayers({
         playerIds: playerIds.map(Number),

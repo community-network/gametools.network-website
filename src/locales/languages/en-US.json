@@ -43,8 +43,8 @@
     "platoon": " Hacker"
   },
   "warn": {
-    "nameChange": "Warning: {{ amount }} namechanges!",
-    "vban": "Warning: {{ amount }} vbans!"
+    "nameChange": "Warn: {{ amount }} namechanges!",
+    "vban": "Warn: {{ amount }} vbans!"
   },
   "bfeac": {
     "main": "BFEAC"
