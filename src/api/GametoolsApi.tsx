@@ -114,6 +114,9 @@ interface ServerGraphInfo {
 interface managerPlayerInfo {
   playerId: number;
 }
+interface managerPlayersInfo {
+  playerIds: number[];
+}
 
 interface managerPlayer {
   id: number;
@@ -127,6 +130,21 @@ interface managerPlayer {
   };
   bfban: bfbanPlayers;
 }
+
+export interface managerPlayers {
+  vban: {
+    [name: string]: { [name: string]: { bannedUntil: string; reason: string } };
+  };
+  otherNames: {
+    [name: string]: {
+      updateTimestamp: string;
+      usedNames: string[];
+    };
+  };
+  bfban: { [name: string]: bfbanPlayers };
+  bfeac: number[];
+}
+name;
 
 export interface bfbanPlayer {
   apiUrl: string;
@@ -143,7 +161,7 @@ export interface bfeacPlayer {
 export interface bfbanPlayers {
   personaId?: string;
   url: string;
-  status: string;
+  status: number;
   hacker: boolean;
   originId: string;
   originPersonaId: string;
@@ -575,6 +593,14 @@ export class ApiProvider extends JsonClient {
   }: managerPlayerInfo): Promise<managerPlayer> {
     return await this.getJsonMethod("/manager/checkban", {
       playerid: playerId.toString(),
+    });
+  }
+
+  async managerCheckPlayers({
+    playerIds,
+  }: managerPlayersInfo): Promise<managerPlayers> {
+    return await this.getJsonMethod("/manager/checkbans", {
+      personaids: playerIds.toString(),
     });
   }
 

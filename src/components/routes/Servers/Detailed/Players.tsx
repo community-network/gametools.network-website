@@ -1,14 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
+import { useLocalStorage } from "@uidotdev/usehooks";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { bfListApi, PlayerInfo, TeamInfo } from "../../../../api/bflistApi";
 import { bf1_factions, factions } from "../../../../api/Factions";
-import {
-  bfbanPlayer,
-  bfeacPlayer,
-  GametoolsApi,
-} from "../../../../api/GametoolsApi";
+import { GametoolsApi, managerPlayers } from "../../../../api/GametoolsApi";
 import {
   DetailedServerInfo,
   ScoreServerPlayer,
@@ -26,27 +23,26 @@ import { DynamicSort } from "../../Stats/Player/Main";
 import * as Mainstyles from "./Main.module.scss";
 import * as styles from "./Players.module.scss";
 
-function CheckBan(props: {
-  playerId: string;
-  bfBanList: bfbanPlayer;
-  bfbanLoading: boolean;
-  bfbanError: boolean;
-  bfeacList: bfeacPlayer;
-  bfeacLoading: boolean;
-  bfeacError: boolean;
-}) {
+function CheckBan(
+  props: Readonly<{
+    playerId: string;
+    checkBanInfo: managerPlayers;
+    checkBanLoading: boolean;
+    checkBanError: boolean;
+    adminMode: boolean;
+  }>,
+) {
   const { t } = useTranslation();
-
-  const playerInfo = props.bfBanList?.personaids[props.playerId];
-  const bfeac = props.bfeacList?.personaids?.includes(Number(props.playerId));
+  const playerInfo = props.checkBanInfo?.bfban[props.playerId];
+  const bfeac = props.checkBanInfo?.bfeac?.includes(Number(props.playerId));
   let color = "#ffffff";
 
-  if (playerInfo?.hacker || bfeac) {
+  if (playerInfo?.status === 1 || bfeac) {
     color = "#DC143C";
     return (
-      <>
-        <a style={{ color: color, lineHeight: 0 }}>{t("bfban.platoon")}: </a>
-        {playerInfo?.hacker && (
+      <p style={{ color: color, lineHeight: 0, marginTop: ".4rem" }}>
+        {t("bfban.platoon")}:
+        {playerInfo?.status === 1 && (
           <a
             style={{ color: color, lineHeight: 0 }}
             href={playerInfo?.url}
@@ -56,9 +52,7 @@ function CheckBan(props: {
             {t("bfban.main")}
           </a>
         )}
-        {playerInfo?.hacker && bfeac && (
-          <a style={{ color: color, lineHeight: 0 }}> - </a>
-        )}
+        {playerInfo?.status === 1 && bfeac && <> - </>}
         {bfeac && (
           <a
             style={{ color: color, lineHeight: 0 }}
@@ -69,9 +63,33 @@ function CheckBan(props: {
             {t("bfeac.main")}
           </a>
         )}
-      </>
+      </p>
     );
   }
+
+  const vbanCount = Object.keys(
+    props.checkBanInfo?.vban[props.playerId] || {},
+  )?.length;
+  if (vbanCount > 0 && props.adminMode) {
+    color = "#dc5314";
+    return (
+      <p style={{ color: color, lineHeight: 0, marginTop: ".4rem" }}>
+        {t("warn.vban", { amount: vbanCount })}
+      </p>
+    );
+  }
+
+  const usedNameCount =
+    props.checkBanInfo?.otherNames[props.playerId]?.usedNames?.length;
+  if (usedNameCount > 5 && props.adminMode) {
+    color = "#dc5314";
+    return (
+      <p style={{ color: color, lineHeight: 0, marginTop: ".4rem" }}>
+        {t("warn.nameChange", { amount: usedNameCount })}
+      </p>
+    );
+  }
+
   return <></>;
 }
 
@@ -85,6 +103,7 @@ function Players(props: {
   const teams = props?.stats?.teams;
   const [sortType, setSortType] = React.useState<string>("slot");
   const [copyState, setCopyState] = React.useState<string>("");
+  const [adminMode] = useLocalStorage<boolean>("adminMode", false);
 
   let playerIds = [];
   teams.forEach((teamInfo: serverTeamList) => {
@@ -96,27 +115,14 @@ function Players(props: {
   });
 
   const {
-    isLoading: bfbanLoading,
-    isError: bfbanError,
-    data: bfBanInfo,
+    isLoading: checkBanLoading,
+    isError: checkBanError,
+    data: checkBanInfo,
   } = useQuery({
-    queryKey: ["bfbanStatsServerPlayers" + props.gameid + props.game],
+    queryKey: ["managerCheckPlayers" + +props.gameid + props.game],
     queryFn: () =>
-      GametoolsApi.bfbanCheckPlayers({
-        getter: "playerid",
-        usernames: playerIds,
-      }),
-  });
-
-  const {
-    isLoading: bfeacLoading,
-    isError: bfeacError,
-    data: bfeacInfo,
-  } = useQuery({
-    queryKey: ["bfeacStatsServerPlayers" + props.gameid + props.game],
-    queryFn: () =>
-      GametoolsApi.bfeacCheckPlayers({
-        playerIds,
+      GametoolsApi.managerCheckPlayers({
+        playerIds: playerIds.map(Number),
       }),
   });
 
@@ -237,12 +243,10 @@ function Players(props: {
                                 </div>
                                 <CheckBan
                                   playerId={key?.player_id?.toString()}
-                                  bfBanList={bfBanInfo}
-                                  bfbanLoading={bfbanLoading}
-                                  bfbanError={bfbanError}
-                                  bfeacList={bfeacInfo}
-                                  bfeacLoading={bfeacLoading}
-                                  bfeacError={bfeacError}
+                                  checkBanInfo={checkBanInfo}
+                                  checkBanLoading={checkBanLoading}
+                                  checkBanError={checkBanError}
+                                  adminMode={adminMode}
                                 />
                               </div>
                               {props.game === "bf2042" ? (

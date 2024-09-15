@@ -42,6 +42,10 @@
     "stats": "Player is marked as hacker in bfban!",
     "platoon": " Hacker"
   },
+  "warn": {
+    "nameChange": "Warning: {{ amount }} namechanges!",
+    "vban": "Warning: {{ amount }} vbans!"
+  },
   "bfeac": {
     "main": "BFEAC"
   },
