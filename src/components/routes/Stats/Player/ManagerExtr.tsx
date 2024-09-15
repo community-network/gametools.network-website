@@ -1,6 +1,7 @@
 import { addSeconds } from "date-fns";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import {
   MainStatsSession,
   SessionGamemode,
@@ -62,7 +63,12 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
                 })}
                 )
               </h3>
-              <p className={styles.description}>{key.serverName}</p>
+              <Link
+                to={`/servers?game=${props.game
+                  }&name=${encodeURIComponent(key.serverName)}&platform=pc`}
+              >
+                <p className={styles.description}>{key.serverName}</p>
+              </Link>
               <div className="alignS" style={{ marginTop: "0.8rem" }}>
                 <div>
                   <h3>{numberFormat.format(stats.kills)}</h3>
