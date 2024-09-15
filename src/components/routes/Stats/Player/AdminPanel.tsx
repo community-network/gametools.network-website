@@ -231,50 +231,52 @@ export function AdminPanel(props: Readonly<PlatformViews>): React.ReactElement {
         </div>
         {/* <h3>{t("stats.adminPanel.vban.main")}</h3> */}
         <table>
-          <tr>
-            <th>{t("stats.adminPanel.vban.group")}</th>
-            <th>{t("stats.adminPanel.vban.reason")}</th>
-            <th>{t("stats.adminPanel.otherNames.main")}</th>
-            <th>{t("stats.adminPanel.bannedServer.main")}</th>
-          </tr>
-          {Array.from(
-            Array(
-              Math.max(
-                Object.keys(stats?.vban)?.length,
-                stats?.ingame?.length,
-                stats?.otherNames?.usedNames?.length,
+          <tbody>
+            <tr>
+              <th>{t("stats.adminPanel.vban.group")}</th>
+              <th>{t("stats.adminPanel.vban.reason")}</th>
+              <th>{t("stats.adminPanel.otherNames.main")}</th>
+              <th>{t("stats.adminPanel.bannedServer.main")}</th>
+            </tr>
+            {Array.from(
+              Array(
+                Math.max(
+                  Object.keys(stats?.vban)?.length,
+                  stats?.ingame?.length,
+                  stats?.otherNames?.usedNames?.length,
+                ),
               ),
-            ),
-            (_, i) => {
-              // Fill with N/A if not used
-              const vbanItem = Object.entries(stats?.vban)[i] || [];
-              return (
-                <tr>
-                  {i === 0 && vbanItem.length === 0 ? (
-                    <>
+              (_, i) => {
+                // Fill with N/A if not used
+                const vbanItem = Object.entries(stats?.vban)[i] || [];
+                return (
+                  <tr key={i}>
+                    {i === 0 && vbanItem.length === 0 ? (
+                      <>
+                        <td style={{ color: "gray" }}>{t("notApplicable")}</td>
+                        <td style={{ color: "gray" }}>{t("notApplicable")}</td>
+                      </>
+                    ) : (
+                      <>
+                        <td>{vbanItem[0]}</td>
+                        <td>{vbanItem[1]?.reason}</td>
+                      </>
+                    )}
+                    {i === 0 && stats?.otherNames?.usedNames?.length === 0 ? (
                       <td style={{ color: "gray" }}>{t("notApplicable")}</td>
+                    ) : (
+                      <td>{stats?.otherNames?.usedNames[i]}</td>
+                    )}
+                    {i === 0 && stats?.ingame?.length === 0 ? (
                       <td style={{ color: "gray" }}>{t("notApplicable")}</td>
-                    </>
-                  ) : (
-                    <>
-                      <td>{vbanItem[0]}</td>
-                      <td>{vbanItem[1]?.reason}</td>
-                    </>
-                  )}
-                  {i === 0 && stats?.otherNames?.usedNames?.length === 0 ? (
-                    <td style={{ color: "gray" }}>{t("notApplicable")}</td>
-                  ) : (
-                    <td>{stats?.otherNames?.usedNames[i]}</td>
-                  )}
-                  {i === 0 && stats?.ingame?.length === 0 ? (
-                    <td style={{ color: "gray" }}>{t("notApplicable")}</td>
-                  ) : (
-                    <td>{stats?.ingame[i]}</td>
-                  )}
-                </tr>
-              );
-            },
-          )}
+                    ) : (
+                      <td>{stats?.ingame[i]}</td>
+                    )}
+                  </tr>
+                );
+              },
+            )}
+          </tbody>
         </table>
         <div style={{ margin: ".5rem" }} />
         <SusWeapon

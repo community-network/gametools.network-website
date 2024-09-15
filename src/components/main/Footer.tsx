@@ -85,6 +85,7 @@ export function Footer(): JSX.Element {
             <div style={{ display: "flex", paddingLeft: ".2rem" }}>
               <label aria-label={t("stats.toggleAdminMode")} className="switch">
                 <input
+                  onChange={() => {}}
                   checked={showAdminPanel}
                   onClick={() => {
                     setShowAdminPanel(!showAdminPanel);

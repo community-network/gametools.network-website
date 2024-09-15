@@ -82,7 +82,6 @@ export function Results(props: Views): React.ReactElement {
     return (
       <>
         {servers.map((key: ServerList, index: number) => {
-          console.log(key);
           const queue = key.inQue ?? key.inQueue;
           let queueString = "";
           if (queue !== undefined && queue !== 0 && queue !== null) {

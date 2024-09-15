@@ -35,7 +35,7 @@ export function ViewIframe(props: Readonly<IframeViews>): React.ReactElement {
         />
       </p>
       <iframe
-        style={{ maxWidth: "600px" }}
+        style={{ maxWidth: "600px", backgroundColor: "transparent" }}
         title="Stats widget"
         src={`https://widgets.gametools.network/stats/${props.platform}/${
           props.getter
@@ -44,7 +44,6 @@ export function ViewIframe(props: Readonly<IframeViews>): React.ReactElement {
         width="100%"
         frameBorder="0"
         // eslint-disable-next-line react/no-unknown-property
-        allowTransparency={true}
         loading="lazy"
       ></iframe>
     </Box>

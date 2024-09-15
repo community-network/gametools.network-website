@@ -44,7 +44,7 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
         {stats.sessions.map((key: MainStatsSession, index: number) => {
           const gamemodes = [];
           const stats = key.stats;
-          key.stats.gamemodes.forEach((key: SessionGamemode) => {
+          key.stats.gamemodes.forEach((key: SessionGamemode, index: number) => {
             if (key.score !== 0) {
               gamemodes.push(
                 t(`stats.playSession.stats.gamemodes.${key.name}`),
@@ -53,7 +53,7 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
           });
           const kits = stats.kits.filter((kit) => kit.timePlayed !== 0);
           return (
-            <>
+            <div key={index}>
               <h3>
                 {t("dateTime", { date: new Date(key.timeStamp) })} -{" "}
                 {gamemodes.join("/")} (
@@ -89,10 +89,10 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
                 }}
               />
               <div className="align">
-                {kits.map((key: SessionKit) => {
+                {kits.map((key: SessionKit, index: number) => {
                   return (
                     <div
-                      key={key?.name}
+                      key={index}
                       style={{ marginRight: "3rem", marginBottom: "1rem" }}
                     >
                       <h3 style={{ marginBottom: 0 }}>{key.name}</h3>
@@ -144,7 +144,7 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
                   }}
                 />
               )}
-            </>
+            </div>
           );
         })}
       </Box>
