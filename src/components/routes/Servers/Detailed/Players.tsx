@@ -36,11 +36,11 @@ function Players(props: {
   const [copyState, setCopyState] = React.useState<string>("");
   const [adminMode] = useLocalStorage<boolean>("adminMode", false);
 
-  let playerIds = [];
+  let playerIds: number[] = [];
   teams.forEach((teamInfo: serverTeamList) => {
     playerIds = playerIds.concat(
       teamInfo.players.map((player) => {
-        return player?.player_id?.toString();
+        return player?.player_id;
       }),
     );
   });
@@ -51,10 +51,7 @@ function Players(props: {
     data: checkBanInfo,
   } = useQuery({
     queryKey: ["managerCheckPlayers" + playerIds],
-    queryFn: () =>
-      GametoolsApi.managerCheckPlayers({
-        playerIds: playerIds.map(Number),
-      }),
+    queryFn: () => GametoolsApi.managerCheckPlayers({ playerIds }),
   });
 
   let update_timestamp = new Date();

@@ -144,7 +144,6 @@ export interface managerPlayers {
   bfban: { [name: string]: bfbanPlayers };
   bfeac: number[];
 }
-name;
 
 export interface bfbanPlayer {
   apiUrl: string;

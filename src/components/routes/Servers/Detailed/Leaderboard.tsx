@@ -38,10 +38,10 @@ export function ServerLeaderboard(
   });
 
   const players = stats?.data;
-  let playerIds: string[] = [];
+  let playerIds: number[] = [];
   playerIds = playerIds.concat(
     players?.map((player) => {
-      return player?.playerId?.toString();
+      return player?.playerId;
     }),
   );
 
@@ -51,10 +51,7 @@ export function ServerLeaderboard(
     data: checkBanInfo,
   } = useQuery({
     queryKey: ["managerCheckPlayers" + playerIds + "leaderboard"],
-    queryFn: () =>
-      GametoolsApi.managerCheckPlayers({
-        playerIds: playerIds.map(Number),
-      }),
+    queryFn: () => GametoolsApi.managerCheckPlayers({ playerIds }),
   });
 
   if (loading || error) {
