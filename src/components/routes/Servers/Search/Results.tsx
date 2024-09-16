@@ -1,3 +1,4 @@
+import { useLocalStorage } from "@uidotdev/usehooks";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { ServerList, ServerSearch } from "../../../../api/ReturnTypes";
@@ -70,6 +71,7 @@ interface Views {
 export function Results(props: Views): React.ReactElement {
   const { t, i18n } = useTranslation();
   const { stats, game } = props;
+  const [adminMode] = useLocalStorage<boolean>("adminMode", false);
   const gamemodeTranslation = ["bf3", "bfh"].includes(game)
     ? `servers.${game}.gamemodes`
     : "stats.gamemodes";
@@ -88,8 +90,16 @@ export function Results(props: Views): React.ReactElement {
         {servers.map((key: ServerList, index: number) => {
           const queue = key.inQue ?? key.inQueue;
           let queueString = "";
-          if (queue !== undefined && queue !== 0 && queue !== null) {
+          if (queue !== undefined && queue > 0 && queue !== null) {
             queueString = `[${queue}]`;
+          }
+          let spectatorAmount = "";
+          if (
+            adminMode &&
+            key?.inSpectator !== undefined &&
+            key?.inSpectator !== null
+          ) {
+            spectatorAmount = `(${key.inSpectator})`;
           }
           let region: string = undefined;
           if (props.game === "bf2042") {
@@ -177,7 +187,7 @@ export function Results(props: Views): React.ReactElement {
                       </span>
                     )}
                     {key.playerAmount}/{key.maxPlayers}
-                    {key.maxPlayerAmount} {queueString}
+                    {key.maxPlayerAmount} {queueString} {spectatorAmount}
                     {key?.botAmount !== undefined &&
                       t("serverSearch.botAmount", {
                         botAmount: key?.botAmount,

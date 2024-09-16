@@ -250,6 +250,7 @@ export type ServerList = {
   teams?: TeamList;
   prefix?: string;
   maxPlayerAmount?: number;
+  inSpectator?: number;
 
   map?: string;
   server?: string;
