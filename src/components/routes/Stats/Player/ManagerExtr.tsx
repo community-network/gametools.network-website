@@ -64,8 +64,9 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
                 )
               </h3>
               <Link
-                to={`/servers?game=${props.game
-                  }&search=${encodeURIComponent(key.serverName)}&platform=pc`}
+                to={`/servers?game=${
+                  props.game
+                }&search=${encodeURIComponent(key.serverName)}&platform=pc`}
               >
                 <p className={styles.description}>{key.serverName}</p>
               </Link>

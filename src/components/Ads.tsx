@@ -23,16 +23,14 @@ const AdsComponent = (props: {
   if (value) return <></>;
 
   return (
-    <>
-      <ins
-        className="adsbygoogle"
-        style={style}
-        data-ad-client="ca-pub-6546858755151450"
-        data-ad-slot={dataAdSlot}
-        // data-ad-format="auto"
-        data-full-width-responsive="true"
-      ></ins>
-    </>
+    <ins
+      className="adsbygoogle"
+      style={style}
+      data-ad-client="ca-pub-6546858755151450"
+      data-ad-slot={dataAdSlot}
+      // data-ad-format="auto"
+      data-full-width-responsive="true"
+    ></ins>
   );
 };
 

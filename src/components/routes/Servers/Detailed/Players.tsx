@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { bfListApi, PlayerInfo, TeamInfo } from "../../../../api/bflistApi";
 import { bf1_factions, factions } from "../../../../api/Factions";
-import { GametoolsApi, managerPlayers } from "../../../../api/GametoolsApi";
+import { GametoolsApi } from "../../../../api/GametoolsApi";
 import {
   DetailedServerInfo,
   ScoreServerPlayer,
@@ -20,78 +20,9 @@ import "../../../../locales/config";
 import sslFix from "../../../functions/fixEaAssets";
 import { Box } from "../../../Materials";
 import { DynamicSort } from "../../Stats/Player/Main";
+import { CheckBan } from "./AdminMode";
 import * as Mainstyles from "./Main.module.scss";
 import * as styles from "./Players.module.scss";
-
-function CheckBan(
-  props: Readonly<{
-    playerId: string;
-    checkBanInfo: managerPlayers;
-    checkBanLoading: boolean;
-    checkBanError: boolean;
-    adminMode: boolean;
-  }>,
-) {
-  const { t } = useTranslation();
-  const playerInfo = props.checkBanInfo?.bfban[props.playerId];
-  const bfeac = props.checkBanInfo?.bfeac?.includes(Number(props.playerId));
-  let color = "#ffffff";
-
-  if (playerInfo?.status === 1 || bfeac) {
-    color = "#DC143C";
-    return (
-      <p style={{ color: color, lineHeight: 0, marginTop: ".4rem" }}>
-        {t("bfban.platoon")}:
-        {playerInfo?.status === 1 && (
-          <a
-            style={{ color: color, lineHeight: 0 }}
-            href={playerInfo?.url}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {t("bfban.main")}
-          </a>
-        )}
-        {playerInfo?.status === 1 && bfeac && <> - </>}
-        {bfeac && (
-          <a
-            style={{ color: color, lineHeight: 0 }}
-            href={`https://api.gametools.network/bfeac/get_case_id?player_id=${props.playerId}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {t("bfeac.main")}
-          </a>
-        )}
-      </p>
-    );
-  }
-
-  const vbanCount = Object.keys(
-    props.checkBanInfo?.vban[props.playerId] || {},
-  )?.length;
-  if (vbanCount > 0 && props.adminMode) {
-    color = "#dc5314";
-    return (
-      <p style={{ color: color, lineHeight: 0, marginTop: ".4rem" }}>
-        {t("warn.vban", { amount: vbanCount })}
-      </p>
-    );
-  }
-
-  const usedNameCount =
-    props.checkBanInfo?.otherNames[props.playerId]?.usedNames?.length;
-  if (usedNameCount > 5 && props.adminMode) {
-    color = "#dc5314";
-    return (
-      <p style={{ color: color, lineHeight: 0, marginTop: ".4rem" }}>
-        {t("warn.nameChange", { amount: usedNameCount })}
-      </p>
-    );
-  }
-
-  return <></>;
-}
 
 function Players(props: {
   stats: ServerPlayersReturn;
@@ -119,7 +50,7 @@ function Players(props: {
     isError: checkBanError,
     data: checkBanInfo,
   } = useQuery({
-    queryKey: ["managerCheckPlayers" + props.gameid + props.game],
+    queryKey: ["managerCheckPlayers" + playerIds],
     queryFn: () =>
       GametoolsApi.managerCheckPlayers({
         playerIds: playerIds.map(Number),

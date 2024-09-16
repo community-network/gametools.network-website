@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { useLocalStorage } from "@uidotdev/usehooks";
 import { addSeconds } from "date-fns";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
@@ -7,6 +8,7 @@ import { ServerLeaderboardList } from "../../../../api/ReturnTypes";
 import "../../../../assets/scss/App.scss";
 import "../../../../locales/config";
 import { Box } from "../../../Materials";
+import { CheckBan } from "./AdminMode";
 import * as styles from "./Leaderboard.module.scss";
 import * as Mainstyles from "./Main.module.scss";
 
@@ -19,6 +21,7 @@ export function ServerLeaderboard(
   const [sortType, setSortType] = React.useState<string>("score");
   const getLanguage = () => window.localStorage.i18nextLng;
   const numberFormat = new Intl.NumberFormat(getLanguage());
+  const [adminMode] = useLocalStorage<boolean>("adminMode", false);
   const gameId = props.gameid;
   const {
     isLoading: loading,
@@ -34,6 +37,26 @@ export function ServerLeaderboard(
       }),
   });
 
+  const players = stats?.data;
+  let playerIds: string[] = [];
+  playerIds = playerIds.concat(
+    players?.map((player) => {
+      return player?.playerId?.toString();
+    }),
+  );
+
+  const {
+    isLoading: checkBanLoading,
+    isError: checkBanError,
+    data: checkBanInfo,
+  } = useQuery({
+    queryKey: ["managerCheckPlayers" + playerIds + "leaderboard"],
+    queryFn: () =>
+      GametoolsApi.managerCheckPlayers({
+        playerIds: playerIds.map(Number),
+      }),
+  });
+
   if (loading || error) {
     return (
       <div className={Mainstyles.spacing}>
@@ -43,7 +66,6 @@ export function ServerLeaderboard(
     );
   }
 
-  const players = stats?.data;
   return (
     <div className={Mainstyles.spacing}>
       <div className="align">
@@ -90,12 +112,20 @@ export function ServerLeaderboard(
                       {key.platoon !== "" ? `[${key.platoon}]` : ""}
                       {key.name}
                     </h4>
-                    <p
-                      className={Mainstyles.description}
-                      style={{ lineHeight: 0 }}
+                    <CheckBan
+                      playerId={key.playerId.toString()}
+                      checkBanInfo={checkBanInfo}
+                      checkBanLoading={checkBanLoading}
+                      checkBanError={checkBanError}
+                      adminMode={adminMode}
                     >
-                      {t("stats.view")}
-                    </p>
+                      <p
+                        className={Mainstyles.description}
+                        style={{ lineHeight: 0 }}
+                      >
+                        {t("stats.view")}
+                      </p>
+                    </CheckBan>
                   </a>
                 </div>
                 <div className="smallestPhoneRow">
