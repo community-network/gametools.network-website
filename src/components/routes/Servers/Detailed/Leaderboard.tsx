@@ -181,9 +181,13 @@ export function ServerLeaderboard(
                 </div>
                 <div className="row">
                   <h4>
-                    {t("change", {
-                      change: addSeconds(new Date(), key.timePlayed),
-                    })}
+                    {key.timePlayed > 3600
+                      ? t("hourChange", {
+                          change: addSeconds(new Date(), key.timePlayed),
+                        })
+                      : t("change", {
+                          change: addSeconds(new Date(), key.timePlayed),
+                        })}
                   </h4>
                   <p
                     className={Mainstyles.description}

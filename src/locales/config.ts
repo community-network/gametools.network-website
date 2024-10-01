@@ -47,6 +47,12 @@ i18n
         if (type === "change") {
           return formatDistanceToNowStrict(value, { locale: locales[lng] });
         }
+        if (type === "hourChange") {
+          return formatDistanceToNowStrict(value, {
+            locale: locales[lng],
+            unit: "hour",
+          });
+        }
         return value;
       },
     },
