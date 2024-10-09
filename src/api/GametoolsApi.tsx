@@ -79,6 +79,13 @@ interface ServerLeaderboard {
   sort: string;
 }
 
+interface ServerLeaderboardV2 {
+  gameId: string;
+  amount: string;
+  sort: string;
+  days: string;
+}
+
 interface serverPlayerlist {
   game: string;
   gameId: string;
@@ -437,6 +444,23 @@ export class ApiProvider extends JsonClient {
       gameId: gameId,
       amount: amount,
       sort: sort,
+    });
+  }
+
+  async serverLeaderboardV2({
+    gameId,
+    amount,
+    sort,
+    days
+  }: ServerLeaderboardV2): Promise<ServerLeaderboardReturn> {
+    if (gameId == undefined) {
+      return undefined;
+    }
+    return await this.getJsonMethod(`/manager/leaderboard/v2/`, {
+      gameId: gameId,
+      amount: amount,
+      sort: sort,
+      days: days
     });
   }
 

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocalStorage } from "@uidotdev/usehooks";
-import { addSeconds } from "date-fns";
+import { addDays, addSeconds } from "date-fns";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
@@ -18,6 +18,7 @@ export function ServerLeaderboard(
   }>,
 ): React.ReactElement {
   const { t } = useTranslation();
+  const [days, setDays] = React.useState<number>(30);
   const [sortType, setSortType] = React.useState<string>("score");
   const getLanguage = () => window.localStorage.i18nextLng;
   const numberFormat = new Intl.NumberFormat(getLanguage());
@@ -28,12 +29,13 @@ export function ServerLeaderboard(
     isError: error,
     data: stats,
   } = useQuery({
-    queryKey: ["serverLeaderboard" + gameId + sortType],
+    queryKey: ["serverLeaderboardV2" + gameId + sortType + days],
     queryFn: () =>
-      GametoolsApi.serverLeaderboard({
+      GametoolsApi.serverLeaderboardV2({
         gameId: gameId,
         amount: "50",
         sort: sortType,
+        days: days.toString()
       }),
   });
 
@@ -76,21 +78,30 @@ export function ServerLeaderboard(
             setSortType(ev.target.value)
           }
         >
-          <option value="timeplayed">
+          <option value="time_played">
             {t("servers.leaderboard.row.timePlayed")}
           </option>
           <option value="score">{t("servers.leaderboard.row.score")}</option>
-          <option value="killdeath">
-            {t("servers.leaderboard.row.killDeath")}
-          </option>
           <option value="kills">{t("servers.leaderboard.row.kills")}</option>
           <option value="deaths">{t("servers.leaderboard.row.deaths")}</option>
           <option value="wins">{t("servers.leaderboard.row.wins")}</option>
           <option value="losses">{t("servers.leaderboard.row.losses")}</option>
         </select>
-        <p style={{ marginTop: "1rem", marginLeft: "1rem" }}>
-          {t("servers.leaderboard.reset")}
-        </p>
+        <select
+          aria-label={t("ariaLabels.amountOfDays")}
+          className="selectPrimary"
+          style={{ margin: 0, marginLeft: "14px" }}
+          value={days}
+          onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
+            setDays(Number(ev.target.value))
+          }
+        >
+          {[1, 7, 30].map(element => {
+            return <option value={element}>{t("change", {
+              change: addDays(new Date(), element),
+            })}</option>
+          })}
+        </select>
       </div>
       {players?.length !== 0 ? (
         <Box>
@@ -99,9 +110,8 @@ export function ServerLeaderboard(
               <div className="column" key={index}>
                 <div className="row">
                   <a
-                    href={`https://gametools.network/stats/pc/playerid/${
-                      key.playerId
-                    }?game=bf1&name=${encodeURIComponent(key.name)}`}
+                    href={`https://gametools.network/stats/pc/playerid/${key.playerId
+                      }?game=bf1&name=${encodeURIComponent(key.name)}`}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -183,11 +193,11 @@ export function ServerLeaderboard(
                   <h4>
                     {key.timePlayed > 3600
                       ? t("hourChange", {
-                          change: addSeconds(new Date(), key.timePlayed),
-                        })
+                        change: addSeconds(new Date(), key.timePlayed),
+                      })
                       : t("change", {
-                          change: addSeconds(new Date(), key.timePlayed),
-                        })}
+                        change: addSeconds(new Date(), key.timePlayed),
+                      })}
                   </h4>
                   <p
                     className={Mainstyles.description}

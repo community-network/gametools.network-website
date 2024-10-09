@@ -262,6 +262,26 @@ export type ServerList = {
   hasPassword?: boolean;
 };
 
+export type ServerLeaderboardReturnV2 = {
+  apiUrl: string;
+  data: ServerLeaderboardListV2[];
+  cache: boolean;
+}
+
+export type ServerLeaderboardListV2 = {
+  playerId: number;
+  name: string;
+  totalSessions: number;
+  timePlayed: number;
+  wins: number;
+  losses: number;
+  killDeath: number;
+  score: number;
+  kills: number;
+  deaths: number;
+  platoon: string;
+};
+
 export type ServerLeaderboardReturn = {
   apiUrl: string;
   gameId: string;
