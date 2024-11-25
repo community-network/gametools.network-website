@@ -209,6 +209,7 @@ function Main(): React.ReactElement {
   );
 
   const [regionFilter, setRegionFilter] = React.useState<string[]>(["all"]);
+  const [serverTypeFilter, setServerTypeFilter] = React.useState<string[]>([]);
   const [gamemodeFilter, setGamemodeFilter] = React.useState<string[]>([]);
   const [mapFilter, setMapFilter] = React.useState<string[]>([]);
   const [playerFilter, setPlayerFilter] = React.useState<string[]>([]);
@@ -222,6 +223,7 @@ function Main(): React.ReactElement {
     setGamemodeFilter([]);
     setPlayerFilter([]);
     setMapFilter([]);
+    setServerTypeFilter([]);
     setRegionFilter([]);
     setIsPasswordProtected("");
     setbf2042OwnerList([]);
@@ -239,6 +241,7 @@ function Main(): React.ReactElement {
   const limitQuery = query.get("limit");
   const typeQuery = query.get("searchtype");
   const gamemodeQuery = query.get("gamemode");
+  const serverTypeQuery = query.get("server_type");
   const mapQuery = query.get("map");
   const playerFilterQuery = query.get("player_filter");
   const isPasswordProtectedQuery = query.get("is_password_protected");
@@ -249,6 +252,7 @@ function Main(): React.ReactElement {
     gameQuery !== null ? setGameName(gameQuery) : null;
     regionQuery !== null ? setRegionFilter(regionQuery.split(",")) : null;
     gamemodeQuery !== null ? setGamemodeFilter(gamemodeQuery.split(",")) : null;
+    serverTypeQuery !== null ? setServerTypeFilter(serverTypeQuery.split(",")) : null;
     playerFilterQuery !== null
       ? setPlayerFilter(playerFilterQuery.split(","))
       : null;
@@ -288,6 +292,9 @@ function Main(): React.ReactElement {
     playerFilter.length > 0
       ? params.append("player_filter", playerFilter.join(","))
       : params.delete("player_filter");
+    serverTypeFilter.length > 0
+      ? params.append("server_type", serverTypeFilter.join(","))
+      : params.delete("server_type");
     bf2042OwnerList.length > 0
       ? params.append("bf2042_owner_list", JSON.stringify(bf2042OwnerList))
       : params.delete("bf2042_owner_list");
@@ -307,6 +314,7 @@ function Main(): React.ReactElement {
     mapFilter,
     isPasswordProtected,
     playerFilter,
+    serverTypeFilter,
     bf2042OwnerList,
     platform,
     limit,
@@ -319,6 +327,7 @@ function Main(): React.ReactElement {
       regionFilter.length > 0 ||
       gamemodeFilter.length > 0 ||
       playerFilter.length > 0 ||
+      serverTypeFilter.length > 0 ||
       mapFilter.length > 0 ||
       isPasswordProtected != "" ||
       bf2042OwnerList.length > 0
@@ -336,6 +345,9 @@ function Main(): React.ReactElement {
   }
   if (playerFilter.length > 0) {
     extraQueries["player_filters"] = playerFilter.join(",");
+  }
+  if (serverTypeFilter.length > 0) {
+    extraQueries["server_type_filters"] = serverTypeFilter.join(",");
   }
   if (mapFilter.length > 0) {
     if (gameName === "bf2042") {
@@ -374,13 +386,13 @@ function Main(): React.ReactElement {
   } = useQuery({
     queryKey: [
       "servers" +
-        gameName +
-        searchTerm +
-        searchType +
-        regionFilter +
-        platform +
-        limit +
-        JSON.stringify(extraQueries),
+      gameName +
+      searchTerm +
+      searchType +
+      regionFilter +
+      platform +
+      limit +
+      JSON.stringify(extraQueries),
     ],
     queryFn: () =>
       GametoolsApi.serverSearch({
@@ -571,6 +583,54 @@ function Main(): React.ReactElement {
                 innerStyle={{ maxHeight: width >= 1000 ? "600px" : "300px" }}
               >
                 <div className={styles.serverPageFilters}>
+                  {gameName == "bf1" && (
+                    <div className={styles.serverPageFilterRow}>
+                      <h2 style={{ marginBottom: "0.4rem" }}>
+                        {t("serverSearch.serverTypeFilter")}
+                        <DropdownArrow
+                          item={"serverTypeFilter"}
+                          dropdownOpen={dropdownOpen}
+                          setDropdownOpen={setDropdownOpen}
+                        />
+                      </h2>
+                      {!dropdownOpen["serverTypeFilter"] &&
+                        Object.keys(
+                          t(`servers.${backendType}.serverTypeFilter`, {
+                            returnObjects: true,
+                          }),
+                        ).map((key, index) => {
+                          return (
+                            <CheckItem
+                              key={index}
+                              item={key}
+                              currrentItems={serverTypeFilter}
+                              callback={(e: {
+                                target: {
+                                  checked: boolean;
+                                  value: string;
+                                };
+                              }) => {
+                                if (e.target.checked) {
+                                  setServerTypeFilter((oldArray) => [
+                                    ...oldArray,
+                                    e.target.value,
+                                  ]);
+                                } else {
+                                  setServerTypeFilter((oldArray) => [
+                                    ...oldArray.filter(
+                                      (item) => item !== e.target.value,
+                                    ),
+                                  ]);
+                                }
+                              }}
+                              name={t(
+                                `servers.${backendType}.serverTypeFilter.${key}`,
+                              )}
+                            />
+                          );
+                        })}
+                    </div>
+                  )}
                   {gameName !== "bf3" && gameName !== "bfh" && (
                     <div className={styles.serverPageFilterRow}>
                       <h2 style={{ marginBottom: "0.4rem" }}>
@@ -844,12 +904,12 @@ export function ServerSearch(): React.ReactElement {
   } = useQuery({
     queryKey: [
       "servers" +
-        gameName +
-        searchTerm +
-        "servername" +
-        regionFilter +
-        platform +
-        "4",
+      gameName +
+      searchTerm +
+      "servername" +
+      regionFilter +
+      platform +
+      "4",
     ],
     queryFn: () =>
       GametoolsApi.serverSearch({

@@ -234,6 +234,7 @@
     "platform": "platform",
     "gamemode": "Gamemode",
     "playerFilter": "Available space",
+    "serverTypeFilter": "Server type",
     "showFilters": "Show filters",
     "serverOwner": {
       "main": "Server owner",
@@ -776,6 +777,12 @@
         "sixtoten": "6-10",
         "tenplus": "10+",
         "none": "None"
+      },
+      "serverTypeFilter": {
+        "official": "Official",
+        "ranked": "Ranked",
+        "unranked": "Unranked",
+        "private": "Private"
       }
     },
     "battlelog": {
