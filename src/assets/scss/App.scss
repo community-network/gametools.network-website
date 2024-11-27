@@ -11,7 +11,7 @@ $special: #14fed4;
 
 // Root
 
-@import "./fonts.scss";
+@use "fonts.scss";
 
 :root {
   --color-text: rgba(255, 255, 255, 1);
