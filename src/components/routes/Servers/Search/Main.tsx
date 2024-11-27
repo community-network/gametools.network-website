@@ -583,7 +583,7 @@ function Main(): React.ReactElement {
                 innerStyle={{ maxHeight: width >= 1000 ? "600px" : "300px" }}
               >
                 <div className={styles.serverPageFilters}>
-                  {gameName == "bf1" || gameName == "bfv" && (
+                  {frostbite3.includes(gameName) && gameName !== "bf2042" && (
                     <div className={styles.serverPageFilterRow}>
                       <h2 style={{ marginBottom: "0.4rem" }}>
                         {t("serverSearch.serverTypeFilter")}
