@@ -81,6 +81,7 @@ interface ServerLeaderboard {
 
 interface ServerLeaderboardV2 {
   gameId: string;
+  playernameFilter: string;
   amount: string;
   sort: string;
   days: string;
@@ -449,6 +450,7 @@ export class ApiProvider extends JsonClient {
 
   async serverLeaderboardV2({
     gameId,
+    playernameFilter,
     amount,
     sort,
     days
@@ -458,6 +460,7 @@ export class ApiProvider extends JsonClient {
     }
     return await this.getJsonMethod(`/manager/leaderboard/v2/`, {
       gameId: gameId,
+      player_name_filter: playernameFilter,
       amount: amount,
       sort: sort,
       days: days
