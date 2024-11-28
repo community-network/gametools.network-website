@@ -276,6 +276,7 @@
     "searchGadget": "Search for gadget",
     "missingGame": "Current player doesn't have this game",
     "adminPanel": {
+      "currentServer": "Current server",
       "main": "Admin panel",
       "susWeapons": "Sus weapons",
       "bannedServer": {

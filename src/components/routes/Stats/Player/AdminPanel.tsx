@@ -10,6 +10,9 @@ import sslFix from "../../../functions/fixEaAssets";
 import { Box } from "../../../Materials";
 import { PlatformViews } from "./Main";
 import * as styles from "./Main.module.scss";
+import * as serverStyles from "../../Servers/Detailed/Main.module.scss";
+import { getLanguage } from "../../../../locales/config";
+import { Results } from "../../Servers/Search/Results";
 
 function SusWeapon(
   props: Readonly<
@@ -290,6 +293,66 @@ export function AdminPanel(props: Readonly<PlatformViews>): React.ReactElement {
           stats={props.stats}
         />
       </Box>
+      <CurrentServer
+        platform={props.platform}
+        isLoading={false}
+        isError={false}
+        errors={undefined}
+        game={props.game}
+        name={props.name}
+        stats={props.stats} />
     </div>
   );
+}
+
+function CurrentServer(props: Readonly<PlatformViews>) {
+  const { t } = useTranslation();
+
+  const {
+    isError,
+    isLoading,
+    error,
+    data: stats,
+  } = useQuery({
+    queryKey: ["managerCurrentServer" + props?.stats?.id],
+    queryFn: () =>
+      GametoolsApi.currentServer({
+        game: props.game,
+        lang: getLanguage(),
+        platform: props.platform,
+        playerId: props?.stats?.id,
+      }),
+  });
+
+
+  if (isError) {
+    return (
+      <div className={styles.spacing}>
+        <h3 className={styles.title}>{t("stats.adminPanel.currentServer")}</h3>
+        <Box>
+          <p>{t("stats.error", { error: error })}</p>
+        </Box>
+      </div>
+    );
+  }
+
+  if (isLoading || stats === undefined) {
+    return (
+      <div className={styles.spacing}>
+        <h3 className={styles.title}>{t("stats.adminPanel.currentServer")}</h3>
+        <Box>
+          <p>{t("loading")}</p>
+        </Box>
+      </div>
+    );
+  }
+
+  let key = stats[props?.stats?.id];
+
+  return (
+    <div className={styles.spacing}>
+      <h3 className={styles.title}>{t("stats.adminPanel.currentServer")}</h3>
+      <Results loading={props.isLoading} error={props.isError} game={props.game} stats={{ "servers": key?.gameId !== null ? [key] : [], apiUrl: stats.apiUrl, cache: stats.cache }} sortType="-prefix" mainPage={false} />
+    </div>
+  )
 }

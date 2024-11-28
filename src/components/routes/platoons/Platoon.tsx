@@ -17,6 +17,7 @@ import sslFix from "../../functions/fixEaAssets";
 import useExternalScript from "../../functions/UseExternalScript";
 import { BackButton, Box, ConLink } from "../../Materials";
 import * as styles from "./Platoon.module.scss";
+import { Results as ServerResults } from "../Servers/Search/Results";
 
 interface Views {
   loading: boolean;
@@ -155,7 +156,7 @@ function Member(props: {
                 className={styles.memberImage}
                 src={sslFix(
                   item?.avatar ||
-                    "https://secure.download.dm.origin.com/production/avatar/prod/1/599/208x208.JPEG",
+                  "https://secure.download.dm.origin.com/production/avatar/prod/1/599/208x208.JPEG",
                 )}
                 loading="lazy"
               />
@@ -262,131 +263,32 @@ function Members(props: {
         <div>
           {props.loading
             ? [...Array(6)].map((key) => (
-                <Member
-                  platform={props.platform}
-                  item={{
-                    id: "loading",
-                    name: t("loading"),
-                    role: "notApplicable",
-                    avatar: "",
-                  }}
-                  key={key}
-                >
-                  <>&nbsp;</>
-                </Member>
-              ))
+              <Member
+                platform={props.platform}
+                item={{
+                  id: "loading",
+                  name: t("loading"),
+                  role: "notApplicable",
+                  avatar: "",
+                }}
+                key={key}
+              >
+                <>&nbsp;</>
+              </Member>
+            ))
             : members.map((key: PlatoonPlayer, index: number) => (
-                <Member platform={props.platform} item={key} key={index}>
-                  <CheckBan
-                    playerId={key?.id}
-                    checkBanInfo={checkBanInfo}
-                    checkBanLoading={checkBanLoading}
-                    checkBanError={checkBanError}
-                    adminMode={adminMode}
-                  />
-                </Member>
-              ))}
+              <Member platform={props.platform} item={key} key={index}>
+                <CheckBan
+                  playerId={key?.id}
+                  checkBanInfo={checkBanInfo}
+                  checkBanLoading={checkBanLoading}
+                  checkBanError={checkBanError}
+                  adminMode={adminMode}
+                />
+              </Member>
+            ))}
         </div>
       </Box>
-    </div>
-  );
-}
-
-const handleChildElementClick = (e: { stopPropagation: () => void }) => {
-  e.stopPropagation();
-  // Do other stuff here
-};
-
-function Servers(props: { servers: ServerList[] }): React.ReactElement {
-  const { t } = useTranslation();
-  const servers = props.servers;
-  if (servers?.length <= 0) {
-    return (
-      <div className={styles.spacing}>
-        <h2>{t("platoon.servers")}</h2>
-        <p className={styles.description}>{t("resultNotFound")}</p>
-      </div>
-    );
-  }
-  return (
-    <div className={styles.spacing}>
-      <div className="align">
-        <h2 className={styles.title} style={{ marginRight: "1rem" }}>
-          {t("platoon.servers")}
-        </h2>
-        <p style={{ margin: 0, marginBottom: "1rem" }}>
-          <Trans i18nKey="servers.joinme.info">
-            <a href="https://joinme.click/download">
-              https://joinme.click/download
-            </a>
-          </Trans>
-        </p>
-      </div>
-      {servers?.map((key: ServerList, index: number) => {
-        let queue: number = undefined;
-        queue = key.inQue;
-        let queueString = "";
-        if (queue !== undefined && queue !== 0) {
-          queueString = `[${queue}]`;
-        }
-        let region: string = undefined;
-        if (key.region !== undefined) {
-          region = ` - ${t(`regions.${key.region.toLowerCase()}`)}`;
-        }
-        let officialString = "";
-        if (key.official !== undefined) {
-          officialString = key.official
-            ? ` - ${t("serverType.official")}`
-            : ` - ${t("serverType.custom")}`;
-        }
-        return (
-          <Box
-            className="box_hover"
-            link={`/servers/bf1/gameid/${key.gameId}/${key.platform}`}
-            condition={true}
-            key={index}
-          >
-            <div className="alignServerImg">
-              <div>
-                <div
-                  className={styles.serverImage}
-                  style={{ backgroundImage: `url("${sslFix(key.url)}")` }}
-                >
-                  <div className={styles.blur}>
-                    <h1 className={styles.serverText}>{key.smallMode}</h1>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.serverInfo}>
-                <h3>
-                  {key.server}
-                  {key.prefix}
-                </h3>
-                <p>
-                  {key.playerAmount}/{key.maxPlayers}
-                  {key.maxPlayerAmount} {queueString} - {key.mode}
-                  {key.mode === undefined ? key.map : null}
-                  {officialString}
-                  {region}
-                </p>
-              </div>
-              <a
-                onClick={(e) => handleChildElementClick(e)}
-                href={`bf1://${key.gameId}`}
-                style={{ alignSelf: "end" }}
-              >
-                <button
-                  className="bigButtonSecondaryBox"
-                  style={{ marginBottom: ".6rem" }}
-                  type="submit"
-                >
-                  {t("servers.join")}
-                </button>
-              </a>
-            </div>
-          </Box>
-        );
-      })}
     </div>
   );
 }
@@ -394,9 +296,8 @@ function Servers(props: { servers: ServerList[] }): React.ReactElement {
 function Results(props: Views): React.ReactElement {
   const { t } = useTranslation();
   const platoon = props.platoon;
-  document.title = `${t("siteFullName")} ${t("pageTitle.platoon")} | ${
-    platoon?.name || t("loading")
-  }`;
+  document.title = `${t("siteFullName")} ${t("pageTitle.platoon")} | ${platoon?.name || t("loading")
+    }`;
   const ConditionalLink = ({ children, to, condition }: ConLink) =>
     !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
 
@@ -461,7 +362,21 @@ function Results(props: Views): React.ReactElement {
             />
           </div>
           <div className="pageRow">
-            <Servers servers={platoon?.servers} />
+            <div className={styles.spacing}>
+              <div className="align">
+                <h2 className={styles.title} style={{ marginRight: "1rem" }}>
+                  {t("platoon.servers")}
+                </h2>
+                <p style={{ margin: 0, marginBottom: "1rem" }}>
+                  <Trans i18nKey="servers.joinme.info">
+                    <a href="https://joinme.click/download">
+                      https://joinme.click/download
+                    </a>
+                  </Trans>
+                </p>
+              </div>
+              <ServerResults loading={props.loading} error={props.error} game={"bf1"} stats={{ "servers": platoon?.servers, cache: platoon?.cache, apiUrl: platoon?.apiUrl }} sortType="-prefix" mainPage={false} />
+            </div>
           </div>
         </div>
       </div>

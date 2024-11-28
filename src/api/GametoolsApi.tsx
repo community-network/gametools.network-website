@@ -7,6 +7,7 @@ import {
   PlaygroundInfoReturn,
   seederPlayersReturn,
   ServerLeaderboardReturn,
+  ServerList,
   ServerOwnerResult,
   ServerPlayersReturn,
   ServerSearch,
@@ -246,6 +247,31 @@ export class ApiProvider extends JsonClient {
     return await this.getJsonMethod(`/${game}/${type}/`, {
       ...defaultParams,
       name: encodeURIComponent(userName),
+    });
+  }
+
+  async currentServer({
+    game,
+    playerId,
+    lang,
+    platform = "pc",
+  }: {
+    game: string;
+    playerId: number;
+    lang: string,
+    platform: string;
+  }): Promise<{
+    [playerId: number]: ServerList;
+    apiUrl: string;
+    cache: boolean;
+  } | undefined> {
+    if (!newTitles.includes(game)) {
+      return undefined;
+    }
+    return await this.getJsonMethod(`/manager/currentserver/${game}`, {
+      platform: platform,
+      lang: lang,
+      player_ids: playerId.toString(),
     });
   }
 
