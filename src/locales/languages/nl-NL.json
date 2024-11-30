@@ -15,6 +15,7 @@
   "chartHourFormat": "HH:mm, eee d LLL",
   "time": "{{date, date|p}}",
   "change": "{{change, change}}",
+  "hourChange": "{{change, hourChange}}",
   "intlNumber": "{{val, number}}",
   "ago": "geleden",
   "export": "Exporteren",
@@ -22,6 +23,7 @@
     "sort": "Selecteer sorteren op",
     "chartType": "Selecteer grafiektype",
     "platform": "Selecteer platform",
+    "amountOfDays": "Selecteer hoeveel dagen",
     "game": "Selecteer spelnaam",
     "searchType": "Selecteer zoektype",
     "toggleAds": "Schakel advertenties in",
@@ -42,11 +44,19 @@
     "stats": "Deze speler is gemarkeerd als hacker in bfban!",
     "platoon": " Hacker"
   },
+  "warn": {
+    "nameChange": "Waarschuwing: {{ amount }} naam veranderingen!",
+    "vban": "Waarschuwing: {{ amount }} vbans!"
+  },
   "bfeac": {
     "main": "BFEAC"
   },
   "states": {
     "copy": "Link kopiëren",
+    "copied": "Gekopieerd!"
+  },
+  "hiddenCopy": {
+    "copy": "{{msg}}",
     "copied": "Gekopieerd!"
   },
   "copyApiStates": {
@@ -220,9 +230,11 @@
     "showProject": "Ga naar project",
     "region": "Regio",
     "map": "Map",
+    "botAmount": "({{ botAmount }} bots)",
     "platform": "platform",
     "gamemode": "gamemode",
     "playerFilter": "Beschikbare ruimte",
+    "serverTypeFilter": "Server type",
     "showFilters": "Filters weergeven",
     "serverOwner": {
       "main": "Server eigenaar",
@@ -244,7 +256,7 @@
     "view": "Stats bekijken",
     "back": "Hoofdpagina",
     "error": "Fout bij het ophalen: {{ error }}",
-    "toggleAdminPanel": "Beheerderspaneel weergeven",
+    "toggleAdminMode": "Server-admin modus activeren",
     "profileImage": "Profielafbeelding",
     "currentEmblem": "Huidig embleem",
     "originDescription": "gebruikers profiel",
@@ -264,6 +276,7 @@
     "searchGadget": "Zoek voor een gadget",
     "missingGame": "Huidige speler heeft dit spel niet ",
     "adminPanel": {
+      "currentServer": "Huidige server",
       "main": "Beheerderspaneel",
       "susWeapons": "Sus-wapens",
       "bannedServer": {
@@ -765,6 +778,12 @@
         "sixtoten": "6-10",
         "tenplus": "10+",
         "none": "Geen"
+      },
+      "serverTypeFilter": {
+        "official": "Officieel",
+        "ranked": "Ranked",
+        "unranked": "Unranked",
+        "private": "Soldaat"
       }
     },
     "battlelog": {
