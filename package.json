@@ -79,7 +79,7 @@
   "dependencies": {
     "@tanstack/react-query": "^5.61.5",
     "@uidotdev/usehooks": "^2.4.1",
-    "chart.js": "^4.4.6",
+    "chart.js": "^4.4.7",
     "chartjs-adapter-date-fns": "^3.0.0",
     "chartjs-plugin-zoom": "^2.2.0",
     "date-fns": "^4.1.0",

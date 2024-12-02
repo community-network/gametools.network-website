@@ -15,14 +15,14 @@ importers:
         specifier: ^2.4.1
         version: 2.4.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       chart.js:
-        specifier: ^4.4.6
-        version: 4.4.6
+        specifier: ^4.4.7
+        version: 4.4.7
       chartjs-adapter-date-fns:
         specifier: ^3.0.0
-        version: 3.0.0(chart.js@4.4.6)(date-fns@4.1.0)
+        version: 3.0.0(chart.js@4.4.7)(date-fns@4.1.0)
       chartjs-plugin-zoom:
         specifier: ^2.2.0
-        version: 2.2.0(chart.js@4.4.6)
+        version: 2.2.0(chart.js@4.4.7)
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
@@ -43,13 +43,13 @@ importers:
         version: 1.2.1
       mini-css-extract-plugin:
         specifier: ^2.9.2
-        version: 2.9.2(webpack@5.96.1)
+        version: 2.9.2(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4))
       react:
         specifier: ^18.3.1
         version: 18.3.1
       react-chartjs-2:
         specifier: ^5.2.0
-        version: 5.2.0(chart.js@4.4.6)(react@18.3.1)
+        version: 5.2.0(chart.js@4.4.7)(react@18.3.1)
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
@@ -104,13 +104,13 @@ importers:
         version: 4.24.2
       copy-webpack-plugin:
         specifier: ^12.0.2
-        version: 12.0.2(webpack@5.96.1)
+        version: 12.0.2(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4))
       css-loader:
         specifier: ^7.1.2
-        version: 7.1.2(webpack@5.96.1)
+        version: 7.1.2(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4))
       css-minimizer-webpack-plugin:
         specifier: ^7.0.0
-        version: 7.0.0(lightningcss@1.28.2)(webpack@5.96.1)
+        version: 7.0.0(lightningcss@1.28.2)(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4))
       eslint:
         specifier: ^9.15.0
         version: 9.15.0
@@ -128,10 +128,10 @@ importers:
         version: 5.0.1
       file-loader:
         specifier: ^6.2.0
-        version: 6.2.0(webpack@5.96.1)
+        version: 6.2.0(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4))
       html-webpack-plugin:
         specifier: ^5.6.3
-        version: 5.6.3(webpack@5.96.1)
+        version: 5.6.3(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4))
       jest:
         specifier: ^29.7.0
         version: 29.7.0(@types/node@22.10.0)
@@ -146,7 +146,7 @@ importers:
         version: 2.1.0
       responsive-loader:
         specifier: ^3.1.2
-        version: 3.1.2(sharp@0.33.5)(webpack@5.96.1)
+        version: 3.1.2(sharp@0.33.5)(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4))
       rimraf:
         specifier: ^6.0.1
         version: 6.0.1
@@ -155,16 +155,16 @@ importers:
         version: 1.81.0
       sass-loader:
         specifier: ^16.0.3
-        version: 16.0.3(sass@1.81.0)(webpack@5.96.1)
+        version: 16.0.3(sass@1.81.0)(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4))
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
       style-loader:
         specifier: ^4.0.0
-        version: 4.0.0(webpack@5.96.1)
+        version: 4.0.0(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4))
       swc-loader:
         specifier: ^0.2.6
-        version: 0.2.6(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack@5.96.1)
+        version: 0.2.6(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4))
       typescript:
         specifier: ^5.7.2
         version: 5.7.2
@@ -185,13 +185,13 @@ importers:
         version: 5.1.0(webpack-cli@5.1.4)(webpack@5.96.1)
       webpack-image-resize-loader:
         specifier: ^5.0.0
-        version: 5.0.0(webpack@5.96.1)
+        version: 5.0.0(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4))
       webpack-merge:
         specifier: ^6.0.1
         version: 6.0.1
       workbox-webpack-plugin:
         specifier: ^7.3.0
-        version: 7.3.0(@types/babel__core@7.20.5)(webpack@5.96.1)
+        version: 7.3.0(@types/babel__core@7.20.5)(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4))
 
 packages:
 
@@ -1963,8 +1963,8 @@ packages:
     resolution: {integrity: sha512-kWWXztvZ5SBQV+eRgKFeh8q5sLuZY2+8WUIzlxWVTg+oGwY14qylx1KbKzHd8P6ZYkAg0xyIDU9JMHhyJMZ1jw==}
     engines: {node: '>=10'}
 
-  chart.js@4.4.6:
-    resolution: {integrity: sha512-8Y406zevUPbbIBA/HRk33khEmQPk5+cxeflWE/2rx1NJsjVWMPw/9mSP9rxHP5eqi6LNoPBVMfZHxbwLSgldYA==}
+  chart.js@4.4.7:
+    resolution: {integrity: sha512-pwkcKfdzTMAU/+jNosKhNL2bHtJc/sSmYgVbuGTEDhzkrhmyihmP7vUc/5ZK9WopidMDHNe3Wm7jOd/WhuHWuw==}
     engines: {pnpm: '>=8'}
 
   chartjs-adapter-date-fns@3.0.0:
@@ -6110,7 +6110,7 @@ snapshots:
 
   '@bcoe/v8-coverage@0.2.3': {}
 
-  '@calvin-l/webpack-loader-util@1.0.2(webpack@5.96.1)':
+  '@calvin-l/webpack-loader-util@1.0.2(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4))':
     dependencies:
       '@types/loader-utils': 2.0.6
       loader-utils: 2.0.4
@@ -7095,17 +7095,17 @@ snapshots:
       '@webassemblyjs/ast': 1.14.1
       '@xtuc/long': 4.2.2
 
-  '@webpack-cli/configtest@2.1.1(webpack-cli@5.1.4)(webpack@5.96.1)':
+  '@webpack-cli/configtest@2.1.1(webpack-cli@5.1.4(webpack-bundle-analyzer@4.10.2)(webpack-dev-server@5.1.0)(webpack@5.96.1))(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4))':
     dependencies:
       webpack: 5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4)
       webpack-cli: 5.1.4(webpack-bundle-analyzer@4.10.2)(webpack-dev-server@5.1.0)(webpack@5.96.1)
 
-  '@webpack-cli/info@2.0.2(webpack-cli@5.1.4)(webpack@5.96.1)':
+  '@webpack-cli/info@2.0.2(webpack-cli@5.1.4(webpack-bundle-analyzer@4.10.2)(webpack-dev-server@5.1.0)(webpack@5.96.1))(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4))':
     dependencies:
       webpack: 5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4)
       webpack-cli: 5.1.4(webpack-bundle-analyzer@4.10.2)(webpack-dev-server@5.1.0)(webpack@5.96.1)
 
-  '@webpack-cli/serve@2.0.5(webpack-cli@5.1.4)(webpack-dev-server@5.1.0)(webpack@5.96.1)':
+  '@webpack-cli/serve@2.0.5(webpack-cli@5.1.4(webpack-bundle-analyzer@4.10.2)(webpack-dev-server@5.1.0)(webpack@5.96.1))(webpack-dev-server@5.1.0(webpack-cli@5.1.4)(webpack@5.96.1))(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4))':
     dependencies:
       webpack: 5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4)
       webpack-cli: 5.1.4(webpack-bundle-analyzer@4.10.2)(webpack-dev-server@5.1.0)(webpack@5.96.1)
@@ -7479,19 +7479,19 @@ snapshots:
 
   char-regex@1.0.2: {}
 
-  chart.js@4.4.6:
+  chart.js@4.4.7:
     dependencies:
       '@kurkle/color': 0.3.4
 
-  chartjs-adapter-date-fns@3.0.0(chart.js@4.4.6)(date-fns@4.1.0):
+  chartjs-adapter-date-fns@3.0.0(chart.js@4.4.7)(date-fns@4.1.0):
     dependencies:
-      chart.js: 4.4.6
+      chart.js: 4.4.7
       date-fns: 4.1.0
 
-  chartjs-plugin-zoom@2.2.0(chart.js@4.4.6):
+  chartjs-plugin-zoom@2.2.0(chart.js@4.4.7):
     dependencies:
       '@types/hammerjs': 2.0.46
-      chart.js: 4.4.6
+      chart.js: 4.4.7
       hammerjs: 2.0.8
 
   chokidar@3.6.0:
@@ -7629,7 +7629,7 @@ snapshots:
     dependencies:
       is-what: 3.14.1
 
-  copy-webpack-plugin@12.0.2(webpack@5.96.1):
+  copy-webpack-plugin@12.0.2(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4)):
     dependencies:
       fast-glob: 3.3.2
       glob-parent: 6.0.2
@@ -7672,7 +7672,7 @@ snapshots:
     dependencies:
       postcss: 8.4.49
 
-  css-loader@7.1.2(webpack@5.96.1):
+  css-loader@7.1.2(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4)):
     dependencies:
       icss-utils: 5.1.0(postcss@8.4.49)
       postcss: 8.4.49
@@ -7685,7 +7685,7 @@ snapshots:
     optionalDependencies:
       webpack: 5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4)
 
-  css-minimizer-webpack-plugin@7.0.0(lightningcss@1.28.2)(webpack@5.96.1):
+  css-minimizer-webpack-plugin@7.0.0(lightningcss@1.28.2)(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       cssnano: 7.0.6(postcss@8.4.49)
@@ -8330,7 +8330,7 @@ snapshots:
     dependencies:
       flat-cache: 4.0.1
 
-  file-loader@6.2.0(webpack@5.96.1):
+  file-loader@6.2.0(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4)):
     dependencies:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
@@ -8585,7 +8585,7 @@ snapshots:
     dependencies:
       void-elements: 3.1.0
 
-  html-webpack-plugin@5.6.3(webpack@5.96.1):
+  html-webpack-plugin@5.6.3(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4)):
     dependencies:
       '@types/html-minifier-terser': 6.1.0
       html-minifier-terser: 6.1.0
@@ -9490,7 +9490,7 @@ snapshots:
 
   mimic-response@2.1.0: {}
 
-  mini-css-extract-plugin@2.9.2(webpack@5.96.1):
+  mini-css-extract-plugin@2.9.2(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4)):
     dependencies:
       schema-utils: 4.2.0
       tapable: 2.2.1
@@ -10046,9 +10046,9 @@ snapshots:
       minimist: 1.2.8
       strip-json-comments: 2.0.1
 
-  react-chartjs-2@5.2.0(chart.js@4.4.6)(react@18.3.1):
+  react-chartjs-2@5.2.0(chart.js@4.4.7)(react@18.3.1):
     dependencies:
-      chart.js: 4.4.6
+      chart.js: 4.4.7
       react: 18.3.1
 
   react-dom@18.3.1(react@18.3.1):
@@ -10206,7 +10206,7 @@ snapshots:
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
 
-  responsive-loader@3.1.2(sharp@0.33.5)(webpack@5.96.1):
+  responsive-loader@3.1.2(sharp@0.33.5)(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4)):
     dependencies:
       '@types/node': 18.19.66
       find-cache-dir: 3.3.2
@@ -10266,7 +10266,7 @@ snapshots:
 
   safer-buffer@2.1.2: {}
 
-  sass-loader@16.0.3(sass@1.81.0)(webpack@5.96.1):
+  sass-loader@16.0.3(sass@1.81.0)(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4)):
     dependencies:
       neo-async: 2.6.2
     optionalDependencies:
@@ -10656,7 +10656,7 @@ snapshots:
 
   strip-json-comments@3.1.1: {}
 
-  style-loader@4.0.0(webpack@5.96.1):
+  style-loader@4.0.0(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4)):
     dependencies:
       webpack: 5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4)
 
@@ -10696,7 +10696,7 @@ snapshots:
       csso: 5.0.5
       picocolors: 1.1.1
 
-  swc-loader@0.2.6(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack@5.96.1):
+  swc-loader@0.2.6(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4)):
     dependencies:
       '@swc/core': 1.9.3(@swc/helpers@0.5.15)
       '@swc/counter': 0.1.3
@@ -10733,7 +10733,7 @@ snapshots:
       type-fest: 0.16.0
       unique-string: 2.0.0
 
-  terser-webpack-plugin@5.3.10(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack@5.96.1):
+  terser-webpack-plugin@5.3.10(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       jest-worker: 27.5.1
@@ -10978,9 +10978,9 @@ snapshots:
   webpack-cli@5.1.4(webpack-bundle-analyzer@4.10.2)(webpack-dev-server@5.1.0)(webpack@5.96.1):
     dependencies:
       '@discoveryjs/json-ext': 0.5.7
-      '@webpack-cli/configtest': 2.1.1(webpack-cli@5.1.4)(webpack@5.96.1)
-      '@webpack-cli/info': 2.0.2(webpack-cli@5.1.4)(webpack@5.96.1)
-      '@webpack-cli/serve': 2.0.5(webpack-cli@5.1.4)(webpack-dev-server@5.1.0)(webpack@5.96.1)
+      '@webpack-cli/configtest': 2.1.1(webpack-cli@5.1.4(webpack-bundle-analyzer@4.10.2)(webpack-dev-server@5.1.0)(webpack@5.96.1))(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4))
+      '@webpack-cli/info': 2.0.2(webpack-cli@5.1.4(webpack-bundle-analyzer@4.10.2)(webpack-dev-server@5.1.0)(webpack@5.96.1))(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4))
+      '@webpack-cli/serve': 2.0.5(webpack-cli@5.1.4(webpack-bundle-analyzer@4.10.2)(webpack-dev-server@5.1.0)(webpack@5.96.1))(webpack-dev-server@5.1.0(webpack-cli@5.1.4)(webpack@5.96.1))(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4))
       colorette: 2.0.20
       commander: 10.0.1
       cross-spawn: 7.0.6
@@ -10995,7 +10995,7 @@ snapshots:
       webpack-bundle-analyzer: 4.10.2
       webpack-dev-server: 5.1.0(webpack-cli@5.1.4)(webpack@5.96.1)
 
-  webpack-dev-middleware@7.4.2(webpack@5.96.1):
+  webpack-dev-middleware@7.4.2(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4)):
     dependencies:
       colorette: 2.0.20
       memfs: 4.14.0
@@ -11034,7 +11034,7 @@ snapshots:
       serve-index: 1.9.1
       sockjs: 0.3.24
       spdy: 4.0.2
-      webpack-dev-middleware: 7.4.2(webpack@5.96.1)
+      webpack-dev-middleware: 7.4.2(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4))
       ws: 8.18.0
     optionalDependencies:
       webpack: 5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4)
@@ -11045,9 +11045,9 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  webpack-image-resize-loader@5.0.0(webpack@5.96.1):
+  webpack-image-resize-loader@5.0.0(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4)):
     dependencies:
-      '@calvin-l/webpack-loader-util': 1.0.2(webpack@5.96.1)
+      '@calvin-l/webpack-loader-util': 1.0.2(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4))
       mime: 2.6.0
       replace-ext: 2.0.0
       schema-utils: 3.3.0
@@ -11095,7 +11095,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 3.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack@5.96.1)
+      terser-webpack-plugin: 5.3.10(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4))
       watchpack: 2.4.2
       webpack-sources: 3.2.3
     optionalDependencies:
@@ -11278,7 +11278,7 @@ snapshots:
 
   workbox-sw@7.3.0: {}
 
-  workbox-webpack-plugin@7.3.0(@types/babel__core@7.20.5)(webpack@5.96.1):
+  workbox-webpack-plugin@7.3.0(@types/babel__core@7.20.5)(webpack@5.96.1(@swc/core@1.9.3(@swc/helpers@0.5.15))(webpack-cli@5.1.4)):
     dependencies:
       fast-json-stable-stringify: 2.1.0
       pretty-bytes: 5.6.0
