@@ -17,7 +17,7 @@ import bflistLogo from "../../assets/icon/bflist-icon.svg";
 import bfbanLogo from "../../assets/icon/bfban-icon.png?sizes[]=24&format=webp&useResponsiveLoader=true";
 import bfportalLogo from "../../assets/icon/bfportal-icon.png?sizes[]=24&format=webp&useResponsiveLoader=true";
 import { Link } from "react-router-dom";
-import AdsComponent from "../Ads";
+import AdsComponent, { AdsEnabled } from "../Ads";
 import * as styles from "./Home.module.scss";
 
 function Home(): React.ReactElement {
@@ -62,9 +62,25 @@ function Home(): React.ReactElement {
           <div className={styles.welcome}>
             <p className={styles.text}>{t("playerSearch.description")}</p>
             <StatSearch />
+            {AdsEnabled() && (
+              <div className={styles.searchAdSection}>
+                <AdsComponent
+                  dataAdSlot="8911547346"
+                  style={{ display: "block", height: "60px", maxWidth: "1000px" }}
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>
+      {AdsEnabled() && (
+        <div className={styles.mobileAdSection}>
+          <AdsComponent
+            dataAdSlot="8911547346"
+            style={{ display: "block", height: "60px", maxWidth: "300px" }}
+          />
+        </div>
+      )}
       <div className="container">
         <ServerSearch />
         <h2 style={{ margin: "24px 0 24px 24px" }}>

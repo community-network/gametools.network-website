@@ -45,12 +45,9 @@ export function Footer(): JSX.Element {
     <footer className={styles.background} role="contentinfo">
       {AdsEnabled() && (
         <div className={styles.adSection}>
-          <h3 className="adv-label" style={{ marginBottom: ".8rem" }}>
-            {t("ads.main")}
-          </h3>
           <AdsComponent
             dataAdSlot="8911547346"
-            style={{ display: "block", height: "80px" }}
+            style={{ display: "block", height: "140px", maxWidth: "300px" }}
           />
         </div>
       )}
@@ -85,7 +82,7 @@ export function Footer(): JSX.Element {
             <div style={{ display: "flex", paddingLeft: ".2rem" }}>
               <label aria-label={t("stats.toggleAdminMode")} className="switch">
                 <input
-                  onChange={() => {}}
+                  onChange={() => { }}
                   checked={showAdminPanel}
                   onClick={() => {
                     setShowAdminPanel(!showAdminPanel);

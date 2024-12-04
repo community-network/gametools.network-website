@@ -15,7 +15,7 @@ const AdsComponent = (props: {
   React.useEffect(() => {
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (_) {}
+    } catch (_) { }
   }, []);
 
   const [value] = useLocalStorage("disable-ads", false);
@@ -26,6 +26,7 @@ const AdsComponent = (props: {
     <ins
       className="adsbygoogle"
       style={style}
+      // data-adtest="on"
       data-ad-client="ca-pub-6546858755151450"
       data-ad-slot={dataAdSlot}
       // data-ad-format="auto"
@@ -51,7 +52,7 @@ export const AdSwitch = (): JSX.Element => {
     <div className="adv-ad" style={{ display: "flex", paddingLeft: ".3rem" }}>
       <label aria-label={t("ariaLabels.toggleAds")} className="switch">
         <input
-          onChange={() => {}}
+          onChange={() => { }}
           checked={value}
           onClick={() => {
             setValue(!value);

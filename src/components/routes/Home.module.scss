@@ -9,6 +9,25 @@
   }
 }
 
+.searchAdSection {
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.mobileAdSection {
+  margin-top: 0.5rem;
+  @media (min-width: 1024px) {
+    display: none;
+  }
+  @media (min-width: 850px) {
+    padding-left: 8.33%;
+  }
+  @media (max-width: 850px) {
+    padding-left: 3%;
+  }
+}
+
 .image {
   height: 356px;
   background-position: center;
