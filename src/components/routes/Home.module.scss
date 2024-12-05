@@ -26,6 +26,9 @@
   @media (max-width: 850px) {
     padding-left: 3%;
   }
+  @media (max-width: 500px) {
+    display: none;
+  }
 }
 
 .image {

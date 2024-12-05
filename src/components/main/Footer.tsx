@@ -47,7 +47,7 @@ export function Footer(): JSX.Element {
         <div className={styles.adSection}>
           <AdsComponent
             dataAdSlot="8911547346"
-            style={{ display: "block", height: "140px", maxWidth: "300px" }}
+            style={{ display: "block", height: "200px", maxWidth: "300px" }}
           />
         </div>
       )}
