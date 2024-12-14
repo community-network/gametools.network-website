@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import { oldJoinGames } from "../../api/static";
 import "../../locales/config";
 import { BackButton } from "../Materials";

@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useLocalStorage } from "@uidotdev/usehooks";
 import * as React from "react";
 import { Trans, useTranslation } from "react-i18next";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router";
 import { BF2042Player, GametoolsApi } from "../../../../api/GametoolsApi";
 import {
   dice,

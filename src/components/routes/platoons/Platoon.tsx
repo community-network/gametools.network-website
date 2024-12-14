@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useLocalStorage } from "@uidotdev/usehooks";
 import * as React from "react";
 import { Trans, useTranslation } from "react-i18next";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router";
 import { GametoolsApi, managerPlayers } from "../../../api/GametoolsApi";
 import {
   PlatoonPlayer,

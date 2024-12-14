@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { MainStatsPlatoon } from "../../../../api/ReturnTypes";
 import "../../../../locales/config";
 import sslFix from "../../../functions/fixEaAssets";

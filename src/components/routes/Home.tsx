@@ -16,7 +16,7 @@ import statbitsLogo from "../../assets/icon/statbits-icon.svg";
 import bflistLogo from "../../assets/icon/bflist-icon.svg";
 import bfbanLogo from "../../assets/icon/bfban-icon.png?sizes[]=24&format=webp&useResponsiveLoader=true";
 import bfportalLogo from "../../assets/icon/bfportal-icon.png?sizes[]=24&format=webp&useResponsiveLoader=true";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import AdsComponent, { AdsEnabled } from "../Ads";
 import * as styles from "./Home.module.scss";
 

@@ -7,7 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { BackButton } from "../../../Materials";
 import { getLanguage } from "../../../../locales/config";
 import { Results } from "./Main";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 
 function Playgrounds(): React.ReactElement {
   const params = useParams();
@@ -31,9 +31,8 @@ function Playgrounds(): React.ReactElement {
         with_ownername: false,
       }),
   });
-  document.title = `${t("siteFullName")} ${t("pageTitle.playground")} | ${
-    stats?.originalPlayground?.settings?.configName?.value || t("loading")
-  }`;
+  document.title = `${t("siteFullName")} ${t("pageTitle.playground")} | ${stats?.originalPlayground?.settings?.configName?.value || t("loading")
+    }`;
 
   return (
     <div>

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import "../../../../assets/scss/App.scss";
 import "../../../../locales/config";
 import { BackButton, RightArrow } from "../../../Materials";

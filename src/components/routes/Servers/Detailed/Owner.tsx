@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { ServerOwnerResult } from "../../../../api/ReturnTypes";
 import { serverToStatsPlatform } from "../../../../api/static";
@@ -88,11 +88,9 @@ export function OwnerInfo(props: {
       <h2>{title}</h2>
       <div className="align">
         <Link
-          to={`/stats/${
-            serverToStatsPlatform[owner.platformId] || "pc"
-          }/playerid/${owner.id || owner.personaId}?game=${
-            props.game
-          }&name=${encodeURIComponent(owner.name)}`}
+          to={`/stats/${serverToStatsPlatform[owner.platformId] || "pc"
+            }/playerid/${owner.id || owner.personaId}?game=${props.game
+            }&name=${encodeURIComponent(owner.name)}`}
         >
           <img
             alt={t("stats.profileImage")}
@@ -101,11 +99,9 @@ export function OwnerInfo(props: {
           />
         </Link>
         <Link
-          to={`/stats/${
-            serverToStatsPlatform[owner.platformId] || "pc"
-          }/playerid/${owner.id || owner.personaId}?game=${
-            props.game
-          }&name=${encodeURIComponent(owner.name)}`}
+          to={`/stats/${serverToStatsPlatform[owner.platformId] || "pc"
+            }/playerid/${owner.id || owner.personaId}?game=${props.game
+            }&name=${encodeURIComponent(owner.name)}`}
         >
           <div>
             <h2 className={Mainstyles.originName}>

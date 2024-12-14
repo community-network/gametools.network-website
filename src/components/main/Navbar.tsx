@@ -1,5 +1,5 @@
 import * as React from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router";
 import "../../locales/config";
 import { useTranslation } from "react-i18next";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";

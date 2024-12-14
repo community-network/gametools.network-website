@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router";
 import * as styles from "./Materials.module.scss";
 
 export function BackButton(
@@ -144,10 +144,10 @@ export interface ConLink {
 export function Box(props: {
   align?: string;
   children:
-    | boolean
-    | React.ReactChild
-    | React.ReactFragment
-    | React.ReactPortal;
+  | boolean
+  | React.ReactChild
+  | React.ReactFragment
+  | React.ReactPortal;
   className?: string;
   style?: React.CSSProperties;
   innerStyle?: React.CSSProperties;

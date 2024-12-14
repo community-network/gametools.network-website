@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
 import "../../../../assets/scss/App.scss";
 import "../../../../locales/config";
@@ -34,9 +34,8 @@ function Servers(): React.ReactElement {
     retryDelay: 3,
     retryOnMount: false,
   });
-  document.title = `${t("siteFullName")} ${t("pageTitle.servers")} | ${
-    gameId || t("notApplicable")
-  } | ${stats?.prefix || t("loading")}`;
+  document.title = `${t("siteFullName")} ${t("pageTitle.servers")} | ${gameId || t("notApplicable")
+    } | ${stats?.prefix || t("loading")}`;
   return (
     <div>
       <div className="container">

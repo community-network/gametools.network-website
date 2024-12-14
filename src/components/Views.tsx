@@ -1,6 +1,6 @@
 import * as React from "react";
 import "../locales/config";
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
 import { Footer } from "./main/Footer";
 import { Navbar } from "./main/Navbar";

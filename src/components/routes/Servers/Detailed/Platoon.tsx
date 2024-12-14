@@ -1,6 +1,6 @@
 import * as React from "react";
 import "../../../../locales/config";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import "../../../../assets/scss/App.scss";
 import { PlatoonResult } from "../../../../api/ReturnTypes";
