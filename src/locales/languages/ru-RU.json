@@ -15,6 +15,7 @@
   "chartHourFormat": "HH:mm, eee d LLL",
   "time": "{{date, date|p}}",
   "change": "{{change, change}}",
+  "hourChange": "{{change, hourChange}}",
   "intlNumber": "{{val, number}}",
   "ago": "назад",
   "export": "Экспорт",
@@ -22,6 +23,7 @@
     "sort": "Select sort by",
     "chartType": "Select chart type",
     "platform": "Select platform",
+    "amountOfDays": "Select how many days",
     "game": "Select game name",
     "searchType": "Select search type",
     "toggleAds": "Toggle ads",
@@ -42,11 +44,19 @@
     "stats": "Игрок отмечен как хакер в bfban!",
     "platoon": "Хакер"
   },
+  "warn": {
+    "nameChange": "Warn: {{ amount }} namechanges!",
+    "vban": "Warn: {{ amount }} vbans!"
+  },
   "bfeac": {
     "main": "BFEAC"
   },
   "states": {
     "copy": "Скопировать ссылку",
+    "copied": "Скопировано!"
+  },
+  "hiddenCopy": {
+    "copy": "{{msg}}",
     "copied": "Скопировано!"
   },
   "copyApiStates": {
@@ -220,9 +230,11 @@
     "showProject": "Go to project",
     "region": "Регион",
     "map": "Карта",
+    "botAmount": "({{ botAmount }} bots)",
     "platform": "платформа",
     "gamemode": "Режим",
     "playerFilter": "Свободное место",
+    "serverTypeFilter": "Server type",
     "showFilters": "Показать фильтры",
     "serverOwner": {
       "main": "Владелец сервера",
@@ -244,7 +256,7 @@
     "view": "Показать статистику",
     "back": "Главная страница",
     "error": "Error while fetching: {{ error }}",
-    "toggleAdminPanel": "Show admin panel",
+    "toggleAdminMode": "Enable server-admin mode",
     "profileImage": "Profile image",
     "currentEmblem": "Current emblem",
     "originDescription": "Профиль пользователя",
@@ -264,6 +276,7 @@
     "searchGadget": "Искать гаджеты",
     "missingGame": "Current player doesn't have this game",
     "adminPanel": {
+      "currentServer": "Current server",
       "main": "Admin panel",
       "susWeapons": "Sus weapons",
       "bannedServer": {
@@ -765,6 +778,12 @@
         "sixtoten": "6-10",
         "tenplus": "10+",
         "none": "Ничего"
+      },
+      "serverTypeFilter": {
+        "official": "Официальный",
+        "ranked": "Ranked",
+        "unranked": "Без рейтинга",
+        "private": "Приватный"
       }
     },
     "battlelog": {
