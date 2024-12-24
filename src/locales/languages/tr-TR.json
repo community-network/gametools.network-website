@@ -15,6 +15,7 @@
   "chartHourFormat": "HH:mm, eee d LLL",
   "time": "{{date, date|p}}",
   "change": "{{change, change}}",
+  "hourChange": "{{change, hourChange}}",
   "intlNumber": "{{val, number}}",
   "ago": "önce",
   "export": "Dosyaya aktar",
@@ -22,6 +23,7 @@
     "sort": "Select sort by",
     "chartType": "Select chart type",
     "platform": "Select platform",
+    "amountOfDays": "Select how many days",
     "game": "Select game name",
     "searchType": "Select search type",
     "toggleAds": "Toggle ads",
@@ -42,11 +44,19 @@
     "stats": "Oyuncu bfban'da onaylanmış hileci",
     "platoon": " Hileci"
   },
+  "warn": {
+    "nameChange": "Warn: {{ amount }} namechanges!",
+    "vban": "Warn: {{ amount }} vbans!"
+  },
   "bfeac": {
     "main": "BFEAC"
   },
   "states": {
     "copy": "Bağlantıyı kopyala",
+    "copied": "Kopyalandı!"
+  },
+  "hiddenCopy": {
+    "copy": "{{msg}}",
     "copied": "Kopyalandı!"
   },
   "copyApiStates": {
@@ -220,9 +230,11 @@
     "showProject": "Go to project",
     "region": "Bölge",
     "map": "Harita",
+    "botAmount": "({{ botAmount }} bots)",
     "platform": "platform",
     "gamemode": "Oyun modu",
     "playerFilter": "Kullanılabilir alan",
+    "serverTypeFilter": "Server type",
     "showFilters": "Filtreleri göster",
     "serverOwner": {
       "main": "Sunucu sahibi",
@@ -244,7 +256,7 @@
     "view": "İstatistikleri görüntüle",
     "back": "Ana Sayfa",
     "error": "Error while fetching: {{ error }}",
-    "toggleAdminPanel": "Show admin panel",
+    "toggleAdminMode": "Enable server-admin mode",
     "profileImage": "Profile image",
     "currentEmblem": "Current emblem",
     "originDescription": "Kullanıcı hesabı",
@@ -264,6 +276,7 @@
     "searchGadget": "Gadget ara",
     "missingGame": "Current player doesn't have this game",
     "adminPanel": {
+      "currentServer": "Current server",
       "main": "Admin panel",
       "susWeapons": "Sus weapons",
       "bannedServer": {
@@ -765,6 +778,12 @@
         "sixtoten": "6-10",
         "tenplus": "10+",
         "none": "Hiçbiri"
+      },
+      "serverTypeFilter": {
+        "official": "Resmi",
+        "ranked": "Ranked",
+        "unranked": "Rütbesiz",
+        "private": "Er"
       }
     },
     "battlelog": {
