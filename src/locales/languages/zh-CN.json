@@ -15,18 +15,20 @@
   "chartHourFormat": "HH:mm, eee d LLL",
   "time": "{{date, date|p}}",
   "change": "{{change, change}}",
+  "hourChange": "{{change, hourChange}}",
   "intlNumber": "{{val, number}}",
   "ago": "以前",
   "export": "导出EXCEL",
   "ariaLabels": {
-    "sort": "Select sort by",
-    "chartType": "Select chart type",
-    "platform": "Select platform",
-    "game": "Select game name",
-    "searchType": "Select search type",
-    "toggleAds": "Toggle ads",
-    "toggleSidebar": "Toggle sidebar",
-    "toggleGame": "Toggle game"
+    "sort": "选择排序",
+    "chartType": "选择图表类型",
+    "platform": "选择平台",
+    "amountOfDays": "选择天数",
+    "game": "选择游戏名称",
+    "searchType": "选择搜索类别",
+    "toggleAds": "切换广告",
+    "toggleSidebar": "切换侧边栏",
+    "toggleGame": "切換遊戲"
   },
   "case": {
     "none": "不适用",
@@ -42,11 +44,19 @@
     "stats": "该玩家已被战地联BAN标记外挂!",
     "platoon": " 挂壁"
   },
+  "warn": {
+    "nameChange": "警告：{{ amount }} 名称更改！",
+    "vban": "警告：{{ amount }}封禁！"
+  },
   "bfeac": {
     "main": "联BAN"
   },
   "states": {
     "copy": "复制链接",
+    "copied": "已复制！"
+  },
+  "hiddenCopy": {
+    "copy": "{{msg}}",
     "copied": "已复制！"
   },
   "copyApiStates": {
@@ -78,8 +88,8 @@
     "bf4": "战地4",
     "bfh": "战地硬仗",
     "bf1": "战地1",
-    "bf1marne": "Battlefield 1 (marne.io)",
-    "bfvmarne": "Battlefield 5 (marne.io)",
+    "bf1marne": "战地风云 1 (marne.io)",
+    "bfvmarne": "战地风云 5（marne.io）",
     "bfv": "战地5",
     "bf2042": "战地2042",
     "bf2042portal": "Battlefield 2042 Portal",
@@ -217,12 +227,14 @@
       "playground": "体验名称"
     },
     "showMore": "显示更多",
-    "showProject": "Go to project",
+    "showProject": "前往项目",
     "region": "地区",
     "map": "地图",
+    "botAmount": "({{ botAmount }} bots)",
     "platform": "平台",
     "gamemode": "游戏模式",
     "playerFilter": "可用空间",
+    "serverTypeFilter": "服务器类型",
     "showFilters": "展开筛选器",
     "serverOwner": {
       "main": "服主",
@@ -237,16 +249,16 @@
     "search": "搜索",
     "searchPlaceholder": "搜索战队名字...",
     "results": "搜索结果",
-    "sidebarInfo": "Clicking a result will display on the side if it can fit on your monitor",
+    "sidebarInfo": "如果您的显示器可以容纳某个结果，则单击结果将显示在第三个",
     "resultNotFound": "没找到. 你最少输入3个字符去搜索战队."
   },
   "stats": {
     "view": "查看战绩",
     "back": "回到搜索界面",
-    "error": "Error while fetching: {{ error }}",
-    "toggleAdminPanel": "Show admin panel",
-    "profileImage": "Profile image",
-    "currentEmblem": "Current emblem",
+    "error": "获取时出错：{{ error }}",
+    "toggleAdminMode": "同意服务器管理模式",
+    "profileImage": "个人资料图片",
+    "currentEmblem": "当前积分",
     "originDescription": "Origin 主页",
     "detailedName": "战绩详情",
     "overview": "概览",
@@ -262,19 +274,20 @@
     "searchWeapon": "搜索他的某一项武器",
     "searchVehicle": "搜索他的某一项载具",
     "searchGadget": "搜索小工具",
-    "missingGame": "Current player doesn't have this game",
+    "missingGame": "当前玩家没有这个游戏",
     "adminPanel": {
-      "main": "Admin panel",
+      "currentServer": "当前服务器",
+      "main": "管理面板",
       "susWeapons": "Sus weapons",
       "bannedServer": {
-        "main": "Banned in server"
+        "main": "在服务器中被禁止"
       },
       "otherNames": {
-        "main": "Other names"
+        "main": "其他名称"
       },
       "vban": {
-        "group": "VBAN group",
-        "reason": "Reason"
+        "group": "虚拟封禁列表",
+        "reason": "原因"
       }
     },
     "rows": {
@@ -765,6 +778,12 @@
         "sixtoten": "6至5",
         "tenplus": "大于10",
         "none": "无"
+      },
+      "serverTypeFilter": {
+        "official": "官方",
+        "ranked": "Ranked",
+        "unranked": "无排名",
+        "private": "列兵"
       }
     },
     "battlelog": {
@@ -778,10 +797,10 @@
     },
     "modList": {
       "main": "Mods",
-      "noMods": "This server has no mods",
-      "file": "file: ",
-      "version": "ver: ",
-      "noURl": "No link available"
+      "noMods": "该服务器没有模组",
+      "file": "文件：",
+      "version": "版本：",
+      "noURl": "没有可用链接"
     }
   },
   "platoon": {
@@ -836,7 +855,7 @@
     }
   },
   "footer": {
-    "description": "This website is part of the Community Network. It is Open Source. You can post issues and suggest changes/improvements via GitHub. API provided by Community Network and open for public usage. We don’t provide any third-party API. Our back end is closed source and not available publicly.\nThis site was created under Electronic Arts’ Fansite Agreement using materials from Battlefield 2042. Trademarks are the property of their respective owners. Game materials copyright Electronic Arts Inc. and/or its licensors. Electronic Arts Inc. and its licensors have not otherwise endorsed and are not responsible for the operation of or content on this site.\nCode is under GPL v2 License. Some parts are under Community Network copyright.",
+    "description": "本网站是社区网络的一部分。它是开源的。您可以通过 GitHub 发布问题并建议更改/改进。API 由社区网络提供并开放供公众使用。我们不提供任何第三方 API。我们的耳机是闭的来源，不对外开放。\n本网站是根据 Electronic Arts 的粉丝网站协议使用战地 2042 的材料创建的。商标是其各自所有者的财产。游戏材料版权归 Electronic Arts Inc. 和/或其许可人所有。艺电公司其许可人未以其他方式认可也不认可本网站的运营或内容负责。\n代码受 GPL v2 许可。某些部分受社区网络版权保护。",
     "LinkName": "链接",
     "links": {
       "0": {
@@ -878,10 +897,10 @@
     "disable": "禁用广告"
   },
   "pageTitle": {
-    "main": "Game Tools: Battlefield Stats, Bots, Server management",
-    "stats": "Stats",
+    "main": "游戏工具：战场统计、机器人、服务器管理",
+    "stats": "统计资料",
     "platoon": "Platoons",
-    "playground": "Playgrounds",
+    "playground": "游乐场",
     "servers": "服务器列表"
   }
 }
