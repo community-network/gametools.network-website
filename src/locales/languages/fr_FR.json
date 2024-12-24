@@ -15,6 +15,7 @@
   "chartHourFormat": "HH:mm, eee d LLL",
   "time": "{{date, date|p}}",
   "change": "{{change, change}}",
+  "hourChange": "{{change, hourChange}}",
   "intlNumber": "{{val, number}}",
   "ago": "il y a",
   "export": "Exporter",
@@ -22,6 +23,7 @@
     "sort": "Select sort by",
     "chartType": "Select chart type",
     "platform": "Select platform",
+    "amountOfDays": "Select how many days",
     "game": "Select game name",
     "searchType": "Select search type",
     "toggleAds": "Toggle ads",
@@ -42,12 +44,20 @@
     "stats": "Le joueur est marqué comme hacker dans bfban !",
     "platoon": "Hacker"
   },
+  "warn": {
+    "nameChange": "Warn: {{ amount }} namechanges!",
+    "vban": "Warn: {{ amount }} vbans!"
+  },
   "bfeac": {
     "main": "BFEAC"
   },
   "states": {
     "copy": "Copier le lien",
     "copied": "Copié"
+  },
+  "hiddenCopy": {
+    "copy": "{{msg}}",
+    "copied": "Copié !"
   },
   "copyApiStates": {
     "copy": "Copier l'url de l'api",
@@ -220,9 +230,11 @@
     "showProject": "Aller au projet",
     "region": "Regions",
     "map": "Map",
+    "botAmount": "({{ botAmount }} bots)",
     "platform": "platform",
     "gamemode": "Gamemode",
     "playerFilter": "Espace disponible",
+    "serverTypeFilter": "Server type",
     "showFilters": "Montrer les filtres",
     "serverOwner": {
       "main": "Propriétaire du serveur",
@@ -244,7 +256,7 @@
     "view": "Voire les stats",
     "back": "Page d'accueil",
     "error": "Error while fetching: {{ error }}",
-    "toggleAdminPanel": "Show admin panel",
+    "toggleAdminMode": "Enable server-admin mode",
     "profileImage": "Profile image",
     "currentEmblem": "Current emblem",
     "originDescription": "Profil de l'utilisateur",
@@ -264,6 +276,7 @@
     "searchGadget": "Recherche d'un accessoire",
     "missingGame": "Current player doesn't have this game",
     "adminPanel": {
+      "currentServer": "Current server",
       "main": "Admin panel",
       "susWeapons": "Sus weapons",
       "bannedServer": {
@@ -765,6 +778,12 @@
         "sixtoten": "6-10",
         "tenplus": "10+",
         "none": "None"
+      },
+      "serverTypeFilter": {
+        "official": "Officiel",
+        "ranked": "Ranked",
+        "unranked": "Non classé",
+        "private": "Privée"
       }
     },
     "battlelog": {
