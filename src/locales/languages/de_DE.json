@@ -15,6 +15,7 @@
   "chartHourFormat": "HH:mm, eee d LLL",
   "time": "{{date, date|p}}",
   "change": "{{change, change}}",
+  "hourChange": "{{change, hourChange}}",
   "intlNumber": "{{val, number}}",
   "ago": "vor",
   "export": "exportieren",
@@ -22,6 +23,7 @@
     "sort": "Select sort by",
     "chartType": "Select chart type",
     "platform": "Select platform",
+    "amountOfDays": "Select how many days",
     "game": "Select game name",
     "searchType": "Select search type",
     "toggleAds": "Toggle ads",
@@ -42,11 +44,19 @@
     "stats": "Spieler ist in bfban als Hacker markiert!",
     "platoon": "Hacker"
   },
+  "warn": {
+    "nameChange": "Warn: {{ amount }} namechanges!",
+    "vban": "Warn: {{ amount }} vbans!"
+  },
   "bfeac": {
     "main": "BFEAC"
   },
   "states": {
     "copy": "Link kopieren",
+    "copied": "Kopiert!"
+  },
+  "hiddenCopy": {
+    "copy": "{{msg}}",
     "copied": "Kopiert!"
   },
   "copyApiStates": {
@@ -220,9 +230,11 @@
     "showProject": "Go to project",
     "region": "Region",
     "map": "Karte",
+    "botAmount": "({{ botAmount }} bots)",
     "platform": "Plattform",
     "gamemode": "Spielmodi",
     "playerFilter": "Verfügbarer Speicherplatz",
+    "serverTypeFilter": "Server type",
     "showFilters": "Zeige Filter",
     "serverOwner": {
       "main": "Serverbesitzer",
@@ -244,7 +256,7 @@
     "view": "Statistiken ansehen",
     "back": "Hauptseite",
     "error": "Error while fetching: {{ error }}",
-    "toggleAdminPanel": "Show admin panel",
+    "toggleAdminMode": "Enable server-admin mode",
     "profileImage": "Profile image",
     "currentEmblem": "Current emblem",
     "originDescription": "Benutzerprofil",
@@ -264,6 +276,7 @@
     "searchGadget": "Suche nach Gadget",
     "missingGame": "Current player doesn't have this game",
     "adminPanel": {
+      "currentServer": "Current server",
       "main": "Admin panel",
       "susWeapons": "Sus weapons",
       "bannedServer": {
@@ -765,6 +778,12 @@
         "sixtoten": "6-10",
         "tenplus": "10+",
         "none": "nichts"
+      },
+      "serverTypeFilter": {
+        "official": "Offiziell",
+        "ranked": "Ranked",
+        "unranked": "nicht gelistet",
+        "private": "Rekrut"
       }
     },
     "battlelog": {
