@@ -34,8 +34,9 @@ function Servers(): React.ReactElement {
     retryDelay: 3,
     retryOnMount: false,
   });
-  document.title = `${t("siteFullName")} ${t("pageTitle.servers")} | ${gameId || t("notApplicable")
-    } | ${stats?.prefix || t("loading")}`;
+  document.title = `${t("siteFullName")} ${t("pageTitle.servers")} | ${
+    gameId || t("notApplicable")
+  } | ${stats?.prefix || t("loading")}`;
   return (
     <div>
       <div className="container">

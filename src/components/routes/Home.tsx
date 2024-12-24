@@ -66,7 +66,11 @@ function Home(): React.ReactElement {
               <div className={styles.searchAdSection}>
                 <AdsComponent
                   dataAdSlot="8911547346"
-                  style={{ display: "block", height: "60px", maxWidth: "1000px" }}
+                  style={{
+                    display: "block",
+                    height: "60px",
+                    maxWidth: "1000px",
+                  }}
                 />
               </div>
             )}
@@ -200,7 +204,7 @@ function Home(): React.ReactElement {
           </div>
           <div>
             <h2 style={{ margin: "24px 0 24px 24px" }}>
-              {t("home.otherServices.header")}
+              {t("home.otherService")}
             </h2>
             {otherServices.map((key, index) => {
               return (

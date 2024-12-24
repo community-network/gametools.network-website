@@ -34,6 +34,7 @@ import { ViewWeapons, WeaponGraph } from "./Weapons";
 export interface Views {
   isLoading: boolean;
   isError: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   errors: any;
   game: string;
   name: string;
@@ -51,7 +52,7 @@ export function ComponentHandling(
   if (props.isError) {
     if (
       typeof props?.errors == "object" &&
-      typeof props?.errors?.includes === 'function' &&
+      typeof props?.errors?.includes === "function" &&
       props?.errors?.includes("Player not found")
     ) {
       return t("notApplicable");
@@ -164,8 +165,9 @@ function Stats(): React.ReactElement {
     }
   }, [game, history]);
   const { t } = useTranslation();
-  document.title = `${t("siteFullName")} ${t("pageTitle.stats")} | ${playerGames?.userName || t("loading")
-    } | ${game || t("notApplicable")}`;
+  document.title = `${t("siteFullName")} ${t("pageTitle.stats")} | ${
+    playerGames?.userName || t("loading")
+  } | ${game || t("notApplicable")}`;
 
   return (
     <div className="container">
@@ -280,10 +282,10 @@ interface GameStatsItems {
   type: string;
   platform: string;
   children:
-  | boolean
-  | React.ReactChild
-  | React.ReactFragment
-  | React.ReactPortal;
+    | boolean
+    | React.ReactChild
+    | React.ReactFragment
+    | React.ReactPortal;
 }
 
 function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {

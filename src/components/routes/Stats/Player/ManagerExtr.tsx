@@ -45,7 +45,7 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
         {stats.sessions.map((key: MainStatsSession, index: number) => {
           const gamemodes = [];
           const stats = key.stats;
-          key.stats.gamemodes.forEach((key: SessionGamemode, index: number) => {
+          key.stats.gamemodes.forEach((key: SessionGamemode) => {
             if (key.score !== 0) {
               gamemodes.push(
                 t(`stats.playSession.stats.gamemodes.${key.name}`),
@@ -64,8 +64,9 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
                 )
               </h3>
               <Link
-                to={`/servers?game=${props.game
-                  }&search=${encodeURIComponent(key.serverName)}&platform=pc`}
+                to={`/servers?game=${
+                  props.game
+                }&search=${encodeURIComponent(key.serverName)}&platform=pc`}
               >
                 <p className={styles.description}>{key.serverName}</p>
               </Link>

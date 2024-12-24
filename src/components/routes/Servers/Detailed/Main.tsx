@@ -249,8 +249,9 @@ export function Results(props: Views): React.ReactElement {
         <p className={Mainstyles.description} style={{ marginTop: "6px" }}>
           {t("servers.permLink")}{" "}
           <CopyToClipboard
-            message={`https://gametools.network/servers/${props.game
-              }/name/${encodeURIComponent(stats?.prefix)}/pc`}
+            message={`https://gametools.network/servers/${
+              props.game
+            }/name/${encodeURIComponent(stats?.prefix)}/pc`}
             stateTranslation={"states"}
           />
         </p>
@@ -295,27 +296,27 @@ export function Results(props: Views): React.ReactElement {
             <div className="align">
               {loading
                 ? [...Array(4)].map((key, index) => (
-                  <MapRotationItem
-                    key={key}
-                    stats={{
-                      image: "",
-                      mapname: t("loading"),
-                      mode: t("notApplicable"),
-                      index: index,
-                    }}
-                    index={index}
-                  />
-                ))
+                    <MapRotationItem
+                      key={key}
+                      stats={{
+                        image: "",
+                        mapname: t("loading"),
+                        mode: t("notApplicable"),
+                        index: index,
+                      }}
+                      index={index}
+                    />
+                  ))
                 : stats?.rotation?.map(
-                  (key: ServerRotation, index: number) =>
-                    key && (
-                      <MapRotationItem
-                        key={index}
-                        stats={key}
-                        index={index}
-                      />
-                    ),
-                )}
+                    (key: ServerRotation, index: number) =>
+                      key && (
+                        <MapRotationItem
+                          key={index}
+                          stats={key}
+                          index={index}
+                        />
+                      ),
+                  )}
             </div>
           </>
         )}
@@ -370,24 +371,24 @@ export function Results(props: Views): React.ReactElement {
                   isError={props.error}
                 />
               ) : // older titles
-                stats?.ip && stats?.port ? (
-                  <BfListServerPlayerList
-                    game={props.game}
-                    serverIp={stats?.ip}
-                    serverPort={stats?.hostport || stats?.port}
+              stats?.ip && stats?.port ? (
+                <BfListServerPlayerList
+                  game={props.game}
+                  serverIp={stats?.ip}
+                  serverPort={stats?.hostport || stats?.port}
+                />
+              ) : (
+                props.game.includes("marne") && (
+                  <MarnePlayerList
+                    stats={stats}
+                    game={props?.game}
+                    gameId={stats?.gameId}
+                    isLoading={props.loading}
+                    isError={props.error}
                   />
-                ) : (
-                  props.game.includes("marne") && (
-                    <MarnePlayerList
-                      stats={stats}
-                      game={props?.game}
-                      gameId={stats?.gameId}
-                      isLoading={props.loading}
-                      isError={props.error}
-                    />
-                    // <Bf3ServerPlayerlist players={stats?.players} game="bf1" />
-                  )
-                )}
+                  // <Bf3ServerPlayerlist players={stats?.players} game="bf1" />
+                )
+              )}
             </>
           )}
           {/* bf4 */}
@@ -437,7 +438,7 @@ export function Results(props: Views): React.ReactElement {
                           value.values[0].readableSettingName,
                         )}
                       </b>
-                      : { }
+                      : {}
                       {value.values[1].readableSettingName}
                     </p>
                   </div>
@@ -548,10 +549,13 @@ export function Results(props: Views): React.ReactElement {
               >
                 {t(`servers.iframe.${element}`)}{" "}
                 <CopyToClipboard
-                  message={`<iframe title="Server playercount" src="https://widgets.gametools.network/servers/${element}/${props.game
-                    }/${widgetItem}/${widgetReturn}/${props.platform
-                    }?lng=${getLanguage()}" height="${widgetSize[index]
-                    }px" width="700px" frameborder="0" allowtransparency="true"></iframe>`}
+                  message={`<iframe title="Server playercount" src="https://widgets.gametools.network/servers/${element}/${
+                    props.game
+                  }/${widgetItem}/${widgetReturn}/${
+                    props.platform
+                  }?lng=${getLanguage()}" height="${
+                    widgetSize[index]
+                  }px" width="700px" frameborder="0" allowtransparency="true"></iframe>`}
                   stateTranslation={"servers.iframe.states"}
                 />
               </p>
@@ -560,9 +564,11 @@ export function Results(props: Views): React.ReactElement {
               ) : (
                 <iframe
                   title="Server playercount"
-                  src={`https://widgets.gametools.network/servers/${element}/${props.game
-                    }/${widgetItem}/${widgetReturn}/${props.platform
-                    }?lng=${getLanguage()}`}
+                  src={`https://widgets.gametools.network/servers/${element}/${
+                    props.game
+                  }/${widgetItem}/${widgetReturn}/${
+                    props.platform
+                  }?lng=${getLanguage()}`}
                   style={{
                     maxWidth: "700px",
                     backgroundColor: "transparent",

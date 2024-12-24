@@ -4,11 +4,7 @@ import * as React from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router";
 import { GametoolsApi, managerPlayers } from "../../../api/GametoolsApi";
-import {
-  PlatoonPlayer,
-  PlatoonStats,
-  ServerList,
-} from "../../../api/ReturnTypes";
+import { PlatoonPlayer, PlatoonStats } from "../../../api/ReturnTypes";
 import "../../../assets/scss/App.scss";
 import "../../../locales/config";
 import { getLanguage } from "../../../locales/config";
@@ -156,7 +152,7 @@ function Member(props: {
                 className={styles.memberImage}
                 src={sslFix(
                   item?.avatar ||
-                  "https://secure.download.dm.origin.com/production/avatar/prod/1/599/208x208.JPEG",
+                    "https://secure.download.dm.origin.com/production/avatar/prod/1/599/208x208.JPEG",
                 )}
                 loading="lazy"
               />
@@ -263,30 +259,30 @@ function Members(props: {
         <div>
           {props.loading
             ? [...Array(6)].map((key) => (
-              <Member
-                platform={props.platform}
-                item={{
-                  id: "loading",
-                  name: t("loading"),
-                  role: "notApplicable",
-                  avatar: "",
-                }}
-                key={key}
-              >
-                <>&nbsp;</>
-              </Member>
-            ))
+                <Member
+                  platform={props.platform}
+                  item={{
+                    id: "loading",
+                    name: t("loading"),
+                    role: "notApplicable",
+                    avatar: "",
+                  }}
+                  key={key}
+                >
+                  <>&nbsp;</>
+                </Member>
+              ))
             : members.map((key: PlatoonPlayer, index: number) => (
-              <Member platform={props.platform} item={key} key={index}>
-                <CheckBan
-                  playerId={key?.id}
-                  checkBanInfo={checkBanInfo}
-                  checkBanLoading={checkBanLoading}
-                  checkBanError={checkBanError}
-                  adminMode={adminMode}
-                />
-              </Member>
-            ))}
+                <Member platform={props.platform} item={key} key={index}>
+                  <CheckBan
+                    playerId={key?.id}
+                    checkBanInfo={checkBanInfo}
+                    checkBanLoading={checkBanLoading}
+                    checkBanError={checkBanError}
+                    adminMode={adminMode}
+                  />
+                </Member>
+              ))}
         </div>
       </Box>
     </div>
@@ -296,8 +292,9 @@ function Members(props: {
 function Results(props: Views): React.ReactElement {
   const { t } = useTranslation();
   const platoon = props.platoon;
-  document.title = `${t("siteFullName")} ${t("pageTitle.platoon")} | ${platoon?.name || t("loading")
-    }`;
+  document.title = `${t("siteFullName")} ${t("pageTitle.platoon")} | ${
+    platoon?.name || t("loading")
+  }`;
   const ConditionalLink = ({ children, to, condition }: ConLink) =>
     !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
 
@@ -375,7 +372,18 @@ function Results(props: Views): React.ReactElement {
                   </Trans>
                 </p>
               </div>
-              <ServerResults loading={props.loading} error={props.error} game={"bf1"} stats={{ "servers": platoon?.servers, cache: platoon?.cache, apiUrl: platoon?.apiUrl }} sortType="-prefix" mainPage={false} />
+              <ServerResults
+                loading={props.loading}
+                error={props.error}
+                game={"bf1"}
+                stats={{
+                  servers: platoon?.servers,
+                  cache: platoon?.cache,
+                  apiUrl: platoon?.apiUrl,
+                }}
+                sortType="-prefix"
+                mainPage={false}
+              />
             </div>
           </div>
         </div>

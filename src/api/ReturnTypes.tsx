@@ -266,7 +266,7 @@ export type ServerLeaderboardReturnV2 = {
   apiUrl: string;
   data: ServerLeaderboardListV2[];
   cache: boolean;
-}
+};
 
 export type ServerLeaderboardListV2 = {
   playerId: number;

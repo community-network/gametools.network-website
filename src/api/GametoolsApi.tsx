@@ -258,13 +258,16 @@ export class ApiProvider extends JsonClient {
   }: {
     game: string;
     playerId: number;
-    lang: string,
+    lang: string;
     platform: string;
-  }): Promise<{
-    [playerId: number]: ServerList;
-    apiUrl: string;
-    cache: boolean;
-  } | undefined> {
+  }): Promise<
+    | {
+        [playerId: number]: ServerList;
+        apiUrl: string;
+        cache: boolean;
+      }
+    | undefined
+  > {
     if (!newTitles.includes(game)) {
       return undefined;
     }
@@ -479,7 +482,7 @@ export class ApiProvider extends JsonClient {
     playernameFilter,
     amount,
     sort,
-    days
+    days,
   }: ServerLeaderboardV2): Promise<ServerLeaderboardReturn> {
     if (gameId == undefined) {
       return undefined;
@@ -489,7 +492,7 @@ export class ApiProvider extends JsonClient {
       player_name_filter: playernameFilter,
       amount: amount,
       sort: sort,
-      days: days
+      days: days,
     });
   }
 

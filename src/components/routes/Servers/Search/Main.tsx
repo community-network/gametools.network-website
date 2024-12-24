@@ -248,63 +248,107 @@ function Main(): React.ReactElement {
   const bf2042OwnerListQuery = query.get("bf2042_owner_list");
   const regionKey = gameName === "battlebit" ? "battlebitRegions" : "regions";
   React.useState(() => {
-    nameQuery !== null ? setSearchTerm(nameQuery) : null;
-    gameQuery !== null ? setGameName(gameQuery) : null;
-    regionQuery !== null ? setRegionFilter(regionQuery.split(",")) : null;
-    gamemodeQuery !== null ? setGamemodeFilter(gamemodeQuery.split(",")) : null;
-    serverTypeQuery !== null ? setServerTypeFilter(serverTypeQuery.split(",")) : null;
-    playerFilterQuery !== null
-      ? setPlayerFilter(playerFilterQuery.split(","))
-      : null;
-    mapQuery !== null ? setMapFilter(mapQuery.split(",")) : null;
-    isPasswordProtectedQuery !== null
-      ? setIsPasswordProtected(isPasswordProtectedQuery)
-      : null;
-    bf2042OwnerListQuery !== null
-      ? setbf2042OwnerList(JSON.parse(bf2042OwnerListQuery))
-      : null;
-    platformQuery !== null ? setPlatform(platformQuery) : null;
-    limitQuery !== null ? setLimit(limitQuery) : null;
-    typeQuery !== null ? setSearchType(typeQuery) : null;
+    if (nameQuery !== null) {
+      setSearchTerm(nameQuery);
+    }
+    if (gameQuery !== null) {
+      setGameName(gameQuery);
+    }
+    if (regionQuery !== null) {
+      setRegionFilter(regionQuery.split(","));
+    }
+    if (gamemodeQuery !== null) {
+      setGamemodeFilter(gamemodeQuery.split(","));
+    }
+    if (serverTypeQuery !== null) {
+      setServerTypeFilter(serverTypeQuery.split(","));
+    }
+    if (playerFilterQuery !== null) {
+      setPlayerFilter(playerFilterQuery.split(","));
+    }
+    if (mapQuery !== null) {
+      setMapFilter(mapQuery.split(","));
+    }
+    if (isPasswordProtectedQuery !== null) {
+      setIsPasswordProtected(isPasswordProtectedQuery);
+    }
+    if (bf2042OwnerListQuery !== null) {
+      setbf2042OwnerList(JSON.parse(bf2042OwnerListQuery));
+    }
+    if (platformQuery !== null) {
+      setPlatform(platformQuery);
+    }
+    if (limitQuery !== null) {
+      setLimit(limitQuery);
+    }
+    if (typeQuery !== null) {
+      setSearchType(typeQuery);
+    }
   });
 
   // change top to query
   React.useEffect(() => {
     const params = new URLSearchParams();
-    searchTerm.length > 0
-      ? params.append("search", searchTerm)
-      : params.delete("search");
-    gameName.length > 0
-      ? params.append("game", gameName)
-      : params.delete("game");
-    isPasswordProtected != ""
-      ? params.append("is_password_protected", isPasswordProtected.toString())
-      : params.delete("is_password_protected");
-    regionFilter.length > 0
-      ? params.append("region", regionFilter.join(","))
-      : params.delete("region");
-    gamemodeFilter.length > 0
-      ? params.append("gamemode", gamemodeFilter.join(","))
-      : params.delete("gamemode");
-    mapFilter.length > 0
-      ? params.append("map", mapFilter.join(","))
-      : params.delete("map");
-    playerFilter.length > 0
-      ? params.append("player_filter", playerFilter.join(","))
-      : params.delete("player_filter");
-    serverTypeFilter.length > 0
-      ? params.append("server_type", serverTypeFilter.join(","))
-      : params.delete("server_type");
-    bf2042OwnerList.length > 0
-      ? params.append("bf2042_owner_list", JSON.stringify(bf2042OwnerList))
-      : params.delete("bf2042_owner_list");
-    platform.length > 0
-      ? params.append("platform", platform)
-      : params.delete("platform");
-    limit.length > 0 ? params.append("limit", limit) : params.delete("limit");
-    searchType.length > 0
-      ? params.append("searchtype", searchType)
-      : params.delete("searchtype");
+    if (searchTerm.length > 0) {
+      params.append("search", searchTerm);
+    } else {
+      params.delete("search");
+    }
+    if (gameName.length > 0) {
+      params.append("game", gameName);
+    } else {
+      params.delete("game");
+    }
+    if (isPasswordProtected != "") {
+      params.append("is_password_protected", isPasswordProtected.toString());
+    } else {
+      params.delete("is_password_protected");
+    }
+    if (regionFilter.length > 0) {
+      params.append("region", regionFilter.join(","));
+    } else {
+      params.delete("region");
+    }
+    if (gamemodeFilter.length > 0) {
+      params.append("gamemode", gamemodeFilter.join(","));
+    } else {
+      params.delete("gamemode");
+    }
+    if (mapFilter.length > 0) {
+      params.append("map", mapFilter.join(","));
+    } else {
+      params.delete("map");
+    }
+    if (playerFilter.length > 0) {
+      params.append("player_filter", playerFilter.join(","));
+    } else {
+      params.delete("player_filter");
+    }
+    if (serverTypeFilter.length > 0) {
+      params.append("server_type", serverTypeFilter.join(","));
+    } else {
+      params.delete("server_type");
+    }
+    if (bf2042OwnerList.length > 0) {
+      params.append("bf2042_owner_list", JSON.stringify(bf2042OwnerList));
+    } else {
+      params.delete("bf2042_owner_list");
+    }
+    if (platform.length > 0) {
+      params.append("platform", platform);
+    } else {
+      params.delete("platform");
+    }
+    if (limit.length > 0) {
+      params.append("limit", limit);
+    } else {
+      params.delete("limit");
+    }
+    if (searchType.length > 0) {
+      params.append("searchtype", searchType);
+    } else {
+      params.delete("searchtype");
+    }
     history({ search: params.toString() }, { replace: true });
   }, [
     searchTerm,
@@ -386,13 +430,13 @@ function Main(): React.ReactElement {
   } = useQuery({
     queryKey: [
       "servers" +
-      gameName +
-      searchTerm +
-      searchType +
-      regionFilter +
-      platform +
-      limit +
-      JSON.stringify(extraQueries),
+        gameName +
+        searchTerm +
+        searchType +
+        regionFilter +
+        platform +
+        limit +
+        JSON.stringify(extraQueries),
     ],
     queryFn: () =>
       GametoolsApi.serverSearch({
@@ -904,12 +948,12 @@ export function ServerSearch(): React.ReactElement {
   } = useQuery({
     queryKey: [
       "servers" +
-      gameName +
-      searchTerm +
-      "servername" +
-      regionFilter +
-      platform +
-      "4",
+        gameName +
+        searchTerm +
+        "servername" +
+        regionFilter +
+        platform +
+        "4",
     ],
     queryFn: () =>
       GametoolsApi.serverSearch({

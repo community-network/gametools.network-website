@@ -161,7 +161,7 @@ function Players(props: {
                                     ) : (
                                       <h4 className={styles.serverPlayerName}>
                                         {key.platoon !== "" &&
-                                          key.platoon !== undefined
+                                        key.platoon !== undefined
                                           ? `[${key.platoon}]`
                                           : ""}
                                         {key.name}
@@ -254,23 +254,25 @@ function Players(props: {
                                   style={
                                     haveSeederPlayers
                                       ? {
-                                        marginTop: ".5rem",
-                                        width: "4rem",
-                                      }
+                                          marginTop: ".5rem",
+                                          width: "4rem",
+                                        }
                                       : {
-                                        marginTop: ".5rem",
-                                      }
+                                          marginTop: ".5rem",
+                                        }
                                   }
-                                  href={`https://gametools.network/stats/${playerToStatsPlatform[key.platform] ||
+                                  href={`https://gametools.network/stats/${
+                                    playerToStatsPlatform[key.platform] ||
                                     key.platform ||
                                     props.platform
-                                    }/${key?.player_id ? "playerid" : "name"}/${key?.player_id
+                                  }/${key?.player_id ? "playerid" : "name"}/${
+                                    key?.player_id
                                       ? key?.player_id
                                       : encodeURIComponent(key.name)
-                                    }?game=${props.game.replace(
-                                      "marne",
-                                      "",
-                                    )}&name=${encodeURIComponent(key.name)}`}
+                                  }?game=${props.game.replace(
+                                    "marne",
+                                    "",
+                                  )}&name=${encodeURIComponent(key.name)}`}
                                   target="_blank"
                                   rel="noreferrer"
                                 >
@@ -448,8 +450,9 @@ export function Bf3ServerPlayerlist(props: {
                         />
 
                         <Link
-                          to={`/stats/pc/playerid/${key.player_id
-                            }?game=bf3&name=${encodeURIComponent(key.name)}`}
+                          to={`/stats/pc/playerid/${
+                            key.player_id
+                          }?game=bf3&name=${encodeURIComponent(key.name)}`}
                         >
                           <h4
                             style={{

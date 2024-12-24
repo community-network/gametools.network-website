@@ -2,9 +2,10 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 
 // stop it from removing react import
+// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 React.version;
 
-const LanguageSelector = (): JSX.Element => {
+const LanguageSelector = (): React.ReactElement => {
   const { i18n } = useTranslation();
   const getLanguage = () => window.localStorage.i18nextLng;
 

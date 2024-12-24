@@ -88,9 +88,11 @@ export function OwnerInfo(props: {
       <h2>{title}</h2>
       <div className="align">
         <Link
-          to={`/stats/${serverToStatsPlatform[owner.platformId] || "pc"
-            }/playerid/${owner.id || owner.personaId}?game=${props.game
-            }&name=${encodeURIComponent(owner.name)}`}
+          to={`/stats/${
+            serverToStatsPlatform[owner.platformId] || "pc"
+          }/playerid/${owner.id || owner.personaId}?game=${
+            props.game
+          }&name=${encodeURIComponent(owner.name)}`}
         >
           <img
             alt={t("stats.profileImage")}
@@ -99,9 +101,11 @@ export function OwnerInfo(props: {
           />
         </Link>
         <Link
-          to={`/stats/${serverToStatsPlatform[owner.platformId] || "pc"
-            }/playerid/${owner.id || owner.personaId}?game=${props.game
-            }&name=${encodeURIComponent(owner.name)}`}
+          to={`/stats/${
+            serverToStatsPlatform[owner.platformId] || "pc"
+          }/playerid/${owner.id || owner.personaId}?game=${
+            props.game
+          }&name=${encodeURIComponent(owner.name)}`}
         >
           <div>
             <h2 className={Mainstyles.originName}>

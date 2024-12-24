@@ -139,8 +139,9 @@ export function Results(props: Views): React.ReactElement {
             <Box
               spacingStyle={props.spacingStyle}
               className="box_hover"
-              link={`/servers/${props.game}/${idElement}/${result}/${key.platform || "pc"
-                }${props.game == "bf2042" ? `?blazeid=${key.blazeGameId}` : ""}`}
+              link={`/servers/${props.game}/${idElement}/${result}/${
+                key.platform || "pc"
+              }${props.game == "bf2042" ? `?blazeid=${key.blazeGameId}` : ""}`}
               condition={true}
               key={index}
               innerStyle={props.spacingStyle}

@@ -97,7 +97,7 @@ const Burger = ({
   );
 };
 
-export function Navbar(): JSX.Element {
+export function Navbar(): React.ReactElement {
   const { t } = useTranslation();
   const homePage = useLocation().pathname === "/";
   const [width, setWidth] = useState(window.innerWidth);

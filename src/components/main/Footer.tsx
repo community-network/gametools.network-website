@@ -22,9 +22,10 @@ function FLink(props: FLinkProp) {
 }
 
 // stop it from removing react import
+// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 React.version;
 
-export function Footer(): JSX.Element {
+export function Footer(): React.ReactElement {
   const { t, i18n } = useTranslation();
   let i = 0;
   const footerLinks = [];
@@ -82,7 +83,7 @@ export function Footer(): JSX.Element {
             <div style={{ display: "flex", paddingLeft: ".2rem" }}>
               <label aria-label={t("stats.toggleAdminMode")} className="switch">
                 <input
-                  onChange={() => { }}
+                  onChange={() => {}}
                   checked={showAdminPanel}
                   onClick={() => {
                     setShowAdminPanel(!showAdminPanel);

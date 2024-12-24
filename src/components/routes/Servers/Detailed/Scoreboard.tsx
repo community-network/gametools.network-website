@@ -48,9 +48,11 @@ export function ServerScoreboard(
                                     />
                                   )}
                                   <Link
-                                    to={`/stats/${props.platform}/playerid/${key.player_id
-                                      }?game=${props.game
-                                      }&name=${encodeURIComponent(key.name)}`}
+                                    to={`/stats/${props.platform}/playerid/${
+                                      key.player_id
+                                    }?game=${
+                                      props.game
+                                    }&name=${encodeURIComponent(key.name)}`}
                                   >
                                     <>
                                       <h4
@@ -110,9 +112,11 @@ export function ServerScoreboard(
                                   style={{
                                     marginTop: ".5rem",
                                   }}
-                                  href={`https://gametools.network/stats/${props.platform
-                                    }/playerid/${key.player_id}?game=${props.game
-                                    }&name=${encodeURIComponent(key.name)}`}
+                                  href={`https://gametools.network/stats/${
+                                    props.platform
+                                  }/playerid/${key.player_id}?game=${
+                                    props.game
+                                  }&name=${encodeURIComponent(key.name)}`}
                                   target="_blank"
                                   rel="noreferrer"
                                 >
