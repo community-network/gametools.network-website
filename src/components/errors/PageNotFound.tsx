@@ -3,7 +3,9 @@ import { useTranslation } from "react-i18next";
 
 function PageNotFound(): React.ReactElement {
   const { t } = useTranslation();
-  document.title = `${t("siteFullName")} | ${t("404")}`;
+  React.useEffect(() => {
+    document.title = `${t("siteFullName")} | ${t("404")}`;
+  }, []);
   return (
     <div className="container">
       <h1>{t("pageNotFound.main")}</h1>

@@ -41,7 +41,7 @@ export type PlatoonStats = {
 };
 
 export type SusStats = {
-  weapons: MainStatsWeapon & SusWeapon[];
+  weapons: MainStatsWeapon & SusWeaponType[];
 };
 
 export type MainStats = {
@@ -188,7 +188,7 @@ export type MainStatsVehicle = {
   vehicleName: string;
 };
 
-export type SusWeapon = {
+export type SusWeaponType = {
   susReason: string;
 };
 

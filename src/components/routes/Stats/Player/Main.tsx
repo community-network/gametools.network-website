@@ -165,9 +165,11 @@ function Stats(): React.ReactElement {
     }
   }, [game, history]);
   const { t } = useTranslation();
-  document.title = `${t("siteFullName")} ${t("pageTitle.stats")} | ${
-    playerGames?.userName || t("loading")
-  } | ${game || t("notApplicable")}`;
+  React.useEffect(() => {
+    document.title = `${t("siteFullName")} ${t("pageTitle.stats")} | ${
+      playerGames?.userName || t("loading")
+    } | ${game || t("notApplicable")}`;
+  }, [platformGames, game]);
 
   return (
     <div className="container">

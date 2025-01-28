@@ -34,9 +34,11 @@ function Servers(): React.ReactElement {
     retryDelay: 3,
     retryOnMount: false,
   });
-  document.title = `${t("siteFullName")} ${t("pageTitle.servers")} | ${
-    gameId || t("notApplicable")
-  } | ${stats?.prefix || t("loading")}`;
+  React.useEffect(() => {
+    document.title = `${t("siteFullName")} ${t("pageTitle.servers")} | ${
+      gameId || t("notApplicable")
+    } | ${stats?.prefix || t("loading")}`;
+  }, [stats, gameId]);
   return (
     <div>
       <div className="container">

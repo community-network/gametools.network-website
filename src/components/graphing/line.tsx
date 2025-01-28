@@ -67,9 +67,9 @@ const borderPlugin = {
 };
 
 function LineGraph(props: GraphData): React.ReactElement {
+  const { t, i18n } = useTranslation();
+  const chartRef = React.useRef(null);
   if (!props.loading && !props.error) {
-    const { t, i18n } = useTranslation();
-    const chartRef = React.useRef(null);
     const time = props.timeStamps.map((e: string) => {
       const time = new Date(e);
       return time;
@@ -167,9 +167,9 @@ function LineGraph(props: GraphData): React.ReactElement {
 }
 
 function AllPlatformGraph(props: GraphData): React.ReactElement {
+  const { t } = useTranslation();
+  const chartRef = React.useRef(null);
   if (!props.loading && !props.error) {
-    const { t } = useTranslation();
-    const chartRef = React.useRef(null);
     const time = props.timeStamps.map((e: string) => {
       const time = new Date(e);
       return time;

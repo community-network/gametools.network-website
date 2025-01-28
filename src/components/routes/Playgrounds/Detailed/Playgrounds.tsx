@@ -31,9 +31,11 @@ function Playgrounds(): React.ReactElement {
         with_ownername: false,
       }),
   });
-  document.title = `${t("siteFullName")} ${t("pageTitle.playground")} | ${
-    stats?.originalPlayground?.settings?.configName?.value || t("loading")
-  }`;
+  React.useEffect(() => {
+    document.title = `${t("siteFullName")} ${t("pageTitle.playground")} | ${
+      stats?.originalPlayground?.settings?.configName?.value || t("loading")
+    }`;
+  }, [stats]);
 
   return (
     <div>

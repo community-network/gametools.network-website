@@ -292,9 +292,11 @@ function Members(props: {
 function Results(props: Views): React.ReactElement {
   const { t } = useTranslation();
   const platoon = props.platoon;
-  document.title = `${t("siteFullName")} ${t("pageTitle.platoon")} | ${
-    platoon?.name || t("loading")
-  }`;
+  React.useEffect(() => {
+    document.title = `${t("siteFullName")} ${t("pageTitle.platoon")} | ${
+      platoon?.name || t("loading")
+    }`;
+  }, [platoon]);
   const ConditionalLink = ({ children, to, condition }: ConLink) =>
     !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
 

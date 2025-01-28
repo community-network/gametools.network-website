@@ -3,7 +3,9 @@ import { useTranslation } from "react-i18next";
 
 function PrivacyPolicy(): React.ReactElement {
   const { t } = useTranslation();
-  document.title = `${t("siteFullName")} | ${t("footer.links.3.header")}`;
+  React.useEffect(() => {
+    document.title = `${t("siteFullName")} | ${t("footer.links.3.header")}`;
+  }, []);
 
   return (
     <div className="container">

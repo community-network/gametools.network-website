@@ -86,7 +86,9 @@ function Main(): React.ReactElement {
 
 function Search(): React.ReactElement {
   const { t } = useTranslation();
-  document.title = `${t("siteFullName")} | ${t("playerSearch.bfStats")}`;
+  React.useEffect(() => {
+    document.title = `${t("siteFullName")} | ${t("playerSearch.bfStats")}`;
+  }, []);
   const [searchTerm, setSearchTerm] = React.useState<string>("");
   const [platform, setPlatform] = useLocalStorage<string>(
     "statSearch_platform",

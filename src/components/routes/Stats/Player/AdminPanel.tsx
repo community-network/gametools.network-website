@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
-import { MainStatsWeapon, SusWeapon } from "../../../../api/ReturnTypes";
+import { MainStatsWeapon, SusWeaponType } from "../../../../api/ReturnTypes";
 import { newTitles } from "../../../../api/static";
 import "../../../../locales/config";
 import { CopyToClipboard } from "../../../functions/CopyToClipboard";
@@ -80,7 +80,7 @@ function SusWeapon(
   return (
     <>
       <h3>{t("stats.adminPanel.susWeapons")}</h3>
-      {weapons.map((key: SusWeapon & MainStatsWeapon, index: number) => {
+      {weapons.map((key: SusWeaponType & MainStatsWeapon, index: number) => {
         return (
           <div className="column" key={index}>
             <div className="row">

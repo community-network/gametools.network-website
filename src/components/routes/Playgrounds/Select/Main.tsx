@@ -53,7 +53,9 @@ function check_valid_shortcode(test_string: string): boolean {
 
 function Main(): React.ReactElement {
   const { t } = useTranslation();
-  document.title = `${t("siteFullName")} | ${t("getPlaygrounds.main")}`;
+  React.useEffect(() => {
+    document.title = `${t("siteFullName")} | ${t("getPlaygrounds.main")}`;
+  }, []);
   const [searchTerm, setSearchTerm] = React.useState<string>("");
   let getter = "playgroundid";
   let playground = "";

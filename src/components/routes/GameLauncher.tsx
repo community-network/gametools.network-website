@@ -8,9 +8,12 @@ import { BackButton } from "../Materials";
 function Launch(): React.ReactElement {
   const params = useParams();
   const { t } = useTranslation();
-  if (oldJoinGames.includes(params.gameid)) {
-    window.location.href = `${params.gameid}://${params.ip}:${params.port}`;
-  }
+
+  React.useEffect(() => {
+    if (oldJoinGames.includes(params.gameid)) {
+      window.location.href = `${params.gameid}://${params.ip}:${params.port}`;
+    }
+  }, [oldJoinGames, params]);
 
   return (
     <div className="container">
