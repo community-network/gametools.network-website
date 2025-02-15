@@ -177,7 +177,7 @@ function Stats(): React.ReactElement {
     queryKey: ["autocomplete" + platform + searchTerm],
     queryFn: () => {
       return GametoolsApi.searchPlayer({
-        userName: searchTerm,
+        userName: platform == "pc" ? searchTerm : "",
       });
     },
   });
