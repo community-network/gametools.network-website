@@ -252,9 +252,12 @@ export class ApiProvider extends JsonClient {
   }
 
   async searchPlayer({ userName }: { userName: string }): Promise<Player[]> {
-    return await this.getJsonMethod(`/bfglobal/search`, {
-      name: encodeURIComponent(userName),
-    });
+    if (userName?.length > 3) {
+      return await this.getJsonMethod(`/bfglobal/search`, {
+        name: encodeURIComponent(userName),
+      });
+    }
+    return [];
   }
 
   async currentServer({
