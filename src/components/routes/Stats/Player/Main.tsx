@@ -182,6 +182,15 @@ function Stats(): React.ReactElement {
     },
   });
 
+  const [active, setActive] = React.useState(0);
+  const keyDownHandler = event => {
+    if (event.keyCode === 38 && active > 0) {
+      setActive(active - 1);
+    } else if (event.keyCode === 40 && active < autocompleteResult.length - 1) {
+      setActive(active + 1);
+    }
+  }
+
   return (
     <div className="container">
       <BackButton text={t("stats.back")} location="/" />
@@ -197,6 +206,7 @@ function Stats(): React.ReactElement {
               onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
                 setSearchTerm(ev.target.value)
               }
+              onKeyDown={keyDownHandler}
             />
             <DropDownAutocomplete
               searchTerm={searchTerm}
@@ -205,7 +215,7 @@ function Stats(): React.ReactElement {
               callback={(val) => {
                 setSearchTerm(val);
               }}
-              style={{ marginTop: "200px", marginLeft: "20px" }}
+              style={{ top: "190px", marginLeft: "20px" }}
             />
             <select
               aria-label={t("ariaLabels.platform")}

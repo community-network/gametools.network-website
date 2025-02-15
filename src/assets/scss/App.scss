@@ -429,7 +429,7 @@ input:checked + .slider:before {
   flex-grow: 1;
   width: auto;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.1));
-  :hover {
+  &:hover {
     background: var(--color-m96-alt-base);
   }
 }
@@ -438,7 +438,7 @@ input:checked + .slider:before {
   @extend .buttonLink;
 
   background: var(--color-blue);
-  :hover {
+  &:hover {
     background: var(--color-blue-alt);
   }
 }
@@ -467,7 +467,7 @@ input:checked + .slider:before {
   font-weight: medium;
   font-style: normal;
   cursor: pointer;
-  :hover {
+  &:hover {
     background: var(--color-m96-base);
   }
 }
@@ -479,7 +479,7 @@ input:checked + .slider:before {
   width: auto;
   min-width: 158px;
   filter: none;
-  :hover {
+  &:hover {
     background: var(--color-blue-alt);
   }
 }
@@ -496,7 +496,7 @@ input:checked + .slider:before {
   @extend .bigButtonSecondary;
 
   background: var(--color-m96-base);
-  :hover {
+  &:hover {
     background: #313443;
   }
 }
@@ -517,7 +517,7 @@ input:checked + .slider:before {
   @extend .smallButton;
 
   background: var(--color-m96-base);
-  :hover {
+  &:hover {
     background: #313443;
   }
 }

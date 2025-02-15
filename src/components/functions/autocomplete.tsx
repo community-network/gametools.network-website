@@ -8,13 +8,13 @@ export function DropDownAutocomplete({
   searchTerm,
   style,
   searchBoxRef,
-}: {
+}: Readonly<{
   autocompleteResult: Player[];
   callback?: (arg0: string) => void;
   searchTerm: string;
   style?: React.CSSProperties;
   searchBoxRef: React.RefObject<HTMLInputElement>;
-}): React.ReactElement {
+}>): React.ReactElement {
   const [open, setOpen] = React.useState(false);
 
   const container: React.RefObject<HTMLDivElement> = React.useRef();
