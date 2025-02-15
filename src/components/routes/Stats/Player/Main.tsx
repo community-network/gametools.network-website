@@ -176,20 +176,12 @@ function Stats(): React.ReactElement {
   const { data: autocompleteResult } = useQuery({
     queryKey: ["autocomplete" + platform + searchTerm],
     queryFn: () => {
+      setActive(0);
       return GametoolsApi.searchPlayer({
         userName: platform == "pc" ? searchTerm : "",
       });
     },
   });
-
-  const [active, setActive] = React.useState(0);
-  const keyDownHandler = event => {
-    if (event.keyCode === 38 && active > 0) {
-      setActive(active - 1);
-    } else if (event.keyCode === 40 && active < autocompleteResult.length - 1) {
-      setActive(active + 1);
-    }
-  }
 
   return (
     <div className="container">
@@ -197,7 +189,6 @@ function Stats(): React.ReactElement {
       <form style={{ marginTop: "1.5rem" }}>
         <div className="align">
           <div className="align" style={{ flexWrap: "nowrap" }}>
-
             <input
               className="bf2042SearchBox"
               ref={searchBox}
@@ -206,7 +197,6 @@ function Stats(): React.ReactElement {
               onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
                 setSearchTerm(ev.target.value)
               }
-              onKeyDown={keyDownHandler}
             />
             <DropDownAutocomplete
               searchTerm={searchTerm}
