@@ -44,6 +44,13 @@ export type SusStats = {
   weapons: MainStatsWeapon & SusWeaponType[];
 };
 
+export type Player = {
+  personaId: number;
+  personaName: string;
+  userId: number;
+  platformId: number;
+};
+
 export type MainStats = {
   apiUrl: string;
   accuracy: number;

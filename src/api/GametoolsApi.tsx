@@ -4,6 +4,7 @@ import {
   MainStats,
   PlatoonSearchResult,
   PlatoonStats,
+  Player,
   PlaygroundInfoReturn,
   seederPlayersReturn,
   ServerLeaderboardReturn,
@@ -250,6 +251,12 @@ export class ApiProvider extends JsonClient {
     });
   }
 
+  async searchPlayer({ userName }: { userName: string }): Promise<Player[]> {
+    return await this.getJsonMethod(`/bfglobal/search`, {
+      name: encodeURIComponent(userName),
+    });
+  }
+
   async currentServer({
     game,
     playerId,
@@ -262,10 +269,10 @@ export class ApiProvider extends JsonClient {
     platform: string;
   }): Promise<
     | {
-        [playerId: number]: ServerList;
-        apiUrl: string;
-        cache: boolean;
-      }
+      [playerId: number]: ServerList;
+      apiUrl: string;
+      cache: boolean;
+    }
     | undefined
   > {
     if (!newTitles.includes(game)) {

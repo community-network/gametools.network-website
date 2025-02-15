@@ -30,6 +30,7 @@ import { ViewProgress } from "./Progress";
 import { VehicleGraph, ViewVehicles } from "./Vehicles";
 import { ViewEmblem, ViewOrigin } from "./ViewOrigin";
 import { ViewWeapons, WeaponGraph } from "./Weapons";
+import { DropDownAutocomplete } from "../../../functions/autocomplete";
 
 export interface Views {
   isLoading: boolean;
@@ -166,10 +167,20 @@ function Stats(): React.ReactElement {
   }, [game, history]);
   const { t } = useTranslation();
   React.useEffect(() => {
-    document.title = `${t("siteFullName")} ${t("pageTitle.stats")} | ${
-      playerGames?.userName || t("loading")
-    } | ${game || t("notApplicable")}`;
+    document.title = `${t("siteFullName")} ${t("pageTitle.stats")} | ${playerGames?.userName || t("loading")
+      } | ${game || t("notApplicable")}`;
   }, [platformGames, game]);
+
+  const searchBox: React.RefObject<HTMLInputElement> = React.useRef();
+
+  const { data: autocompleteResult } = useQuery({
+    queryKey: ["autocomplete" + platform + searchTerm],
+    queryFn: () => {
+      return GametoolsApi.searchPlayer({
+        userName: searchTerm,
+      });
+    },
+  });
 
   return (
     <div className="container">
@@ -177,15 +188,25 @@ function Stats(): React.ReactElement {
       <form style={{ marginTop: "1.5rem" }}>
         <div className="align">
           <div className="align" style={{ flexWrap: "nowrap" }}>
+
             <input
               className="bf2042SearchBox"
+              ref={searchBox}
               placeholder={t(`playerSearch.searchPlaceholder`)}
               value={searchTerm}
               onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
                 setSearchTerm(ev.target.value)
               }
             />
-
+            <DropDownAutocomplete
+              searchTerm={searchTerm}
+              searchBoxRef={searchBox}
+              autocompleteResult={autocompleteResult}
+              callback={(val) => {
+                setSearchTerm(val);
+              }}
+              style={{ marginTop: "200px", marginLeft: "20px" }}
+            />
             <select
               aria-label={t("ariaLabels.platform")}
               className="bf2042BigSelectSecondary"
@@ -284,10 +305,10 @@ interface GameStatsItems {
   type: string;
   platform: string;
   children:
-    | boolean
-    | React.ReactChild
-    | React.ReactFragment
-    | React.ReactPortal;
+  | boolean
+  | React.ReactChild
+  | React.ReactFragment
+  | React.ReactPortal;
 }
 
 function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {

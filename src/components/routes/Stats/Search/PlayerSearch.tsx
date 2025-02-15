@@ -9,6 +9,9 @@ import ErrorBoundary from "../../../functions/ErrorBoundary";
 import { BackButton, RightArrow } from "../../../Materials";
 import { Graphs } from "./Graphs";
 import * as styles from "./PlayerSearch.module.scss";
+import { useQuery } from "@tanstack/react-query";
+import { GametoolsApi } from "../../../../api/GametoolsApi";
+import { DropDownAutocomplete } from "../../../functions/autocomplete";
 
 export function StatSearch(): React.ReactElement {
   const { t } = useTranslation();
@@ -19,6 +22,15 @@ export function StatSearch(): React.ReactElement {
   );
   const searchBox: React.MutableRefObject<HTMLInputElement> = React.useRef();
 
+  const { data: autocompleteResult } = useQuery({
+    queryKey: ["autocomplete" + platform + searchTerm],
+    queryFn: () => {
+      return GametoolsApi.searchPlayer({
+        userName: searchTerm,
+      });
+    },
+  });
+
   return (
     <form
       style={{
@@ -27,6 +39,15 @@ export function StatSearch(): React.ReactElement {
     >
       <div className={styles.alignMain}>
         <div className={styles.alignSearch}>
+          <DropDownAutocomplete
+            searchTerm={searchTerm}
+            searchBoxRef={searchBox}
+            autocompleteResult={autocompleteResult}
+            callback={(val) => {
+              setSearchTerm(val);
+            }}
+            style={{ top: "56px", left: "-20px" }}
+          />
           <input
             className="homePlayerSearchBox"
             ref={searchBox}
@@ -95,7 +116,17 @@ function Search(): React.ReactElement {
     "pc",
   );
   const [game, setGame] = useLocalStorage<string>("stats_game", "bf1");
-  const searchBox: React.MutableRefObject<HTMLInputElement> = React.useRef();
+  const searchBox: React.RefObject<HTMLInputElement> = React.useRef();
+
+  const { data: autocompleteResult } = useQuery({
+    queryKey: ["autocomplete" + platform + searchTerm],
+    queryFn: () => {
+      return GametoolsApi.searchPlayer({
+        userName: searchTerm,
+      });
+    },
+  });
+
   return (
     <>
       <BackButton text={t("playerSearch.back")} location="/" />
@@ -105,6 +136,15 @@ function Search(): React.ReactElement {
       </div>
       <div className="align">
         <form style={{ position: "relative" }}>
+          <DropDownAutocomplete
+            searchTerm={searchTerm}
+            searchBoxRef={searchBox}
+            autocompleteResult={autocompleteResult}
+            callback={(val) => {
+              setSearchTerm(val);
+            }}
+            style={{ top: "56px" }}
+          />
           <input
             className="searchBox"
             ref={searchBox}

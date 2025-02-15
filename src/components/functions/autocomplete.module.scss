@@ -1,0 +1,27 @@
+.dropdown {
+    position: absolute;
+    border-radius: 8px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    background: #1e2028;
+    z-index: 5;
+}
+
+.list {
+    list-style: none;
+    padding: 3px 0px;
+    margin: 0;
+}
+
+.item {
+    padding: 4px 18px;
+    font-family: Manrope;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 150%;
+    color: var(--color-alt-text);
+    :hover {
+        color: var(--color-text);
+        background-color: rgba(0, 0, 0, 0.14);
+        cursor: pointer;
+    }
+}
