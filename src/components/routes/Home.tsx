@@ -206,7 +206,7 @@ function Home(): React.ReactElement {
           </div>
           <div>
             <h2 style={{ margin: "24px 0 24px 24px" }}>
-              {t("home.otherService")}
+              {t("home.otherServices.header")}
             </h2>
             {otherServices.map((key, index) => {
               return (
