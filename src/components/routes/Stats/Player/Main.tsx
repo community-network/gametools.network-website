@@ -176,7 +176,6 @@ function Stats(): React.ReactElement {
   const { data: autocompleteResult } = useQuery({
     queryKey: ["autocomplete" + platform + searchTerm],
     queryFn: () => {
-      setActive(0);
       return GametoolsApi.searchPlayer({
         userName: platform == "pc" ? searchTerm : "",
       });
@@ -189,6 +188,7 @@ function Stats(): React.ReactElement {
       <form style={{ marginTop: "1.5rem" }}>
         <div className="align">
           <div className="align" style={{ flexWrap: "nowrap" }}>
+
             <input
               className="bf2042SearchBox"
               ref={searchBox}
@@ -348,17 +348,17 @@ function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {
           >
             {props.children}
           </ViewStats>
-          {showAdminPanel && (
-            <AdminPanel
-              game={game}
-              isLoading={isLoading}
-              stats={stats}
-              errors={error}
-              isError={isError}
-              name={name}
-              platform={platform}
-            />
-          )}
+          {/* {showAdminPanel && ( */}
+          <AdminPanel
+            game={game}
+            isLoading={isLoading}
+            stats={stats}
+            errors={error}
+            isError={isError}
+            name={name}
+            platform={platform}
+          />
+          {/* )} */}
           <DetailedStats
             game={game}
             isLoading={isLoading}

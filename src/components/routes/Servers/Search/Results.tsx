@@ -14,6 +14,7 @@ import sslFix from "../../../functions/fixEaAssets";
 import { Box } from "../../../Materials";
 import { DynamicSort } from "../../Stats/Player/Main";
 import * as styles from "./Results.module.scss";
+import { TFunction } from "i18next";
 
 const handleChildElementClick = (e: { stopPropagation: () => void }) => {
   e.stopPropagation();
@@ -25,9 +26,9 @@ function LoadingServerInfo(
     spacingStyle: React.CSSProperties;
     serverText: string;
     style?: React.CSSProperties;
+    t: TFunction<"translation", undefined>
   }>,
 ) {
-  const { t } = useTranslation();
   return (
     <Box spacingStyle={props.spacingStyle}>
       <div className="alignServerImg">
@@ -50,7 +51,7 @@ function LoadingServerInfo(
             {props.serverText}
           </h3>
           <p style={{ color: "gray" }}>
-            0/0 - {t("notApplicable")} - {t("notApplicable")}
+            0/0 - {props.t("notApplicable")} - {props.t("notApplicable")}
           </p>
         </div>
       </div>
@@ -94,13 +95,13 @@ export function Results(props: Views): React.ReactElement {
             queueString = `[${queue}]`;
           }
           let spectatorAmount = "";
-          if (
-            adminMode &&
-            key?.inSpectator !== undefined &&
-            key?.inSpectator !== null
-          ) {
-            spectatorAmount = `(${key.inSpectator})`;
-          }
+          // if (
+          //   adminMode &&
+          //   key?.inSpectator !== undefined &&
+          //   key?.inSpectator !== null
+          // ) {
+          //   spectatorAmount = `(${key.inSpectator})`;
+          // }
           let region: string = undefined;
           if (props.game === "bf2042") {
             if (Object.keys(regionToTranslation).includes(key.region)) {
@@ -139,9 +140,8 @@ export function Results(props: Views): React.ReactElement {
             <Box
               spacingStyle={props.spacingStyle}
               className="box_hover"
-              link={`/servers/${props.game}/${idElement}/${result}/${
-                key.platform || "pc"
-              }${props.game == "bf2042" ? `?blazeid=${key.blazeGameId}` : ""}`}
+              link={`/servers/${props.game}/${idElement}/${result}/${key.platform || "pc"
+                }${props.game == "bf2042" ? `?blazeid=${key.blazeGameId}` : ""}`}
               condition={true}
               key={index}
               innerStyle={props.spacingStyle}
@@ -243,6 +243,7 @@ export function Results(props: Views): React.ReactElement {
         {[...Array(props.mainPage ? 4 : 3)].map((key) => (
           <LoadingServerInfo
             key={key}
+            t={t}
             spacingStyle={props.spacingStyle}
             serverText={t("loading")}
           />

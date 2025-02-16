@@ -83,10 +83,11 @@ export function Footer(): React.ReactElement {
             <div style={{ display: "flex", paddingLeft: ".2rem" }}>
               <label aria-label={t("stats.toggleAdminMode")} className="switch">
                 <input
-                  onChange={() => {}}
+                  onChange={() => { }}
                   checked={showAdminPanel}
                   onClick={() => {
                     setShowAdminPanel(!showAdminPanel);
+                    window.location.reload();
                   }}
                   type="checkbox"
                 />

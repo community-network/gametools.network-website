@@ -20,7 +20,7 @@ export function StatSearch(): React.ReactElement {
     "statSearch_platform",
     "pc",
   );
-  const searchBox: React.MutableRefObject<HTMLInputElement> = React.useRef();
+  const searchBox: React.RefObject<HTMLInputElement> = React.useRef();
 
   const { data: autocompleteResult } = useQuery({
     queryKey: ["autocomplete" + platform + searchTerm],
@@ -107,9 +107,6 @@ function Main(): React.ReactElement {
 
 function Search(): React.ReactElement {
   const { t } = useTranslation();
-  React.useEffect(() => {
-    document.title = `${t("siteFullName")} | ${t("playerSearch.bfStats")}`;
-  }, []);
   const [searchTerm, setSearchTerm] = React.useState<string>("");
   const [platform, setPlatform] = useLocalStorage<string>(
     "statSearch_platform",
@@ -126,6 +123,10 @@ function Search(): React.ReactElement {
       });
     },
   });
+
+  React.useEffect(() => {
+    document.title = `${t("siteFullName")} | ${t("playerSearch.bfStats")}`;
+  }, []);
 
   return (
     <>
