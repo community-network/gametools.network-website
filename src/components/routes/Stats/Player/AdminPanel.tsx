@@ -8,7 +8,7 @@ import "../../../../locales/config";
 import { CopyToClipboard } from "../../../functions/CopyToClipboard";
 import sslFix from "../../../functions/fixEaAssets";
 import { Box } from "../../../Materials";
-import { PlatformViews } from "./Main";
+import { ComponentHandling, PlatformViews } from "./Main";
 import * as styles from "./Main.module.scss";
 import { getLanguage } from "../../../../locales/config";
 import { Results } from "../../Servers/Search/Results";
@@ -185,23 +185,12 @@ export function AdminPanel(props: Readonly<PlatformViews>): React.ReactElement {
       stats?.otherNames?.usedNames?.length > 30 ||
       susCount > 0);
 
-  if (isError) {
+  if (isError || isLoading || stats === undefined) {
     return (
       <div className={styles.spacing}>
         <Box>
           <h3>{t("stats.adminPanel.main")}</h3>
-          <p>{t("stats.error", { error: error })}</p>
-        </Box>
-      </div>
-    );
-  }
-
-  if (isLoading || stats === undefined) {
-    return (
-      <div className={styles.spacing}>
-        <Box>
-          <h3>{t("stats.adminPanel.main")}</h3>
-          <p>{t("loading")}</p>
+          <p>{ComponentHandling(t, props)}</p>
         </Box>
       </div>
     );
@@ -314,7 +303,7 @@ function CurrentServer(props: Readonly<PlatformViews>) {
     error,
     data: stats,
   } = useQuery({
-    queryKey: ["managerCurrentServer" + props?.stats?.id],
+    queryKey: ["managerCurrentServer" + props?.game + props?.stats?.id],
     queryFn: () =>
       GametoolsApi.currentServer({
         game: props.game,
