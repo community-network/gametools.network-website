@@ -348,17 +348,17 @@ function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {
           >
             {props.children}
           </ViewStats>
-          {/* {showAdminPanel && ( */}
-          <AdminPanel
-            game={game}
-            isLoading={isLoading}
-            stats={stats}
-            errors={error}
-            isError={isError}
-            name={name}
-            platform={platform}
-          />
-          {/* )} */}
+          {showAdminPanel && (
+            <AdminPanel
+              game={game}
+              isLoading={isLoading}
+              stats={stats}
+              errors={error}
+              isError={isError}
+              name={name}
+              platform={platform}
+            />
+          )}
           <DetailedStats
             game={game}
             isLoading={isLoading}
