@@ -164,7 +164,7 @@
         "localUrl": "/platoons/"
       },
       "1": {
-        "header": "Portal Experience info",
+        "header": "Información sobre el Portal de Experiencia",
         "localUrl": "/playgrounds/"
       },
       "2": {
@@ -230,11 +230,11 @@
     "showProject": "Ir al proyecto",
     "region": "Región",
     "map": "Mapa",
-    "botAmount": "({{ botAmount }} bots)",
+    "botAmount": "({{ Cantidaddebots }} bots)",
     "platform": "plataforma",
     "gamemode": "Modo de juego",
     "playerFilter": "Espacio disponible",
-    "serverTypeFilter": "Server type",
+    "serverTypeFilter": "Tipo de servidor",
     "showFilters": "Mostrar filtros",
     "serverOwner": {
       "main": "Dueño del servidor",
@@ -267,13 +267,13 @@
     "otherPlatoons": "Otros pelotones",
     "weapons": "Armas",
     "vehicles": "Vehículos",
-    "gadgets": "Gadgets",
+    "gadgets": "Dispositivos",
     "weaponGraph": "Gráfico de armas",
     "vehicleGraph": "Gráfico de vehículos",
-    "gadgetGaph": "Gadget graph",
+    "gadgetGaph": "Gráfico del dispositivo",
     "searchWeapon": "Buscar por arma",
     "searchVehicle": "Buscar por vehículo",
-    "searchGadget": "Search for gadget",
+    "searchGadget": "Buscar dispositivo",
     "missingGame": "El jugador no posee este juego",
     "adminPanel": {
       "currentServer": "Servidor actual",
@@ -293,7 +293,7 @@
     "rows": {
       "weaponName": "Nombre del arma",
       "vehicleName": "Nombre del vehículo",
-      "gadgetName": "Gadget name",
+      "gadgetName": "Nombre del dispositivo",
       "type": "Tipo",
       "kills": "Bajas",
       "killsPerMinute": "KPM",
@@ -344,9 +344,9 @@
       "Operations": "Operaciones",
       "Teamdeathmatch": "Duelo por equipos",
       "Conquestlarge": "Gran conquista",
-      "Gungame free-for-all": "Gungame free-for-all",
-      "Gungame team": "Gungame team",
-      "Free-for-all": "Free-for-all",
+      "Gungame free-for-all": "Modo arsenal entrada-libre",
+      "Gungame team": "Equipo de Modo arsenal",
+      "Free-for-all": "Entrada-libre",
       "Infantry Conquest": "Conquista de infanteria",
       "Gunmaster": "Maestro de armas",
       "Capturetheflag": "Captura la bandera",
@@ -374,7 +374,7 @@
       "none": "El jugador no se encuentra en ningún pelotón",
       "noMain": "El jugador no representa a un pelotón como principal",
       "noDescription": "El pelotón no tiene descripción",
-      "emblem": "Platoon emblem"
+      "emblem": "Emblema del pelotón"
     },
     "playSession": {
       "main": "Sesiones de Juego",
@@ -556,7 +556,7 @@
       "main": "Gráficos del servidor",
       "map": "Mapa",
       "mode": "Modo de juego",
-      "amount": "Times gathered",
+      "amount": "Tiempo acumulado",
       "error": "Error al obtener los gráficos del servidor"
     },
     "notFound": {
@@ -596,10 +596,10 @@
         "Sabalan Pipeline": "Sabalan Pipeline"
       },
       "gamemodes": {
-        "CONQUESTLARGE": "Conquest Large",
+        "CONQUESTLARGE": "Gran conquista",
         "CONQUEST": "Conquista",
-        "CONQUESTASSAULTLARGE": "Conquest Assault Large",
-        "CONQUESTASSAULTSMALL": "Conquest Assault",
+        "CONQUESTASSAULTLARGE": "Gran conquista de asalto",
+        "CONQUESTASSAULTSMALL": "Conquista de asalto",
         "RUSH": "Rush",
         "SQRUSH": "Squad Rush",
         "SQDM": "Squad Deathmatch",
@@ -661,7 +661,7 @@
         "HIT": "Crosshair",
         "HOSTAGE": "Rescue",
         "TEAMDEATHMATCH": "Duelo por equipos",
-        "TURFWARLARGE": "Conquest Large",
+        "TURFWARLARGE": "Gran conquista",
         "TURFWARSMALL": "Conquista",
         "SQUADHEIST": "Squad Heist",
         "BOUNTYHUNTER": "Bounty Hunter",
