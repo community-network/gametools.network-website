@@ -15,6 +15,7 @@
   "chartHourFormat": "HH:mm, eee d LLL",
   "time": "{{date, date|p}}",
   "change": "{{change, change}}",
+  "hourChange": "{{change, hourChange}}",
   "intlNumber": "{{val, number}}",
   "ago": "hace",
   "export": "Exportar",
@@ -22,6 +23,7 @@
     "sort": "Select sort by",
     "chartType": "Select chart type",
     "platform": "Select platform",
+    "amountOfDays": "Select how many days",
     "game": "Select game name",
     "searchType": "Select search type",
     "toggleAds": "Toggle ads",
@@ -42,11 +44,19 @@
     "stats": "El jugador está marcado como hacker en bfban!",
     "platoon": "Hacker"
   },
+  "warn": {
+    "nameChange": "Warn: {{ amount }} namechanges!",
+    "vban": "Warn: {{ amount }} vbans!"
+  },
   "bfeac": {
     "main": "BFEAC"
   },
   "states": {
     "copy": "Copiar enlace",
+    "copied": "Copiado!"
+  },
+  "hiddenCopy": {
+    "copy": "{{msg}}",
     "copied": "Copiado!"
   },
   "copyApiStates": {
@@ -55,7 +65,7 @@
   },
   "navBar": {
     "help": "¿Necesitas ayuda?",
-    "serverManager": "Administrador del Servidor",
+    "serverManager": "Administrador de Servidor",
     "api": "API de Battlefield"
   },
   "games": {
@@ -217,12 +227,14 @@
       "playground": "Nombre de la experiencia"
     },
     "showMore": "Mostrar más",
-    "showProject": "Go to project",
+    "showProject": "Ir al proyecto",
     "region": "Región",
     "map": "Mapa",
+    "botAmount": "({{ botAmount }} bots)",
     "platform": "plataforma",
     "gamemode": "Modo de juego",
     "playerFilter": "Espacio disponible",
+    "serverTypeFilter": "Server type",
     "showFilters": "Mostrar filtros",
     "serverOwner": {
       "main": "Dueño del servidor",
@@ -244,9 +256,9 @@
     "view": "Ver estadísticas",
     "back": "Página principal",
     "error": "Error while fetching: {{ error }}",
-    "toggleAdminPanel": "Show admin panel",
-    "profileImage": "Profile image",
-    "currentEmblem": "Current emblem",
+    "toggleAdminMode": "Activar server-admin",
+    "profileImage": "Imagen de perfil",
+    "currentEmblem": "Emblema actual",
     "originDescription": "Perfil del usuario",
     "detailedName": "Estadísticas detalladas",
     "overview": "Vista global",
@@ -262,19 +274,20 @@
     "searchWeapon": "Buscar por arma",
     "searchVehicle": "Buscar por vehículo",
     "searchGadget": "Search for gadget",
-    "missingGame": "Current player doesn't have this game",
+    "missingGame": "El jugador no posee este juego",
     "adminPanel": {
-      "main": "Admin panel",
-      "susWeapons": "Sus weapons",
+      "currentServer": "Servidor actual",
+      "main": "Panel de Administración",
+      "susWeapons": "Armas sospechosas",
       "bannedServer": {
-        "main": "Banned in server"
+        "main": "Baneado en servidor"
       },
       "otherNames": {
-        "main": "Other names"
+        "main": "Otros nombres"
       },
       "vban": {
-        "group": "VBAN group",
-        "reason": "Reason"
+        "group": "Grupo VBAN",
+        "reason": "Motivo"
       }
     },
     "rows": {
@@ -289,7 +302,7 @@
       "accuracy": "Precisión",
       "headshots": "Tiros a la cabeza",
       "multiKills": "Multikills",
-      "hitVKills": "Hit/kill"
+      "hitVKills": "impacto/muerte"
     },
     "classes": {
       "main": "Clases",
@@ -298,7 +311,7 @@
       "Scout": "Explorador",
       "Assault": "Asalto",
       "Pilot": "Piloto",
-      "Tanker": "Tanker",
+      "Tanker": "Tanquista",
       "Cavalry": "Caballería",
       "amounts": {
         "kpm": "KPM",
@@ -310,32 +323,32 @@
     "progress": {
       "main": "Progreso del juego",
       "Campaign": "Campaña",
-      "Assignments": "Assignments",
+      "Assignments": "Asignaciones",
       "Medals": "Medallas",
-      "Ribbons": "Ribbons",
+      "Ribbons": "Condecoraciones",
       "Weapons": "Armas",
       "Vehicles": "Vehículos",
       "Kits": "Kits",
       "Codex": "Codex",
-      "Dog tags": "Dog tags"
+      "Dog tags": "Chapas militares"
     },
     "gamemodes": {
       "main": "Información del modo de juego",
       "percentage": "Victorias: {{percentage}}%",
-      "Frontlines": "Frontlines",
+      "Frontlines": "El Frente",
       "Domination": "Dominación",
-      "Shock operations": "Shock operations",
+      "Shock operations": "Operaciones de choque",
       "Rush": "Rush",
       "Conquest": "Conquista",
       "War pigeons": "Palomas de guerra",
       "Operations": "Operaciones",
       "Teamdeathmatch": "Duelo por equipos",
-      "Conquestlarge": "Conquest large",
+      "Conquestlarge": "Gran conquista",
       "Gungame free-for-all": "Gungame free-for-all",
       "Gungame team": "Gungame team",
       "Free-for-all": "Free-for-all",
-      "Infantry Conquest": "Infantry Conquest",
-      "Gunmaster": "Gunmaster",
+      "Infantry Conquest": "Conquista de infanteria",
+      "Gunmaster": "Maestro de armas",
       "Capturetheflag": "Captura la bandera",
       "Obliteration": "Obliteration",
       "Airsuperiority": "Superioridad aérea",
@@ -364,7 +377,7 @@
       "emblem": "Platoon emblem"
     },
     "playSession": {
-      "main": "Battlefield playsessions",
+      "main": "Sesiones de Juego",
       "detailed": "Hacemos un seguimiento de los servidores en los que has jugado, solo funciona en servidores que usen nuestro administrador.",
       "stats": {
         "kills": "Bajas",
@@ -374,9 +387,9 @@
         "timePlayedAs": "Tiempo jugado como",
         "score": "Puntuación",
         "gamemodes": {
-          "Frontlines": "Frontlines",
+          "Frontlines": "El Frente",
           "Domination": "Dominación",
-          "Breakthrough": "Shock Operations",
+          "Breakthrough": "Operaciones de choque",
           "Rush": "Rush",
           "BreakthroughLarge": "Operaciones",
           "Conquest": "Conquista",
@@ -389,7 +402,7 @@
       "rank": "Rango",
       "killDeath": "K/D",
       "killsPerMinute": "KPM",
-      "winPercent": "Win%",
+      "winPercent": "% de victorias",
       "bestClass": "Mejor clase",
       "accuracy": "Precisión",
       "timePlayed": "Tiempo jugado"
@@ -414,9 +427,9 @@
       "avengerKills": "Avenger kills",
       "saviorKills": "Saviour kills",
       "headShots": "Tiros a la cabeza",
-      "heals": "Heals",
-      "repairs": "Repairs",
-      "killAssists": "Kill assists",
+      "heals": "Curaciones",
+      "repairs": "Reparaciones",
+      "killAssists": "Asistencias",
       "winPercent": "Porcentaje de victorias",
       "quits": "Abandonos"
     },
@@ -441,7 +454,7 @@
     "back": "Volver a la búsqueda",
     "rotation": "Rotación de mapas del servidor",
     "settings": "Ajustes del servidor",
-    "permLink": "Permanent link (based on current name):",
+    "permLink": "Enlace permanente (basado en el nombre actual)",
     "platoon": {
       "main": "Pelotón del servidor",
       "none": "El servidor no está conectado a un pelotón"
@@ -463,7 +476,7 @@
     "joinme": {
       "main": "Joinme.click launcher",
       "view": "Ver en joinme.click",
-      "launch": "Game launched!",
+      "launch": "¡Juego iniciado!",
       "info": "El botón para unirse usa <0>https://joinme.click/</0> para unirte a la partida instala <0>joinme.click launcher</0> primero antes de usar los botones!",
       "smallinfo": "El botón de unirse a un servidor usa <0>https://joinme.click/</0> para unirse al juego.",
       "discord": "El launcher de joinme debe estar instalado para que funcione!",
@@ -471,7 +484,7 @@
     },
     "bfportal": {
       "main": "BFPortal",
-      "found": "Portal experience found on BfPortal.gg",
+      "found": "Portal de experiencia disponible en BfPortal.gg",
       "error": "Error de la Api para BfPortal.gg"
     },
     "iframe": {
@@ -486,10 +499,10 @@
       }
     },
     "leaderboard": {
-      "main": "Player leaderboard of this server",
+      "main": "Tabla de clasificación en este servidor",
       "info": "sólo disponible en servidores que usan manager-api",
       "none": "El servidor acaba de ser añadido o no usa manager-api",
-      "reset": "This leaderboard will reset the 1st day of the month",
+      "reset": "Esta clasificación se restablecerá el primer día del mes",
       "row": {
         "score": "Puntuación",
         "killDeath": "K/D",
@@ -530,14 +543,14 @@
       "BFFactionId_FactionRUS": "Imperio Ruso",
       "BFFactionId_FactionBOL": "Ejército Rojo",
       "BFFactionId_FactionWA": "Ejército Blanco",
-      "BFFactionId_FactionUKM": "Royal Marines",
+      "BFFactionId_FactionUKM": "Marina Real",
       "FactionUS": "Federación Rusa",
       "FactionRUS": "Estados Unidos de América",
       "teamOne": "Equipo 1",
       "teamTwo": "Equipo 2"
     },
     "portal": {
-      "main": "Portal experience"
+      "main": "Portal de experiencia"
     },
     "graph": {
       "main": "Gráficos del servidor",
@@ -611,26 +624,26 @@
         "Growhouse": "Growhouse",
         "Hollywood heights": "Hollywood heights",
         "Riptide": "Riptide",
-        "Ep. 10: legacy": "Ep. 10: legacy",
-        "Ep. 6: out of business": "Ep. 6: out of business",
-        "Ep. 1: back to school": "Ep. 1: back to school",
-        "Ep. 2: checking out": "Ep. 2: checking out",
-        "Ep. 8: sovereign land": "Ep. 8: sovereign land",
-        "Ep. 5: gauntlet": "Ep. 5: gauntlet",
-        "Ep. 3: gator bait": "Ep. 3: gator bait",
-        "Ep. 9: independence day": "Ep. 9: independence day",
-        "Ep. 7: glass houses": "Ep. 7: glass houses",
-        "Prologue": "Prologue",
-        "Ep. 4: case closed": "Ep. 4: case closed",
+        "Ep. 10: legacy": "Ep. 10: legado",
+        "Ep. 6: out of business": "Ep. 6: fuera del negocio",
+        "Ep. 1: back to school": "Ep. 1: volver a la escuela",
+        "Ep. 2: checking out": "Ep. 2: explorando",
+        "Ep. 8: sovereign land": "Ep. 8: tierra soberana",
+        "Ep. 5: gauntlet": "Ep. 5: guantlet",
+        "Ep. 3: gator bait": "Ep. 3: cebo",
+        "Ep. 9: independence day": "Ep. 9: día de la independencia",
+        "Ep. 7: glass houses": "Ep. 7: casas de cristal",
+        "Prologue": "Prólogo",
+        "Ep. 4: case closed": "Ep. 4: caso cerrado",
         "Black friday": "Black friday",
-        "Code blue": "Code blue",
+        "Code blue": "Código azul",
         "The beat": "The beat",
         "Backwoods": "Backwoods",
-        "Night job": "Night job",
-        "Night woods": "Night woods",
-        "The docks": "The docks",
+        "Night job": "Misión nocturna",
+        "Night woods": "Bosque nocturno",
+        "The docks": "El muelle",
         "Break pointe": "Break pointe",
-        "Museum": "Museum",
+        "Museum": "Museo",
         "Precinct 7": "Precinct 7",
         "Double cross": "Double cross",
         "Diversion": "Diversion",
@@ -681,56 +694,56 @@
     },
     "bf1": {
       "gamemodes": {
-        "airassault": "Air Assault",
+        "airassault": "Asalto Aéreo",
         "conquest": "Conquista",
         "domination": "Dominación",
-        "frontlines": "Frontlines",
+        "frontlines": "El Frente",
         "operations": "Operaciones",
         "rush": "Rush",
-        "shockoperations": "Shock Operations",
+        "shockoperations": "Operaciones de choque",
         "teamdeathmatch": "Duelo por equipos",
         "warpigeons": "Palomas de guerra"
       },
       "maps": {
-        "Sinai Desert": "Sinai Desert",
-        "Ballroom Blitz": "Ballroom Blitz",
-        "Empire's Edge": "Empire's Edge",
-        "St Quentin Scar": "St Quentin Scar",
-        "Prise de Tahure": "Prise de Tahure",
+        "Sinai Desert": "Desierto de Sinaí",
+        "Ballroom Blitz": "Asalto al salon de baile",
+        "Empire's Edge": "La frontera del Imperio",
+        "St Quentin Scar": "La herida de San Quentín",
+        "Prise de Tahure": "Toma de Tahure",
         "Monte Grappa": "Monte Grappa",
-        "Fao Fortress": "Fao Fortress",
-        "Giant's Shadow": "Giant's Shadow",
-        "Rupture": "Rupture",
+        "Fao Fortress": "Fortaleza de Fao",
+        "Giant's Shadow": "La sombra del gigante",
+        "Rupture": "Brecha",
         "Amiens": "Amiens",
         "Suez": "Suez",
-        "Fort De Vaux": "Fort De Vaux",
-        "Nivelle Nights": "Nivelle Nights",
+        "Fort De Vaux": "Fuerte de Vaux",
+        "Nivelle Nights": "Noches de Nivelle",
         "Soissons": "Soissons",
-        "Verdun Heights": "Verdun Heights",
+        "Verdun Heights": "Colinas de Verdún",
         "Albion": "Albion",
         "Tsaritsyn": "Tsaritsyn",
-        "Łupków Pass": "Łupków Pass",
+        "Łupków Pass": "Paso Lupków",
         "Achi Baba": "Achi Baba",
-        "Heligoland Bight": "Heligoland Bight",
+        "Heligoland Bight": "Bahía de Heligoland",
         "Caporetto": "Caporetto",
         "River Somme": "Río Somme",
         "Passchendaele": "Passchendaele",
         "Galicia": "Galitzia",
         "Volga River": "Río Volga",
-        "Brusilov Keep": "Brusilov Keep",
+        "Brusilov Keep": "Bastión de Brusilov",
         "Cape Helles": "Cabo Helles",
         "Zeebrugge": "Zeebrugge",
         "Argonne Forest": "Bosque de Argonne",
-        "Razor's Edge": "Razor's Edge",
-        "London Calling": "London Calling",
-        "London Calling: Scourge": "London Calling: Scourge"
+        "Razor's Edge": "Infierno en el cielo",
+        "London Calling": "Londres bajo asedio",
+        "London Calling: Scourge": "Londres bajo asedio: embestida"
       }
     },
     "bf2042": {
       "maps": {
         "Arica Harbor": "Arica Harbor",
         "Valparaiso": "Valparaiso",
-        "Battle of the Bulge": "Battle of the Bulge",
+        "Battle of the Bulge": "Batalla de las Ardenas",
         "El Alamein": "El Alamein",
         "Caspian Border": "Caspian Border",
         "Noshahr Canals": "Noshahr Canals",
@@ -739,10 +752,10 @@
         "Kaleidoscope": "Kaleidoscope",
         "Breakaway": "Breakaway",
         "Discarded": "Discarded",
-        "Manifest": "Manifest",
-        "Renewal": "Renewal",
-        "Exposure": "Exposure",
-        "Stranded": "Stranded",
+        "Manifest": "Manifestar",
+        "Renewal": "Renovación",
+        "Exposure": "Exposición",
+        "Stranded": "Varado",
         "Spearhead": "Spearhead",
         "Flashpoint": "Flashpoint",
         "Reclaimed": "Reclaimed",
@@ -756,7 +769,7 @@
         "Conquest": "Conquista",
         "Custom": "Custom",
         "Rush": "Rush",
-        "Conquest large": "Conquest large"
+        "Conquest large": "Gran conquista"
       }
     },
     "frostbite3": {
@@ -765,6 +778,12 @@
         "sixtoten": "6-10",
         "tenplus": "10+",
         "none": "Ninguno"
+      },
+      "serverTypeFilter": {
+        "official": "Oficial",
+        "ranked": "Clasificado",
+        "unranked": "No clasificado",
+        "private": "Cabo"
       }
     },
     "battlelog": {
@@ -777,11 +796,11 @@
       }
     },
     "modList": {
-      "main": "Mods",
-      "noMods": "This server has no mods",
-      "file": "file: ",
-      "version": "ver: ",
-      "noURl": "No link available"
+      "main": "Modificaciones",
+      "noMods": "Este servidor no tiene mods",
+      "file": "archivo:",
+      "version": "version:",
+      "noURl": "Enlace no disponible"
     }
   },
   "platoon": {
@@ -807,31 +826,31 @@
   },
   "getPlaygrounds": {
     "back": "Página principal",
-    "main": "Get Battlefield Portal Experience info",
-    "description": "Get information about a Battlefield Portal experience",
-    "getInfo": "Fill in a valid experience url, playground id or experience code",
+    "main": "Obten informacion sobre el Portal de Experiencia de Battlefield",
+    "description": "Obtener información sobre una experiencia en Battlefield Portal",
+    "getInfo": "Introduzca una url de experiencia válida, un id de playground o código de experiencia",
     "show": "Mostrar"
   },
   "playgrounds": {
     "back": "Volver a la búsqueda",
-    "rotation": "Experience map rotation",
+    "rotation": "Rotación del mapa de experiencia",
     "tags": "Experience tags",
-    "maxPlayers": "Max {{ amount }} players",
+    "maxPlayers": "Maxima {{ cantidad }} jugadores",
     "owner": {
       "main": "Creador de Experiencias",
-      "none": "The creator can only be retrieved if playground id is used",
+      "none": "El creador solo puede ser recuperado si se utiliza el id de playground",
       "unknown": "Nombre no encontrado"
     },
     "notFound": {
-      "main": "Experience not found",
-      "description": "We cant find the experience your looking for."
+      "main": "Experiencia no encontrada",
+      "description": "No se puedo encontrar la experiencia que estás buscando"
     },
     "types": {
       "main": "Tipo",
-      "portal-standard": "Standard experience",
-      "portal-featured": "Featured experience",
-      "portal-default": "Standard experience",
-      "portal-unranked": "Unranked",
+      "portal-standard": "Experiencia estándar",
+      "portal-featured": "Experiencia destacada",
+      "portal-default": "Experiencia estándar",
+      "portal-unranked": "No clasificado",
       "portal-spotlight": "In the spotlight"
     }
   },
