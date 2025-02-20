@@ -230,7 +230,7 @@
     "showProject": "Ir al proyecto",
     "region": "Región",
     "map": "Mapa",
-    "botAmount": "({{ Cantidaddebots }} bots)",
+    "botAmount": "({{ botAmount }} bots)",
     "platform": "plataforma",
     "gamemode": "Modo de juego",
     "playerFilter": "Espacio disponible",
@@ -835,7 +835,7 @@
     "back": "Volver a la búsqueda",
     "rotation": "Rotación del mapa de experiencia",
     "tags": "Experience tags",
-    "maxPlayers": "Maxima {{ cantidad }} jugadores",
+    "maxPlayers": "Maxima {{ amount }} jugadores",
     "owner": {
       "main": "Creador de Experiencias",
       "none": "El creador solo puede ser recuperado si se utiliza el id de playground",
