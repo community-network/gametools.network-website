@@ -17,10 +17,12 @@ import bflistLogo from "../../assets/icon/bflist-icon.svg";
 import bfbanLogo from "../../assets/icon/bfban-icon.png?sizes[]=24&format=webp&useResponsiveLoader=true";
 import bfportalLogo from "../../assets/icon/bfportal-icon.png?sizes[]=24&format=webp&useResponsiveLoader=true";
 import { Link } from "react-router";
-import AdsComponent, { AdsEnabled } from "../Ads";
+import AdsComponent from "../Ads";
 import * as styles from "./Home.module.scss";
+import { useLocalStorage } from "@uidotdev/usehooks";
 
 function Home(): React.ReactElement {
+  const [adsDisabled] = useLocalStorage("disable-ads", false);
   const { t, i18n } = useTranslation();
   React.useEffect(() => {
     document.title = t("pageTitle.main");
@@ -64,7 +66,7 @@ function Home(): React.ReactElement {
           <div className={styles.welcome}>
             <p className={styles.text}>{t("playerSearch.description")}</p>
             <StatSearch />
-            {AdsEnabled() && (
+            {!adsDisabled && (
               <div className={styles.searchAdSection}>
                 <AdsComponent
                   dataAdSlot="8911547346"
@@ -79,7 +81,7 @@ function Home(): React.ReactElement {
           </div>
         </div>
       </div>
-      {AdsEnabled() && (
+      {!adsDisabled && (
         <div className={styles.mobileAdSection}>
           <AdsComponent
             dataAdSlot="8911547346"

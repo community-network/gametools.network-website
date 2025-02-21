@@ -26,6 +26,7 @@ function FLink(props: FLinkProp) {
 React.version;
 
 export function Footer(): React.ReactElement {
+  const [adsDisabled] = useLocalStorage("disable-ads", false);
   const { t, i18n } = useTranslation();
   let i = 0;
   const footerLinks = [];
@@ -44,7 +45,7 @@ export function Footer(): React.ReactElement {
 
   return (
     <footer className={styles.background} role="contentinfo">
-      {AdsEnabled() && (
+      {!adsDisabled && (
         <div className={styles.adSection}>
           <AdsComponent
             dataAdSlot="8911547346"
