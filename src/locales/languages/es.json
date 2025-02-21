@@ -358,7 +358,7 @@
       "Carrierassaultsmall": "Asalto al portaaviones Pequeño",
       "Chainlink": "Red de enlaces",
       "Sqdm": "Duelo a muerte por patrullas",
-      "Conquestladder": "Conquest Ladder",
+      "Conquestladder": "Liga Conquista",
       "Squadobliteration": "Erradicación de patrulla",
       "table": {
         "firstRow": "Modos de juego",
@@ -764,8 +764,8 @@
         "Stadium": "Estadio"
       },
       "gamemodes": {
-        "Breakthrough Large": "Breakthrough Large",
-        "Breakthrough": "Breakthrough",
+        "Breakthrough Large": "Modo avance: Grande",
+        "Breakthrough": "Modo avance",
         "Conquest": "Conquista",
         "Custom": "Custom",
         "Rush": "Rush",
@@ -834,7 +834,7 @@
   "playgrounds": {
     "back": "Volver a la búsqueda",
     "rotation": "Rotación del mapa de experiencia",
-    "tags": "Experience tags",
+    "tags": "Etiquetas de experiencia",
     "maxPlayers": "Maxima {{ amount }} jugadores",
     "owner": {
       "main": "Creador de Experiencias",
