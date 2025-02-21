@@ -11,6 +11,7 @@ const LanguageSelector = (): React.ReactElement => {
 
   const changeLanguage = (event: { target: { value: string } }) => {
     i18n.changeLanguage(event.target.value);
+    window.location.reload();
   };
 
   return (
