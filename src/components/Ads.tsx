@@ -51,7 +51,6 @@ export const AdSwitch = (): React.ReactElement => {
           checked={value}
           onClick={() => {
             setValue(!value);
-            window.location.reload();
           }}
           type="checkbox"
         />
