@@ -88,7 +88,6 @@ export function Footer(): React.ReactElement {
                   checked={showAdminPanel}
                   onClick={() => {
                     setShowAdminPanel(!showAdminPanel);
-                    window.location.reload();
                   }}
                   type="checkbox"
                 />
