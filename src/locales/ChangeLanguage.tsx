@@ -7,8 +7,6 @@ React.version;
 
 const LanguageSelector = (): React.ReactElement => {
   const { i18n } = useTranslation();
-  const getLanguage = () => window.localStorage.i18nextLng;
-
   const changeLanguage = (event: { target: { value: string } }) => {
     i18n.changeLanguage(event.target.value);
   };
@@ -17,7 +15,7 @@ const LanguageSelector = (): React.ReactElement => {
     <select
       aria-label="Select language"
       className="selectSecondary"
-      value={getLanguage()}
+      value={i18n.language}
       onChange={changeLanguage}
     >
       <option value="en-US">English</option>

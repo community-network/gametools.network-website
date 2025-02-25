@@ -15,7 +15,7 @@ const AdsComponent = (props: {
   React.useEffect(() => {
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (_) {}
+    } catch (_) { }
   }, []);
 
   const [value] = useLocalStorage("disable-ads", false);
@@ -35,11 +35,6 @@ const AdsComponent = (props: {
   );
 };
 
-export const AdsEnabled = () => {
-  const [value] = useLocalStorage("disable-ads", false);
-  return !value;
-};
-
 export const AdSwitch = (): React.ReactElement => {
   const { t } = useTranslation();
   const [value, setValue] = useLocalStorage("disable-ads", false);
@@ -52,11 +47,10 @@ export const AdSwitch = (): React.ReactElement => {
     <div className="adv-ad" style={{ display: "flex", paddingLeft: ".3rem" }}>
       <label aria-label={t("ariaLabels.toggleAds")} className="switch">
         <input
-          onChange={() => {}}
+          onChange={() => { }}
           checked={value}
           onClick={() => {
             setValue(!value);
-            window.location.reload();
           }}
           type="checkbox"
         />
