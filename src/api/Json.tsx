@@ -1,13 +1,5 @@
 import "regenerator-runtime/runtime";
 
-const MODE = "prod";
-
-const endPoints = {
-  cors: "http://127.0.0.1:8787",
-  dev: "http://localhost:8787",
-  prod: "https://api.gametools.network",
-};
-
 export default class JsonClient {
   constructApiUrl(method: string, params: { [name: string]: string }): string {
     params = params || {};
@@ -16,7 +8,7 @@ export default class JsonClient {
       paramStr += s + "=" + params[s] + "&";
     }
     if (paramStr !== "") paramStr = "?" + paramStr;
-    const apiEP = endPoints[MODE];
+    const apiEP = process.env.gametools_endpoint;
     return apiEP + method + paramStr;
   }
   async fetchMethod(

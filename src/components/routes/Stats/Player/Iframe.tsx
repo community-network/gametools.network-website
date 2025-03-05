@@ -30,16 +30,15 @@ export function ViewIframe(props: Readonly<IframeViews>): React.ReactElement {
       <p className={styles.description} style={{ marginTop: "15px" }}>
         {t(`stats.iframe.info`)}{" "}
         <CopyToClipboard
-          message={`<iframe title="Stats widget" src="https://widgets.gametools.network/stats/${props.platform}/${props.getter}/${props.name}/${props.game}/${language}/50" height="380px" width="600px" frameborder="0" allowtransparency="true"></iframe>`}
+          message={`<iframe title="Stats widget" src="${process.env.widgets_gametools_endpoint}/stats/${props.platform}/${props.getter}/${props.name}/${props.game}/${language}/50" height="380px" width="600px" frameborder="0" allowtransparency="true"></iframe>`}
           stateTranslation={"servers.iframe.states"}
         />
       </p>
       <iframe
         style={{ maxWidth: "600px", backgroundColor: "transparent" }}
         title="Stats widget"
-        src={`https://widgets.gametools.network/stats/${props.platform}/${
-          props.getter
-        }/${encodeURIComponent(props.name)}/${props.game}/${language}/50`}
+        src={`${process.env.widgets_gametools_endpoint}/stats/${props.platform}/${props.getter
+          }/${encodeURIComponent(props.name)}/${props.game}/${language}/50`}
         height="380px"
         width="100%"
         frameBorder="0"

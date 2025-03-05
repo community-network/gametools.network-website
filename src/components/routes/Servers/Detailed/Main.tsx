@@ -548,7 +548,7 @@ export function Results(props: Views): React.ReactElement {
               >
                 {t(`servers.iframe.${element}`)}{" "}
                 <CopyToClipboard
-                  message={`<iframe title="Server playercount" src="https://widgets.gametools.network/servers/${element}/${props.game
+                  message={`<iframe title="Server playercount" src="${process.env.widgets_gametools_endpoint}/servers/${element}/${props.game
                     }/${widgetItem}/${widgetReturn}/${props.platform
                     }?lng=${getLanguage()}" height="${widgetSize[index]
                     }px" width="700px" frameborder="0" allowtransparency="true"></iframe>`}
@@ -560,7 +560,7 @@ export function Results(props: Views): React.ReactElement {
               ) : (
                 <iframe
                   title="Server playercount"
-                  src={`https://widgets.gametools.network/servers/${element}/${props.game
+                  src={`${process.env.widgets_gametools_endpoint}/servers/${element}/${props.game
                     }/${widgetItem}/${widgetReturn}/${props.platform
                     }?lng=${getLanguage()}`}
                   style={{
