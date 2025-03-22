@@ -37,8 +37,9 @@ export function ViewIframe(props: Readonly<IframeViews>): React.ReactElement {
       <iframe
         style={{ maxWidth: "600px", backgroundColor: "transparent" }}
         title="Stats widget"
-        src={`${process.env.widgets_gametools_endpoint}/stats/${props.platform}/${props.getter
-          }/${encodeURIComponent(props.name)}/${props.game}/${language}/50`}
+        src={`${process.env.widgets_gametools_endpoint}/stats/${props.platform}/${
+          props.getter
+        }/${encodeURIComponent(props.name)}/${props.game}/${language}/50`}
         height="380px"
         width="100%"
         frameBorder="0"

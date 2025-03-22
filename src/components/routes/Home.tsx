@@ -66,7 +66,7 @@ function Home(): React.ReactElement {
           <div className={styles.welcome}>
             <p className={styles.text}>{t("playerSearch.description")}</p>
             <StatSearch />
-            {!adsDisabled && (
+            {/* {!adsDisabled && (
               <div className={styles.searchAdSection}>
                 <AdsComponent
                   dataAdSlot="8911547346"
@@ -77,30 +77,30 @@ function Home(): React.ReactElement {
                   }}
                 />
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </div>
-      {!adsDisabled && (
+      {/* {!adsDisabled && (
         <div className={styles.mobileAdSection}>
           <AdsComponent
             dataAdSlot="8911547346"
             style={{ display: "block", height: "60px", maxWidth: "300px" }}
           />
         </div>
-      )}
+      )} */}
       <div className="container">
         <ServerSearch />
         <h2 style={{ margin: "24px 0 24px 24px" }}>
           {t("home.graphs.header")}
         </h2>
         <div>
-          <div className={styles.adBox}>
+          {/* <div className={styles.adBox}>
             <AdsComponent
               dataAdSlot="8911547346"
               style={{ display: "block", height: "300px" }}
             />
-          </div>
+          </div> */}
           <TotalGraphQuery />
         </div>
         <a

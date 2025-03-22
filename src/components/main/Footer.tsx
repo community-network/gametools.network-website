@@ -45,14 +45,14 @@ export function Footer(): React.ReactElement {
 
   return (
     <footer className={styles.background} role="contentinfo">
-      {!adsDisabled && (
+      {/* {!adsDisabled && (
         <div className={styles.adSection}>
           <AdsComponent
             dataAdSlot="8911547346"
             style={{ display: "block", height: "200px", maxWidth: "300px" }}
           />
         </div>
-      )}
+      )} */}
       <div className={styles.section}>
         <div className={styles.text}>
           <h3>{t("siteFullName")}</h3>
@@ -80,7 +80,7 @@ export function Footer(): React.ReactElement {
                 loading="lazy"
               />
             </a>
-            <AdSwitch />
+            {/* <AdSwitch /> */}
             <div style={{ display: "flex", paddingLeft: ".2rem" }}>
               <label aria-label={t("stats.toggleAdminMode")} className="switch">
                 <input

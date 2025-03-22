@@ -56,6 +56,7 @@ export default [
           caughtErrorsIgnorePattern: "^_",
         },
       ],
+      "prettier/prettier": ["error", { endOfLine: "auto" }],
     },
   },
 ];

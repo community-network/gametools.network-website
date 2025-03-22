@@ -1,5 +1,6 @@
 import JsonClient from "./Json";
 import {
+  BfvPlaygroundInfoReturn,
   DetailedServerInfo,
   MainStats,
   PlatoonSearchResult,
@@ -461,6 +462,18 @@ export class ApiProvider extends JsonClient {
     return await this.getJsonMethod(`/${game}/playground/`, {
       playgroundid: playground,
       ...defaultParams,
+    });
+  }
+
+  async bfvPlayground({
+    game,
+    playgroundId,
+  }: {
+    game: string;
+    playgroundId: string;
+  }): Promise<BfvPlaygroundInfoReturn> {
+    return await this.getJsonMethod(`/${game}/playground/`, {
+      playgroundid: playgroundId,
     });
   }
 

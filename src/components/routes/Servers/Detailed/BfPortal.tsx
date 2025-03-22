@@ -4,6 +4,71 @@ import { BfPortalApi } from "../../../../api/BfPortalApi";
 import bfportalIcon from "../../../../assets/icon/bfportal-icon.png?sizes[]=60&format=webp&useResponsiveLoader=true";
 import { useQuery } from "@tanstack/react-query";
 import * as styles from "./Main.module.scss";
+import { GametoolsApi } from "../../../../api/GametoolsApi";
+
+export function BfvPlaygroundInfo(props: {
+  playgroundId: string;
+  game: string;
+}): React.ReactElement {
+  const { t } = useTranslation();
+
+  const {
+    isLoading: loading,
+    isError: error,
+    data,
+  } = useQuery({
+    queryKey: ["playground" + "bfv" + props.playgroundId],
+    queryFn: () =>
+      GametoolsApi.bfvPlayground({
+        game: props.game,
+        playgroundId: props.playgroundId,
+      }),
+    retryDelay: 3,
+    retryOnMount: false,
+  });
+
+  if (loading) {
+    return (
+      <div className={styles.spacing}>
+        <h2>{t("servers.playground.main")}</h2>
+        <div className="alignW">
+          <div style={{ marginLeft: "0.5rem" }}>
+            <h2 className={styles.originName}>{t("loading")}</h2>
+            <h4 className={styles.originDescription}>{t("loading")}</h4>
+          </div>
+        </div>
+      </div>
+    );
+  } else if (error) {
+    return (
+      <div className={styles.spacing}>
+        <h2>{t("servers.playground.main")}</h2>
+        <div className="alignW">
+          <div style={{ marginLeft: "0.5rem" }}>
+            <h2 className={styles.originName}>{t("404")}</h2>
+            <h4 className={styles.originDescription}>{t("error")}</h4>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className={styles.spacing}>
+      <h2>{t("servers.playground.main")}</h2>
+      <div className="alignW">
+        <div style={{ marginLeft: "0.5rem" }}>
+          <h2 className={styles.originName}>
+            {data?.server?.serverdesc?.serverName}
+          </h2>
+          <h4 className={styles.originDescription}>
+            {data?.server?.serverdesc?.description?.text}
+          </h4>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export function BfPortalInfo(props: {
   experienceName: string;

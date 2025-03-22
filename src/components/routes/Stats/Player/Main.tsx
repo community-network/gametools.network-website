@@ -167,8 +167,9 @@ function Stats(): React.ReactElement {
   }, [game, history]);
   const { t } = useTranslation();
   React.useEffect(() => {
-    document.title = `${t("siteFullName")} ${t("pageTitle.stats")} | ${playerGames?.userName || t("loading")
-      } | ${game || t("notApplicable")}`;
+    document.title = `${t("siteFullName")} ${t("pageTitle.stats")} | ${
+      playerGames?.userName || t("loading")
+    } | ${game || t("notApplicable")}`;
   }, [platformGames, game]);
 
   const searchBox: React.RefObject<HTMLInputElement> = React.useRef();
@@ -188,7 +189,6 @@ function Stats(): React.ReactElement {
       <form style={{ marginTop: "1.5rem" }}>
         <div className="align">
           <div className="align" style={{ flexWrap: "nowrap" }}>
-
             <input
               className="bf2042SearchBox"
               ref={searchBox}
@@ -305,10 +305,10 @@ interface GameStatsItems {
   type: string;
   platform: string;
   children:
-  | boolean
-  | React.ReactChild
-  | React.ReactFragment
-  | React.ReactPortal;
+    | boolean
+    | React.ReactChild
+    | React.ReactFragment
+    | React.ReactPortal;
 }
 
 function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {

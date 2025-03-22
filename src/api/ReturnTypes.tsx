@@ -461,6 +461,8 @@ export type DetailedServerInfo = {
   smallmode: string;
   gameId?: string;
 
+  playgroundId?: string;
+
   blazeGameId?: number;
   teams?: ScoreTeamList[];
   players?: ScoreServerPlayer[];
@@ -746,4 +748,42 @@ export type StatsGraph = {
   timeStamps: string[];
   startTime: string;
   endTime: string;
+};
+
+export type BfvPlaygroundServerDesc = {
+  serverName: string;
+  description: { text: string };
+};
+
+export type BfvPlaygroundIntMutator = {
+  name: string;
+  className: string;
+  value: unknown;
+};
+
+export type BfvPlaygroundMapRotation = {
+  mapname: string;
+  mode: string;
+  gameSize: number;
+  rounds: number;
+  mapMode: string;
+  warmUpSize: number;
+  allowedSpectators: number;
+};
+
+export type BfvPlaygroundInfo = {
+  playgroundId: string;
+  ownerId: string;
+  bluePrintType: string;
+  configName: string;
+  checksum: string;
+  mapRotation: { mapRotation: BfvPlaygroundMapRotation[]; roundIndex: number };
+  infoMutators: BfvPlaygroundIntMutator[];
+  createdAt: { seconds: number };
+  updatedAt: { seconds: number };
+  serverdesc: BfvPlaygroundServerDesc;
+};
+
+export type BfvPlaygroundInfoReturn = {
+  server: BfvPlaygroundInfo;
 };
