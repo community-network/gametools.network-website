@@ -482,6 +482,9 @@
       "discord": "Чтобы это работало, необходимо установить joinme launcher!",
       "invite": "Joinme.click ссылка приглашения"
     },
+    "playground": {
+      "main": "Playground"
+    },
     "bfportal": {
       "main": "BFPortal",
       "found": "Portal experience найден на BfPortal.gg",
