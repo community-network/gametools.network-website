@@ -482,6 +482,9 @@
       "discord": "Der joinme Starter muss vorher installiert sein damit das funktioniert!",
       "invite": "Joinme.click Einladungslink"
     },
+    "playground": {
+      "main": "Playground"
+    },
     "bfportal": {
       "main": "BFPortal",
       "found": "Portal Erfahrung gefunden auf BfPortal.gg",
