@@ -482,6 +482,9 @@
       "discord": "加入我 启动器已安装 并且工作中!",
       "invite": "加入我 邀请链接"
     },
+    "playground": {
+      "main": "Playground"
+    },
     "bfportal": {
       "main": "BF门户网站",
       "found": "在 BfPortal.gg 上找到的门户体验",
