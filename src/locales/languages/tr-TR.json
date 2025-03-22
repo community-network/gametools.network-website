@@ -482,6 +482,9 @@
       "discord": "Bunun çalışması için bana katıl başlatıcısının yüklenmesi gerekiyor!",
       "invite": "Bana katıl. Davet URL'sini tıklayın"
     },
+    "playground": {
+      "main": "Playground"
+    },
     "bfportal": {
       "main": "BFPortal",
       "found": "BfPortal.gg adresinde bulunan portal deneyimi",
