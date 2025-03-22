@@ -482,6 +482,9 @@
       "discord": "El launcher de joinme debe estar instalado para que funcione!",
       "invite": "URL de invitación joinme.click"
     },
+    "playground": {
+      "main": "Playground"
+    },
     "bfportal": {
       "main": "BFPortal",
       "found": "Portal de experiencia disponible en BfPortal.gg",
