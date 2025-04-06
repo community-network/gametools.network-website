@@ -195,6 +195,9 @@ importers:
       webpack-cli:
         specifier: ^6.0.1
         version: 6.0.1(webpack-bundle-analyzer@4.10.2)(webpack-dev-server@5.2.0)(webpack@5.98.0)
+      webpack-dev-middleware:
+        specifier: ^7.4.2
+        version: 7.4.2(webpack@5.98.0)
       webpack-dev-server:
         specifier: ^5.2.0
         version: 5.2.0(webpack-cli@6.0.1)(webpack@5.98.0)
@@ -11320,7 +11323,7 @@ snapshots:
 
   wide-align@1.1.5:
     dependencies:
-      string-width: 1.0.2
+      string-width: 4.2.3
 
   wildcard@2.0.1: {}
 
