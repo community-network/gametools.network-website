@@ -14,6 +14,9 @@ module.exports = merge(commonConfig, {
       },
     ],
   },
+  cache: {
+    type: "filesystem",
+  },
   devServer: {
     allowedHosts: "all",
     hot: true, // enable HMR on the server
