@@ -634,7 +634,7 @@
         "Ep. 8: sovereign land": "Ep. 8: sovereign land",
         "Ep. 5: gauntlet": "Ep. 5: gauntlet",
         "Ep. 3: gator bait": "Ep. 3: gator bait",
-        "Ep. 9: independence day": "Ep. 9: independence day",
+        "Ep. 9: independence day": "独立日",
         "Ep. 7: glass houses": "Ep. 7: glass houses",
         "Prologue": "Prologue",
         "Ep. 4: case closed": "Ep. 4: case closed",
@@ -762,9 +762,9 @@
         "Spearhead": "急先锋",
         "Flashpoint": "闪点",
         "Reclaimed": "重生",
-        "Redacted": "Redacted",
-        "Haven": "Haven",
-        "Stadium": "Stadium"
+        "Redacted": "删隐地区",
+        "Haven": "避难所",
+        "Stadium": "体育馆"
       },
       "gamemodes": {
         "Breakthrough Large": "大型突破",
