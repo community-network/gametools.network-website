@@ -29,15 +29,14 @@ function Servers(): React.ReactElement {
         serverName: serverName,
         lang: getLanguage(),
         platform: platform,
-        with_ownername: false,
+        with_ownername: true,
       }),
     retryDelay: 3,
     retryOnMount: false,
   });
   React.useEffect(() => {
-    document.title = `${t("siteFullName")} ${t("pageTitle.servers")} | ${
-      gameId || t("notApplicable")
-    } | ${stats?.prefix || t("loading")}`;
+    document.title = `${t("siteFullName")} ${t("pageTitle.servers")} | ${gameId || t("notApplicable")
+      } | ${stats?.prefix || t("loading")}`;
   }, [stats, gameId]);
   return (
     <div>
