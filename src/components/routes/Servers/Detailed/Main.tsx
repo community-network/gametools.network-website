@@ -94,7 +94,7 @@ export function Results(props: Views): React.ReactElement {
   const { loading, error, stats } = props;
   const query = new URLSearchParams(useLocation().search);
   // const blazeIdQuery = query.get("blazeid");
-  if (props.game === "bf6" && stats !== undefined) {
+  if (props.game === "bf6" && stats !== undefined && query.has("name")) {
     stats.prefix = query.get("name");
   }
   const getLanguage = () => window.localStorage.i18nextLng;

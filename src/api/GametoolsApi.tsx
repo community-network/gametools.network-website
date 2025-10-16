@@ -439,10 +439,17 @@ export class ApiProvider extends JsonClient {
       });
       return result?.servers[0];
     }
-    return await this.getJsonMethod(`/${gameStuff[0]}/detailedserver/`, {
-      name: encodeURIComponent(serverName),
-      ...defaultParams,
-    });
+    const result = await this.getJsonMethod(
+      `/${gameStuff[0]}/detailedserver/`,
+      {
+        name: encodeURIComponent(serverName),
+        ...defaultParams,
+      },
+    );
+    if (game === "bf6" && getter === "name") {
+      result.prefix = serverName;
+    }
+    return result;
   }
 
   async playground({
