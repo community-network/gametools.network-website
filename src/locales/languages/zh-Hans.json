@@ -92,6 +92,7 @@
     "bfvmarne": "战地风云 5（marne.io）",
     "bfv": "战地5",
     "bf2042": "战地2042",
+    "bf6": "Battlefield 6",
     "bf2042portal": "Battlefield 2042 Portal",
     "battlebit": "BattleBit"
   },
@@ -773,6 +774,27 @@
         "Conquest": "小型征服",
         "Custom": "自定义",
         "Rush": "突袭",
+        "Conquest large": "大型征服"
+      }
+    },
+    "bf6": {
+      "maps": {
+        "Siege of Cairo": "Siege of Cairo",
+        "Empire State": "Empire State",
+        "Iberian Offensive": "Iberian Offensive",
+        "Liberation Peak": "Liberation Peak",
+        "Manhattan Bridge": "Manhattan Bridge",
+        "Operation Firestorm": "火線風暴行動",
+        "Saints Quarter": "Saints Quarter",
+        "New Sobek City": "New Sobek City",
+        "Mirak Valley": "Mirak Valley"
+      },
+      "gamemodes": {
+        "Breakthrough Large": "巨大突破",
+        "Breakthrough": "突破",
+        "Conquest": "征服",
+        "Custom": "自定义",
+        "Rush": "冲突",
         "Conquest large": "大型征服"
       }
     },
