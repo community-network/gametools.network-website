@@ -432,13 +432,13 @@ function Main(): React.ReactElement {
   } = useQuery({
     queryKey: [
       "servers" +
-        gameName +
-        searchTerm +
-        searchType +
-        regionFilter +
-        platform +
-        limit +
-        JSON.stringify(extraQueries),
+      gameName +
+      searchTerm +
+      searchType +
+      regionFilter +
+      platform +
+      limit +
+      JSON.stringify(extraQueries),
     ],
     queryFn: () =>
       GametoolsApi.serverSearch({
@@ -460,7 +460,7 @@ function Main(): React.ReactElement {
         <p className={styles.altDescription}>{t("serverSearch.description")}</p>
       </div>
       <div className="align">
-        {gameName === "bf2042" ? (
+        {["bf2042", "bf6"].includes(gameName) ? (
           <div className={styles.alignbf2042Search}>
             <input
               className="bf2042SearchBox"
@@ -540,7 +540,7 @@ function Main(): React.ReactElement {
             setPlatform(ev.target.value)
           }
         >
-          {gameName == "bf2042" && (
+          {["bf2042", "bf6"].includes(gameName) && (
             <option value="allPlatforms">{t("platforms.all")}</option>
           )}
           <option value="pc">{t("platforms.pc")}</option>
@@ -629,54 +629,55 @@ function Main(): React.ReactElement {
                 innerStyle={{ maxHeight: width >= 1000 ? "600px" : "300px" }}
               >
                 <div className={styles.serverPageFilters}>
-                  {frostbite3.includes(gameName) && gameName !== "bf2042" && (
-                    <div className={styles.serverPageFilterRow}>
-                      <h2 style={{ marginBottom: "0.4rem" }}>
-                        {t("serverSearch.serverTypeFilter")}
-                        <DropdownArrow
-                          item={"serverTypeFilter"}
-                          dropdownOpen={dropdownOpen}
-                          setDropdownOpen={setDropdownOpen}
-                        />
-                      </h2>
-                      {!dropdownOpen["serverTypeFilter"] &&
-                        Object.keys(
-                          t(`servers.${backendType}.serverTypeFilter`, {
-                            returnObjects: true,
-                          }),
-                        ).map((key, index) => {
-                          return (
-                            <CheckItem
-                              key={index}
-                              item={key}
-                              currrentItems={serverTypeFilter}
-                              callback={(e: {
-                                target: {
-                                  checked: boolean;
-                                  value: string;
-                                };
-                              }) => {
-                                if (e.target.checked) {
-                                  setServerTypeFilter((oldArray) => [
-                                    ...oldArray,
-                                    e.target.value,
-                                  ]);
-                                } else {
-                                  setServerTypeFilter((oldArray) => [
-                                    ...oldArray.filter(
-                                      (item) => item !== e.target.value,
-                                    ),
-                                  ]);
-                                }
-                              }}
-                              name={t(
-                                `servers.${backendType}.serverTypeFilter.${key}`,
-                              )}
-                            />
-                          );
-                        })}
-                    </div>
-                  )}
+                  {frostbite3.includes(gameName) &&
+                    !["bf2042", "bf6"].includes(gameName) && (
+                      <div className={styles.serverPageFilterRow}>
+                        <h2 style={{ marginBottom: "0.4rem" }}>
+                          {t("serverSearch.serverTypeFilter")}
+                          <DropdownArrow
+                            item={"serverTypeFilter"}
+                            dropdownOpen={dropdownOpen}
+                            setDropdownOpen={setDropdownOpen}
+                          />
+                        </h2>
+                        {!dropdownOpen["serverTypeFilter"] &&
+                          Object.keys(
+                            t(`servers.${backendType}.serverTypeFilter`, {
+                              returnObjects: true,
+                            }),
+                          ).map((key, index) => {
+                            return (
+                              <CheckItem
+                                key={index}
+                                item={key}
+                                currrentItems={serverTypeFilter}
+                                callback={(e: {
+                                  target: {
+                                    checked: boolean;
+                                    value: string;
+                                  };
+                                }) => {
+                                  if (e.target.checked) {
+                                    setServerTypeFilter((oldArray) => [
+                                      ...oldArray,
+                                      e.target.value,
+                                    ]);
+                                  } else {
+                                    setServerTypeFilter((oldArray) => [
+                                      ...oldArray.filter(
+                                        (item) => item !== e.target.value,
+                                      ),
+                                    ]);
+                                  }
+                                }}
+                                name={t(
+                                  `servers.${backendType}.serverTypeFilter.${key}`,
+                                )}
+                              />
+                            );
+                          })}
+                      </div>
+                    )}
                   {gameName !== "bf3" && gameName !== "bfh" && (
                     <div className={styles.serverPageFilterRow}>
                       <h2 style={{ marginBottom: "0.4rem" }}>
@@ -743,54 +744,55 @@ function Main(): React.ReactElement {
                       )}
                     </div>
                   )}
-                  {dice.includes(gameName) && gameName !== "bf2042" && (
-                    <div className={styles.serverPageFilterRow}>
-                      <h2 style={{ marginBottom: "0.4rem" }}>
-                        {t("serverSearch.playerFilter")}
-                        <DropdownArrow
-                          item={"playerFilter"}
-                          dropdownOpen={dropdownOpen}
-                          setDropdownOpen={setDropdownOpen}
-                        />
-                      </h2>
-                      {!dropdownOpen["playerFilter"] &&
-                        Object.keys(
-                          t(`servers.${backendType}.playerFilter`, {
-                            returnObjects: true,
-                          }),
-                        ).map((key, index) => {
-                          return (
-                            <CheckItem
-                              key={index}
-                              item={key}
-                              currrentItems={playerFilter}
-                              callback={(e: {
-                                target: {
-                                  checked: boolean;
-                                  value: string;
-                                };
-                              }) => {
-                                if (e.target.checked) {
-                                  setPlayerFilter((oldArray) => [
-                                    ...oldArray,
-                                    e.target.value,
-                                  ]);
-                                } else {
-                                  setPlayerFilter((oldArray) => [
-                                    ...oldArray.filter(
-                                      (item) => item !== e.target.value,
-                                    ),
-                                  ]);
-                                }
-                              }}
-                              name={t(
-                                `servers.${backendType}.playerFilter.${key}`,
-                              )}
-                            />
-                          );
-                        })}
-                    </div>
-                  )}
+                  {dice.includes(gameName) &&
+                    !["bf2042", "bf6"].includes(gameName) && (
+                      <div className={styles.serverPageFilterRow}>
+                        <h2 style={{ marginBottom: "0.4rem" }}>
+                          {t("serverSearch.playerFilter")}
+                          <DropdownArrow
+                            item={"playerFilter"}
+                            dropdownOpen={dropdownOpen}
+                            setDropdownOpen={setDropdownOpen}
+                          />
+                        </h2>
+                        {!dropdownOpen["playerFilter"] &&
+                          Object.keys(
+                            t(`servers.${backendType}.playerFilter`, {
+                              returnObjects: true,
+                            }),
+                          ).map((key, index) => {
+                            return (
+                              <CheckItem
+                                key={index}
+                                item={key}
+                                currrentItems={playerFilter}
+                                callback={(e: {
+                                  target: {
+                                    checked: boolean;
+                                    value: string;
+                                  };
+                                }) => {
+                                  if (e.target.checked) {
+                                    setPlayerFilter((oldArray) => [
+                                      ...oldArray,
+                                      e.target.value,
+                                    ]);
+                                  } else {
+                                    setPlayerFilter((oldArray) => [
+                                      ...oldArray.filter(
+                                        (item) => item !== e.target.value,
+                                      ),
+                                    ]);
+                                  }
+                                }}
+                                name={t(
+                                  `servers.${backendType}.playerFilter.${key}`,
+                                )}
+                              />
+                            );
+                          })}
+                      </div>
+                    )}
                   {dice.includes(gameName) &&
                     gameName !== "bf4" &&
                     gameName !== "bfv" && (
@@ -950,12 +952,12 @@ export function ServerSearch(): React.ReactElement {
   } = useQuery({
     queryKey: [
       "servers" +
-        gameName +
-        searchTerm +
-        "servername" +
-        regionFilter +
-        platform +
-        "4",
+      gameName +
+      searchTerm +
+      "servername" +
+      regionFilter +
+      platform +
+      "4",
     ],
     queryFn: () =>
       GametoolsApi.serverSearch({

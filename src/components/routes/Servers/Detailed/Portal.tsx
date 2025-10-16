@@ -2,12 +2,14 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { ServerInfoResult } from "../../../../api/ReturnTypes";
 import background from "../../../../assets/icon/portal.svg";
+import backgroundBf6 from "../../../../assets/icon/portal-bf6.svg";
 import "../../../../assets/scss/App.scss";
 import "../../../../locales/config";
 import * as styles from "./Main.module.scss";
 
 export function ServerConfig(
   props: Readonly<{
+    game: string;
     serverInfo: ServerInfoResult;
     isError: boolean;
     isLoading: boolean;
@@ -24,7 +26,7 @@ export function ServerConfig(
           <img
             className={styles.originProfile}
             alt={t("servers.bfportal.main")}
-            src={background}
+            src={props.game === "bf6" ? backgroundBf6 : background}
           />
           <div>
             <h2 className={styles.originName}>
@@ -36,7 +38,10 @@ export function ServerConfig(
       </div>
     );
   }
-  if (serverInfo?.configNameTranslation !== "") {
+  if (
+    serverInfo.configDescriptionTranslation !== undefined &&
+    serverInfo?.configNameTranslation !== ""
+  ) {
     return (
       <div className={styles.spacing}>
         <h2>{t("servers.portal.main")}</h2>
@@ -44,7 +49,7 @@ export function ServerConfig(
           <img
             className={styles.originProfile}
             alt={t("servers.bfportal.main")}
-            src={background}
+            src={props.game === "bf6" ? backgroundBf6 : background}
           />
           <div>
             <h2 className={styles.originName}>
@@ -65,7 +70,7 @@ export function ServerConfig(
         <img
           className={styles.originProfile}
           alt={t("servers.bfportal.main")}
-          src={background}
+          src={props.game === "bf6" ? backgroundBf6 : background}
         />
         <div>
           <h2 className={styles.originName}>{serverInfo?.configName}</h2>

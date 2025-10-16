@@ -103,7 +103,7 @@ export function Results(props: Views): React.ReactElement {
           //   spectatorAmount = `(${key.inSpectator})`;
           // }
           let region: string = undefined;
-          if (props.game === "bf2042") {
+          if (["bf2042", "bf6"].includes(props.game)) {
             if (Object.keys(regionToTranslation).includes(key.region)) {
               region = ` - ${t(`regions.${regionToTranslation[key.region]}`)}`;
             } else {
@@ -122,7 +122,7 @@ export function Results(props: Views): React.ReactElement {
           }
           let idElement = "gameid";
           let result = key.gameId;
-          if (props.game == "bf2042") {
+          if (["bf2042", "bf6"].includes(props.game)) {
             idElement = "serverid";
             result = key.serverId;
           } else if (props.game == "battlebit") {
@@ -140,9 +140,8 @@ export function Results(props: Views): React.ReactElement {
             <Box
               spacingStyle={props.spacingStyle}
               className="box_hover"
-              link={`/servers/${props.game}/${idElement}/${result}/${
-                key.platform || "pc"
-              }${props.game == "bf2042" ? `?blazeid=${key.blazeGameId}` : ""}`}
+              link={`/servers/${props.game}/${idElement}/${result}/${key.platform || "pc"
+                }${props.game == "bf2042" ? `?blazeid=${key.blazeGameId}` : ""}`}
               condition={true}
               key={index}
               innerStyle={props.spacingStyle}

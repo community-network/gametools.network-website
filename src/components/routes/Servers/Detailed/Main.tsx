@@ -200,7 +200,7 @@ export function Results(props: Views): React.ReactElement {
           )}
           {stats?.region ? (
             <>
-              {props.game == "bf2042" ? (
+              {["bf2042", "bf6"].includes(props.game) ? (
                 <p className={Mainstyles.description}>
                   {t(`regions.${stats.region?.toLowerCase()}`)}
                 </p>
@@ -249,9 +249,8 @@ export function Results(props: Views): React.ReactElement {
         <p className={Mainstyles.description} style={{ marginTop: "6px" }}>
           {t("servers.permLink")}{" "}
           <CopyToClipboard
-            message={`https://gametools.network/servers/${
-              props.game
-            }/name/${encodeURIComponent(stats?.prefix)}/pc`}
+            message={`https://gametools.network/servers/${props.game
+              }/name/${encodeURIComponent(stats?.prefix)}/pc`}
             stateTranslation={"states"}
           />
         </p>
@@ -296,27 +295,27 @@ export function Results(props: Views): React.ReactElement {
             <div className="align">
               {loading
                 ? [...Array(4)].map((key, index) => (
-                    <MapRotationItem
-                      key={key}
-                      stats={{
-                        image: "",
-                        mapname: t("loading"),
-                        mode: t("notApplicable"),
-                        index: index,
-                      }}
-                      index={index}
-                    />
-                  ))
+                  <MapRotationItem
+                    key={key}
+                    stats={{
+                      image: "",
+                      mapname: t("loading"),
+                      mode: t("notApplicable"),
+                      index: index,
+                    }}
+                    index={index}
+                  />
+                ))
                 : stats?.rotation?.map(
-                    (key: ServerRotation, index: number) =>
-                      key && (
-                        <MapRotationItem
-                          key={index}
-                          stats={key}
-                          index={index}
-                        />
-                      ),
-                  )}
+                  (key: ServerRotation, index: number) =>
+                    key && (
+                      <MapRotationItem
+                        key={index}
+                        stats={key}
+                        index={index}
+                      />
+                    ),
+                )}
             </div>
           </>
         )}
@@ -332,7 +331,7 @@ export function Results(props: Views): React.ReactElement {
                 />
               )}
               {(props.platform == "pc" || props.platform == "undefined") &&
-                (props.game === "bf2042" ? (
+                (["bf2042", "bf6"].includes(props.game) ? (
                   // {stats.blazeGameId !== undefined ? (
                   //   <ServerPlayerlist
                   //     game={props.game}
@@ -349,6 +348,7 @@ export function Results(props: Views): React.ReactElement {
                   //   <></>
                   // )}
                   <ServerConfig
+                    game={props.game}
                     serverInfo={stats?.serverInfo}
                     isError={error}
                     isLoading={loading}
@@ -371,24 +371,24 @@ export function Results(props: Views): React.ReactElement {
                   isError={props.error}
                 />
               ) : // older titles
-              stats?.ip && stats?.port ? (
-                <BfListServerPlayerList
-                  game={props.game}
-                  serverIp={stats?.ip}
-                  serverPort={stats?.hostport || stats?.port}
-                />
-              ) : (
-                props.game.includes("marne") && (
-                  <MarnePlayerList
-                    stats={stats}
-                    game={props?.game}
-                    gameId={stats?.gameId}
-                    isLoading={props.loading}
-                    isError={props.error}
+                stats?.ip && stats?.port ? (
+                  <BfListServerPlayerList
+                    game={props.game}
+                    serverIp={stats?.ip}
+                    serverPort={stats?.hostport || stats?.port}
                   />
-                  // <Bf3ServerPlayerlist players={stats?.players} game="bf1" />
-                )
-              )}
+                ) : (
+                  props.game.includes("marne") && (
+                    <MarnePlayerList
+                      stats={stats}
+                      game={props?.game}
+                      gameId={stats?.gameId}
+                      isLoading={props.loading}
+                      isError={props.error}
+                    />
+                    // <Bf3ServerPlayerlist players={stats?.players} game="bf1" />
+                  )
+                )}
             </>
           )}
           {/* bf4 */}
@@ -424,7 +424,7 @@ export function Results(props: Views): React.ReactElement {
               game={props.game}
             />
           )}
-          {props.game === "bf2042" ? (
+          {["bf2042", "bf6"].includes(props.game) ? (
             <>
               {stats?.configCreator !== null && (
                 <OwnerInfo
@@ -433,23 +433,31 @@ export function Results(props: Views): React.ReactElement {
                   title={t("servers.owner.experience")}
                 />
               )}
-              <BfPortalInfo experienceName={stats?.serverInfo.configName} />
-              <h2>{t("servers.settings")}</h2>
-              {stats?.settings.map((value: ServerSettings, index: number) => {
-                return (
-                  <div key={index}>
-                    <p className={styles.altDescription} key={index}>
-                      <b>
-                        {capitalizeFirstLetter(
-                          value.values[0].readableSettingName,
-                        )}
-                      </b>
-                      : {}
-                      {value.values[1].readableSettingName}
-                    </p>
-                  </div>
-                );
-              })}
+              {props.game === "bf2042" && (
+                <>
+                  <BfPortalInfo
+                    experienceName={stats?.serverInfo?.configName}
+                  />
+                  <h2>{t("servers.settings")}</h2>
+                  {stats?.settings.map(
+                    (value: ServerSettings, index: number) => {
+                      return (
+                        <div key={index}>
+                          <p className={styles.altDescription} key={index}>
+                            <b>
+                              {capitalizeFirstLetter(
+                                value.values[0].readableSettingName,
+                              )}
+                            </b>
+                            : { }
+                            {value.values[1].readableSettingName}
+                          </p>
+                        </div>
+                      );
+                    },
+                  )}
+                </>
+              )}
               <br></br>
             </>
           ) : (
@@ -555,13 +563,10 @@ export function Results(props: Views): React.ReactElement {
               >
                 {t(`servers.iframe.${element}`)}{" "}
                 <CopyToClipboard
-                  message={`<iframe title="Server playercount" src="${process.env.widgets_gametools_endpoint}/servers/${element}/${
-                    props.game
-                  }/${widgetItem}/${widgetReturn}/${
-                    props.platform
-                  }?lng=${getLanguage()}" height="${
-                    widgetSize[index]
-                  }px" width="700px" frameborder="0" allowtransparency="true"></iframe>`}
+                  message={`<iframe title="Server playercount" src="${process.env.widgets_gametools_endpoint}/servers/${element}/${props.game
+                    }/${widgetItem}/${widgetReturn}/${props.platform
+                    }?lng=${getLanguage()}" height="${widgetSize[index]
+                    }px" width="700px" frameborder="0" allowtransparency="true"></iframe>`}
                   stateTranslation={"servers.iframe.states"}
                 />
               </p>
@@ -570,11 +575,9 @@ export function Results(props: Views): React.ReactElement {
               ) : (
                 <iframe
                   title="Server playercount"
-                  src={`${process.env.widgets_gametools_endpoint}/servers/${element}/${
-                    props.game
-                  }/${widgetItem}/${widgetReturn}/${
-                    props.platform
-                  }?lng=${getLanguage()}`}
+                  src={`${process.env.widgets_gametools_endpoint}/servers/${element}/${props.game
+                    }/${widgetItem}/${widgetReturn}/${props.platform
+                    }?lng=${getLanguage()}`}
                   style={{
                     maxWidth: "700px",
                     backgroundColor: "transparent",

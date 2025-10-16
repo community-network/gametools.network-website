@@ -417,7 +417,10 @@ export class ApiProvider extends JsonClient {
         region: region,
       });
     }
-    if ((getter == "gameid" || getter == "serverid") && game == "bf2042") {
+    if (
+      (getter == "gameid" || getter == "serverid") &&
+      ["bf2042", "bf6"].includes(game)
+    ) {
       return await this.getJsonMethod(`/${gameStuff[0]}/detailedserver/`, {
         serverid: serverName,
         ...defaultParams,

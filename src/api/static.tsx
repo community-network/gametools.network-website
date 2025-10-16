@@ -15,6 +15,7 @@ export const supportedGames = [
   "bfv",
   "bfvmarne",
   "bf2042",
+  "bf6",
   "battlebit",
 ];
 
@@ -114,10 +115,10 @@ export const oldJoinGames = [
 ];
 export const frostbiteJoinGames = ["bf4", "bf1"];
 
-export const newGen = ["bf2042"];
-export const frostbite3 = ["bf4", "bf1", "bfv", "bf2042"];
+export const newGen = ["bf2042", "bf6"];
+export const frostbite3 = ["bf4", "bf1", "bfv", "bf2042", "bf6"];
 export const frostbite3Graph = ["bf4", "bf1", "bfv", "bf2042portal"];
-export const dice = ["bf3", "bf4", "bfh", "bf1", "bfv", "bf2042"];
+export const dice = ["bf3", "bf4", "bfh", "bf1", "bfv", "bf2042", "bf6"];
 export const diceGraph = ["bf3", "bf4", "bfh", "bf1", "bfv", "bf2042portal"];
 export const newTitles = ["bf1", "bfv"];
 export const gameGraphConvert = { bf2042portal: "bf2042" };
