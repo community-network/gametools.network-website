@@ -92,6 +92,7 @@
     "bfvmarne": "Battlefield 5 (marne.io)",
     "bfv": "Battlefield 5",
     "bf2042": "Battlefield 2042",
+    "bf6": "Battlefield 6",
     "bf2042portal": "Battlefield 2042 Portal",
     "battlebit": "BattleBit"
   },
@@ -766,6 +767,27 @@
         "Haven": "Haven",
         "Stadium": "Stadium",
         "Iwo Jima": "Iwo Jima"
+      },
+      "gamemodes": {
+        "Breakthrough Large": "Durchbruch Groß",
+        "Breakthrough": "Durchbruch",
+        "Conquest": "Eroberung",
+        "Custom": "Custom",
+        "Rush": "Rush",
+        "Conquest large": "große Eroberung"
+      }
+    },
+    "bf6": {
+      "maps": {
+        "Siege of Cairo": "Siege of Cairo",
+        "Empire State": "Empire State",
+        "Iberian Offensive": "Iberian Offensive",
+        "Liberation Peak": "Liberation Peak",
+        "Manhattan Bridge": "Manhattan Bridge",
+        "Operation Firestorm": "Operation Firestorm",
+        "Saints Quarter": "Saints Quarter",
+        "New Sobek City": "New Sobek City",
+        "Mirak Valley": "Mirak Valley"
       },
       "gamemodes": {
         "Breakthrough Large": "Durchbruch Groß",
