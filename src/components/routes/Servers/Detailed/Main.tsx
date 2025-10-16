@@ -35,6 +35,7 @@ import {
 } from "./Players";
 import { ServerConfig } from "./Portal";
 import { ServerScoreboard } from "./Scoreboard";
+import { useLocation } from "react-router";
 
 interface Views {
   loading: boolean;
@@ -91,8 +92,11 @@ function MapRotationItem(props: {
 
 export function Results(props: Views): React.ReactElement {
   const { loading, error, stats } = props;
-  // const query = new URLSearchParams(useLocation().search);
+  const query = new URLSearchParams(useLocation().search);
   // const blazeIdQuery = query.get("blazeid");
+  if (props.game === "bf6" && stats !== undefined) {
+    stats.prefix = query.get("name");
+  }
   const getLanguage = () => window.localStorage.i18nextLng;
   const numberFormat = new Intl.NumberFormat(getLanguage());
   const copyStates = {};
