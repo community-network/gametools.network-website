@@ -350,6 +350,7 @@ export function Results(props: Views): React.ReactElement {
                   <ServerConfig
                     game={props.game}
                     serverInfo={stats?.serverInfo}
+                    experienceId={stats?.experienceId}
                     isError={error}
                     isLoading={loading}
                   />

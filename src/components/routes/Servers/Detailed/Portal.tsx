@@ -11,6 +11,7 @@ export function ServerConfig(
   props: Readonly<{
     game: string;
     serverInfo: ServerInfoResult;
+    experienceId: string | undefined;
     isError: boolean;
     isLoading: boolean;
   }>,
@@ -73,7 +74,17 @@ export function ServerConfig(
           src={props.game === "bf6" ? backgroundBf6 : background}
         />
         <div>
-          <h2 className={styles.originName}>{serverInfo?.configName}</h2>
+          <h2 className={styles.originName}>
+            {props.experienceId ? (
+              <a
+                href={`https://www.ea.com/games/battlefield/battlefield-6/portal/buy/creation/${props.experienceId}`}
+              >
+                {serverInfo?.configName}
+              </a>
+            ) : (
+              serverInfo?.configName
+            )}
+          </h2>
           <h4
             className={styles.originDescription}
             style={{ maxWidth: "600px" }}

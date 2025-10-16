@@ -441,6 +441,7 @@ export type ServerInfo = {
 };
 
 export type DetailedServerInfo = {
+  experienceId?: string;
   apiUrl: string;
   hostport?: number;
   cache?: boolean;
