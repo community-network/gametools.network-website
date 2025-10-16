@@ -544,8 +544,12 @@ function Main(): React.ReactElement {
             <option value="allPlatforms">{t("platforms.all")}</option>
           )}
           <option value="pc">{t("platforms.pc")}</option>
-          <option value="ps4">{t("platforms.ps4")}</option>
-          <option value="xboxone">{t("platforms.xboxone")}</option>
+          {gameName !== "bf6" && (
+            <>
+              <option value="ps4">{t("platforms.ps4")}</option>
+              <option value="xboxone">{t("platforms.xboxone")}</option>
+            </>
+          )}
           {gameName == "bf2042" && (
             <>
               <option value="ps5">{t("platforms.ps5")}</option>
@@ -1060,7 +1064,7 @@ export function ServerSearch(): React.ReactElement {
                   target: { value: React.SetStateAction<string> };
                 }) => setPlatform(e.target.value)}
                 name={t("platforms.ps4")}
-                disabled={!frostbite3.includes(gameName)}
+                disabled={!frostbite3.includes(gameName) || gameName === "bf6"}
               />
               <InputItem
                 item={"xboxone"}
@@ -1069,7 +1073,7 @@ export function ServerSearch(): React.ReactElement {
                   target: { value: React.SetStateAction<string> };
                 }) => setPlatform(e.target.value)}
                 name={t("platforms.xboxone")}
-                disabled={!frostbite3.includes(gameName)}
+                disabled={!frostbite3.includes(gameName) || gameName === "bf6"}
               />
               <InputItem
                 item={"ps5"}
