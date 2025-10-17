@@ -134,6 +134,11 @@ export function Results(props: Views): React.ReactElement {
     widgetReturn = `${stats?.ip}:${stats?.port}`;
   }
 
+  if (props.game === "bf6") {
+    widgetItem = "serverid";
+    widgetReturn = `${stats?.serverId}`;
+  }
+
   let queue: number = undefined;
   queue = stats?.inQue;
   let queueString = "";
