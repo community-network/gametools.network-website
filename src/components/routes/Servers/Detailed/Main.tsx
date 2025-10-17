@@ -438,11 +438,9 @@ export function Results(props: Views): React.ReactElement {
                   title={t("servers.owner.experience")}
                 />
               )}
+              <BfPortalInfo experienceName={stats?.serverInfo?.configName} />
               {props.game === "bf2042" && (
                 <>
-                  <BfPortalInfo
-                    experienceName={stats?.serverInfo?.configName}
-                  />
                   <h2>{t("servers.settings")}</h2>
                   {stats?.settings.map(
                     (value: ServerSettings, index: number) => {
