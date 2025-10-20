@@ -191,7 +191,7 @@ function Main(): React.ReactElement {
   const [searchTerm, setSearchTerm] = React.useState<string>("");
   const [gameName, setGameNameItem] = useLocalStorage<string>(
     "serverSearch_game",
-    "bf2042",
+    "bf6",
   );
   const [platform, setPlatform] = useLocalStorage<string>(
     "serverSearch_platform",
@@ -939,7 +939,7 @@ export function ServerSearch(): React.ReactElement {
   const [searchTerm, setSearchTerm] = React.useState<string>("");
   const [gameName, setGameName] = useLocalStorage<string>(
     "serverSearch_game",
-    "bf2042",
+    "bf6",
   );
   const [platform, setPlatform] = useLocalStorage<string>(
     "serverSearch_platform",
