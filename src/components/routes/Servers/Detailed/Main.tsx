@@ -573,7 +573,7 @@ export function Results(props: Views): React.ReactElement {
                 <CopyToClipboard
                   message={`<iframe title="Server playercount" src="${process.env.widgets_gametools_endpoint}/servers/${element}/${props.game
                     }/${widgetItem}/${widgetReturn}/${props.platform
-                    }?lng=${getLanguage()}" height="${widgetSize[index]
+                    }?lng=${getLanguage()}${props.game === "bf6" ? "&name=" + stats?.prefix : ""}" height="${widgetSize[index]
                     }px" width="700px" frameborder="0" allowtransparency="true"></iframe>`}
                   stateTranslation={"servers.iframe.states"}
                 />
@@ -585,7 +585,7 @@ export function Results(props: Views): React.ReactElement {
                   title="Server playercount"
                   src={`${process.env.widgets_gametools_endpoint}/servers/${element}/${props.game
                     }/${widgetItem}/${widgetReturn}/${props.platform
-                    }?lng=${getLanguage()}`}
+                    }?lng=${getLanguage()}${props.game === "bf6" ? "&name=" + stats?.prefix : ""}`}
                   style={{
                     maxWidth: "700px",
                     backgroundColor: "transparent",
