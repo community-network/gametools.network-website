@@ -382,7 +382,7 @@ function Main(): React.ReactElement {
 
   const extraQueries = {};
   if (gamemodeFilter.length > 0) {
-    if (gameName === "bf2042") {
+    if (["bf2042", "bf6"].includes(gameName)) {
       extraQueries["modes"] = gamemodeFilter.join(";");
     }
     extraQueries["gamemode_filters"] = gamemodeFilter.join(",");
@@ -394,13 +394,13 @@ function Main(): React.ReactElement {
     extraQueries["server_type_filters"] = serverTypeFilter.join(",");
   }
   if (mapFilter.length > 0) {
-    if (gameName === "bf2042") {
+    if (["bf2042", "bf6"].includes(gameName)) {
       extraQueries["maps"] = mapFilter.join(";");
     }
     extraQueries["map_filters"] = mapFilter.join(",");
   }
   if (isPasswordProtected != "") {
-    if (gameName === "bf2042") {
+    if (["bf2042", "bf6"].includes(gameName)) {
       extraQueries["has_password"] = isPasswordProtected === "true";
     }
     extraQueries["is_password_protected"] = isPasswordProtected === "true";
