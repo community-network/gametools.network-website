@@ -24,13 +24,13 @@ export function ViewClasses(props: Readonly<Views>): React.ReactElement {
     );
   }
 
-  const classes = props.stats.classes;
+  const classes = props.stats?.classes;
   return (
     <div className={styles.spacing}>
       <Box>
         <>
           <h3>{t("stats.classes.main")}</h3>
-          {classes.map((key: MainStatsClasses, index: number) => {
+          {classes?.map((key: MainStatsClasses, index: number) => {
             return (
               <div key={index}>
                 <div className="column">

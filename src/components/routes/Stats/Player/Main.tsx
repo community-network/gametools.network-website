@@ -167,9 +167,8 @@ function Stats(): React.ReactElement {
   }, [game, history]);
   const { t } = useTranslation();
   React.useEffect(() => {
-    document.title = `${t("siteFullName")} ${t("pageTitle.stats")} | ${
-      playerGames?.userName || t("loading")
-    } | ${game || t("notApplicable")}`;
+    document.title = `${t("siteFullName")} ${t("pageTitle.stats")} | ${playerGames?.userName || t("loading")
+      } | ${game || t("notApplicable")}`;
   }, [platformGames, game]);
 
   const searchBox: React.RefObject<HTMLInputElement> = React.useRef();
@@ -305,10 +304,10 @@ interface GameStatsItems {
   type: string;
   platform: string;
   children:
-    | boolean
-    | React.ReactChild
-    | React.ReactFragment
-    | React.ReactPortal;
+  | boolean
+  | React.ReactChild
+  | React.ReactFragment
+  | React.ReactPortal;
 }
 
 function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {

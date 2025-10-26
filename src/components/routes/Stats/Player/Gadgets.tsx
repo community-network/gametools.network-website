@@ -17,10 +17,10 @@ export function ViewGadgets(props: Readonly<Views>): React.ReactElement {
   const numberFormat = new Intl.NumberFormat(getLanguage());
   let gadgets = [];
   if (!props.isLoading && !props.isError) {
-    gadgets = props.stats.gadgets.filter((item: { gadgetName: string }) => {
+    gadgets = props.stats.gadgets?.filter((item: { gadgetName: string }) => {
       return item.gadgetName.toLowerCase().includes(searchTerm.toLowerCase());
     });
-    gadgets = gadgets.sort(DynamicSort(sortType));
+    gadgets = gadgets?.sort(DynamicSort(sortType));
   }
   return (
     <div className={styles.spacing}>
@@ -51,7 +51,7 @@ export function ViewGadgets(props: Readonly<Views>): React.ReactElement {
           </select>
         </div>
       </div>
-      {gadgets.length > 0 ? (
+      {gadgets?.length > 0 ? (
         <Box>
           {gadgets.map((key: MainStatsGadgets, index: number) => {
             return (
@@ -106,9 +106,9 @@ export function GadgetGraph(props: Readonly<Views>): React.ReactElement {
   const names = [];
   const values = [];
   if (!props.isLoading && !props.isError) {
-    length = props.stats.gadgets.length;
+    length = props.stats.gadgets?.length;
     props.stats.gadgets
-      .sort(DynamicSort(`-${graphType}`))
+      ?.sort(DynamicSort(`-${graphType}`))
       .map((item: MainStatsGadgets) => {
         if (i >= begin && i < begin + 25) {
           names.push(item.gadgetName);
