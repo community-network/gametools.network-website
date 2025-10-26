@@ -282,11 +282,14 @@ export class ApiProvider extends JsonClient {
     if (!newTitles.includes(game)) {
       return undefined;
     }
-    return await this.getJsonMethod(`/manager/currentserver/${game}`, {
-      platform: platform,
-      lang: lang,
-      player_ids: playerId.toString(),
-    });
+    return await this.getJsonMethod(
+      `/manager/currentserver/${game?.replace("bfv", "bf5")}`,
+      {
+        platform: platform,
+        lang: lang,
+        player_ids: playerId.toString(),
+      },
+    );
   }
 
   async sus({

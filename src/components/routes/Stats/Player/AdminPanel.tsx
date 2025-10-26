@@ -281,15 +281,17 @@ export function AdminPanel(props: Readonly<PlatformViews>): React.ReactElement {
           stats={props.stats}
         />
       </Box>
-      <CurrentServer
-        platform={props.platform}
-        isLoading={false}
-        isError={false}
-        errors={undefined}
-        game={props.game}
-        name={props.name}
-        stats={props.stats}
-      />
+      {["bf1", "bfv"].includes(props.game) && (
+        <CurrentServer
+          platform={props.platform}
+          isLoading={false}
+          isError={false}
+          errors={undefined}
+          game={props.game}
+          name={props.name}
+          stats={props.stats}
+        />
+      )}
     </div>
   );
 }
