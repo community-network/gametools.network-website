@@ -19,7 +19,8 @@ const LanguageSelector = (): React.ReactElement => {
       onChange={changeLanguage}
     >
       <option value="en-US">English</option>
-      <option value="zh-CN">简体中文</option>
+      <option value="zh-CN">繁體中文</option>
+      <option value="zh-Hans">简体中文</option>
       <option value="tr-TR">Türkçe</option>
       <option value="ru-RU">Русский</option>
       <option value="de-DE">Deutsch</option>

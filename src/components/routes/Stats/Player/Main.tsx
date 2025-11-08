@@ -173,14 +173,14 @@ function Stats(): React.ReactElement {
 
   const searchBox: React.RefObject<HTMLInputElement> = React.useRef();
 
-  const { data: autocompleteResult } = useQuery({
-    queryKey: ["autocomplete" + platform + searchTerm],
-    queryFn: () => {
-      return GametoolsApi.searchPlayer({
-        userName: platform == "pc" ? searchTerm : "",
-      });
-    },
-  });
+  // const { data: autocompleteResult } = useQuery({
+  //   queryKey: ["autocomplete" + platform + searchTerm],
+  //   queryFn: () => {
+  //     return GametoolsApi.searchPlayer({
+  //       userName: platform == "pc" ? searchTerm : "",
+  //     });
+  //   },
+  // });
 
   return (
     <div className="container">
@@ -197,7 +197,7 @@ function Stats(): React.ReactElement {
                 setSearchTerm(ev.target.value)
               }
             />
-            <DropDownAutocomplete
+            {/* <DropDownAutocomplete
               searchTerm={searchTerm}
               searchBoxRef={searchBox}
               autocompleteResult={autocompleteResult}
@@ -205,7 +205,7 @@ function Stats(): React.ReactElement {
                 setSearchTerm(val);
               }}
               style={{ top: "190px", marginLeft: "20px" }}
-            />
+            /> */}
             <select
               aria-label={t("ariaLabels.platform")}
               className="bf2042BigSelectSecondary"

@@ -22,14 +22,14 @@ export function StatSearch(): React.ReactElement {
   );
   const searchBox: React.RefObject<HTMLInputElement> = React.useRef();
 
-  const { data: autocompleteResult } = useQuery({
-    queryKey: ["autocomplete" + platform + searchTerm],
-    queryFn: () => {
-      return GametoolsApi.searchPlayer({
-        userName: platform == "pc" ? searchTerm : "",
-      });
-    },
-  });
+  // const { data: autocompleteResult } = useQuery({
+  //   queryKey: ["autocomplete" + platform + searchTerm],
+  //   queryFn: () => {
+  //     return GametoolsApi.searchPlayer({
+  //       userName: platform == "pc" ? searchTerm : "",
+  //     });
+  //   },
+  // });
 
   return (
     <form
@@ -39,7 +39,7 @@ export function StatSearch(): React.ReactElement {
     >
       <div className={styles.alignMain}>
         <div className={styles.alignSearch}>
-          <DropDownAutocomplete
+          {/* <DropDownAutocomplete
             searchTerm={searchTerm}
             searchBoxRef={searchBox}
             autocompleteResult={autocompleteResult}
@@ -47,7 +47,7 @@ export function StatSearch(): React.ReactElement {
               setSearchTerm(val);
             }}
             style={{ top: "56px", left: "-20px" }}
-          />
+          /> */}
           <input
             className="homePlayerSearchBox"
             ref={searchBox}
@@ -115,14 +115,14 @@ function Search(): React.ReactElement {
   const [game, setGame] = useLocalStorage<string>("stats_game", "bf1");
   const searchBox: React.RefObject<HTMLInputElement> = React.useRef();
 
-  const { data: autocompleteResult } = useQuery({
-    queryKey: ["autocomplete" + platform + searchTerm],
-    queryFn: () => {
-      return GametoolsApi.searchPlayer({
-        userName: platform == "pc" ? searchTerm : "",
-      });
-    },
-  });
+  // const { data: autocompleteResult } = useQuery({
+  //   queryKey: ["autocomplete" + platform + searchTerm],
+  //   queryFn: () => {
+  //     return GametoolsApi.searchPlayer({
+  //       userName: platform == "pc" ? searchTerm : "",
+  //     });
+  //   },
+  // });
 
   React.useEffect(() => {
     document.title = `${t("siteFullName")} | ${t("playerSearch.bfStats")}`;
@@ -137,7 +137,7 @@ function Search(): React.ReactElement {
       </div>
       <div className="align">
         <form style={{ position: "relative" }}>
-          <DropDownAutocomplete
+          {/* <DropDownAutocomplete
             searchTerm={searchTerm}
             searchBoxRef={searchBox}
             autocompleteResult={autocompleteResult}
@@ -145,7 +145,7 @@ function Search(): React.ReactElement {
               setSearchTerm(val);
             }}
             style={{ top: "56px" }}
-          />
+          /> */}
           <input
             className="searchBox"
             ref={searchBox}
