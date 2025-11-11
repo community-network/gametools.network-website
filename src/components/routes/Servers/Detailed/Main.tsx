@@ -23,7 +23,6 @@ import sslFix from "../../../functions/fixEaAssets";
 import { ServerGraphQuery } from "../../../graphing/line";
 import { BfPortalInfo, BfvPlaygroundInfo } from "./BfPortal";
 import { ServerLeaderboard } from "./Leaderboard";
-import * as Mainstyles from "./Main.module.scss";
 import * as styles from "./Main.module.scss";
 import { OwnerInfo } from "./Owner";
 import { ServerPlatoon } from "./Platoon";
@@ -182,7 +181,7 @@ export function Results(props: Views): React.ReactElement {
                 ? t("servers.notFound.main")
                 : stats?.prefix}
           </h2>
-          <p className={Mainstyles.description} style={{ maxWidth: "1000px" }}>
+          <p className={styles.description} style={{ maxWidth: "1000px" }}>
             {loading
               ? t("notApplicable")
               : error
@@ -190,9 +189,9 @@ export function Results(props: Views): React.ReactElement {
                 : stats?.description}
           </p>
           {loading || error ? (
-            <p className={Mainstyles.description}>{t("notApplicable")}</p>
+            <p className={styles.description}>{t("notApplicable")}</p>
           ) : (
-            <p className={Mainstyles.description}>
+            <p className={styles.description}>
               {stats?.playerAmount}/{stats?.maxPlayers}
               {stats?.maxPlayerAmount}
               {queueString}
@@ -210,18 +209,18 @@ export function Results(props: Views): React.ReactElement {
           {stats?.region ? (
             <>
               {["bf2042", "bf6"].includes(props.game) ? (
-                <p className={Mainstyles.description}>
+                <p className={styles.description}>
                   {t(`regions.${stats.region?.toLowerCase()}`)}
                 </p>
               ) : props.game == "battlebit" ? (
-                <p className={Mainstyles.description}>
+                <p className={styles.description}>
                   {t(`battlebitRegions.${stats.region}`)} -{" "}
                   {i18n.exists(`stats.gamemodes.${stats.mode}`)
                     ? t(`stats.gamemodes.${stats.mode}`)
                     : stats.mode}
                 </p>
               ) : (
-                <p className={Mainstyles.description}>
+                <p className={styles.description}>
                   {t(`regions.${stats.region?.toLowerCase()}`)} /{" "}
                   {stats.country} -{" "}
                   {i18n.exists(`stats.gamemodes.${stats.mode}`)
@@ -231,10 +230,10 @@ export function Results(props: Views): React.ReactElement {
               )}
             </>
           ) : (
-            <p className={Mainstyles.description}>{stats?.mode}</p>
+            <p className={styles.description}>{stats?.mode}</p>
           )}
 
-          <p className={Mainstyles.description}>
+          <p className={styles.description}>
             {t(`games.${props.game}`)}
             {Object.keys(projects).includes(props.game) && (
               <>
@@ -255,7 +254,7 @@ export function Results(props: Views): React.ReactElement {
       </div>
       {/* older titles use ip address, thats static already */}
       {(dice.includes(props.game) || props.game.includes("marne")) && (
-        <p className={Mainstyles.description} style={{ marginTop: "6px" }}>
+        <p className={styles.description} style={{ marginTop: "6px" }}>
           {t("servers.permLink")}{" "}
           <CopyToClipboard
             message={`https://gametools.network/servers/${props.game
@@ -298,7 +297,7 @@ export function Results(props: Views): React.ReactElement {
       {(dice.includes(props.game) || props.game.includes("marne")) &&
         stats?.rotation?.length > 0 && (
           <>
-            <h2 className={Mainstyles.title} style={{ marginBottom: 0 }}>
+            <h2 className={styles.title} style={{ marginBottom: 0 }}>
               {t("servers.rotation")}
             </h2>
             <div className="align">
@@ -548,15 +547,13 @@ export function Results(props: Views): React.ReactElement {
               )}
             </div>
           ) : (
-            <p className={Mainstyles.description}>
-              {t("servers.modList.noMods")}
-            </p>
+            <p className={styles.description}>{t("servers.modList.noMods")}</p>
           )}
         </>
       )}
       <h2 style={{ marginBottom: 0 }}>{t("servers.iframe.main")}</h2>
       <p
-        className={Mainstyles.description}
+        className={styles.description}
         style={{ margin: 0, marginTop: "0.2rem" }}
       >
         {t("servers.iframe.info")}
@@ -565,10 +562,7 @@ export function Results(props: Views): React.ReactElement {
         {serverWidgetTypes.map((element, index) => {
           return (
             <div className="pageRow" key={index}>
-              <p
-                className={Mainstyles.description}
-                style={{ marginTop: "15px" }}
-              >
+              <p className={styles.description} style={{ marginTop: "15px" }}>
                 {t(`servers.iframe.${element}`)}{" "}
                 <CopyToClipboard
                   message={`<iframe title="Server playercount" src="${process.env.widgets_gametools_endpoint}/servers/${element}/${props.game
@@ -579,7 +573,7 @@ export function Results(props: Views): React.ReactElement {
                 />
               </p>
               {widgetReturn == undefined ? (
-                <p className={Mainstyles.description}>{t("loading")}</p>
+                <p className={styles.description}>{t("loading")}</p>
               ) : (
                 <iframe
                   title="Server playercount"
