@@ -25,14 +25,14 @@ function ExportButton(
     mainStats: { item: string; value: number | string | boolean }[];
     otherStats: {
       [string: string]:
-        | MainStatsPlatoon[]
-        | MainStatsSession[]
-        | MainStatsProgress[]
-        | MainStatsGamemode[]
-        | MainStatsClasses[]
-        | MainStatsVehicle[]
-        | MainStatsWeapon[]
-        | MainStatsGadgets[];
+      | MainStatsPlatoon[]
+      | MainStatsSession[]
+      | MainStatsProgress[]
+      | MainStatsGamemode[]
+      | MainStatsClasses[]
+      | MainStatsVehicle[]
+      | MainStatsWeapon[]
+      | MainStatsGadgets[];
     };
     game: string;
     stats: MainStats;
@@ -75,11 +75,7 @@ function ExportButton(
 }
 
 interface ViewStatsView extends Views {
-  children:
-    | boolean
-    | React.ReactChild
-    | React.ReactFragment
-    | React.ReactPortal;
+  children: boolean | React.ReactElement | React.ReactNode | React.ReactPortal;
 }
 
 export function ViewStats(props: Readonly<ViewStatsView>): React.ReactElement {
@@ -90,14 +86,14 @@ export function ViewStats(props: Readonly<ViewStatsView>): React.ReactElement {
   const mainStats: { item: string; value: number | string | boolean }[] = [];
   const otherStats: {
     [string: string]:
-      | MainStatsPlatoon[]
-      | MainStatsSession[]
-      | MainStatsProgress[]
-      | MainStatsGamemode[]
-      | MainStatsClasses[]
-      | MainStatsVehicle[]
-      | MainStatsWeapon[]
-      | MainStatsGadgets[];
+    | MainStatsPlatoon[]
+    | MainStatsSession[]
+    | MainStatsProgress[]
+    | MainStatsGamemode[]
+    | MainStatsClasses[]
+    | MainStatsVehicle[]
+    | MainStatsWeapon[]
+    | MainStatsGadgets[];
   } = {};
 
   if (props.isError || props.isLoading) {
@@ -136,9 +132,8 @@ export function ViewStats(props: Readonly<ViewStatsView>): React.ReactElement {
               <div
                 className={Mainstyles.bar}
                 style={{
-                  width: `${
-                    (100 * stats.currentRankProgress) / stats.totalRankProgress
-                  }%`,
+                  width: `${(100 * stats.currentRankProgress) / stats.totalRankProgress
+                    }%`,
                 }}
               ></div>
             </div>

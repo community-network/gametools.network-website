@@ -143,11 +143,7 @@ export interface ConLink {
 
 export function Box(props: {
   align?: string;
-  children:
-    | boolean
-    | React.ReactChild
-    | React.ReactFragment
-    | React.ReactPortal;
+  children: boolean | React.ReactElement | React.ReactNode | React.ReactPortal;
   className?: string;
   style?: React.CSSProperties;
   innerStyle?: React.CSSProperties;

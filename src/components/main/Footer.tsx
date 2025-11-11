@@ -3,7 +3,6 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "../../locales/ChangeLanguage";
 import "../../locales/config";
-import AdsComponent, { AdSwitch, AdsEnabled } from "../Ads";
 import * as styles from "./Footer.module.scss";
 
 interface FLinkProp {

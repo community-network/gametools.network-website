@@ -11,10 +11,10 @@ export function CheckBan(
     checkBanError: boolean;
     adminMode: boolean;
     children?:
-      | boolean
-      | React.ReactChild
-      | React.ReactFragment
-      | React.ReactPortal;
+    | boolean
+    | React.ReactElement
+    | React.ReactNode
+    | React.ReactPortal;
   }>,
 ) {
   const { t } = useTranslation();

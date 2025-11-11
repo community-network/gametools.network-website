@@ -31,6 +31,7 @@ import { VehicleGraph, ViewVehicles } from "./Vehicles";
 import { ViewEmblem, ViewOrigin } from "./ViewOrigin";
 import { ViewWeapons, WeaponGraph } from "./Weapons";
 import { DropDownAutocomplete } from "../../../functions/autocomplete";
+import { TFunction } from "i18next";
 
 export interface Views {
   isLoading: boolean;
@@ -47,9 +48,9 @@ export interface PlatformViews extends Views {
 }
 
 export function ComponentHandling(
-  t: useTranslation,
+  t: TFunction<"translation", undefined>,
   props: Readonly<Views>,
-): React.ReactElement {
+): string {
   if (props.isError) {
     if (
       typeof props?.errors == "object" &&
@@ -171,7 +172,7 @@ function Stats(): React.ReactElement {
       } | ${game || t("notApplicable")}`;
   }, [platformGames, game]);
 
-  const searchBox: React.RefObject<HTMLInputElement> = React.useRef();
+  const searchBox: React.RefObject<HTMLInputElement> = React.useRef(null);
 
   // const { data: autocompleteResult } = useQuery({
   //   queryKey: ["autocomplete" + platform + searchTerm],

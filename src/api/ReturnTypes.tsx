@@ -193,6 +193,7 @@ export type MainStatsVehicle = {
   killsPerMinute: number;
   type: string;
   vehicleName: string;
+  timeIn?: number;
 };
 
 export type SusWeaponType = {
@@ -530,15 +531,16 @@ export type ServerTeams = {
 };
 
 export type ScoreServerPlayer = {
-  kills: number;
-  deaths: number;
+  kills?: number;
+  deaths?: number;
   name: string;
-  player_id: string;
-  rank: number;
-  role: number;
-  score: number;
-  squad: number;
-  tag: string;
+  player_id?: string;
+  rank?: number;
+  role?: number;
+  score?: number;
+  squad?: number;
+  tag?: string;
+  team?: number;
 
   avatar?: string;
 };

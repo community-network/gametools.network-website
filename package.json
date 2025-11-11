@@ -30,7 +30,8 @@
     "lint": "eslint \"./src/**/*.{js,ts,tsx}\" --quiet",
     "start": "pnpm start-dev --progress",
     "start-dev": "webpack serve --config=configs/webpack/dev.js --host 0.0.0.0 --port 3001",
-    "start-prod": "pnpm build && node express.js"
+    "start-prod": "pnpm build && node express.js",
+    "test:ts": "tsc --noEmit"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",

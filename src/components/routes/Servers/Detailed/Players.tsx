@@ -23,6 +23,7 @@ import { DynamicSort } from "../../Stats/Player/Main";
 import { CheckBan } from "./AdminMode";
 import * as Mainstyles from "./Main.module.scss";
 import * as styles from "./Players.module.scss";
+import { TFunction } from "i18next";
 
 function Players(props: {
   stats: ServerPlayersReturn;
@@ -161,7 +162,7 @@ function Players(props: {
                                     ) : (
                                       <h4 className={styles.serverPlayerName}>
                                         {key.platoon !== "" &&
-                                        key.platoon !== undefined
+                                          key.platoon !== undefined
                                           ? `[${key.platoon}]`
                                           : ""}
                                         {key.name}
@@ -254,25 +255,23 @@ function Players(props: {
                                   style={
                                     haveSeederPlayers
                                       ? {
-                                          marginTop: ".5rem",
-                                          width: "4rem",
-                                        }
+                                        marginTop: ".5rem",
+                                        width: "4rem",
+                                      }
                                       : {
-                                          marginTop: ".5rem",
-                                        }
+                                        marginTop: ".5rem",
+                                      }
                                   }
-                                  href={`https://gametools.network/stats/${
-                                    playerToStatsPlatform[key.platform] ||
+                                  href={`https://gametools.network/stats/${playerToStatsPlatform[key.platform] ||
                                     key.platform ||
                                     props.platform
-                                  }/${key?.player_id ? "playerid" : "name"}/${
-                                    key?.player_id
+                                    }/${key?.player_id ? "playerid" : "name"}/${key?.player_id
                                       ? key?.player_id
                                       : encodeURIComponent(key.name)
-                                  }?game=${props.game.replace(
-                                    "marne",
-                                    "",
-                                  )}&name=${encodeURIComponent(key.name)}`}
+                                    }?game=${props.game.replace(
+                                      "marne",
+                                      "",
+                                    )}&name=${encodeURIComponent(key.name)}`}
                                   target="_blank"
                                   rel="noreferrer"
                                 >
@@ -302,9 +301,9 @@ function Players(props: {
 }
 
 export function ComponentHandling(
-  t: useTranslation,
-  props: Readonly<Views>,
-): React.ReactElement {
+  t: TFunction<"translation", undefined>,
+  props: { isError: boolean; isLoading: boolean },
+): string {
   if (props.isError) {
     return t("notApplicable");
   }
@@ -450,9 +449,8 @@ export function Bf3ServerPlayerlist(props: {
                         />
 
                         <Link
-                          to={`/stats/pc/playerid/${
-                            key.player_id
-                          }?game=bf3&name=${encodeURIComponent(key.name)}`}
+                          to={`/stats/pc/playerid/${key.player_id
+                            }?game=bf3&name=${encodeURIComponent(key.name)}`}
                         >
                           <h4
                             style={{

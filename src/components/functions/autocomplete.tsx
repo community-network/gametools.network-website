@@ -17,7 +17,7 @@ export function DropDownAutocomplete({
 }>): React.ReactElement {
   const [open, setOpen] = React.useState(false);
 
-  const container: React.RefObject<HTMLDivElement> = React.useRef();
+  const container: React.RefObject<HTMLDivElement> = React.useRef(null);
 
   React.useEffect(() => {
     const handleClickOutside = (event: { target }) => {

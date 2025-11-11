@@ -9,9 +9,6 @@ import ErrorBoundary from "../../../functions/ErrorBoundary";
 import { BackButton, RightArrow } from "../../../Materials";
 import { Graphs } from "./Graphs";
 import * as styles from "./PlayerSearch.module.scss";
-import { useQuery } from "@tanstack/react-query";
-import { GametoolsApi } from "../../../../api/GametoolsApi";
-import { DropDownAutocomplete } from "../../../functions/autocomplete";
 
 export function StatSearch(): React.ReactElement {
   const { t } = useTranslation();
@@ -20,7 +17,7 @@ export function StatSearch(): React.ReactElement {
     "statSearch_platform",
     "pc",
   );
-  const searchBox: React.RefObject<HTMLInputElement> = React.useRef();
+  const searchBox: React.RefObject<HTMLInputElement> = React.useRef(null);
 
   // const { data: autocompleteResult } = useQuery({
   //   queryKey: ["autocomplete" + platform + searchTerm],
@@ -113,7 +110,7 @@ function Search(): React.ReactElement {
     "pc",
   );
   const [game, setGame] = useLocalStorage<string>("stats_game", "bf1");
-  const searchBox: React.RefObject<HTMLInputElement> = React.useRef();
+  const searchBox: React.RefObject<HTMLInputElement> = React.useRef(null);
 
   // const { data: autocompleteResult } = useQuery({
   //   queryKey: ["autocomplete" + platform + searchTerm],
