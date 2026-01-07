@@ -781,13 +781,18 @@
       "maps": {
         "Siege of Cairo": "Siege of Cairo",
         "Empire State": "Empire State",
+        "Blackwell Fields": "Blackwell Fields",
         "Iberian Offensive": "Iberian Offensive",
         "Liberation Peak": "Liberation Peak",
         "Manhattan Bridge": "Manhattan Bridge",
+        "Eastwood": "Eastwood",
         "Operation Firestorm": "Опер. «Огненный шторм»",
         "Saints Quarter": "Saints Quarter",
         "New Sobek City": "New Sobek City",
-        "Mirak Valley": "Mirak Valley"
+        "Mirak Valley": "Mirak Valley",
+        "Fort Lyndon": "Fort Lyndon",
+        "Club House": "Club House",
+        "Tech Center": "Tech Center"
       },
       "gamemodes": {
         "Breakthrough Large": "Большой прорыв",
