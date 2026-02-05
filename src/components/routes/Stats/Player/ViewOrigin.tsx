@@ -16,7 +16,8 @@ export interface Views {
 }
 
 interface OriginViews extends Views {
-  errors: string[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  errors: any;
 }
 
 function GetBfBan(props: Readonly<Views>): React.ReactElement {
@@ -93,6 +94,7 @@ export function ViewOrigin(props: Readonly<OriginViews>): React.ReactElement {
   if (props.error) {
     if (
       typeof props.errors == "object" &&
+      Array.isArray(props.errors) &&
       typeof props?.errors?.includes === "function" &&
       props.errors?.includes("Player not found")
     ) {
@@ -107,14 +109,14 @@ export function ViewOrigin(props: Readonly<OriginViews>): React.ReactElement {
         </div>
       );
     }
-
+    console.log(props.errors?.error?.message);
     return (
       // for other errors
       <div className="align">
         <span className="circle" />
         <div>
           <h2 className={styles.originName}>{t("404")}</h2>
-          <h4 className={styles.originDescription}>{props.errors}</h4>
+          <h4 className={styles.originDescription}>{props.errors?.error?.message?.toString()}</h4>
         </div>
       </div>
     );

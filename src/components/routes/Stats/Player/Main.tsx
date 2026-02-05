@@ -59,8 +59,7 @@ export function ComponentHandling(
     ) {
       return t("notApplicable");
     }
-
-    return t("stats.error", { error: props.errors });
+    return t("stats.error", { error: props.errors?.error?.message?.toString() });
   }
 
   if (props.isLoading) {
@@ -306,8 +305,7 @@ interface GameStatsItems {
   platform: string;
   children:
   | boolean
-  | React.ReactChild
-  | React.ReactFragment
+  | React.ReactElement
   | React.ReactPortal;
 }
 

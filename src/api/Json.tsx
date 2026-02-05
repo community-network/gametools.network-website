@@ -53,7 +53,10 @@ export default class JsonClient {
         return result.json().then(
           (json) => {
             if (!result.ok) {
-              throw json.errors;
+              if (json?.error) {
+                throw json.error
+              }
+              throw json?.errors;
             }
             if (typeof result === "object" && result !== null) {
               json.apiUrl = result?.url;
