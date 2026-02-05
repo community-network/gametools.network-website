@@ -93,6 +93,7 @@ export function ViewOrigin(props: Readonly<OriginViews>): React.ReactElement {
   if (props.error) {
     if (
       typeof props.errors == "object" &&
+      typeof props?.errors?.includes === "function" &&
       props.errors?.includes("Player not found")
     ) {
       return (
@@ -184,7 +185,7 @@ export function ViewOrigin(props: Readonly<OriginViews>): React.ReactElement {
         <div>
           <h2 className={styles.originName}>{t("notApplicable")}</h2>
           <h4 className={styles.originDescription}>
-            {t("noName")} - {}
+            {t("noName")} - { }
             <GetBfBan
               loading={false}
               error={false}
