@@ -30,10 +30,11 @@ export default function useExternalScript(
       document.body.appendChild(script);
       script.addEventListener("load", handleScript);
       script.addEventListener("error", handleScript);
+    } else {
+      setState("ready");
+      script.addEventListener("load", handleScript);
+      script.addEventListener("error", handleScript);
     }
-
-    script.addEventListener("load", handleScript);
-    script.addEventListener("error", handleScript);
 
     return () => {
       script.removeEventListener("load", handleScript);
