@@ -543,14 +543,14 @@ function Main(): React.ReactElement {
           {["bf2042", "bf6"].includes(gameName) && (
             <option value="allPlatforms">{t("platforms.all")}</option>
           )}
-          <option value="pc">{t("platforms.pc")}</option>
           {gameName !== "bf6" && (
             <>
+              <option value="pc">{t("platforms.pc")}</option>
               <option value="ps4">{t("platforms.ps4")}</option>
               <option value="xboxone">{t("platforms.xboxone")}</option>
             </>
           )}
-          {gameName == "bf2042" && (
+          {gameName == "bf2042" || gameName == "bf6" && (
             <>
               <option value="ps5">{t("platforms.ps5")}</option>
               <option value="xboxseries">{t("platforms.xboxseries")}</option>
@@ -987,7 +987,11 @@ export function ServerSearch(): React.ReactElement {
           value={gameName}
           onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void => {
             setGameName(ev.target.value);
-            setPlatform("pc");
+            if (ev.target.value === "bf6") {
+              setPlatform("allPlatforms")
+            } else {
+              setPlatform("pc");
+            }
             setRegionFilter(["all"]);
           }}
         >
@@ -1056,6 +1060,7 @@ export function ServerSearch(): React.ReactElement {
                   target: { value: React.SetStateAction<string> };
                 }) => setPlatform(e.target.value)}
                 name={t("platforms.pc")}
+                disabled={gameName === "bf6"}
               />
               <InputItem
                 item={"ps4"}
