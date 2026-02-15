@@ -220,12 +220,14 @@
     "searchPlaceholder": {
       "null": "Sunucu adını ara...",
       "servername": "Sunucu adını ara...",
-      "experiencename": "Deneyim ismi arama..."
+      "experiencename": "Deneyim ismi arama...",
+      "experiencecode": "Search for an experience by code..."
     },
     "results": "Arama Sonuçları",
     "type": {
       "name": "Sunucu ismi",
-      "playground": "Deneyim ismi"
+      "playground": "Deneyim ismi",
+      "playgroundCode": "Experience code"
     },
     "showMore": "Daha fazla göster",
     "showProject": "Go to project",
@@ -241,7 +243,8 @@
       "main": "Sunucu sahibi",
       "add": "Ekle"
     },
-    "sorting": "Sırala"
+    "sorting": "Sırala",
+    "experienceNotFound": "Could not find a experience based on the requested experience code"
   },
   "platoonSearch": {
     "back": "Ana Sayfa",
