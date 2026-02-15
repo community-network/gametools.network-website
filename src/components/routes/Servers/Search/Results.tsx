@@ -77,7 +77,7 @@ export function Results(props: Views): React.ReactElement {
     ? `servers.${game}.gamemodes`
     : "stats.gamemodes";
   if (!props.loading && !props.error) {
-    if (stats == undefined || stats?.servers.length == 0) {
+    if (stats == undefined || stats?.servers?.length == 0) {
       return (
         <Box spacingStyle={props.spacingStyle}>
           <h3>{t("resultNotFound")}</h3>
@@ -85,7 +85,14 @@ export function Results(props: Views): React.ReactElement {
       );
     }
 
-    const servers = stats?.servers.sort(DynamicSort(props.sortType)) || [];
+    if (stats?.errors?.includes("could not find a experience based on the requested experience code")) {
+      return (
+        <Box spacingStyle={props.spacingStyle}>
+          <h3>{t("serverSearch.experienceNotFound")}</h3>
+        </Box>
+      )
+    }
+    const servers = stats?.servers?.sort(DynamicSort(props.sortType)) || [];
     return (
       <>
         {servers.map((key: ServerList, index: number) => {

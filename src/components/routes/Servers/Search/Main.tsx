@@ -482,6 +482,11 @@ function Main(): React.ReactElement {
               <option value="experiencename">
                 {t("serverSearch.type.playground")}
               </option>
+              {gameName === "bf6" && (
+                <option value={"experiencecode"}>
+                  {t("serverSearch.type.playgroundCode")}
+                </option>
+              )}
             </select>
           </div>
         ) : (

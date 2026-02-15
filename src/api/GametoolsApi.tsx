@@ -576,6 +576,7 @@ export class ApiProvider extends JsonClient {
     const gameStuff = game.split(".");
     let serverName = "";
     let experienceName = "";
+    let experienceCode = "";
     if (platform == "allPlatforms" && !newGen.includes(game)) {
       platform = "pc";
     } else if (platform == "ps5" && !newGen.includes(game)) {
@@ -583,8 +584,10 @@ export class ApiProvider extends JsonClient {
     } else if (platform == "xboxseries" && !newGen.includes(game)) {
       platform = "xboxone";
     }
-    if (searchType === "experiencename" && game == "bf2042") {
+    if (searchType === "experiencename" && ["bf2042", "bf6"].includes(game)) {
       experienceName = searchTerm;
+    } else if (searchType === "experiencecode" && game === "bf6") {
+      experienceCode = searchTerm;
     } else {
       serverName = searchTerm;
     }
@@ -598,6 +601,7 @@ export class ApiProvider extends JsonClient {
     const result = await this.getJsonMethod(`/${gameStuff[0]}/servers/`, {
       name: encodeURIComponent(serverName),
       experiencename: encodeURIComponent(experienceName),
+      experiencecode: encodeURIComponent(experienceCode),
       lang: lang,
       region: regions.join(game === "bf2042" ? ";" : ","),
       platform: platform,

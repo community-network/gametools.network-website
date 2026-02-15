@@ -229,9 +229,10 @@ export type MainStatsGadgets = {
 };
 
 export type ServerSearch = {
-  apiUrl: string;
-  cache: boolean;
-  servers: ServerList[];
+  errors?: any;
+  apiUrl?: string;
+  cache?: boolean;
+  servers?: ServerList[];
 };
 
 export type ServerList = {

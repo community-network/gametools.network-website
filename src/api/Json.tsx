@@ -56,6 +56,9 @@ export default class JsonClient {
               if (json?.error) {
                 throw json.error
               }
+              if (json?.errors?.includes("could not find a experience based on the requested experience code")) {
+                return json;
+              }
               throw json?.errors;
             }
             if (typeof result === "object" && result !== null) {
