@@ -220,12 +220,14 @@
     "searchPlaceholder": {
       "null": "Zoek voor servernaam...",
       "servername": "Zoek voor servernaam...",
-      "experiencename": "Zoek voor experience-naam..."
+      "experiencename": "Zoek voor experience-naam...",
+      "experiencecode": "Search for an experience by code..."
     },
     "results": "Zoekresultaten",
     "type": {
       "name": "Servernaam",
-      "playground": "Experience-naam"
+      "playground": "Experience-naam",
+      "playgroundCode": "Experience code"
     },
     "showMore": "Meer resultaten",
     "showProject": "Ga naar project",
@@ -241,7 +243,8 @@
       "main": "Server eigenaar",
       "add": "Toevoegen"
     },
-    "sorting": "Sortering"
+    "sorting": "Sortering",
+    "experienceNotFound": "Could not find a experience based on the requested experience code"
   },
   "platoonSearch": {
     "back": "Hoofdpagina",

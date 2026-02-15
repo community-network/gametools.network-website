@@ -220,12 +220,14 @@
     "searchPlaceholder": {
       "null": " Rechercher un serveur par nom..",
       "servername": " Rechercher un serveur par nom..",
-      "experiencename": "Rechercher une expérience par son nom..."
+      "experiencename": "Rechercher une expérience par son nom...",
+      "experiencecode": "Search for an experience by code..."
     },
     "results": "Résultats de recherche",
     "type": {
       "name": "Nom du server",
-      "playground": "Experience name"
+      "playground": "Experience name",
+      "playgroundCode": "Experience code"
     },
     "showMore": "Montrer plus",
     "showProject": "Aller au projet",
@@ -241,7 +243,8 @@
       "main": "Propriétaire du serveur",
       "add": "Ajouter"
     },
-    "sorting": "Trier"
+    "sorting": "Trier",
+    "experienceNotFound": "Could not find a experience based on the requested experience code"
   },
   "platoonSearch": {
     "back": "Page d'accueil",

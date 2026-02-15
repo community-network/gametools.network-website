@@ -220,12 +220,14 @@
     "searchPlaceholder": {
       "null": "Поиск сервера по имени...",
       "servername": "Поиск сервера по имени...",
-      "experiencename": "Найти experience по имени"
+      "experiencename": "Найти experience по имени",
+      "experiencecode": "Search for an experience by code..."
     },
     "results": "Искать",
     "type": {
       "name": "Название сервера",
-      "playground": "Имя experience"
+      "playground": "Имя experience",
+      "playgroundCode": "Experience code"
     },
     "showMore": "Показать больше",
     "showProject": "Go to project",
@@ -241,7 +243,8 @@
       "main": "Владелец сервера",
       "add": "Добавить"
     },
-    "sorting": "Сортировать"
+    "sorting": "Сортировать",
+    "experienceNotFound": "Could not find a experience based on the requested experience code"
   },
   "platoonSearch": {
     "back": "Главная страница",

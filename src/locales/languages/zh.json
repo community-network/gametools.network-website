@@ -220,12 +220,14 @@
     "searchPlaceholder": {
       "null": "服务器名字",
       "servername": "服务器名字",
-      "experiencename": "搜索某体验的名字..."
+      "experiencename": "搜索某体验的名字...",
+      "experiencecode": "Search for an experience by code..."
     },
     "results": "搜索结果",
     "type": {
       "name": "服务器名称",
-      "playground": "体验名称"
+      "playground": "体验名称",
+      "playgroundCode": "Experience code"
     },
     "showMore": "显示更多",
     "showProject": "前往项目",
@@ -241,7 +243,8 @@
       "main": "服主",
       "add": "添加"
     },
-    "sorting": "排序"
+    "sorting": "排序",
+    "experienceNotFound": "Could not find a experience based on the requested experience code"
   },
   "platoonSearch": {
     "back": "首页",
