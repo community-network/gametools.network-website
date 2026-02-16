@@ -221,13 +221,15 @@
       "null": "Поиск сервера по имени...",
       "servername": "Поиск сервера по имени...",
       "experiencename": "Найти experience по имени",
-      "experiencecode": "Search for an experience by code..."
+      "experiencecode": "Search for an experience by code...",
+      "playgroundid": "Search for an experience by id..."
     },
     "results": "Искать",
     "type": {
       "name": "Название сервера",
       "playground": "Имя experience",
-      "playgroundCode": "Experience code"
+      "playgroundCode": "Experience code",
+      "playgroundId": "Experience id"
     },
     "showMore": "Показать больше",
     "showProject": "Go to project",
@@ -557,7 +559,9 @@
       "teamTwo": "Команда 2"
     },
     "portal": {
-      "main": "Portal experience"
+      "main": "Portal experience",
+      "noMoreServers": "There are no other servers servers also running this experience",
+      "moreServers": "There are {{ amount }} servers also running this experience"
     },
     "graph": {
       "main": "Графики сервера",
