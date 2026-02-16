@@ -487,6 +487,11 @@ function Main(): React.ReactElement {
                   {t("serverSearch.type.playgroundCode")}
                 </option>
               )}
+              {gameName === "bf6" && (
+                <option value={"playgroundid"}>
+                  {t("serverSearch.type.playgroundId")}
+                </option>
+              )}
             </select>
           </div>
         ) : (

@@ -221,13 +221,15 @@
       "null": "Search for server by name...",
       "servername": "Search for server by name...",
       "experiencename": "Search for an experience by name...",
-      "experiencecode": "Search for an experience by code..."
+      "experiencecode": "Search for an experience by code...",
+      "playgroundid": "Search for an experience by id..."
     },
     "results": "Search results",
     "type": {
       "name": "Server name",
       "playground": "Experience name",
-      "playgroundCode": "Experience code"
+      "playgroundCode": "Experience code",
+      "playgroundId": "Experience id"
     },
     "showMore": "Show more",
     "showProject": "Go to project",
@@ -557,7 +559,9 @@
       "teamTwo": "Team 2"
     },
     "portal": {
-      "main": "Portal experience"
+      "main": "Portal experience",
+      "noMoreServers": "There are no other servers servers also running this experience",
+      "moreServers": "There are {{ amount }} servers also running this experience"
     },
     "graph": {
       "main": "Server graphs",

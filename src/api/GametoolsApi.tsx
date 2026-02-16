@@ -577,6 +577,7 @@ export class ApiProvider extends JsonClient {
     let serverName = "";
     let experienceName = "";
     let experienceCode = "";
+    let playgroundId = "";
     if (platform == "allPlatforms" && !newGen.includes(game)) {
       platform = "pc";
     } else if (platform == "ps5" && !newGen.includes(game)) {
@@ -588,6 +589,8 @@ export class ApiProvider extends JsonClient {
       experienceName = searchTerm;
     } else if (searchType === "experiencecode" && game === "bf6") {
       experienceCode = searchTerm;
+    } else if (searchType === "playgroundid" && game === "bf6") {
+      playgroundId = searchTerm;
     } else {
       serverName = searchTerm;
     }
@@ -602,6 +605,7 @@ export class ApiProvider extends JsonClient {
       name: encodeURIComponent(serverName),
       experiencename: encodeURIComponent(experienceName),
       experiencecode: encodeURIComponent(experienceCode),
+      playground_id: playgroundId,
       lang: lang,
       region: regions.join(game === "bf2042" ? ";" : ","),
       platform: platform,
