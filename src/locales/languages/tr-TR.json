@@ -221,13 +221,15 @@
       "null": "Sunucu adını ara...",
       "servername": "Sunucu adını ara...",
       "experiencename": "Deneyim ismi arama...",
-      "experiencecode": "Search for an experience by code..."
+      "experiencecode": "Search for an experience by code...",
+      "playgroundid": "Search for an experience by id..."
     },
     "results": "Arama Sonuçları",
     "type": {
       "name": "Sunucu ismi",
       "playground": "Deneyim ismi",
-      "playgroundCode": "Experience code"
+      "playgroundCode": "Experience code",
+      "playgroundId": "Experience id"
     },
     "showMore": "Daha fazla göster",
     "showProject": "Go to project",
@@ -557,7 +559,9 @@
       "teamTwo": "Takım 2"
     },
     "portal": {
-      "main": "Portal deneyimi"
+      "main": "Portal deneyimi",
+      "noMoreServers": "There are no other servers servers also running this experience",
+      "moreServers": "There are {{ amount }} servers also running this experience"
     },
     "graph": {
       "main": "Sunucu grafikleri",
