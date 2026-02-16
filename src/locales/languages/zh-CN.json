@@ -221,13 +221,15 @@
       "null": "服务器名字",
       "servername": "服务器名字",
       "experiencename": "搜索某体验的名字...",
-      "experiencecode": "Search for an experience by code..."
+      "experiencecode": "Search for an experience by code...",
+      "playgroundid": "Search for an experience by id..."
     },
     "results": "搜索结果",
     "type": {
       "name": "服务器名称",
       "playground": "体验名称",
-      "playgroundCode": "Experience code"
+      "playgroundCode": "Experience code",
+      "playgroundId": "Experience id"
     },
     "showMore": "显示更多",
     "showProject": "前往项目",
@@ -557,7 +559,9 @@
       "teamTwo": "队伍 2"
     },
     "portal": {
-      "main": "门户体验"
+      "main": "门户体验",
+      "noMoreServers": "There are no other servers servers also running this experience",
+      "moreServers": "There are {{ amount }} servers also running this experience"
     },
     "graph": {
       "main": "服务器图表",
