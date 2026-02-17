@@ -5,6 +5,7 @@ import "../../../../assets/scss/App.scss";
 import "../../../../locales/config";
 import { BackButton, RightArrow } from "../../../Materials";
 import * as styles from "./Main.module.scss";
+import { useLocalStorage } from "@uidotdev/usehooks";
 
 interface IUrl {
   valid_url: boolean;
@@ -47,12 +48,16 @@ function check_valid_playground_id(test_string: string): boolean {
   );
 }
 
-function check_valid_shortcode(test_string: string): boolean {
+function check_valid_shortcode(test_string: string, game: string): boolean {
+  if (game == "bf6") {
+    return test_string.length == 5;
+  }
   return test_string.length == 6;
 }
 
 function Main(): React.ReactElement {
   const { t } = useTranslation();
+  const [game, setGame] = useLocalStorage<string>("experience_game", "bf6");
   React.useEffect(() => {
     document.title = `${t("siteFullName")} | ${t("getPlaygrounds.main")}`;
   }, []);
@@ -70,7 +75,7 @@ function Main(): React.ReactElement {
     }
   }
 
-  if (check_valid_shortcode(searchTerm.trim())) {
+  if (check_valid_shortcode(searchTerm.trim(), game)) {
     getter = "experiencecode";
     playground = searchTerm.trim();
   }
@@ -94,18 +99,28 @@ function Main(): React.ReactElement {
               setSearchTerm(ev.target.value)
             }
           />
-          {playground !== "" ? (
-            <Link to={`/playgrounds/bf2042/${getter}/${playground}`}>
+          <select
+            aria-label={t("ariaLabels.game")}
+            className="bigSelectSecondary"
+            value={game}
+            onChange={(ev: React.ChangeEvent<HTMLSelectElement>): void =>
+              setGame(ev.target.value)
+            }
+          >
+            {["bf2042", "bf6"].map((key: string, index: number) => {
+              return (
+                <option key={index} value={key}>
+                  {t(`games.${key}`)}
+                </option>
+              );
+            })}
+          </select>
+          {playground !== "" && (
+            <Link to={`/playgrounds/${game}/${getter}/${playground}`}>
               <button className="bigButtonSecondary" type="submit">
                 {t("getPlaygrounds.show")} <RightArrow />
               </button>
             </Link>
-          ) : (
-            // if no valid playground is filled in
-            <></>
-            // <button className="bigButtonSecondary" disabled={true} type="submit">
-            //   {t("getPlaygrounds.show")} <RightArrow />
-            // </button>
           )}
         </form>
       </div>

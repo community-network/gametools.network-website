@@ -34,7 +34,6 @@ export function PlaygroundOwner(
       </div>
     );
   }
-
   if (props.game === "bf2042") {
     const {
       isLoading: loading,
@@ -90,11 +89,9 @@ export function PlaygroundOwner(
       <h2>{t("playgrounds.owner.main")}</h2>
       <div className="align">
         <Link
-          to={`/stats/pc/playerid/${owner.id}?game=${
-            serverToStatsPlatform[owner.platformId] || "pc"
-          }/playerid/${owner.id || owner.personaId}?game=${
-            props.game
-          }&name=${encodeURIComponent(owner.name)}`}
+          to={`/stats/pc/playerid/${owner.id}?game=${serverToStatsPlatform[owner.platformId] || "pc"
+            }/playerid/${owner.id || owner.personaId}?game=${props.game
+            }&name=${encodeURIComponent(owner.name)}`}
         >
           <img
             alt={t("stats.profileImage")}
@@ -104,11 +101,9 @@ export function PlaygroundOwner(
           />
         </Link>
         <Link
-          to={`/stats/pc/playerid/${owner.id}?game=${
-            serverToStatsPlatform[owner.platformId] || "pc"
-          }/playerid/${owner.id || owner.personaId}?game=${
-            props.game
-          }&name=${encodeURIComponent(owner.name)}`}
+          to={`/stats/pc/playerid/${owner.id}?game=${serverToStatsPlatform[owner.platformId] || "pc"
+            }/playerid/${owner.id || owner.personaId}?game=${props.game
+            }&name=${encodeURIComponent(owner.name)}`}
         >
           <div>
             <h2 className={styles.originName}>

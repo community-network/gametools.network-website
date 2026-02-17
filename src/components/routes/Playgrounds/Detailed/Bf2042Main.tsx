@@ -23,7 +23,7 @@ function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
 
-export function Results(props: Views): React.ReactElement {
+export function Bf2042Results(props: Views): React.ReactElement {
   const { t } = useTranslation();
   const stats = props.stats;
   if (props.error) {
@@ -43,19 +43,19 @@ export function Results(props: Views): React.ReactElement {
     const playground = stats.originalPlayground;
 
     const createdDate = new Date(0);
-    createdDate.setUTCSeconds(playground.createdAt.seconds || 0);
+    createdDate.setUTCSeconds(playground?.createdAt?.seconds || 0);
 
     const updatedDate = new Date(0);
-    updatedDate.setUTCSeconds(playground.updatedAt.seconds || 0);
+    updatedDate.setUTCSeconds(playground?.updatedAt?.seconds || 0);
 
-    const tags = stats.tag;
+    const tags = stats?.tag;
     return (
       <div>
         <div className={styles.alignServerImg}>
           <div
             className={styles.playgroundImage}
             style={{
-              backgroundImage: `url("${playground.mapRotation.maps[0].image}")`,
+              backgroundImage: `url("${playground?.mapRotation?.maps[0]?.image}")`,
             }}
           >
             <div className={styles.blur}>
@@ -86,14 +86,14 @@ export function Results(props: Views): React.ReactElement {
           </div>
           <div>
             <h2 style={{ lineHeight: 0.5, marginTop: "1.5rem" }}>
-              {playground.settings.configName.value}
+              {playground?.settings?.configName?.value}
             </h2>
             <p className={styles.description}>
-              {playground.settings.ConfigDescription.value}
+              {playground?.settings?.ConfigDescription?.value}
             </p>
             <p className={styles.description}>
               {t("playgrounds.maxPlayers", {
-                amount: playground.mapRotation.maps[0].gameSize,
+                amount: playground?.mapRotation?.maps[0].gameSize,
               })}
               {stats.progressionMode
                 ? " - " + t(`playgrounds.types.${stats.progressionMode.value}`)
@@ -111,7 +111,7 @@ export function Results(props: Views): React.ReactElement {
           {t("playgrounds.rotation")}
         </h2>
         <div className="align">
-          {playground.mapRotation.maps.map((key: MapInfo, index: number) => {
+          {playground?.mapRotation?.maps?.map((key: MapInfo, index: number) => {
             return (
               <div className="alignW" key={index}>
                 <div style={{ marginRight: ".7rem", marginTop: "10px" }}>
@@ -158,7 +158,7 @@ export function Results(props: Views): React.ReactElement {
 
           <div className="pageRow">
             <h2>{t("playgrounds.tags")}</h2>
-            {tags.map((value: Tags, index: number) => {
+            {tags?.map((value: Tags, index: number) => {
               return (
                 <div key={index}>
                   <p className={styles.altDescription} key={index}>
@@ -167,7 +167,7 @@ export function Results(props: Views): React.ReactElement {
                         value.metadata.translations[0].localizedText,
                       )}
                     </b>
-                    : {}
+                    : { }
                     {value.metadata.translations[1].localizedText}
                   </p>
                 </div>

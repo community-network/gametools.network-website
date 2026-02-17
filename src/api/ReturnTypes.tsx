@@ -711,6 +711,25 @@ export type Tags = {
   sortOrder: number;
 };
 
+export type PlayerCreator = {
+  player: Player;
+}
+
+export type Creator = {
+  playerCreator: PlayerCreator;
+};
+
+// bf6
+export type PlayElement = {
+  description: StringValue;
+  name: string;
+  creator: Creator;
+}
+
+export type PlayElementDesign = {
+  mapRotation: MapRotation;
+}
+
 export type Playground = {
   blocklyData?: WebData[];
   playgroundId: string;
@@ -732,6 +751,8 @@ export type Playground = {
 };
 
 export type PlaygroundInfoReturn = {
+  playElementDesign: PlayElementDesign; // bf6
+  playElement: PlayElement; // bf6
   apiUrl: string;
   progressionMode: StringValue;
   originalPlayground: Playground;

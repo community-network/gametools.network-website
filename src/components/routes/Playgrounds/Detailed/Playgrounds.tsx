@@ -6,8 +6,9 @@ import { GametoolsApi } from "../../../../api/GametoolsApi";
 import { useQuery } from "@tanstack/react-query";
 import { BackButton } from "../../../Materials";
 import { getLanguage } from "../../../../locales/config";
-import { Results } from "./Main";
+import { Bf2042Results } from "./Bf2042Main";
 import { useParams } from "react-router";
+import { Bf6Results } from "./Bf6Main";
 
 function Playgrounds(): React.ReactElement {
   const params = useParams();
@@ -32,22 +33,33 @@ function Playgrounds(): React.ReactElement {
       }),
   });
   React.useEffect(() => {
-    document.title = `${t("siteFullName")} ${t("pageTitle.playground")} | ${
-      stats?.originalPlayground?.settings?.configName?.value || t("loading")
-    }`;
+    document.title = `${t("siteFullName")} ${t("pageTitle.playground")} | ${stats?.originalPlayground?.settings?.configName?.value || t("loading")
+      }`;
   }, [stats]);
 
   return (
     <div>
       <div className="container">
         <BackButton text={t("playgrounds.back")} location="/playgrounds" />
-        <Results
-          game={gameId}
-          loading={loading}
-          platform={platform}
-          stats={stats}
-          error={error}
-        />
+        {gameId === "bf6" ? (
+          <Bf6Results
+            game={gameId}
+            loading={loading}
+            platform={platform}
+            stats={stats}
+            error={error}
+          />
+        ) : (
+          <Bf2042Results
+            game={gameId}
+            loading={loading}
+            platform={platform}
+            stats={stats}
+            error={error}
+          />
+        )
+        }
+
       </div>
     </div>
   );
