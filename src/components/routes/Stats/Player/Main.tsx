@@ -91,6 +91,8 @@ function Stats(): React.ReactElement {
   const history = useNavigate();
   const gameQuery = query.get("game");
   const nameQuery = query.get("name");
+  const playeridQuery = query.get("playerid");
+  const oidQuery = query.get("oid");
 
   const [searchTerm, setSearchTerm] = React.useState<string>("");
   const [platform, setPlatform] = useLocalStorage<string>(
@@ -160,6 +162,16 @@ function Stats(): React.ReactElement {
       params.append("name", nameQuery);
     } else {
       params.delete("name");
+    }
+    if (playeridQuery) {
+      params.append("playerid", playeridQuery);
+    } else {
+      params.delete("playerid");
+    }
+    if (oidQuery) {
+      params.append("oid", oidQuery);
+    } else {
+      params.delete("oid");
     }
     if (params.toString() != old_params) {
       history({ search: params.toString() }, { replace: true });
@@ -274,6 +286,7 @@ function Stats(): React.ReactElement {
         game={game}
         name={params.eaid}
         type={params.type}
+        extraParams={{ playerid: playeridQuery, oid: oidQuery }}
         platform={platformParam}
       >
         <div className="column">
@@ -302,6 +315,7 @@ interface GameStatsItems {
   game: string;
   name: string;
   type: string;
+  extraParams: {}
   platform: string;
   children:
   | boolean
@@ -310,7 +324,7 @@ interface GameStatsItems {
 }
 
 function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {
-  const { game, name, type, platform } = props;
+  const { game, name, type, platform, extraParams } = props;
   const [showAdminPanel] = useLocalStorage<boolean>("adminMode", false);
 
   const {
@@ -328,6 +342,7 @@ function GameStats(props: Readonly<GameStatsItems>): React.ReactElement {
         userName: name,
         lang: getLanguage(),
         platform: platform,
+        extraParams: extraParams
       }),
     retry: 1,
   });

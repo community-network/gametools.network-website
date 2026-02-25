@@ -44,6 +44,7 @@ interface PlayerInfo {
   userName: string;
   lang: string;
   platform?: string;
+  extraParams?: {};
 }
 
 interface PlatoonSearch {
@@ -218,12 +219,15 @@ export class ApiProvider extends JsonClient {
     userName,
     lang,
     platform = "pc",
+    extraParams = {},
   }: PlayerInfo): Promise<MainStats> {
     const defaultParams = {
       format_values: "false",
       lang: lang,
       platform: platform,
     };
+
+    Object.keys(extraParams).forEach((key) => [undefined, null].includes(extraParams[key]) && delete extraParams[key]);
 
     if (game.includes("marne")) {
       let playerId;
@@ -238,17 +242,20 @@ export class ApiProvider extends JsonClient {
       return await MarneApi.stats({
         game: game,
         playerId: playerId,
+        ...extraParams,
       });
     }
     if (getter == "playerid") {
       return await this.getJsonMethod(`/${game}/${type}/`, {
         ...defaultParams,
         playerid: userName,
+        ...extraParams,
       });
     }
     return await this.getJsonMethod(`/${game}/${type}/`, {
       ...defaultParams,
       name: encodeURIComponent(userName),
+      ...extraParams,
     });
   }
 
