@@ -21,14 +21,14 @@
   "export": "Dosyaya aktar",
   "ariaLabels": {
     "sort": "Şuna göre sırala",
-    "chartType": "Select chart type",
+    "chartType": "Grafik türünü seçin",
     "platform": "Platform seçin",
     "amountOfDays": "Kaç gün olacağını seçin",
     "game": "Oyun adı seçin",
     "searchType": "Arama türü seçin",
-    "toggleAds": "Toggle ads",
-    "toggleSidebar": "Toggle sidebar",
-    "toggleGame": "Toggle game"
+    "toggleAds": "Reklamları Aç/Kapat",
+    "toggleSidebar": "Yan-barı Aç/Kapat",
+    "toggleGame": "Oyunu Aç/Kapat"
   },
   "case": {
     "none": "Yok",
@@ -45,7 +45,7 @@
     "platoon": " Hileci"
   },
   "warn": {
-    "nameChange": "Warn: {{ amount }} namechanges!",
+    "nameChange": "Uyarı: {{ amount }} kez isim değişikliği!",
     "vban": "Uyarı: {{ miktar }} vban!"
   },
   "bfeac": {
@@ -232,14 +232,14 @@
       "playgroundId": "Experience id"
     },
     "showMore": "Daha fazla göster",
-    "showProject": "Go to project",
+    "showProject": "Projeye git",
     "region": "Bölge",
     "map": "Harita",
     "botAmount": "({{ botAmount }} bots)",
     "platform": "platform",
     "gamemode": "Oyun modu",
     "playerFilter": "Kullanılabilir alan",
-    "serverTypeFilter": "Server type",
+    "serverTypeFilter": "Sunucu türü",
     "showFilters": "Filtreleri göster",
     "serverOwner": {
       "main": "Sunucu sahibi",
@@ -262,9 +262,9 @@
     "view": "İstatistikleri görüntüle",
     "back": "Ana Sayfa",
     "error": "Error while fetching: {{ error }}",
-    "toggleAdminMode": "Enable server-admin mode",
-    "profileImage": "Profile image",
-    "currentEmblem": "Current emblem",
+    "toggleAdminMode": "Admin modunu aktif et",
+    "profileImage": "Profil Fotoğrafı",
+    "currentEmblem": "Mevcut Amblem",
     "originDescription": "Kullanıcı hesabı",
     "detailedName": "Ayrıntılı istatistikler",
     "overview": "Genel bakış",
@@ -280,20 +280,20 @@
     "searchWeapon": "Silah ara",
     "searchVehicle": "Araç ara",
     "searchGadget": "Gadget ara",
-    "missingGame": "Current player doesn't have this game",
+    "missingGame": "Mevcut oyuncu bu oyuna sahip değil",
     "adminPanel": {
-      "currentServer": "Current server",
+      "currentServer": "Mevcut Sunucu",
       "main": "Admin panel",
-      "susWeapons": "Sus weapons",
+      "susWeapons": "Şüpheli silahlar",
       "bannedServer": {
-        "main": "Banned in server"
+        "main": "Banlı sunucu sayısı"
       },
       "otherNames": {
-        "main": "Other names"
+        "main": "Diğer isimler"
       },
       "vban": {
-        "group": "VBAN group",
-        "reason": "Reason"
+        "group": "VBAN Grubu",
+        "reason": "Sebep"
       }
     },
     "rows": {
@@ -308,7 +308,7 @@
       "accuracy": "isabet",
       "headshots": "Kafadan vurma",
       "multiKills": "Multikills",
-      "hitVKills": "Hit/kill"
+      "hitVKills": "Hasar/Öldürme"
     },
     "classes": {
       "main": "Sınıflar",
@@ -380,7 +380,7 @@
       "none": "Oyuncu herhangi bir klanda değil",
       "noMain": "Oyuncu bir klanı, ana klanı olarak temsil etmiyor",
       "noDescription": "Klanın açıklaması yok",
-      "emblem": "Platoon emblem"
+      "emblem": "Klan Amblemi"
     },
     "playSession": {
       "main": "Battlefield oyun seansları",
@@ -511,7 +511,7 @@
       "main": "Bu sunucunun oyuncu lider tablosu",
       "info": "yalnızca manager-api'yi kullanan sunucularda Kullanılır",
       "none": "Sunucu yeni eklendi veya manager-api kullanmıyor",
-      "reset": "This leaderboard will reset the 1st day of the month",
+      "reset": "Ayın 1. Gününde Lider Tablosu sıfırlanır",
       "row": {
         "score": "Skor",
         "killDeath": "K/D",
@@ -824,7 +824,7 @@
       },
       "serverTypeFilter": {
         "official": "Resmi",
-        "ranked": "Ranked",
+        "ranked": "Sıralamalı",
         "unranked": "Rütbesiz",
         "private": "Er"
       }
@@ -839,11 +839,11 @@
       }
     },
     "modList": {
-      "main": "Mods",
-      "noMods": "This server has no mods",
+      "main": "Modlar",
+      "noMods": "Bu sunucuda mod yok",
       "file": "file: ",
       "version": "ver: ",
-      "noURl": "No link available"
+      "noURl": "bağlantı kullanılabilir değil"
     }
   },
   "platoon": {
