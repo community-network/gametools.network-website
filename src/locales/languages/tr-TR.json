@@ -20,12 +20,12 @@
   "ago": "önce",
   "export": "Dosyaya aktar",
   "ariaLabels": {
-    "sort": "Select sort by",
+    "sort": "Şuna göre sırala",
     "chartType": "Select chart type",
-    "platform": "Select platform",
-    "amountOfDays": "Select how many days",
-    "game": "Select game name",
-    "searchType": "Select search type",
+    "platform": "Platform seçin",
+    "amountOfDays": "Kaç gün olacağını seçin",
+    "game": "Oyun adı seçin",
+    "searchType": "Arama türü seçin",
     "toggleAds": "Toggle ads",
     "toggleSidebar": "Toggle sidebar",
     "toggleGame": "Toggle game"
@@ -46,7 +46,7 @@
   },
   "warn": {
     "nameChange": "Warn: {{ amount }} namechanges!",
-    "vban": "Warn: {{ amount }} vbans!"
+    "vban": "Uyarı: {{ miktar }} vban!"
   },
   "bfeac": {
     "main": "BFEAC"
