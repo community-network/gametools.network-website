@@ -222,14 +222,14 @@
       "servername": "服务器名字",
       "experiencename": "搜索某体验的名字...",
       "experiencecode": "Search for an experience by code...",
-      "playgroundid": "Search for an experience by id..."
+      "playgroundid": "搜索某体验的名字…"
     },
     "results": "搜索结果",
     "type": {
       "name": "服务器名称",
       "playground": "体验名称",
-      "playgroundCode": "Experience code",
-      "playgroundId": "Experience id"
+      "playgroundCode": "体验标记",
+      "playgroundId": "体验名称"
     },
     "showMore": "显示更多",
     "showProject": "前往项目",
@@ -246,7 +246,7 @@
       "add": "添加"
     },
     "sorting": "排序",
-    "experienceNotFound": "Could not find a experience based on the requested experience code"
+    "experienceNotFound": "无法根据请求的体验标记查找相关体验"
   },
   "platoonSearch": {
     "back": "首页",
@@ -284,7 +284,7 @@
     "adminPanel": {
       "currentServer": "当前服务器",
       "main": "管理面板",
-      "susWeapons": "Sus weapons",
+      "susWeapons": "武器",
       "bannedServer": {
         "main": "在服务器中被禁止"
       },
