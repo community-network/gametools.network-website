@@ -183,7 +183,7 @@
       },
       "1": {
         "header": "BFPortal",
-        "description": "Vind en deel Battlefield 2042 portal ervaringen.",
+        "description": "Vind en deel Battlefield 2042 portal experience.",
         "link": "Bezoek BFPortal",
         "url": "https://bfportal.gg/"
       },
@@ -220,14 +220,14 @@
     "searchPlaceholder": {
       "null": "Zoek voor servernaam...",
       "servername": "Zoek voor servernaam...",
-      "experiencename": "Zoek voor experience-naam...",
-      "experiencecode": "Search for an experience by code...",
-      "playgroundid": "Search for an experience by id..."
+      "experiencename": "Zoek voor naam van experience...",
+      "experiencecode": "Zoeken voor code van experience...",
+      "playgroundid": "Zoeken voor experience-id..."
     },
     "results": "Zoekresultaten",
     "type": {
       "name": "Servernaam",
-      "playground": "Experience-naam",
+      "playground": "Experience naam",
       "playgroundCode": "Experience code",
       "playgroundId": "Experience id"
     },
@@ -246,7 +246,7 @@
       "add": "Toevoegen"
     },
     "sorting": "Sortering",
-    "experienceNotFound": "Could not find a experience based on the requested experience code"
+    "experienceNotFound": "Er kon geen ervaring worden gevonden op basis van de gevraagde experience code."
   },
   "platoonSearch": {
     "back": "Hoofdpagina",
@@ -472,7 +472,7 @@
     },
     "owner": {
       "main": "Server eigenaar",
-      "experience": "Experience eigenaar",
+      "experience": "Eigenaar van experience",
       "none": "Server heeft geen eigenaar (Dice server)",
       "unknown": "Naam niet gevonden"
     },
@@ -560,8 +560,8 @@
     },
     "portal": {
       "main": "Portal experience",
-      "noMoreServers": "There are no other servers servers also running this experience",
-      "moreServers": "There are {{ amount }} servers also running this experience"
+      "noMoreServers": "Er zijn geen andere servers die deze ervaring ook uitvoeren.",
+      "moreServers": "Er zijn {{ amount }} servers die deze ervaring ook uitvoeren."
     },
     "graph": {
       "main": "Server grafieken",
