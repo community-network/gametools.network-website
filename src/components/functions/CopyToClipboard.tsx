@@ -5,9 +5,9 @@ export function CopyToClipboard(
   props: Readonly<{
     className?: string;
     style?: React.CSSProperties;
-    message: string;
+    message?: string;
     stateTranslation: string;
-    translateOptions?: { [key: string]: string | number };
+    translateOptions?: { [key: string]: string | number | undefined };
   }>,
 ): React.ReactElement {
   const { t } = useTranslation();
@@ -24,12 +24,14 @@ export function CopyToClipboard(
       }
       className={props.className}
       onClick={() => {
-        navigator.clipboard.writeText(props.message);
-        setCopyState("copied");
-        const timer1 = setTimeout(() => setCopyState("copy"), 3 * 1000);
-        return () => {
-          clearTimeout(timer1);
-        };
+        if (props.message !== undefined) {
+          navigator.clipboard.writeText(props.message);
+          setCopyState("copied");
+          const timer1 = setTimeout(() => setCopyState("copy"), 3 * 1000);
+          return () => {
+            clearTimeout(timer1);
+          };
+        }
       }}
     >
       {t(`${props.stateTranslation}.${copyState}`, {

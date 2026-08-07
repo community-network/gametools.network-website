@@ -4,7 +4,7 @@ import { addDays, addSeconds } from "date-fns";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
-import {
+import type {
   ServerLeaderboardList,
   ServerLeaderboardReturn,
 } from "../../../../api/ReturnTypes";
@@ -12,12 +12,12 @@ import "../../../../assets/scss/App.scss";
 import "../../../../locales/config";
 import { Box } from "../../../Materials";
 import { CheckBan } from "./AdminMode";
-import * as styles from "./Leaderboard.module.scss";
-import * as Mainstyles from "./Main.module.scss";
+import styles from "./Leaderboard.module.scss";
+import Mainstyles from "./Main.module.scss";
 
 export function ServerLeaderboard(
   props: Readonly<{
-    gameid: string;
+    gameid?: string;
   }>,
 ): React.ReactElement {
   const { t } = useTranslation();
@@ -103,7 +103,7 @@ export function ServerLeaderboard(
 
 function ServerLeaderboardData(
   props: Readonly<{
-    stats: ServerLeaderboardReturn;
+    stats?: ServerLeaderboardReturn;
     isLoading: boolean;
     isError: boolean;
   }>,
@@ -118,7 +118,7 @@ function ServerLeaderboardData(
   playerIds = playerIds.concat(
     players?.map((player) => {
       return player?.playerId;
-    }),
+    }) || [],
   );
 
   const {
@@ -138,14 +138,13 @@ function ServerLeaderboardData(
     <>
       {players?.length !== 0 ? (
         <Box>
-          {players.map((key: ServerLeaderboardList, index: number) => {
+          {players?.map((key: ServerLeaderboardList, index: number) => {
             return (
               <div className="column" key={index}>
                 <div className="row">
                   <a
-                    href={`https://gametools.network/stats/pc/playerid/${
-                      key.playerId
-                    }?game=bf1&name=${encodeURIComponent(key.name)}`}
+                    href={`https://gametools.network/stats/pc/playerid/${key.playerId
+                      }?game=bf1&name=${encodeURIComponent(key.name)}`}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -227,11 +226,11 @@ function ServerLeaderboardData(
                   <h4>
                     {key.timePlayed > 3600
                       ? t("hourChange", {
-                          change: addSeconds(new Date(), key.timePlayed),
-                        })
+                        change: addSeconds(new Date(), key.timePlayed),
+                      })
                       : t("change", {
-                          change: addSeconds(new Date(), key.timePlayed),
-                        })}
+                        change: addSeconds(new Date(), key.timePlayed),
+                      })}
                   </h4>
                   <p
                     className={Mainstyles.description}

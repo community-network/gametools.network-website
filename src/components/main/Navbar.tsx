@@ -2,8 +2,8 @@ import * as React from "react";
 import { NavLink, useLocation } from "react-router";
 import "../../locales/config";
 import { useTranslation } from "react-i18next";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import * as styles from "./Navbar.module.scss";
+import { type Dispatch, type SetStateAction, useEffect, useState } from "react";
+import styles from "./Navbar.module.scss";
 
 const RightNav = ({
   open,

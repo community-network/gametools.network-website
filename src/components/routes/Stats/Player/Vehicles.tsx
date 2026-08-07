@@ -1,14 +1,14 @@
 import { addSeconds } from "date-fns";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { MainStatsVehicle } from "../../../../api/ReturnTypes";
+import type { MainStatsVehicle } from "../../../../api/ReturnTypes";
 import "../../../../locales/config";
 import ErrorBoundary from "../../../functions/ErrorBoundary";
 import sslFix from "../../../functions/fixEaAssets";
 import { BarGraph } from "../../../graphing/bar";
 import { Box } from "../../../Materials";
-import { ComponentHandling, DynamicSort, Views } from "./Main";
-import * as styles from "./Main.module.scss";
+import { ComponentHandling, DynamicSort, type Views } from "./Main";
+import styles from "./Main.module.scss";
 
 export function ViewVehicles(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
@@ -16,7 +16,7 @@ export function ViewVehicles(props: Readonly<Views>): React.ReactElement {
   const [sortType, setSortType] = React.useState<string>("-kills");
   const getLanguage = () => window.localStorage.i18nextLng;
   const numberFormat = new Intl.NumberFormat(getLanguage());
-  let vehicles = [];
+  let vehicles: MainStatsVehicle[] = [];
   if (!props.isLoading && !props.isError) {
     if (props?.stats?.vehicles) {
       vehicles = props.stats.vehicles.filter(
@@ -122,16 +122,17 @@ export function VehicleGraph(props: Readonly<Views>): React.ReactElement {
   const [begin, setBegin] = React.useState<number>(0);
   let i = 0;
   let length = 0;
-  const names = [];
-  const values = [];
+  const names: string[] = [];
+  const values: (string | number)[] = [];
   if (!props.isLoading && !props.isError) {
-    length = props.stats.vehicles?.length;
-    props.stats.vehicles
+    length = props.stats?.vehicles?.length || 0;
+    props.stats?.vehicles
       ?.sort(DynamicSort(`-${graphType}`))
       .map((item: MainStatsVehicle) => {
         if (i >= begin && i < begin + 25) {
           names.push(item.vehicleName);
-          values.push(item[graphType]);
+          const res = item as { [key: string]: string | number }
+          values.push(res[graphType]);
         }
         i += 1;
       });

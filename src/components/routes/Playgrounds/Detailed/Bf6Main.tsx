@@ -3,24 +3,19 @@ import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
 import "../../../../assets/scss/App.scss";
 import { Box } from "../../../Materials";
-import {
+import type {
   MapInfo,
   PlaygroundInfoReturn,
-  Tags,
 } from "../../../../api/ReturnTypes";
 import { PlaygroundOwner } from "./Owner";
-import * as styles from "./Main.module.scss";
+import styles from "./Main.module.scss";
 
 interface Views {
   loading: boolean;
   error: boolean;
   game: string;
-  platform: string;
-  stats: PlaygroundInfoReturn;
-}
-
-function capitalizeFirstLetter(string: string) {
-  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+  platform?: string;
+  stats?: PlaygroundInfoReturn;
 }
 
 export function Bf6Results(props: Views): React.ReactElement {
@@ -40,8 +35,8 @@ export function Bf6Results(props: Views): React.ReactElement {
       </Box>
     );
   } else {
-    const playElement = stats.playElement;
-    const playElementDesign = stats.playElementDesign;
+    const playElement = stats?.playElement;
+    const playElementDesign = stats?.playElementDesign;
 
     // const createdDate = new Date(0);
     // createdDate.setUTCSeconds(playground?.createdAt?.seconds || 0);
@@ -95,8 +90,8 @@ export function Bf6Results(props: Views): React.ReactElement {
               {t("playgrounds.maxPlayers", {
                 amount: playElementDesign?.mapRotation?.maps[0].gameSize,
               })}
-              {stats.progressionMode
-                ? " - " + t(`playgrounds.types.${stats.progressionMode.value}`)
+              {stats?.progressionMode
+                ? " - " + t(`playgrounds.types.${stats?.progressionMode.value}`)
                 : ""}
             </p>
             {/* <p className={styles.description}>
@@ -153,7 +148,7 @@ export function Bf6Results(props: Views): React.ReactElement {
 
         <div className="pageColumn">
           <div className="pageRow">
-            <PlaygroundOwner owner={playElement?.creator?.playerCreator?.player} game={props.game} />
+            <PlaygroundOwner owner={playElement?.creator?.playerCreator?.player as any} game={props.game} />
           </div>
 
           {/* <div className="pageRow">

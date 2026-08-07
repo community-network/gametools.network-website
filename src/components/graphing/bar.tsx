@@ -14,7 +14,7 @@ interface GraphData {
   loading: boolean;
   error: boolean;
   names: string[];
-  values: number[];
+  values: (number | string)[];
   valueName: string;
 }
 

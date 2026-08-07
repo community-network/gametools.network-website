@@ -8,7 +8,7 @@ import "../../../../locales/config";
 import ErrorBoundary from "../../../functions/ErrorBoundary";
 import { BackButton, RightArrow } from "../../../Materials";
 import { Graphs } from "./Graphs";
-import * as styles from "./PlayerSearch.module.scss";
+import styles from "./PlayerSearch.module.scss";
 
 export function StatSearch(): React.ReactElement {
   const { t } = useTranslation();
@@ -17,7 +17,7 @@ export function StatSearch(): React.ReactElement {
     "statSearch_platform",
     "pc",
   );
-  const searchBox: React.RefObject<HTMLInputElement> = React.useRef(null);
+  const searchBox: React.RefObject<HTMLInputElement | null> = React.useRef(null);
 
   // const { data: autocompleteResult } = useQuery({
   //   queryKey: ["autocomplete" + platform + searchTerm],
@@ -110,7 +110,7 @@ function Search(): React.ReactElement {
     "pc",
   );
   const [game, setGame] = useLocalStorage<string>("stats_game", "bf1");
-  const searchBox: React.RefObject<HTMLInputElement> = React.useRef(null);
+  const searchBox: React.RefObject<HTMLInputElement | null> = React.useRef(null);
 
   // const { data: autocompleteResult } = useQuery({
   //   queryKey: ["autocomplete" + platform + searchTerm],

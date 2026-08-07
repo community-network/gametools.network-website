@@ -3,7 +3,7 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "../../locales/ChangeLanguage";
 import "../../locales/config";
-import * as styles from "./Footer.module.scss";
+import styles from "./Footer.module.scss";
 
 interface FLinkProp {
   href: string;
@@ -25,7 +25,6 @@ function FLink(props: FLinkProp) {
 React.version;
 
 export function Footer(): React.ReactElement {
-  const [adsDisabled] = useLocalStorage("disable-ads", false);
   const { t, i18n } = useTranslation();
   let i = 0;
   const footerLinks = [];

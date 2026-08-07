@@ -12,7 +12,6 @@ import {
 import "chartjs-adapter-date-fns";
 import zoomPlugin from "chartjs-plugin-zoom";
 import { useTranslation } from "react-i18next";
-import { GlobalGraphReturn } from "../../api/GametoolsApi";
 
 ChartJS.register(
   zoomPlugin,
@@ -25,7 +24,7 @@ ChartJS.register(
 );
 
 interface NewGraphData {
-  stats: GlobalGraphReturn;
+  stats?: { [key: string]: any };
   chartValues: string;
 }
 

@@ -1,13 +1,13 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { BfPortalApi } from "../../../../api/BfPortalApi";
-import bfportalIcon from "../../../../assets/icon/bfportal-icon.png?sizes[]=60&format=webp&useResponsiveLoader=true";
+import bfportalIcon from "../../../../assets/icon/bfportal-icon.png";
 import { useQuery } from "@tanstack/react-query";
-import * as styles from "./Main.module.scss";
+import styles from "./Main.module.scss";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
 
 export function BfvPlaygroundInfo(props: {
-  playgroundId: string;
+  playgroundId?: string;
   game: string;
 }): React.ReactElement {
   const { t } = useTranslation();
@@ -71,8 +71,8 @@ export function BfvPlaygroundInfo(props: {
 }
 
 export function BfPortalInfo(props: {
-  experienceName: string;
-}): React.ReactElement {
+  experienceName?: string;
+}): React.ReactElement | undefined {
   const { experienceName } = props;
   const { t } = useTranslation();
 
@@ -118,30 +118,29 @@ export function BfPortalInfo(props: {
     );
   }
 
-  if (data.items.length > 0) {
-    const experience = data.items[0];
+  if (data !== undefined && data?.items.length > 0) {
+    const experience = data?.items[0];
     return (
       <div className={styles.spacing}>
         <h2>{t("servers.bfportal.found")}</h2>
-        <a href={experience.meta.html_url} target="_blank" rel="noreferrer">
+        <a href={experience?.meta.html_url} target="_blank" rel="noreferrer">
           <div className="alignW">
             <img
               alt={t("servers.bfportal.main")}
               className={styles.originProfile}
-              src={bfportalIcon.src}
-              srcSet={bfportalIcon.srcSet}
+              src={bfportalIcon}
             />
             <div>
               <h2
                 className={styles.originName}
                 style={{ marginBottom: "0.25rem" }}
               >
-                {experience.title}
+                {experience?.title}
               </h2>
               <h4 className={styles.originDescription}>
-                Experience code: {experience.code}
+                Experience code: {experience?.code}
                 <br />
-                Likes: {experience.liked_by.length}
+                Likes: {experience?.liked_by.length}
               </h4>
             </div>
           </div>

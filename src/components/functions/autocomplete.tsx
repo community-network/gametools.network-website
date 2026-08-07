@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Player } from "../../api/ReturnTypes";
-import * as styles from "./autocomplete.module.scss";
+import type { Player } from "../../api/ReturnTypes";
+import styles from "./autocomplete.module.scss";
 
 export function DropDownAutocomplete({
   autocompleteResult,
@@ -10,17 +10,17 @@ export function DropDownAutocomplete({
   searchBoxRef,
 }: Readonly<{
   autocompleteResult: Player[];
-  callback?: (arg0: string) => void;
+  callback: (arg0: string) => void;
   searchTerm: string;
   style?: React.CSSProperties;
   searchBoxRef: React.RefObject<HTMLInputElement>;
 }>): React.ReactElement {
   const [open, setOpen] = React.useState(false);
 
-  const container: React.RefObject<HTMLDivElement> = React.useRef(null);
+  const container: React.RefObject<HTMLDivElement | null> = React.useRef(null);
 
   React.useEffect(() => {
-    const handleClickOutside = (event: { target }) => {
+    const handleClickOutside = (event: { target: any }) => {
       if (container.current && !container.current.contains(event.target)) {
         setOpen(false);
       }

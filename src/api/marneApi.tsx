@@ -2,7 +2,7 @@ import { getName } from "i18n-iso-countries";
 import { capitalizeFirstLetter } from "../components/functions/capitalizeFirstLetter";
 import { getCurrentCountry } from "../locales/config";
 import JsonClient from "./Json";
-import {
+import type {
   DetailedServerInfo,
   MainStats,
   MainStatsClasses,
@@ -82,20 +82,20 @@ export interface DetailedServerReturn {
 }
 
 interface ServerSearchInfo {
-  game: string;
-  searchTerm: string;
+  game?: string;
+  searchTerm?: string;
   limit?: string;
   regions?: string[];
 }
 
 interface DetailedSearch {
-  game: string;
-  getter: string;
-  serverName: string;
-  region: string;
+  game?: string;
+  getter?: string;
+  serverName?: string;
+  region?: string;
 }
 
-const gamemode_stats = {
+const gamemode_stats: { [key: string]: { [key: string]: string } } = {
   mgc_roo_g: { gamemodeName: "Conquest" },
   mgtd_roo_g: { gamemodeName: "Team deathmatch" },
   mgb_roo_g: { gamemodeName: "Operations" },
@@ -104,7 +104,7 @@ const gamemode_stats = {
   mgdo_roo_g: { gamemodeName: "Domination" },
   _roo_g: { gamemodeName: "Total" },
 };
-const classes_stats = {
+const classes_stats: { [key: string]: { [key: string]: string } } = {
   c_md_: { className: "Medic" },
   c_sp_: { className: "Support" },
   c_as_: { className: "Assault" },
@@ -113,7 +113,7 @@ const classes_stats = {
   c_tk_: { className: "Tanker" },
   c_cv_: { className: "Cavalry" },
 };
-const weapon_stats = {
+const weapon_stats: { [key: string]: { [key: string]: string } } = {
   c_wLMGMadsS: { weaponName: "Madsen MG Storm" },
   c_wHSLuger: { weaponName: "P08 Pistol" },
   c_wXGN: { weaponName: "Incendiary Grenade" },
@@ -344,7 +344,7 @@ const weapon_stats = {
   c_wRSinWinT: { weaponName: "Russian 1895 Trench" },
   c_wMWelsh: { weaponName: "Welsh Blade" },
 };
-const gamemode_score = {
+const gamemode_score: { [key: string]: string } = {
   mgc_roo_g: "sc_conquest",
   mgtd_roo_g: "sc_deathmatch",
   mgb_roo_g: "sc_operations",
@@ -353,7 +353,7 @@ const gamemode_score = {
   mgdo_roo_g: "sc_domination",
   _roo_g: "sc_general",
 };
-const classes_score = {
+const classes_score: { [key: string]: string } = {
   c_md_: "sc_medic",
   c_sp_: "sc_support",
   c_as_: "sc_assault",
@@ -362,7 +362,7 @@ const classes_score = {
   c_tk_: "sc_tanker",
   c_cv_: "sc_cavalry",
 };
-const modes = {
+const modes: { [key: string]: string } = {
   Conquest0: "Conquest",
   Rush0: "Rush",
   BreakThrough0: "Shock Operations",
@@ -375,7 +375,7 @@ const modes = {
   ZoneControl0: "Rush",
 };
 
-const smallmodes = {
+const smallmodes: { [key: string]: string } = {
   Conquest0: "CQ",
   Rush0: "RS",
   BreakThrough0: "SO",
@@ -388,63 +388,7 @@ const smallmodes = {
   ZoneControl0: "RS",
 };
 
-const to_internal = {
-  "sinai desert": "MP_Desert",
-  "ballroom blitz": "MP_Chateau",
-  "empire's edge": "MP_ItalianCoast",
-  "st quentin scar": "MP_Scar",
-  "prise de tahure": "MP_Shoveltown",
-  "monte grappa": "MP_MountainFort",
-  "fao fortress": "MP_FaoFortress",
-  "giant's shadow": "MP_Giant",
-  rupture: "MP_Graveyard",
-  amiens: "MP_Amiens",
-  suez: "MP_Suez",
-  "fort de vaux": "MP_Underworld",
-  "nivelle nights": "MP_Trench",
-  soissons: "MP_Fields",
-  "verdun heights": "MP_Verdun",
-  albion: "MP_Islands",
-  tsaritsyn: "MP_Tsaritsyn",
-  "łupków pass": "MP_Ravines",
-  "achi baba": "MP_Ridge",
-  "heligoland bight": "MP_Naval",
-  caporetto: "MP_River",
-  "river somme": "MP_Offensive",
-  passchendaele: "MP_Hell",
-  galicia: "MP_Valley",
-  "volga river": "MP_Volga",
-  "brusilov keep": "MP_Bridge",
-  "cape helles": "MP_Beachhead",
-  zeebrugge: "MP_Harbor",
-  "argonne forest": "MP_Forest",
-  "razor's edge": "MP_Alps",
-  "london calling": "MP_Blitz",
-  "london calling: Scourge": "MP_London",
-  //bfv
-  "fjell 652": "MP_ArcticFjell",
-  narvik: "MP_ArcticFjord",
-  arras: "MP_Arras",
-  devastation: "MP_Devastation",
-  "twisted steel": "MP_Escaut",
-  aerodrome: "MP_Foxhunt",
-  hamada: "MP_Halfaya",
-  rotterdam: "MP_Rotterdam",
-  panzerstorm: "MP_Hannut",
-  mercury: "MP_Crete",
-  marita: "MP_Kalamas",
-  provence: "MP_Provence",
-  "al sudan": "MP_SandAndSea",
-  "operation Underground": "MP_Bunker",
-  "iwo jima": "MP_IwoJima",
-  "pacific storm": "MP_TropicIslands",
-  "wake island": "MP_WakeIsland",
-  "solomon islands": "MP_Jungle",
-  "al marj encampment": "MP_Libya",
-  "lofoten islands": "MP_Norway",
-};
-
-const maps = {
+const maps: { [key: string]: string } = {
   MP_Amiens: "Amiens",
   MP_Chateau: "Ballroom Blitz",
   MP_Desert: "Sinai Desert",
@@ -511,7 +455,7 @@ const maps = {
   MP_WE_Grind_Rotterdam: "Rotterdam (Grind)",
 };
 
-const map_image = {
+const map_image: { [key: string]: string } = {
   MP_Amiens:
     "https://cdn.gametools.network/maps/bf1/MP_Amiens_LandscapeLarge-e195589d.webp",
   MP_Chateau:
@@ -640,7 +584,7 @@ const map_image = {
     "https://cdn.gametools.network/maps/bfv/1080p_MP_Rotterdam-55632240.webp",
 };
 
-const marne_regions = {
+const marne_regions: { [key: string]: string } = {
   AS: "Asia",
   SA: "sam",
   NA: "nam",
@@ -659,9 +603,9 @@ function rounding(number: number) {
 function getWeapons(statsDict: {
   [string: string]: string;
 }): MainStatsWeapon[] {
-  const weapons = [];
+  const weapons: MainStatsWeapon[] = [];
   for (const [_id, extra] of Object.entries(weapon_stats)) {
-    const weapon = extra;
+    const weapon: { [key: string]: string | number } = extra;
     const kills = Number.parseFloat(statsDict[`${_id}__kw_g`] ?? "0");
     const shotsHit = Number.parseFloat(statsDict[`${_id}__shw_g`] ?? "0");
     const shotsFired = Number.parseFloat(statsDict[`${_id}__sfw_g`] ?? "0");
@@ -685,7 +629,7 @@ function getWeapons(statsDict: {
     weapon["shotsHit"] = shotsHit;
     weapon["shotsFired"] = shotsFired;
     weapon["timeEquipped"] = seconds;
-    weapons.push(weapon);
+    weapons.push(weapon as MainStatsWeapon);
   }
   return weapons;
 }
@@ -693,13 +637,13 @@ function getWeapons(statsDict: {
 function getGamemodes(statsDict: {
   [string: string]: string;
 }): MainStatsGamemode[] {
-  const gamemodes = [];
+  const gamemodes: MainStatsGamemode[] = [];
   for (const [_id, extra] of Object.entries(gamemode_stats)) {
-    const gamemode = extra;
+    const gamemode: { [key: string]: string | number } = extra;
     gamemode["id"] = _id;
     gamemode["score"] =
       Number.parseFloat(statsDict[gamemode_score[_id] ?? ""] ?? "0") || 0;
-    gamemodes.push(gamemode);
+    gamemodes.push(gamemode as MainStatsGamemode);
   }
 
   return gamemodes;
@@ -708,9 +652,9 @@ function getGamemodes(statsDict: {
 function getClasses(statsDict: {
   [string: string]: string;
 }): MainStatsClasses[] {
-  const kits = [];
+  const kits: MainStatsClasses[] = [];
   for (const [_id, extra] of Object.entries(classes_stats)) {
-    const kit = extra;
+    const kit: { [key: string]: string | number } = extra;
     const kills = Number.parseFloat(statsDict[`${_id}_ks_g`] ?? "0");
     const seconds = Number.parseFloat(statsDict[`${_id}_sa_g`] ?? "0");
     const killsPerMinute = rounding(kills / (seconds / 60));
@@ -725,15 +669,15 @@ function getClasses(statsDict: {
     // kit["timePlayed"] = str(datetime.timedelta(seconds=kit["secondsPlayed"]))
     kit["score"] =
       Number.parseFloat(statsDict[classes_score[_id] ?? ""] ?? "0") || 0;
-    kits.push(kit);
+    kits.push(kit as MainStatsClasses);
   }
   return kits;
 }
 
 export class ApiProvider extends JsonClient {
   private serverCache: ServerListReturn = { servers: [] };
-  private serverCacheAge: number;
-  private serverCacheGame: string;
+  private serverCacheAge: number | undefined;
+  private serverCacheGame: string | undefined;
 
   constructor() {
     super();
@@ -817,7 +761,7 @@ export class ApiProvider extends JsonClient {
       (Date.now() - this.serverCacheAge) / 1000 > 30
     ) {
       const r = await fetch(
-        game.includes("bf1")
+        game?.includes("bf1")
           ? "https://marne.io/api/srvlst/"
           : "https://marne.io/api/v/srvlst/",
       );
@@ -830,44 +774,44 @@ export class ApiProvider extends JsonClient {
       this.serverCache.servers == undefined
         ? []
         : this.serverCache.servers
-            .map((server) => {
-              const internalMapName: string = server?.mapName
-                ?.split("/")
-                .slice(-1)[0];
-              return {
-                gameId: server?.id.toString(),
-                prefix: server?.name,
-                currentMap: maps[internalMapName],
-                currentMapImage: map_image[internalMapName],
-                url: map_image[internalMapName],
-                inQue: 0,
-                mode: modes[server?.gameMode],
-                official: false,
-                ownerId: 0,
-                region: marne_regions[server?.region] || server?.region || "",
-                country: getName(server?.country, country),
-                platform: "pc",
-                playerAmount: server?.currentPlayers,
-                maxPlayerAmount: server?.maxPlayers,
-                serverInfo: "",
-                smallMode: smallmodes[server?.gameMode],
-                botAmount: server?.botCount,
-              };
-            })
-            .filter((server) => {
-              return (
-                server.prefix
-                  .toLowerCase()
-                  .includes(searchTerm.toLowerCase()) &&
-                (regions.includes(server.region.toLowerCase()) ||
-                  regions.includes("all"))
-              );
-            })
-            .slice(0, !Number.isNaN(Number(limit)) ? Number(limit) : 10);
+          .map((server) => {
+            const internalMapName: string = server?.mapName
+              ?.split("/")
+              .slice(-1)[0];
+            return {
+              gameId: server?.id.toString(),
+              prefix: server?.name,
+              currentMap: maps[internalMapName],
+              currentMapImage: map_image[internalMapName],
+              url: map_image[internalMapName],
+              inQue: 0,
+              mode: modes[server?.gameMode],
+              official: false,
+              ownerId: 0,
+              region: marne_regions[server?.region] || server?.region || "",
+              country: getName(server?.country, country),
+              platform: "pc",
+              playerAmount: server?.currentPlayers,
+              maxPlayerAmount: server?.maxPlayers,
+              serverInfo: "",
+              smallMode: smallmodes[server?.gameMode],
+              botAmount: server?.botCount,
+            };
+          })
+          .filter((server) => {
+            return (
+              server.prefix
+                .toLowerCase()
+                .includes(searchTerm?.toLowerCase() || "") &&
+              (regions?.includes(server.region.toLowerCase()) ||
+                regions?.includes("all"))
+            );
+          })
+          .slice(0, !Number.isNaN(Number(limit)) ? Number(limit) : 10);
     return {
       cache: false,
       servers,
-      apiUrl: game.includes("bf1")
+      apiUrl: game?.includes("bf1")
         ? "https://marne.io/api/srvlst/"
         : "https://marne.io/api/v/srvlst/",
     };
@@ -879,26 +823,26 @@ export class ApiProvider extends JsonClient {
     region,
     game,
   }: DetailedSearch): Promise<DetailedServerInfo> {
-    let gameId = serverName;
+    let gameId: string | undefined = serverName;
     if (getter === "name") {
       const servers = await this.serverList({
         game: game,
         searchTerm: serverName,
         limit: "1",
-        regions: [region],
+        regions: region === undefined ? [] : [region],
       });
-      gameId = servers?.servers[0]?.gameId;
+      gameId = servers?.servers?.[0]?.gameId;
     }
 
     const r = await fetch(
-      game.includes("bf1")
+      game?.includes("bf1")
         ? `https://marne.io/api/srvlst/${gameId}`
         : `https://marne.io/api/v/srvlst/${gameId}`,
     );
     const result: DetailedServerReturn = await r.json();
     const internalMapName: string = result?.mapName?.split("/").slice(-1)[0];
     return {
-      apiUrl: game.includes("bf1")
+      apiUrl: game?.includes("bf1")
         ? `https://marne.io/api/srvlst/${gameId}`
         : `https://marne.io/api/v/srvlst/${gameId}`,
       cache: false,
@@ -913,7 +857,7 @@ export class ApiProvider extends JsonClient {
       platform: "pc",
       playerAmount: result?.currentPlayers,
       maxPlayerAmount: result?.maxPlayers,
-      serverInfo: null,
+      serverInfo: undefined,
       smallmode: smallmodes[result?.gameMode],
       settings: result?.settings,
       description: result?.description,
@@ -924,32 +868,32 @@ export class ApiProvider extends JsonClient {
         result?.rotation === ""
           ? []
           : result?.rotation?.map((current: RotationReturn, index: number) => {
-              if (current !== null) {
-                const internalMapName: string =
-                  current?.mapLongName?.split("/").slice(-1)[0] ||
-                  current?.map?.split("/").slice(-1)[0] ||
-                  "";
-                return {
-                  index,
-                  mapname:
-                    maps[internalMapName] ||
-                    capitalizeFirstLetter(current?.map || ""),
-                  mode:
-                    modes[current?.mode] ||
-                    capitalizeFirstLetter(current?.mode || ""),
-                  image: map_image[internalMapName] || "",
-                };
-              }
-            }),
+            if (current !== null) {
+              const internalMapName: string =
+                current?.mapLongName?.split("/").slice(-1)[0] ||
+                current?.map?.split("/").slice(-1)[0] ||
+                "";
+              return {
+                index,
+                mapname:
+                  maps[internalMapName] ||
+                  capitalizeFirstLetter(current?.map || ""),
+                mode:
+                  modes[current?.mode] ||
+                  capitalizeFirstLetter(current?.mode || ""),
+                image: map_image[internalMapName] || "",
+              };
+            }
+          }).filter(d => d !== undefined),
       players:
         result?.playerList === ""
           ? []
           : result?.playerList?.map((current: PlayerReturn) => {
-              return {
-                name: current?.name,
-                team: current?.team,
-              };
-            }),
+            return {
+              name: current?.name,
+              team: current?.team,
+            };
+          }),
     };
   }
 }

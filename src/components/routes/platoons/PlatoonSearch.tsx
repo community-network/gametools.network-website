@@ -4,18 +4,18 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router";
 import { GametoolsApi } from "../../../api/GametoolsApi";
-import { PlatoonResult, PlatoonSearchResult } from "../../../api/ReturnTypes";
+import type { PlatoonResult, PlatoonSearchResult } from "../../../api/ReturnTypes";
 import "../../../assets/scss/App.scss";
 import "../../../locales/config";
 import { getLanguage } from "../../../locales/config";
 import { BackButton, Box } from "../../Materials";
 import { PlatoonInfo } from "./Platoon";
-import * as styles from "./PlatoonSearch.module.scss";
+import styles from "./PlatoonSearch.module.scss";
 
 interface Views {
   loading: boolean;
   error: boolean;
-  platoons: PlatoonSearchResult;
+  platoons?: PlatoonSearchResult;
   platform: string;
   setPlatoonId: React.Dispatch<React.SetStateAction<string>>;
 }

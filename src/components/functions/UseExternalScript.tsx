@@ -11,7 +11,7 @@ export default function useExternalScript(
       setState("idle");
       return;
     }
-    let script: HTMLScriptElement = document.querySelector(
+    let script: HTMLScriptElement | null = document.querySelector(
       `script[src="${url}"]`,
     );
 

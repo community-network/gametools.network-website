@@ -2,12 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import { useMeasure } from "@uidotdev/usehooks";
 import {
   CategoryScale,
+  Chart,
   Chart as ChartJS,
   Filler,
   LinearScale,
   LineElement,
   PointElement,
-  ScriptableContext,
+  type ScriptableContext,
   TimeScale,
   Tooltip,
 } from "chart.js";
@@ -16,12 +17,12 @@ import zoomPlugin from "chartjs-plugin-zoom";
 import * as React from "react";
 import { Line } from "react-chartjs-2";
 import { useTranslation } from "react-i18next";
-import { GametoolsApi, GlobalGraphReturn } from "../../api/GametoolsApi";
-import { DetailedServerInfo } from "../../api/ReturnTypes";
+import { GametoolsApi, type GlobalGraphReturn } from "../../api/GametoolsApi";
+import type { DetailedServerInfo } from "../../api/ReturnTypes";
 import { gameGraphConvert, graphColors, graphGames } from "../../api/static";
 import ErrorBoundary from "../functions/ErrorBoundary";
 import { Box } from "../Materials";
-import * as styles from "./line.module.scss";
+import styles from "./line.module.scss";
 import { ServerPieChart } from "./pie";
 
 ChartJS.register(
@@ -39,7 +40,7 @@ interface GraphData {
   loading: boolean;
   error: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  stats: { [name: string]: any };
+  stats?: { [name: string]: any };
   gameName: string;
   platform: string;
   timeStamps: [string];
@@ -51,7 +52,7 @@ interface GlobalInfo {
 
 const borderPlugin = {
   id: "chartAreaBorder",
-  beforeDraw(chart) {
+  beforeDraw(chart: { options?: any; ctx?: any; chartArea?: any; }) {
     const {
       ctx,
       chartArea: { left, top, width, height },
@@ -68,7 +69,7 @@ const borderPlugin = {
 
 function LineGraph(props: GraphData): React.ReactElement {
   const { t, i18n } = useTranslation();
-  const chartRef = React.useRef(null);
+  const chartRef: React.ForwardedRef<Chart<"line", any, Date> | undefined> | undefined = React.useRef(null);
   if (!props.loading && !props.error) {
     const time = props.timeStamps.map((e: string) => {
       const time = new Date(e);
@@ -78,7 +79,7 @@ function LineGraph(props: GraphData): React.ReactElement {
     const data = [];
 
     let color = 0;
-    for (const [key, value] of Object.entries(props.stats)) {
+    for (const [key, value] of Object.entries(props.stats || [])) {
       data.push({
         label: i18n.exists(`stats.graph.${key}`)
           ? t(`stats.graph.${key}`)
@@ -117,11 +118,13 @@ function LineGraph(props: GraphData): React.ReactElement {
             },
             onClick() {
               const chart = chartRef.current;
-              chart.options.plugins.zoom.zoom.wheel.enabled =
-                !chart.options.plugins.zoom.zoom.wheel.enabled;
-              chart.options.plugins.zoom.zoom.pinch.enabled =
-                !chart.options.plugins.zoom.zoom.pinch.enabled;
-              chart.update();
+              if (chart?.options.plugins?.zoom?.zoom?.wheel !== undefined && chart.options.plugins.zoom.zoom.pinch !== undefined) {
+                chart.options.plugins.zoom.zoom.wheel.enabled =
+                  !chart.options.plugins.zoom.zoom.wheel.enabled;
+                chart.options.plugins.zoom.zoom.pinch.enabled =
+                  !chart.options.plugins.zoom.zoom.pinch.enabled;
+                chart.update();
+              }
             },
             plugins: {
               tooltip: {
@@ -168,7 +171,7 @@ function LineGraph(props: GraphData): React.ReactElement {
 
 function AllPlatformGraph(props: GraphData): React.ReactElement {
   const { t } = useTranslation();
-  const chartRef = React.useRef(null);
+  const chartRef: React.ForwardedRef<Chart<"line", any, Date> | undefined> | undefined = React.useRef(null);
   if (!props.loading && !props.error) {
     const time = props.timeStamps.map((e: string) => {
       const time = new Date(e);
@@ -179,7 +182,7 @@ function AllPlatformGraph(props: GraphData): React.ReactElement {
 
     let color = 0;
     if (props.gameName !== "bf2042portal") {
-      for (const [key, value] of Object.entries(props.stats)) {
+      for (const [key, value] of Object.entries(props.stats || [])) {
         data.push({
           label: t(`platforms.${key}`),
           data: value.soldierAmount,
@@ -192,7 +195,7 @@ function AllPlatformGraph(props: GraphData): React.ReactElement {
     } else {
       data.push({
         label: t("platforms.global"),
-        data: props.stats.soldierAmount,
+        data: props.stats?.soldierAmount,
         fill: false,
         borderColor: graphColors[0],
         pointRadius: 0,
@@ -225,11 +228,13 @@ function AllPlatformGraph(props: GraphData): React.ReactElement {
             },
             onClick() {
               const chart = chartRef.current;
-              chart.options.plugins.zoom.zoom.wheel.enabled =
-                !chart.options.plugins.zoom.zoom.wheel.enabled;
-              chart.options.plugins.zoom.zoom.pinch.enabled =
-                !chart.options.plugins.zoom.zoom.pinch.enabled;
-              chart.update();
+              if (chart?.options.plugins?.zoom?.zoom?.wheel !== undefined && chart.options.plugins.zoom.zoom.pinch !== undefined) {
+                chart.options.plugins.zoom.zoom.wheel.enabled =
+                  !chart.options.plugins.zoom.zoom.wheel.enabled;
+                chart.options.plugins.zoom.zoom.pinch.enabled =
+                  !chart.options.plugins.zoom.zoom.pinch.enabled;
+                chart.update();
+              }
             },
             plugins: {
               tooltip: {
@@ -309,7 +314,7 @@ export function OldGameGraph(props: GameInfo): React.ReactElement {
         <h3>{t(`regions.all`)}</h3>
         {props.platform !== "all" ? (
           <LineGraph
-            timeStamps={stats.timeStamps}
+            timeStamps={stats?.timeStamps}
             loading={loading}
             error={error}
             platform={props.platform}
@@ -318,7 +323,7 @@ export function OldGameGraph(props: GameInfo): React.ReactElement {
           />
         ) : (
           <AllPlatformGraph
-            timeStamps={stats.timeStamps}
+            timeStamps={stats?.timeStamps}
             loading={loading}
             error={error}
             platform={props.platform}
@@ -365,7 +370,7 @@ export function Graph(props: NewGameInfo): React.ReactElement {
   if (!loading && !error) {
     return (
       <>
-        {Object.keys(stats).map((key: string, index: number) => {
+        {Object.keys(stats || []).map((key: string, index: number) => {
           {
             if (["timeStamps", "startTime", "endTime"].includes(key)) {
               return <></>;
@@ -375,20 +380,20 @@ export function Graph(props: NewGameInfo): React.ReactElement {
                   <h3>{t(`regions.${key.toLowerCase()}`)}</h3>
                   {props.platform !== "all" ? (
                     <LineGraph
-                      timeStamps={stats.timeStamps}
+                      timeStamps={stats?.timeStamps}
                       loading={loading}
                       error={error}
                       platform={props.platform}
-                      stats={stats[key]}
+                      stats={stats?.[key]}
                       gameName={props.gameName}
                     />
                   ) : (
                     <AllPlatformGraph
-                      timeStamps={stats.timeStamps}
+                      timeStamps={stats?.timeStamps}
                       loading={loading}
                       error={error}
                       platform={props.platform}
-                      stats={stats[key]}
+                      stats={stats?.[key]}
                       gameName={props.gameName}
                     />
                   )}
@@ -410,10 +415,10 @@ export function Graph(props: NewGameInfo): React.ReactElement {
 
 function GlobalLineGraph(props: GraphData): React.ReactElement {
   const [graphRef, { width }] = useMeasure();
-  const chartRef = React.useRef(null);
+  const chartRef: React.ForwardedRef<Chart<"line", any, Date> | undefined> | undefined = React.useRef(null);
   const { t } = useTranslation();
   if (!props.loading && !props.error) {
-    const time = props.stats.timeStamps.map((e: string) => {
+    const time = props.stats?.timeStamps.map((e: string) => {
       const time = new Date(e);
       return time;
     });
@@ -430,10 +435,10 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
         if (gameStuff[0] == "bf2") {
           gameName = gameStuff[1];
         }
-        if (width > 500) {
+        if ((width || 0) > 500) {
           return {
             label: t(`games.${e}`),
-            data: props.stats[gameName],
+            data: props.stats?.[gameName],
             fill: false,
             borderColor: graphColors[index],
             pointRadius: 0,
@@ -441,7 +446,7 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
         }
         return {
           label: e,
-          data: props.stats[gameName],
+          data: props.stats?.[gameName],
           fill: false,
           borderColor: graphColors[index],
           pointRadius: 0,
@@ -451,7 +456,7 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
 
     return (
       <div ref={graphRef}>
-        {width > 380 ? (
+        {(width || 0) > 380 ? (
           <Line
             ref={chartRef}
             options={{
@@ -476,11 +481,13 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
               },
               onClick() {
                 const chart = chartRef.current;
-                chart.options.plugins.zoom.zoom.wheel.enabled =
-                  !chart.options.plugins.zoom.zoom.wheel.enabled;
-                chart.options.plugins.zoom.zoom.pinch.enabled =
-                  !chart.options.plugins.zoom.zoom.pinch.enabled;
-                chart.update();
+                if (chart?.options.plugins?.zoom?.zoom?.wheel !== undefined && chart.options.plugins.zoom.zoom.pinch !== undefined) {
+                  chart.options.plugins.zoom.zoom.wheel.enabled =
+                    !chart.options.plugins.zoom.zoom.wheel.enabled;
+                  chart.options.plugins.zoom.zoom.pinch.enabled =
+                    !chart.options.plugins.zoom.zoom.pinch.enabled;
+                  chart.update();
+                }
               },
               plugins: {
                 tooltip: {
@@ -525,11 +532,13 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
               },
               onClick() {
                 const chart = chartRef.current;
-                chart.options.plugins.zoom.zoom.wheel.enabled =
-                  !chart.options.plugins.zoom.zoom.wheel.enabled;
-                chart.options.plugins.zoom.zoom.pinch.enabled =
-                  !chart.options.plugins.zoom.zoom.pinch.enabled;
-                chart.update();
+                if (chart?.options.plugins?.zoom?.zoom?.wheel !== undefined && chart.options.plugins.zoom.zoom.pinch !== undefined) {
+                  chart.options.plugins.zoom.zoom.wheel.enabled =
+                    !chart.options.plugins.zoom.zoom.wheel.enabled;
+                  chart.options.plugins.zoom.zoom.pinch.enabled =
+                    !chart.options.plugins.zoom.zoom.pinch.enabled;
+                  chart.update();
+                }
               },
               plugins: {
                 legend: { display: false },
@@ -570,7 +579,7 @@ function GlobalLineGraph(props: GraphData): React.ReactElement {
     );
   } else {
     return (
-      <Box innerStyle={{ minHeight: width > 380 ? "20rem" : "8rem" }}>
+      <Box innerStyle={{ minHeight: (width || 0) > 380 ? "20rem" : "8rem" }}>
         <h3>{t("loading")}</h3>
       </Box>
     );
@@ -611,7 +620,7 @@ export function GlobalGraph(props: GlobalInfo): React.ReactElement {
 }
 
 function TotalStatistic(props: {
-  amounts: number[];
+  amounts?: number[];
   text: string;
   loading: boolean;
 }): React.ReactElement {
@@ -670,9 +679,9 @@ export function TotalGraphQuery(): React.ReactElement {
 }
 
 interface ServerGraphData {
-  stats: DetailedServerInfo;
-  game: string;
-  getter: string;
+  stats?: DetailedServerInfo;
+  game?: string;
+  getter?: string;
   name: string;
 }
 
@@ -681,7 +690,7 @@ export function ServerGraphQuery(props: ServerGraphData): React.ReactElement {
   const [pieGraphType, setPieGraphType] = React.useState<string>("map");
 
   let getter = props.getter;
-  if (["bf3", "bfh", "bf2042"].includes(props.game)) {
+  if (["bf3", "bfh", "bf2042"].includes(props.game || "")) {
     getter = "serverid";
   }
 
@@ -745,7 +754,7 @@ export function ServerGraphQuery(props: ServerGraphData): React.ReactElement {
             >
               <option value="map">{t("servers.graph.map")}</option>
               {stats?.mode != undefined &&
-              Object.keys(stats?.mode).length > 0 ? (
+                Object.keys(stats?.mode).length > 0 ? (
                 <option value="mode">{t("servers.graph.mode")}</option>
               ) : (
                 <></>
@@ -762,15 +771,15 @@ export function ServerGraphQuery(props: ServerGraphData): React.ReactElement {
 interface NewGraphData {
   loading: boolean;
   error: boolean;
-  stats: GlobalGraphReturn;
+  stats?: GlobalGraphReturn;
 }
 
 function ServerGraph(props: {
-  stats: GlobalGraphReturn;
+  stats?: GlobalGraphReturn;
   loading: boolean;
 }): React.ReactElement {
   const { t } = useTranslation();
-  const chartRef = React.useRef(null);
+  const chartRef: React.ForwardedRef<Chart<"line", any, Date> | undefined> | undefined = React.useRef(null);
   const time =
     props.stats?.timeStamps.map((e: string) => {
       const time = new Date(e);
@@ -860,7 +869,7 @@ function ServerGraph(props: {
 
 function TotalGraph(props: NewGraphData): React.ReactElement {
   const { t } = useTranslation();
-  const chartRef = React.useRef(null);
+  const chartRef: React.ForwardedRef<Chart<"line", any, Date> | undefined> | undefined = React.useRef(null);
   const time = props.stats?.timeStamps?.map((e: string) => {
     const time = new Date(e);
     return time;

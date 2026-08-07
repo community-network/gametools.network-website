@@ -1,5 +1,5 @@
 import JsonClient from "./Json";
-import { ServerSearch } from "./ReturnTypes";
+import type { ServerSearch } from "./ReturnTypes";
 
 export interface ServerInfoReturn {
   Name: string;
@@ -19,14 +19,14 @@ export interface ServerInfoReturn {
 }
 
 interface ServerSearchInfo {
-  searchTerm: string;
+  searchTerm?: string;
   regions?: string[];
   limit?: string;
 }
 
 export class ApiProvider extends JsonClient {
   private serverCache: ServerInfoReturn[] = [];
-  private serverCacheAge: number;
+  private serverCacheAge: number | undefined;
 
   constructor() {
     super();
@@ -41,7 +41,7 @@ export class ApiProvider extends JsonClient {
     regions,
     limit,
   }: ServerSearchInfo): Promise<ServerSearch> {
-    const modes = {
+    const modes: { [key: string]: string } = {
       CONQ: "Conquest",
       FRONTLINE: "Frontlines",
       RUSH: "Rush",
@@ -56,7 +56,7 @@ export class ApiProvider extends JsonClient {
       CaptureTheFlag: "Capture the flag",
     };
 
-    const smallmodes = {
+    const smallmodes: { [key: string]: string } = {
       CONQ: "CQ",
       FRONTLINE: "FL",
       RUSH: "RS",
@@ -87,9 +87,8 @@ export class ApiProvider extends JsonClient {
       .map((server) => {
         const serverImageName = server.Map.replace("Old_", "");
         return {
-          prefix: `${server.IsOfficial ? "[Official]" : "[Community]"} - ${
-            server.Name
-          }`,
+          prefix: `${server.IsOfficial ? "[Official]" : "[Community]"} - ${server.Name
+            }`,
           currentMap: server.Map,
           currentMapImage: `https://cdn.gametools.network/maps/battlebit/${serverImageName}.webp`,
           url: `https://cdn.gametools.network/maps/battlebit/${serverImageName}.webp`,
@@ -111,8 +110,8 @@ export class ApiProvider extends JsonClient {
       })
       .filter((server) => {
         return (
-          server.prefix.toLowerCase().includes(searchTerm.toLowerCase()) &&
-          (regions.includes(server.region) || regions.includes("all"))
+          server.prefix.toLowerCase().includes(searchTerm?.toLowerCase() || "") &&
+          (regions?.includes(server.region) || regions?.includes("all"))
         );
       })
       .slice(0, !Number.isNaN(Number(limit)) ? Number(limit) : 10);

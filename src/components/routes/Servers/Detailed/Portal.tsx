@@ -1,11 +1,11 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { ServerInfoResult } from "../../../../api/ReturnTypes";
+import type { ServerInfoResult } from "../../../../api/ReturnTypes";
 import background from "../../../../assets/icon/portal.svg";
 import backgroundBf6 from "../../../../assets/icon/portal-bf6.svg";
 import "../../../../assets/scss/App.scss";
 import "../../../../locales/config";
-import * as styles from "./Main.module.scss";
+import styles from "./Main.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import { getLanguage } from "../../../../locales/config";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
@@ -13,7 +13,7 @@ import { Link } from "react-router";
 
 export function OtherServers(props: Readonly<{
   experienceId: string;
-  game: string;
+  game?: string;
 }>,
 ): React.ReactElement {
   const { t } = useTranslation();
@@ -48,20 +48,21 @@ export function OtherServers(props: Readonly<{
       <h5 className={styles.originDescription}>{isLoading ? t("loading") : t("notApplicable")}</h5>
     );
   }
+  const length = stats?.servers?.length || 0;
   return <Link
     to={`/servers?${new URLSearchParams({
       search: props.experienceId,
-      game: props.game,
+      game: props.game?.toString() || "",
       searchtype: "playgroundid",
-      region: ["all"],
+      region: ["all"].toString(),
       platform: "allPlatforms",
-      limit: 10,
+      limit: "10"
     }).toString()}`}
   >
     <h5 className={styles.originDescription}>
-      {stats?.servers.length === 1 ?
+      {length === 1 ?
         t("servers.portal.noMoreServers")
-        : t("servers.portal.moreServers", { amount: stats?.servers?.length > 99 ? "100+" : stats?.servers?.length })
+        : t("servers.portal.moreServers", { amount: length > 99 ? "100+" : stats?.servers?.length })
       }
     </h5>
   </Link>
@@ -69,8 +70,8 @@ export function OtherServers(props: Readonly<{
 
 export function ServerConfig(
   props: Readonly<{
-    game: string;
-    serverInfo: ServerInfoResult;
+    game?: string;
+    serverInfo?: ServerInfoResult;
     experienceId: string | undefined;
     isError: boolean;
     isLoading: boolean;
@@ -100,7 +101,7 @@ export function ServerConfig(
     );
   }
   if (
-    serverInfo.configDescriptionTranslation !== undefined &&
+    serverInfo?.configDescriptionTranslation !== undefined &&
     serverInfo?.configNameTranslation !== ""
   ) {
     return (

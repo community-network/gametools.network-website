@@ -1,4 +1,3 @@
-import * as React from "react";
 import { BrowserRouter } from "react-router";
 import "./../assets/scss/App.scss";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";

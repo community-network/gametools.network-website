@@ -1,12 +1,12 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { managerPlayers } from "../../../../api/GametoolsApi";
-import * as styles from "./AdminMode.module.scss";
+import type { managerPlayers } from "../../../../api/GametoolsApi";
+import styles from "./AdminMode.module.scss";
 
 export function CheckBan(
   props: Readonly<{
-    playerId: string;
-    checkBanInfo: managerPlayers;
+    playerId?: string;
+    checkBanInfo?: managerPlayers;
     checkBanLoading: boolean;
     checkBanError: boolean;
     adminMode: boolean;
@@ -18,7 +18,7 @@ export function CheckBan(
   }>,
 ) {
   const { t } = useTranslation();
-  const playerInfo = props.checkBanInfo?.bfban[props.playerId];
+  const playerInfo = props.checkBanInfo?.bfban[props.playerId || ""];
   const bfeac = props.checkBanInfo?.bfeac?.includes(Number(props.playerId));
   let color = "#ffffff";
 
@@ -53,7 +53,7 @@ export function CheckBan(
   }
 
   const vbanCount = Object.keys(
-    props.checkBanInfo?.vban[props.playerId] || {},
+    props.checkBanInfo?.vban[props.playerId || ""] || {},
   )?.length;
   if (vbanCount > 0 && props.adminMode) {
     color = "#dc5314";
@@ -65,8 +65,8 @@ export function CheckBan(
   }
 
   const usedNameCount =
-    props.checkBanInfo?.otherNames[props.playerId]?.usedNames?.length;
-  if (usedNameCount > 5 && props.adminMode) {
+    props.checkBanInfo?.otherNames[props.playerId || ""]?.usedNames?.length;
+  if (usedNameCount !== undefined && usedNameCount > 5 && props.adminMode) {
     color = "#dc5314";
     return (
       <p className={styles.CheckBoxDesc} style={{ color: color }}>

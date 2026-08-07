@@ -1,13 +1,13 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { MainStatsGadgets } from "../../../../api/ReturnTypes";
+import { type MainStatsGadgets } from "../../../../api/ReturnTypes";
 import "../../../../locales/config";
 import ErrorBoundary from "../../../functions/ErrorBoundary";
 import sslFix from "../../../functions/fixEaAssets";
 import { BarGraph } from "../../../graphing/bar";
 import { Box } from "../../../Materials";
-import { ComponentHandling, DynamicSort, Views } from "./Main";
-import * as styles from "./Main.module.scss";
+import { ComponentHandling, DynamicSort, type Views } from "./Main";
+import styles from "./Main.module.scss";
 
 export function ViewGadgets(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
@@ -15,11 +15,11 @@ export function ViewGadgets(props: Readonly<Views>): React.ReactElement {
   const [sortType, setSortType] = React.useState<string>("-kills");
   const getLanguage = () => window.localStorage.i18nextLng;
   const numberFormat = new Intl.NumberFormat(getLanguage());
-  let gadgets = [];
+  let gadgets: MainStatsGadgets[] = [];
   if (!props.isLoading && !props.isError) {
-    gadgets = props.stats.gadgets?.filter((item: { gadgetName: string }) => {
+    gadgets = props.stats?.gadgets?.filter((item: { gadgetName: string }) => {
       return item.gadgetName.toLowerCase().includes(searchTerm.toLowerCase());
-    });
+    }) || [];
     gadgets = gadgets?.sort(DynamicSort(sortType));
   }
   return (
@@ -103,16 +103,17 @@ export function GadgetGraph(props: Readonly<Views>): React.ReactElement {
   const [begin, setBegin] = React.useState<number>(0);
   let i = 0;
   let length = 0;
-  const names = [];
-  const values = [];
+  const names: string[] = [];
+  const values: (string | number)[] = [];
   if (!props.isLoading && !props.isError) {
-    length = props.stats.gadgets?.length;
-    props.stats.gadgets
+    length = props.stats?.gadgets?.length || 0;
+    props.stats?.gadgets
       ?.sort(DynamicSort(`-${graphType}`))
       .map((item: MainStatsGadgets) => {
         if (i >= begin && i < begin + 25) {
           names.push(item.gadgetName);
-          values.push(item[graphType]);
+          const res = item as { [key: string]: string | number }
+          values.push(res[graphType]);
         }
         i += 1;
       });

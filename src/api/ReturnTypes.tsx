@@ -1,5 +1,5 @@
-import { Mutator, PlaygroundMutator } from "./MutatorType";
-import { ModListReturn } from "./marneApi";
+import type { Mutator, PlaygroundMutator } from "./MutatorType";
+import type { ModListReturn } from "./marneApi";
 
 export type PlatoonPlayer = {
   id: string;
@@ -41,7 +41,7 @@ export type PlatoonStats = {
 };
 
 export type SusStats = {
-  weapons: MainStatsWeapon & SusWeaponType[];
+  weapons: (MainStatsWeapon & SusWeaponType)[];
 };
 
 export type Player = {

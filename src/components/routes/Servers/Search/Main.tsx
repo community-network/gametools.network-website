@@ -3,7 +3,7 @@ import { useLocalStorage } from "@uidotdev/usehooks";
 import * as React from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { Link, useLocation, useNavigate } from "react-router";
-import { BF2042Player, GametoolsApi } from "../../../../api/GametoolsApi";
+import { type BF2042Player, GametoolsApi } from "../../../../api/GametoolsApi";
 import {
   dice,
   extraGames,
@@ -19,7 +19,7 @@ import "../../../../assets/scss/App.scss";
 import "../../../../locales/config";
 import { getLanguage } from "../../../../locales/config";
 import { BackButton, Box, CheckItem, InputItem } from "../../../Materials";
-import * as styles from "./Main.module.scss";
+import styles from "./Main.module.scss";
 import { Results } from "./Results";
 
 function DropdownArrow(props: {
@@ -44,7 +44,7 @@ function DropdownArrow(props: {
       }}
       style={{
         transform: dropdownOpen[item] ? "rotate(-135deg)" : "rotate(45deg)",
-        webkitTransform: dropdownOpen[item]
+        WebkitTransform: dropdownOpen[item]
           ? "rotate(-135deg)"
           : "rotate(45deg)",
         marginBottom: dropdownOpen[item] ? "0" : "2.44px",
@@ -85,9 +85,9 @@ function ServerOwnerSearch(props: {
   const { ownerList, setOwnerList } = props;
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = React.useState<string>("");
-  const searchBox: React.MutableRefObject<HTMLInputElement> = React.useRef();
+  const searchBox: React.MutableRefObject<HTMLInputElement | null> = React.useRef(null);
 
-  const handleKeyDown = (event) => {
+  const handleKeyDown = (event: { key: string; }) => {
     if (event.key === "Enter") {
       addItem();
     }
@@ -380,7 +380,7 @@ function Main(): React.ReactElement {
     }
   }, []);
 
-  const extraQueries = {};
+  const extraQueries: { [key: string]: string | boolean } = {};
   if (gamemodeFilter.length > 0) {
     if (["bf2042", "bf6"].includes(gameName)) {
       extraQueries["modes"] = gamemodeFilter.join(";");
@@ -1163,7 +1163,7 @@ export function ServerSearch(): React.ReactElement {
           game: gameName,
           region: regionFilter.join(","),
           platform: platform,
-          limit: 10,
+          limit: "10",
         }).toString()}`}
       >
         <button className="bigButtonSecondaryBox">

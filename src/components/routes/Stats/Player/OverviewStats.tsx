@@ -1,7 +1,7 @@
 import { addSeconds } from "date-fns";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import {
+import type {
   MainStats,
   MainStatsClasses,
   MainStatsGadgets,
@@ -16,9 +16,9 @@ import "../../../../locales/config";
 import exportExcel from "../../../functions/exportExcel";
 import useExternalScript from "../../../functions/UseExternalScript";
 import { Box } from "../../../Materials";
-import { ComponentHandling, Views } from "./Main";
-import * as Mainstyles from "./Main.module.scss";
-import * as styles from "./OverviewStats.module.scss";
+import { ComponentHandling, type Views } from "./Main";
+import Mainstyles from "./Main.module.scss";
+import styles from "./OverviewStats.module.scss";
 
 function ExportButton(
   props: Readonly<{
@@ -35,7 +35,7 @@ function ExportButton(
       | MainStatsGadgets[];
     };
     game: string;
-    stats: MainStats;
+    stats?: MainStats;
   }>,
 ) {
   const externalScript =
@@ -65,7 +65,7 @@ function ExportButton(
             main: props.mainStats,
             ...props.otherStats,
           },
-          `${props.stats.userName} ${props.game} stats`,
+          `${props.stats?.userName} ${props.game} stats`,
         )
       }
     >
@@ -107,7 +107,7 @@ export function ViewStats(props: Readonly<ViewStatsView>): React.ReactElement {
     );
   }
 
-  for (const [key, value] of Object.entries(stats)) {
+  for (const [key, value] of Object.entries(stats || [])) {
     if (value instanceof Array) {
       otherStats[key] = value;
       // skip current platoon for example
@@ -132,7 +132,7 @@ export function ViewStats(props: Readonly<ViewStatsView>): React.ReactElement {
               <div
                 className={Mainstyles.bar}
                 style={{
-                  width: `${(100 * stats.currentRankProgress) / stats.totalRankProgress
+                  width: `${(100 * stats.currentRankProgress) / (stats.totalRankProgress || 0)
                     }%`,
                 }}
               ></div>
@@ -142,17 +142,17 @@ export function ViewStats(props: Readonly<ViewStatsView>): React.ReactElement {
         <p></p>
         <div className="alignS">
           <div>
-            <h3>{numberFormat.format(stats?.killDeath)}</h3>
+            <h3>{numberFormat.format(stats?.killDeath || 0)}</h3>
             <p>{t("stats.main.killDeath")}</p>
           </div>
           {!!stats?.killsPerMinute && (
             <div>
-              <h3>{numberFormat.format(stats?.killsPerMinute)}</h3>
+              <h3>{numberFormat.format(stats?.killsPerMinute || 0)}</h3>
               <p>{t("stats.main.killsPerMinute")}</p>
             </div>
           )}
           <div>
-            <h3>{numberFormat.format(stats?.winPercent)}%</h3>
+            <h3>{numberFormat.format(stats?.winPercent || 0)}%</h3>
             <p>{t("stats.main.winPercent")}</p>
           </div>
           {!!stats?.bestClass && (
@@ -162,7 +162,7 @@ export function ViewStats(props: Readonly<ViewStatsView>): React.ReactElement {
             </div>
           )}
           <div>
-            <h3>{numberFormat.format(stats?.accuracy)}%</h3>
+            <h3>{numberFormat.format(stats?.accuracy || 0)}%</h3>
             <p>{t("stats.main.accuracy")}</p>
           </div>
         </div>

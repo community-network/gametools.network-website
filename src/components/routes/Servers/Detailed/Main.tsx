@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Trans, useTranslation } from "react-i18next";
-import { ModListReturn } from "../../../../api/marneApi";
-import {
+import type { ModListReturn } from "../../../../api/marneApi";
+import type {
   DetailedServerInfo,
   ServerRotation,
   ServerSettings,
@@ -23,7 +23,7 @@ import sslFix from "../../../functions/fixEaAssets";
 import { ServerGraphQuery } from "../../../graphing/line";
 import { BfPortalInfo, BfvPlaygroundInfo } from "./BfPortal";
 import { ServerLeaderboard } from "./Leaderboard";
-import * as styles from "./Main.module.scss";
+import styles from "./Main.module.scss";
 import { OwnerInfo } from "./Owner";
 import { ServerPlatoon } from "./Platoon";
 import {
@@ -39,10 +39,10 @@ import { useLocation } from "react-router";
 interface Views {
   loading: boolean;
   error: boolean;
-  game: string;
-  platform: string;
-  stats: DetailedServerInfo;
-  getter: string;
+  game?: string;
+  platform?: string;
+  stats?: DetailedServerInfo;
+  getter?: string;
   serverName: string;
 }
 
@@ -94,11 +94,11 @@ export function Results(props: Views): React.ReactElement {
   const query = new URLSearchParams(useLocation().search);
   // const blazeIdQuery = query.get("blazeid");
   if (props.game === "bf6" && stats !== undefined && query.has("name")) {
-    stats.prefix = query.get("name");
+    stats.prefix = query.get("name") || "";
   }
   const getLanguage = () => window.localStorage.i18nextLng;
   const numberFormat = new Intl.NumberFormat(getLanguage());
-  const copyStates = {};
+  const copyStates: { [key: string]: { state: string, set: React.Dispatch<React.SetStateAction<string>> } } = {};
   serverWidgetTypes.map((element) => {
     const [tempCopyState, tempSetCopyState] = React.useState<string>("copy");
     copyStates[element] = { state: tempCopyState, set: tempSetCopyState };
@@ -117,17 +117,17 @@ export function Results(props: Views): React.ReactElement {
     modCategories,
   )
     .sort((a, b) => modCategories[b].length - modCategories[a].length)
-    .reduce((acc, key) => ((acc[key] = modCategories[key]), acc), {});
+    .reduce((acc: { [id: string]: ModListReturn[] }, key) => ((acc[key] = modCategories[key]), acc), {});
   let widgetReturn =
     props.getter === "name"
       ? encodeURIComponent(props.serverName)
-      : encodeURIComponent(stats?.prefix);
+      : encodeURIComponent(stats?.prefix || "");
   let widgetItem = "name";
 
   if (
-    !dice.includes(props.game) &&
+    !dice.includes(props.game || "") &&
     props.game != "battlebit" &&
-    !props.game.includes("marne")
+    !props.game?.includes("marne")
   ) {
     widgetItem = "serverip";
     widgetReturn = `${stats?.ip}:${stats?.port}`;
@@ -138,7 +138,7 @@ export function Results(props: Views): React.ReactElement {
     widgetReturn = `${stats?.serverId}`;
   }
 
-  let queue: number = undefined;
+  let queue: number | undefined = undefined;
   queue = stats?.inQue;
   let queueString = "";
   if (queue !== undefined && queue !== 0) {
@@ -208,7 +208,7 @@ export function Results(props: Views): React.ReactElement {
           )}
           {stats?.region ? (
             <>
-              {["bf2042", "bf6"].includes(props.game) ? (
+              {["bf2042", "bf6"].includes(props.game || "") ? (
                 <p className={styles.description}>
                   {t(`regions.${stats.region?.toLowerCase()}`)}
                 </p>
@@ -235,13 +235,13 @@ export function Results(props: Views): React.ReactElement {
 
           <p className={styles.description}>
             {t(`games.${props.game}`)}
-            {Object.keys(projects).includes(props.game) && (
+            {Object.keys(projects).includes(props.game || "") && (
               <>
                 {" "}
                 -{" "}
                 <a
                   style={{ textDecoration: "underline", lineHeight: 1 }}
-                  href={projects[props.game]}
+                  href={projects[props.game || ""]}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -253,17 +253,17 @@ export function Results(props: Views): React.ReactElement {
         </div>
       </div>
       {/* older titles use ip address, thats static already */}
-      {(dice.includes(props.game) || props.game.includes("marne")) && (
+      {(dice.includes(props.game || "") || props.game?.includes("marne")) && (
         <p className={styles.description} style={{ marginTop: "6px" }}>
           {t("servers.permLink")}{" "}
           <CopyToClipboard
             message={`https://gametools.network/servers/${props.game
-              }/name/${encodeURIComponent(stats?.prefix)}/pc`}
+              }/name/${encodeURIComponent(stats?.prefix || "")}/pc`}
             stateTranslation={"states"}
           />
         </p>
       )}
-      {frostbiteJoinGames.includes(props.game) && (
+      {frostbiteJoinGames.includes(props.game || "") && (
         <>
           <p style={{ marginTop: "-.6rem" }}>
             <Trans i18nKey="servers.joinme.info">
@@ -277,7 +277,7 @@ export function Results(props: Views): React.ReactElement {
               className="smallButtonSecondary"
               style={{ marginBottom: 0 }}
               onClick={function () {
-                location.href = `${window.encodeURIComponent(props.game)}://${stats.gameId}`;
+                location.href = `${window.encodeURIComponent(props.game || "")}://${stats?.gameId}`;
               }}
             >
               {t("servers.join")}
@@ -286,7 +286,7 @@ export function Results(props: Views): React.ReactElement {
               className="smallButtonSecondary"
               style={{ marginBottom: 0 }}
               onClick={function () {
-                location.href = `https://joinme.click/g/${window.encodeURIComponent(props.game)}/${stats.gameId}`;
+                location.href = `https://joinme.click/g/${window.encodeURIComponent(props.game || "")}/${stats?.gameId}`;
               }}
             >
               {t("servers.joinme.view")}
@@ -294,8 +294,8 @@ export function Results(props: Views): React.ReactElement {
           </div>
         </>
       )}
-      {(dice.includes(props.game) || props.game.includes("marne")) &&
-        stats?.rotation?.length > 0 && (
+      {(dice.includes(props.game || "") || props.game?.includes("marne")) &&
+        stats?.rotation?.length !== undefined && stats?.rotation?.length > 0 && (
           <>
             <h2 className={styles.title} style={{ marginBottom: 0 }}>
               {t("servers.rotation")}
@@ -329,7 +329,7 @@ export function Results(props: Views): React.ReactElement {
         )}
       <div className="pageColumn">
         <div className="pageRow">
-          {props.game !== "bf4" && frostbite3.includes(props.game) ? (
+          {props.game !== "bf4" && frostbite3.includes(props.game || "") ? (
             <>
               {stats?.owner != null && (
                 <OwnerInfo
@@ -339,7 +339,7 @@ export function Results(props: Views): React.ReactElement {
                 />
               )}
               {(props.platform == "pc" || props.platform == "undefined") &&
-                (["bf2042", "bf6"].includes(props.game) ? (
+                (["bf2042", "bf6"].includes(props.game || "") ? (
                   // {stats.blazeGameId !== undefined ? (
                   //   <ServerPlayerlist
                   //     game={props.game}
@@ -387,7 +387,7 @@ export function Results(props: Views): React.ReactElement {
                     serverPort={stats?.hostport || stats?.port}
                   />
                 ) : (
-                  props.game.includes("marne") && (
+                  props.game?.includes("marne") && (
                     <MarnePlayerList
                       stats={stats}
                       game={props?.game}
@@ -415,7 +415,7 @@ export function Results(props: Views): React.ReactElement {
             stats={stats}
             game={props.game}
             // use serverid for marne
-            getter={props.game.includes("marne") ? "serverid" : props.getter}
+            getter={props.game?.includes("marne") ? "serverid" : props.getter}
             name={props.serverName}
           />
           {props.game === "bf1" && (
@@ -433,7 +433,7 @@ export function Results(props: Views): React.ReactElement {
               game={props.game}
             />
           )}
-          {["bf2042", "bf6"].includes(props.game) ? (
+          {["bf2042", "bf6"].includes(props.game || "") ? (
             <>
               {stats?.configCreator !== null && (
                 <OwnerInfo
@@ -446,18 +446,18 @@ export function Results(props: Views): React.ReactElement {
               {props.game === "bf2042" && (
                 <>
                   <h2>{t("servers.settings")}</h2>
-                  {stats?.settings.map(
+                  {stats?.settings?.map(
                     (value: ServerSettings, index: number) => {
                       return (
                         <div key={index}>
                           <p className={styles.altDescription} key={index}>
                             <b>
                               {capitalizeFirstLetter(
-                                value.values[0].readableSettingName,
+                                value.values?.[0].readableSettingName || "",
                               )}
                             </b>
                             : { }
-                            {value.values[1].readableSettingName}
+                            {value.values?.[1].readableSettingName}
                           </p>
                         </div>
                       );
@@ -478,7 +478,7 @@ export function Results(props: Views): React.ReactElement {
                         return (
                           <div key={index}>
                             <h3>{key[0]}</h3>
-                            {Object.entries(key[1]).map(
+                            {Object.entries(key[1] || []).map(
                               (key: [string, string], index: number) => {
                                 return (
                                   <p
@@ -506,7 +506,7 @@ export function Results(props: Views): React.ReactElement {
           )}
         </div>
       </div>
-      {props.game.includes("marne") && (
+      {props.game?.includes("marne") && (
         <>
           <h2 style={{ marginBottom: 0 }}>{t("servers.modList.main")}</h2>
           {Object.keys(modCategories).length > 0 ? (
@@ -565,7 +565,7 @@ export function Results(props: Views): React.ReactElement {
               <p className={styles.description} style={{ marginTop: "15px" }}>
                 {t(`servers.iframe.${element}`)}{" "}
                 <CopyToClipboard
-                  message={`<iframe title="Server playercount" src="${process.env.widgets_gametools_endpoint}/servers/${element}/${props.game
+                  message={`<iframe title="Server playercount" src="${import.meta.env.VITE_WIDGET_GAMETOOLS_ENDPOINT}/servers/${element}/${props.game
                     }/${widgetItem}/${widgetReturn}/${props.platform
                     }?lng=${getLanguage()}${props.game === "bf6" ? "&name=" + stats?.prefix : ""}" height="${widgetSize[index]
                     }px" width="700px" frameborder="0" allowtransparency="true"></iframe>`}
@@ -577,7 +577,7 @@ export function Results(props: Views): React.ReactElement {
               ) : (
                 <iframe
                   title="Server playercount"
-                  src={`${process.env.widgets_gametools_endpoint}/servers/${element}/${props.game
+                  src={`${import.meta.env.VITE_WIDGET_GAMETOOLS_ENDPOINT}/servers/${element}/${props.game
                     }/${widgetItem}/${widgetReturn}/${props.platform
                     }?lng=${getLanguage()}${props.game === "bf6" ? "&name=" + stats?.prefix : ""}`}
                   style={{

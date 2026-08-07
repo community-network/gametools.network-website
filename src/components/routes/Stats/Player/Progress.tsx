@@ -1,10 +1,10 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { MainStatsProgress } from "../../../../api/ReturnTypes";
+import type { MainStatsProgress } from "../../../../api/ReturnTypes";
 import "../../../../locales/config";
 import { Box } from "../../../Materials";
-import { ComponentHandling, Views } from "./Main";
-import * as styles from "./Main.module.scss";
+import { ComponentHandling, type Views } from "./Main";
+import styles from "./Main.module.scss";
 
 export function ViewProgress(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
@@ -25,7 +25,7 @@ export function ViewProgress(props: Readonly<Views>): React.ReactElement {
     <div className={styles.spacing}>
       <Box>
         <h3>{t("stats.progress.main")}</h3>
-        {progress.map((key: MainStatsProgress, index: number) => {
+        {progress?.map((key: MainStatsProgress, index: number) => {
           return (
             <div key={index}>
               <br />

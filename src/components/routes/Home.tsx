@@ -6,23 +6,20 @@ import { TotalGraphQuery } from "../graphing/line";
 import { ServerSearch } from "./Servers/Search/Main";
 import { StatSearch } from "./Stats/Search/PlayerSearch";
 
-import background from "../../assets/img/RevealScreenshot_10_VistaHourglass_3840x2160_NoLogo-25798260c0054ec56441 1.png?format=webp&useResponsiveLoader=true";
-import cloudBg from "../../assets/img/cloud-bg.png?format=webp&useResponsiveLoader=true";
-import bf1Logo from "../../assets/img/bf1-logo.png?sizes[]=96&format=webp&useResponsiveLoader=true";
-import bf5Logo from "../../assets/img/bf5-logo.png?sizes[]=94.7333&format=webp&useResponsiveLoader=true";
-import bf2042Logo from "../../assets/img/bf2042-logo.png?sizes[]=94.6&format=webp&useResponsiveLoader=true";
+import background from "../../assets/img/RevealScreenshot_10_VistaHourglass_3840x2160_NoLogo-25798260c0054ec56441 1.png";
+import cloudBg from "../../assets/img/cloud-bg.png";
+import bf1Logo from "../../assets/img/bf1-logo.png";
+import bf5Logo from "../../assets/img/bf5-logo.png";
+import bf2042Logo from "../../assets/img/bf2042-logo.png";
 
 import statbitsLogo from "../../assets/icon/statbits-icon.svg";
 import bflistLogo from "../../assets/icon/bflist-icon.svg";
-import bfbanLogo from "../../assets/icon/bfban-icon.png?sizes[]=24&format=webp&useResponsiveLoader=true";
-import bfportalLogo from "../../assets/icon/bfportal-icon.png?sizes[]=24&format=webp&useResponsiveLoader=true";
+import bfbanLogo from "../../assets/icon/bfban-icon.png";
+import bfportalLogo from "../../assets/icon/bfportal-icon.png";
 import { Link } from "react-router";
-import AdsComponent from "../Ads";
-import * as styles from "./Home.module.scss";
-import { useLocalStorage } from "@uidotdev/usehooks";
+import styles from "./Home.module.scss";
 
 function Home(): React.ReactElement {
-  const [adsDisabled] = useLocalStorage("disable-ads", false);
   const { t, i18n } = useTranslation();
   React.useEffect(() => {
     document.title = t("pageTitle.main");
@@ -60,7 +57,7 @@ function Home(): React.ReactElement {
     <div>
       <div
         className={styles.image}
-        style={{ backgroundImage: `url("${background.src}")` }}
+        style={{ backgroundImage: `url("${background}")` }}
       >
         <div className={styles.blur}>
           <div className={styles.welcome}>
@@ -114,7 +111,7 @@ function Home(): React.ReactElement {
       </div>
       <div
         className={styles.cloudImage}
-        style={{ backgroundImage: `url("${cloudBg.src}")` }}
+        style={{ backgroundImage: `url("${cloudBg}")` }}
       >
         <div className="container">
           <h1 style={{ paddingTop: "2rem", marginBottom: "3.5rem" }}>
@@ -138,28 +135,24 @@ function Home(): React.ReactElement {
             <img
               className={styles.gameLogo}
               alt="bf1 logo"
-              src={bf1Logo.src}
-              srcSet={bf1Logo.srcSet}
-              style={{ height: bf1Logo.height, width: bf1Logo.width }}
+              src={bf1Logo}
+              style={{ width: "96px" }}
               loading="lazy"
             />
             <img
               className={styles.gameLogo}
               alt="bf5 logo"
-              src={bf5Logo.src}
-              srcSet={bf5Logo.srcSet}
-              style={{ height: bf5Logo.height, width: bf5Logo.width }}
+              src={bf5Logo}
+              style={{ width: "94.7333px" }}
               loading="lazy"
             />
             <img
               className={styles.gameLogo}
               alt="bf2042 logo"
-              src={bf2042Logo.src}
-              srcSet={bf2042Logo.srcSet}
+              src={bf2042Logo}
               style={{
                 marginTop: "0.5px",
-                height: bf2042Logo.height,
-                width: bf2042Logo.width,
+                width: "94.6px"
               }}
               loading="lazy"
             />
@@ -228,7 +221,7 @@ function Home(): React.ReactElement {
                       </button>
                     </Link>
                   ) : (
-                    <a target="_blank" href={key.url} rel="noreferrer">
+                    <a target="_blank" href={key.url || undefined} rel="noreferrer">
                       <button
                         className="bigButtonSecondaryBox"
                         style={{

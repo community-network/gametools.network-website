@@ -4,12 +4,12 @@ import { Link } from "react-router";
 import "../../../../assets/scss/App.scss";
 import "../../../../locales/config";
 import { BackButton, RightArrow } from "../../../Materials";
-import * as styles from "./Main.module.scss";
+import styles from "./Main.module.scss";
 import { useLocalStorage } from "@uidotdev/usehooks";
 
 interface IUrl {
   valid_url: boolean;
-  playground_id: string;
+  playground_id?: string;
 }
 
 function get_playground_id(test_string: string): IUrl {
@@ -36,15 +36,13 @@ function get_playground_id(test_string: string): IUrl {
 
   return {
     valid_url: true,
-    playground_id: url.searchParams.get("playgroundId"),
+    playground_id: url.searchParams.get("playgroundId") || undefined,
   };
 }
 
 function check_valid_playground_id(test_string: string): boolean {
-  return !Boolean(
-    test_string.search(
-      /[a-z0-9]{4,}-[a-z0-9]{4,}-[a-z0-9]{4,}-[a-z0-9]{4,}-[a-z0-9]{4,}/,
-    ),
+  return !test_string.search(
+    /[a-z0-9]{4,}-[a-z0-9]{4,}-[a-z0-9]{4,}-[a-z0-9]{4,}-[a-z0-9]{4,}/,
   );
 }
 
@@ -66,7 +64,7 @@ function Main(): React.ReactElement {
   let playground = "";
   const isUrl = get_playground_id(searchTerm.trim());
   if (isUrl.valid_url) {
-    if (check_valid_playground_id(isUrl.playground_id)) {
+    if (isUrl.playground_id !== undefined && check_valid_playground_id(isUrl.playground_id)) {
       playground = isUrl.playground_id;
     }
   } else {

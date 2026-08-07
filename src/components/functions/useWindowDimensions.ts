@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
 interface Size {
-  width: number;
-  height: number;
+  width: number | null;
+  height: number | null;
 }
 
 export default function useWindowDimensions(): Size {

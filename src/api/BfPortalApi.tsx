@@ -100,7 +100,7 @@ interface experienceReturn {
 }
 
 interface experienceRequest {
-  title: string;
+  title?: string;
 }
 
 export class ApiProvider extends JsonClient {
@@ -116,7 +116,7 @@ export class ApiProvider extends JsonClient {
   async experience({ title }: experienceRequest): Promise<experienceReturn> {
     const r = await fetch(
       `https://bfportal.gg/api/experiences/?type=core.ExperiencePage&fields=*&title=${encodeURIComponent(
-        title,
+        title || "",
       )}`,
     );
     return r.json();

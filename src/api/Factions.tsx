@@ -1,4 +1,4 @@
-export const factions = {
+export const factions: { [key: string]: { [key: string]: string } } = {
   BFFactionId_FactionAHU: {
     image:
       "https://cdn.gametools.network/factions/bf1/colored/BFFactionId_FactionAHU.webp",
@@ -79,7 +79,7 @@ export const factions = {
   },
 };
 
-export const bf1_factions = {
+export const bf1_factions: { [key: string]: string[] } = {
   MP_Tsaritsyn: ["BFFactionId_FactionBOL", "BFFactionId_FactionRUS"],
   MP_Amiens: ["BFFactionId_FactionGER", "BFFactionId_FactionUK"],
   MP_Desert: ["BFFactionId_FactionUK", "BFFactionId_FactionOTM"],

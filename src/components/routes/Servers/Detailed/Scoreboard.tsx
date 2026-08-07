@@ -4,13 +4,13 @@ import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import "../../../../assets/scss/App.scss";
 import { Box } from "../../../Materials";
-import { ScoreServerPlayer, ScoreTeamList } from "../../../../api/ReturnTypes";
-import * as styles from "./Main.module.scss";
+import type { ScoreServerPlayer, ScoreTeamList } from "../../../../api/ReturnTypes";
+import styles from "./Main.module.scss";
 
 export function ServerScoreboard(
   props: Readonly<{
-    game: string;
-    platform: string;
+    game?: string;
+    platform?: string;
     stats: ScoreTeamList[];
   }>,
 ): React.ReactElement {
@@ -48,11 +48,9 @@ export function ServerScoreboard(
                                     />
                                   )}
                                   <Link
-                                    to={`/stats/${props.platform}/playerid/${
-                                      key.player_id
-                                    }?game=${
-                                      props.game
-                                    }&name=${encodeURIComponent(key.name)}`}
+                                    to={`/stats/${props.platform}/playerid/${key.player_id
+                                      }?game=${props.game
+                                      }&name=${encodeURIComponent(key.name)}`}
                                   >
                                     <>
                                       <h4
@@ -75,7 +73,7 @@ export function ServerScoreboard(
                               </div>
                               <div className="row" style={{ flex: 0.4 }}>
                                 <h4 style={{ marginTop: "0.5rem" }}>
-                                  {numberFormat.format(key.score)}
+                                  {numberFormat.format(key.score || 0)}
                                 </h4>
                                 <p
                                   className={styles.description}
@@ -86,7 +84,7 @@ export function ServerScoreboard(
                               </div>
                               <div className="row" style={{ flex: 0.4 }}>
                                 <h4 style={{ marginTop: "0.5rem" }}>
-                                  {numberFormat.format(key.kills)}
+                                  {numberFormat.format(key.kills || 0)}
                                 </h4>
                                 <p
                                   className={styles.description}
@@ -97,7 +95,7 @@ export function ServerScoreboard(
                               </div>
                               <div className="row" style={{ flex: 0.4 }}>
                                 <h4 style={{ marginTop: "0.5rem" }}>
-                                  {numberFormat.format(key.deaths)}
+                                  {numberFormat.format(key.deaths || 0)}
                                 </h4>
                                 <p
                                   className={styles.description}
@@ -112,11 +110,9 @@ export function ServerScoreboard(
                                   style={{
                                     marginTop: ".5rem",
                                   }}
-                                  href={`https://gametools.network/stats/${
-                                    props.platform
-                                  }/playerid/${key.player_id}?game=${
-                                    props.game
-                                  }&name=${encodeURIComponent(key.name)}`}
+                                  href={`https://gametools.network/stats/${props.platform
+                                    }/playerid/${key.player_id}?game=${props.game
+                                    }&name=${encodeURIComponent(key.name)}`}
                                   target="_blank"
                                   rel="noreferrer"
                                 >

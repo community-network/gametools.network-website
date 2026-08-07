@@ -1,14 +1,7 @@
 {
-  "compilerOptions": {
-    "jsx": "react-jsx",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "outDir": "dist",
-    "target": "ESNext",
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "plugins": [{ "name": "typescript-plugin-css-modules" }],
-  },
-  "include": ["src"],
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
 }

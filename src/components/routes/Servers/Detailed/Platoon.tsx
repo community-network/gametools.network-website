@@ -3,14 +3,14 @@ import "../../../../locales/config";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import "../../../../assets/scss/App.scss";
-import { PlatoonResult } from "../../../../api/ReturnTypes";
+import type { PlatoonResult } from "../../../../api/ReturnTypes";
 import sslFix from "../../../functions/fixEaAssets";
-import * as styles from "./Platoon.module.scss";
-import * as Mainstyles from "./Main.module.scss";
+import styles from "./Platoon.module.scss";
+import Mainstyles from "./Main.module.scss";
 
 export function ServerPlatoon(props: {
-  platoon: PlatoonResult;
-  platform: string;
+  platoon?: PlatoonResult;
+  platform?: string;
 }): React.ReactElement {
   const { t } = useTranslation();
   const platoon = props.platoon;

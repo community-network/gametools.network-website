@@ -3,7 +3,7 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import useExternalScript from "./functions/UseExternalScript";
 
-declare const window: { adsbygoogle; location: Location };
+declare const window: { adsbygoogle: { [key: string]: any }; location: Location };
 
 const AdsComponent = (props: {
   dataAdSlot: string;
@@ -15,7 +15,7 @@ const AdsComponent = (props: {
   React.useEffect(() => {
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (_) {}
+    } catch (_) { }
   }, []);
 
   const [value] = useLocalStorage("disable-ads", false);
@@ -47,7 +47,7 @@ export const AdSwitch = (): React.ReactElement => {
     <div className="adv-ad" style={{ display: "flex", paddingLeft: ".3rem" }}>
       <label aria-label={t("ariaLabels.toggleAds")} className="switch">
         <input
-          onChange={() => {}}
+          onChange={() => { }}
           checked={value}
           onClick={() => {
             setValue(!value);

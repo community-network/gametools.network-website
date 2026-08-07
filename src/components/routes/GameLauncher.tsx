@@ -10,7 +10,7 @@ function Launch(): React.ReactElement {
   const { t } = useTranslation();
 
   React.useEffect(() => {
-    if (oldJoinGames.includes(params.gameid)) {
+    if (oldJoinGames.includes(params.gameid || "")) {
       window.location.href = `${params.gameid}://${params.ip}:${params.port}`;
     }
   }, [oldJoinGames, params]);

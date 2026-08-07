@@ -2,15 +2,15 @@ import { addSeconds } from "date-fns";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
-import {
+import type {
   MainStatsSession,
   SessionGamemode,
   SessionKit,
 } from "../../../../api/ReturnTypes";
 import "../../../../locales/config";
 import { Box } from "../../../Materials";
-import { Views } from "./Main";
-import * as styles from "./Main.module.scss";
+import type { Views } from "./Main";
+import styles from "./Main.module.scss";
 
 export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
@@ -31,7 +31,7 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
     );
   }
 
-  if (props.isError || stats.sessions.length === 0) {
+  if (props.isError || stats?.sessions?.length === 0) {
     return <></>;
   }
 
@@ -42,8 +42,8 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
         <p style={{ marginTop: 0 }}>{t("stats.playSession.detailed")}</p>
       </div>
       <Box>
-        {stats.sessions.map((key: MainStatsSession, index: number) => {
-          const gamemodes = [];
+        {stats?.sessions?.map((key: MainStatsSession, index: number) => {
+          const gamemodes: string[] = [];
           const stats = key.stats;
           key.stats.gamemodes.forEach((key: SessionGamemode) => {
             if (key.score !== 0) {
@@ -64,9 +64,8 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
                 )
               </h3>
               <Link
-                to={`/servers?game=${
-                  props.game
-                }&search=${encodeURIComponent(key.serverName)}&platform=pc`}
+                to={`/servers?game=${props.game
+                  }&search=${encodeURIComponent(key.serverName)}&platform=pc`}
               >
                 <p className={styles.description}>{key.serverName}</p>
               </Link>
@@ -142,7 +141,7 @@ export function BfSessionInfo(props: Readonly<Views>): React.ReactElement {
                   );
                 })}
               </div>
-              {typeof props.stats.sessions[index + 1] !== "undefined" && (
+              {typeof props.stats?.sessions?.[index + 1] !== "undefined" && (
                 <hr
                   style={{
                     marginBottom: "1rem",

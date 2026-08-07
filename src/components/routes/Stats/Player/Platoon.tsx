@@ -1,13 +1,13 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
-import { MainStatsPlatoon } from "../../../../api/ReturnTypes";
+import { type MainStatsPlatoon } from "../../../../api/ReturnTypes";
 import "../../../../locales/config";
 import sslFix from "../../../functions/fixEaAssets";
 import { Box } from "../../../Materials";
-import { ComponentHandling, PlatformViews } from "./Main";
-import * as styles from "./Main.module.scss";
-import * as Platoonstyles from "./Platoon.module.scss";
+import { ComponentHandling, type PlatformViews } from "./Main";
+import styles from "./Main.module.scss";
+import Platoonstyles from "./Platoon.module.scss";
 
 export function PlatoonInfo(
   props: Readonly<PlatformViews>,
@@ -27,7 +27,7 @@ export function PlatoonInfo(
     );
   }
 
-  if (stats.activePlatoon.name === null && props.stats.platoons.length === 0) {
+  if (stats?.activePlatoon?.name === null && props.stats?.platoons?.length === 0) {
     return (
       <div className={styles.spacing}>
         <Box>
@@ -37,9 +37,9 @@ export function PlatoonInfo(
       </div>
     );
   } else {
-    const otherPlatoons = props.stats.platoons.filter(
+    const otherPlatoons = props.stats?.platoons?.filter(
       (platoon) => platoon?.id !== stats?.activePlatoon?.id,
-    );
+    ) || [];
     return (
       <div className={styles.spacing}>
         <Box>

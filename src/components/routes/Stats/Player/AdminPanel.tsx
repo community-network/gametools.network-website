@@ -2,14 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
-import { MainStatsWeapon, SusWeaponType } from "../../../../api/ReturnTypes";
+import type { MainStatsWeapon, SusWeaponType } from "../../../../api/ReturnTypes";
 import { newTitles } from "../../../../api/static";
 import "../../../../locales/config";
 import { CopyToClipboard } from "../../../functions/CopyToClipboard";
 import sslFix from "../../../functions/fixEaAssets";
 import { Box } from "../../../Materials";
-import { ComponentHandling, PlatformViews } from "./Main";
-import * as styles from "./Main.module.scss";
+import { ComponentHandling, type PlatformViews } from "./Main";
+import styles from "./Main.module.scss";
 import { getLanguage } from "../../../../locales/config";
 import { Results } from "../../Servers/Search/Results";
 
@@ -41,7 +41,7 @@ function SusWeapon(
   });
 
   React.useEffect(() => {
-    props.setSusCount(stats?.weapons?.length);
+    props.setSusCount(stats?.weapons?.length || 0);
   }, [stats]);
 
   if (!newTitles.includes(props.game)) {
@@ -98,15 +98,15 @@ function SusWeapon(
               </div>
             )}
             <div className="row">
-              <h4>{numberFormat.format(key?.kills)}</h4>
+              <h4>{numberFormat.format(key?.kills || 0)}</h4>
               <p className={styles.description}>{t("stats.rows.kills")}</p>
             </div>
             <div className="row">
-              <h4 style={{ color: key?.susReason === "kpm" && "#DC143C" }}>
-                {numberFormat.format(key?.killsPerMinute)}
+              <h4 style={{ color: key?.susReason === "kpm" ? "#DC143C" : undefined }}>
+                {numberFormat.format(key?.killsPerMinute || 0)}
               </h4>
               <p
-                style={{ color: key?.susReason === "kpm" && "#DC143C" }}
+                style={{ color: key?.susReason === "kpm" ? "#DC143C" : undefined }}
                 className={styles.description}
               >
                 {t("stats.rows.killsPerMinute")}
@@ -115,12 +115,12 @@ function SusWeapon(
             {key?.accuracy !== undefined && (
               <div className="smallestPhoneRow">
                 <h4
-                  style={{ color: key?.susReason === "accuracy" && "#DC143C" }}
+                  style={{ color: key?.susReason === "accuracy" ? "#DC143C" : undefined }}
                 >
-                  {numberFormat.format(key?.accuracy)}%
+                  {numberFormat.format(key?.accuracy || 0)}%
                 </h4>
                 <p
-                  style={{ color: key?.susReason === "accuracy" && "#DC143C" }}
+                  style={{ color: key?.susReason === "accuracy" ? "#DC143C" : undefined }}
                   className={styles.description}
                 >
                   {t("stats.rows.accuracy")}
@@ -129,18 +129,18 @@ function SusWeapon(
             )}
             {key?.damagePerMinute !== undefined && (
               <div className="tabletRow">
-                <h4>{numberFormat.format(key?.damagePerMinute)}</h4>
+                <h4>{numberFormat.format(key?.damagePerMinute || 0)}</h4>
                 <p className={styles.description}>
                   {t("stats.rows.damagePerMinute")}
                 </p>
               </div>
             )}
             <div className="tabletRow">
-              <h4 style={{ color: key?.susReason === "headshot" && "#DC143C" }}>
-                {numberFormat.format(key?.headshots)}%
+              <h4 style={{ color: key?.susReason === "headshot" ? "#DC143C" : undefined }}>
+                {numberFormat.format(key?.headshots || 0)}%
               </h4>
               <p
-                style={{ color: key?.susReason === "headshot" && "#DC143C" }}
+                style={{ color: key?.susReason === "headshot" ? "#DC143C" : undefined }}
                 className={styles.description}
               >
                 {t("stats.rows.headshots")}
@@ -148,7 +148,7 @@ function SusWeapon(
             </div>
             {key?.hitVKills !== undefined && (
               <div className="phoneRow">
-                <h4>{numberFormat.format(key?.hitVKills)}</h4>
+                <h4>{numberFormat.format(key?.hitVKills || 0)}</h4>
                 <p className={styles.description}>
                   {t("stats.rows.hitVKills")}
                 </p>
@@ -168,7 +168,6 @@ export function AdminPanel(props: Readonly<PlatformViews>): React.ReactElement {
   const {
     isLoading,
     isError,
-    error,
     data: stats,
   } = useQuery({
     queryKey: ["managerCheckPlayer" + props?.stats?.id],
@@ -198,7 +197,7 @@ export function AdminPanel(props: Readonly<PlatformViews>): React.ReactElement {
 
   return (
     <div className={styles.spacing}>
-      <Box style={{ background: warningColor && "#26181f" }}>
+      <Box style={{ background: warningColor ? "#26181f" : undefined }}>
         <div className="align" style={{ marginBottom: ".2rem" }}>
           <h3>{t("stats.adminPanel.main")}</h3>
           <div style={{ position: "absolute", right: "1.5rem" }}>
@@ -213,8 +212,8 @@ export function AdminPanel(props: Readonly<PlatformViews>): React.ReactElement {
               UID:{" "}
               <CopyToClipboard
                 stateTranslation="hiddenCopy"
-                message={props?.stats?.userId?.toString()}
-                translateOptions={{ msg: props?.stats?.userId }}
+                message={props?.stats?.userId?.toString() || ""}
+                translateOptions={{ msg: props?.stats?.userId || "" }}
                 style={{ all: "unset", cursor: "pointer", color: "white" }}
               />
             </p>
@@ -242,7 +241,7 @@ export function AdminPanel(props: Readonly<PlatformViews>): React.ReactElement {
                 const vbanItem = Object.entries(stats?.vban)[i] || [];
                 return (
                   <tr key={i}>
-                    {i === 0 && vbanItem.length === 0 ? (
+                    {i === 0 && Object.entries(stats?.vban).length === 0 ? (
                       <>
                         <td style={{ color: "gray" }}>{t("notApplicable")}</td>
                         <td style={{ color: "gray" }}>{t("notApplicable")}</td>
@@ -337,7 +336,7 @@ function CurrentServer(props: Readonly<PlatformViews>) {
     );
   }
 
-  const key = stats[props?.stats?.id];
+  const key = stats[props?.stats?.id || 0];
 
   return (
     <div className={styles.spacing}>

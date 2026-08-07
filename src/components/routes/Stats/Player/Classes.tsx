@@ -1,12 +1,12 @@
 import { addSeconds } from "date-fns";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { MainStatsClasses } from "../../../../api/ReturnTypes";
+import { type MainStatsClasses } from "../../../../api/ReturnTypes";
 import "../../../../locales/config";
 import sslFix from "../../../functions/fixEaAssets";
 import { Box } from "../../../Materials";
-import { ComponentHandling, Views } from "./Main";
-import * as styles from "./Main.module.scss";
+import { ComponentHandling, type Views } from "./Main";
+import styles from "./Main.module.scss";
 
 export function ViewClasses(props: Readonly<Views>): React.ReactElement {
   const { t, i18n } = useTranslation();

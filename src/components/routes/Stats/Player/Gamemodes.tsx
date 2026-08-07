@@ -1,10 +1,10 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { MainStatsGamemode } from "../../../../api/ReturnTypes";
+import type { MainStatsGamemode } from "../../../../api/ReturnTypes";
 import "../../../../locales/config";
 import { Box } from "../../../Materials";
-import { ComponentHandling, Views } from "./Main";
-import * as styles from "./Main.module.scss";
+import { ComponentHandling, type Views } from "./Main";
+import styles from "./Main.module.scss";
 
 export function ViewGamemodes(props: Readonly<Views>): React.ReactElement {
   const { t, i18n } = useTranslation();
@@ -20,7 +20,7 @@ export function ViewGamemodes(props: Readonly<Views>): React.ReactElement {
     );
   }
 
-  const gamemodes = props.stats.gamemodes;
+  const gamemodes = props.stats?.gamemodes || [];
   const getLanguage = () => window.localStorage.i18nextLng;
   const numberFormat = new Intl.NumberFormat(getLanguage());
   return (
@@ -46,7 +46,7 @@ export function ViewGamemodes(props: Readonly<Views>): React.ReactElement {
                       <p style={{ margin: "0.3rem 0" }}>
                         {t("stats.gamemodes.percentage", {
                           percentage: (
-                            (key?.wins / (key?.wins + key?.losses)) *
+                            ((key?.wins || 0) / ((key?.wins || 0) + (key?.losses || 0))) *
                             100
                           ).toFixed(1),
                         })}
@@ -56,24 +56,23 @@ export function ViewGamemodes(props: Readonly<Views>): React.ReactElement {
                       <div
                         className={styles.bar}
                         style={{
-                          width: `${
-                            (key?.wins / (key?.wins + key?.losses)) * 100
-                          }%`,
+                          width: `${((key?.wins || 0) / ((key?.wins || 0) + (key?.losses || 0))) * 100
+                            }%`,
                         }}
                       ></div>
                     </div>
                     <br />
                     <div className="alignS">
                       <div>
-                        <h3>{numberFormat.format(key?.score)}</h3>
+                        <h3>{numberFormat.format(key?.score || 0)}</h3>
                         <p>{t("stats.gamemodes.amounts.score")}</p>
                       </div>
                       <div>
-                        <h3>{numberFormat.format(key?.wins)}</h3>
+                        <h3>{numberFormat.format(key?.wins || 0)}</h3>
                         <p>{t("stats.gamemodes.amounts.wins")}</p>
                       </div>
                       <div>
-                        <h3>{numberFormat.format(key?.losses)}</h3>
+                        <h3>{numberFormat.format(key?.losses || 0)}</h3>
                         <p>{t("stats.gamemodes.amounts.losses")}</p>
                       </div>
                     </div>

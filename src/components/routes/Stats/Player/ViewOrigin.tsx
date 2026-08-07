@@ -2,17 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
-import { UserGames } from "../../../../api/ReturnTypes";
+import type { UserGames } from "../../../../api/ReturnTypes";
 import "../../../../locales/config";
 import sslFix from "../../../functions/fixEaAssets";
-import * as styles from "./ViewOrigin.module.scss";
+import styles from "./ViewOrigin.module.scss";
 
 export interface Views {
   loading: boolean;
   error: boolean;
-  game: string;
-  name: string;
-  stats: UserGames;
+  game?: string;
+  name?: string;
+  stats?: UserGames;
 }
 
 interface OriginViews extends Views {
@@ -27,11 +27,11 @@ function GetBfBan(props: Readonly<Views>): React.ReactElement {
     isError: error,
     data: stats,
   } = useQuery({
-    queryKey: ["bfbanStats" + props.game + props.stats.id],
+    queryKey: ["bfbanStats" + props.game + props.stats?.id],
     queryFn: () =>
       GametoolsApi.bfbanCheckPlayers({
         getter: "playerid",
-        usernames: [props.stats.id],
+        usernames: [props.stats?.id || 0],
       }),
   });
 
@@ -39,15 +39,15 @@ function GetBfBan(props: Readonly<Views>): React.ReactElement {
   let isHacker = false;
   let color = "#ffffff";
   if (!loading && !error) {
-    const list = stats.personaids;
+    const list = stats?.personaids || {};
     for (const [key, value] of Object.entries(list)) {
       if (!value.hacker) {
         delete list[key];
       }
     }
-    if (props?.stats?.id in list) {
-      isHacker = list[props?.stats?.id]?.hacker;
-      bfBanUrl = list[props?.stats?.id]?.url;
+    if (`${props?.stats?.id}` in list) {
+      isHacker = list[props?.stats?.id || 0]?.hacker;
+      bfBanUrl = list[props?.stats?.id || 0]?.url;
       color = "#DC143C";
     }
   }
@@ -145,7 +145,7 @@ export function ViewOrigin(props: Readonly<OriginViews>): React.ReactElement {
           alt={t("stats.profileImage")}
         />
         <div>
-          <h2 className={styles.originName}>{stats.userName}</h2>
+          <h2 className={styles.originName}>{stats?.userName}</h2>
           <h4 className={styles.originDescription}>
             <GetBfBan
               loading={false}

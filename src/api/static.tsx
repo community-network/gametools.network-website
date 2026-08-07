@@ -19,7 +19,7 @@ export const supportedGames = [
   "battlebit",
 ];
 
-export const projects = {
+export const projects: { [key: string]: string } = {
   "bfvietnam.openspy": "http://openspy.net",
   "bf2.bf2hub": "https://www.bf2hub.com/",
   "bf2.playbf2": "https://playbf2.tilda.ws/en",
@@ -29,7 +29,7 @@ export const projects = {
   bfvmarne: "https://marne.io/",
 };
 
-export const platformGames = {
+export const platformGames: { [key: string]: string[] } = {
   pc: ["bf3", "bf4", "bfh", "bf1", "bf1marne", "bfv", "bf2042", "bf6"],
   xboxone: ["bf4", "bfh", "bf1", "bfv", "bf2042"],
   xbox360: ["bf3", "bf4", "bfh"],
@@ -39,13 +39,13 @@ export const platformGames = {
   xboxseries: ["bf2042", "bf6"],
 };
 
-export const bfbanTypeConvert = {
+export const bfbanTypeConvert: { [key: string]: string } = {
   name: "names",
   userid: "userids",
   playerid: "personaids",
 };
 
-export const serverToStatsPlatform = {
+export const serverToStatsPlatform: { [key: number]: string } = {
   1: "pc",
   2: "xboxone",
   3: "ps4",
@@ -53,13 +53,13 @@ export const serverToStatsPlatform = {
   5: "ps4",
 };
 
-export const playerToStatsPlatform = {
+export const playerToStatsPlatform: { [key: string]: string } = {
   pc: "pc",
   xbox: "xboxone",
   psn: "ps4",
 };
 
-export const graphGames = {
+export const graphGames: { [key: string]: string[] } = {
   pc: [
     "bfglobal",
     "bf1942",
@@ -85,7 +85,7 @@ export const statsPlatforms = ["pc", "xboxone", "xbox360", "ps4", "ps3"];
 export const defaultOptions = ["amounts", "maps", "modes"];
 export const portalOptions = ["settings", "ownerPlatform"];
 defaultOptions.push.apply(portalOptions, defaultOptions);
-export const graphOptions = {
+export const graphOptions: { [key: string]: string[] } = {
   bf4: defaultOptions,
   bf1: defaultOptions,
   bfv: defaultOptions,
@@ -121,7 +121,7 @@ export const frostbite3Graph = ["bf4", "bf1", "bfv", "bf2042portal"];
 export const dice = ["bf3", "bf4", "bfh", "bf1", "bfv", "bf2042", "bf6"];
 export const diceGraph = ["bf3", "bf4", "bfh", "bf1", "bfv", "bf2042portal"];
 export const newTitles = ["bf1", "bfv"];
-export const gameGraphConvert = { bf2042portal: "bf2042" };
+export const gameGraphConvert: { [key: string]: string } = { bf2042portal: "bf2042" };
 export const extraGames = ["battlebit", "bf1marne", "bfvmarne"];
 
 export const graphColors = [
@@ -166,9 +166,9 @@ export const serverWidgetTypes = ["black", "white", "detailed"];
 export const widgetSize = [78, 78, 90];
 export const teamArr = ["teamOne", "teamTwo"];
 
-export const gameIds = { bf1: "1026023", bf4: "76889" };
+export const gameIds: { [key: string]: string } = { bf1: "1026023", bf4: "76889" };
 
-export const bf4Settings = {
+export const bf4Settings: { [key: string]: string } = {
   osls: "Only squad leader spawn",
   v3ca: "3p vehicle cam",
   v3sp: "Use 3d spotting",
@@ -192,7 +192,7 @@ export const bf4Settings = {
   vvsd: "Vehicle respawn delay %",
 };
 
-export const regionToTranslation = {
+export const regionToTranslation: { [key: string]: string } = {
   Asia: "asia",
   "North America": "nam",
   "South America": "sam",

@@ -3,24 +3,24 @@ import { useLocalStorage } from "@uidotdev/usehooks";
 import * as React from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router";
-import { GametoolsApi, managerPlayers } from "../../../api/GametoolsApi";
-import { PlatoonPlayer, PlatoonStats } from "../../../api/ReturnTypes";
+import { GametoolsApi, type managerPlayers } from "../../../api/GametoolsApi";
+import type { PlatoonPlayer, PlatoonStats } from "../../../api/ReturnTypes";
 import "../../../assets/scss/App.scss";
 import "../../../locales/config";
 import { getLanguage } from "../../../locales/config";
 import exportExcel from "../../functions/exportExcel";
 import sslFix from "../../functions/fixEaAssets";
 import useExternalScript from "../../functions/UseExternalScript";
-import { BackButton, Box, ConLink } from "../../Materials";
-import * as styles from "./Platoon.module.scss";
+import { BackButton, Box, type ConLink } from "../../Materials";
+import styles from "./Platoon.module.scss";
 import { Results as ServerResults } from "../Servers/Search/Results";
 
 interface Views {
   loading: boolean;
   error: boolean;
-  platform: string;
+  platform?: string;
   sidebar: boolean;
-  platoon: PlatoonStats;
+  platoon?: PlatoonStats;
 }
 
 function dynamicSort(property: string) {
@@ -29,7 +29,7 @@ function dynamicSort(property: string) {
     sortOrder = -1;
     property = property.substr(1);
   }
-  return function (a: string, b: string): number {
+  return function (a: { [key: string]: number | string }, b: { [key: string]: number | string }): number {
     const result =
       a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
     return result * sortOrder;
@@ -39,7 +39,7 @@ function dynamicSort(property: string) {
 function CheckBan(
   props: Readonly<{
     playerId: string;
-    checkBanInfo: managerPlayers;
+    checkBanInfo?: managerPlayers;
     checkBanLoading: boolean;
     checkBanError: boolean;
     adminMode: boolean;
@@ -95,7 +95,7 @@ function CheckBan(
 
   const usedNameCount =
     props.checkBanInfo?.otherNames[props.playerId]?.usedNames?.length;
-  if (usedNameCount > 5 && props.adminMode) {
+  if (usedNameCount !== undefined && usedNameCount > 5 && props.adminMode) {
     color = "#dc5314";
     return (
       <p style={{ color: color, lineHeight: 0, marginTop: ".5rem" }}>
@@ -129,7 +129,7 @@ function SmallExportButton(props: { members: PlatoonPlayer[] }) {
 }
 
 function Member(props: {
-  platform: string;
+  platform?: string;
   item: PlatoonPlayer;
   children?: React.ReactElement[] | React.ReactElement;
 }): React.ReactElement {
@@ -152,7 +152,7 @@ function Member(props: {
                 className={styles.memberImage}
                 src={sslFix(
                   item?.avatar ||
-                    "https://secure.download.dm.origin.com/production/avatar/prod/1/599/208x208.JPEG",
+                  "https://secure.download.dm.origin.com/production/avatar/prod/1/599/208x208.JPEG",
                 )}
                 loading="lazy"
               />
@@ -196,8 +196,8 @@ function Member(props: {
 }
 
 function Members(props: {
-  members: PlatoonPlayer[];
-  platform: string;
+  members?: PlatoonPlayer[];
+  platform?: string;
   loading: boolean;
 }): React.ReactElement {
   const { t } = useTranslation();
@@ -209,7 +209,7 @@ function Members(props: {
 
   members = props.members?.filter((item: { name: string; role: string }) => {
     return item.name.toLowerCase().includes(searchTerm.toLowerCase());
-  });
+  }) || [];
   members = members?.sort(dynamicSort(sortType));
 
   const playerIds = members?.map((item: { id: string }) => {
@@ -259,30 +259,30 @@ function Members(props: {
         <div>
           {props.loading
             ? [...Array(6)].map((key) => (
-                <Member
-                  platform={props.platform}
-                  item={{
-                    id: "loading",
-                    name: t("loading"),
-                    role: "notApplicable",
-                    avatar: "",
-                  }}
-                  key={key}
-                >
-                  <>&nbsp;</>
-                </Member>
-              ))
+              <Member
+                platform={props.platform}
+                item={{
+                  id: "loading",
+                  name: t("loading"),
+                  role: "notApplicable",
+                  avatar: "",
+                }}
+                key={key}
+              >
+                <>&nbsp;</>
+              </Member>
+            ))
             : members.map((key: PlatoonPlayer, index: number) => (
-                <Member platform={props.platform} item={key} key={index}>
-                  <CheckBan
-                    playerId={key?.id}
-                    checkBanInfo={checkBanInfo}
-                    checkBanLoading={checkBanLoading}
-                    checkBanError={checkBanError}
-                    adminMode={adminMode}
-                  />
-                </Member>
-              ))}
+              <Member platform={props.platform} item={key} key={index}>
+                <CheckBan
+                  playerId={key?.id}
+                  checkBanInfo={checkBanInfo}
+                  checkBanLoading={checkBanLoading}
+                  checkBanError={checkBanError}
+                  adminMode={adminMode}
+                />
+              </Member>
+            ))}
         </div>
       </Box>
     </div>
@@ -293,9 +293,8 @@ function Results(props: Views): React.ReactElement {
   const { t } = useTranslation();
   const platoon = props.platoon;
   React.useEffect(() => {
-    document.title = `${t("siteFullName")} ${t("pageTitle.platoon")} | ${
-      platoon?.name || t("loading")
-    }`;
+    document.title = `${t("siteFullName")} ${t("pageTitle.platoon")} | ${platoon?.name || t("loading")
+      }`;
   }, [platoon]);
   const ConditionalLink = ({ children, to, condition }: ConLink) =>
     !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
@@ -415,8 +414,8 @@ function Platoon(): React.ReactElement {
 }
 
 export function PlatoonInfo(props: {
-  platoonId: string;
-  platform: string;
+  platoonId?: string;
+  platform?: string;
   sidebar: boolean;
 }): React.ReactElement {
   const { platoonId, platform } = props;

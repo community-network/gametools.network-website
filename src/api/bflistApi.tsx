@@ -1,7 +1,7 @@
 import JsonClient from "./Json";
 
 interface ServerinfoRequest {
-  game: string;
+  game?: string;
   serverIp: string;
   serverPort: number;
 }

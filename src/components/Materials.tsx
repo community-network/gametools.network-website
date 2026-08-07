@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link, useNavigate } from "react-router";
-import * as styles from "./Materials.module.scss";
+import styles from "./Materials.module.scss";
 
 export function BackButton(
   props: Readonly<{
@@ -33,7 +33,7 @@ export function BackButton(
 export function InputItem(props: {
   item: string;
   currrentItem: string;
-  callback: (args0?) => void;
+  callback: (args0?: any) => void;
   name: string;
   disabled?: boolean;
 }): React.ReactElement {
@@ -67,7 +67,7 @@ export function InputItem(props: {
 export function CheckItem(props: {
   item: string;
   currrentItems: string[];
-  callback: (args0?) => void;
+  callback: (args0?: any) => void;
   name: string;
   disabled?: boolean;
 }): React.ReactElement {
@@ -178,7 +178,7 @@ export function Box(props: {
 
   return (
     <div className="box" style={props.spacingStyle}>
-      <ConditionalLink to={props.link} condition={props.condition}>
+      <ConditionalLink to={props.link || ""} condition={props.condition}>
         <div
           onClick={props.onClick}
           className={["wrap", props.className].join(" ")}

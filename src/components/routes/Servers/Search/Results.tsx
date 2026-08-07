@@ -1,7 +1,6 @@
-import { useLocalStorage } from "@uidotdev/usehooks";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { ServerList, ServerSearch } from "../../../../api/ReturnTypes";
+import type { ServerList, ServerSearch } from "../../../../api/ReturnTypes";
 import {
   dice,
   frostbiteJoinGames,
@@ -13,8 +12,8 @@ import "../../../../locales/config";
 import sslFix from "../../../functions/fixEaAssets";
 import { Box } from "../../../Materials";
 import { DynamicSort } from "../../Stats/Player/Main";
-import * as styles from "./Results.module.scss";
-import { TFunction } from "i18next";
+import styles from "./Results.module.scss";
+import type { TFunction } from "i18next";
 
 const handleChildElementClick = (e: { stopPropagation: () => void }) => {
   e.stopPropagation();
@@ -23,7 +22,7 @@ const handleChildElementClick = (e: { stopPropagation: () => void }) => {
 
 function LoadingServerInfo(
   props: Readonly<{
-    spacingStyle: React.CSSProperties;
+    spacingStyle: React.CSSProperties | undefined;
     serverText: string;
     style?: React.CSSProperties;
     t: TFunction<"translation", undefined>;
@@ -63,7 +62,7 @@ interface Views {
   loading: boolean;
   error: boolean;
   game: string;
-  stats: ServerSearch;
+  stats?: ServerSearch;
   sortType: string;
   spacingStyle?: React.CSSProperties;
   mainPage: boolean;
@@ -72,7 +71,7 @@ interface Views {
 export function Results(props: Views): React.ReactElement {
   const { t, i18n } = useTranslation();
   const { stats, game } = props;
-  const [adminMode] = useLocalStorage<boolean>("adminMode", false);
+  // const [adminMode] = useLocalStorage<boolean>("adminMode", false);
   const gamemodeTranslation = ["bf3", "bfh"].includes(game)
     ? `servers.${game}.gamemodes`
     : "stats.gamemodes";
@@ -109,7 +108,7 @@ export function Results(props: Views): React.ReactElement {
           // ) {
           //   spectatorAmount = `(${key.inSpectator})`;
           // }
-          let region: string = undefined;
+          let region: string | undefined = undefined;
           if (["bf2042", "bf6"].includes(props.game)) {
             if (Object.keys(regionToTranslation).includes(key.region)) {
               region = ` - ${t(`regions.${regionToTranslation[key.region]}`)}`;
@@ -134,7 +133,7 @@ export function Results(props: Views): React.ReactElement {
             result = key.serverId;
           } else if (props.game == "battlebit") {
             idElement = "name";
-            result = encodeURIComponent(key.prefix);
+            result = encodeURIComponent(key.prefix || "");
           } else if (
             !dice.includes(props.game) &&
             !props.game.includes("marne")
@@ -148,7 +147,7 @@ export function Results(props: Views): React.ReactElement {
               spacingStyle={props.spacingStyle}
               className="box_hover"
               link={`/servers/${props.game}/${idElement}/${result}/${key.platform || "pc"
-                }${props.game == "bf2042" ? `?blazeid=${key.blazeGameId}` : ""}${props.game == "bf6" ? `?name=${encodeURIComponent(key.prefix)}` : ""}`}
+                }${props.game == "bf2042" ? `?blazeid=${key.blazeGameId}` : ""}${props.game == "bf6" ? `?name=${encodeURIComponent(key.prefix || "")}` : ""}`}
               condition={true}
               key={index}
               innerStyle={props.spacingStyle}

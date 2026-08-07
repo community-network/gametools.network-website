@@ -4,7 +4,7 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation, useNavigate, useParams } from "react-router";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
-import { MainStats } from "../../../../api/ReturnTypes";
+import type { MainStats } from "../../../../api/ReturnTypes";
 import {
   gamemodeGames,
   newGen,
@@ -30,8 +30,7 @@ import { ViewProgress } from "./Progress";
 import { VehicleGraph, ViewVehicles } from "./Vehicles";
 import { ViewEmblem, ViewOrigin } from "./ViewOrigin";
 import { ViewWeapons, WeaponGraph } from "./Weapons";
-import { DropDownAutocomplete } from "../../../functions/autocomplete";
-import { TFunction } from "i18next";
+import { type TFunction } from "i18next";
 
 export interface Views {
   isLoading: boolean;
@@ -39,18 +38,18 @@ export interface Views {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   errors: any;
   game: string;
-  name: string;
-  stats: MainStats;
+  name?: string;
+  stats?: MainStats;
 }
 
 export interface PlatformViews extends Views {
-  platform: string;
+  platform?: string;
 }
 
 export function ComponentHandling(
   t: TFunction<"translation", undefined>,
   props: Readonly<Views>,
-): string {
+): string | undefined {
   if (props.isError) {
     if (
       typeof props?.errors == "object" &&
@@ -73,7 +72,7 @@ export function DynamicSort(property: string) {
     sortOrder = -1;
     property = property.substr(1);
   }
-  return function (a, b): number {
+  return function (a: { [x: string]: any; }, b: { [x: string]: any; }): number {
     const result =
       a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
     return result * sortOrder;
@@ -85,7 +84,7 @@ function Stats(): React.ReactElement {
   const platformParam = params.plat;
   const [game, setGame] = useLocalStorage<string>(
     "stats_game",
-    platformGames[platformParam][0],
+    platformGames[platformParam || ""][0],
   );
   const query = new URLSearchParams(useLocation().search);
   const history = useNavigate();
@@ -116,13 +115,13 @@ function Stats(): React.ReactElement {
     retry: 1,
   });
 
-  const games: string[] = platformGames[platformParam];
-  let playerGamesArr = [];
-  let otherGamesArr = [];
+  const games: string[] = platformGames[platformParam || ""];
+  let playerGamesArr: string[] = [];
+  let otherGamesArr: string[] = [];
   if (!gameLoading && !gameError) {
     playerGamesArr = Object.keys(
       Object.fromEntries(
-        Object.entries(playerGames)
+        Object.entries(playerGames || "")
           .filter(([key]) => supportedGames.includes(key))
           .filter(([, value]) => !value),
       ),
@@ -145,7 +144,7 @@ function Stats(): React.ReactElement {
   }, [playerGames]);
 
   React.useEffect(() => {
-    if (playerGamesArr.includes(gameQuery)) {
+    if (playerGamesArr.includes(gameQuery || "")) {
       setGame(otherGamesArr[otherGamesArr.length - 1]);
     }
   });
@@ -183,7 +182,7 @@ function Stats(): React.ReactElement {
       } | ${game || t("notApplicable")}`;
   }, [platformGames, game]);
 
-  const searchBox: React.RefObject<HTMLInputElement> = React.useRef(null);
+  const searchBox: React.RefObject<HTMLInputElement | null> = React.useRef(null);
 
   // const { data: autocompleteResult } = useQuery({
   //   queryKey: ["autocomplete" + platform + searchTerm],
@@ -297,7 +296,7 @@ function Stats(): React.ReactElement {
               stats={playerGames}
               error={gameError}
               errors={gameErrors}
-              name={nameQuery}
+              name={nameQuery || undefined}
             />
           </div>
           {typeof playerGames?.emblem === "string" && (
@@ -313,10 +312,10 @@ function Stats(): React.ReactElement {
 
 interface GameStatsItems {
   game: string;
-  name: string;
-  type: string;
+  name?: string;
+  type?: string;
   extraParams: {}
-  platform: string;
+  platform?: string;
   children:
   | boolean
   | React.ReactElement

@@ -3,10 +3,11 @@ import { useLocalStorage } from "@uidotdev/usehooks";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
-import { bfListApi, PlayerInfo, TeamInfo } from "../../../../api/bflistApi";
+import { bfListApi } from "../../../../api/bflistApi";
+import type { PlayerInfo, TeamInfo } from "../../../../api/bflistApi";
 import { bf1_factions, factions } from "../../../../api/Factions";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
-import {
+import type {
   DetailedServerInfo,
   ScoreServerPlayer,
   seederPlayer,
@@ -21,15 +22,15 @@ import sslFix from "../../../functions/fixEaAssets";
 import { Box } from "../../../Materials";
 import { DynamicSort } from "../../Stats/Player/Main";
 import { CheckBan } from "./AdminMode";
-import * as Mainstyles from "./Main.module.scss";
-import * as styles from "./Players.module.scss";
-import { TFunction } from "i18next";
+import Mainstyles from "./Main.module.scss";
+import styles from "./Players.module.scss";
+import type { TFunction } from "i18next";
 
 function Players(props: {
-  stats: ServerPlayersReturn;
-  game: string;
+  stats?: ServerPlayersReturn;
+  game?: string;
   platform: string;
-  gameid: string;
+  gameid?: string;
 }): React.ReactElement {
   const { t } = useTranslation();
   const teams = props?.stats?.teams;
@@ -38,11 +39,11 @@ function Players(props: {
   const [adminMode] = useLocalStorage<boolean>("adminMode", false);
 
   let playerIds: number[] = [];
-  teams.forEach((teamInfo: serverTeamList) => {
+  teams?.forEach((teamInfo: serverTeamList) => {
     playerIds = playerIds.concat(
       teamInfo.players.map((player) => {
         return player?.player_id;
-      }),
+      }).filter(d => d !== undefined),
     );
   });
 
@@ -56,7 +57,7 @@ function Players(props: {
   });
 
   let update_timestamp = new Date();
-  if (props.stats.update_timestamp) {
+  if (props.stats?.update_timestamp) {
     update_timestamp = new Date(props.stats.update_timestamp * 1000);
   }
 
@@ -113,13 +114,13 @@ function Players(props: {
       </div>
       {teams !== null ? (
         <>
-          {teams.map((teamInfo: serverTeamList, index: number) => {
+          {teams?.map((teamInfo: serverTeamList, index: number) => {
             teamInfo.players.sort(DynamicSort(sortType));
             return (
               <div key={index}>
                 <div className="align">
                   <h3 style={{ margin: ".5rem", marginTop: 0 }}>
-                    {teamInfo?.faction in factions
+                    {`${teamInfo?.faction}` in factions
                       ? t(`servers.factions.${teamInfo.faction}`)
                       : t(`servers.factions.${teamInfo.teamid}`)}
                   </h3>
@@ -129,7 +130,7 @@ function Players(props: {
                     <>
                       {teamInfo.players.map(
                         (key: serverPlayer, index: number) => {
-                          const seederPlayer = seederPlayers.get(key.player_id);
+                          const seederPlayer = seederPlayers.get(key.player_id || 0);
                           return (
                             <div className="column" key={index}>
                               <div className="row">
@@ -181,7 +182,7 @@ function Players(props: {
                               {props.game === "bf2042" ? (
                                 <div className="row">
                                   <h4 style={{ marginTop: "0.5rem" }}>
-                                    {key.platform.toUpperCase()}
+                                    {key.platform?.toUpperCase()}
                                   </h4>
                                   <p
                                     className={Mainstyles.description}
@@ -191,7 +192,7 @@ function Players(props: {
                                   </p>
                                 </div>
                               ) : (
-                                !props.game.includes("marne") && (
+                                !props.game?.includes("marne") && (
                                   <div className="row">
                                     <h4 style={{ marginTop: "0.5rem" }}>
                                       {key.latency}
@@ -262,13 +263,13 @@ function Players(props: {
                                         marginTop: ".5rem",
                                       }
                                   }
-                                  href={`https://gametools.network/stats/${playerToStatsPlatform[key.platform] ||
+                                  href={`https://gametools.network/stats/${playerToStatsPlatform[key.platform || ""] ||
                                     key.platform ||
                                     props.platform
                                     }/${key?.player_id ? "playerid" : "name"}/${key?.player_id
                                       ? key?.player_id
                                       : encodeURIComponent(key.name)
-                                    }?game=${props.game.replace(
+                                    }?game=${props.game?.replace(
                                       "marne",
                                       "",
                                     )}&name=${encodeURIComponent(key.name)}`}
@@ -303,7 +304,7 @@ function Players(props: {
 export function ComponentHandling(
   t: TFunction<"translation", undefined>,
   props: { isError: boolean; isLoading: boolean },
-): string {
+): string | undefined {
   if (props.isError) {
     return t("notApplicable");
   }
@@ -314,9 +315,9 @@ export function ComponentHandling(
 }
 
 export function ServerPlayerlist(props: {
-  game: string;
+  game?: string;
   platform: string;
-  gameid: string;
+  gameid?: string;
 }): React.ReactElement {
   const { t } = useTranslation();
   const gameId = props.gameid;
@@ -365,15 +366,22 @@ export function ServerPlayerlist(props: {
 }
 
 export function MarnePlayerList(props: {
-  stats: DetailedServerInfo;
-  game: string;
-  gameId: string;
+  stats?: DetailedServerInfo;
+  game?: string;
+  gameId?: string;
   isLoading: boolean;
   isError: boolean;
 }): React.ReactElement {
   const { t } = useTranslation();
-  const current_factions = bf1_factions[props?.stats?.map] ?? [];
-  const stats = {
+  const current_factions = bf1_factions[props?.stats?.map || ""] ?? [];
+  const stats: {
+    teams: {
+      teamid: string;
+      players: ScoreServerPlayer[];
+      faction: string;
+    }[];
+    update_timestamp: number;
+  } = {
     teams: [
       {
         teamid: "teamOne",
@@ -389,7 +397,7 @@ export function MarnePlayerList(props: {
     update_timestamp: Date.now() / 1000,
   };
   props?.stats?.players?.forEach((element) => {
-    stats.teams[element.team - 1].players.push(element);
+    stats.teams[(element.team || 0) - 1].players.push(element);
   });
 
   if (props.isError || props.isLoading) {
@@ -403,7 +411,7 @@ export function MarnePlayerList(props: {
 
   return (
     <Players
-      stats={stats}
+      stats={stats as ServerPlayersReturn}
       game={props.game}
       gameid={props.gameId}
       platform="pc"
@@ -412,7 +420,7 @@ export function MarnePlayerList(props: {
 }
 
 export function Bf3ServerPlayerlist(props: {
-  players: ScoreServerPlayer[];
+  players?: ScoreServerPlayer[];
   game: string;
   isLoading: boolean;
   isError: boolean;
@@ -433,7 +441,7 @@ export function Bf3ServerPlayerlist(props: {
   return (
     <div className={Mainstyles.spacing}>
       <h2>{t("servers.playerlist.main")}</h2>
-      {!!players ? (
+      {players ? (
         <Box>
           {players.length !== 0 ? (
             <>
@@ -499,7 +507,7 @@ export function Bf3ServerPlayerlist(props: {
 }
 
 export function BfListServerPlayerList(props: {
-  game: string;
+  game?: string;
   serverIp: string;
   serverPort: number;
 }): React.ReactElement {
@@ -507,7 +515,7 @@ export function BfListServerPlayerList(props: {
   const [sortType, setSortType] = React.useState<string>("-kills");
   const [copyState, setCopyState] = React.useState<string>("");
 
-  const gameStuff = props.game.split(".");
+  const gameStuff = props.game?.split(".");
   const {
     isLoading: loading,
     isError: error,
@@ -519,7 +527,7 @@ export function BfListServerPlayerList(props: {
     ],
     queryFn: () =>
       bfListApi.serverPlayerlist({
-        game: gameStuff[0],
+        game: gameStuff?.[0],
         serverIp: props.serverIp,
         serverPort: props.serverPort,
       }),

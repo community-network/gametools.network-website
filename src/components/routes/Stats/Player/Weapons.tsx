@@ -1,13 +1,13 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { MainStatsWeapon } from "../../../../api/ReturnTypes";
+import type { MainStatsWeapon } from "../../../../api/ReturnTypes";
 import "../../../../locales/config";
 import ErrorBoundary from "../../../functions/ErrorBoundary";
 import sslFix from "../../../functions/fixEaAssets";
 import { BarGraph } from "../../../graphing/bar";
 import { Box } from "../../../Materials";
-import { ComponentHandling, DynamicSort, Views } from "./Main";
-import * as styles from "./Main.module.scss";
+import { ComponentHandling, DynamicSort, type Views } from "./Main";
+import styles from "./Main.module.scss";
 
 export function ViewWeapons(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
@@ -15,7 +15,7 @@ export function ViewWeapons(props: Readonly<Views>): React.ReactElement {
   const [sortType, setSortType] = React.useState<string>("-kills");
   const getLanguage = () => window.localStorage.i18nextLng;
   const numberFormat = new Intl.NumberFormat(getLanguage());
-  let weapons = [];
+  let weapons: MainStatsWeapon[] = [];
 
   if (!props.isLoading && !props.isError) {
     weapons = props?.stats?.weapons?.filter(
@@ -35,7 +35,7 @@ export function ViewWeapons(props: Readonly<Views>): React.ReactElement {
           ?.toLowerCase()
           .includes(searchTerm?.toLowerCase());
       },
-    );
+    ) || [];
     weapons = weapons.sort(DynamicSort(sortType));
   }
   return (
@@ -90,18 +90,18 @@ export function ViewWeapons(props: Readonly<Views>): React.ReactElement {
                   </div>
                 )}
                 <div className="row">
-                  <h4>{numberFormat.format(key?.kills)}</h4>
+                  <h4>{numberFormat.format(key?.kills || 0)}</h4>
                   <p className={styles.description}>{t("stats.rows.kills")}</p>
                 </div>
                 <div className="row">
-                  <h4>{numberFormat.format(key?.killsPerMinute)}</h4>
+                  <h4>{numberFormat.format(key?.killsPerMinute || 0)}</h4>
                   <p className={styles.description}>
                     {t("stats.rows.killsPerMinute")}
                   </p>
                 </div>
                 {key?.accuracy !== undefined && (
                   <div className="smallestPhoneRow">
-                    <h4>{numberFormat.format(key?.accuracy)}%</h4>
+                    <h4>{numberFormat.format(key?.accuracy || 0)}%</h4>
                     <p className={styles.description}>
                       {t("stats.rows.accuracy")}
                     </p>
@@ -109,21 +109,21 @@ export function ViewWeapons(props: Readonly<Views>): React.ReactElement {
                 )}
                 {key?.damagePerMinute !== undefined && (
                   <div className="tabletRow">
-                    <h4>{numberFormat.format(key?.damagePerMinute)}</h4>
+                    <h4>{numberFormat.format(key?.damagePerMinute || 0)}</h4>
                     <p className={styles.description}>
                       {t("stats.rows.damagePerMinute")}
                     </p>
                   </div>
                 )}
                 <div className="tabletRow">
-                  <h4>{numberFormat.format(key?.headshots)}%</h4>
+                  <h4>{numberFormat.format(key?.headshots || 0)}%</h4>
                   <p className={styles.description}>
                     {t("stats.rows.headshots")}
                   </p>
                 </div>
                 {key?.hitVKills !== undefined && (
                   <div className="phoneRow">
-                    <h4>{numberFormat.format(key?.hitVKills)}</h4>
+                    <h4>{numberFormat.format(key?.hitVKills || 0)}</h4>
                     <p className={styles.description}>
                       {t("stats.rows.hitVKills")}
                     </p>
@@ -148,16 +148,17 @@ export function WeaponGraph(props: Readonly<Views>): React.ReactElement {
   const [begin, setBegin] = React.useState<number>(0);
   let i = 0;
   let length = 0;
-  const names = [];
-  const values = [];
+  const names: string[] = [];
+  const values: (number | string)[] = [];
   if (!props.isLoading && !props.isError) {
-    length = props.stats.weapons.length;
-    props.stats.weapons
+    length = props.stats?.weapons.length || 0;
+    props.stats?.weapons
       .sort(DynamicSort(`-${graphType}`))
-      .map((item: MainStatsWeapon) => {
+      .map((item) => {
         if (i >= begin && i < begin + 25) {
           names.push(item?.weaponName);
-          values.push(item[graphType]);
+          const test = item as { [key: string]: number | string }
+          values.push(test[graphType]);
         }
         i += 1;
       });
