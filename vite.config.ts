@@ -12,9 +12,9 @@ export default defineConfig({
     ViteImageOptimizer({}),
     VitePWA({
       registerType: 'autoUpdate',
-      // workbox: {
-      //   globPatterns: ['**/*.{js,css,html,ico,png,svg}']
-      // }
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+      }
     }),
   ],
 })
