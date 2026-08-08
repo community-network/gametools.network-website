@@ -152,9 +152,6 @@ export function Box(props: {
   condition?: boolean;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
 }): React.ReactElement {
-  const ConditionalLink = ({ children, to, condition }: ConLink) =>
-    !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
-
   if (props.condition === undefined) {
     return (
       <div className="box" style={props.spacingStyle}>
@@ -178,7 +175,7 @@ export function Box(props: {
 
   return (
     <div className="box" style={props.spacingStyle}>
-      <ConditionalLink to={props.link || ""} condition={props.condition}>
+      <Link onClick={e => !props.condition && e.preventDefault()} to={props.link || ""} >
         <div
           onClick={props.onClick}
           className={["wrap", props.className].join(" ")}
@@ -194,7 +191,7 @@ export function Box(props: {
             {props.children}
           </div>
         </div>
-      </ConditionalLink>
+      </Link>
     </div>
   );
 }

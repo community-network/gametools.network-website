@@ -23,7 +23,7 @@ function Home(): React.ReactElement {
   const { t, i18n } = useTranslation();
   React.useEffect(() => {
     document.title = t("pageTitle.main");
-  }, []);
+  }, [t]);
 
   let i = 0;
   const ourFriendLogos = [bfbanLogo, bfportalLogo, statbitsLogo, bflistLogo];

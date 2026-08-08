@@ -202,12 +202,11 @@ function Members(props: {
 }): React.ReactElement {
   const { t } = useTranslation();
 
-  let members = [];
   const [searchTerm, setSearchTerm] = React.useState<string>("");
   const [sortType, setSortType] = React.useState<string>("default");
   const [adminMode] = useLocalStorage<boolean>("adminMode", false);
 
-  members = props.members?.filter((item: { name: string; role: string }) => {
+  let members = props.members?.filter((item: { name: string; role: string }) => {
     return item.name.toLowerCase().includes(searchTerm.toLowerCase());
   }) || [];
   members = members?.sort(dynamicSort(sortType));
@@ -295,9 +294,7 @@ function Results(props: Views): React.ReactElement {
   React.useEffect(() => {
     document.title = `${t("siteFullName")} ${t("pageTitle.platoon")} | ${platoon?.name || t("loading")
       }`;
-  }, [platoon]);
-  const ConditionalLink = ({ children, to, condition }: ConLink) =>
-    !!condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
+  }, [platoon, t]);
 
   if (props.error) {
     return (
@@ -310,26 +307,26 @@ function Results(props: Views): React.ReactElement {
     return (
       <div>
         <div className={styles.alignPlatoonImg}>
-          <ConditionalLink
+          <Link
+            onClick={e => !props.sidebar && e.preventDefault()}
             to={`/platoons/${props.platform}/${props.platoon?.id}`}
-            condition={props.sidebar}
           >
             <div
               className={styles.platoonImage}
               style={{ backgroundImage: `url("${platoon?.emblem}")` }}
             />
-          </ConditionalLink>
+          </Link>
           <div style={{ marginLeft: "0.5rem" }}>
-            <ConditionalLink
+            <Link
+              onClick={e => !props.sidebar && e.preventDefault()}
               to={`/platoons/${props.platform}/${props.platoon?.id}`}
-              condition={props.sidebar}
             >
               <h2 className={styles.platoonTitle}>
                 {props.loading
                   ? t("loading")
                   : `[${platoon?.tag}] ${platoon?.name}`}
               </h2>
-            </ConditionalLink>
+            </Link>
             <p className={styles.description}>
               {platoon?.currentSize || 0} / 100
             </p>
