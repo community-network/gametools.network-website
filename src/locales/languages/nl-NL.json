@@ -167,10 +167,6 @@
       "1": {
         "header": "Portal Experience info",
         "localUrl": "/playgrounds/"
-      },
-      "2": {
-        "header": "FESL API (Battlefield bad company 2 APIs)",
-        "url": "https://fesl.gametools.network/docs"
       }
     },
     "ourFriends": {
@@ -198,6 +194,12 @@
         "description": "bflist biedt live gegevens over wat er op het slagveld gebeurt in spellen uit de Battlefield-serie. Wij geven gegevens over zowel servers als spelers. Van een server zijn naam of huidige map tot de huidige kd en score van elke speler.",
         "link": "BfList bezoeken",
         "url": "https://bflist.io/"
+      },
+      "4": {
+        "header": "RedSec Central",
+        "description": "A tracking system that provides detailed statistics, rankings, squad performance tracking, and competitive insights for both RedSec Ranked and Standard game modes.",
+        "link": "Visit RedSec Central",
+        "url": "https://tracker.redseccentral.com/"
       }
     }
   },
