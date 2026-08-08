@@ -16,6 +16,7 @@ import statbitsLogo from "../../assets/icon/statbits-icon.svg";
 import bflistLogo from "../../assets/icon/bflist-icon.svg";
 import bfbanLogo from "../../assets/icon/bfban-icon.png";
 import bfportalLogo from "../../assets/icon/bfportal-icon.png";
+import RedsecCentralLogo from "../../assets/icon/redsec-central-icon.png";
 import { Link } from "react-router";
 import styles from "./Home.module.scss";
 
@@ -25,8 +26,9 @@ function Home(): React.ReactElement {
     document.title = t("pageTitle.main");
   }, [t]);
 
+  // Battlefield specific services not attached to a specific battlefield community server, made by our developers.
   let i = 0;
-  const ourFriendLogos = [bfbanLogo, bfportalLogo, statbitsLogo, bflistLogo];
+  const ourFriendLogos = [bfbanLogo, bfportalLogo, statbitsLogo, bflistLogo, RedsecCentralLogo];
   const ourFriends = [];
   while (i18n.exists(`home.ourFriends.${i}`)) {
     ourFriends.push({

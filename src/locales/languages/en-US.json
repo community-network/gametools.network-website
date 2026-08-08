@@ -198,6 +198,12 @@
         "description": "bflist provides live data about what is happening on the Battlefield in Battlefield-series games. We provide data on servers as well as players. From a server's name or current map to any player's current score and kd.",
         "link": "Visit BFList",
         "url": "https://bflist.io/"
+      },
+      "4": {
+        "header": "RedSec Central",
+        "description": "A tracking system that provides detailed statistics, rankings, squad performance tracking, and competitive insights for both RedSec Ranked and Standard game modes.",
+        "link": "Visit RedSec Central",
+        "url": "https://tracker.redseccentral.com/"
       }
     }
   },
