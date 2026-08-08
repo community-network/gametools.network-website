@@ -37,7 +37,7 @@ function Servers(): React.ReactElement {
   React.useEffect(() => {
     document.title = `${t("siteFullName")} ${t("pageTitle.servers")} | ${gameId || t("notApplicable")
       } | ${stats?.prefix || t("loading")}`;
-  }, [stats, gameId]);
+  }, [stats, gameId, t]);
   return (
     <div>
       <div className="container">

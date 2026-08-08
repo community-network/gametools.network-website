@@ -13,7 +13,7 @@ function Launch(): React.ReactElement {
     if (oldJoinGames.includes(params.gameid || "")) {
       window.location.href = `${params.gameid}://${params.ip}:${params.port}`;
     }
-  }, [oldJoinGames, params]);
+  }, [params]);
 
   return (
     <div className="container">

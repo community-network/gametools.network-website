@@ -5,7 +5,7 @@ function PrivacyPolicy(): React.ReactElement {
   const { t } = useTranslation();
   React.useEffect(() => {
     document.title = `${t("siteFullName")} | ${t("footer.links.3.header")}`;
-  }, []);
+  }, [t]);
 
   return (
     <div className="container">

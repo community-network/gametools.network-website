@@ -11,7 +11,7 @@ import { getLanguage } from "../../../locales/config";
 import exportExcel from "../../functions/exportExcel";
 import sslFix from "../../functions/fixEaAssets";
 import useExternalScript from "../../functions/UseExternalScript";
-import { BackButton, Box, type ConLink } from "../../Materials";
+import { BackButton, Box } from "../../Materials";
 import styles from "./Platoon.module.scss";
 import { Results as ServerResults } from "../Servers/Search/Results";
 

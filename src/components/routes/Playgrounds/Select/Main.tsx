@@ -58,7 +58,7 @@ function Main(): React.ReactElement {
   const [game, setGame] = useLocalStorage<string>("experience_game", "bf6");
   React.useEffect(() => {
     document.title = `${t("siteFullName")} | ${t("getPlaygrounds.main")}`;
-  }, []);
+  }, [t]);
   const [searchTerm, setSearchTerm] = React.useState<string>("");
   let getter = "playgroundid";
   let playground = "";

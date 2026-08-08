@@ -165,7 +165,7 @@ function Search(): React.ReactElement {
   const { t } = useTranslation();
   React.useEffect(() => {
     document.title = `${t("siteFullName")} | ${t("platoonSearch.serverInfo")}`;
-  }, []);
+  }, [t]);
   const {
     isLoading: loading,
     isError: error,

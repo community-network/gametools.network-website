@@ -35,7 +35,7 @@ function Playgrounds(): React.ReactElement {
   React.useEffect(() => {
     document.title = `${t("siteFullName")} ${t("pageTitle.playground")} | ${stats?.originalPlayground?.settings?.configName?.value || t("loading")
       }`;
-  }, [stats]);
+  }, [stats, t]);
 
   return (
     <div>

@@ -42,7 +42,6 @@ export function ViewIframe(props: Readonly<IframeViews>): React.ReactElement {
         height="380px"
         width="100%"
         frameBorder="0"
-        // eslint-disable-next-line react/no-unknown-property
         loading="lazy"
       ></iframe>
     </Box>

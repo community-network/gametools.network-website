@@ -424,7 +424,7 @@ function Main(): React.ReactElement {
   const { t } = useTranslation();
   React.useEffect(() => {
     document.title = `${t("siteFullName")} | ${t("serverSearch.serverInfo")}`;
-  }, []);
+  }, [t]);
   const {
     isLoading: loading,
     isError: error,
