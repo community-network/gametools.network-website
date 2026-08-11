@@ -4,6 +4,7 @@ import ReactGA from "react-ga4";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
 
+ReactGA.initialize("G-QVBKT0H4QV");
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
