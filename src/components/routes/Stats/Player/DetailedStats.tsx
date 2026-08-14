@@ -1,4 +1,3 @@
-import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { newTitles } from "../../../../api/static";
 import "../../../../locales/config";

@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocalStorage } from "@uidotdev/usehooks";
-import * as React from "react";
+
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { bfListApi } from "../../../../api/bflistApi";
@@ -34,8 +35,8 @@ function Players(props: {
 }): React.ReactElement {
   const { t } = useTranslation();
   const teams = props?.stats?.teams;
-  const [sortType, setSortType] = React.useState<string>("slot");
-  const [copyState, setCopyState] = React.useState<string>("");
+  const [sortType, setSortType] = useState<string>("slot");
+  const [copyState, setCopyState] = useState<string>("");
   const [adminMode] = useLocalStorage<boolean>("adminMode", false);
 
   let playerIds: number[] = [];
@@ -512,8 +513,8 @@ export function BfListServerPlayerList(props: {
   serverPort: number;
 }): React.ReactElement {
   const { t } = useTranslation();
-  const [sortType, setSortType] = React.useState<string>("-kills");
-  const [copyState, setCopyState] = React.useState<string>("");
+  const [sortType, setSortType] = useState<string>("-kills");
+  const [copyState, setCopyState] = useState<string>("");
 
   const gameStuff = props.game?.split(".");
   const {

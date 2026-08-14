@@ -1,9 +1,10 @@
 import { useLocalStorage } from "@uidotdev/usehooks";
-import * as React from "react";
+
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "../../locales/ChangeLanguage";
 import "../../locales/config";
 import styles from "./Footer.module.scss";
+import { version, type ReactElement } from "react";
 
 interface FLinkProp {
   href: string;
@@ -22,9 +23,9 @@ function FLink(props: FLinkProp) {
 
 // stop it from removing react import
 // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-React.version;
+version;
 
-export function Footer(): React.ReactElement {
+export function Footer(): ReactElement {
   const { t, i18n } = useTranslation();
   let i = 0;
   const footerLinks = [];

@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocalStorage } from "@uidotdev/usehooks";
-import * as React from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { Link, useLocation, useNavigate } from "react-router";
 import { type BF2042Player, GametoolsApi } from "../../../../api/GametoolsApi";
@@ -21,6 +20,7 @@ import { getLanguage } from "../../../../locales/config";
 import { BackButton, Box, CheckItem, InputItem } from "../../../Materials";
 import styles from "./Main.module.scss";
 import { Results } from "./Results";
+import { useEffect, useRef, useState } from "react";
 
 function DropdownArrow(props: {
   item: string;
@@ -84,8 +84,8 @@ function ServerOwnerSearch(props: {
 }): React.ReactElement {
   const { ownerList, setOwnerList } = props;
   const { t } = useTranslation();
-  const [searchTerm, setSearchTerm] = React.useState<string>("");
-  const searchBox: React.MutableRefObject<HTMLInputElement | null> = React.useRef(null);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const searchBox: React.MutableRefObject<HTMLInputElement | null> = useRef(null);
 
   const handleKeyDown = (event: { key: string; }) => {
     if (event.key === "Enter") {
@@ -183,12 +183,12 @@ function ServerOwnerSearch(props: {
 }
 
 function Main(): React.ReactElement {
-  const [width, setWidth] = React.useState<number>(window.innerWidth);
-  React.useEffect(() => {
+  const [width, setWidth] = useState<number>(window.innerWidth);
+  useEffect(() => {
     window.addEventListener("resize", () => setWidth(window.innerWidth));
   }, []);
 
-  const [searchTerm, setSearchTerm] = React.useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [gameName, setGameNameItem] = useLocalStorage<string>(
     "serverSearch_game",
     "bf6",
@@ -198,9 +198,9 @@ function Main(): React.ReactElement {
     "allPlatforms",
   );
   const [limit, setLimit] = useLocalStorage<string>("serverSearch_limit", "10");
-  const [searchType, setSearchType] = React.useState<string>("servername");
-  const [sortType, setSortType] = React.useState<string>("-prefix");
-  const [dropdownOpen, setDropdownOpen] = React.useState<{
+  const [searchType, setSearchType] = useState<string>("servername");
+  const [sortType, setSortType] = useState<string>("-prefix");
+  const [dropdownOpen, setDropdownOpen] = useState<{
     [string: string]: boolean;
   }>({});
   const [hideSideBar, setHideSidebar] = useLocalStorage<boolean>(
@@ -208,14 +208,14 @@ function Main(): React.ReactElement {
     false,
   );
 
-  const [regionFilter, setRegionFilter] = React.useState<string[]>(["all"]);
-  const [serverTypeFilter, setServerTypeFilter] = React.useState<string[]>([]);
-  const [gamemodeFilter, setGamemodeFilter] = React.useState<string[]>([]);
-  const [mapFilter, setMapFilter] = React.useState<string[]>([]);
-  const [playerFilter, setPlayerFilter] = React.useState<string[]>([]);
+  const [regionFilter, setRegionFilter] = useState<string[]>(["all"]);
+  const [serverTypeFilter, setServerTypeFilter] = useState<string[]>([]);
+  const [gamemodeFilter, setGamemodeFilter] = useState<string[]>([]);
+  const [mapFilter, setMapFilter] = useState<string[]>([]);
+  const [playerFilter, setPlayerFilter] = useState<string[]>([]);
   const [isPasswordProtected, setIsPasswordProtected] =
-    React.useState<string>("");
-  const [bf2042OwnerList, setbf2042OwnerList] = React.useState<BF2042Player[]>(
+    useState<string>("");
+  const [bf2042OwnerList, setbf2042OwnerList] = useState<BF2042Player[]>(
     [],
   );
   function setGameName(newGame: string) {
@@ -247,7 +247,7 @@ function Main(): React.ReactElement {
   const isPasswordProtectedQuery = query.get("is_password_protected");
   const bf2042OwnerListQuery = query.get("bf2042_owner_list");
   const regionKey = gameName === "battlebit" ? "battlebitRegions" : "regions";
-  React.useState(() => {
+  useState(() => {
     if (nameQuery !== null) {
       setSearchTerm(nameQuery);
     }
@@ -287,7 +287,7 @@ function Main(): React.ReactElement {
   });
 
   // change top to query
-  React.useEffect(() => {
+  useEffect(() => {
     const params = new URLSearchParams();
     if (searchTerm.length > 0) {
       params.append("search", searchTerm);
@@ -366,7 +366,7 @@ function Main(): React.ReactElement {
     history,
   ]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (
       regionFilter.length > 0 ||
       gamemodeFilter.length > 0 ||
@@ -422,7 +422,7 @@ function Main(): React.ReactElement {
     : "battlelog";
 
   const { t } = useTranslation();
-  React.useEffect(() => {
+  useEffect(() => {
     document.title = `${t("siteFullName")} | ${t("serverSearch.serverInfo")}`;
   }, [t]);
   const {
@@ -946,7 +946,7 @@ function Main(): React.ReactElement {
 }
 
 export function ServerSearch(): React.ReactElement {
-  const [searchTerm, setSearchTerm] = React.useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [gameName, setGameName] = useLocalStorage<string>(
     "serverSearch_game",
     "bf6",
@@ -955,7 +955,7 @@ export function ServerSearch(): React.ReactElement {
     "serverSearch_platform",
     "allPlatforms",
   );
-  const [regionFilter, setRegionFilter] = React.useState<string[]>(["all"]);
+  const [regionFilter, setRegionFilter] = useState<string[]>(["all"]);
   const regionKey = gameName === "battlebit" ? "battlebitRegions" : "regions";
 
   const { t } = useTranslation();

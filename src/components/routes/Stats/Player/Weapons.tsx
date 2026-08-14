@@ -1,4 +1,3 @@
-import * as React from "react";
 import { useTranslation } from "react-i18next";
 import type { MainStatsWeapon } from "../../../../api/ReturnTypes";
 import "../../../../locales/config";
@@ -8,11 +7,12 @@ import { BarGraph } from "../../../graphing/bar";
 import { Box } from "../../../Materials";
 import { ComponentHandling, DynamicSort, type Views } from "./Main";
 import styles from "./Main.module.scss";
+import { useState } from "react";
 
 export function ViewWeapons(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
-  const [searchTerm, setSearchTerm] = React.useState<string>("");
-  const [sortType, setSortType] = React.useState<string>("-kills");
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [sortType, setSortType] = useState<string>("-kills");
   const getLanguage = () => window.localStorage.i18nextLng;
   const numberFormat = new Intl.NumberFormat(getLanguage());
   let weapons: MainStatsWeapon[] = [];
@@ -144,8 +144,8 @@ export function ViewWeapons(props: Readonly<Views>): React.ReactElement {
 
 export function WeaponGraph(props: Readonly<Views>): React.ReactElement {
   const { t } = useTranslation();
-  const [graphType, setGraphType] = React.useState<string>("kills");
-  const [begin, setBegin] = React.useState<number>(0);
+  const [graphType, setGraphType] = useState<string>("kills");
+  const [begin, setBegin] = useState<number>(0);
   let i = 0;
   let length = 0;
   const names: string[] = [];

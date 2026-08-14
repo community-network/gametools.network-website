@@ -1,5 +1,6 @@
 import { useLocalStorage } from "@uidotdev/usehooks";
-import * as React from "react";
+
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import useExternalScript from "./functions/UseExternalScript";
 
@@ -12,7 +13,7 @@ const AdsComponent = (props: {
   const { dataAdSlot } = props;
   const style = props.style || { display: "block" };
 
-  React.useEffect(() => {
+  useEffect(() => {
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch (_) { }

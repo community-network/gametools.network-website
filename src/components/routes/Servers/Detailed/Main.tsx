@@ -1,4 +1,4 @@
-import * as React from "react";
+
 import { Trans, useTranslation } from "react-i18next";
 import type { ModListReturn } from "../../../../api/marneApi";
 import type {
@@ -15,6 +15,7 @@ import {
   serverWidgetTypes,
   widgetSize,
 } from "../../../../api/static";
+import { useState } from "react";
 import "../../../../assets/scss/App.scss";
 import "../../../../locales/config";
 import { capitalizeFirstLetter } from "../../../functions/capitalizeFirstLetter";
@@ -100,7 +101,7 @@ export function Results(props: Views): React.ReactElement {
   const numberFormat = new Intl.NumberFormat(getLanguage());
   const copyStates: { [key: string]: { state: string, set: React.Dispatch<React.SetStateAction<string>> } } = {};
   serverWidgetTypes.map((element) => {
-    const [tempCopyState, tempSetCopyState] = React.useState<string>("copy");
+    const [tempCopyState, tempSetCopyState] = useState<string>("copy");
     copyStates[element] = { state: tempCopyState, set: tempSetCopyState };
   });
 

@@ -1,4 +1,4 @@
-import * as React from "react";
+
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import "../../../../assets/scss/App.scss";
@@ -6,6 +6,7 @@ import "../../../../locales/config";
 import { BackButton, RightArrow } from "../../../Materials";
 import styles from "./Main.module.scss";
 import { useLocalStorage } from "@uidotdev/usehooks";
+import { useState, useEffect } from "react";
 
 interface IUrl {
   valid_url: boolean;
@@ -56,10 +57,10 @@ function check_valid_shortcode(test_string: string, game: string): boolean {
 function Main(): React.ReactElement {
   const { t } = useTranslation();
   const [game, setGame] = useLocalStorage<string>("experience_game", "bf6");
-  React.useEffect(() => {
+  useEffect(() => {
     document.title = `${t("siteFullName")} | ${t("getPlaygrounds.main")}`;
   }, [t]);
-  const [searchTerm, setSearchTerm] = React.useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   let getter = "playgroundid";
   let playground = "";
   const isUrl = get_playground_id(searchTerm.trim());

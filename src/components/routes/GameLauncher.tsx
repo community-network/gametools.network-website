@@ -1,15 +1,16 @@
-import * as React from "react";
+
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router";
 import { oldJoinGames } from "../../api/static";
 import "../../locales/config";
 import { BackButton } from "../Materials";
+import { useEffect } from "react";
 
 function Launch(): React.ReactElement {
   const params = useParams();
   const { t } = useTranslation();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (oldJoinGames.includes(params.gameid || "")) {
       window.location.href = `${params.gameid}://${params.ip}:${params.port}`;
     }

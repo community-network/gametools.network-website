@@ -1,38 +1,39 @@
-import * as React from "react";
+
 import "../locales/config";
 import { Routes, Route, Navigate, useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
 import { Footer } from "./main/Footer";
 import { Navbar } from "./main/Navbar";
+import { lazy, Suspense } from "react";
 
 // Routes
-const Home = React.lazy(() => import("./routes/Home"));
-const PrivacyPolicy = React.lazy(() => import("./routes/PrivacyPolicy"));
-const PlayerSearch = React.lazy(
+const Home = lazy(() => import("./routes/Home"));
+const PrivacyPolicy = lazy(() => import("./routes/PrivacyPolicy"));
+const PlayerSearch = lazy(
   () => import("./routes/Stats/Search/PlayerSearch"),
 );
-const ServerSearch = React.lazy(() => import("./routes/Servers/Search/Main"));
-const PlatoonSearch = React.lazy(
+const ServerSearch = lazy(() => import("./routes/Servers/Search/Main"));
+const PlatoonSearch = lazy(
   () => import("./routes/platoons/PlatoonSearch"),
 );
-const Stats = React.lazy(() => import("./routes/Stats/Player/Main"));
-const Servers = React.lazy(() => import("./routes/Servers/Detailed/Servers"));
-const Playgrounds = React.lazy(
+const Stats = lazy(() => import("./routes/Stats/Player/Main"));
+const Servers = lazy(() => import("./routes/Servers/Detailed/Servers"));
+const Playgrounds = lazy(
   () => import("./routes/Playgrounds/Detailed/Playgrounds"),
 );
-const PlaygroundSelect = React.lazy(
+const PlaygroundSelect = lazy(
   () => import("./routes/Playgrounds/Select/Main"),
 );
-const Platoon = React.lazy(() => import("./routes/platoons/Platoon"));
-const Launch = React.lazy(() => import("./routes/GameLauncher"));
-const PageNotFound = React.lazy(() => import("./errors/PageNotFound"));
+const Platoon = lazy(() => import("./routes/platoons/Platoon"));
+const Launch = lazy(() => import("./routes/GameLauncher"));
+const PageNotFound = lazy(() => import("./errors/PageNotFound"));
 
 function Views(): React.ReactElement {
   const homePage = useLocation().pathname === "/";
   const { t } = useTranslation();
   return (
     <div style={homePage ? {} : { paddingTop: 90 }}>
-      <React.Suspense fallback={<div>{t("loading")}</div>}>
+      <Suspense fallback={<div>{t("loading")}</div>}>
         <Navbar />
         <main role="main">
           <Routes>
@@ -67,7 +68,7 @@ function Views(): React.ReactElement {
           </Routes>
         </main>
         <Footer />
-      </React.Suspense>
+      </Suspense>
     </div>
   );
 }

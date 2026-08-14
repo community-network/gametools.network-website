@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocalStorage } from "@uidotdev/usehooks";
-import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router";
 import { GametoolsApi } from "../../../api/GametoolsApi";
@@ -11,6 +10,7 @@ import { getLanguage } from "../../../locales/config";
 import { BackButton, Box } from "../../Materials";
 import { PlatoonInfo } from "./Platoon";
 import styles from "./PlatoonSearch.module.scss";
+import { useEffect, useState } from "react";
 
 interface Views {
   loading: boolean;
@@ -43,8 +43,8 @@ function PlatoonLoading(): React.ReactElement {
 function Results(props: Views): React.ReactElement {
   const { t } = useTranslation();
   const stats = props.platoons;
-  const [width, setWidth] = React.useState<number>(window.innerWidth);
-  React.useEffect(() => {
+  const [width, setWidth] = useState<number>(window.innerWidth);
+  useEffect(() => {
     window.addEventListener("resize", () => setWidth(window.innerWidth));
   }, []);
   if (!props.loading) {
@@ -98,19 +98,19 @@ function Results(props: Views): React.ReactElement {
 }
 
 function Search(): React.ReactElement {
-  const [searchTerm, setSearchTerm] = React.useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [platform, setPlatform] = useLocalStorage<string>(
     "platoonSearch_platform",
     "pc",
   );
-  const [platoonId, setPlatoonId] = React.useState<string>("");
+  const [platoonId, setPlatoonId] = useState<string>("");
   const history = useNavigate();
   // get info from query ?search &game
   const query = new URLSearchParams(useLocation().search);
   const platformQuery = query.get("platform");
   const nameQuery = query.get("search");
   const platoonQuery = query.get("platoon");
-  React.useState(() => {
+  useState(() => {
     if (platformQuery !== null) {
       setPlatform(platformQuery);
     }
@@ -123,7 +123,7 @@ function Search(): React.ReactElement {
   });
 
   // change top to query
-  React.useEffect(() => {
+  useEffect(() => {
     const params = new URLSearchParams();
     if (searchTerm) {
       params.append("search", searchTerm);
@@ -144,7 +144,7 @@ function Search(): React.ReactElement {
   }, [searchTerm, platform, platoonId, history]);
 
   // sidebar redirect if platoonId is set but screen is to small to display it
-  React.useEffect(() => {
+  useEffect(() => {
     if (window.innerWidth <= 1800 && platoonId !== "") {
       const params = new URLSearchParams();
       if (searchTerm) {
@@ -163,7 +163,7 @@ function Search(): React.ReactElement {
   }, []);
 
   const { t } = useTranslation();
-  React.useEffect(() => {
+  useEffect(() => {
     document.title = `${t("siteFullName")} | ${t("platoonSearch.serverInfo")}`;
   }, [t]);
   const {

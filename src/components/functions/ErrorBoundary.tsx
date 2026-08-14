@@ -1,15 +1,16 @@
-import * as React from "react";
+
+import { Component, type ReactNode } from "react";
 import { Translation } from "react-i18next";
 
 interface Props {
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 interface State {
   hasError: boolean;
 }
 
-class ErrorBoundary extends React.Component<Props, State> {
+class ErrorBoundary extends Component<Props, State> {
   public state: State = {
     hasError: false,
   };
@@ -25,7 +26,7 @@ class ErrorBoundary extends React.Component<Props, State> {
 
   public render() {
     if (this.state.hasError) {
-      return <Translation>{(t, {}) => <p>{t("error")}</p>}</Translation>;
+      return <Translation>{(t, { }) => <p>{t("error")}</p>}</Translation>;
     }
 
     return this.props.children;

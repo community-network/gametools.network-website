@@ -1,4 +1,3 @@
-import * as React from "react";
 import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
 import "../../../../assets/scss/App.scss";
@@ -6,12 +5,13 @@ import { OpenExternal } from "../../../Materials";
 import { Graph, GlobalGraph, OldGameGraph } from "../../../graphing/line";
 import { diceGraph, graphGames, graphOptions } from "../../../../api/static";
 import styles from "./PlayerSearch.module.scss";
+import { useState } from "react";
 
 export function Graphs(): React.ReactElement {
   const { t } = useTranslation();
-  const [platformGraph, setPlatformGraph] = React.useState<string>("pc");
-  const [gameGraph, setGraphGame] = React.useState<string>("bfglobal");
-  const [optionGraph, setOptionGraph] = React.useState<string>("amounts");
+  const [platformGraph, setPlatformGraph] = useState<string>("pc");
+  const [gameGraph, setGraphGame] = useState<string>("bfglobal");
+  const [optionGraph, setOptionGraph] = useState<string>("amounts");
   return (
     <>
       <div className="align">

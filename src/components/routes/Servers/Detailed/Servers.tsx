@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
@@ -8,6 +7,7 @@ import "../../../../locales/config";
 import { getLanguage } from "../../../../locales/config";
 import { BackButton } from "../../../Materials";
 import { Results } from "./Main";
+import { useEffect } from "react";
 
 function Servers(): React.ReactElement {
   const params = useParams();
@@ -34,7 +34,7 @@ function Servers(): React.ReactElement {
     retryDelay: 3,
     retryOnMount: false,
   });
-  React.useEffect(() => {
+  useEffect(() => {
     document.title = `${t("siteFullName")} ${t("pageTitle.servers")} | ${gameId || t("notApplicable")
       } | ${stats?.prefix || t("loading")}`;
   }, [stats, gameId, t]);

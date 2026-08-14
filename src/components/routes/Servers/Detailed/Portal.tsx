@@ -1,4 +1,4 @@
-import * as React from "react";
+
 import { useTranslation } from "react-i18next";
 import type { ServerInfoResult } from "../../../../api/ReturnTypes";
 import background from "../../../../assets/icon/portal.svg";

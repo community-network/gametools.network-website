@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocalStorage } from "@uidotdev/usehooks";
-import * as React from "react";
+
+import { useState, useEffect } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router";
 import { GametoolsApi, type managerPlayers } from "../../../api/GametoolsApi";
@@ -202,8 +203,8 @@ function Members(props: {
 }): React.ReactElement {
   const { t } = useTranslation();
 
-  const [searchTerm, setSearchTerm] = React.useState<string>("");
-  const [sortType, setSortType] = React.useState<string>("default");
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [sortType, setSortType] = useState<string>("default");
   const [adminMode] = useLocalStorage<boolean>("adminMode", false);
 
   let members = props.members?.filter((item: { name: string; role: string }) => {
@@ -291,7 +292,7 @@ function Members(props: {
 function Results(props: Views): React.ReactElement {
   const { t } = useTranslation();
   const platoon = props.platoon;
-  React.useEffect(() => {
+  useEffect(() => {
     document.title = `${t("siteFullName")} ${t("pageTitle.platoon")} | ${platoon?.name || t("loading")
       }`;
   }, [platoon, t]);

@@ -1,5 +1,4 @@
 import { useLocalStorage } from "@uidotdev/usehooks";
-import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { platformGames, statsPlatforms } from "../../../../api/static";
@@ -9,15 +8,16 @@ import ErrorBoundary from "../../../functions/ErrorBoundary";
 import { BackButton, RightArrow } from "../../../Materials";
 import { Graphs } from "./Graphs";
 import styles from "./PlayerSearch.module.scss";
+import { useEffect, useRef, useState } from "react";
 
 export function StatSearch(): React.ReactElement {
   const { t } = useTranslation();
-  const [searchTerm, setSearchTerm] = React.useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [platform, setPlatform] = useLocalStorage<string>(
     "statSearch_platform",
     "pc",
   );
-  const searchBox: React.RefObject<HTMLInputElement | null> = React.useRef(null);
+  const searchBox: React.RefObject<HTMLInputElement | null> = useRef(null);
 
   // const { data: autocompleteResult } = useQuery({
   //   queryKey: ["autocomplete" + platform + searchTerm],
@@ -104,13 +104,13 @@ function Main(): React.ReactElement {
 
 function Search(): React.ReactElement {
   const { t } = useTranslation();
-  const [searchTerm, setSearchTerm] = React.useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [platform, setPlatform] = useLocalStorage<string>(
     "statSearch_platform",
     "pc",
   );
   const [game, setGame] = useLocalStorage<string>("stats_game", "bf1");
-  const searchBox: React.RefObject<HTMLInputElement | null> = React.useRef(null);
+  const searchBox: React.RefObject<HTMLInputElement | null> = useRef(null);
 
   // const { data: autocompleteResult } = useQuery({
   //   queryKey: ["autocomplete" + platform + searchTerm],
@@ -121,7 +121,7 @@ function Search(): React.ReactElement {
   //   },
   // });
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.title = `${t("siteFullName")} | ${t("playerSearch.bfStats")}`;
   }, []);
 
@@ -207,3 +207,4 @@ function Search(): React.ReactElement {
 }
 
 export default Main;
+

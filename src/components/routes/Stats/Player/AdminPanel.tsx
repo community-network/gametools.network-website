@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
 import type { MainStatsWeapon, SusWeaponType } from "../../../../api/ReturnTypes";
@@ -12,6 +11,7 @@ import { ComponentHandling, type PlatformViews } from "./Main";
 import styles from "./Main.module.scss";
 import { getLanguage } from "../../../../locales/config";
 import { Results } from "../../Servers/Search/Results";
+import { useEffect, useState } from "react";
 
 function SusWeapon(
   props: Readonly<
@@ -40,7 +40,7 @@ function SusWeapon(
       }),
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     props.setSusCount(stats?.weapons?.length || 0);
   }, [stats]);
 
@@ -162,7 +162,7 @@ function SusWeapon(
 }
 
 export function AdminPanel(props: Readonly<PlatformViews>): React.ReactElement {
-  const [susCount, setSusCount] = React.useState(0);
+  const [susCount, setSusCount] = useState(0);
   const { t } = useTranslation();
 
   const {

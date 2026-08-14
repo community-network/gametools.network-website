@@ -1,4 +1,4 @@
-import * as React from "react";
+
 import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
 import "../../../../assets/scss/App.scss";

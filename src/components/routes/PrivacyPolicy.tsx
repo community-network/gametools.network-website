@@ -1,9 +1,10 @@
-import * as React from "react";
+
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 function PrivacyPolicy(): React.ReactElement {
   const { t } = useTranslation();
-  React.useEffect(() => {
+  useEffect(() => {
     document.title = `${t("siteFullName")} | ${t("footer.links.3.header")}`;
   }, [t]);
 

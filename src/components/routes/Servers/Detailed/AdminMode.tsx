@@ -1,4 +1,4 @@
-import * as React from "react";
+
 import { useTranslation } from "react-i18next";
 import type { managerPlayers } from "../../../../api/GametoolsApi";
 import styles from "./AdminMode.module.scss";

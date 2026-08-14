@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocalStorage } from "@uidotdev/usehooks";
-import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation, useNavigate, useParams } from "react-router";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
@@ -31,6 +30,7 @@ import { VehicleGraph, ViewVehicles } from "./Vehicles";
 import { ViewEmblem, ViewOrigin } from "./ViewOrigin";
 import { ViewWeapons, WeaponGraph } from "./Weapons";
 import { type TFunction } from "i18next";
+import { useEffect, useRef, useState } from "react";
 
 export interface Views {
   isLoading: boolean;
@@ -93,7 +93,7 @@ function Stats(): React.ReactElement {
   const playeridQuery = query.get("playerid");
   const oidQuery = query.get("oid");
 
-  const [searchTerm, setSearchTerm] = React.useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [platform, setPlatform] = useLocalStorage<string>(
     "statSearch_platform",
     "pc",
@@ -131,25 +131,25 @@ function Stats(): React.ReactElement {
     );
   }
 
-  React.useState(() => {
+  useState(() => {
     if (gameQuery !== null) {
       setGame(gameQuery);
     }
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (playerGames?.userName != null) {
       setSearchTerm(playerGames?.userName);
     }
   }, [playerGames]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (playerGamesArr.includes(gameQuery || "")) {
       setGame(otherGamesArr[otherGamesArr.length - 1]);
     }
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     const params = new URLSearchParams();
     const old_params = query.toString();
     if (game) {
@@ -177,12 +177,12 @@ function Stats(): React.ReactElement {
     }
   }, [game, history]);
   const { t } = useTranslation();
-  React.useEffect(() => {
+  useEffect(() => {
     document.title = `${t("siteFullName")} ${t("pageTitle.stats")} | ${playerGames?.userName || t("loading")
       } | ${game || t("notApplicable")}`;
   }, [platformGames, game]);
 
-  const searchBox: React.RefObject<HTMLInputElement | null> = React.useRef(null);
+  const searchBox: React.RefObject<HTMLInputElement | null> = useRef(null);
 
   // const { data: autocompleteResult } = useQuery({
   //   queryKey: ["autocomplete" + platform + searchTerm],

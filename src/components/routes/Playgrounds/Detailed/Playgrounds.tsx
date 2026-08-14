@@ -1,4 +1,5 @@
-import * as React from "react";
+
+import { useEffect, type ReactElement } from "react";
 import "../../../../locales/config";
 import { useTranslation } from "react-i18next";
 import "../../../../assets/scss/App.scss";
@@ -10,7 +11,7 @@ import { Bf2042Results } from "./Bf2042Main";
 import { useParams } from "react-router";
 import { Bf6Results } from "./Bf6Main";
 
-function Playgrounds(): React.ReactElement {
+function Playgrounds(): ReactElement {
   const params = useParams();
   const gameId = params.gameid;
   const playground = params.playground;
@@ -32,7 +33,7 @@ function Playgrounds(): React.ReactElement {
         with_ownername: false,
       }),
   });
-  React.useEffect(() => {
+  useEffect(() => {
     document.title = `${t("siteFullName")} ${t("pageTitle.playground")} | ${stats?.originalPlayground?.settings?.configName?.value || t("loading")
       }`;
   }, [stats, t]);

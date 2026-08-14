@@ -14,7 +14,8 @@ import {
 } from "chart.js";
 import "chartjs-adapter-date-fns";
 import zoomPlugin from "chartjs-plugin-zoom";
-import * as React from "react";
+
+import { useState, useRef } from "react";
 import { Line } from "react-chartjs-2";
 import { useTranslation } from "react-i18next";
 import { GametoolsApi, type GlobalGraphReturn } from "../../api/GametoolsApi";
@@ -69,7 +70,7 @@ const borderPlugin = {
 
 function LineGraph(props: GraphData): React.ReactElement {
   const { t, i18n } = useTranslation();
-  const chartRef: React.ForwardedRef<Chart<"line", any, Date> | undefined> | undefined = React.useRef(null);
+  const chartRef: React.ForwardedRef<Chart<"line", any, Date> | undefined> | undefined = useRef(null);
   if (!props.loading && !props.error) {
     const time = props.timeStamps.map((e: string) => {
       const time = new Date(e);
@@ -171,7 +172,7 @@ function LineGraph(props: GraphData): React.ReactElement {
 
 function AllPlatformGraph(props: GraphData): React.ReactElement {
   const { t } = useTranslation();
-  const chartRef: React.ForwardedRef<Chart<"line", any, Date> | undefined> | undefined = React.useRef(null);
+  const chartRef: React.ForwardedRef<Chart<"line", any, Date> | undefined> | undefined = useRef(null);
   if (!props.loading && !props.error) {
     const time = props.timeStamps.map((e: string) => {
       const time = new Date(e);
@@ -415,7 +416,7 @@ export function Graph(props: NewGameInfo): React.ReactElement {
 
 function GlobalLineGraph(props: GraphData): React.ReactElement {
   const [graphRef, { width }] = useMeasure();
-  const chartRef: React.ForwardedRef<Chart<"line", any, Date> | undefined> | undefined = React.useRef(null);
+  const chartRef: React.ForwardedRef<Chart<"line", any, Date> | undefined> | undefined = useRef(null);
   const { t } = useTranslation();
   if (!props.loading && !props.error) {
     const time = props.stats?.timeStamps.map((e: string) => {
@@ -687,7 +688,7 @@ interface ServerGraphData {
 
 export function ServerGraphQuery(props: ServerGraphData): React.ReactElement {
   const { t } = useTranslation();
-  const [pieGraphType, setPieGraphType] = React.useState<string>("map");
+  const [pieGraphType, setPieGraphType] = useState<string>("map");
 
   let getter = props.getter;
   if (["bf3", "bfh", "bf2042"].includes(props.game || "")) {
@@ -779,7 +780,7 @@ function ServerGraph(props: {
   loading: boolean;
 }): React.ReactElement {
   const { t } = useTranslation();
-  const chartRef: React.ForwardedRef<Chart<"line", any, Date> | undefined> | undefined = React.useRef(null);
+  const chartRef: React.ForwardedRef<Chart<"line", any, Date> | undefined> | undefined = useRef(null);
   const time =
     props.stats?.timeStamps.map((e: string) => {
       const time = new Date(e);
@@ -869,7 +870,7 @@ function ServerGraph(props: {
 
 function TotalGraph(props: NewGraphData): React.ReactElement {
   const { t } = useTranslation();
-  const chartRef: React.ForwardedRef<Chart<"line", any, Date> | undefined> | undefined = React.useRef(null);
+  const chartRef: React.ForwardedRef<Chart<"line", any, Date> | undefined> | undefined = useRef(null);
   const time = props.stats?.timeStamps?.map((e: string) => {
     const time = new Date(e);
     return time;

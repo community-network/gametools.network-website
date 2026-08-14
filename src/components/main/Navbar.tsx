@@ -1,4 +1,4 @@
-import * as React from "react";
+
 import { NavLink, useLocation } from "react-router";
 import "../../locales/config";
 import { useTranslation } from "react-i18next";

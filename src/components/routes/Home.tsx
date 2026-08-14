@@ -1,4 +1,3 @@
-import * as React from "react";
 import "../../locales/config";
 import { useTranslation } from "react-i18next";
 import { Box, OpenExternal } from "../Materials";
@@ -19,10 +18,11 @@ import bfportalLogo from "../../assets/icon/bfportal-icon.png";
 import RedsecCentralLogo from "../../assets/icon/redsec-central-icon.png";
 import { Link } from "react-router";
 import styles from "./Home.module.scss";
+import { useEffect } from "react";
 
 function Home(): React.ReactElement {
   const { t, i18n } = useTranslation();
-  React.useEffect(() => {
+  useEffect(() => {
     document.title = t("pageTitle.main");
   }, [t]);
 

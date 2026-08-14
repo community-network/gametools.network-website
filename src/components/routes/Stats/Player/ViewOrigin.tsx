@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
 import type { UserGames } from "../../../../api/ReturnTypes";

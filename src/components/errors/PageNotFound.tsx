@@ -1,9 +1,10 @@
-import * as React from "react";
+
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 function PageNotFound(): React.ReactElement {
   const { t } = useTranslation();
-  React.useEffect(() => {
+  useEffect(() => {
     document.title = `${t("siteFullName")} | ${t("404")}`;
   }, []);
   return (

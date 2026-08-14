@@ -1,4 +1,5 @@
-import * as React from "react";
+
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 export function CopyToClipboard(
@@ -11,7 +12,7 @@ export function CopyToClipboard(
   }>,
 ): React.ReactElement {
   const { t } = useTranslation();
-  const [copyState, setCopyState] = React.useState<string>("copy");
+  const [copyState, setCopyState] = useState<string>("copy");
 
   return (
     <button

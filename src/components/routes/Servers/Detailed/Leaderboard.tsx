@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocalStorage } from "@uidotdev/usehooks";
 import { addDays, addSeconds } from "date-fns";
-import * as React from "react";
+
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { GametoolsApi } from "../../../../api/GametoolsApi";
 import type {
@@ -21,9 +22,9 @@ export function ServerLeaderboard(
   }>,
 ): React.ReactElement {
   const { t } = useTranslation();
-  const [days, setDays] = React.useState<number>(30);
-  const [sortType, setSortType] = React.useState<string>("score");
-  const [searchTerm, setSearchTerm] = React.useState<string>("");
+  const [days, setDays] = useState<number>(30);
+  const [sortType, setSortType] = useState<string>("score");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const gameId = props.gameid;
   const {
     isLoading: loading,
