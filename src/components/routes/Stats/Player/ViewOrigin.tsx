@@ -108,7 +108,6 @@ export function ViewOrigin(props: Readonly<OriginViews>): React.ReactElement {
         </div>
       );
     }
-    console.log(props.errors?.error?.message);
     return (
       // for other errors
       <div className="align">

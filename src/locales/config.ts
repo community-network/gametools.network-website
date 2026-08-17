@@ -34,30 +34,31 @@ i18n
     fallbackLng: "en-US",
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default,
-      format: function (value: any, format?: string, lng?: string) {
-        if (!value || value === "" || value === undefined || value === null) {
-          return "";
-        }
-        if (format !== undefined) {
-          // format = date|mask
-          const [type, mask] = format.split("|");
-          if (type === "date") {
-            return DateFormat(value, mask, { locale: locales[lng || ""] });
-          }
-          if (type === "change") {
-            return formatDistanceToNowStrict(value, { locale: locales[lng || ""] });
-          }
-          if (type === "hourChange") {
-            return formatDistanceToNowStrict(value, {
-              locale: locales[lng || ""],
-              unit: "hour",
-            });
-          }
-        }
-        return value;
-      },
     },
   }));
+
+i18n.services.formatter?.add(
+  "date",
+  (value, lng, options) => {
+    const mask = options?.format ?? "yyyy-MM-dd";
+    return DateFormat(value, mask, {
+      locale: locales[lng ?? "en-US"],
+    });
+  },
+);
+
+i18n.services.formatter?.add("change", (value, lng) =>
+  formatDistanceToNowStrict(value, {
+    locale: locales[lng ?? "en-US"],
+  })
+);
+
+i18n.services.formatter?.add("change", (value, lng) =>
+  formatDistanceToNowStrict(value, {
+    locale: locales[lng || ""],
+    unit: "hour",
+  })
+);
 
 export const apiLanguage: { [key: string]: string } = {
   "zh-cn": "zh-tw",

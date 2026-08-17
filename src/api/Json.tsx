@@ -9,7 +9,6 @@ export default class JsonClient {
     }
     if (paramStr !== "") paramStr = "?" + paramStr;
     const apiEP = import.meta.env.VITE_GAMETOOLS_ENDPOINT;
-    console.log(apiEP)
     return apiEP + method + paramStr;
   }
   async fetchMethod(
