@@ -13,6 +13,8 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       workbox: {
+        clientsClaim: true,
+        navigateFallback: "/index.html",
         globPatterns: ['**/*.{js,css,html,ico,png,svg}']
       }
     }),
