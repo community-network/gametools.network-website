@@ -35,6 +35,7 @@ i18n
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default,
     },
+    supportedLngs: ["de-DE", "en-US", "es", "fr-FR", "nl-NL", "ru-RU", "tr-TR", "zh-CN", "zh-Hans", "zh"],
   }));
 
 i18n.services.formatter?.add(
