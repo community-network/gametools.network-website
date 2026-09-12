@@ -13,8 +13,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       pwaAssets: {
-        disabled: false,
-        config: true
+        disabled: true,
       },
       manifest: {
         name: "Game Tools: Battlefield Stats, Bots, Server management",
@@ -25,6 +24,35 @@ export default defineConfig({
         scope: "/",
         theme_color: "#313443",
         background_color: "#0E0F14",
+        icons: [
+          {
+            "src": "/favicon.ico",
+            "sizes": "48x48",
+            "type": "image/x-icon"
+          },
+          {
+            "src": "/logo.png",
+            "type": "image/png",
+            "sizes": "256x256"
+          },
+          {
+            "src": "/big-logo.png",
+            "type": "image/png",
+            "sizes": "512x512"
+          },
+          {
+            "src": "/maskable-logo.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "any maskable"
+          },
+          {
+            "src": "/logo.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any"
+          }
+        ],
         shortcuts: [
           {
             "name": "Battlefield servers",
