@@ -6,6 +6,19 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import resourcesToBackend from "i18next-resources-to-backend";
 import { initReactI18next } from "react-i18next";
 
+
+export const supportedLanguages = ["de-DE", "en-US", "es", "fr-FR", "nl-NL", "ru-RU", "tr-TR", "zh-CN", "zh-Hans", "zh"];
+export const defaultLanguage = "en-US";
+
+const languageDetector = new LanguageDetector(null, {
+  convertDetectedLanguage: (lng) => {
+    if (supportedLanguages.includes(lng)) {
+      return lng;
+    }
+    return defaultLanguage;
+  },
+});
+
 const locales: { [key: string]: Locale } = {
   "en-US": enUS,
   "tr-TR": tr,
@@ -29,13 +42,13 @@ i18n
     }),
   )
   .use(initReactI18next)
-  .use(LanguageDetector)
+  .use(languageDetector)
   .init(() => ({
-    fallbackLng: "en-US",
+    fallbackLng: defaultLanguage,
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default,
     },
-    supportedLngs: ["de-DE", "en-US", "es", "fr-FR", "nl-NL", "ru-RU", "tr-TR", "zh-CN", "zh-Hans", "zh"],
+    supportedLngs: supportedLanguages,
   }));
 
 i18n.services.formatter?.add(
@@ -43,14 +56,14 @@ i18n.services.formatter?.add(
   (value, lng, options) => {
     const mask = options?.format ?? "yyyy-MM-dd";
     return DateFormat(value, mask, {
-      locale: locales[lng ?? "en-US"],
+      locale: locales[lng ?? defaultLanguage],
     });
   },
 );
 
 i18n.services.formatter?.add("change", (value, lng) =>
   formatDistanceToNowStrict(value, {
-    locale: locales[lng ?? "en-US"],
+    locale: locales[lng ?? defaultLanguage],
   })
 );
 
